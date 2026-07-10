@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《光源》 · 科学 小学 G5 · TeachAny v7.9</title>
+<meta name="description" content="苏教版五年级科学上册第一单元第1课时：认识光源，区分自然光源和人造光源">
+
+<meta name="course-id" content="sujiao-science-g5u1-l1-light-sources">
+<meta name="course-title" content="光源">
+<meta name="course-subject" content="science">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="">
+<meta name="course-next" content="sujiao-science-g5u1-l2-light-propagation">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="sci-e-light">
+<meta name="teachany-subject" content="science">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="matter-science">
+<meta name="teachany-prerequisites" content="无">
+<meta name="teachany-lesson-type" content="概念课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff; --card: #ffffff;
+  --card-elevated: #fffbf5; --line: #ffe0b2; --line-subtle: rgba(255, 167, 38, 0.12);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --primary: #ff6b6b; --secondary: #4ecdc4; --accent: #ffe66d; --brand: #ff6b6b;
+  --brand-soft: rgba(255, 107, 107, 0.1); --brand-2: #4ecdc4; --brand-2-soft: rgba(78, 205, 196, 0.1);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh; --toolbar-height: 56px;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow: hidden; }
+body.teachany-elementary { background: var(--bg); }
+
+/* slide pages */
+.slide-page { min-height: 100vh; min-height: 100dvh; width: 100%; display: flex; flex-direction: column; justify-content: center; padding: calc(var(--toolbar-height) + 16px) var(--page-padding) calc(var(--toolbar-height) + 24px); scroll-snap-align: start; position: relative; }
+.slide-inner { max-width: 980px; width: 100%; margin: 0 auto; }
+
+/* Hero */
+.hero-card { background: linear-gradient(135deg, var(--brand-soft) 0%, var(--brand-2-soft) 100%); border-radius: var(--card-radius); padding: 2.5rem; border: 2px solid var(--line); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+.hero-card h1 { font-size: 2.4rem; margin: 0 0 .6rem; color: var(--text); }
+.hero-card .subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.2rem; }
+.hero-card .question-box { background: var(--card); border-radius: var(--card-radius-sm); padding: 1.2rem 1.5rem; border-left: 5px solid var(--brand); }
+.hero-card .question-box h3 { margin: 0 0 .6rem; color: var(--brand); }
+.hero-card .question-box p { margin: 0; color: var(--text-secondary); }
+
+/* standard section card */
+.section-card { background: var(--card); border-radius: var(--card-radius); padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 6px 24px rgba(0,0,0,.05); border: 1px solid var(--line); }
+.section-card h2 { margin: 0 0 1rem; font-size: 1.5rem; color: var(--text); display: flex; align-items: center; gap: .5rem; }
+.section-card h2 .emoji { font-size: 1.3em; }
+.section-card p { margin: 0 0 1rem; color: var(--text-secondary); }
+.section-card p:last-child { margin-bottom: 0; }
+
+/* choices */
+.choice-list { display: grid; gap: .8rem; margin-top: 1rem; }
+.choice-item { background: var(--card-elevated); border: 2px solid var(--line); border-radius: var(--card-radius-sm); padding: 1rem 1.2rem; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: .8rem; }
+.choice-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.choice-item.selected { border-color: var(--brand); background: var(--brand-soft); }
+.choice-item .choice-label { width: 32px; height: 32px; border-radius: 50%; background: var(--line); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--text-secondary); flex-shrink: 0; }
+.choice-item.selected .choice-label { background: var(--brand); color: #fff; }
+
+/* objectives */
+.objective-list { list-style: none; padding: 0; margin: 0; }
+.objective-list li { padding: .6rem 0 .6rem 2rem; position: relative; color: var(--text-secondary); }
+.objective-list li::before { content: "⭐"; position: absolute; left: 0; }
+
+/* quiz feedback */
+.feedback-box { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: var(--card-radius-sm); display: none; }
+.feedback-box.show { display: block; }
+.feedback-box.ok { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); color: #15803d; }
+.feedback-box.warn { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); color: #b45309; }
+
+/* interactive light classification */
+.light-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.light-item { background: var(--card-elevated); border: 2px solid var(--line); border-radius: var(--card-radius-sm); padding: 1rem; text-align: center; cursor: pointer; transition: all .2s; }
+.light-item:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+.light-item.natural { border-color: var(--secondary); background: var(--brand-2-soft); }
+.light-item.artificial { border-color: var(--brand); background: var(--brand-soft); }
+.light-item .icon { font-size: 2.5rem; display: block; margin-bottom: .5rem; }
+.light-item .name { font-weight: 600; color: var(--text); }
+.light-item .tag { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+
+/* bottom nav */
+.playbar { position: fixed; bottom: 0; left: 0; right: 0; height: var(--toolbar-height); background: var(--card); border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; z-index: 100; }
+.playbar button { background: var(--brand); color: #fff; border: 0; border-radius: 999px; padding: .5rem 1.2rem; font-weight: 600; cursor: pointer; }
+.playbar button.secondary { background: var(--line); color: var(--text); }
+.dots { display: flex; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); cursor: pointer; }
+.dot.active { background: var(--brand); }
+
+@media (max-width: 640px) {
+  .hero-card h1 { font-size: 1.8rem; }
+  .section-card { padding: 1.4rem; }
+  .light-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body class="teachany-elementary" data-teachany-course="sujiao-science-g5u1-l1-light-sources">
+
+<!-- Slide 1: Hero -->
+<section class="slide-page" id="slide-1">
+  <div class="slide-inner">
+    <div class="hero-card">
+      <h1>🔦 第1课 · 光源</h1>
+      <p class="subtitle">苏教版五年级科学上册 · 第一单元《光与色彩》</p>
+      <div class="question-box">
+        <h3>🤔 问题锚点</h3>
+        <p>晚上走路时，为什么有的地方亮堂堂，有的地方黑漆漆？<br>这些光亮都是从哪里来的呢？</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 2: Problem Anchor -->
+<section class="slide-page" id="slide-2">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">💡</span> 想一想</h2>
+      <p>下面这些物体，哪些能自己发光？哪些不能？</p>
+      <div class="light-grid" id="light-classify">
+        <div class="light-item" data-type="natural"><span class="icon">☀️</span><span class="name">太阳</span></div>
+        <div class="light-item" data-type="artificial"><span class="icon">💡</span><span class="name">电灯</span></div>
+        <div class="light-item" data-type="none"><span class="icon">🌙</span><span class="name">月亮</span></div>
+        <div class="light-item" data-type="natural"><span class="icon">🔥</span><span class="name">火焰</span></div>
+        <div class="light-item" data-type="artificial"><span class="icon">🔦</span><span class="name">手电筒</span></div>
+        <div class="light-item" data-type="none"><span class="icon">🪞</span><span class="name">镜子</span></div>
+      </div>
+      <div class="feedback-box" id="classify-feedback"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 3: Learning Objectives -->
+<section class="slide-page" id="slide-3">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🎯</span> 本课学习目标</h2>
+      <ul class="objective-list">
+        <li>知道什么是光源，能说出光源的定义。</li>
+        <li>能区分自然光源和人造光源，各举出3个例子。</li>
+        <li>理解月亮、镜子不是光源，因为它们不能自己发光。</li>
+        <li>能在生活中找出更多光源，并判断属于哪一类。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 4: Concept -->
+<section class="slide-page" id="slide-4">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">📖</span> 什么是光源？</h2>
+      <p><strong>光源</strong>就是<strong>能够自己发光</strong>的物体。</p>
+      <p>判断是不是光源，关键看一点：<strong>它能不能自己产生光？</strong></p>
+      <div class="light-grid" style="margin-top: 1.5rem;">
+        <div class="light-item natural"><span class="icon">☀️</span><span class="name">太阳</span><span class="tag">自然光源</span></div>
+        <div class="light-item natural"><span class="icon">⭐</span><span class="name">星星</span><span class="tag">自然光源</span></div>
+        <div class="light-item natural"><span class="icon">🔥</span><span class="name">火焰</span><span class="tag">自然光源</span></div>
+        <div class="light-item artificial"><span class="icon">💡</span><span class="name">电灯</span><span class="tag">人造光源</span></div>
+        <div class="light-item artificial"><span class="icon">🔦</span><span class="name">手电筒</span><span class="tag">人造光源</span></div>
+        <div class="light-item artificial"><span class="icon">🕯️</span><span class="name">蜡烛</span><span class="tag">人造光源</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 5: Natural vs Artificial -->
+<section class="slide-page" id="slide-5">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🌿</span> 自然光源 vs 人造光源</h2>
+      <div class="light-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="light-item natural" style="padding: 1.5rem;">
+          <span class="icon">🌏</span>
+          <span class="name">自然光源</span>
+          <p style="font-size: .95rem; color: var(--text-secondary); margin-top: .5rem;">自然界中本来就存在，不需要人制造。<br>如：太阳、闪电、萤火虫、星星。</p>
+        </div>
+        <div class="light-item artificial" style="padding: 1.5rem;">
+          <span class="icon">🏭</span>
+          <span class="name">人造光源</span>
+          <p style="font-size: .95rem; color: var(--text-secondary); margin-top: .5rem;">由人类制造出来的。<br>如：电灯、蜡烛、手电筒、篝火。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 6: Interactive Quiz -->
+<section class="slide-page" id="slide-6">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🎮</span> 判断小游戏</h2>
+      <p>下列物体中，哪些是光源？哪些不是光源？</p>
+      <div class="light-grid" id="quiz-items">
+        <div class="light-item" data-answer="source"><span class="icon">🌞</span><span class="name">太阳</span></div>
+        <div class="light-item" data-answer="not"><span class="icon">🌛</span><span class="name">月亮</span></div>
+        <div class="light-item" data-answer="source"><span class="icon">🕯️</span><span class="name">蜡烛</span></div>
+        <div class="light-item" data-answer="not"><span class="icon">📱</span><span class="name">手机屏幕（关闭）</span></div>
+        <div class="light-item" data-answer="source"><span class="icon">🐛</span><span class="name">萤火虫</span></div>
+        <div class="light-item" data-answer="not"><span class="icon">🖼️</span><span class="name">照片</span></div>
+      </div>
+      <div class="feedback-box" id="quiz-feedback"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 7: Common Mistake -->
+<section class="slide-page" id="slide-7">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">⚠️</span> 易错点</h2>
+      <p><strong>月亮是不是光源？</strong></p>
+      <p>不是！月亮看起来很亮，但它自己是不会发光的。我们看到的月光，其实是月亮反射的太阳光。</p>
+      <p><strong>镜子、水面、玻璃是不是光源？</strong></p>
+      <p>也不是！它们只能反射别的光，不能自己产生光。</p>
+      <div class="question-box" style="margin-top: 1rem; background: var(--brand-soft); border-left-color: var(--brand); padding: 1rem; border-radius: var(--card-radius-sm);">
+        <p><strong>记住口诀：</strong>自己能发光的才是光源，反射别人的光不算！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 8: Knowledge Graph -->
+<section class="slide-page" id="slide-8">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🗺️</span> 知识图谱</h2>
+      <p>本课在《光与色彩》单元中的位置：</p>
+      <div style="background: var(--bg-subtle); border-radius: var(--card-radius-sm); padding: 1.5rem; text-align: center;">
+        <p style="font-size: 1.2rem; margin: 0;">🔦 <strong>光源</strong> → 🌠 光的传播 → 🪞 光的反射 → 🌈 七色光</p>
+        <p style="color: var(--muted); margin-top: .8rem;">先认识光从哪里来，再研究光怎么传播、怎么反射、怎么变成彩色。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 9: Summary -->
+<section class="slide-page" id="slide-9">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">📝</span> 课堂总结</h2>
+      <ul class="objective-list">
+        <li><strong>光源</strong>：能够自己发光的物体。</li>
+        <li><strong>自然光源</strong>：太阳、星星、闪电、萤火虫等。</li>
+        <li><strong>人造光源</strong>：电灯、蜡烛、手电筒、篝火等。</li>
+        <li>月亮、镜子、水面不是光源，它们只能反射光。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 10: AI Tutor -->
+<section class="slide-page" id="slide-10">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🤖</span> AI 学伴</h2>
+      <p>有问题随时问 AI 学伴！比如：</p>
+      <ul class="objective-list">
+        <li>"为什么月亮不是光源？"</li>
+        <li>"给我举5个人造光源的例子。"</li>
+        <li>"萤火虫为什么会发光？"</li>
+      </ul>
+      <div id="ai-tutor-container" data-teachany-tutor="sujiao-science-g5u1-l1-light-sources"></div>
+    </div>
+  </div>
+</section>
+
+<div class="playbar">
+  <button class="secondary" id="btn-prev" onclick="changeSlide(-1)">上一页</button>
+  <div class="dots" id="nav-dots"></div>
+  <button id="btn-next" onclick="changeSlide(1)">下一页</button>
+</div>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3","title":"课程导入"},{"section":"s02","src":"tts/s02.mp3","title":"问题锚点"},{"section":"s03","src":"tts/s03.mp3","title":"学习目标"},{"section":"s04","src":"tts/s04.mp3","title":"什么是光源"},{"section":"s05","src":"tts/s05.mp3","title":"自然光源与人造光源"},{"section":"s06","src":"tts/s06.mp3","title":"判断小游戏"},{"section":"s07","src":"tts/s07.mp3","title":"易错点"},{"section":"s08","src":"tts/s08.mp3","title":"知识图谱"},{"section":"s09","src":"tts/s09.mp3","title":"课堂总结"},{"section":"s10","src":"tts/s10.mp3","title":"AI学伴"}]'></script>
+
+<script>
+const totalSlides = 10;
+let currentSlide = 1;
+const dotsContainer = document.getElementById('nav-dots');
+for (let i = 1; i <= totalSlides; i++) {
+  const dot = document.createElement('span');
+  dot.className = 'dot' + (i === 1 ? ' active' : '');
+  dot.onclick = () => goToSlide(i);
+  dotsContainer.appendChild(dot);
+}
+function updateDots() {
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i + 1 === currentSlide));
+}
+function goToSlide(n) {
+  if (n < 1 || n > totalSlides) return;
+  currentSlide = n;
+  document.getElementById('slide-' + n).scrollIntoView({ behavior: 'smooth' });
+  updateDots();
+}
+function changeSlide(delta) { goToSlide(currentSlide + delta); }
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') changeSlide(1);
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') changeSlide(-1);
+});
+
+// Light classification interaction
+const classifyItems = document.querySelectorAll('#light-classify .light-item');
+const classifyFeedback = document.getElementById('classify-feedback');
+classifyItems.forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.toggle('selected');
+    const selected = document.querySelectorAll('#light-classify .light-item.selected');
+    if (selected.length === classifyItems.length) {
+      const correct = ['natural', 'artificial', 'none', 'natural', 'artificial', 'none'];
+      let allCorrect = true;
+      classifyItems.forEach((it, idx) => {
+        const type = it.dataset.type;
+        if (type !== correct[idx]) allCorrect = false;
+        it.classList.remove('natural', 'artificial');
+        if (type === 'natural') it.classList.add('natural');
+        if (type === 'artificial') it.classList.add('artificial');
+      });
+      classifyFeedback.className = 'feedback-box show ' + (allCorrect ? 'ok' : 'warn');
+      classifyFeedback.innerHTML = allCorrect
+        ? '✅ 太棒了！自然光源、人造光源和不会发光的物体你都分对了！'
+        : '💡 再想想：太阳、火焰是自然光源；电灯、手电筒是人造光源；月亮、镜子不会自己发光。';
+    }
+  });
+});
+
+// Quiz interaction
+const quizItems = document.querySelectorAll('#quiz-items .light-item');
+const quizFeedback = document.getElementById('quiz-feedback');
+quizItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const answer = item.dataset.answer;
+    item.classList.add('selected');
+    if (answer === 'source') {
+      item.classList.add('natural');
+      quizFeedback.className = 'feedback-box show ok';
+      quizFeedback.innerHTML = '✅ 对！这是光源，因为它能自己发光。';
+    } else {
+      item.classList.add('artificial');
+      quizFeedback.className = 'feedback-box show warn';
+      quizFeedback.innerHTML = '💡 不对哦。这个物体不能自己发光，所以不是光源。';
+    }
+  });
+});
+</script>
+</body>
+</html>

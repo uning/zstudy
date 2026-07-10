@@ -1,0 +1,31 @@
+{
+  "course_id": "sujiao-science-g5u1-l3-light-reflection",
+  "title": "光的反射",
+  "subject": "science",
+  "grade": "五年级",
+  "stage": "elementary",
+  "domain": "matter-science",
+  "node_id": "sci-e-light",
+  "version": "1.0.0",
+  "template_version": "2.0",
+  "lesson_type": "探究课",
+  "slides": 10,
+  "prerequisites": ["sujiao-science-g5u1-l2-light-propagation"],
+  "next": "sujiao-science-g5u1-l4-seven-colors",
+  "description": "苏教版五年级科学上册第一单元第3课时：光的反射现象，镜面反射与漫反射。",
+  "author": "TeachAny",
+  "language": "zh-CN",
+  "feedback": {
+    "password": "guangyuan2026",
+    "hint": "光源拼音+年份"
+  },
+  "assets": {
+    "hero": "assets/hero-infographic.svg",
+    "tts": "tts/"
+  },
+  "tts": {
+    "voice": "zh-CN-XiaoyiNeural",
+    "rate": "-5%",
+    "files": ["s01.mp3", "s02.mp3", "s03.mp3", "s04.mp3", "s05.mp3", "s06.mp3", "s07.mp3", "s08.mp3", "s09.mp3", "s10.mp3"]
+  }
+}

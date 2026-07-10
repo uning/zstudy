@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《七色光》 · 科学 小学 G5 · TeachAny v7.9</title>
+<meta name="description" content="苏教版五年级科学上册第一单元第4课时：光的色散，七色光与彩虹">
+
+<meta name="course-id" content="sujiao-science-g5u1-l4-seven-colors">
+<meta name="course-title" content="七色光">
+<meta name="course-subject" content="science">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="sujiao-science-g5u1-l3-light-reflection">
+<meta name="course-next" content="">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="sci-e-light">
+<meta name="teachany-subject" content="science">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="matter-science">
+<meta name="teachany-prerequisites" content="光的反射">
+<meta name="teachany-lesson-type" content="探究课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff; --card: #ffffff;
+  --card-elevated: #fffbf5; --line: #ffe0b2; --line-subtle: rgba(255, 167, 38, 0.12);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --primary: #ff6b6b; --secondary: #4ecdc4; --accent: #ffe66d; --brand: #ff6b6b;
+  --brand-soft: rgba(255, 107, 107, 0.1); --brand-2: #4ecdc4; --brand-2-soft: rgba(78, 205, 196, 0.1);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow: hidden; }
+body.teachany-elementary { background: var(--bg); }
+.slide-page { min-height: 100vh; min-height: 100dvh; width: 100%; display: flex; flex-direction: column; justify-content: center; padding: calc(56px + 16px) 24px calc(56px + 24px); scroll-snap-align: start; position: relative; }
+.slide-inner { max-width: 980px; width: 100%; margin: 0 auto; }
+.hero-card { background: linear-gradient(135deg, var(--brand-soft) 0%, var(--brand-2-soft) 100%); border-radius: var(--card-radius); padding: 2.5rem; border: 2px solid var(--line); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+.hero-card h1 { font-size: 2.4rem; margin: 0 0 .6rem; }
+.hero-card .subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.2rem; }
+.hero-card .question-box { background: var(--card); border-radius: var(--card-radius-sm); padding: 1.2rem 1.5rem; border-left: 5px solid var(--brand); }
+.hero-card .question-box h3 { margin: 0 0 .6rem; color: var(--brand); }
+.hero-card .question-box p { margin: 0; color: var(--text-secondary); }
+.section-card { background: var(--card); border-radius: var(--card-radius); padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 6px 24px rgba(0,0,0,.05); border: 1px solid var(--line); }
+.section-card h2 { margin: 0 0 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: .5rem; }
+.section-card h2 .emoji { font-size: 1.3em; }
+.section-card p { margin: 0 0 1rem; color: var(--text-secondary); }
+.section-card p:last-child { margin-bottom: 0; }
+.objective-list { list-style: none; padding: 0; margin: 0; }
+.objective-list li { padding: .6rem 0 .6rem 2rem; position: relative; color: var(--text-secondary); }
+.objective-list li::before { content: "⭐"; position: absolute; left: 0; }
+.choice-list { display: grid; gap: .8rem; margin-top: 1rem; }
+.choice-item { background: var(--card-elevated); border: 2px solid var(--line); border-radius: var(--card-radius-sm); padding: 1rem 1.2rem; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: .8rem; }
+.choice-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.choice-item.selected { border-color: var(--brand); background: var(--brand-soft); }
+.choice-item .choice-label { width: 32px; height: 32px; border-radius: 50%; background: var(--line); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--text-secondary); flex-shrink: 0; }
+.choice-item.selected .choice-label { background: var(--brand); color: #fff; }
+.feedback-box { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: var(--card-radius-sm); display: none; }
+.feedback-box.show { display: block; }
+.feedback-box.ok { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); color: #15803d; }
+.feedback-box.warn { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); color: #b45309; }
+.rainbow-bar { height: 40px; border-radius: var(--card-radius-sm); background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3); margin: 1rem 0; }
+.prism-container { background: #1a1a2e; border-radius: var(--card-radius-sm); padding: 1.5rem; margin-top: 1rem; text-align: center; }
+.prism-svg { width: 100%; height: 200px; }
+.prism-control { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+.prism-control button { background: var(--brand); color: #fff; border: 0; border-radius: 999px; padding: .6rem 1.2rem; cursor: pointer; font-weight: 600; }
+.phet-wrapper { position: relative; padding-top: 66%; border-radius: var(--card-radius-sm); overflow: hidden; margin-top: 1rem; border: 2px solid var(--line); }
+.phet-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.playbar { position: fixed; bottom: 0; left: 0; right: 0; height: 56px; background: var(--card); border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; z-index: 100; }
+.playbar button { background: var(--brand); color: #fff; border: 0; border-radius: 999px; padding: .5rem 1.2rem; font-weight: 600; cursor: pointer; }
+.playbar button.secondary { background: var(--line); color: var(--text); }
+.dots { display: flex; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); cursor: pointer; }
+.dot.active { background: var(--brand); }
+@media (max-width: 640px) { .hero-card h1 { font-size: 1.8rem; } .section-card { padding: 1.4rem; } }
+</style>
+</head>
+<body class="teachany-elementary" data-teachany-course="sujiao-science-g5u1-l4-seven-colors">
+
+<section class="slide-page" id="slide-1">
+  <div class="slide-inner">
+    <div class="hero-card">
+      <h1>🌈 第4课 · 七色光</h1>
+      <p class="subtitle">苏教版五年级科学上册 · 第一单元《光与色彩》</p>
+      <div class="question-box">
+        <h3>🤔 问题锚点</h3>
+        <p>雨后的天空，有时会出现一道美丽的彩虹。<br>彩虹为什么有红、橙、黄、绿、蓝、靛、紫七种颜色呢？</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-2">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">💡</span> 猜一猜</h2>
+      <p>用三棱镜把太阳光分解后，会出现什么颜色？</p>
+      <div class="choice-list">
+        <div class="choice-item" data-correct="true"><span class="choice-label">A</span><span>红橙黄绿蓝靛紫</span></div>
+        <div class="choice-item"><span class="choice-label">B</span><span>只有红、黄、蓝三种</span></div>
+        <div class="choice-item"><span class="choice-label">C</span><span>黑和白</span></div>
+      </div>
+      <div class="feedback-box" id="quiz-feedback"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-3">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🎯</span> 本课学习目标</h2>
+      <ul class="objective-list">
+        <li>知道太阳光可以分解为七种色光。</li>
+        <li>了解光的色散现象及三棱镜的作用。</li>
+        <li>知道彩虹是太阳光经过水滴发生色散形成的。</li>
+        <li>了解色光的三原色：红、绿、蓝。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-4">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">📖</span> 光的色散</h2>
+      <p>太阳光看起来是白色的，其实它是由多种色光混合而成的。让太阳光通过三棱镜，它就会分解成红、橙、黄、绿、蓝、靛、紫七种色光，这种现象叫做<strong>光的色散</strong>。</p>
+      <div class="rainbow-bar"></div>
+      <p style="text-align: center; color: var(--muted);">红 · 橙 · 黄 · 绿 · 蓝 · 靛 · 紫</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-5">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🧪</span> 互动实验：三棱镜分光</h2>
+      <p>点击按钮，让白光通过三棱镜，观察色散现象。</p>
+      <div class="prism-container">
+        <svg class="prism-svg" id="prism-svg" viewBox="0 0 600 200">
+          <circle id="white-light" cx="60" cy="100" r="18" fill="#ffffff" stroke="#ccc" stroke-width="2" />
+          <text x="60" y="140" text-anchor="middle" fill="#fff" font-size="12">白光</text>
+          <polygon points="250,60 350,100 250,140" fill="rgba(255,255,255,0.2)" stroke="#fff" stroke-width="2" />
+          <text x="300" y="160" text-anchor="middle" fill="#fff" font-size="12">三棱镜</text>
+          <line id="beam" x1="80" y1="100" x2="250" y2="100" stroke="#fff" stroke-width="4" opacity="1" />
+          <g id="spectrum" opacity="0">
+            <line x1="350" y1="85" x2="540" y2="60" stroke="#ff0000" stroke-width="5" />
+            <line x1="350" y1="90" x2="540" y2="72" stroke="#ff7f00" stroke-width="5" />
+            <line x1="350" y1="95" x2="540" y2="84" stroke="#ffff00" stroke-width="5" />
+            <line x1="350" y1="100" x2="540" y2="96" stroke="#00ff00" stroke-width="5" />
+            <line x1="350" y1="105" x2="540" y2="108" stroke="#0000ff" stroke-width="5" />
+            <line x1="350" y1="110" x2="540" y2="120" stroke="#4b0082" stroke-width="5" />
+            <line x1="350" y1="115" x2="540" y2="132" stroke="#9400d3" stroke-width="5" />
+          </g>
+        </svg>
+      </div>
+      <div class="prism-control">
+        <button onclick="shinePrism()">让白光通过三棱镜</button>
+        <button onclick="resetPrism()">重置</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-6">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🌦️</span> 彩虹的形成</h2>
+      <p>彩虹是怎么来的？雨后的天空还有许多小水滴。当太阳光进入水滴时，会发生折射和反射，不同颜色的光偏折程度不同，于是白光被分解成七种色光，形成彩虹。</p>
+      <div class="rainbow-bar" style="height: 60px; border-radius: 60px 60px 0 0;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-7">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🎨</span> 色光的三原色</h2>
+      <p>红、绿、蓝是色光的三原色。把不同比例的红、绿、蓝光混合，可以得到各种颜色。</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+        <div class="section-card" style="background: #ffcccc; text-align: center; margin: 0;"><strong style="color: #cc0000;">红色光</strong></div>
+        <div class="section-card" style="background: #ccffcc; text-align: center; margin: 0;"><strong style="color: #00cc00;">绿色光</strong></div>
+        <div class="section-card" style="background: #ccccff; text-align: center; margin: 0;"><strong style="color: #0000cc;">蓝色光</strong></div>
+      </div>
+      <p style="margin-top: 1rem;">当红、绿、蓝三种光以相同强度混合时，我们会看到白光。</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-8">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🧪</span> PhET 模拟：色觉</h2>
+      <p>通过 PhET 模拟，调整红、绿、蓝三种色光的强度，看看能混合出什么颜色。</p>
+      <div class="phet-wrapper">
+        <iframe src="https://phet.colorado.edu/sims/html/color-vision/latest/color-vision_zh_CN.html" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-9">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">📝</span> 课堂总结</h2>
+      <ul class="objective-list">
+        <li>太阳光可以分解为红、橙、黄、绿、蓝、靛、紫七种色光。</li>
+        <li>白光通过三棱镜分解成七色光，叫做<strong>光的色散</strong>。</li>
+        <li>彩虹是太阳光经过水滴折射和反射后发生色散形成的。</li>
+        <li>红、绿、蓝是色光的三原色，混合可以得到各种颜色。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-10">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🤖</span> AI 学伴</h2>
+      <p>你可以问 AI 学伴：</p>
+      <ul class="objective-list">
+        <li>"为什么用三棱镜能把太阳光分成七种颜色？"</li>
+        <li>"彩虹一般出现在太阳的哪一边？"</li>
+        <li>"电视屏幕为什么只用红绿蓝三种颜色就能显示各种色彩？"</li>
+      </ul>
+      <div id="ai-tutor-container" data-teachany-tutor="sujiao-science-g5u1-l4-seven-colors"></div>
+    </div>
+  </div>
+</section>
+
+<div class="playbar">
+  <button class="secondary" onclick="changeSlide(-1)">上一页</button>
+  <div class="dots" id="nav-dots"></div>
+  <button onclick="changeSlide(1)">下一页</button>
+</div>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3","title":"课程导入"},{"section":"s02","src":"tts/s02.mp3","title":"问题锚点"},{"section":"s03","src":"tts/s03.mp3","title":"学习目标"},{"section":"s04","src":"tts/s04.mp3","title":"光的色散"},{"section":"s05","src":"tts/s05.mp3","title":"三棱镜分光"},{"section":"s06","src":"tts/s06.mp3","title":"彩虹的形成"},{"section":"s07","src":"tts/s07.mp3","title":"色光三原色"},{"section":"s08","src":"tts/s08.mp3","title":"PhET模拟"},{"section":"s09","src":"tts/s09.mp3","title":"课堂总结"},{"section":"s10","src":"tts/s10.mp3","title":"AI学伴"}]'></script>
+
+<script>
+const totalSlides = 10;
+let currentSlide = 1;
+const dotsContainer = document.getElementById('nav-dots');
+for (let i = 1; i <= totalSlides; i++) { const d = document.createElement('span'); d.className = 'dot' + (i===1?' active':''); d.onclick = () => goToSlide(i); dotsContainer.appendChild(d); }
+function updateDots() { document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i+1 === currentSlide)); }
+function goToSlide(n) { if (n<1 || n>totalSlides) return; currentSlide=n; document.getElementById('slide-'+n).scrollIntoView({behavior:'smooth'}); updateDots(); }
+function changeSlide(delta) { goToSlide(currentSlide + delta); }
+document.addEventListener('keydown', e => { if (e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' ') changeSlide(1); if (e.key==='ArrowUp'||e.key==='ArrowLeft') changeSlide(-1); });
+
+document.querySelectorAll('#slide-2 .choice-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('#slide-2 .choice-item').forEach(i => i.classList.remove('selected'));
+    item.classList.add('selected');
+    const fb = document.getElementById('quiz-feedback');
+    fb.className = 'feedback-box show ' + (item.dataset.correct==='true' ? 'ok' : 'warn');
+    fb.innerHTML = item.dataset.correct==='true' ? '✅ 答对了！三棱镜能把太阳光分解成红橙黄绿蓝靛紫。' : '💡 再想想，太阳光通过三棱镜后会分成七种颜色。';
+  });
+});
+
+function shinePrism() {
+  document.getElementById('spectrum').setAttribute('opacity', '1');
+  document.getElementById('beam').setAttribute('opacity', '0.3');
+}
+function resetPrism() {
+  document.getElementById('spectrum').setAttribute('opacity', '0');
+  document.getElementById('beam').setAttribute('opacity', '1');
+}
+</script>
+</body>
+</html>

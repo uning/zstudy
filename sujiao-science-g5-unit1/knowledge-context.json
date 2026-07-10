@@ -1,0 +1,24 @@
+{
+  "node_id": "sci-e-light",
+  "topic": "sci-e-light",
+  "name_zh": "sci-e-light",
+  "subject": "science",
+  "stage": null,
+  "curriculum": null,
+  "lookup_at": "2026-07-10T23:48:32Z",
+  "sources": [],
+  "curriculum_excerpts": [],
+  "exercises": [],
+  "common_errors": [],
+  "prerequisites": [],
+  "extends": [],
+  "textbook_refs": [],
+  "md_path": null,
+  "kp_json_path": null,
+  "fallback_used": false,
+  "gaps": [
+    "curriculum_excerpts<2",
+    "exercises<1",
+    "common_errors<1"
+  ]
+}

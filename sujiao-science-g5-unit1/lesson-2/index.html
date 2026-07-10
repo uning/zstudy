@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《光的传播》 · 科学 小学 G5 · TeachAny v7.9</title>
+<meta name="description" content="苏教版五年级科学上册第一单元第2课时：光沿直线传播及小孔成像">
+
+<meta name="course-id" content="sujiao-science-g5u1-l2-light-propagation">
+<meta name="course-title" content="光的传播">
+<meta name="course-subject" content="science">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="sujiao-science-g5u1-l1-light-sources">
+<meta name="course-next" content="sujiao-science-g5u1-l3-light-reflection">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="sci-e-light">
+<meta name="teachany-subject" content="science">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="matter-science">
+<meta name="teachany-prerequisites" content="光源">
+<meta name="teachany-lesson-type" content="探究课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff; --card: #ffffff;
+  --card-elevated: #fffbf5; --line: #ffe0b2; --line-subtle: rgba(255, 167, 38, 0.12);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --primary: #ff6b6b; --secondary: #4ecdc4; --accent: #ffe66d; --brand: #ff6b6b;
+  --brand-soft: rgba(255, 107, 107, 0.1); --brand-2: #4ecdc4; --brand-2-soft: rgba(78, 205, 196, 0.1);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow: hidden; }
+body.teachany-elementary { background: var(--bg); }
+.slide-page { min-height: 100vh; min-height: 100dvh; width: 100%; display: flex; flex-direction: column; justify-content: center; padding: calc(56px + 16px) 24px calc(56px + 24px); scroll-snap-align: start; position: relative; }
+.slide-inner { max-width: 980px; width: 100%; margin: 0 auto; }
+.hero-card { background: linear-gradient(135deg, var(--brand-soft) 0%, var(--brand-2-soft) 100%); border-radius: var(--card-radius); padding: 2.5rem; border: 2px solid var(--line); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+.hero-card h1 { font-size: 2.4rem; margin: 0 0 .6rem; }
+.hero-card .subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.2rem; }
+.hero-card .question-box { background: var(--card); border-radius: var(--card-radius-sm); padding: 1.2rem 1.5rem; border-left: 5px solid var(--brand); }
+.hero-card .question-box h3 { margin: 0 0 .6rem; color: var(--brand); }
+.hero-card .question-box p { margin: 0; color: var(--text-secondary); }
+.section-card { background: var(--card); border-radius: var(--card-radius); padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 6px 24px rgba(0,0,0,.05); border: 1px solid var(--line); }
+.section-card h2 { margin: 0 0 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: .5rem; }
+.section-card h2 .emoji { font-size: 1.3em; }
+.section-card p { margin: 0 0 1rem; color: var(--text-secondary); }
+.section-card p:last-child { margin-bottom: 0; }
+.objective-list { list-style: none; padding: 0; margin: 0; }
+.objective-list li { padding: .6rem 0 .6rem 2rem; position: relative; color: var(--text-secondary); }
+.objective-list li::before { content: "⭐"; position: absolute; left: 0; }
+.feedback-box { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: var(--card-radius-sm); display: none; }
+.feedback-box.show { display: block; }
+.feedback-box.ok { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); color: #15803d; }
+.feedback-box.warn { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); color: #b45309; }
+.ray-container { background: #1a1a2e; border-radius: var(--card-radius-sm); padding: 1.5rem; margin-top: 1rem; position: relative; overflow: hidden; }
+.ray-svg { width: 100%; height: 220px; }
+.ray-control { display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; }
+.ray-control button { background: var(--brand); color: #fff; border: 0; border-radius: 999px; padding: .6rem 1.2rem; cursor: pointer; font-weight: 600; }
+.ray-control label { color: var(--text-secondary); }
+.phet-wrapper { position: relative; padding-top: 66%; border-radius: var(--card-radius-sm); overflow: hidden; margin-top: 1rem; border: 2px solid var(--line); }
+.phet-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.playbar { position: fixed; bottom: 0; left: 0; right: 0; height: 56px; background: var(--card); border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; z-index: 100; }
+.playbar button { background: var(--brand); color: #fff; border: 0; border-radius: 999px; padding: .5rem 1.2rem; font-weight: 600; cursor: pointer; }
+.playbar button.secondary { background: var(--line); color: var(--text); }
+.dots { display: flex; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); cursor: pointer; }
+.dot.active { background: var(--brand); }
+@media (max-width: 640px) { .hero-card h1 { font-size: 1.8rem; } .section-card { padding: 1.4rem; } }
+</style>
+</head>
+<body class="teachany-elementary" data-teachany-course="sujiao-science-g5u1-l2-light-propagation">
+
+<section class="slide-page" id="slide-1">
+  <div class="slide-inner">
+    <div class="hero-card">
+      <h1>🌠 第2课 · 光的传播</h1>
+      <p class="subtitle">苏教版五年级科学上册 · 第一单元《光与色彩》</p>
+      <div class="question-box">
+        <h3>🤔 问题锚点</h3>
+        <p>阳光穿过窗户上的缝隙，会在地上形成一条亮线。<br>光是怎么从太阳传到地球上的呢？</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-2">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">💡</span> 猜一猜</h2>
+      <p>光从手电筒射出来，会怎么走？</p>
+      <div class="choice-list">
+        <div class="choice-item" data-correct="true"><span class="choice-label">A</span><span>沿直线传播</span></div>
+        <div class="choice-item"><span class="choice-label">B</span><span>像水波一样弯曲前进</span></div>
+        <div class="choice-item"><span class="choice-label">C</span><span>东一点西一点乱飞</span></div>
+      </div>
+      <div class="feedback-box" id="quiz-feedback"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-3">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🎯</span> 本课学习目标</h2>
+      <ul class="objective-list">
+        <li>知道光在均匀介质中沿直线传播。</li>
+        <li>能用光线模型解释影子、日食等现象。</li>
+        <li>了解小孔成像的原理。</li>
+        <li>能设计简单实验验证光的直线传播。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-4">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">📖</span> 光沿直线传播</h2>
+      <p><strong>光在均匀的空气中、水中、玻璃中都是沿直线传播的。</strong></p>
+      <p>我们可以用一条带箭头的直线表示光的传播路径，叫做<strong>光线</strong>。箭头表示光传播的方向。</p>
+      <div class="ray-container">
+        <svg class="ray-svg" viewBox="0 0 600 220">
+          <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ffd93d"/></marker></defs>
+          <line x1="50" y1="110" x2="500" y2="110" stroke="#ffd93d" stroke-width="4" marker-end="url(#arrow)" />
+          <circle cx="50" cy="110" r="20" fill="#ff6b6b" />
+          <text x="50" y="160" text-anchor="middle" fill="#fff" font-size="14">光源</text>
+          <text x="400" y="90" fill="#fff" font-size="14">光线</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-5">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🧪</span> 互动实验：光线传播</h2>
+      <p>点击按钮，观察光线在遇到不透明物体时会发生什么。</p>
+      <div class="ray-container">
+        <svg class="ray-svg" id="ray-svg" viewBox="0 0 600 220">
+          <defs><marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ffd93d"/></marker></defs>
+          <line id="ray-line" x1="40" y1="110" x2="480" y2="110" stroke="#ffd93d" stroke-width="4" marker-end="url(#arrow2)" />
+          <circle cx="40" cy="110" r="18" fill="#ff6b6b" />
+          <rect id="obstacle" x="280" y="70" width="30" height="80" fill="#4ecdc4" rx="4" opacity="0" />
+          <text x="40" y="160" text-anchor="middle" fill="#fff" font-size="13">光源</text>
+        </svg>
+      </div>
+      <div class="ray-control">
+        <button onclick="toggleObstacle()">添加/移除障碍物</button>
+        <button onclick="addSmoke()">模拟烟雾</button>
+        <label>观察：光线被挡住就会形成影子。</label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-6">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🌑</span> 影子的形成</h2>
+      <p>光沿直线传播时，遇到不透明的物体，光线被挡住，物体后面就形成了一片黑暗区域，这就是<strong>影子</strong>。</p>
+      <div class="ray-container">
+        <svg class="ray-svg" viewBox="0 0 600 220">
+          <defs><marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ffd93d"/></marker></defs>
+          <line x1="30" y1="50" x2="260" y2="110" stroke="#ffd93d" stroke-width="3" marker-end="url(#arrow3)" />
+          <line x1="30" y1="110" x2="260" y2="110" stroke="#ffd93d" stroke-width="3" marker-end="url(#arrow3)" />
+          <line x1="30" y1="170" x2="260" y2="110" stroke="#ffd93d" stroke-width="3" marker-end="url(#arrow3)" />
+          <circle cx="30" cy="110" r="18" fill="#ff6b6b" />
+          <rect x="250" y="70" width="30" height="80" fill="#4ecdc4" rx="4" />
+          <polygon points="280,85 520,60 520,160 280,135" fill="rgba(0,0,0,.5)" />
+          <text x="400" y="110" text-anchor="middle" fill="#fff" font-size="14">影子</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-7">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">📷</span> 小孔成像</h2>
+      <p>两千多年前，中国古代科学家墨子就发现：光通过小孔后，会在后面的屏幕上形成倒立的像。这就是<strong>小孔成像</strong>。</p>
+      <p>为什么像是倒立的？因为光沿直线传播，烛焰上端的光通过小孔后，会照到屏幕下方；下端的光会照到屏幕上方。</p>
+      <div class="ray-container">
+        <svg class="ray-svg" viewBox="0 0 600 220">
+          <defs><marker id="arrow4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ffd93d"/></marker></defs>
+          <rect x="80" y="60" width="20" height="100" fill="#ff6b6b" rx="2" />
+          <line x1="100" y1="70" x2="320" y2="170" stroke="#ffd93d" stroke-width="2" marker-end="url(#arrow4)" />
+          <line x1="100" y1="150" x2="320" y2="50" stroke="#ffd93d" stroke-width="2" marker-end="url(#arrow4)" />
+          <rect x="300" y="100" width="10" height="20" fill="#fff" />
+          <rect x="480" y="40" width="20" height="140" fill="#555" rx="2" />
+          <text x="90" y="180" text-anchor="middle" fill="#fff" font-size="12">蜡烛</text>
+          <text x="305" y="140" text-anchor="middle" fill="#fff" font-size="12">小孔</text>
+          <text x="490" y="30" text-anchor="middle" fill="#fff" font-size="12">倒立像</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-8">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🌈</span> PhET 模拟：光的折射</h2>
+      <p>光从一种介质进入另一种介质时，传播方向可能发生偏折。来试试改变入射角度，观察光路变化。</p>
+      <div class="phet-wrapper">
+        <iframe src="https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_zh_CN.html" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-9">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">📝</span> 课堂总结</h2>
+      <ul class="objective-list">
+        <li>光在均匀介质中沿<strong>直线</strong>传播。</li>
+        <li>可以用带箭头的直线表示光线，箭头表示传播方向。</li>
+        <li>光被不透明物体挡住会形成<strong>影子</strong>。</li>
+        <li>小孔成像是由于光沿直线传播形成的倒立的像。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-10">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🤖</span> AI 学伴</h2>
+      <p>你可以问 AI 学伴：</p>
+      <ul class="objective-list">
+        <li>"为什么影子总是在物体的背光面？"</li>
+        <li>"小孔成像一定要用圆形的小孔吗？"</li>
+        <li>"日食和月食是怎么形成的？"</li>
+      </ul>
+      <div id="ai-tutor-container" data-teachany-tutor="sujiao-science-g5u1-l2-light-propagation"></div>
+    </div>
+  </div>
+</section>
+
+<div class="playbar">
+  <button class="secondary" onclick="changeSlide(-1)">上一页</button>
+  <div class="dots" id="nav-dots"></div>
+  <button onclick="changeSlide(1)">下一页</button>
+</div>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3","title":"课程导入"},{"section":"s02","src":"tts/s02.mp3","title":"问题锚点"},{"section":"s03","src":"tts/s03.mp3","title":"学习目标"},{"section":"s04","src":"tts/s04.mp3","title":"光沿直线传播"},{"section":"s05","src":"tts/s05.mp3","title":"互动实验"},{"section":"s06","src":"tts/s06.mp3","title":"影子的形成"},{"section":"s07","src":"tts/s07.mp3","title":"小孔成像"},{"section":"s08","src":"tts/s08.mp3","title":"PhET模拟"},{"section":"s09","src":"tts/s09.mp3","title":"课堂总结"},{"section":"s10","src":"tts/s10.mp3","title":"AI学伴"}]'></script>
+
+<script>
+const totalSlides = 10;
+let currentSlide = 1;
+const dotsContainer = document.getElementById('nav-dots');
+for (let i = 1; i <= totalSlides; i++) { const d = document.createElement('span'); d.className = 'dot' + (i===1?' active':''); d.onclick = () => goToSlide(i); dotsContainer.appendChild(d); }
+function updateDots() { document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i+1 === currentSlide)); }
+function goToSlide(n) { if (n<1 || n>totalSlides) return; currentSlide=n; document.getElementById('slide-'+n).scrollIntoView({behavior:'smooth'}); updateDots(); }
+function changeSlide(delta) { goToSlide(currentSlide + delta); }
+document.addEventListener('keydown', e => { if (e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' ') changeSlide(1); if (e.key==='ArrowUp'||e.key==='ArrowLeft') changeSlide(-1); });
+
+document.querySelectorAll('#slide-2 .choice-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('#slide-2 .choice-item').forEach(i => i.classList.remove('selected'));
+    item.classList.add('selected');
+    const fb = document.getElementById('quiz-feedback');
+    fb.className = 'feedback-box show ' + (item.dataset.correct==='true' ? 'ok' : 'warn');
+    fb.innerHTML = item.dataset.correct==='true' ? '✅ 答对了！光在均匀介质中沿直线传播。' : '💡 再想想，光线是直直地前进的。';
+  });
+});
+
+let obstacleOn = false, smokeOn = false;
+function toggleObstacle() {
+  obstacleOn = !obstacleOn;
+  document.getElementById('obstacle').setAttribute('opacity', obstacleOn ? '1' : '0');
+  if (obstacleOn) {
+    document.getElementById('ray-line').setAttribute('x2', '280');
+  } else {
+    document.getElementById('ray-line').setAttribute('x2', '480');
+  }
+}
+function addSmoke() {
+  smokeOn = !smokeOn;
+  document.getElementById('ray-svg').style.background = smokeOn ? 'rgba(200,200,200,0.1)' : 'transparent';
+}
+</script>
+</body>
+</html>

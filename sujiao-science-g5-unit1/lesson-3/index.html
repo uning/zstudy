@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《光的反射》 · 科学 小学 G5 · TeachAny v7.9</title>
+<meta name="description" content="苏教版五年级科学上册第一单元第3课时：光的反射现象，反射定律">
+
+<meta name="course-id" content="sujiao-science-g5u1-l3-light-reflection">
+<meta name="course-title" content="光的反射">
+<meta name="course-subject" content="science">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="sujiao-science-g5u1-l2-light-propagation">
+<meta name="course-next" content="sujiao-science-g5u1-l4-seven-colors">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="sci-e-light">
+<meta name="teachany-subject" content="science">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="matter-science">
+<meta name="teachany-prerequisites" content="光的传播">
+<meta name="teachany-lesson-type" content="探究课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff; --card: #ffffff;
+  --card-elevated: #fffbf5; --line: #ffe0b2; --line-subtle: rgba(255, 167, 38, 0.12);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --primary: #ff6b6b; --secondary: #4ecdc4; --accent: #ffe66d; --brand: #ff6b6b;
+  --brand-soft: rgba(255, 107, 107, 0.1); --brand-2: #4ecdc4; --brand-2-soft: rgba(78, 205, 196, 0.1);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow: hidden; }
+body.teachany-elementary { background: var(--bg); }
+.slide-page { min-height: 100vh; min-height: 100dvh; width: 100%; display: flex; flex-direction: column; justify-content: center; padding: calc(56px + 16px) 24px calc(56px + 24px); scroll-snap-align: start; position: relative; }
+.slide-inner { max-width: 980px; width: 100%; margin: 0 auto; }
+.hero-card { background: linear-gradient(135deg, var(--brand-soft) 0%, var(--brand-2-soft) 100%); border-radius: var(--card-radius); padding: 2.5rem; border: 2px solid var(--line); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+.hero-card h1 { font-size: 2.4rem; margin: 0 0 .6rem; }
+.hero-card .subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.2rem; }
+.hero-card .question-box { background: var(--card); border-radius: var(--card-radius-sm); padding: 1.2rem 1.5rem; border-left: 5px solid var(--brand); }
+.hero-card .question-box h3 { margin: 0 0 .6rem; color: var(--brand); }
+.hero-card .question-box p { margin: 0; color: var(--text-secondary); }
+.section-card { background: var(--card); border-radius: var(--card-radius); padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 6px 24px rgba(0,0,0,.05); border: 1px solid var(--line); }
+.section-card h2 { margin: 0 0 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: .5rem; }
+.section-card h2 .emoji { font-size: 1.3em; }
+.section-card p { margin: 0 0 1rem; color: var(--text-secondary); }
+.section-card p:last-child { margin-bottom: 0; }
+.objective-list { list-style: none; padding: 0; margin: 0; }
+.objective-list li { padding: .6rem 0 .6rem 2rem; position: relative; color: var(--text-secondary); }
+.objective-list li::before { content: "⭐"; position: absolute; left: 0; }
+.choice-list { display: grid; gap: .8rem; margin-top: 1rem; }
+.choice-item { background: var(--card-elevated); border: 2px solid var(--line); border-radius: var(--card-radius-sm); padding: 1rem 1.2rem; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: .8rem; }
+.choice-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.choice-item.selected { border-color: var(--brand); background: var(--brand-soft); }
+.choice-item .choice-label { width: 32px; height: 32px; border-radius: 50%; background: var(--line); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--text-secondary); flex-shrink: 0; }
+.choice-item.selected .choice-label { background: var(--brand); color: #fff; }
+.feedback-box { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: var(--card-radius-sm); display: none; }
+.feedback-box.show { display: block; }
+.feedback-box.ok { background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); color: #15803d; }
+.feedback-box.warn { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); color: #b45309; }
+.ray-container { background: #1a1a2e; border-radius: var(--card-radius-sm); padding: 1.5rem; margin-top: 1rem; position: relative; }
+.ray-svg { width: 100%; height: 240px; }
+.mirror-surface { background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 50%, #b0b0b0 100%); border: 1px solid #999; border-radius: 4px; }
+.ray-control { display: flex; gap: 1rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; }
+.ray-control button { background: var(--brand); color: #fff; border: 0; border-radius: 999px; padding: .6rem 1.2rem; cursor: pointer; font-weight: 600; }
+.ray-control input[type=range] { width: 180px; }
+.phet-wrapper { position: relative; padding-top: 66%; border-radius: var(--card-radius-sm); overflow: hidden; margin-top: 1rem; border: 2px solid var(--line); }
+.phet-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.playbar { position: fixed; bottom: 0; left: 0; right: 0; height: 56px; background: var(--card); border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; z-index: 100; }
+.playbar button { background: var(--brand); color: #fff; border: 0; border-radius: 999px; padding: .5rem 1.2rem; font-weight: 600; cursor: pointer; }
+.playbar button.secondary { background: var(--line); color: var(--text); }
+.dots { display: flex; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); cursor: pointer; }
+.dot.active { background: var(--brand); }
+@media (max-width: 640px) { .hero-card h1 { font-size: 1.8rem; } .section-card { padding: 1.4rem; } }
+</style>
+</head>
+<body class="teachany-elementary" data-teachany-course="sujiao-science-g5u1-l3-light-reflection">
+
+<section class="slide-page" id="slide-1">
+  <div class="slide-inner">
+    <div class="hero-card">
+      <h1>🪞 第3课 · 光的反射</h1>
+      <p class="subtitle">苏教版五年级科学上册 · 第一单元《光与色彩》</p>
+      <div class="question-box">
+        <h3>🤔 问题锚点</h3>
+        <p>照镜子时，你为什么能看到镜子里的自己？<br>光在镜面上发生了什么呢？</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-2">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">💡</span> 想一想</h2>
+      <p>白天，我们能看见不发光的课桌、书本，是因为什么？</p>
+      <div class="choice-list">
+        <div class="choice-item" data-correct="true"><span class="choice-label">A</span><span>它们反射了太阳光或灯光</span></div>
+        <div class="choice-item"><span class="choice-label">B</span><span>它们自己会发出微弱的光</span></div>
+        <div class="choice-item"><span class="choice-label">C</span><span>我们的眼睛会发光照亮它们</span></div>
+      </div>
+      <div class="feedback-box" id="quiz-feedback"></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-3">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🎯</span> 本课学习目标</h2>
+      <ul class="objective-list">
+        <li>知道什么是光的反射现象。</li>
+        <li>了解反射光线、入射光线和法线的关系。</li>
+        <li>知道光射到光滑表面发生镜面反射，射到粗糙表面发生漫反射。</li>
+        <li>能解释生活中常见的反射现象。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-4">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">📖</span> 什么是光的反射？</h2>
+      <p>光在传播过程中，遇到物体表面时，会有一部分光被<strong>反射</strong>回来，这种现象叫做光的反射。</p>
+      <p>镜子能把光反射回去，所以我们能在镜子里看到自己的像。书本、桌面、地面也能反射光，只是表面比较粗糙，反射光向各个方向散射。</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-5">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🧪</span> 互动实验：反射光线</h2>
+      <p>拖动滑块改变入射角度，观察反射光线如何变化。</p>
+      <div class="ray-container">
+        <svg class="ray-svg" id="reflect-svg" viewBox="0 0 600 240">
+          <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ffd93d"/></marker></defs>
+          <line x1="50" y1="200" x2="550" y2="200" stroke="#888" stroke-width="4" />
+          <rect x="50" y="200" width="500" height="40" fill="url(#mirrorGradient)" opacity="0.3" />
+          <line id="normal" x1="300" y1="200" x2="300" y2="40" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="6,4" />
+          <line id="incident" x1="100" y1="40" x2="300" y2="200" stroke="#ff6b6b" stroke-width="4" marker-end="url(#arrow)" />
+          <line id="reflected" x1="300" y1="200" x2="500" y2="40" stroke="#ffd93d" stroke-width="4" marker-end="url(#arrow)" />
+          <text x="300" y="30" text-anchor="middle" fill="#4ecdc4" font-size="13">法线</text>
+          <text x="120" y="60" fill="#ff6b6b" font-size="13">入射光线</text>
+          <text x="460" y="60" fill="#ffd93d" font-size="13">反射光线</text>
+          <defs><linearGradient id="mirrorGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0e0e0"/><stop offset="50%" stop-color="#ffffff"/><stop offset="100%" stop-color="#b0b0b0"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div class="ray-control">
+        <label>入射角：</label>
+        <input type="range" id="angle-slider" min="20" max="70" value="45" oninput="updateReflection()">
+        <span id="angle-display">45°</span>
+        <button onclick="toggleSurface()">切换镜面/粗糙面</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-6">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🔍</span> 镜面反射与漫反射</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+        <div class="section-card" style="background: var(--bg-subtle); margin: 0;">
+          <h3>🪞 镜面反射</h3>
+          <p>光射到光滑表面（如镜子、平静水面），反射光线方向一致，能形成清晰的像。</p>
+        </div>
+        <div class="section-card" style="background: var(--bg-subtle); margin: 0;">
+          <h3>📄 漫反射</h3>
+          <p>光射到粗糙表面（如书本、墙壁），反射光线向各个方向散射，不会形成清晰的像。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-7">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🏠</span> 生活中的反射</h2>
+      <ul class="objective-list">
+        <li><strong>照镜子</strong>：光在镜面发生反射，形成清晰的像。</li>
+        <li><strong>看黑板</strong>：黑板发生漫反射，让不同角度的同学都能看到字。</li>
+        <li><strong>汽车后视镜</strong>：利用曲面镜反射，扩大司机视野。</li>
+        <li><strong>反光背心</strong>：夜间反射车灯，保障行人安全。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-8">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🧪</span> PhET 模拟：几何光学</h2>
+      <p>通过 PhET 模拟，改变镜子的角度，观察入射光线和反射光线的变化。</p>
+      <div class="phet-wrapper">
+        <iframe src="https://phet.colorado.edu/sims/html/geometric-optics/latest/geometric-optics_zh_CN.html" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-9">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">📝</span> 课堂总结</h2>
+      <ul class="objective-list">
+        <li>光遇到物体表面会被反射，这就是<strong>光的反射</strong>。</li>
+        <li>入射光线、反射光线分居法线两侧，反射角等于入射角。</li>
+        <li>光滑表面发生<strong>镜面反射</strong>，形成清晰像。</li>
+        <li>粗糙表面发生<strong>漫反射</strong>，光线向各个方向散射。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide-page" id="slide-10">
+  <div class="slide-inner">
+    <div class="section-card">
+      <h2><span class="emoji">🤖</span> AI 学伴</h2>
+      <p>你可以问 AI 学伴：</p>
+      <ul class="objective-list">
+        <li>"为什么黑板要做得粗糙一点？"</li>
+        <li>"镜子里的人像是左右相反的吗？"</li>
+        <li>"潜望镜是怎么利用反射的？"</li>
+      </ul>
+      <div id="ai-tutor-container" data-teachany-tutor="sujiao-science-g5u1-l3-light-reflection"></div>
+    </div>
+  </div>
+</section>
+
+<div class="playbar">
+  <button class="secondary" onclick="changeSlide(-1)">上一页</button>
+  <div class="dots" id="nav-dots"></div>
+  <button onclick="changeSlide(1)">下一页</button>
+</div>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3","title":"课程导入"},{"section":"s02","src":"tts/s02.mp3","title":"问题锚点"},{"section":"s03","src":"tts/s03.mp3","title":"学习目标"},{"section":"s04","src":"tts/s04.mp3","title":"光的反射概念"},{"section":"s05","src":"tts/s05.mp3","title":"互动实验"},{"section":"s06","src":"tts/s06.mp3","title":"镜面反射与漫反射"},{"section":"s07","src":"tts/s07.mp3","title":"生活中的反射"},{"section":"s08","src":"tts/s08.mp3","title":"PhET模拟"},{"section":"s09","src":"tts/s09.mp3","title":"课堂总结"},{"section":"s10","src":"tts/s10.mp3","title":"AI学伴"}]'></script>
+
+<script>
+const totalSlides = 10;
+let currentSlide = 1;
+const dotsContainer = document.getElementById('nav-dots');
+for (let i = 1; i <= totalSlides; i++) { const d = document.createElement('span'); d.className = 'dot' + (i===1?' active':''); d.onclick = () => goToSlide(i); dotsContainer.appendChild(d); }
+function updateDots() { document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i+1 === currentSlide)); }
+function goToSlide(n) { if (n<1 || n>totalSlides) return; currentSlide=n; document.getElementById('slide-'+n).scrollIntoView({behavior:'smooth'}); updateDots(); }
+function changeSlide(delta) { goToSlide(currentSlide + delta); }
+document.addEventListener('keydown', e => { if (e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' ') changeSlide(1); if (e.key==='ArrowUp'||e.key==='ArrowLeft') changeSlide(-1); });
+
+document.querySelectorAll('#slide-2 .choice-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('#slide-2 .choice-item').forEach(i => i.classList.remove('selected'));
+    item.classList.add('selected');
+    const fb = document.getElementById('quiz-feedback');
+    fb.className = 'feedback-box show ' + (item.dataset.correct==='true' ? 'ok' : 'warn');
+    fb.innerHTML = item.dataset.correct==='true' ? '✅ 答对了！不发光的物体靠反射光进入眼睛，我们才能看见它们。' : '💡 再想想，我们的眼睛不会发光，书本和课桌也不会自己发光。';
+  });
+});
+
+function updateReflection() {
+  const angle = document.getElementById('angle-slider').value;
+  document.getElementById('angle-display').textContent = angle + '°';
+  const rad = angle * Math.PI / 180;
+  const cx = 300, cy = 200;
+  const incidentLen = 220;
+  const ix = cx - incidentLen * Math.sin(rad);
+  const iy = cy - incidentLen * Math.cos(rad);
+  const rx = cx + incidentLen * Math.sin(rad);
+  const ry = cy - incidentLen * Math.cos(rad);
+  document.getElementById('incident').setAttribute('x1', ix);
+  document.getElementById('incident').setAttribute('y1', iy);
+  document.getElementById('reflected').setAttribute('x2', rx);
+  document.getElementById('reflected').setAttribute('y2', ry);
+}
+let smooth = true;
+function toggleSurface() {
+  smooth = !smooth;
+  const line = document.getElementById('reflected');
+  if (!smooth) {
+    line.setAttribute('stroke', '#4ecdc4');
+    line.setAttribute('stroke-dasharray', '8,4');
+  } else {
+    line.setAttribute('stroke', '#ffd93d');
+    line.setAttribute('stroke-dasharray', '0');
+  }
+}
+</script>
+</body>
+</html>
