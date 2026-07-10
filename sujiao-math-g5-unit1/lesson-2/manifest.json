@@ -1,0 +1,58 @@
+{
+  "id": "sujiao-math-g5u1-l2-negative-application",
+  "name": "负数的初步认识（二）——负数的应用",
+  "node_id": "math-e-negative-numbers",
+  "subject": "math",
+  "grade": 5,
+  "author": "TeachAny 用户",
+  "description": "苏教版五年级数学上册第一单元第2课时：用正负数表示相反意义的量，认识数轴上的正负数",
+  "version": "1.0.0",
+  "teachany_version": "v7.9",
+  "curriculum": "cn-national",
+  "free_mode": false,
+  "course_id": "sujiao-math-g5u1-l2-negative-application",
+  "name_en": "Introduction to Negative Numbers (2) - Application",
+  "stage": "elementary",
+  "domain": "number-algebra",
+  "lesson_type": "new-concept",
+  "status": "community",
+  "template_version": "2.0",
+  "tags": [
+    "负数",
+    "正数",
+    "相反意义",
+    "数轴",
+    "苏教版",
+    "五年级"
+  ],
+  "prerequisites": [
+    "sujiao-math-g5u1-l1-negative-concept"
+  ],
+  "leads_to": [],
+  "learning_objectives": [
+    "会用正负数表示生活中相反意义的量",
+    "认识数轴，知道正负数在数轴上的位置",
+    "能在数轴上表示正数、负数和0",
+    "能比较数轴上两个数的大小关系"
+  ],
+  "assets": {
+    "hero": "assets/hero-infographic.svg",
+    "tts_manifest": "tts/manifest.json",
+    "images": [
+      "assets/hero-infographic.svg"
+    ]
+  },
+  "has_tts": true,
+  "has_video": false,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "feedback": {
+    "require_password": true,
+    "password_sha256": "38b76f42ea4ac3dfaff69c366abaf5728d97d8ac57e9d4f91fe3730831163807",
+    "password_hint": "负数拼音+年份"
+  },
+  "created_at": "2026-07-10",
+  "updated_at": "2026-07-10"
+}

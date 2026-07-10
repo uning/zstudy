@@ -1,0 +1,58 @@
+{
+  "id": "sujiao-math-g5u1-l1-negative-concept",
+  "name": "负数的初步认识（一）——负数的概念",
+  "node_id": "math-e-negative-numbers",
+  "subject": "math",
+  "grade": 5,
+  "author": "TeachAny 用户",
+  "description": "苏教版五年级数学上册第一单元第1课时：通过温度和海拔理解负数的概念",
+  "version": "1.0.0",
+  "teachany_version": "v7.9",
+  "curriculum": "cn-national",
+  "free_mode": false,
+  "course_id": "sujiao-math-g5u1-l1-negative-concept",
+  "name_en": "Introduction to Negative Numbers (1) - Concept",
+  "stage": "elementary",
+  "domain": "number-algebra",
+  "lesson_type": "new-concept",
+  "status": "community",
+  "template_version": "2.0",
+  "tags": [
+    "负数",
+    "正数",
+    "温度",
+    "海拔",
+    "苏教版",
+    "五年级"
+  ],
+  "prerequisites": [],
+  "leads_to": [
+    "sujiao-math-g5u1-l2-negative-application"
+  ],
+  "learning_objectives": [
+    "知道正数和负数是怎么来的，理解它们表示相反意义的量",
+    "会用正、负数表示生活中的实际问题（温度、海拔等）",
+    "知道0既不是正数也不是负数，它是分界点",
+    "能正确读写正数和负数，会进行简单的分类"
+  ],
+  "assets": {
+    "hero": "assets/hero-infographic.svg",
+    "tts_manifest": "tts/manifest.json",
+    "images": [
+      "assets/hero-infographic.svg"
+    ]
+  },
+  "has_tts": true,
+  "has_video": false,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "feedback": {
+    "require_password": true,
+    "password_sha256": "38b76f42ea4ac3dfaff69c366abaf5728d97d8ac57e9d4f91fe3730831163807",
+    "password_hint": "负数拼音+年份"
+  },
+  "created_at": "2026-07-10",
+  "updated_at": "2026-07-10"
+}

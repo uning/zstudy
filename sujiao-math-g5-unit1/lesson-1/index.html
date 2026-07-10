@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《负数的初步认识（一）——负数的概念》 · 数学 小学 G5 · TeachAny v7.9</title>
+<meta name="description" content="苏教版五年级数学上册第一单元第1课时：通过温度和海拔理解负数的概念">
+
+<!-- TeachAny routing meta -->
+<meta name="course-id" content="sujiao-math-g5u1-l1-negative-concept">
+<meta name="course-title" content="负数的初步认识（一）——负数的概念">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="">
+<meta name="course-next" content="sujiao-math-g5u1-l2-negative-application">
+<meta name="course-version" content="1.0.0">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- 标准五件套 + 音频播放器 (CDN) -->
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+/* ======================================================
+   TeachAny v2 — 小学（elementary）学段视觉模式
+   ====================================================== */
+:root {
+  --bg: #fffbf0;
+  --bg-subtle: #fff5e6;
+  --panel: #ffffff;
+  --card: #ffffff;
+  --card-elevated: #fffbf5;
+  --line: #ffe0b2;
+  --line-subtle: rgba(255, 167, 38, 0.12);
+  --text: #333333;
+  --text-secondary: #555555;
+  --muted: #888888;
+  --primary: #ff6b6b;
+  --secondary: #4ecdc4;
+  --accent: #ffe66d;
+  --brand: #ff6b6b;
+  --brand-soft: rgba(255, 107, 107, 0.1);
+  --brand-2: #4ecdc4;
+  --brand-2-soft: rgba(78, 205, 196, 0.1);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+  --slide-height: 100vh;
+  --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+  --sidenav-width: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+/* ─── Scroll Container ─── */
+.slide-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+
+/* ─── Slide Page ─── */
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative;
+  overflow: hidden;
+}
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+.card .card { padding: 18px; box-shadow: none; border: 1px solid var(--line-subtle); }
+
+/* ─── Page Type Decorations (小学暖色) ─── */
+.slide-page[data-page-type="cover"] {
+  background: radial-gradient(ellipse at 20% 20%, rgba(255, 107, 107, 0.12), transparent 50%),
+              radial-gradient(ellipse at 80% 80%, rgba(78, 205, 196, 0.1), transparent 50%),
+              radial-gradient(ellipse at 50% 50%, rgba(255, 230, 109, 0.06), transparent 60%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(28px, 6vw, 48px);
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(15px, 3vw, 20px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(78, 205, 196, 0.08), transparent 40%), radial-gradient(circle at 100% 0%, rgba(255, 107, 107, 0.06), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(255, 107, 107, 0.06), transparent 35%), radial-gradient(circle at 70% 80%, rgba(78, 205, 196, 0.05), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(78, 205, 196, 0.08), transparent 40%), radial-gradient(circle at 80% 100%, rgba(255, 107, 107, 0.05), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(255, 158, 11, 0.06), transparent 35%), radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.05), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.08), transparent 45%), radial-gradient(circle at 20% 20%, rgba(78, 205, 196, 0.05), transparent 30%); }
+
+/* ─── Brand Bar ─── */
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 20px; background: rgba(255, 251, 240, 0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle); transition: transform 0.3s ease;
+}
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: var(--text-secondary); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(255, 167, 38, 0.08); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+/* ─── Cards ─── */
+.card {
+  background: var(--card); border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius); padding: 24px;
+  box-shadow: 0 4px 24px rgba(255, 167, 38, 0.08), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255, 167, 38, 0.12), 0 1px 0 rgba(255, 255, 255, 0.5) inset; }
+.card-accent { border-top: 3px solid; border-image: linear-gradient(90deg, var(--primary), var(--secondary)) 1; }
+.card-glow { box-shadow: 0 4px 24px rgba(255, 167, 38, 0.08), 0 0 40px rgba(255, 107, 107, 0.04); }
+
+/* ─── Section Header ─── */
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; line-height: 1.3; }
+
+/* ─── Phase Tag ─── */
+.phase-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--primary); background: var(--brand-soft);
+  border: 1px solid rgba(255, 107, 107, 0.2); border-radius: 999px;
+  padding: 5px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.phase-tag[data-variant="success"] { color: var(--secondary); background: var(--brand-2-soft); border-color: rgba(78, 205, 196, 0.2); }
+.phase-tag[data-variant="purple"] { color: #a78bfa; background: rgba(167, 139, 250, 0.08); border-color: rgba(167, 139, 250, 0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); }
+
+/* ─── Grid ─── */
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid > * { min-width: 0; }
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.flex-row { display: flex; gap: 12px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.flex-row .choice { flex: 1; min-width: 120px; text-align: center; }
+.inner-card { margin: 12px 0; padding: 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); background: var(--card-elevated); }
+.inner-card p { margin: 0 0 6px; }
+.inner-card p:last-child { margin-bottom: 0; }
+.summary-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); background: var(--card-elevated); }
+.summary-item .num { font-weight: 700; flex-shrink: 0; }
+.step-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+
+/* ─── Objectives ─── */
+.objectives { display: grid; grid-template-columns: 1fr; gap: 10px; list-style: none; padding: 0; }
+.objectives li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 16px; border-radius: var(--card-radius-sm);
+  background: rgba(78, 205, 196, 0.04); border: 1px solid var(--line-subtle);
+  transition: background 0.2s;
+}
+.objectives li:hover { background: rgba(78, 205, 196, 0.08); }
+.objectives li::before { content: "\u2B50"; font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+/* ─── Choice Buttons ─── */
+.choice {
+  width: 100%; text-align: left;
+  border: 1px solid rgba(255, 107, 107, 0.18); border-radius: var(--card-radius-sm);
+  background: rgba(255, 107, 107, 0.03); color: var(--text);
+  padding: 16px 20px; cursor: pointer; font-size: 15px; line-height: 1.5;
+  transition: all 0.2s ease;
+}
+.choice:hover { background: rgba(255, 107, 107, 0.08); border-color: rgba(255, 107, 107, 0.3); transform: translateX(4px); }
+.choice.selected { border-color: var(--primary); background: rgba(255, 107, 107, 0.12); box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.08); }
+.choice.correct { border-color: var(--ok); background: rgba(34, 197, 94, 0.08); }
+.choice.wrong { border-color: var(--danger); background: rgba(239, 68, 68, 0.06); }
+
+/* ─── Inputs ─── */
+input, textarea {
+  width: 100%; border-radius: 12px; border: 1px solid var(--line);
+  background: var(--bg-subtle); color: var(--text); padding: 14px 16px;
+  font-size: 15px; transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.08); }
+
+/* ─── Result / Feedback ─── */
+.result { padding: 16px 20px; border-radius: var(--card-radius-sm); background: rgba(34, 197, 94, 0.06); border: 1px solid rgba(34, 197, 94, 0.2); font-size: 15px; line-height: 1.6; }
+.result.warn { background: rgba(245, 158, 11, 0.06); border-color: rgba(245, 158, 11, 0.2); }
+.result.error { background: rgba(239, 68, 68, 0.06); border-color: rgba(239, 68, 68, 0.2); }
+
+/* ─── Canvas Wrap ─── */
+.canvas-wrap { overflow: auto; background: var(--bg-subtle); border: 1px solid var(--line-subtle); border-radius: 16px; padding: 16px; }
+
+/* ─── Hero Figure ─── */
+.ta-standard-figure { margin: 20px auto; max-width: 980px; }
+.ta-standard-figure img { display: block; width: 100%; border-radius: 16px; border: 1px solid var(--line-subtle); }
+.ta-standard-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; text-align: center; }
+
+/* ─── Progress Bar ─── */
+.slide-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--secondary)); z-index: 200; transition: width 0.3s ease; border-radius: 0 2px 2px 0; }
+
+/* ─── Bottom Toolbar ─── */
+.slide-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 20px; padding-bottom: calc(10px + var(--safe-bottom));
+  background: rgba(255, 251, 240, 0.92); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+  transform: translateY(100%); transition: transform 0.3s ease;
+}
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; border-radius: 10px; background: rgba(255, 167, 38, 0.06); color: var(--text); cursor: pointer; transition: all 0.2s; font-size: 18px; }
+.toolbar-btn:hover { background: rgba(255, 167, 38, 0.12); }
+.toolbar-btn.active { background: var(--brand-soft); color: var(--primary); }
+.toolbar-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(255, 167, 38, 0.1); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 2px; transition: width 0.3s ease; }
+
+/* ─── Side Navigation ─── */
+.slide-sidenav {
+  position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 90;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 3px;
+  opacity: 0; transition: opacity 0.3s ease; max-height: 70vh; overflow-y: auto;
+  scrollbar-width: none; padding: 8px 4px; border-radius: 12px;
+  background: rgba(255, 251, 240, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 167, 38, 0.08);
+}
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot { width: 28px; height: 4px; border-radius: 2px; background: rgba(255, 167, 38, 0.15); border: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; padding: 0; flex-shrink: 0; }
+.sidenav-dot:hover { background: rgba(255, 107, 107, 0.4); width: 36px; }
+.sidenav-dot.active { background: var(--primary); width: 36px; height: 5px; box-shadow: 0 0 10px rgba(255, 107, 107, 0.3); }
+.sidenav-dot[data-tooltip]::before { content: attr(data-tooltip); position: absolute; right: calc(100% + 10px); top: 50%; transform: translateY(-50%); padding: 5px 10px; background: rgba(255, 251, 240, 0.95); border: 1px solid var(--line); border-radius: 6px; color: var(--text); font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.sidenav-dot:hover[data-tooltip]::before { opacity: 1; }
+.sidenav-counter { font-size: 10px; color: var(--muted); text-align: center; padding: 4px 0 2px; font-variant-numeric: tabular-nums; letter-spacing: 0.5px; width: 100%; }
+
+/* ─── Play Mode FAB ─── */
+.play-mode-fab { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 48px; height: 48px; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(255, 107, 107, 0.2); transition: all 0.3s ease; }
+.play-mode-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(255, 107, 107, 0.3); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+.play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ─── Animations ─── */
+.slide-page { opacity: 1; transition: opacity 0.4s ease; }
+body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
+@keyframes slideIn { from { opacity: 0.6; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.animate-in { animation: fadeUp 0.5s ease-out both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.stagger-1 { animation-delay: 0.1s; } .stagger-2 { animation-delay: 0.2s; } .stagger-3 { animation-delay: 0.3s; } .stagger-4 { animation-delay: 0.4s; }
+
+/* ─── Temperature Thermometer (Custom) ─── */
+.thermo-demo { display: flex; justify-content: center; align-items: flex-end; gap: 30px; margin: 20px 0; }
+.thermometer { width: 50px; height: 220px; background: linear-gradient(to top, #ff6b6b 0%, #ff6b6b 30%, #ffe66d 50%, #4ecdc4 70%, #4ecdc4 100%); border-radius: 25px; border: 3px solid #ddd; position: relative; }
+.thermometer::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; background: #ff6b6b; border-radius: 50%; border: 3px solid #ddd; }
+.thermo-label { text-align: center; font-size: 14px; font-weight: 600; margin-top: 25px; }
+.thermo-value { font-size: 20px; font-weight: 700; color: var(--primary); }
+
+/* ─── Altitude Demo ─── */
+.altitude-demo { position: relative; height: 250px; background: linear-gradient(to bottom, #87ceeb 0%, #b0e0e6 40%, #87ceeb 45%, #4682b4 50%, #2c5f8a 100%); border-radius: 16px; overflow: hidden; margin: 16px 0; }
+.altitude-line { position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: #ff6b6b; z-index: 2; }
+.altitude-line::after { content: '海平面 0m'; position: absolute; right: 10px; top: -20px; font-size: 12px; color: #ff6b6b; font-weight: 600; }
+.altitude-marker { position: absolute; left: 20px; font-size: 13px; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; --card-radius: 16px; }
+  .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .grid, .grid-2, .grid-3, .objectives, .grid-2col { grid-template-columns: 1fr !important; }
+  .flex-row { flex-direction: column; }
+  .flex-row .choice { min-width: 100%; }
+  .card { padding: 18px; }
+  .slide-sidenav { right: 6px; gap: 2px; padding: 6px 3px; }
+  .sidenav-dot { width: 22px; height: 3px; }
+  .sidenav-dot.active { width: 28px; }
+  .sidenav-counter { font-size: 9px; }
+  .teachany-brand-bar { padding: 8px 12px; }
+  .brand-name { display: none; }
+  .brand-right { gap: 8px; font-size: 12px; }
+  .thermo-demo { gap: 15px; }
+  .thermometer { height: 160px; width: 40px; }
+}
+</style>
+
+  <meta name="teachany-id" content="sujiao-math-g5u1-l1-negative-concept">
+  <meta name="teachany-name" content="负数的初步认识（一）——负数的概念">
+  <meta name="teachany-node" content="math-e-negative-numbers">
+  <meta name="teachany-subject" content="math">
+  <meta name="teachany-grade" content="5">
+  <meta name="teachany-version" content="v6">
+  <meta name="teachany-author" content="TeachAny 用户">
+  <meta name="teachany-curriculum" content="cn-national">
+</head>
+<body class="teachany-elementary">
+
+<!-- Progress Bar -->
+<div class="slide-progress-bar" id="slide-progress-bar" style="width: 0%"></div>
+
+<!-- Brand Bar -->
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="../index.html" aria-label="返回目录">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <a class="brand-link" href="../index.html">返回目录</a>
+    <span class="brand-version">v1.0.0</span>
+  </div>
+</div>
+
+<!-- Slide Container -->
+<div class="slide-container" id="slide-container">
+
+  <!-- Page 0: Cover -->
+  <section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="开场 - 从生活中的温度引入负数">
+    <div class="slide-inner">
+      <h1>🌡️ 负数的初步认识（一）</h1>
+      <p class="subtitle">冬天北京气温零下5度，怎么写这个数？让我们一起认识负数！</p>
+      <figure class="ta-standard-figure" style="margin-top:24px">
+        <img src="./assets/hero-infographic.svg" alt="负数概念知识结构图" style="border-radius:16px">
+        <figcaption>温度计、海拔与正负数的关系示意图</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Page 1: Problem Anchor -->
+  <section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="problem-anchor" data-tsh="问题锚点 - 生活中你在哪里见过带减号的数">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag">问题锚点</span>
+          <h2>🤔 你在哪里见过带"-"号的数？</h2>
+        </div>
+        <p style="color:var(--muted);margin:0 0 16px">选一个你感兴趣的场景，后面的内容会围绕它展开。</p>
+        <div class="grid" id="problem-anchor-choices">
+          <button class="choice" data-anchor-choice="天气预报里零下的温度怎么表示">🌤️ 天气预报里零下的温度怎么表示？</button>
+          <button class="choice" data-anchor-choice="电梯里的-1层是什么意思">🏢 电梯里的-1层是什么意思？</button>
+          <button class="choice" data-anchor-choice="为什么银行卡余额会显示负数">💳 为什么银行卡余额会显示负数？</button>
+          <button class="choice" data-anchor-choice="死海的海拔为什么是负数">🌊 死海的海拔为什么是负数？</button>
+        </div>
+        <label style="display:block;margin-top:20px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+          <input id="learner-question-input" placeholder="把你卡住的问题写在这里" style="margin-top:8px">
+        </label>
+        <p id="anchor-feedback" class="result warn" style="margin-top:16px">选择或输入后，本课会围绕你的问题展开。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 2: Learning Objectives -->
+  <section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标 - 明确这节课学什么">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">学习目标</span>
+          <h2>🎯 这节课你要学会</h2>
+        </div>
+        <ul class="objectives">
+          <li>知道正数和负数是怎么来的，理解它们表示相反意义的量</li>
+          <li>会用正、负数表示生活中的实际问题（温度、海拔等）</li>
+          <li>知道0既不是正数也不是负数，它是分界点</li>
+          <li>能正确读写正数和负数，会进行简单的分类</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 3: Pre-quiz -->
+  <section class="slide-page" data-page-type="quiz" data-page-index="3" data-tts="pre-quiz" data-tsh="前测 - 你已经知道什么">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">前测 · 第一关</span>
+          <h2>📝 先来试试看</h2>
+        </div>
+        <p style="color:var(--muted);margin:0 0 16px">这些题不难，看看你已经知道多少。</p>
+        <div class="inner-card">
+          <p style="font-weight:600">第1题：下面哪些数你认识？把认识的读出来。</p>
+          <p style="color:var(--text-secondary)">3、5、-2、0、100、-8848、1.5、-0.5</p>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第2题：北京某天最高气温是零上3°C，最低气温是零下5°C。</p>
+          <p style="color:var(--text-secondary)">"零下5°C"该怎么写呢？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="pre" data-correct="false" data-explain="5°C只是普通写法，没法区分零上和零下">写成 5°C</button>
+            <button class="choice" data-quiz="pre" data-correct="true" data-explain="对！零下用负数表示，写成 -5°C">写成 -5°C</button>
+            <button class="choice" data-quiz="pre" data-correct="false" data-explain="下5°C不是数学写法">写成 下5°C</button>
+          </div>
+        </div>
+        <div id="pre-quiz-result" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 4: Concept 1 - Temperature -->
+  <section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="concept-temp" data-tsh="核心概念1 - 温度中的负数">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag">核心概念 · 1</span>
+          <h2>🌡️ 温度中的负数</h2>
+        </div>
+        <p>看！三个城市同一天的最低气温：</p>
+        <div class="thermo-demo">
+          <div>
+            <div class="thermometer" style="background:linear-gradient(to top, #4ecdc4 0%, #4ecdc4 35%, #ffe66d 50%, #ff6b6b 65%, #ff6b6b 100%)"></div>
+            <div class="thermo-label">三亚<br><span class="thermo-value">20°C</span></div>
+          </div>
+          <div>
+            <div class="thermometer" style="background:linear-gradient(to top, #4ecdc4 0%, #4ecdc4 48%, #ffe66d 50%, #ffe66d 52%, #4ecdc4 55%, #4ecdc4 100%)"></div>
+            <div class="thermo-label">南京<br><span class="thermo-value">0°C</span></div>
+          </div>
+          <div>
+            <div class="thermometer" style="background:linear-gradient(to top, #4ecdc4 0%, #4ecdc4 80%, #ffe66d 85%, #ffe66d 87%, #4ecdc4 90%, #4ecdc4 100%)"></div>
+            <div class="thermo-label">北京<br><span class="thermo-value">-5°C</span></div>
+          </div>
+        </div>
+        <div class="inner-card">
+          <p>📌 <strong>零上温度</strong>：比0°C高的温度，用正数表示，如 <strong>+20°C</strong>（"+"可以省略，写成 20°C）</p>
+          <p>📌 <strong>零下温度</strong>：比0°C低的温度，用负数表示，如 <strong>-5°C</strong>（"-"不能省略！）</p>
+          <p>📌 <strong>0°C</strong>：零上和零下的分界线，它本身既不是零上也不是零下</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 5: Concept 2 - Altitude -->
+  <section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="concept-altitude" data-tsh="核心概念2 - 海拔中的负数">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag">核心概念 · 2</span>
+          <h2>🏔️ 海拔中的负数</h2>
+        </div>
+        <p>不光温度，海拔高度也用正负数来表示：</p>
+        <div class="altitude-demo">
+          <div class="altitude-marker" style="top:10%">🏔️ 珠穆朗玛峰<br>+8848.86m</div>
+          <div class="altitude-marker" style="top:35%">⛰️ 青海湖<br>+3196m</div>
+          <div class="altitude-line"></div>
+          <div class="altitude-marker" style="top:62%">🏖️ 吐鲁番盆地<br>-154m</div>
+          <div class="altitude-marker" style="top:82%">🌊 死海<br>-430m</div>
+        </div>
+        <div class="inner-card">
+          <p>📌 以<strong>海平面</strong>为基准（0m），高于海平面用<strong>正数</strong>，低于海平面用<strong>负数</strong></p>
+          <p>📌 珠穆朗玛峰海拔 <strong>+8848.86m</strong>（正数，"+"可省略）</p>
+          <p>📌 死海海拔 <strong>-430m</strong>（负数，表示低于海平面430米）</p>
+          <p>💡 <strong>关键发现</strong>：温度以0°C为界，海拔以海平面为界——0都是分界点！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 6: Worked Example -->
+  <section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="worked-example" data-tsh="习题讲解 - 读出并解释温度和海拔">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="purple">习题讲解</span>
+          <h2>✏️ 一起来解题</h2>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">例题：读出下面的数，并说出它表示的意思。</p>
+          <p style="color:var(--text-secondary);margin-top:8px">+15、-8、+2000、-120、0</p>
+        </div>
+        <div class="step-grid">
+          <div class="inner-card" style="border-left:4px solid var(--primary)">
+            <p><strong>第一步：逐个读数</strong></p>
+            <p>+15 读作"正十五"　 -8 读作"负八"</p>
+            <p>+2000 读作"正二千"　 -120 读作"负一百二十"</p>
+            <p>0 读作"零"</p>
+          </div>
+          <div class="inner-card" style="border-left:4px solid var(--secondary)">
+            <p><strong>第二步：分类</strong></p>
+            <p>正数：+15、+2000（"+"可以省略，15、2000也是正数）</p>
+            <p>负数：-8、-120（"-"不能省略！）</p>
+            <p>0：既不是正数，也不是负数</p>
+          </div>
+          <div class="inner-card" style="border-left:4px solid var(--accent)">
+            <p><strong>第三步：说出含义</strong></p>
+            <p>+15：零上15°C / 海拔15m / 盈利15元</p>
+            <p>-8：零下8°C / 低于海平面8m / 亏损8元</p>
+            <p>0：零度 / 海平面 / 不盈不亏</p>
+          </div>
+        </div>
+        <div class="inner-card" style="background:rgba(245,158,11,0.05);border-color:rgba(245,158,11,0.2)">
+          <p>⚠️ <strong>易错提示</strong>：0不是正数！0不是负数！0是它们的分界线。"-"号绝对不能省略，省了就变成正数了。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 7: Interactive - Temperature Sort -->
+  <section class="slide-page" data-page-type="interactive" data-page-index="7" data-tts="interactive" data-tsh="互动探究 - 温度计拖拽分类">
+    <div class="slide-inner">
+      <div class="card card-glow">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">互动探究</span>
+          <h2>🎮 温度分类挑战</h2>
+        </div>
+        <p style="color:var(--muted);margin:0 0 16px">把下面的温度分到正确的区域！点击数字即可分类。</p>
+        <div id="temp-sort-game" style="text-align:center">
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px" id="temp-cards">
+            <button class="choice temp-card" data-val="12" data-type="pos" style="width:auto;min-width:80px;font-size:20px;font-weight:700">12°C</button>
+            <button class="choice temp-card" data-val="-3" data-type="neg" style="width:auto;min-width:80px;font-size:20px;font-weight:700">-3°C</button>
+            <button class="choice temp-card" data-val="0" data-type="zero" style="width:auto;min-width:80px;font-size:20px;font-weight:700">0°C</button>
+            <button class="choice temp-card" data-val="-15" data-type="neg" style="width:auto;min-width:80px;font-size:20px;font-weight:700">-15°C</button>
+            <button class="choice temp-card" data-val="8" data-type="pos" style="width:auto;min-width:80px;font-size:20px;font-weight:700">8°C</button>
+            <button class="choice temp-card" data-val="-1" data-type="neg" style="width:auto;min-width:80px;font-size:20px;font-weight:700">-1°C</button>
+          </div>
+          <div class="grid grid-3">
+            <div class="inner-card" style="text-align:center;border-color:rgba(255,107,107,0.3);background:rgba(255,107,107,0.04)">
+              <p style="font-weight:700;color:var(--primary)">☀️ 零上（正数）</p>
+              <div id="pos-bin" style="min-height:50px;padding:8px;font-size:18px;font-weight:600"></div>
+            </div>
+            <div class="inner-card" style="text-align:center;border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.04)">
+              <p style="font-weight:700;color:var(--warn)">🌡️ 分界（0）</p>
+              <div id="zero-bin" style="min-height:50px;padding:8px;font-size:18px;font-weight:600"></div>
+            </div>
+            <div class="inner-card" style="text-align:center;border-color:rgba(78,205,196,0.3);background:rgba(78,205,196,0.04)">
+              <p style="font-weight:700;color:var(--secondary)">❄️ 零下（负数）</p>
+              <div id="neg-bin" style="min-height:50px;padding:8px;font-size:18px;font-weight:600"></div>
+            </div>
+          </div>
+          <p id="game-feedback" style="margin-top:16px;font-size:15px"></p>
+          <button id="game-reset" class="choice" style="width:auto;display:inline-block;margin-top:12px;padding:8px 20px">🔄 重新开始</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 8: Quiz - Concept Test -->
+  <section class="slide-page" data-page-type="quiz" data-page-index="8" data-tts="quiz" data-tsh="概念测试 - 正数负数0的分类">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">第二关 · 概念测试</span>
+          <h2>✅ 你学会了吗？</h2>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第1题：下面说法正确的是？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="concept1" data-correct="false" data-explain="0不是正数，它是正数和负数的分界线">0是正数</button>
+            <button class="choice" data-quiz="concept1" data-correct="false" data-explain="0也不是负数哦">0是负数</button>
+            <button class="choice" data-quiz="concept1" data-correct="true" data-explain="对！0既不是正数也不是负数">0既不是正数也不是负数</button>
+          </div>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第2题：-10 的"-"号可以省略吗？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="concept2" data-correct="false" data-explain="不行！省了就变成正数10了">可以省略</button>
+            <button class="choice" data-quiz="concept2" data-correct="true" data-explain="对！负数的"-"号绝对不能省略">不能省略</button>
+          </div>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第3题：+5和5是不是同一个数？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="concept3" data-correct="true" data-explain="对！正数的"+"可以省略，+5和5完全一样">是同一个数</button>
+            <button class="choice" data-quiz="concept3" data-correct="false" data-explain="其实它们一样，"+"只是强调它是正数">不是同一个数</button>
+          </div>
+        </div>
+        <div id="concept-quiz-result" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 9: Post-quiz -->
+  <section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="post-quiz" data-tsh="后测 - 综合应用">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">BOSS关 · 综合应用</span>
+          <h2>🏆 挑战自我</h2>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第1题：把下面的数分别填入正数圈和负数圈。</p>
+          <p style="color:var(--text-secondary)">-7、2.5、0、-100、+36、-0.8、99</p>
+          <p style="margin-top:8px"><strong>正数有：</strong><input id="post-q1" placeholder="用逗号隔开" style="margin-top:4px"></p>
+          <button class="choice" data-quiz="post1" data-correct="true" data-explain="正数：2.5、+36、99（0不算！）" data-answer="2.5,+36,99" style="width:auto;display:inline-block;margin-top:8px;padding:8px 16px">检查答案</button>
+          <div id="post1-feedback" style="margin-top:8px"></div>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第2题：某地一天中午气温是零上6°C，半夜气温是零下4°C。用正负数表示这两个温度。</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="post2" data-correct="true" data-explain="对！中午 +6°C，半夜 -4°C">中午 +6°C，半夜 -4°C</button>
+            <button class="choice" data-quiz="post2" data-correct="false" data-explain="不对，零下要用负数表示">中午 6°C，半夜 4°C</button>
+          </div>
+        </div>
+        <div id="post-quiz-result" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 10: Summary -->
+  <section class="slide-page" data-page-type="summary" data-page-index="10" data-tts="summary" data-tsh="总结 - 梳理本课核心知识">
+    <div class="slide-inner">
+      <div class="card card-glow">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">课堂总结</span>
+          <h2>🌟 今天学到了什么？</h2>
+        </div>
+        <div class="grid">
+          <div class="summary-item">
+            <span class="num" style="color:var(--primary)">1</span>
+            <div><strong>正数和负数的产生</strong>：生活中有很多相反意义的量（零上/零下、高于/低于海平面），只用以前学过的数不够用了，于是产生了负数。</div>
+          </div>
+          <div class="summary-item">
+            <span class="num" style="color:var(--primary)">2</span>
+            <div><strong>正数</strong>：大于0的数，如 +3、15、2.5。"+"可以省略。</div>
+          </div>
+          <div class="summary-item">
+            <span class="num" style="color:var(--primary)">3</span>
+            <div><strong>负数</strong>：小于0的数，如 -5、-100、-0.8。"-"不能省略！</div>
+          </div>
+          <div class="summary-item">
+            <span class="num" style="color:var(--primary)">4</span>
+            <div><strong>0</strong>：既不是正数也不是负数，是正数和负数的分界线。</div>
+          </div>
+          <div class="summary-item">
+            <span class="num" style="color:var(--primary)">5</span>
+            <div><strong>读写</strong>：+5读作"正五"，-8读作"负八"。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 11: Knowledge Graph -->
+  <section class="slide-page" data-page-type="summary" data-page-index="11" data-tts="knowledge-graph" data-tsh="知识图谱 - 查看知识结构">
+    <div class="slide-inner">
+      <div class="card card-glow">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="purple">知识图谱</span>
+          <h2>🗺️ 知识结构</h2>
+        </div>
+        <p style="color:var(--muted);margin:0 0 16px">本节课在整个数学知识树中的位置。</p>
+        <div data-teachany-kg="math-e-negative-numbers">
+          <canvas class="tkg-fallback-canvas" width="720" height="120" aria-label="知识图谱互动画布" style="display:block;width:100%;max-height:140px;border-radius:12px;"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 12: AI Tutor -->
+  <section class="slide-page" data-page-type="interactive" data-page-index="12" data-tts="ai-tutor" data-tsh="AI学伴 - 诊断卡点给出提示">
+    <div class="slide-inner">
+      <div data-teachany-tutor-card></div>
+    </div>
+  </section>
+
+</div><!-- .slide-container -->
+
+<!-- Audio Config -->
+<div id="audio-config" data-teachany-audio hidden>
+  <script type="application/json" data-teachany-audio-playlist>
+[
+  {"section":"hero","tts":"hero","title":"开场","file":"tts/s01.mp3"},
+  {"section":"problem-anchor","tts":"problem-anchor","title":"问题锚点","file":"tts/s02.mp3"},
+  {"section":"objectives","tts":"objectives","title":"学习目标","file":"tts/s03.mp3"},
+  {"section":"concept-temp","tts":"concept-temp","title":"温度中的负数","file":"tts/s04.mp3"},
+  {"section":"concept-altitude","tts":"concept-altitude","title":"海拔中的负数","file":"tts/s05.mp3"},
+  {"section":"summary","tts":"summary","title":"课堂总结","file":"tts/s06.mp3"}
+]
+  </script>
+</div>
+
+<!-- Side Navigation -->
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<!-- Play Mode FAB -->
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式" title="切换播放模式">
+  <svg id="fab-icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+  <svg id="fab-icon-browse" viewBox="0 0 24 24" style="display:none"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+
+<!-- Bottom Toolbar -->
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页" title="上一页"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+  <div class="toolbar-progress" id="tb-progress" title="进度"><div class="toolbar-progress-fill" id="tb-progress-fill"></div></div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 13</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页" title="下一页"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  <button class="toolbar-btn" id="tb-autoplay" aria-label="自动播放" title="自动播放"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏" title="全屏"><svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></button>
+</div>
+
+<script>
+/* ============================================================
+   TeachAny v2 — Slide Controller
+   ============================================================ */
+(function() {
+  'use strict';
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0;
+  let isPlayMode = false;
+  let isAutoPlay = false;
+  let autoPlayTimer = null;
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const fab = document.getElementById('play-mode-fab');
+  const fabIconPlay = document.getElementById('fab-icon-play');
+  const fabIconBrowse = document.getElementById('fab-icon-browse');
+  const toolbar = document.getElementById('slide-toolbar');
+  const tbPrev = document.getElementById('tb-prev');
+  const tbNext = document.getElementById('tb-next');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+  const tbProgress = document.getElementById('tb-progress');
+  const tbAutoplay = document.getElementById('tb-autoplay');
+  const tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const counter = document.createElement('div');
+    counter.className = 'sidenav-counter';
+    counter.id = 'sidenav-counter';
+    counter.textContent = '1/' + totalPages;
+    sidenav.appendChild(counter);
+    pages.forEach((page, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-tooltip', (page.dataset.tsh || '').split(' - ')[0] || ('第' + (i+1) + '页'));
+      dot.setAttribute('aria-label', '跳转到第' + (i+1) + '页');
+      dot.addEventListener('click', () => goToPage(i));
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    const progress = totalPages > 1 ? (currentPage / (totalPages - 1)) * 100 : 100;
+    progressBar.style.width = progress + '%';
+    tbProgressFill.style.width = progress + '%';
+    tbPageInfo.textContent = (currentPage + 1) + ' / ' + totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
+    const counterEl = document.getElementById('sidenav-counter');
+    if (counterEl) counterEl.textContent = (currentPage + 1) + '/' + totalPages;
+    tbPrev.style.opacity = currentPage === 0 ? '0.3' : '1';
+    tbNext.style.opacity = currentPage === totalPages - 1 ? '0.3' : '1';
+  }
+
+  function goToPage(index) {
+    if (index < 0 || index >= totalPages) return;
+    currentPage = index;
+    if (isPlayMode) { pages[currentPage].scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    else { container.scrollTo({ top: pages[currentPage].offsetTop, behavior: 'smooth' }); }
+    updateUI();
+    dispatchPageAudio();
+  }
+  function nextPage() { if (currentPage < totalPages - 1) goToPage(currentPage + 1); }
+  function prevPage() { if (currentPage > 0) goToPage(currentPage - 1); }
+
+  let scrollTimeout;
+  function onScroll() {
+    if (isPlayMode) return;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const scrollTop = container.scrollTop;
+      let closest = 0, minDist = Infinity;
+      pages.forEach((page, i) => { const dist = Math.abs(page.offsetTop - scrollTop); if (dist < minDist) { minDist = dist; closest = i; } });
+      if (closest !== currentPage) { currentPage = closest; updateUI(); }
+    }, 100);
+  }
+  container.addEventListener('scroll', onScroll, { passive: true });
+
+  function togglePlayMode() {
+    isPlayMode = !isPlayMode;
+    document.body.classList.toggle('play-mode', isPlayMode);
+    document.body.classList.toggle('toolbar-visible', isPlayMode);
+    fabIconPlay.style.display = isPlayMode ? 'none' : 'block';
+    fabIconBrowse.style.display = isPlayMode ? 'block' : 'none';
+    if (isPlayMode) goToPage(currentPage);
+  }
+  fab.addEventListener('click', togglePlayMode);
+  tbPrev.addEventListener('click', prevPage);
+  tbNext.addEventListener('click', nextPage);
+  tbProgress.addEventListener('click', (e) => {
+    const rect = tbProgress.getBoundingClientRect();
+    const ratio = (e.clientX - rect.left) / rect.width;
+    goToPage(Math.round(ratio * (totalPages - 1)));
+  });
+  tbAutoplay.addEventListener('click', () => {
+    isAutoPlay = !isAutoPlay;
+    tbAutoplay.classList.toggle('active', isAutoPlay);
+    if (isAutoPlay) startAutoPlay(); else stopAutoPlay();
+  });
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayTimer = setInterval(() => {
+      if (currentPage < totalPages - 1) nextPage();
+      else { stopAutoPlay(); isAutoPlay = false; tbAutoplay.classList.remove('active'); }
+    }, 8000);
+  }
+  function stopAutoPlay() { if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; } }
+  tbFullscreen.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch(e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': e.preventDefault(); nextPage(); break;
+      case 'ArrowLeft': case 'ArrowUp': e.preventDefault(); prevPage(); break;
+      case 'f': case 'F': if (!e.ctrlKey && !e.metaKey) togglePlayMode(); break;
+      case 'Escape': if (isPlayMode) togglePlayMode(); break;
+    }
+  });
+
+  function dispatchPageAudio() {
+    const page = pages[currentPage];
+    const ttsId = page.dataset.tts;
+    if (ttsId && window.__TEACHANY_AUDIO_PLAYER__) window.__TEACHANY_AUDIO_PLAYER__.playSection(ttsId);
+  }
+  document.addEventListener('teachany-audio-ended', () => {
+    if (isAutoPlay && currentPage < totalPages - 1) setTimeout(nextPage, 1000);
+  });
+
+  /* ─── Problem Anchor ─── */
+  window.__TEACHANY_LEARNER_QUESTION__ = '';
+  window.__TEACHANY_TUTOR_CONFIG__ = {
+    courseId: 'sujiao-math-g5u1-l1-negative-concept',
+    courseTitle: '负数的初步认识（一）——负数的概念',
+    subject: 'math', grade: '5',
+    nodeId: 'math-e-negative-numbers', lessonType: 'new-concept',
+    getLearnerQuestion: () => window.__TEACHANY_LEARNER_QUESTION__ || '',
+    getContext: () => { const cur = pages[currentPage]; return (cur || document.body).innerText.slice(0, 3000); }
+  };
+  function setLearnerQuestion(q) {
+    window.__TEACHANY_LEARNER_QUESTION__ = q || '';
+    const fb = document.getElementById('anchor-feedback');
+    if (fb) fb.textContent = q ? '你的问题：' + q : '选择或输入后，本课会围绕你的问题展开。';
+  }
+  document.querySelectorAll('[data-anchor-choice]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-anchor-choice]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      setLearnerQuestion(btn.getAttribute('data-anchor-choice') || btn.textContent.trim());
+    });
+  });
+  document.getElementById('learner-question-input')?.addEventListener('input', (e) => setLearnerQuestion(e.target.value.trim()));
+
+  /* ─── Quiz Logic ─── */
+  document.querySelectorAll('[data-quiz]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const quizGroup = btn.dataset.quiz;
+      const isCorrect = btn.dataset.correct === 'true';
+      const explain = btn.dataset.explain || '';
+      const resultId = quizGroup.startsWith('pre') ? 'pre-quiz-result'
+                     : quizGroup.startsWith('concept') ? 'concept-quiz-result'
+                     : quizGroup.startsWith('post') ? 'post-quiz-result' : '';
+      document.querySelectorAll('[data-quiz="' + quizGroup + '"]').forEach(b => {
+        if (b === btn) { b.classList.add(isCorrect ? 'correct' : 'wrong'); }
+        else { b.classList.remove('correct', 'wrong'); }
+      });
+      const resultEl = document.getElementById(resultId);
+      if (resultEl) {
+        resultEl.className = 'result ' + (isCorrect ? '' : 'warn');
+        resultEl.innerHTML = (isCorrect ? '✅ 太棒了！' : '💡 再想想。') + ' ' + explain;
+      }
+      if (btn.dataset.answer) {
+        const inputEl = document.getElementById('post-q1');
+        const fbEl = document.getElementById('post1-feedback');
+        if (inputEl && fbEl) {
+          const userAns = inputEl.value.replace(/\s/g, '').split(/[，,、]/).filter(x => x).sort().join(',');
+          const correctAns = btn.dataset.answer.split(',').sort().join(',');
+          const ok = userAns === correctAns;
+          fbEl.className = 'result ' + (ok ? '' : 'warn');
+          fbEl.innerHTML = (ok ? '✅ 太棒了！' : '💡 再想想。') + ' ' + explain;
+        }
+      }
+    });
+  });
+
+  /* ─── Temperature Sort Game ─── */
+  (function() {
+    const cards = document.querySelectorAll('.temp-card');
+    const posBin = document.getElementById('pos-bin');
+    const negBin = document.getElementById('neg-bin');
+    const zeroBin = document.getElementById('zero-bin');
+    const feedback = document.getElementById('game-feedback');
+    const resetBtn = document.getElementById('game-reset');
+    let sorted = 0;
+    const total = cards.length;
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        if (card.classList.contains('sorted')) return;
+        const type = card.dataset.type;
+        const targetBin = type === 'pos' ? posBin : type === 'neg' ? negBin : zeroBin;
+        targetBin.appendChild(card);
+        card.classList.add('sorted');
+        card.style.background = 'rgba(78,205,196,0.08)';
+        sorted++;
+        if (sorted === total) {
+          feedback.innerHTML = '🎉 全部分类正确！你掌握了正数、负数和0的区别！';
+          feedback.style.color = 'var(--ok)';
+        } else {
+          feedback.innerHTML = '已分好 ' + sorted + '/' + total + ' 个，继续！';
+          feedback.style.color = 'var(--primary)';
+        }
+      });
+    });
+
+    resetBtn.addEventListener('click', () => {
+      const container = document.getElementById('temp-cards');
+      cards.forEach(card => {
+        container.appendChild(card);
+        card.classList.remove('sorted', 'correct', 'wrong');
+        card.style.background = '';
+      });
+      sorted = 0;
+      feedback.innerHTML = '';
+    });
+  })();
+
+  /* ─── Init ─── */
+  buildSidenav();
+  updateUI();
+  document.body.classList.add('toolbar-visible');
+  setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
+  document.addEventListener('DOMContentLoaded', () => {
+    const cv = document.querySelector('meta[name="course-version"]')?.content;
+    if (cv) { const el = document.getElementById('course-version-display'); if (el) el.textContent = cv; }
+  });
+})();
+</script>
+
+<!-- 标准模块脚本 (CDN) -->
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+</body>
+</html>

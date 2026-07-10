@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fffbf0" />
+      <stop offset="100%" style="stop-color:#fff5e6" />
+    </linearGradient>
+  </defs>
+  <rect width="880" height="400" fill="url(#bg2)" rx="16" />
+  
+  <text x="440" y="35" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="18" font-weight="700" fill="#333">正负数的应用 — 相反意义的量与数轴</text>
+  
+  <!-- Left: Opposite pairs -->
+  <g transform="translate(40, 60)">
+    <text x="180" y="20" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="14" font-weight="600" fill="#4ecdc4">相反意义的量</text>
+    
+    <rect x="10" y="40" width="340" height="45" rx="10" fill="#fff" stroke="#ffe0b2" stroke-width="1" />
+    <text x="60" y="68" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#ff6b6b">+2000 盈利</text>
+    <text x="170" y="68" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#888">⇄</text>
+    <text x="290" y="68" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ecdc4">-800 亏损</text>
+    
+    <rect x="10" y="95" width="340" height="45" rx="10" fill="#fff" stroke="#ffe0b2" stroke-width="1" />
+    <text x="60" y="123" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#ff6b6b">+50 向东</text>
+    <text x="170" y="123" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#888">⇄</text>
+    <text x="290" y="123" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ecdc4">-50 向西</text>
+    
+    <rect x="10" y="150" width="340" height="45" rx="10" fill="#fff" stroke="#ffe0b2" stroke-width="1" />
+    <text x="60" y="178" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#ff6b6b">+3000 存入</text>
+    <text x="170" y="178" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#888">⇄</text>
+    <text x="290" y="178" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ecdc4">-1500 取出</text>
+    
+    <rect x="10" y="205" width="340" height="45" rx="10" fill="#fff" stroke="#ffe0b2" stroke-width="1" />
+    <text x="60" y="233" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#ff6b6b">+10 上升</text>
+    <text x="170" y="233" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#888">⇄</text>
+    <text x="290" y="233" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ecdc4">-10 下降</text>
+  </g>
+  
+  <!-- Divider -->
+  <line x1="420" y1="60" x2="420" y2="340" stroke="#ffe0b2" stroke-width="2" stroke-dasharray="5,5" />
+  
+  <!-- Right: Number Line -->
+  <g transform="translate(450, 120)">
+    <text x="180" y="0" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="14" font-weight="600" fill="#ff6b6b">数轴</text>
+    
+    <line x1="20" y1="60" x2="340" y2="60" stroke="#888" stroke-width="2" />
+    <polygon points="340,55 350,60 340,65" fill="#888" />
+    
+    <!-- Negative numbers -->
+    <line x1="50" y1="55" x2="50" y2="65" stroke="#888" stroke-width="2" />
+    <text x="50" y="85" text-anchor="middle" font-size="13" fill="#4ecdc4" font-weight="700">-5</text>
+    <line x1="90" y1="55" x2="90" y2="65" stroke="#888" stroke-width="2" />
+    <text x="90" y="85" text-anchor="middle" font-size="13" fill="#4ecdc4" font-weight="700">-4</text>
+    <line x1="130" y1="55" x2="130" y2="65" stroke="#888" stroke-width="2" />
+    <text x="130" y="85" text-anchor="middle" font-size="13" fill="#4ecdc4" font-weight="700">-3</text>
+    <line x1="170" y1="55" x2="170" y2="65" stroke="#888" stroke-width="2" />
+    <text x="170" y="85" text-anchor="middle" font-size="13" fill="#4ecdc4" font-weight="700">-2</text>
+    <line x1="210" y1="55" x2="210" y2="65" stroke="#888" stroke-width="2" />
+    <text x="210" y="85" text-anchor="middle" font-size="13" fill="#4ecdc4" font-weight="700">-1</text>
+    
+    <!-- Origin -->
+    <circle cx="250" cy="60" r="5" fill="#f59e0b" />
+    <text x="250" y="85" text-anchor="middle" font-size="14" fill="#f59e0b" font-weight="700">0</text>
+    
+    <!-- Positive numbers -->
+    <line x1="290" y1="55" x2="290" y2="65" stroke="#888" stroke-width="2" />
+    <text x="290" y="85" text-anchor="middle" font-size="13" fill="#ff6b6b" font-weight="700">+1</text>
+    <line x1="330" y1="55" x2="330" y2="65" stroke="#888" stroke-width="2" />
+    <text x="330" y="85" text-anchor="middle" font-size="13" fill="#ff6b6b" font-weight="700">+2</text>
+    
+    <!-- Direction labels -->
+    <text x="100" y="40" font-size="11" fill="#4ecdc4" font-weight="600">← 负数（越小）</text>
+    <text x="260" y="40" font-size="11" fill="#ff6b6b" font-weight="600">正数（越大）→</text>
+    
+    <!-- Comparison arrows -->
+    <text x="180" y="130" text-anchor="middle" font-size="12" fill="#888">-5 &lt; -1 &lt; 0 &lt; +2</text>
+    <text x="180" y="150" text-anchor="middle" font-size="11" fill="#aaa">右边的数总比左边的数大</text>
+  </g>
+  
+  <!-- Bottom key -->
+  <rect x="40" y="355" width="800" height="35" rx="10" fill="rgba(78,205,196,0.06)" stroke="rgba(78,205,196,0.15)" stroke-width="1" />
+  <text x="440" y="378" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="13" fill="#555">
+    <tspan fill="#4ecdc4" font-weight="700">规定正方向</tspan>
+    <tspan fill="#888"> → </tspan>
+    <tspan fill="#ff6b6b" font-weight="700">相反方向为负</tspan>
+    <tspan fill="#888"> · </tspan>
+    <tspan fill="#f59e0b" font-weight="700">数轴：原点+正方向+单位长度</tspan>
+  </text>
+</svg>

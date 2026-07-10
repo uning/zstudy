@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《负数的初步认识（二）——负数的应用》 · 数学 小学 G5 · TeachAny v7.9</title>
+<meta name="description" content="苏教版五年级数学上册第一单元第2课时：用正负数表示相反意义的量，认识数轴上的正负数">
+
+<meta name="course-id" content="sujiao-math-g5u1-l2-negative-application">
+<meta name="course-title" content="负数的初步认识（二）——负数的应用">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="sujiao-math-g5u1-l1-negative-concept">
+<meta name="course-next" content="">
+<meta name="course-version" content="1.0.0">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff; --card: #ffffff;
+  --card-elevated: #fffbf5; --line: #ffe0b2; --line-subtle: rgba(255, 167, 38, 0.12);
+  --text: #333; --text-secondary: #555; --muted: #888;
+  --primary: #ff6b6b; --secondary: #4ecdc4; --accent: #ffe66d;
+  --brand: #ff6b6b; --brand-soft: rgba(255, 107, 107, 0.1);
+  --brand-2: #4ecdc4; --brand-2-soft: rgba(78, 205, 196, 0.1);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px; --sidenav-width: 48px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body { padding-top: var(--safe-top); background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif; line-height: 1.75; font-size: 16px; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+.slide-container { scroll-snap-type: y mandatory; overflow-y: auto; height: var(--slide-height-fallback, var(--slide-height)); scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+.slide-page { min-height: var(--slide-height-fallback, var(--slide-height)); scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--page-padding); padding-bottom: calc(var(--page-padding) + var(--toolbar-height)); position: relative; overflow: hidden; }
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+.card .card { padding: 18px; box-shadow: none; border: 1px solid var(--line-subtle); }
+.slide-page[data-page-type="cover"] { background: radial-gradient(ellipse at 20% 20%, rgba(78, 205, 196, 0.12), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(255, 107, 107, 0.1), transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(255, 230, 109, 0.06), transparent 60%); text-align: center; }
+.slide-page[data-page-type="cover"] h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.2; background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(15px, 3vw, 20px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(255, 107, 107, 0.08), transparent 40%), radial-gradient(circle at 100% 0%, rgba(78, 205, 196, 0.06), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(78, 205, 196, 0.06), transparent 35%), radial-gradient(circle at 70% 80%, rgba(255, 107, 107, 0.05), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(255, 107, 107, 0.08), transparent 40%), radial-gradient(circle at 80% 100%, rgba(78, 205, 196, 0.05), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(255, 158, 11, 0.06), transparent 35%), radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.05), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(78, 205, 196, 0.08), transparent 45%), radial-gradient(circle at 20% 20%, rgba(255, 107, 107, 0.05), transparent 30%); }
+.teachany-brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; background: rgba(255, 251, 240, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-subtle); transition: transform 0.3s ease; }
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: var(--text-secondary); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(255, 167, 38, 0.08); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+.card { background: var(--card); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px; box-shadow: 0 4px 24px rgba(255, 167, 38, 0.08), 0 1px 0 rgba(255, 255, 255, 0.5) inset; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255, 167, 38, 0.12), 0 1px 0 rgba(255, 255, 255, 0.5) inset; }
+.card-accent { border-top: 3px solid; border-image: linear-gradient(90deg, var(--secondary), var(--primary)) 1; }
+.card-glow { box-shadow: 0 4px 24px rgba(255, 167, 38, 0.08), 0 0 40px rgba(78, 205, 196, 0.04); }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; line-height: 1.3; }
+.phase-tag { display: inline-flex; align-items: center; gap: 6px; color: var(--primary); background: var(--brand-soft); border: 1px solid rgba(255, 107, 107, 0.2); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+.phase-tag[data-variant="success"] { color: var(--secondary); background: var(--brand-2-soft); border-color: rgba(78, 205, 196, 0.2); }
+.phase-tag[data-variant="purple"] { color: #a78bfa; background: rgba(167, 139, 250, 0.08); border-color: rgba(167, 139, 250, 0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); }
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid > * { min-width: 0; }
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.flex-row { display: flex; gap: 12px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.flex-row .choice { flex: 1; min-width: 120px; text-align: center; }
+.inner-card { margin: 12px 0; padding: 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); background: var(--card-elevated); }
+.inner-card p { margin: 0 0 6px; }
+.inner-card p:last-child { margin-bottom: 0; }
+.summary-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); background: var(--card-elevated); }
+.summary-item .num { font-weight: 700; flex-shrink: 0; }
+.step-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+.objectives { display: grid; grid-template-columns: 1fr; gap: 10px; list-style: none; padding: 0; }
+.objectives li { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: rgba(255, 107, 107, 0.04); border: 1px solid var(--line-subtle); transition: background 0.2s; }
+.objectives li:hover { background: rgba(255, 107, 107, 0.08); }
+.objectives li::before { content: "\u2B50"; font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.choice { width: 100%; text-align: left; border: 1px solid rgba(255, 107, 107, 0.18); border-radius: var(--card-radius-sm); background: rgba(255, 107, 107, 0.03); color: var(--text); padding: 16px 20px; cursor: pointer; font-size: 15px; line-height: 1.5; transition: all 0.2s ease; }
+.choice:hover { background: rgba(255, 107, 107, 0.08); border-color: rgba(255, 107, 107, 0.3); transform: translateX(4px); }
+.choice.selected { border-color: var(--primary); background: rgba(255, 107, 107, 0.12); box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.08); }
+.choice.correct { border-color: var(--ok); background: rgba(34, 197, 94, 0.08); }
+.choice.wrong { border-color: var(--danger); background: rgba(239, 68, 68, 0.06); }
+input, textarea { width: 100%; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-subtle); color: var(--text); padding: 14px 16px; font-size: 15px; transition: border-color 0.2s, box-shadow 0.2s; }
+input:focus, textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.08); }
+.result { padding: 16px 20px; border-radius: var(--card-radius-sm); background: rgba(34, 197, 94, 0.06); border: 1px solid rgba(34, 197, 94, 0.2); font-size: 15px; line-height: 1.6; }
+.result.warn { background: rgba(245, 158, 11, 0.06); border-color: rgba(245, 158, 11, 0.2); }
+.result.error { background: rgba(239, 68, 68, 0.06); border-color: rgba(239, 68, 68, 0.2); }
+.canvas-wrap { overflow: auto; background: var(--bg-subtle); border: 1px solid var(--line-subtle); border-radius: 16px; padding: 16px; }
+.ta-standard-figure { margin: 20px auto; max-width: 980px; }
+.ta-standard-figure img { display: block; width: 100%; border-radius: 16px; border: 1px solid var(--line-subtle); }
+.ta-standard-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; text-align: center; }
+.slide-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--primary)); z-index: 200; transition: width 0.3s ease; border-radius: 0 2px 2px 0; }
+.slide-toolbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; padding-bottom: calc(10px + var(--safe-bottom)); background: rgba(255, 251, 240, 0.92); backdrop-filter: blur(12px); border-top: 1px solid var(--line-subtle); transform: translateY(100%); transition: transform 0.3s ease; }
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; border-radius: 10px; background: rgba(255, 167, 38, 0.06); color: var(--text); cursor: pointer; transition: all 0.2s; font-size: 18px; }
+.toolbar-btn:hover { background: rgba(255, 167, 38, 0.12); }
+.toolbar-btn.active { background: var(--brand-2-soft); color: var(--secondary); }
+.toolbar-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(255, 167, 38, 0.1); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--secondary), var(--primary)); border-radius: 2px; transition: width 0.3s ease; }
+.slide-sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 90; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; opacity: 0; transition: opacity 0.3s ease; max-height: 70vh; overflow-y: auto; scrollbar-width: none; padding: 8px 4px; border-radius: 12px; background: rgba(255, 251, 240, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 167, 38, 0.08); }
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot { width: 28px; height: 4px; border-radius: 2px; background: rgba(255, 167, 38, 0.15); border: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; padding: 0; flex-shrink: 0; }
+.sidenav-dot:hover { background: rgba(78, 205, 196, 0.4); width: 36px; }
+.sidenav-dot.active { background: var(--secondary); width: 36px; height: 5px; box-shadow: 0 0 10px rgba(78, 205, 196, 0.3); }
+.sidenav-dot[data-tooltip]::before { content: attr(data-tooltip); position: absolute; right: calc(100% + 10px); top: 50%; transform: translateY(-50%); padding: 5px 10px; background: rgba(255, 251, 240, 0.95); border: 1px solid var(--line); border-radius: 6px; color: var(--text); font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+.sidenav-dot:hover[data-tooltip]::before { opacity: 1; }
+.sidenav-counter { font-size: 10px; color: var(--muted); text-align: center; padding: 4px 0 2px; font-variant-numeric: tabular-nums; letter-spacing: 0.5px; width: 100%; }
+.play-mode-fab { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 48px; height: 48px; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--secondary), var(--primary)); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(78, 205, 196, 0.2); transition: all 0.3s ease; }
+.play-mode-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(78, 205, 196, 0.3); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+.play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.slide-page { opacity: 1; transition: opacity 0.4s ease; }
+body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
+@keyframes slideIn { from { opacity: 0.6; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.animate-in { animation: fadeUp 0.5s ease-out both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.stagger-1 { animation-delay: 0.1s; } .stagger-2 { animation-delay: 0.2s; } .stagger-3 { animation-delay: 0.3s; } .stagger-4 { animation-delay: 0.4s; }
+
+/* ─── Number Line ─── */
+.number-line-demo { position: relative; height: 120px; margin: 20px 0; }
+.number-line-svg { width: 100%; height: 100%; }
+
+/* ─── Opposite Pairs ─── */
+.opposite-pair { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; border-radius: var(--card-radius-sm); background: var(--card-elevated); border: 1px solid var(--line-subtle); margin: 8px 0; }
+.opposite-pair .left { color: var(--primary); font-weight: 600; }
+.opposite-pair .right { color: var(--secondary); font-weight: 600; }
+.opposite-pair .arrow { color: var(--muted); font-size: 18px; }
+
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; --card-radius: 16px; }
+  .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .grid, .grid-2, .grid-3, .objectives, .grid-2col { grid-template-columns: 1fr !important; }
+  .flex-row { flex-direction: column; }
+  .flex-row .choice { min-width: 100%; }
+  .card { padding: 18px; }
+  .slide-sidenav { right: 6px; gap: 2px; padding: 6px 3px; }
+  .sidenav-dot { width: 22px; height: 3px; }
+  .sidenav-dot.active { width: 28px; }
+  .sidenav-counter { font-size: 9px; }
+  .teachany-brand-bar { padding: 8px 12px; }
+  .brand-name { display: none; }
+  .brand-right { gap: 8px; font-size: 12px; }
+  .opposite-pair { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+
+  <meta name="teachany-id" content="sujiao-math-g5u1-l2-negative-application">
+  <meta name="teachany-name" content="负数的初步认识（二）——负数的应用">
+  <meta name="teachany-node" content="math-e-negative-numbers">
+  <meta name="teachany-subject" content="math">
+  <meta name="teachany-grade" content="5">
+  <meta name="teachany-version" content="v6">
+  <meta name="teachany-author" content="TeachAny 用户">
+  <meta name="teachany-curriculum" content="cn-national">
+</head>
+<body class="teachany-elementary">
+
+<div class="slide-progress-bar" id="slide-progress-bar" style="width: 0%"></div>
+
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="../index.html" aria-label="返回目录">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <a class="brand-link" href="../index.html">返回目录</a>
+    <span class="brand-version">v1.0.0</span>
+  </div>
+</div>
+
+<div class="slide-container" id="slide-container">
+
+  <!-- Page 0: Cover -->
+  <section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="开场 - 从上节课的温度和海拔引入更多应用">
+    <div class="slide-inner">
+      <h1>📏 负数的初步认识（二）</h1>
+      <p class="subtitle">上节课我们认识了温度和海拔中的负数，这节课来看看正负数还能表示什么！</p>
+      <figure class="ta-standard-figure" style="margin-top:24px">
+        <img src="./assets/hero-infographic.svg" alt="正负数应用知识结构图" style="border-radius:16px">
+        <figcaption>正负数表示相反意义的量与数轴示意图</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Page 1: Problem Anchor -->
+  <section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="problem-anchor" data-tsh="问题锚点 - 生活中还有哪些相反的量">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag">问题锚点</span>
+          <h2>🤔 生活中还有哪些"相反"的量？</h2>
+        </div>
+        <p style="color:var(--muted);margin:0 0 16px">上节课我们学了温度和海拔中的正负数，想一想还有哪些？</p>
+        <div class="grid" id="problem-anchor-choices">
+          <button class="choice" data-anchor-choice="商店赚钱和赔钱怎么用数表示">💰 商店赚钱和赔钱怎么用数表示？</button>
+          <button class="choice" data-anchor-choice="向东走和向西走怎么用数表示">🚶 向东走和向西走怎么用数表示？</button>
+          <button class="choice" data-anchor-choice="存入和取出怎么用数表示">🏦 存入和取出怎么用数表示？</button>
+          <button class="choice" data-anchor-choice="能不能把正负数画在一条线上">📐 能不能把正负数画在一条线上？</button>
+        </div>
+        <label style="display:block;margin-top:20px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+          <input id="learner-question-input" placeholder="把你卡住的问题写在这里" style="margin-top:8px">
+        </label>
+        <p id="anchor-feedback" class="result warn" style="margin-top:16px">选择或输入后，本课会围绕你的问题展开。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 2: Learning Objectives -->
+  <section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标 - 明确这节课学什么">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">学习目标</span>
+          <h2>🎯 这节课你要学会</h2>
+        </div>
+        <ul class="objectives">
+          <li>会用正负数表示生活中相反意义的量（盈利亏损、向东向西等）</li>
+          <li>认识数轴，知道正负数在数轴上的位置</li>
+          <li>能在数轴上表示正数、负数和0</li>
+          <li>能比较数轴上两个数的大小关系</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 3: Pre-quiz -->
+  <section class="slide-page" data-page-type="quiz" data-page-index="3" data-tts="pre-quiz" data-tsh="前测 - 回顾上节课内容">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">前测 · 第一关</span>
+          <h2>📝 回顾上节课</h2>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第1题：0是正数还是负数？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="pre" data-correct="false" data-explain="0不是正数">正数</button>
+            <button class="choice" data-quiz="pre" data-correct="false" data-explain="0也不是负数">负数</button>
+            <button class="choice" data-quiz="pre" data-correct="true" data-explain="对！0既不是正数也不是负数">都不是</button>
+          </div>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第2题：-10的"-"号可以省略吗？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="pre2" data-correct="false" data-explain="不行！省了就变成正数了">可以</button>
+            <button class="choice" data-quiz="pre2" data-correct="true" data-explain="对！负数的减号绝对不能省略">不可以</button>
+          </div>
+        </div>
+        <div id="pre-quiz-result" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 4: Concept 1 - Opposite Quantities -->
+  <section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="concept-opposite" data-tsh="核心概念1 - 用正负数表示相反意义的量">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag">核心概念 · 1</span>
+          <h2>⚖️ 相反意义的量</h2>
+        </div>
+        <p>在生活中，有很多<strong>相反意义的量</strong>，可以用正数和负数来表示：</p>
+        <div class="opposite-pair">
+          <span class="left">盈利 +2000元</span>
+          <span class="arrow">⇄</span>
+          <span class="right">亏损 -800元</span>
+        </div>
+        <div class="opposite-pair">
+          <span class="left">向东走 +50米</span>
+          <span class="arrow">⇄</span>
+          <span class="right">向西走 -50米</span>
+        </div>
+        <div class="opposite-pair">
+          <span class="left">存入 +3000元</span>
+          <span class="arrow">⇄</span>
+          <span class="right">取出 -1500元</span>
+        </div>
+        <div class="opposite-pair">
+          <span class="left">上升 +10米</span>
+          <span class="arrow">⇄</span>
+          <span class="right">下降 -10米</span>
+        </div>
+        <div class="inner-card">
+          <p>📌 <strong>关键规则</strong>：先规定一个方向为正，那么相反的方向就用负数表示。</p>
+          <p>📌 盈利为正，亏损就为负；向东为正，向西就为负。</p>
+          <p>💡 习惯上，我们通常把"增加、上升、收入、零上"等规定为正，把"减少、下降、支出、零下"等规定为负。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 5: Concept 2 - Number Line -->
+  <section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="concept-numberline" data-tsh="核心概念2 - 数轴上的正负数">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag">核心概念 · 2</span>
+          <h2>📐 数轴上的正负数</h2>
+        </div>
+        <p>把正数和负数画在一条直线上，就是<strong>数轴</strong>：</p>
+        <div class="number-line-demo">
+          <svg class="number-line-svg" viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- Main line -->
+            <line x1="40" y1="60" x2="760" y2="60" stroke="#888" stroke-width="2" />
+            <!-- Arrow -->
+            <polygon points="760,55 770,60 760,65" fill="#888" />
+            <!-- Origin -->
+            <circle cx="400" cy="60" r="4" fill="#f59e0b" />
+            <text x="400" y="90" text-anchor="middle" font-size="16" font-weight="700" fill="#f59e0b">0</text>
+            <!-- Positive numbers (right) -->
+            <line x1="460" y1="55" x2="460" y2="65" stroke="#888" stroke-width="2" />
+            <text x="460" y="90" text-anchor="middle" font-size="14" fill="#ff6b6b">+1</text>
+            <line x1="520" y1="55" x2="520" y2="65" stroke="#888" stroke-width="2" />
+            <text x="520" y="90" text-anchor="middle" font-size="14" fill="#ff6b6b">+2</text>
+            <line x1="580" y1="55" x2="580" y2="65" stroke="#888" stroke-width="2" />
+            <text x="580" y="90" text-anchor="middle" font-size="14" fill="#ff6b6b">+3</text>
+            <line x1="640" y1="55" x2="640" y2="65" stroke="#888" stroke-width="2" />
+            <text x="640" y="90" text-anchor="middle" font-size="14" fill="#ff6b6b">+4</text>
+            <line x1="700" y1="55" x2="700" y2="65" stroke="#888" stroke-width="2" />
+            <text x="700" y="90" text-anchor="middle" font-size="14" fill="#ff6b6b">+5</text>
+            <!-- Negative numbers (left) -->
+            <line x1="340" y1="55" x2="340" y2="65" stroke="#888" stroke-width="2" />
+            <text x="340" y="90" text-anchor="middle" font-size="14" fill="#4ecdc4">-1</text>
+            <line x1="280" y1="55" x2="280" y2="65" stroke="#888" stroke-width="2" />
+            <text x="280" y="90" text-anchor="middle" font-size="14" fill="#4ecdc4">-2</text>
+            <line x1="220" y1="55" x2="220" y2="65" stroke="#888" stroke-width="2" />
+            <text x="220" y="90" text-anchor="middle" font-size="14" fill="#4ecdc4">-3</text>
+            <line x1="160" y1="55" x2="160" y2="65" stroke="#888" stroke-width="2" />
+            <text x="160" y="90" text-anchor="middle" font-size="14" fill="#4ecdc4">-4</text>
+            <line x1="100" y1="55" x2="100" y2="65" stroke="#888" stroke-width="2" />
+            <text x="100" y="90" text-anchor="middle" font-size="14" fill="#4ecdc4">-5</text>
+            <!-- Labels -->
+            <text x="150" y="30" font-size="12" fill="#4ecdc4" font-weight="600">← 负数（越来越小）</text>
+            <text x="550" y="30" font-size="12" fill="#ff6b6b" font-weight="600">正数（越来越大）→</text>
+          </svg>
+        </div>
+        <div class="inner-card">
+          <p>📌 <strong>数轴三要素</strong>：原点（0）、正方向（向右）、单位长度（每格代表1）</p>
+          <p>📌 0的右边是正数，0的左边是负数</p>
+          <p>📌 在数轴上，右边的数总比左边的数大</p>
+          <p>📌 所有正数都大于0，所有负数都小于0</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 6: Worked Example -->
+  <section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="worked-example" data-tsh="习题讲解 - 生活应用题解析">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="purple">习题讲解</span>
+          <h2>✏️ 一起来解题</h2>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">例题：一辆公交车从起点站出发，车上原有20人。</p>
+          <p style="color:var(--text-secondary);margin-top:8px">第一站：上车8人，下车3人<br>第二站：上车2人，下车5人<br>第三站：上车0人，下车6人</p>
+          <p style="margin-top:8px">如果把上车记为正，下车记为负，用正负数表示每站的人数变化。</p>
+        </div>
+        <div class="step-grid">
+          <div class="inner-card" style="border-left:4px solid var(--secondary)">
+            <p><strong>第一步：确定正负</strong></p>
+            <p>上车为正，下车为负</p>
+          </div>
+          <div class="inner-card" style="border-left:4px solid var(--primary)">
+            <p><strong>第二步：逐站表示</strong></p>
+            <p>第一站：+8人（上车），-3人（下车）</p>
+            <p>第二站：+2人（上车），-5人（下车）</p>
+            <p>第三站：0人（没人上车），-6人（下车）</p>
+          </div>
+          <div class="inner-card" style="border-left:4px solid var(--accent)">
+            <p><strong>第三步：计算最终人数</strong></p>
+            <p>原有20人 + 8 - 3 + 2 - 5 + 0 - 6 = 16人</p>
+          </div>
+        </div>
+        <div class="inner-card" style="background:rgba(245,158,11,0.05);border-color:rgba(245,158,11,0.2)">
+          <p>⚠️ <strong>易错提示</strong>：0表示"没有变化"，既不是正也不是负。如果某站没有人上下车，就记为0。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 7: Interactive - Number Line Plot -->
+  <section class="slide-page" data-page-type="interactive" data-page-index="7" data-tts="interactive" data-tsh="互动探究 - 数轴标注互动">
+    <div class="slide-inner">
+      <div class="card card-glow">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">互动探究</span>
+          <h2>🎮 数轴标注挑战</h2>
+        </div>
+        <p style="color:var(--muted);margin:0 0 16px">点击下面的数，看看它在数轴上的什么位置！</p>
+        <div style="text-align:center">
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px" id="nl-cards">
+            <button class="choice nl-card" data-val="3" style="width:auto;min-width:60px;font-size:18px;font-weight:700;color:var(--primary)">+3</button>
+            <button class="choice nl-card" data-val="-2" style="width:auto;min-width:60px;font-size:18px;font-weight:700;color:var(--secondary)">-2</button>
+            <button class="choice nl-card" data-val="5" style="width:auto;min-width:60px;font-size:18px;font-weight:700;color:var(--primary)">+5</button>
+            <button class="choice nl-card" data-val="-4" style="width:auto;min-width:60px;font-size:18px;font-weight:700;color:var(--secondary)">-4</button>
+            <button class="choice nl-card" data-val="0" style="width:auto;min-width:60px;font-size:18px;font-weight:700;color:var(--warn)">0</button>
+            <button class="choice nl-card" data-val="-1" style="width:auto;min-width:60px;font-size:18px;font-weight:700;color:var(--secondary)">-1</button>
+          </div>
+          <div id="nl-display" style="position:relative;height:100px;background:var(--bg-subtle);border-radius:12px;border:1px solid var(--line-subtle);overflow:hidden">
+            <svg width="100%" height="100%" viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg">
+              <line x1="40" y1="50" x2="760" y2="50" stroke="#888" stroke-width="2" />
+              <polygon points="760,45 770,50 760,55" fill="#888" />
+              <g id="nl-marks"></g>
+              <circle cx="400" cy="50" r="4" fill="#f59e0b" />
+              <text x="400" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#f59e0b">0</text>
+            </svg>
+          </div>
+          <p id="nl-feedback" style="margin-top:16px;font-size:15px"></p>
+          <button id="nl-reset" class="choice" style="width:auto;display:inline-block;margin-top:12px;padding:8px 20px">🔄 清除标注</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 8: Quiz -->
+  <section class="slide-page" data-page-type="quiz" data-page-index="8" data-tts="quiz" data-tsh="概念测试 - 正负数应用和数轴">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">第二关 · 概念测试</span>
+          <h2>✅ 你学会了吗？</h2>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第1题：如果向东走50米记为+50米，那么向西走30米记为？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="q1" data-correct="false" data-explain="不能省略负号">+30米</button>
+            <button class="choice" data-quiz="q1" data-correct="true" data-explain="对！向西是东的相反方向，用负数表示">-30米</button>
+            <button class="choice" data-quiz="q1" data-correct="false" data-explain="不是直接写30，需要加负号">30米</button>
+          </div>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第2题：在数轴上，-3和-1哪个更大？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="q2" data-correct="false" data-explain="-3在-1的左边，更小">-3更大</button>
+            <button class="choice" data-quiz="q2" data-correct="true" data-explain="对！数轴上右边的数更大，-1在-3右边">-1更大</button>
+          </div>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第3题：商店本月盈利5000元记为+5000元，上月亏损800元怎么记？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="q3" data-correct="true" data-explain="对！亏损是盈利的相反，用负数表示">-800元</button>
+            <button class="choice" data-quiz="q3" data-correct="false" data-explain="不能用正数表示亏损">+800元</button>
+          </div>
+        </div>
+        <div id="concept-quiz-result" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 9: Post-quiz -->
+  <section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="post-quiz" data-tsh="后测 - 综合应用">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">BOSS关 · 综合应用</span>
+          <h2>🏆 挑战自我</h2>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第1题：一潜水艇先下潜40米，再上浮15米。如果把上浮记为正，下潜记为负，用正负数表示这两次运动。</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="p1" data-correct="true" data-explain="对！下潜-40米，上浮+15米">下潜 -40米，上浮 +15米</button>
+            <button class="choice" data-quiz="p1" data-correct="false" data-explain="注意题目要求上浮为正，下潜为负">下潜 +40米，上浮 -15米</button>
+          </div>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第2题：在数轴上，从0出发向左走3个单位长度，到达的点表示什么数？</p>
+          <div class="flex-row">
+            <button class="choice" data-quiz="p2" data-correct="false" data-explain="向左是负数方向">+3</button>
+            <button class="choice" data-quiz="p2" data-correct="true" data-explain="对！向左是负数方向，3个单位是-3">-3</button>
+            <button class="choice" data-quiz="p2" data-correct="false" data-explain="0是原点，不是走到3个单位后的位置">0</button>
+          </div>
+        </div>
+        <div class="inner-card">
+          <p style="font-weight:600">第3题：把下面的数按从小到大排列：-5、3、0、-1、+2</p>
+          <input id="post-q3" placeholder="用逗号隔开，从小到大" style="margin-top:8px">
+          <button class="choice" data-quiz="p3" data-correct="true" data-explain="从小到大：-5 < -1 < 0 < +2 < 3" data-answer="-5,-1,0,+2,3" style="width:auto;display:inline-block;margin-top:8px;padding:8px 16px">检查答案</button>
+          <div id="p3-feedback" style="margin-top:8px"></div>
+        </div>
+        <div id="post-quiz-result" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 10: Summary -->
+  <section class="slide-page" data-page-type="summary" data-page-index="10" data-tts="summary" data-tsh="总结 - 梳理本课核心知识">
+    <div class="slide-inner">
+      <div class="card card-glow">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">课堂总结</span>
+          <h2>🌟 今天学到了什么？</h2>
+        </div>
+        <div class="grid">
+          <div class="summary-item">
+            <span class="num" style="color:var(--secondary)">1</span>
+            <div><strong>相反意义的量</strong>：盈利/亏损、向东/向西、存入/取出、上升/下降……都可以用正负数表示。</div>
+          </div>
+          <div class="summary-item">
+            <span class="num" style="color:var(--secondary)">2</span>
+            <div><strong>规定正方向</strong>：先规定一个方向为正，相反方向就为负。通常把增加、上升、收入等规定为正。</div>
+          </div>
+          <div class="summary-item">
+            <span class="num" style="color:var(--secondary)">3</span>
+            <div><strong>数轴三要素</strong>：原点（0）、正方向（向右）、单位长度。</div>
+          </div>
+          <div class="summary-item">
+            <span class="num" style="color:var(--secondary)">4</span>
+            <div><strong>数轴上的大小</strong>：右边的数总比左边的数大。正数 > 0 > 负数。</div>
+          </div>
+          <div class="summary-item">
+            <span class="num" style="color:var(--secondary)">5</span>
+            <div><strong>两个负数比较</strong>：在数轴上，离0越远的负数反而越小。如 -5 < -1。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 11: Knowledge Graph -->
+  <section class="slide-page" data-page-type="summary" data-page-index="11" data-tts="knowledge-graph" data-tsh="知识图谱 - 查看知识结构">
+    <div class="slide-inner">
+      <div class="card card-glow">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="purple">知识图谱</span>
+          <h2>🗺️ 知识结构</h2>
+        </div>
+        <p style="color:var(--muted);margin:0 0 16px">本节课在整个数学知识树中的位置。</p>
+        <div data-teachany-kg="math-e-negative-numbers">
+          <canvas class="tkg-fallback-canvas" width="720" height="120" aria-label="知识图谱互动画布" style="display:block;width:100%;max-height:140px;border-radius:12px;"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 12: AI Tutor -->
+  <section class="slide-page" data-page-type="interactive" data-page-index="12" data-tts="ai-tutor" data-tsh="AI学伴 - 诊断卡点给出提示">
+    <div class="slide-inner">
+      <div data-teachany-tutor-card></div>
+    </div>
+  </section>
+
+</div><!-- .slide-container -->
+
+<div id="audio-config" data-teachany-audio hidden>
+  <script type="application/json" data-teachany-audio-playlist>
+[
+  {"section":"hero","tts":"hero","title":"开场","file":"tts/s01.mp3"},
+  {"section":"problem-anchor","tts":"problem-anchor","title":"问题锚点","file":"tts/s02.mp3"},
+  {"section":"objectives","tts":"objectives","title":"学习目标","file":"tts/s03.mp3"},
+  {"section":"concept-opposite","tts":"concept-opposite","title":"相反意义的量","file":"tts/s04.mp3"},
+  {"section":"concept-numberline","tts":"concept-numberline","title":"数轴上的正负数","file":"tts/s05.mp3"},
+  {"section":"summary","tts":"summary","title":"课堂总结","file":"tts/s06.mp3"}
+]
+  </script>
+</div>
+
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式" title="切换播放模式">
+  <svg id="fab-icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+  <svg id="fab-icon-browse" viewBox="0 0 24 24" style="display:none"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页" title="上一页"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+  <div class="toolbar-progress" id="tb-progress" title="进度"><div class="toolbar-progress-fill" id="tb-progress-fill"></div></div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 13</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页" title="下一页"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  <button class="toolbar-btn" id="tb-autoplay" aria-label="自动播放" title="自动播放"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏" title="全屏"><svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></button>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0, isPlayMode = false, isAutoPlay = false, autoPlayTimer = null;
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const fab = document.getElementById('play-mode-fab');
+  const fabIconPlay = document.getElementById('fab-icon-play');
+  const fabIconBrowse = document.getElementById('fab-icon-browse');
+  const toolbar = document.getElementById('slide-toolbar');
+  const tbPrev = document.getElementById('tb-prev');
+  const tbNext = document.getElementById('tb-next');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+  const tbProgress = document.getElementById('tb-progress');
+  const tbAutoplay = document.getElementById('tb-autoplay');
+  const tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const c = document.createElement('div'); c.className = 'sidenav-counter'; c.id = 'sidenav-counter'; c.textContent = '1/' + totalPages; sidenav.appendChild(c);
+    pages.forEach((p, i) => { const d = document.createElement('button'); d.className = 'sidenav-dot' + (i === 0 ? ' active' : ''); d.setAttribute('data-tooltip', (p.dataset.tsh || '').split(' - ')[0] || ('第' + (i+1) + '页')); d.setAttribute('aria-label', '跳转到第' + (i+1) + '页'); d.addEventListener('click', () => goToPage(i)); sidenav.appendChild(d); });
+  }
+  function updateUI() {
+    const prog = totalPages > 1 ? (currentPage / (totalPages - 1)) * 100 : 100;
+    progressBar.style.width = prog + '%'; tbProgressFill.style.width = prog + '%';
+    tbPageInfo.textContent = (currentPage + 1) + ' / ' + totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach((d, i) => d.classList.toggle('active', i === currentPage));
+    const ce = document.getElementById('sidenav-counter'); if (ce) ce.textContent = (currentPage + 1) + '/' + totalPages;
+    tbPrev.style.opacity = currentPage === 0 ? '0.3' : '1'; tbNext.style.opacity = currentPage === totalPages - 1 ? '0.3' : '1';
+  }
+  function goToPage(i) { if (i < 0 || i >= totalPages) return; currentPage = i; if (isPlayMode) pages[currentPage].scrollIntoView({ behavior: 'smooth', block: 'start' }); else container.scrollTo({ top: pages[currentPage].offsetTop, behavior: 'smooth' }); updateUI(); dispatchPageAudio(); }
+  function nextPage() { if (currentPage < totalPages - 1) goToPage(currentPage + 1); }
+  function prevPage() { if (currentPage > 0) goToPage(currentPage - 1); }
+  let st; container.addEventListener('scroll', () => { if (isPlayMode) return; clearTimeout(st); st = setTimeout(() => { const st2 = container.scrollTop; let cl = 0, mn = Infinity; pages.forEach((p, i) => { const d = Math.abs(p.offsetTop - st2); if (d < mn) { mn = d; cl = i; } }); if (cl !== currentPage) { currentPage = cl; updateUI(); } }, 100); }, { passive: true });
+  function togglePlayMode() { isPlayMode = !isPlayMode; document.body.classList.toggle('play-mode', isPlayMode); document.body.classList.toggle('toolbar-visible', isPlayMode); fabIconPlay.style.display = isPlayMode ? 'none' : 'block'; fabIconBrowse.style.display = isPlayMode ? 'block' : 'none'; if (isPlayMode) goToPage(currentPage); }
+  fab.addEventListener('click', togglePlayMode);
+  tbPrev.addEventListener('click', prevPage); tbNext.addEventListener('click', nextPage);
+  tbProgress.addEventListener('click', (e) => { const r = tbProgress.getBoundingClientRect(); goToPage(Math.round(((e.clientX - r.left) / r.width) * (totalPages - 1))); });
+  tbAutoplay.addEventListener('click', () => { isAutoPlay = !isAutoPlay; tbAutoplay.classList.toggle('active', isAutoPlay); if (isAutoPlay) { stopAP(); autoPlayTimer = setInterval(() => { if (currentPage < totalPages - 1) nextPage(); else { stopAP(); isAutoPlay = false; tbAutoplay.classList.remove('active'); } }, 8000); } else stopAP(); });
+  function stopAP() { if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; } }
+  tbFullscreen.addEventListener('click', () => { if (!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); });
+  document.addEventListener('keydown', (e) => { if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return; switch(e.key) { case 'ArrowRight': case 'ArrowDown': case ' ': e.preventDefault(); nextPage(); break; case 'ArrowLeft': case 'ArrowUp': e.preventDefault(); prevPage(); break; case 'f': case 'F': if (!e.ctrlKey && !e.metaKey) togglePlayMode(); break; case 'Escape': if (isPlayMode) togglePlayMode(); break; } });
+  function dispatchPageAudio() { const p = pages[currentPage]; const t = p.dataset.tts; if (t && window.__TEACHANY_AUDIO_PLAYER__) window.__TEACHANY_AUDIO_PLAYER__.playSection(t); }
+  document.addEventListener('teachany-audio-ended', () => { if (isAutoPlay && currentPage < totalPages - 1) setTimeout(nextPage, 1000); });
+
+  window.__TEACHANY_LEARNER_QUESTION__ = '';
+  window.__TEACHANY_TUTOR_CONFIG__ = { courseId: 'sujiao-math-g5u1-l2-negative-application', courseTitle: '负数的初步认识（二）——负数的应用', subject: 'math', grade: '5', nodeId: 'math-e-negative-numbers', lessonType: 'new-concept', getLearnerQuestion: () => window.__TEACHANY_LEARNER_QUESTION__ || '', getContext: () => { const c = pages[currentPage]; return (c || document.body).innerText.slice(0, 3000); } };
+  function setLQ(q) { window.__TEACHANY_LEARNER_QUESTION__ = q || ''; const f = document.getElementById('anchor-feedback'); if (f) f.textContent = q ? '你的问题：' + q : '选择或输入后，本课会围绕你的问题展开。'; }
+  document.querySelectorAll('[data-anchor-choice]').forEach(b => { b.addEventListener('click', () => { document.querySelectorAll('[data-anchor-choice]').forEach(x => x.classList.remove('selected')); b.classList.add('selected'); setLQ(b.getAttribute('data-anchor-choice') || b.textContent.trim()); }); });
+  document.getElementById('learner-question-input')?.addEventListener('input', (e) => setLQ(e.target.value.trim()));
+
+  document.querySelectorAll('[data-quiz]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const g = btn.dataset.quiz; const ok = btn.dataset.correct === 'true'; const ex = btn.dataset.explain || '';
+      const rid = g.startsWith('pre') ? 'pre-quiz-result' : g.startsWith('q') ? 'concept-quiz-result' : g.startsWith('p') ? 'post-quiz-result' : '';
+      document.querySelectorAll('[data-quiz="' + g + '"]').forEach(b => { if (b === btn) b.classList.add(ok ? 'correct' : 'wrong'); else b.classList.remove('correct', 'wrong'); });
+      const re = document.getElementById(rid); if (re) { re.className = 'result ' + (ok ? '' : 'warn'); re.innerHTML = (ok ? '✅ 太棒了！' : '💡 再想想。') + ' ' + ex; }
+      if (btn.dataset.answer) { const ie = document.getElementById('post-q3'); const fe = document.getElementById('p3-feedback'); if (ie && fe) { const ua = ie.value.replace(/\s/g, '').split(/[，,、]/).filter(x => x).sort().join(','); const ca = btn.dataset.answer.split(',').sort().join(','); const ok2 = ua === ca; fe.className = 'result ' + (ok2 ? '' : 'warn'); fe.innerHTML = (ok2 ? '✅ 太棒了！' : '💡 再想想。') + ' ' + ex; } }
+    });
+  });
+
+  /* ─── Number Line Interactive ─── */
+  (function() {
+    const cards = document.querySelectorAll('.nl-card');
+    const marks = document.getElementById('nl-marks');
+    const feedback = document.getElementById('nl-feedback');
+    const resetBtn = document.getElementById('nl-reset');
+    const placed = new Set();
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const val = parseInt(card.dataset.val);
+        const x = 400 + val * 60;
+        if (placed.has(val)) { feedback.innerHTML = '⚠️ ' + (val >= 0 ? '+' : '') + val + ' 已经标注过了！'; feedback.style.color = 'var(--warn)'; return; }
+        placed.add(val);
+        const color = val > 0 ? '#ff6b6b' : val < 0 ? '#4ecdc4' : '#f59e0b';
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        g.innerHTML = '<line x1="' + x + '" y1="40" x2="' + x + '" y2="60" stroke="' + color + '" stroke-width="2" /><circle cx="' + x + '" cy="50" r="5" fill="' + color + '" /><text x="' + x + '" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="' + color + '">' + (val > 0 ? '+' : '') + val + '</text>';
+        marks.appendChild(g.firstChild ? g : g);
+        // Fix: append children
+        while (g.firstChild) marks.appendChild(g.firstChild);
+        feedback.innerHTML = '✅ ' + (val >= 0 ? '+' : '') + val + ' 标注在' + (val > 0 ? '0的右边' : val < 0 ? '0的左边' : '原点') + '！';
+        feedback.style.color = 'var(--ok)';
+        card.style.opacity = '0.4';
+      });
+    });
+    resetBtn.addEventListener('click', () => { marks.innerHTML = ''; placed.clear(); feedback.innerHTML = ''; cards.forEach(c => c.style.opacity = '1'); });
+  })();
+
+  buildSidenav(); updateUI();
+  document.body.classList.add('toolbar-visible');
+  setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
+})();
+</script>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+</body>
+</html>
