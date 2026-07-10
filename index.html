@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>zstudy · K12 课件库</title>
+<style>
+:root { --bg:#f8f9fa; --card:#fff; --text:#333; --muted:#666; --primary:#4361ee; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+.container { max-width:800px; margin:0 auto; padding:40px 20px; }
+h1 { font-size:2rem; margin-bottom:8px; }
+p.sub { color:var(--muted); margin-bottom:32px; }
+.course-list { display:grid; gap:16px; }
+.course-card { display:block; background:var(--card); border-radius:14px; padding:20px 24px; text-decoration:none; color:var(--text); box-shadow:0 2px 8px rgba(0,0,0,0.06); transition:transform 0.2s; }
+.course-card:hover { transform:translateY(-2px); }
+.course-card .title { font-size:1.15rem; font-weight:700; color:var(--primary); margin-bottom:6px; }
+.course-card .meta { font-size:0.9rem; color:var(--muted); }
+footer { margin-top:48px; text-align:center; color:var(--muted); font-size:0.85rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>zstudy 课件库</h1>
+  <p class="sub">使用 TeachAny 生成的 K12 互动课件</p>
+  <div class="course-list">
+    <a class="course-card" href="./sujiao-math-g5-unit1/">
+      <div class="title">sujiao-math-g5-unit1</div>
+      <div class="meta">sujiao-math-g5-unit1</div>
+    </a>
+  </div>
+  <footer>
+    <a href="https://github.com/uning/zstudy" style="color:var(--muted);">GitHub 仓库</a>
+  </footer>
+</div>
+</body>
+</html>
