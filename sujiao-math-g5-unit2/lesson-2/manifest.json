@@ -1,0 +1,59 @@
+{
+  "id": "sujiao-math-g5u2-l2-triangle-area",
+  "course_id": "sujiao-math-g5u2-l2-triangle-area",
+  "node_id": "math-e-area-calculation",
+  "name": "多边形的面积（二）——三角形的面积",
+  "name_en": "Area of Triangle",
+  "subject": "math",
+  "grade": "5",
+  "stage": "elementary",
+  "domain": "geometry",
+  "lesson_type": "概念课",
+  "status": "community",
+  "author": "TeachAny",
+  "version": "1.0.0",
+  "teachany_version": "7.18.0",
+  "template_version": "2.0",
+  "curriculum": "苏教版",
+  "description": "苏教版五年级数学上册第二单元第2课时：通过两个完全一样的三角形拼成平行四边形，推导三角形面积公式。",
+  "tags": [
+    "苏教版",
+    "五年级",
+    "三角形面积",
+    "转化思想"
+  ],
+  "prerequisites": [
+    "math-e-area-calculation"
+  ],
+  "leads_to": [
+    "math-e-area-calculation"
+  ],
+  "learning_objectives": [
+    "用两个完全一样的三角形拼成平行四边形",
+    "理解并记住三角形面积公式 S = a × h ÷ 2",
+    "能正确找出三角形的底和对应的高",
+    "会用公式解决实际问题"
+  ],
+  "assets": {
+    "hero": "assets/hero-infographic.svg",
+    "tts_manifest": "tts/manifest.json",
+    "videos": [],
+    "images": [
+      "assets/hero-infographic.svg"
+    ]
+  },
+  "has_tts": true,
+  "has_video": false,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "free_mode": false,
+  "feedback": {
+    "require_password": true,
+    "password_sha256": "84bbabc1f946b3348834d753596b6e851b9c73d1412a950efb8028619fcd0e66",
+    "password_hint": "单元名拼音+年份"
+  },
+  "created_at": "2026-07-11",
+  "updated_at": "2026-07-11"
+}

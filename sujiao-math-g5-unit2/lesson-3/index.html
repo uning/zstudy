@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《多边形的面积（三）——梯形的面积》 · 数学 小学 G5 · TeachAny v7.9</title>
+<meta name="description" content="苏教版五年级数学上册第二单元第3课时：通过拼合平行四边形推导梯形面积公式">
+
+<!-- TeachAny routing meta -->
+<meta name="course-id" content="sujiao-math-g5u2-l3-trapezoid-area">
+<meta name="course-title" content="多边形的面积（三）——梯形的面积">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="sujiao-math-g5u2-l2-triangle-area">
+<meta name="course-next" content="">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="math-e-area-calculation">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="geometry">
+<meta name="teachany-prerequisites" content="平行四边形面积、三角形面积">
+<meta name="teachany-lesson-type" content="概念课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<!-- 标准五件套 + 音频播放器 (CDN) -->
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+/* 同 lesson-1 样式 */
+:root {
+  --bg: #fffbf0;
+  --bg-subtle: #fff5e6;
+  --panel: #ffffff;
+  --card: #ffffff;
+  --card-elevated: #fffbf5;
+  --line: #ffe0b2;
+  --line-subtle: rgba(255, 167, 38, 0.12);
+  --text: #333333;
+  --text-secondary: #555555;
+  --muted: #888888;
+  --primary: #ff6b6b;
+  --secondary: #4ecdc4;
+  --accent: #ffe66d;
+  --brand: #ff6b6b;
+  --brand-soft: rgba(255, 107, 107, 0.1);
+  --brand-2: #4ecdc4;
+  --brand-2-soft: rgba(78, 205, 196, 0.1);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+  --slide-height: 100vh;
+  --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+  --sidenav-width: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative;
+  overflow: hidden;
+}
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+
+.slide-page[data-page-type="cover"] {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255, 107, 107, 0.15), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(78, 205, 196, 0.12), transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 230, 109, 0.10), transparent 60%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(32px, 7vw, 56px);
+  line-height: 1.15;
+  background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #ffe66d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(78, 205, 196, 0.12), transparent 40%), radial-gradient(circle at 100% 0%, rgba(255, 107, 107, 0.08), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(255, 107, 107, 0.08), transparent 35%), radial-gradient(circle at 70% 80%, rgba(78, 205, 196, 0.06), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(78, 205, 196, 0.12), transparent 40%), radial-gradient(circle at 80% 100%, rgba(255, 107, 107, 0.06), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(255, 230, 109, 0.14), transparent 35%), radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(255, 107, 107, 0.10), transparent 45%), radial-gradient(circle at 20% 20%, rgba(78, 205, 196, 0.08), transparent 30%); }
+
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 20px; background: rgba(255, 251, 240, 0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle); transition: transform 0.3s ease;
+}
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(0,0,0,.05); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+.card {
+  background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(255,251,245,0.98));
+  border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-bottom: 20px;
+}
+.card h2 { font-size: 1.5rem; color: var(--text); margin-bottom: 12px; }
+.card h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 10px; }
+.card p { color: var(--text-secondary); margin: 0 0 10px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 22px; }
+.card li { margin-bottom: 6px; color: var(--text-secondary); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 24px; border-radius: 999px; border: none; cursor: pointer;
+  font-weight: 600; font-size: 1rem; transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; box-shadow: 0 4px 14px rgba(255,107,107,0.25); }
+.btn-secondary { background: var(--accent); color: #333; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--brand-soft); color: var(--brand); }
+
+.figure-wrap { background: #fff; border-radius: 16px; padding: 16px; margin: 14px 0; box-shadow: inset 0 0 0 1px var(--line-subtle); }
+.figure-caption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 8px; }
+
+.formula-box {
+  background: linear-gradient(135deg, #fff, #fff8e1); border: 2px solid var(--accent);
+  border-radius: 16px; padding: 20px; text-align: center; font-size: 1.4rem;
+  font-weight: 700; color: var(--text); margin: 16px 0;
+}
+
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+.choice-item {
+  background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px;
+  cursor: pointer; transition: all 0.2s; text-align: left;
+}
+.choice-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.choice-item.selected { border-color: var(--brand); background: var(--brand-soft); }
+
+.quiz-option {
+  background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px;
+  margin-bottom: 10px; cursor: pointer; transition: all 0.2s;
+}
+.quiz-option:hover { border-color: var(--brand); }
+.quiz-option.correct { border-color: var(--ok); background: rgba(34, 197, 94, 0.08); }
+.quiz-option.wrong { border-color: var(--danger); background: rgba(239, 68, 68, 0.08); }
+
+.kg-card { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 14px; }
+.kg-node { background: #fff; border: 2px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 14px; color: var(--text-secondary); }
+.kg-node.current { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); font-weight: 700; }
+.kg-arrow { color: var(--muted); font-size: 20px; display: flex; align-items: center; }
+
+.tutor-card { display: flex; gap: 14px; align-items: flex-start; background: #fff; border-radius: 16px; padding: 16px; border: 1px solid var(--line); }
+.tutor-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-weight: 800; flex-shrink: 0; }
+.tutor-bubble { flex: 1; }
+.tutor-bubble p { margin: 0; color: var(--text-secondary); }
+.tutor-bubble strong { color: var(--text); }
+
+.play-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 10px 20px calc(10px + var(--safe-bottom));
+  background: rgba(255, 251, 240, 0.95); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle); transition: transform 0.3s ease;
+}
+body:not(.play-mode) .play-toolbar { transform: translateY(100%); }
+.toolbar-btn { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; cursor: pointer; font-size: 14px; }
+.toolbar-btn.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+.sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 98; display: flex; flex-direction: column; gap: 8px; }
+.sidenav a { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; transition: all 0.2s; }
+.sidenav a.active { background: var(--brand); transform: scale(1.3); }
+
+.text-center { text-align: center; }
+.mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.hint { background: rgba(78, 205, 196, 0.1); border-left: 4px solid var(--secondary); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+
+@media (max-width: 640px) {
+  .card { padding: 18px; }
+  .slide-page { padding: 16px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .choice-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body class="teachany-elementary">
+
+<header class="teachany-brand-bar">
+  <a class="brand-logo" href="https://www.teachany.cn" target="_blank">
+    <span class="brand-mark">T</span>
+    <span>TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <a class="brand-link" href="../index.html">目录</a>
+    <span class="brand-version">v7.18 · 小学数学 G5</span>
+  </div>
+</header>
+
+<nav class="sidenav" aria-label="页面导航">
+  <a href="#slide-1" class="active" data-slide="1"></a>
+  <a href="#slide-2" data-slide="2"></a>
+  <a href="#slide-3" data-slide="3"></a>
+  <a href="#slide-4" data-slide="4"></a>
+  <a href="#slide-5" data-slide="5"></a>
+  <a href="#slide-6" data-slide="6"></a>
+  <a href="#slide-7" data-slide="7"></a>
+  <a href="#slide-8" data-slide="8"></a>
+  <a href="#slide-9" data-slide="9"></a>
+  <a href="#slide-10" data-slide="10"></a>
+  <a href="#slide-11" data-slide="11"></a>
+  <a href="#slide-12" data-slide="12"></a>
+  <a href="#slide-13" data-slide="13"></a>
+</nav>
+
+<main class="slide-container" id="slides">
+
+  <!-- Slide 1: Cover -->
+  <section class="slide-page" data-page-type="cover" id="slide-1" data-tts="s01">
+    <div class="slide-inner">
+      <div class="badge mb-2">📐 苏教版 · 五年级上册 · 第二单元</div>
+      <h1>多边形的面积（三）</h1>
+      <p class="subtitle">梯形的面积</p>
+      <div class="figure-wrap mt-3" style="max-width: 420px; margin-left: auto; margin-right: auto;">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+          <polygon points="100,40 220,40 260,140 60,140" fill="rgba(78,205,196,0.2)" stroke="#4ecdc4" stroke-width="2"/>
+          <text x="160" y="100" text-anchor="middle" font-size="16" fill="#333">梯形</text>
+          <text x="160" y="165" text-anchor="middle" font-size="14" fill="#888">上底短 · 下底长</text>
+        </svg>
+      </div>
+      <p class="mt-2" style="color: var(--muted); font-size: 14px;">TeachAny 互动课件 · 含 AI 学伴 · TTS 讲解</p>
+    </div>
+  </section>
+
+  <!-- Slide 2: Problem Anchor -->
+  <section class="slide-page" data-page-type="concept" id="slide-2" data-tts="s02">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤔 问题锚点</h2>
+        <p>学校校门口有一个<strong>梯形</strong>花坛，上底 3 米，下底 7 米，高 4 米。要铺满鲜花，需要知道这个花坛的面积。</p>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="140,40 260,40 320,160 80,160" fill="rgba(78,205,196,0.15)" stroke="#4ecdc4" stroke-width="3"/>
+            <line x1="200" y1="40" x2="200" y2="160" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5"/>
+            <text x="200" y="30" text-anchor="middle" font-size="14" fill="#333">上底 3 m</text>
+            <text x="200" y="180" text-anchor="middle" font-size="14" fill="#333">下底 7 m</text>
+            <text x="230" y="105" font-size="14" fill="#ff6b6b">高 4 m</text>
+          </svg>
+          <div class="figure-caption">梯形面积怎么求？</div>
+        </div>
+        <div class="choice-grid">
+          <div class="choice-item" onclick="selectChoice(this)">A. 上底 × 高</div>
+          <div class="choice-item" onclick="selectChoice(this)">B. 下底 × 高</div>
+          <div class="choice-item" onclick="selectChoice(this)">C. (上底 + 下底) × 高 ÷ 2</div>
+          <div class="choice-item" onclick="selectChoice(this)">D. 还不知道</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Objectives -->
+  <section class="slide-page" data-page-type="objectives" id="slide-3" data-tts="s03">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🎯 本课学习目标</h2>
+        <ol>
+          <li>用<strong>两个完全一样的梯形</strong>拼成平行四边形。</li>
+          <li>理解并记住梯形面积公式：<strong>面积 = (上底 + 下底) × 高 ÷ 2</strong>。</li>
+          <li>能正确找出梯形的上底、下底和高。</li>
+          <li>会用公式解决生活中的面积问题。</li>
+        </ol>
+        <div class="hint mt-2">💡 关键：梯形也能转化成平行四边形，注意上底加下底！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Review -->
+  <section class="slide-page" data-page-type="concept" id="slide-4" data-tts="s04">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔄 复习：前面的面积公式</h2>
+        <div class="grid-2">
+          <div class="formula-box" style="font-size:1.1rem;">平行四边形<br>S = a × h</div>
+          <div class="formula-box" style="font-size:1.1rem;">三角形<br>S = a × h ÷ 2</div>
+        </div>
+        <p>它们都是通过<strong>转化</strong>得到的：把新图形变成已经学过的长方形或平行四边形。</p>
+        <p>梯形也可以这样转化吗？</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5: Derivation -->
+  <section class="slide-page" data-page-type="concept" id="slide-5" data-tts="s05">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>✂️ 推导：两个梯形拼平行四边形</h2>
+        <p>拿两个完全一样的梯形，把其中一个翻转，可以拼成一个平行四边形。</p>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="40,150 100,50 160,50 160,150" fill="rgba(78,205,196,0.2)" stroke="#4ecdc4" stroke-width="2"/>
+            <text x="100" y="190" text-anchor="middle" font-size="14" fill="#888">梯形 1</text>
+            
+            <polygon points="200,50 260,50 320,150 200,150" fill="rgba(78,205,196,0.2)" stroke="#4ecdc4" stroke-width="2"/>
+            <text x="260" y="190" text-anchor="middle" font-size="14" fill="#888">梯形 2</text>
+            
+            <text x="360" y="110" text-anchor="middle" font-size="24">→</text>
+            
+            <polygon points="400,50 520,50 520,150 400,150" fill="rgba(255,107,107,0.2)" stroke="#ff6b6b" stroke-width="2"/>
+            <text x="460" y="190" text-anchor="middle" font-size="14" fill="#888">平行四边形</text>
+          </svg>
+          <div class="figure-caption">拼成的平行四边形底 = 上底 + 下底</div>
+        </div>
+        <div class="grid-2 mt-2">
+          <div class="hint">平行四边形底 = 梯形上底 + 下底</div>
+          <div class="hint">平行四边形高 = 梯形的高</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6: Formula -->
+  <section class="slide-page" data-page-type="concept" id="slide-6" data-tts="s06">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🌟 梯形面积公式</h2>
+        <div class="formula-box">
+          梯形面积 = (上底 + 下底) × 高 ÷ 2<br>
+          <span style="font-size: 1.8rem; color: var(--brand);">S = (a + b) × h ÷ 2</span>
+        </div>
+        <div class="grid-2">
+          <div class="figure-wrap">
+            <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="70,40 170,40 210,140 30,140" fill="rgba(78,205,196,0.15)" stroke="#4ecdc4" stroke-width="2"/>
+              <line x1="120" y1="40" x2="120" y2="140" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="4,4"/>
+              <text x="120" y="30" text-anchor="middle" font-size="13" fill="#333">上底 a</text>
+              <text x="120" y="155" text-anchor="middle" font-size="13" fill="#333">下底 b</text>
+              <text x="145" y="95" font-size="13" fill="#ff6b6b">高 h</text>
+            </svg>
+          </div>
+          <div>
+            <p><strong>上底（a）</strong>：较短的那条平行边。</p>
+            <p><strong>下底（b）</strong>：较长的那条平行边。</p>
+            <p><strong>高（h）</strong>：两底之间的垂直距离。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Interactive -->
+  <section class="slide-page" data-page-type="interactive" id="slide-7" data-tts="s07">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🎮 互动探究：梯形面积计算器</h2>
+        <p>拖动上底、下底和高的滑块，计算梯形花坛的面积。</p>
+        <div class="figure-wrap">
+          <svg id="trap-svg" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <polygon id="trap-shape" points="140,40 260,40 300,180 100,180" fill="rgba(78,205,196,0.2)" stroke="#4ecdc4" stroke-width="2"/>
+            <line id="trap-height" x1="200" y1="40" x2="200" y2="180" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5"/>
+            <text id="trap-top-text" x="200" y="30" text-anchor="middle" font-size="13" fill="#333">上底 = 3</text>
+            <text id="trap-bottom-text" x="200" y="200" text-anchor="middle" font-size="13" fill="#333">下底 = 7</text>
+            <text id="trap-height-text" x="230" y="115" font-size="13" fill="#ff6b6b">高 = 4</text>
+            <text id="trap-area-text" x="90" y="110" text-anchor="middle" font-size="16" fill="#333" font-weight="bold">面积 = 20</text>
+          </svg>
+        </div>
+        <div class="grid-2" style="grid-template-columns: repeat(3, 1fr);">
+          <label>上底 a = <span id="top-val">3</span>
+            <input type="range" min="2" max="8" value="3" id="top-slider" oninput="updateTrap()" style="width:100%;">
+          </label>
+          <label>下底 b = <span id="bottom-val">7</span>
+            <input type="range" min="4" max="12" value="7" id="bottom-slider" oninput="updateTrap()" style="width:100%;">
+          </label>
+          <label>高 h = <span id="height-val">4</span>
+            <input type="range" min="2" max="8" value="4" id="height-slider" oninput="updateTrap()" style="width:100%;">
+          </label>
+        </div>
+        <div class="hint mt-2">面积 = (上底 + 下底) × 高 ÷ 2</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Example -->
+  <section class="slide-page" data-page-type="concept" id="slide-8" data-tts="s08">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📝 例题讲解</h2>
+        <p><strong>例题：</strong>梯形花坛，上底 3 米，下底 7 米，高 4 米。面积是多少？</p>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="100,30 220,30 260,130 60,130" fill="rgba(255,230,109,0.2)" stroke="#333" stroke-width="2"/>
+            <text x="160" y="90" text-anchor="middle" font-size="14" fill="#333">上 3m · 下 7m · 高 4m</text>
+          </svg>
+        </div>
+        <div class="formula-box" style="font-size: 1.1rem;">
+          S = (a + b) × h ÷ 2 = (3 + 7) × 4 ÷ 2 = 20（m²）
+        </div>
+        <p><strong>答：</strong>花坛面积是 20 平方米。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9: Quiz 1 -->
+  <section class="slide-page" data-page-type="quiz" id="slide-9" data-tts="s09">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🎮 练习 1：概念判断</h2>
+        <p>下面说法对吗？</p>
+        <p><strong>"梯形的面积等于上底加下底乘高。"</strong></p>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">A. 对</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 错</div>
+        <div class="hint mt-2" id="quiz1-feedback" style="display:none;">
+          错！梯形面积是<strong>(上底 + 下底) × 高 ÷ 2</strong>，别忘了除以 2。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10: Quiz 2 -->
+  <section class="slide-page" data-page-type="quiz" id="slide-10" data-tts="s10">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🎮 练习 2：计算面积</h2>
+        <p>一个梯形，上底 5 厘米，下底 9 厘米，高 6 厘米。面积是多少？</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">A. 84 平方厘米</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 42 平方厘米</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">C. 54 平方厘米</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">D. 27 平方厘米</div>
+        <div class="hint mt-2" id="quiz2-feedback" style="display:none;">
+          正确答案是 B！(5 + 9) × 6 ÷ 2 = 42 平方厘米。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11: Common Mistakes -->
+  <section class="slide-page" data-page-type="concept" id="slide-11" data-tts="s11">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>⚠️ 易错点提醒</h2>
+        <div class="grid-2">
+          <div class="figure-wrap">
+            <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="70,40 170,40 210,140 30,140" fill="rgba(78,205,196,0.1)" stroke="#4ecdc4" stroke-width="2"/>
+              <line x1="120" y1="40" x2="120" y2="140" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="4,4"/>
+              <line x1="70" y1="40" x2="30" y2="140" stroke="#333" stroke-width="2" stroke-dasharray="4,4"/>
+              <text x="120" y="155" text-anchor="middle" font-size="13" fill="#333">高是垂直距离</text>
+            </svg>
+          </div>
+          <div>
+            <p><strong>1. 不要忘记除以 2。</strong></p>
+            <p>梯形面积是拼成平行四边形面积的一半。</p>
+            <p><strong>2. 高是两底之间的垂直距离。</strong></p>
+            <p>不是腰长，也不是斜边。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12: Knowledge Graph -->
+  <section class="slide-page" data-page-type="summary" id="slide-12" data-tts="s12">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🌳 知识图谱</h2>
+        <div class="kg-card">
+          <span class="kg-node">长方形面积</span>
+          <span class="kg-arrow">→</span>
+          <span class="kg-node">平行四边形面积</span>
+          <span class="kg-arrow">→</span>
+          <span class="kg-node">三角形面积</span>
+          <span class="kg-arrow">→</span>
+          <span class="kg-node current">梯形面积</span>
+        </div>
+        <div class="tutor-card mt-3">
+          <div class="tutor-avatar">AI</div>
+          <div class="tutor-bubble">
+            <p><strong>AI 学伴：</strong>梯形面积等于上底加下底乘高除以二。想想看，它和三角形面积公式有什么相似之处？</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13: Summary -->
+  <section class="slide-page" data-page-type="summary" id="slide-13" data-tts="s13">
+    <div class="slide-inner">
+      <div class="card text-center">
+        <h2>🎉 课堂总结</h2>
+        <div class="formula-box">S = (a + b) × h ÷ 2</div>
+        <ol style="text-align: left; max-width: 560px; margin: 0 auto;">
+          <li>梯形面积 = <strong>(上底 + 下底) × 高 ÷ 2</strong>。</li>
+          <li>两个完全一样的梯形可以拼成一个平行四边形。</li>
+          <li>平行四边形的底 = 梯形上底 + 下底。</li>
+          <li>不要忘记除以 2。</li>
+        </ol>
+        <div class="mt-3">
+          <a class="btn btn-primary" href="../index.html">返回目录</a>
+          <a class="btn btn-secondary" href="../lesson-1/index.html">复习：平行四边形面积</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="play-toolbar">
+  <button class="toolbar-btn" onclick="prevSlide()">⏮ 上一页</button>
+  <button class="toolbar-btn active" id="mode-btn" onclick="toggleMode()">📖 浏览模式</button>
+  <button class="toolbar-btn" onclick="toggleTTS()">🔊 播放讲解</button>
+  <button class="toolbar-btn" onclick="nextSlide()">下一页 ⏭</button>
+</footer>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" data-teachany-course-id="sujiao-math-g5u2-l3-trapezoid-area"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"}]'></script>
+
+<script>
+let playMode = false;
+const slides = document.querySelectorAll('.slide-page');
+let current = 0;
+
+function updateSidenav() {
+  document.querySelectorAll('.sidenav a').forEach((a, i) => {
+    a.classList.toggle('active', i === current);
+  });
+}
+
+function scrollToSlide(i) {
+  if (i < 0 || i >= slides.length) return;
+  current = i;
+  slides[i].scrollIntoView({ behavior: 'smooth' });
+  updateSidenav();
+}
+
+function nextSlide() { scrollToSlide(current + 1); }
+function prevSlide() { scrollToSlide(current - 1); }
+
+function toggleMode() {
+  playMode = !playMode;
+  document.body.classList.toggle('play-mode', playMode);
+  document.getElementById('mode-btn').textContent = playMode ? '▶️ 播放模式' : '📖 浏览模式';
+}
+
+function selectChoice(el) {
+  el.parentElement.querySelectorAll('.choice-item').forEach(item => item.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function checkQuiz(el, isCorrect) {
+  const card = el.closest('.card');
+  card.querySelectorAll('.quiz-option').forEach(opt => {
+    opt.style.pointerEvents = 'none';
+    if (opt === el) opt.classList.add(isCorrect ? 'correct' : 'wrong');
+  });
+  const fb = card.querySelector('.hint[id^="quiz"]');
+  if (fb) fb.style.display = 'block';
+}
+
+function updateTrap() {
+  const a = parseInt(document.getElementById('top-slider').value);
+  const b = parseInt(document.getElementById('bottom-slider').value);
+  const h = parseInt(document.getElementById('height-slider').value);
+  const scale = 20;
+  const cx = 200, baseY = 180;
+  const halfTop = a * scale / 2;
+  const halfBottom = b * scale / 2;
+  const x1 = cx - halfTop, y1 = baseY - h * scale;
+  const x2 = cx + halfTop, y2 = baseY - h * scale;
+  const x3 = cx + halfBottom, y3 = baseY;
+  const x4 = cx - halfBottom, y4 = baseY;
+  document.getElementById('trap-shape').setAttribute('points', `${x1},${y1} ${x2},${y2} ${x3},${y3} ${x4},${y4}`);
+  document.getElementById('trap-height').setAttribute('x1', cx);
+  document.getElementById('trap-height').setAttribute('y1', y1);
+  document.getElementById('trap-height').setAttribute('x2', cx);
+  document.getElementById('trap-height').setAttribute('y2', baseY);
+  document.getElementById('top-val').textContent = a;
+  document.getElementById('bottom-val').textContent = b;
+  document.getElementById('height-val').textContent = h;
+  document.getElementById('trap-top-text').textContent = '上底 = ' + a;
+  document.getElementById('trap-bottom-text').textContent = '下底 = ' + b;
+  document.getElementById('trap-height-text').textContent = '高 = ' + h;
+  document.getElementById('trap-area-text').textContent = '面积 = ' + ((a + b) * h / 2);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(slides).indexOf(entry.target);
+      current = idx;
+      updateSidenav();
+    }
+  });
+}, { root: document.getElementById('slides'), threshold: 0.5 });
+
+slides.forEach(s => observer.observe(s));
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') prevSlide();
+});
+
+function toggleTTS() {
+  if (window.teachanyTTS) window.teachanyTTS.playCurrent();
+}
+</script>
+</body>
+</html>
