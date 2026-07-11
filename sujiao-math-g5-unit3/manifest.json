@@ -1,0 +1,19 @@
+{
+  "id": "sujiao-math-g5u3-index",
+  "name": "苏教版五年级数学上册 第三单元 小数的意义和性质",
+  "node_id": "math-e-decimals-meaning",
+  "subject": "math",
+  "grade": 5,
+  "author": "TeachAny 用户",
+  "description": "苏教版五年级数学上册第三单元课件目录：小数的意义、读写、性质、大小比较、小数点移动、单位换算",
+  "version": "1.0.0",
+  "teachany_version": "7.18.0",
+  "curriculum": "cn-national",
+  "free_mode": false,
+  "lessons": [
+    {"id": "sujiao-math-g5u3-l1-decimal-meaning", "name": "小数的意义和读写", "path": "lesson-1/"},
+    {"id": "sujiao-math-g5u3-l2-decimal-properties", "name": "小数的性质和大小比较", "path": "lesson-2/"},
+    {"id": "sujiao-math-g5u3-l3-decimal-point-shift", "name": "小数点移动引起小数大小变化", "path": "lesson-3/"},
+    {"id": "sujiao-math-g5u3-l4-decimal-unit-conversion", "name": "小数与单位换算", "path": "lesson-4/"}
+  ]
+}

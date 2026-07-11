@@ -1,0 +1,24 @@
+{
+  "node_id": "math-e-decimals-meaning",
+  "topic": "math-e-decimals-meaning",
+  "name_zh": "小数的意义和性质",
+  "subject": "math",
+  "stage": "elementary",
+  "curriculum": "cn-national",
+  "lookup_at": "2026-07-11T15:00:00Z",
+  "sources": [],
+  "curriculum_excerpts": [],
+  "exercises": [],
+  "common_errors": [],
+  "prerequisites": ["分数初步认识", "小数的初步认识"],
+  "extends": ["小数四则运算"],
+  "textbook_refs": ["苏教版五年级数学上册第三单元"],
+  "md_path": null,
+  "kp_json_path": null,
+  "fallback_used": false,
+  "gaps": [
+    "curriculum_excerpts<2",
+    "exercises<1",
+    "common_errors<1"
+  ]
+}

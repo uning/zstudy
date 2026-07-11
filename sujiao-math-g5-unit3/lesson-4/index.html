@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《小数与单位换算》 · 数学 小学 G5 · TeachAny v7.18</title>
+<meta name="description" content="苏教版五年级数学上册第三单元第4课时：运用小数点移动规律进行长度、质量、面积、人民币单位换算">
+
+<meta name="course-id" content="sujiao-math-g5u3-l4-decimal-unit-conversion">
+<meta name="course-title" content="小数与单位换算">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="sujiao-math-g5u3-l3-decimal-point-shift">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="math-e-decimals-meaning">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="number-algebra">
+<meta name="teachany-prerequisites" content="小数点移动规律,进率">
+<meta name="teachany-lesson-type" content="应用课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff;
+  --card: #ffffff; --card-elevated: #fffbf5;
+  --line: #e0d4f5; --line-subtle: rgba(139, 92, 246, 0.10);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --brand: #8b5cf6; --brand-soft: rgba(139, 92, 246, 0.10);
+  --brand-2: #06b6d4; --brand-2-soft: rgba(6, 182, 212, 0.10);
+  --accent: #f59e0b; --accent-soft: rgba(245, 158, 11, 0.10);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body { padding-top: var(--safe-top); background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif; line-height: 1.75; font-size: 16px; }
+a { color: var(--brand); text-decoration: none; } a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container { scroll-snap-type: y mandatory; overflow-y: auto; height: var(--slide-height-fallback,var(--slide-height)); scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+.slide-page { min-height: var(--slide-height-fallback,var(--slide-height)); scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--page-padding); padding-bottom: calc(var(--page-padding) + var(--toolbar-height)); position: relative; overflow: hidden; }
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+
+.slide-page[data-page-type="cover"] { background: radial-gradient(ellipse at 20% 20%, rgba(139,92,246,0.15), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(6,182,212,0.12), transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(245,158,11,0.08), transparent 60%); text-align: center; }
+.slide-page[data-page-type="cover"] h1 { font-size: clamp(26px, 5.5vw, 44px); line-height: 1.15; background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 100% 0%, rgba(139,92,246,0.08), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(139,92,246,0.08), transparent 35%), radial-gradient(circle at 70% 80%, rgba(6,182,212,0.06), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 80% 100%, rgba(139,92,246,0.06), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(245,158,11,0.14), transparent 35%), radial-gradient(circle at 80% 20%, rgba(6,182,212,0.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(139,92,246,0.10), transparent 45%), radial-gradient(circle at 20% 20%, rgba(6,182,212,0.08), transparent 30%); }
+
+.teachany-brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; background: rgba(255,251,240,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-subtle); transition: transform 0.3s ease; }
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; } .brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(0,0,0,.05); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+.card { background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(255,251,245,0.98)); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-bottom: 20px; }
+.card h2 { font-size: 1.5rem; color: var(--text); margin-bottom: 12px; }
+.card h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 10px; }
+.card p { color: var(--text-secondary); margin: 0 0 10px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 22px; } .card li { margin-bottom: 6px; color: var(--text-secondary); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; cursor: pointer; font-weight: 600; font-size: 1rem; transition: transform 0.15s, box-shadow 0.15s; }
+.btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; box-shadow: 0 4px 14px rgba(139,92,246,0.25); }
+.btn-secondary { background: var(--accent); color: #fff; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--brand-soft); color: var(--brand); }
+.interactive-box { background: #fff; border: 2px dashed var(--line); border-radius: 16px; padding: 18px; text-align: center; }
+.formula-box { background: linear-gradient(135deg, #fff, #f5f0ff); border: 2px solid var(--brand); border-radius: 16px; padding: 18px; text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 14px 0; }
+
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+.choice-item { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px; cursor: pointer; transition: all 0.2s; text-align: left; }
+.choice-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.choice-item.selected { border-color: var(--brand); background: var(--brand-soft); }
+
+.quiz-option { background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; }
+.quiz-option:hover { border-color: var(--brand); }
+.quiz-option.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.quiz-option.wrong { border-color: var(--danger); background: rgba(239,68,68,0.08); }
+
+.figure-wrap { background: #fff; border-radius: 16px; padding: 16px; margin: 14px 0; box-shadow: inset 0 0 0 1px var(--line-subtle); }
+.figure-caption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 8px; }
+.tutor-card { display: flex; gap: 14px; align-items: flex-start; background: #fff; border-radius: 16px; padding: 16px; border: 1px solid var(--line); }
+.tutor-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-weight: 800; flex-shrink: 0; }
+.tutor-bubble { flex: 1; } .tutor-bubble p { margin: 0; color: var(--text-secondary); } .tutor-bubble strong { color: var(--text); }
+
+.play-toolbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 20px calc(10px + var(--safe-bottom)); background: rgba(255,251,240,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--line-subtle); transition: transform 0.3s ease; }
+body:not(.play-mode) .play-toolbar { transform: translateY(100%); }
+.toolbar-btn { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; cursor: pointer; font-size: 14px; }
+.toolbar-btn.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+.sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 98; display: flex; flex-direction: column; gap: 8px; }
+.sidenav a { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; transition: all 0.2s; }
+.sidenav a.active { background: var(--brand); transform: scale(1.3); }
+
+.text-center { text-align: center; }
+.hint { background: rgba(6,182,212,0.1); border-left: 4px solid var(--brand-2); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+.warn-box { background: rgba(245,158,11,0.1); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+.mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+
+@media (max-width: 640px) {
+  .card { padding: 18px; }
+  .slide-page { padding: 16px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .choice-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body class="teachany-elementary">
+
+<header class="teachany-brand-bar">
+  <a class="brand-logo" href="https://www.teachany.cn" target="_blank"><span class="brand-mark">T</span><span>TeachAny</span></a>
+  <div class="brand-right"><a class="brand-link" href="../index.html">目录</a><span class="brand-version">v7.18 · 小学数学 G5</span></div>
+</header>
+
+<nav class="sidenav">
+  <a href="#slide-1" class="active"></a><a href="#slide-2"></a><a href="#slide-3"></a><a href="#slide-4"></a><a href="#slide-5"></a><a href="#slide-6"></a><a href="#slide-7"></a><a href="#slide-8"></a><a href="#slide-9"></a><a href="#slide-10"></a><a href="#slide-11"></a><a href="#slide-12"></a><a href="#slide-13"></a>
+</nav>
+
+<main class="slide-container" id="slides">
+
+  <!-- Slide 1 -->
+  <section class="slide-page" data-page-type="cover" id="slide-1" data-tts="s01">
+    <div class="slide-inner">
+      <div class="badge mb-2">📏 苏教版 · 五年级上册 · 第三单元</div>
+      <h1>小数与单位换算</h1>
+      <p class="subtitle">用小数点移动的方法，轻松玩转长度、质量、面积和货币单位换算</p>
+      <div class="figure-wrap mt-3" style="max-width:480px;margin:0 auto;">
+        <svg viewBox="0 0 440 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="25" width="110" height="50" rx="10" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="2"/>
+          <text x="75" y="55" text-anchor="middle" font-size="18" fill="#8b5cf6" font-weight="700">1.5 m</text>
+          <text x="150" y="62" font-size="28" fill="#333">→</text>
+          <rect x="185" y="25" width="110" height="50" rx="10" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="2"/>
+          <text x="240" y="55" text-anchor="middle" font-size="18" fill="#06b6d4" font-weight="700">150 cm</text>
+          <text x="320" y="62" font-size="28" fill="#333">→</text>
+          <rect x="350" y="25" width="100" height="50" rx="10" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2"/>
+          <text x="400" y="55" text-anchor="middle" font-size="18" fill="#f59e0b" font-weight="700">1.5 m</text>
+        </svg>
+        <div class="figure-caption">大化小 × 进率，小化大 ÷ 进率</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide-page" data-page-type="concept" id="slide-2" data-tts="s02">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤔 问题锚点</h2>
+        <p>小明的身高是 <strong>1.45 米</strong>，体检表上要填以<strong>厘米</strong>为单位——该填多少？</p>
+        <p>妈妈买了 <strong>0.5 千克</strong>苹果，标签上写的是<strong>500 克</strong>——这两个数有什么关系？</p>
+        <div class="choice-grid">
+          <div class="choice-item" onclick="selectChoice(this)">A. 1.45 米 = 14.5 厘米</div>
+          <div class="choice-item" onclick="selectChoice(this)">B. 1.45 米 = 145 厘米</div>
+          <div class="choice-item" onclick="selectChoice(this)">C. 0.5 千克 = 5 克</div>
+          <div class="choice-item" onclick="selectChoice(this)">D. 0.5 千克 = 50 克</div>
+        </div>
+        <div class="hint mt-2">单位换算的本质就是<strong>小数点移动</strong>！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide-page" data-page-type="objectives" id="slide-3" data-tts="s03">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🎯 本课学习目标</h2>
+        <ol>
+          <li>掌握单位换算的基本方法：<strong>高级→低级 ×进率</strong>，<strong>低级→高级 ÷进率</strong>。</li>
+          <li>能熟练进行<strong>长度、质量、面积、人民币</strong>单位间的换算。</li>
+          <li>学会<strong>复名数</strong>（如 1米35厘米）与<strong>单名数</strong>（如 1.35米）之间的互化。</li>
+          <li>理解单位换算与<strong>小数点移动规律</strong>的内在联系。</li>
+        </ol>
+        <div class="hint mt-2">💡 核心：看出进率，确定方向（×或÷），移动小数点——三步到位！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Method -->
+  <section class="slide-page" data-page-type="concept" id="slide-4" data-tts="s04">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔄 换算方法总览</h2>
+        <div class="grid-2">
+          <div class="interactive-box" style="border-color:var(--brand);background:rgba(139,92,246,0.04);">
+            <p style="font-size:1.4rem;font-weight:700;color:var(--brand);">高级 → 低级</p>
+            <p style="font-size:1.3rem;">× 进率</p>
+            <p>例：米 → 厘米</p>
+            <p style="font-size:14px;color:var(--text-secondary);">1.45 米 = 1.45 × 100 = <strong style="color:var(--brand);">145 厘米</strong></p>
+            <p style="font-size:12px;color:var(--muted);">小数点右移两位</p>
+          </div>
+          <div class="interactive-box" style="border-color:var(--brand-2);background:rgba(6,182,212,0.04);">
+            <p style="font-size:1.4rem;font-weight:700;color:var(--brand-2);">低级 → 高级</p>
+            <p style="font-size:1.3rem;">÷ 进率</p>
+            <p>例：厘米 → 米</p>
+            <p style="font-size:14px;color:var(--text-secondary);">145 厘米 = 145 ÷ 100 = <strong style="color:var(--brand-2);">1.45 米</strong></p>
+            <p style="font-size:12px;color:var(--muted);">小数点左移两位</p>
+          </div>
+        </div>
+        <div class="formula-box">口诀：<strong>高化低 × 进率，低化高 ÷ 进率</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5: Length -->
+  <section class="slide-page" data-page-type="concept" id="slide-5" data-tts="s05">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📏 长度单位换算</h2>
+        <p style="text-align:center;font-weight:700;color:var(--brand);">千米(km) → 米(m) → 分米(dm) → 厘米(cm) → 毫米(mm)</p>
+        <p style="text-align:center;font-size:13px;color:var(--muted);">每相邻两个单位进率是 10（千米↔米特殊：进率 1000）</p>
+        <div class="grid-2 mt-2">
+          <div class="interactive-box">
+            <p>3.6 千米 = (   ) 米</p>
+            <p style="font-size:14px;color:var(--text-secondary);">km→m：进率1000，×1000</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">3.6 × 1000 = 3600 米</p>
+          </div>
+          <div class="interactive-box">
+            <p>85 厘米 = (   ) 米</p>
+            <p style="font-size:14px;color:var(--text-secondary);">cm→m：进率100，÷100</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">85 ÷ 100 = 0.85 米</p>
+          </div>
+          <div class="interactive-box">
+            <p>2.05 米 = (   ) 厘米</p>
+            <p style="font-size:14px;color:var(--text-secondary);">m→cm：进率100，×100</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">2.05 × 100 = 205 厘米</p>
+          </div>
+          <div class="interactive-box">
+            <p>30 毫米 = (   ) 厘米</p>
+            <p style="font-size:14px;color:var(--text-secondary);">mm→cm：进率10，÷10</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">30 ÷ 10 = 3 厘米</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6: Mass -->
+  <section class="slide-page" data-page-type="concept" id="slide-6" data-tts="s06">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>⚖️ 质量单位换算</h2>
+        <p style="text-align:center;font-weight:700;color:var(--brand-2);">吨(t) → 千克(kg) → 克(g)</p>
+        <p style="text-align:center;font-size:13px;color:var(--muted);">1 吨 = 1000 千克，1 千克 = 1000 克</p>
+        <div class="grid-2 mt-2">
+          <div class="interactive-box">
+            <p>0.5 千克 = (   ) 克</p>
+            <p style="font-size:14px;color:var(--text-secondary);">kg→g：进率1000，×1000</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">0.5 × 1000 = 500 克</p>
+          </div>
+          <div class="interactive-box">
+            <p>800 克 = (   ) 千克</p>
+            <p style="font-size:14px;color:var(--text-secondary);">g→kg：进率1000，÷1000</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">800 ÷ 1000 = 0.8 千克</p>
+          </div>
+          <div class="interactive-box">
+            <p>2.35 吨 = (   ) 千克</p>
+            <p style="font-size:14px;color:var(--text-secondary);">t→kg：进率1000，×1000</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">2.35 × 1000 = 2350 千克</p>
+          </div>
+          <div class="interactive-box">
+            <p>150 克 = (   ) 千克</p>
+            <p style="font-size:14px;color:var(--text-secondary);">g→kg：进率1000，÷1000</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">150 ÷ 1000 = 0.15 千克</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Money -->
+  <section class="slide-page" data-page-type="concept" id="slide-7" data-tts="s07">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>💰 人民币单位换算</h2>
+        <p style="text-align:center;font-weight:700;color:var(--accent);">元 → 角 → 分</p>
+        <p style="text-align:center;font-size:13px;color:var(--muted);">1 元 = 10 角 = 100 分</p>
+        <div class="grid-2 mt-2">
+          <div class="interactive-box">
+            <p>3 元 5 角 = (   ) 元</p>
+            <p style="font-size:14px;color:var(--text-secondary);">角→元：÷10</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">3 + 5÷10 = 3.5 元</p>
+          </div>
+          <div class="interactive-box">
+            <p>12.8 元 = (   ) 元 (   ) 角</p>
+            <p style="font-size:14px;color:var(--text-secondary);">0.8元 × 10 = 8角</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">12 元 8 角</p>
+          </div>
+          <div class="interactive-box">
+            <p>8 角 5 分 = (   ) 元</p>
+            <p style="font-size:14px;color:var(--text-secondary);">角→元÷10，分→元÷100</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">8÷10 + 5÷100 = 0.85</p>
+          </div>
+          <div class="interactive-box">
+            <p>0.06 元 = (   ) 分</p>
+            <p style="font-size:14px;color:var(--text-secondary);">元→分：×100</p>
+            <p style="font-size:1.4rem;color:var(--ok);font-weight:700;">0.06 × 100 = 6 分</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Area -->
+  <section class="slide-page" data-page-type="concept" id="slide-8" data-tts="s08">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📐 面积单位换算</h2>
+        <p style="text-align:center;font-weight:700;color:var(--brand);">平方千米(km²) → 公顷(ha) → 平方米(m²) → 平方分米(dm²) → 平方厘米(cm²)</p>
+        <p style="text-align:center;font-size:13px;color:var(--muted);">1 km² = 100 ha，1 ha = 10000 m²，1 m² = 100 dm²，1 dm² = 100 cm²</p>
+        <div class="warn-box mt-2">⚠️ 面积进率是长度进率的<strong>平方</strong>！比如 1 m² = 100 dm²（不是 10）！</div>
+        <div class="grid-2 mt-2">
+          <div class="interactive-box">
+            <p>2.5 m² = (   ) dm²</p>
+            <p style="color:var(--ok);font-weight:700;">2.5 × 100 = 250</p>
+          </div>
+          <div class="interactive-box">
+            <p>360 cm² = (   ) dm²</p>
+            <p style="color:var(--ok);font-weight:700;">360 ÷ 100 = 3.6</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9: Compound units -->
+  <section class="slide-page" data-page-type="concept" id="slide-9" data-tts="s09">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔄 复名数与单名数互化</h2>
+        <p>复名数（如 1米35厘米）⇄ 单名数（如 1.35米）</p>
+        <div class="grid-2">
+          <div class="interactive-box">
+            <p style="color:var(--brand);font-weight:700;">复名数 → 单名数</p>
+            <p>1 米 35 厘米</p>
+            <p>= 1 米 + 35 厘米</p>
+            <p>= 1 米 + 0.35 米</p>
+            <p style="font-size:1.3rem;color:var(--ok);font-weight:700;">= 1.35 米</p>
+            <p style="font-size:12px;color:var(--muted);">35÷100=0.35</p>
+          </div>
+          <div class="interactive-box">
+            <p style="color:var(--brand-2);font-weight:700;">单名数 → 复名数</p>
+            <p>2.6 千克</p>
+            <p>= 2 千克 + 0.6 千克</p>
+            <p>= 2 千克 + 600 克</p>
+            <p style="font-size:1.3rem;color:var(--ok);font-weight:700;">= 2 千克 600 克</p>
+            <p style="font-size:12px;color:var(--muted);">0.6×1000=600</p>
+          </div>
+        </div>
+        <div class="hint mt-2">💡 把复名数拆成两部分：大单位部分不变，小单位部分 ÷ 进率变成小数！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10: Practice -->
+  <section class="slide-page" data-page-type="interactive" id="slide-10" data-tts="s10">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📊 常用进率速查表</h2>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;text-align:center;">
+            <tr style="background:var(--brand-soft);">
+              <th style="padding:10px;border:1px solid var(--line);">类别</th>
+              <th style="padding:10px;border:1px solid var(--line);">单位及进率</th>
+              <th style="padding:10px;border:1px solid var(--line);">举例</th>
+            </tr>
+            <tr><td style="font-weight:700;color:var(--brand);">长度</td><td>km(1000)→m(10)→dm(10)→cm(10)→mm</td><td>1 m = 100 cm</td></tr>
+            <tr><td style="font-weight:700;color:var(--brand-2);">质量</td><td>t(1000)→kg(1000)→g</td><td>1 kg = 1000 g</td></tr>
+            <tr><td style="font-weight:700;color:var(--accent);">人民币</td><td>元(10)→角(10)→分</td><td>1 元 = 100 分</td></tr>
+            <tr><td style="font-weight:700;color:var(--brand);">面积</td><td>km²(100)→ha(10000)→m²(100)→dm²(100)→cm²</td><td>1 m² = 10000 cm²</td></tr>
+            <tr><td style="font-weight:700;color:var(--brand-2);">时间</td><td>时(60)→分(60)→秒</td><td>1 时 = 60 分（不是十进制！）</td></tr>
+          </table>
+        </div>
+        <div class="warn-box mt-2">⚠️ 注意：时间单位不是十进制，不能用小数点移动方法！需要单独记忆！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11 -->
+  <section class="slide-page" data-page-type="quiz" id="slide-11" data-tts="s11">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📝 练一练</h2>
+        <p><strong>第 1 题：</strong>1.2 千米 = (   ) 米</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">A. 12</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 1200</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">C. 120</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 1.2 × 1000 = 1200 米</p>
+
+        <p class="mt-2"><strong>第 2 题：</strong>3 千克 50 克 = (   ) 千克</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">A. 3.5</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 3.05</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">C. 3.005</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 50g ÷ 1000 = 0.05kg，3 + 0.05 = 3.05 kg</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12 -->
+  <section class="slide-page" data-page-type="concept" id="slide-12" data-tts="s12">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤖 AI 学伴</h2>
+        <div class="tutor-card">
+          <div class="tutor-avatar">AI</div>
+          <div class="tutor-bubble">
+            <p><strong>AI 学伴：</strong>关于单位换算，你可以这样问我：</p>
+            <ul style="margin-top:8px;">
+              <li>"300 平方分米等于多少平方米？"</li>
+              <li>"帮我出一套单位换算的练习题"</li>
+              <li>"为什么面积进率是100而不是10？"</li>
+              <li>"时间单位怎么换算？"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13 -->
+  <section class="slide-page" data-page-type="summary" id="slide-13" data-tts="s13">
+    <div class="slide-inner">
+      <div class="card text-center">
+        <h2>🎉 课堂总结</h2>
+        <ol style="text-align:left;max-width:560px;margin:0 auto;">
+          <li>换算核心：<strong>高级→低级 ×进率</strong>，<strong>低级→高级 ÷进率</strong>。</li>
+          <li>本质是<strong>小数点移动</strong>：×10ⁿ = 右移n位，÷10ⁿ = 左移n位。</li>
+          <li>复名数互化：拆成<strong>整数部分+小数部分</strong>分别处理。</li>
+          <li>特别注意：面积进率是长度进率的<strong>平方</strong>；时间单位不是十进制。</li>
+          <li>三步法：<strong>看进率 → 定方向 → 移小数点</strong>。</li>
+        </ol>
+        <div class="mt-3">
+          <a class="btn btn-primary" href="../index.html">返回目录</a>
+          <a class="btn btn-primary" href="../lesson-3/index.html">上一课时：小数点移动</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="play-toolbar">
+  <button class="toolbar-btn" onclick="prevSlide()">⏮ 上一页</button>
+  <button class="toolbar-btn active" id="mode-btn" onclick="toggleMode()">📖 浏览模式</button>
+  <button class="toolbar-btn" onclick="toggleTTS()">🔊 播放讲解</button>
+  <button class="toolbar-btn" onclick="nextSlide()">下一页 ⏭</button>
+</footer>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" data-teachany-course-id="sujiao-math-g5u3-l4-decimal-unit-conversion"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"}]'></script>
+
+<script>
+let playMode = false;
+const slides = document.querySelectorAll('.slide-page');
+let current = 0;
+function updateSidenav() { document.querySelectorAll('.sidenav a').forEach((a,i)=>{a.classList.toggle('active',i===current);}); }
+function scrollToSlide(i) { if(i<0||i>=slides.length)return; current=i; slides[i].scrollIntoView({behavior:'smooth'}); updateSidenav(); }
+function nextSlide() { scrollToSlide(current+1); }
+function prevSlide() { scrollToSlide(current-1); }
+function toggleMode() { playMode=!playMode; document.body.classList.toggle('play-mode',playMode); document.getElementById('mode-btn').textContent=playMode?'▶️ 播放模式':'📖 浏览模式'; }
+function selectChoice(el) { el.parentElement.querySelectorAll('.choice-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); }
+function checkQuiz(el,isCorrect) { const card=el.closest('.card'); card.querySelectorAll('.quiz-option').forEach(o=>{o.style.pointerEvents='none'; if(o===el)o.classList.add(isCorrect?'correct':'wrong');}); }
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){current=Array.from(slides).indexOf(e.target);updateSidenav();}});},{root:document.getElementById('slides'),threshold:0.5});
+slides.forEach(s=>observer.observe(s));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' ')nextSlide(); if(e.key==='ArrowUp'||e.key==='ArrowLeft')prevSlide();});
+function toggleTTS(){if(window.teachanyTTS)window.teachanyTTS.playCurrent();}
+</script>
+</body>
+</html>

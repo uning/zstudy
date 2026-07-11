@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《小数的意义和读写》 · 数学 小学 G5 · TeachAny v7.18</title>
+<meta name="description" content="苏教版五年级数学上册第三单元第1课时：小数的意义、计数单位、数位顺序表和读写方法">
+
+<meta name="course-id" content="sujiao-math-g5u3-l1-decimal-meaning">
+<meta name="course-title" content="小数的意义和读写">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="sujiao-math-g5u1-l2-negative-application">
+<meta name="course-next" content="sujiao-math-g5u3-l2-decimal-properties">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="math-e-decimals-meaning">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="number-algebra">
+<meta name="teachany-prerequisites" content="分数初步认识,小数的初步认识">
+<meta name="teachany-lesson-type" content="概念课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff;
+  --card: #ffffff; --card-elevated: #fffbf5;
+  --line: #e0d4f5; --line-subtle: rgba(139, 92, 246, 0.10);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --brand: #8b5cf6; --brand-soft: rgba(139, 92, 246, 0.10);
+  --brand-2: #06b6d4; --brand-2-soft: rgba(6, 182, 212, 0.10);
+  --accent: #f59e0b; --accent-soft: rgba(245, 158, 11, 0.10);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px; --sidenav-width: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75; font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative; overflow: hidden;
+}
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+
+.slide-page[data-page-type="cover"] {
+  background: radial-gradient(ellipse at 20% 20%, rgba(139,92,246,0.15), transparent 50%),
+              radial-gradient(ellipse at 80% 80%, rgba(6,182,212,0.12), transparent 50%),
+              radial-gradient(ellipse at 50% 50%, rgba(245,158,11,0.08), transparent 60%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(32px, 7vw, 52px); line-height: 1.15;
+  background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #f59e0b 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 100% 0%, rgba(139,92,246,0.08), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(139,92,246,0.08), transparent 35%), radial-gradient(circle at 70% 80%, rgba(6,182,212,0.06), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 80% 100%, rgba(139,92,246,0.06), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(245,158,11,0.14), transparent 35%), radial-gradient(circle at 80% 20%, rgba(6,182,212,0.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(139,92,246,0.10), transparent 45%), radial-gradient(circle at 20% 20%, rgba(6,182,212,0.08), transparent 30%); }
+
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 20px;
+  background: rgba(255,251,240,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle);
+  transition: transform 0.3s ease;
+}
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(0,0,0,.05); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+.card {
+  background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(255,251,245,0.98));
+  border: 1px solid var(--line-subtle); border-radius: var(--card-radius);
+  padding: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-bottom: 20px;
+}
+.card h2 { font-size: 1.5rem; color: var(--text); margin-bottom: 12px; }
+.card h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 10px; }
+.card p { color: var(--text-secondary); margin: 0 0 10px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 22px; }
+.card li { margin-bottom: 6px; color: var(--text-secondary); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; cursor: pointer; font-weight: 600; font-size: 1rem; transition: transform 0.15s, box-shadow 0.15s; }
+.btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; box-shadow: 0 4px 14px rgba(139,92,246,0.25); }
+.btn-secondary { background: var(--accent); color: #fff; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--brand-soft); color: var(--brand); }
+
+.interactive-box { background: #fff; border: 2px dashed var(--line); border-radius: 16px; padding: 20px; text-align: center; }
+.formula-box {
+  background: linear-gradient(135deg, #fff, #f5f0ff);
+  border: 2px solid var(--brand); border-radius: 16px;
+  padding: 20px; text-align: center; font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 16px 0;
+}
+
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+.choice-item { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px; cursor: pointer; transition: all 0.2s; text-align: left; }
+.choice-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.choice-item.selected { border-color: var(--brand); background: var(--brand-soft); }
+
+.quiz-option { background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; }
+.quiz-option:hover { border-color: var(--brand); }
+.quiz-option.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.quiz-option.wrong { border-color: var(--danger); background: rgba(239,68,68,0.08); }
+
+.figure-wrap { background: #fff; border-radius: 16px; padding: 16px; margin: 14px 0; box-shadow: inset 0 0 0 1px var(--line-subtle); }
+.figure-caption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 8px; }
+
+.kg-card { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 14px; }
+.kg-node { background: #fff; border: 2px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 14px; color: var(--text-secondary); }
+.kg-node.current { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); font-weight: 700; }
+.kg-arrow { color: var(--muted); font-size: 20px; display: flex; align-items: center; }
+
+.tutor-card { display: flex; gap: 14px; align-items: flex-start; background: #fff; border-radius: 16px; padding: 16px; border: 1px solid var(--line); }
+.tutor-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-weight: 800; flex-shrink: 0; }
+.tutor-bubble { flex: 1; }
+.tutor-bubble p { margin: 0; color: var(--text-secondary); }
+.tutor-bubble strong { color: var(--text); }
+
+.play-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 10px 20px calc(10px + var(--safe-bottom));
+  background: rgba(255,251,240,0.95); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+  transition: transform 0.3s ease;
+}
+body:not(.play-mode) .play-toolbar { transform: translateY(100%); }
+.toolbar-btn { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; cursor: pointer; font-size: 14px; }
+.toolbar-btn.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+.sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 98; display: flex; flex-direction: column; gap: 8px; }
+.sidenav a { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; transition: all 0.2s; }
+.sidenav a.active { background: var(--brand); transform: scale(1.3); }
+
+.text-center { text-align: center; }
+.hint { background: rgba(6,182,212,0.1); border-left: 4px solid var(--brand-2); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+.mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+
+/* Place value table */
+.place-value-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.place-value-table th, .place-value-table td { border: 1px solid var(--line); padding: 10px 8px; text-align: center; font-size: 14px; }
+.place-value-table th { background: var(--brand-soft); color: var(--brand); font-weight: 700; }
+.place-value-table td { background: #fff; }
+.place-value-table .highlight { background: rgba(245,158,11,0.15); font-weight: 700; }
+
+@media (max-width: 640px) {
+  .card { padding: 18px; }
+  .slide-page { padding: 16px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .choice-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body class="teachany-elementary">
+
+<header class="teachany-brand-bar">
+  <a class="brand-logo" href="https://www.teachany.cn" target="_blank">
+    <span class="brand-mark">T</span>
+    <span>TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <a class="brand-link" href="../index.html">目录</a>
+    <span class="brand-version">v7.18 · 小学数学 G5</span>
+  </div>
+</header>
+
+<nav class="sidenav" aria-label="页面导航">
+  <a href="#slide-1" class="active" data-slide="1"></a>
+  <a href="#slide-2" data-slide="2"></a>
+  <a href="#slide-3" data-slide="3"></a>
+  <a href="#slide-4" data-slide="4"></a>
+  <a href="#slide-5" data-slide="5"></a>
+  <a href="#slide-6" data-slide="6"></a>
+  <a href="#slide-7" data-slide="7"></a>
+  <a href="#slide-8" data-slide="8"></a>
+  <a href="#slide-9" data-slide="9"></a>
+  <a href="#slide-10" data-slide="10"></a>
+  <a href="#slide-11" data-slide="11"></a>
+  <a href="#slide-12" data-slide="12"></a>
+  <a href="#slide-13" data-slide="13"></a>
+</nav>
+
+<main class="slide-container" id="slides">
+
+  <!-- Slide 1: Cover -->
+  <section class="slide-page" data-page-type="cover" id="slide-1" data-tts="s01">
+    <div class="slide-inner">
+      <div class="badge mb-2">🔢 苏教版 · 五年级上册 · 第三单元</div>
+      <h1>小数的意义和读写</h1>
+      <p class="subtitle">从十分之一到千分之一，认识小数世界的计数规则</p>
+      <div class="figure-wrap mt-3" style="max-width: 480px; margin-left: auto; margin-right: auto;">
+        <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.15"/>
+            </linearGradient>
+          </defs>
+          <rect x="20" y="20" width="360" height="40" rx="10" fill="url(#g1)" stroke="#8b5cf6" stroke-width="1.5"/>
+          <text x="200" y="46" text-anchor="middle" font-size="16" fill="#8b5cf6" font-weight="700">1 米</text>
+          <rect x="20" y="70" width="36" height="30" rx="6" fill="rgba(139,92,246,0.25)" stroke="#8b5cf6" stroke-width="1"/>
+          <text x="38" y="90" text-anchor="middle" font-size="11" fill="#333">1 dm</text>
+          <text x="38" y="120" text-anchor="middle" font-size="12" fill="#666">0.1 m</text>
+          <rect x="20" y="130" width="3.6" height="20" fill="rgba(6,182,212,0.3)" stroke="#06b6d4" stroke-width="0.5"/>
+          <text x="45" y="145" font-size="10" fill="#666">0.01 m</text>
+          <text x="200" y="155" text-anchor="middle" font-size="14" fill="#888">1 米 = 10 分米 = 100 厘米 = 1000 毫米</text>
+        </svg>
+        <div class="figure-caption">小数是分数的另一种表示形式</div>
+      </div>
+      <p class="mt-2" style="color: var(--muted); font-size: 14px;">TeachAny 互动课件 · 含 AI 学伴 · TTS 讲解</p>
+    </div>
+  </section>
+
+  <!-- Slide 2: Problem Anchor -->
+  <section class="slide-page" data-page-type="concept" id="slide-2" data-tts="s02">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤔 问题锚点</h2>
+        <p>小明的身高是 <strong>1.45 米</strong>，妹妹的身高是 <strong>0.98 米</strong>。这里的"1.45"和"0.98"是什么数？</p>
+        <p>它们和学过的整数有什么不同？中间的那个<strong>小数点</strong>又是什么意思？</p>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="10" width="380" height="120" rx="12" fill="rgba(139,92,246,0.06)" stroke="#e0d4f5" stroke-width="1"/>
+            <text x="80" y="50" font-size="28" fill="#8b5cf6" font-weight="800">1</text>
+            <text x="120" y="45" font-size="36" fill="#f59e0b" font-weight="900">·</text>
+            <text x="150" y="50" font-size="28" fill="#06b6d4" font-weight="800">4</text>
+            <text x="190" y="50" font-size="28" fill="#06b6d4" font-weight="800">5</text>
+            <text x="80" y="85" font-size="12" fill="#666">整数部分</text>
+            <text x="155" y="85" font-size="12" fill="#666">小数部分</text>
+            <text x="120" y="80" font-size="12" fill="#f59e0b">小数点</text>
+            <text x="250" y="55" font-size="14" fill="#666">= 1 米 4 分米 5 厘米</text>
+          </svg>
+          <div class="figure-caption">小数由整数部分、小数点和小数部分三部分组成</div>
+        </div>
+        <div class="choice-grid">
+          <div class="choice-item" onclick="selectChoice(this)">A. 小数是比0小的数</div>
+          <div class="choice-item" onclick="selectChoice(this)">B. 小数是分数的另一种表示</div>
+          <div class="choice-item" onclick="selectChoice(this)">C. 小数只在数学书里用</div>
+          <div class="choice-item" onclick="selectChoice(this)">D. 小数和整数没有关系</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Learning Objectives -->
+  <section class="slide-page" data-page-type="objectives" id="slide-3" data-tts="s03">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🎯 本课学习目标</h2>
+        <p>学完这节课，你能做到：</p>
+        <ol>
+          <li>说出小数与<strong>分数</strong>（十分之几、百分之几、千分之几）的关系。</li>
+          <li>认识小数的<strong>计数单位</strong>：0.1、0.01、0.001，知道每相邻两个计数单位间的进率是 <strong>10</strong>。</li>
+          <li>填写小数的<strong>数位顺序表</strong>，知道每个数字所在的数位表示什么。</li>
+          <li>正确地<strong>读</strong>和<strong>写</strong>小数。</li>
+        </ol>
+        <div class="hint mt-2">💡 核心：小数是十进分数的另一种写法，小数的计数规则和整数一脉相承！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: One decimal place → tenths -->
+  <section class="slide-page" data-page-type="concept" id="slide-4" data-tts="s04">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📐 一位小数 = 十分之几</h2>
+        <p>把 1 米平均分成 <strong>10</strong> 份，每份是 1 分米。</p>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="460" height="30" rx="6" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="2"/>
+            <rect x="20" y="20" width="46" height="30" rx="0" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="1"/>
+            <line x1="66" y1="20" x2="66" y2="50" stroke="#8b5cf6" stroke-width="2"/>
+            <text x="43" y="42" text-anchor="middle" font-size="12" fill="#333" font-weight="700">1dm</text>
+            <text x="66" y="70" text-anchor="middle" font-size="11" fill="#8b5cf6">1/10</text>
+            <text x="66" y="85" text-anchor="middle" font-size="11" fill="#06b6d4">0.1</text>
+            
+            <rect x="20" y="100" width="460" height="30" rx="6" fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" stroke-width="2"/>
+            <rect x="20" y="100" width="138" height="30" rx="0" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="1"/>
+            <text x="89" y="122" text-anchor="middle" font-size="12" fill="#333" font-weight="700">3 dm</text>
+            <text x="158" y="150" text-anchor="middle" font-size="11" fill="#8b5cf6">3/10</text>
+            <text x="158" y="165" text-anchor="middle" font-size="11" fill="#06b6d4">0.3</text>
+
+            <text x="350" y="42" font-size="14" fill="#666">1 分米 = 1/10 米 = 0.1 米</text>
+            <text x="350" y="122" font-size="14" fill="#666">3 分米 = 3/10 米 = 0.3 米</text>
+          </svg>
+          <div class="figure-caption">分母是 10 的分数可以写成<strong>一位小数</strong></div>
+        </div>
+        <div class="formula-box">
+          十分之几 = 一位小数<br>
+          <span style="font-size:1.2rem;color:var(--brand);">0.1 是一位小数的计数单位</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5: Two decimal places → hundredths -->
+  <section class="slide-page" data-page-type="concept" id="slide-5" data-tts="s05">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔍 两位小数 = 百分之几</h2>
+        <p>把 1 米平均分成 <strong>100</strong> 份，每份是 1 厘米。</p>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- 100 grid -->
+            <rect x="60" y="10" width="200" height="160" fill="none" stroke="#ccc" stroke-width="1"/>
+            <rect x="60" y="10" width="20" height="16" fill="rgba(6,182,212,0.3)" stroke="#ddd" stroke-width="0.5"/>
+            <text x="70" y="22" text-anchor="middle" font-size="8" fill="#333">1</text>
+            <text x="110" y="190" text-anchor="middle" font-size="11" fill="#06b6d4">1 份 = 1/100 = 0.01</text>
+            
+            <text x="310" y="40" font-size="15" fill="#333">1 厘米 = 1/100 米</text>
+            <text x="310" y="65" font-size="15" fill="#8b5cf6" font-weight="700">= 0.01 米</text>
+            <text x="310" y="100" font-size="15" fill="#333">45 厘米 = 45/100 米</text>
+            <text x="310" y="125" font-size="15" fill="#8b5cf6" font-weight="700">= 0.45 米</text>
+            <text x="310" y="160" font-size="14" fill="#666">0.01 是两位小数的计数单位</text>
+          </svg>
+          <div class="figure-caption">分母是 100 的分数可以写成<strong>两位小数</strong></div>
+        </div>
+        <div class="formula-box">
+          百分之几 = 两位小数<br>
+          <span style="font-size:1rem;color:var(--brand-2);">0.01 是两位小数的计数单位</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6: Three decimal places → thousandths -->
+  <section class="slide-page" data-page-type="concept" id="slide-6" data-tts="s06">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔬 三位小数 = 千分之几</h2>
+        <p>把 1 米平均分成 <strong>1000</strong> 份，每份是 1 毫米。</p>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="20" width="380" height="40" rx="6" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" stroke-width="1.5"/>
+            <rect x="30" y="20" width="3.8" height="40" fill="rgba(245,158,11,0.3)" stroke="#f59e0b" stroke-width="1"/>
+            <text x="33" y="45" text-anchor="middle" font-size="10" fill="#333">1mm</text>
+            <text x="220" y="45" text-anchor="middle" font-size="14" fill="#666">1 毫米 = 1/1000 米 = 0.001 米</text>
+            <text x="220" y="85" text-anchor="middle" font-size="18" fill="#f59e0b" font-weight="700">0.001 是三位小数的计数单位</text>
+            <text x="220" y="115" text-anchor="middle" font-size="14" fill="#666">239 毫米 = 239/1000 米 = 0.239 米</text>
+          </svg>
+        </div>
+        <div class="grid-2 mt-2">
+          <div class="hint">一位小数表示十分之几，计数单位 <strong>0.1</strong></div>
+          <div class="hint">两位小数表示百分之几，计数单位 <strong>0.01</strong></div>
+          <div class="hint">三位小数表示千分之几，计数单位 <strong>0.001</strong></div>
+          <div class="hint">以此类推……四位小数表示万分之几</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Counting units & progression -->
+  <section class="slide-page" data-page-type="interactive" id="slide-7" data-tts="s07">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔗 计数单位和进率</h2>
+        <p>小数和整数一样，也有<strong>计数单位</strong>，每相邻两个计数单位之间的进率都是 <strong>10</strong>。</p>
+        <div class="formula-box">
+          1 → 0.1 → 0.01 → 0.001 → 0.0001<br>
+          <span style="font-size:0.9rem;color:var(--brand);">每个箭头代表 ÷10（或 ×1/10）</span>
+        </div>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="50" r="24" fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" stroke-width="2"/>
+            <text x="40" y="55" text-anchor="middle" font-size="14" fill="#333" font-weight="700">1</text>
+            <text x="40" y="85" text-anchor="middle" font-size="10" fill="#666">一</text>
+            
+            <line x1="64" y1="50" x2="126" y2="50" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <text x="95" y="40" text-anchor="middle" font-size="10" fill="#8b5cf6">×10</text>
+            <text x="95" y="75" text-anchor="middle" font-size="10" fill="#06b6d4">÷10</text>
+            
+            <circle cx="150" cy="50" r="24" fill="rgba(6,182,212,0.2)" stroke="#06b6d4" stroke-width="2"/>
+            <text x="150" y="55" text-anchor="middle" font-size="14" fill="#333" font-weight="700">0.1</text>
+            <text x="150" y="85" text-anchor="middle" font-size="10" fill="#666">十分之一</text>
+            
+            <line x1="174" y1="50" x2="236" y2="50" stroke="#06b6d4" stroke-width="1.5" marker-end="url(#arrow2)"/>
+            <text x="205" y="40" text-anchor="middle" font-size="10" fill="#06b6d4">×10</text>
+            <text x="205" y="75" text-anchor="middle" font-size="10" fill="#f59e0b">÷10</text>
+            
+            <circle cx="260" cy="50" r="24" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" stroke-width="2"/>
+            <text x="260" y="55" text-anchor="middle" font-size="14" fill="#333" font-weight="700">0.01</text>
+            <text x="260" y="85" text-anchor="middle" font-size="10" fill="#666">百分之一</text>
+            
+            <line x1="284" y1="50" x2="346" y2="50" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow3)"/>
+            <text x="315" y="40" text-anchor="middle" font-size="10" fill="#f59e0b">×10</text>
+            <text x="315" y="75" text-anchor="middle" font-size="10" fill="#8b5cf6">÷10</text>
+            
+            <circle cx="370" cy="50" r="24" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4,2"/>
+            <text x="370" y="55" text-anchor="middle" font-size="14" fill="#333" font-weight="700">0.001</text>
+            <text x="370" y="85" text-anchor="middle" font-size="10" fill="#666">千分之一</text>
+            
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8b5cf6"/></marker>
+              <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#06b6d4"/></marker>
+              <marker id="arrow3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#f59e0b"/></marker>
+            </defs>
+          </svg>
+          <div class="figure-caption">每个计数单位向左 ×10 变大，向右 ÷10 变小</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Place value table (interactive) -->
+  <section class="slide-page" data-page-type="interactive" id="slide-8" data-tts="s08">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📊 小数的数位顺序表</h2>
+        <p>小数的小数部分，从<strong>十分位</strong>开始，依次是百分位、千分位…</p>
+        <div style="overflow-x:auto;">
+          <table class="place-value-table">
+            <tr>
+              <th colspan="3">整数部分</th>
+              <th></th>
+              <th colspan="3" class="highlight">小数部分</th>
+            </tr>
+            <tr>
+              <th>百位</th><th>十位</th><th>个位</th>
+              <th>小数点</th>
+              <th style="background:rgba(139,92,246,0.15)">十分位</th>
+              <th style="background:rgba(6,182,212,0.12)">百分位</th>
+              <th style="background:rgba(245,158,11,0.12)">千分位</th>
+            </tr>
+            <tr>
+              <td>计数单位：100</td><td>计数单位：10</td><td>计数单位：1</td>
+              <td><strong style="color:var(--accent);">.</strong></td>
+              <td>1/10<br><strong style="color:var(--brand);">0.1</strong></td>
+              <td>1/100<br><strong style="color:var(--brand-2);">0.01</strong></td>
+              <td>1/1000<br><strong style="color:var(--accent);">0.001</strong></td>
+            </tr>
+          </table>
+        </div>
+        <p class="text-center mt-2">以 <strong>125.436</strong> 为例：</p>
+        <div style="overflow-x:auto;">
+          <table class="place-value-table">
+            <tr>
+              <td>1</td><td>2</td><td>5</td>
+              <td style="font-size:20px;color:var(--accent);font-weight:900;">·</td>
+              <td>4</td><td>3</td><td>6</td>
+            </tr>
+            <tr>
+              <td>百位<br>1×100</td><td>十位<br>2×10</td><td>个位<br>5×1</td>
+              <td></td>
+              <td>十分位<br>4×0.1</td><td>百分位<br>3×0.01</td>
+              <td>千分位<br>6×0.001</td>
+            </tr>
+          </table>
+        </div>
+        <div class="hint mt-2">💡 整数部分的最低位是个位，小数部分的最高位是十分位。没有"个分位"哦！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9: Reading decimals -->
+  <section class="slide-page" data-page-type="concept" id="slide-9" data-tts="s09">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📖 小数的读法</h2>
+        <p>读小数时，<strong>整数部分</strong>按整数的读法读，<strong>小数点</strong>读作"点"，<strong>小数部分</strong>依次读出每个数字。</p>
+        <div class="grid-2">
+          <div class="interactive-box">
+            <p style="font-size:2rem;font-weight:800;color:var(--brand);">0.8</p>
+            <p style="color:var(--text-secondary);">读作：<strong>零点八</strong></p>
+            <p style="font-size:12px;color:var(--muted);">不能读作"零点八十"</p>
+          </div>
+          <div class="interactive-box">
+            <p style="font-size:2rem;font-weight:800;color:var(--brand-2);">3.25</p>
+            <p style="color:var(--text-secondary);">读作：<strong>三点二五</strong></p>
+            <p style="font-size:12px;color:var(--muted);">不能读作"三点二十五"</p>
+          </div>
+          <div class="interactive-box">
+            <p style="font-size:2rem;font-weight:800;color:var(--accent);">0.006</p>
+            <p style="color:var(--text-secondary);">读作：<strong>零点零零六</strong></p>
+            <p style="font-size:12px;color:var(--muted);">小数部分有几个0就读几个零</p>
+          </div>
+          <div class="interactive-box">
+            <p style="font-size:2rem;font-weight:800;color:var(--brand);">150.08</p>
+            <p style="color:var(--text-secondary);">读作：<strong>一百五十点零八</strong></p>
+            <p style="font-size:12px;color:var(--muted);">整数部分正常读，小数部分逐位读</p>
+          </div>
+        </div>
+        <div class="hint mt-2">⚠️ 易错提醒：小数部分不能按整数读法！比如 0.45 读"零点四五"，不能读"零点四十五"。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10: Writing decimals -->
+  <section class="slide-page" data-page-type="concept" id="slide-10" data-tts="s10">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>✏️ 小数的写法</h2>
+        <p>写小数时，整数部分按整数写法写，小数点写在<strong>个位右下角</strong>（小小的圆点），小数部分依次写出每个数字。</p>
+        <div class="grid-2">
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">零点三七</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--brand);">0.37</p>
+          </div>
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">二十点零五</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--brand-2);">20.05</p>
+          </div>
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">一千零一点一零三</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--accent);">1001.103</p>
+          </div>
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">零点零零九</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--brand);">0.009</p>
+          </div>
+        </div>
+        <div class="hint mt-2">💡 要点：小数点是<strong>实心小圆点</strong>，不是逗号；写在整数部分和小数部分之间，<strong>偏下方</strong>，不占一整格。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11: Quiz -->
+  <section class="slide-page" data-page-type="quiz" id="slide-11" data-tts="s11">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📝 练一练</h2>
+        <p><strong>第 1 题：</strong>0.7 的计数单位是什么？它有几个这样的计数单位？</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">A. 0.01，有 70 个</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 0.1，有 7 个</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">C. 1，有 0.7 个</div>
+        <p id="quiz1-fb" style="display:none;color:var(--ok);margin-top:8px;">✅ 正确！0.7 是一位小数，计数单位是 0.1，0.7 ÷ 0.1 = 7，所以有 7 个 0.1。</p>
+        
+        <p class="mt-2"><strong>第 2 题：</strong>把 9/100 写成小数是多少？</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">A. 0.9</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">B. 9.00</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">C. 0.09</div>
+        <p id="quiz2-fb" style="display:none;color:var(--ok);margin-top:8px;">✅ 正确！9/100 是两位小数，写作 0.09。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12: AI Tutor -->
+  <section class="slide-page" data-page-type="concept" id="slide-12" data-tts="s12">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤖 AI 学伴</h2>
+        <div class="tutor-card">
+          <div class="tutor-avatar">AI</div>
+          <div class="tutor-bubble">
+            <p><strong>AI 学伴：</strong>你好！我是你的 AI 学伴。关于小数的意义和读写，你可以这样问我：</p>
+            <ul style="margin-top:8px;">
+              <li>"0.58 表示什么意思？"</li>
+              <li>"帮我区分 0.6 和 0.06 的计数单位"</li>
+              <li>"125.436 每个数字分别在哪一位？"</li>
+              <li>"出几道小数读写练习题"</li>
+            </ul>
+            <p>有不懂的随时问我！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13: Summary -->
+  <section class="slide-page" data-page-type="summary" id="slide-13" data-tts="s13">
+    <div class="slide-inner">
+      <div class="card text-center">
+        <h2>🎉 课堂总结</h2>
+        <ol style="text-align: left; max-width: 560px; margin: 0 auto;">
+          <li>分母是 <strong>10、100、1000</strong>…的分数可以写成小数。</li>
+          <li>十分之几 → <strong>一位小数</strong>；百分之几 → <strong>两位小数</strong>；千分之几 → <strong>三位小数</strong>。</li>
+          <li>小数的计数单位：<strong>0.1、0.01、0.001…</strong>，相邻进率是 <strong>10</strong>。</li>
+          <li>小数部分数位：<strong>十分位 → 百分位 → 千分位</strong>。</li>
+          <li>读小数：整数部分按整数读，小数部分<strong>逐位读数字</strong>。</li>
+        </ol>
+        <div class="kg-card mt-3">
+          <span class="kg-node">分数</span>
+          <span class="kg-arrow">→</span>
+          <span class="kg-node current">小数意义</span>
+          <span class="kg-arrow">→</span>
+          <span class="kg-node">小数读写</span>
+          <span class="kg-arrow">→</span>
+          <span class="kg-node">小数性质</span>
+        </div>
+        <div class="mt-3">
+          <a class="btn btn-primary" href="../index.html">返回目录</a>
+          <a class="btn btn-secondary" href="../lesson-2/index.html">下一课时：小数的性质</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="play-toolbar">
+  <button class="toolbar-btn" onclick="prevSlide()">⏮ 上一页</button>
+  <button class="toolbar-btn active" id="mode-btn" onclick="toggleMode()">📖 浏览模式</button>
+  <button class="toolbar-btn" onclick="toggleTTS()">🔊 播放讲解</button>
+  <button class="toolbar-btn" onclick="nextSlide()">下一页 ⏭</button>
+</footer>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" data-teachany-course-id="sujiao-math-g5u3-l1-decimal-meaning"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"}]'></script>
+
+<script>
+let playMode = false;
+const slides = document.querySelectorAll('.slide-page');
+let current = 0;
+
+function updateSidenav() {
+  document.querySelectorAll('.sidenav a').forEach((a, i) => {
+    a.classList.toggle('active', i === current);
+  });
+}
+
+function scrollToSlide(i) {
+  if (i < 0 || i >= slides.length) return;
+  current = i;
+  slides[i].scrollIntoView({ behavior: 'smooth' });
+  updateSidenav();
+}
+
+function nextSlide() { scrollToSlide(current + 1); }
+function prevSlide() { scrollToSlide(current - 1); }
+
+function toggleMode() {
+  playMode = !playMode;
+  document.body.classList.toggle('play-mode', playMode);
+  document.getElementById('mode-btn').textContent = playMode ? '▶️ 播放模式' : '📖 浏览模式';
+}
+
+function selectChoice(el) {
+  el.parentElement.querySelectorAll('.choice-item').forEach(item => item.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function checkQuiz(el, isCorrect) {
+  const card = el.closest('.card');
+  card.querySelectorAll('.quiz-option').forEach(opt => {
+    opt.style.pointerEvents = 'none';
+    if (opt === el) opt.classList.add(isCorrect ? 'correct' : 'wrong');
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      current = Array.from(slides).indexOf(entry.target);
+      updateSidenav();
+    }
+  });
+}, { root: document.getElementById('slides'), threshold: 0.5 });
+
+slides.forEach(s => observer.observe(s));
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') prevSlide();
+});
+
+function toggleTTS() {
+  if (window.teachanyTTS) window.teachanyTTS.playCurrent();
+}
+</script>
+</body>
+</html>

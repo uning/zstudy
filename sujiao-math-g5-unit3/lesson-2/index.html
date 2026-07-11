@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《小数的性质和大小比较》 · 数学 小学 G5 · TeachAny v7.18</title>
+<meta name="description" content="苏教版五年级数学上册第三单元第2课时：小数的性质（末尾添0去0大小不变）和大小比较方法">
+
+<meta name="course-id" content="sujiao-math-g5u3-l2-decimal-properties">
+<meta name="course-title" content="小数的性质和大小比较">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="sujiao-math-g5u3-l1-decimal-meaning">
+<meta name="course-next" content="sujiao-math-g5u3-l3-decimal-point-shift">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="math-e-decimals-meaning">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="number-algebra">
+<meta name="teachany-prerequisites" content="小数的意义">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff;
+  --card: #ffffff; --card-elevated: #fffbf5;
+  --line: #e0d4f5; --line-subtle: rgba(139, 92, 246, 0.10);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --brand: #8b5cf6; --brand-soft: rgba(139, 92, 246, 0.10);
+  --brand-2: #06b6d4; --brand-2-soft: rgba(6, 182, 212, 0.10);
+  --accent: #f59e0b; --accent-soft: rgba(245, 158, 11, 0.10);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px; --sidenav-width: 48px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top); background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75; font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container {
+  scroll-snap-type: y mandatory; overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+}
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start; display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative; overflow: hidden;
+}
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+
+.slide-page[data-page-type="cover"] { background: radial-gradient(ellipse at 20% 20%, rgba(139,92,246,0.15), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(6,182,212,0.12), transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(245,158,11,0.08), transparent 60%); text-align: center; }
+.slide-page[data-page-type="cover"] h1 { font-size: clamp(32px, 7vw, 52px); line-height: 1.15; background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 100% 0%, rgba(139,92,246,0.08), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(139,92,246,0.08), transparent 35%), radial-gradient(circle at 70% 80%, rgba(6,182,212,0.06), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 80% 100%, rgba(139,92,246,0.06), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(245,158,11,0.14), transparent 35%), radial-gradient(circle at 80% 20%, rgba(6,182,212,0.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(139,92,246,0.10), transparent 45%), radial-gradient(circle at 20% 20%, rgba(6,182,212,0.08), transparent 30%); }
+
+.teachany-brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; background: rgba(255,251,240,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-subtle); transition: transform 0.3s ease; }
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(0,0,0,.05); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+.card { background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(255,251,245,0.98)); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-bottom: 20px; }
+.card h2 { font-size: 1.5rem; color: var(--text); margin-bottom: 12px; }
+.card h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 10px; }
+.card p { color: var(--text-secondary); margin: 0 0 10px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 22px; }
+.card li { margin-bottom: 6px; color: var(--text-secondary); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; cursor: pointer; font-weight: 600; font-size: 1rem; transition: transform 0.15s, box-shadow 0.15s; }
+.btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; box-shadow: 0 4px 14px rgba(139,92,246,0.25); }
+.btn-secondary { background: var(--accent); color: #fff; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--brand-soft); color: var(--brand); }
+
+.interactive-box { background: #fff; border: 2px dashed var(--line); border-radius: 16px; padding: 20px; text-align: center; }
+.formula-box { background: linear-gradient(135deg, #fff, #f5f0ff); border: 2px solid var(--brand); border-radius: 16px; padding: 20px; text-align: center; font-size: 1.4rem; font-weight: 700; color: var(--text); margin: 16px 0; }
+
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+.choice-item { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px; cursor: pointer; transition: all 0.2s; text-align: left; }
+.choice-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.choice-item.selected { border-color: var(--brand); background: var(--brand-soft); }
+
+.quiz-option { background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; }
+.quiz-option:hover { border-color: var(--brand); }
+.quiz-option.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.quiz-option.wrong { border-color: var(--danger); background: rgba(239,68,68,0.08); }
+
+.figure-wrap { background: #fff; border-radius: 16px; padding: 16px; margin: 14px 0; box-shadow: inset 0 0 0 1px var(--line-subtle); }
+.figure-caption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 8px; }
+
+.kg-card { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 14px; }
+.kg-node { background: #fff; border: 2px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 14px; color: var(--text-secondary); }
+.kg-node.current { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); font-weight: 700; }
+.kg-arrow { color: var(--muted); font-size: 20px; display: flex; align-items: center; }
+
+.tutor-card { display: flex; gap: 14px; align-items: flex-start; background: #fff; border-radius: 16px; padding: 16px; border: 1px solid var(--line); }
+.tutor-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-weight: 800; flex-shrink: 0; }
+.tutor-bubble { flex: 1; }
+.tutor-bubble p { margin: 0; color: var(--text-secondary); }
+.tutor-bubble strong { color: var(--text); }
+
+.play-toolbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 20px calc(10px + var(--safe-bottom)); background: rgba(255,251,240,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--line-subtle); transition: transform 0.3s ease; }
+body:not(.play-mode) .play-toolbar { transform: translateY(100%); }
+.toolbar-btn { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; cursor: pointer; font-size: 14px; }
+.toolbar-btn.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+.sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 98; display: flex; flex-direction: column; gap: 8px; }
+.sidenav a { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; transition: all 0.2s; }
+.sidenav a.active { background: var(--brand); transform: scale(1.3); }
+
+.text-center { text-align: center; }
+.hint { background: rgba(6,182,212,0.1); border-left: 4px solid var(--brand-2); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+.warn-box { background: rgba(245,158,11,0.1); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+.mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+
+@media (max-width: 640px) {
+  .card { padding: 18px; }
+  .slide-page { padding: 16px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .choice-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body class="teachany-elementary">
+
+<header class="teachany-brand-bar">
+  <a class="brand-logo" href="https://www.teachany.cn" target="_blank"><span class="brand-mark">T</span><span>TeachAny</span></a>
+  <div class="brand-right"><a class="brand-link" href="../index.html">目录</a><span class="brand-version">v7.18 · 小学数学 G5</span></div>
+</header>
+
+<nav class="sidenav">
+  <a href="#slide-1" class="active"></a><a href="#slide-2"></a><a href="#slide-3"></a><a href="#slide-4"></a><a href="#slide-5"></a><a href="#slide-6"></a><a href="#slide-7"></a><a href="#slide-8"></a><a href="#slide-9"></a><a href="#slide-10"></a><a href="#slide-11"></a><a href="#slide-12"></a><a href="#slide-13"></a>
+</nav>
+
+<main class="slide-container" id="slides">
+
+  <!-- Slide 1 -->
+  <section class="slide-page" data-page-type="cover" id="slide-1" data-tts="s01">
+    <div class="slide-inner">
+      <div class="badge mb-2">🟰 苏教版 · 五年级上册 · 第三单元</div>
+      <h1>小数的性质和大小比较</h1>
+      <p class="subtitle">0.3 和 0.30 真的一样大吗？怎么比出谁大谁小？</p>
+      <div class="figure-wrap mt-3" style="max-width:480px;margin:0 auto;">
+        <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="20" width="100" height="100" rx="8" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="2"/>
+          <text x="80" y="75" text-anchor="middle" font-size="24" fill="#8b5cf6" font-weight="800">0.3</text>
+          <text x="80" y="100" text-anchor="middle" font-size="11" fill="#666">3/10</text>
+          <text x="200" y="75" text-anchor="middle" font-size="32" fill="#333" font-weight="900">=</text>
+          <rect x="280" y="20" width="100" height="100" rx="8" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="2"/>
+          <text x="330" y="75" text-anchor="middle" font-size="24" fill="#06b6d4" font-weight="800">0.30</text>
+          <text x="330" y="100" text-anchor="middle" font-size="11" fill="#666">30/100</text>
+        </svg>
+        <div class="figure-caption">0.3 和 0.30 相等吗？为什么？</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 2: Problem -->
+  <section class="slide-page" data-page-type="concept" id="slide-2" data-tts="s02">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤔 问题锚点</h2>
+        <p>超市里一盒牛奶标价 <strong>5.80 元</strong>，另一盒标价 <strong>5.8 元</strong>。</p>
+        <p>这两种标价<strong>一样吗</strong>？5.80 末尾的 "0" 到底有没有意义？</p>
+        <p>再比一比：<strong>0.45 和 0.5</strong>，哪个更大？小数的大小怎么比？</p>
+        <div class="choice-grid">
+          <div class="choice-item" onclick="selectChoice(this)">A. 5.80 比 5.8 大，多了个0</div>
+          <div class="choice-item" onclick="selectChoice(this)">B. 5.80 = 5.8，末尾0不影响大小</div>
+          <div class="choice-item" onclick="selectChoice(this)">C. 比较时看谁的数字多</div>
+          <div class="choice-item" onclick="selectChoice(this)">D. 比较时看小数点后的第一个数字</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide-page" data-page-type="objectives" id="slide-3" data-tts="s03">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🎯 本课学习目标</h2>
+        <ol>
+          <li>理解<strong>小数的性质</strong>：小数的末尾添上"0"或去掉"0"，小数的大小不变。</li>
+          <li>能根据小数的性质<strong>化简</strong>小数和<strong>改写</strong>小数。</li>
+          <li>掌握比较小数大小的方法：<strong>先比整数部分，再逐位比小数部分</strong>。</li>
+          <li>能正确比较多个小数的大小并进行排序。</li>
+        </ol>
+        <div class="hint mt-2">💡 小数性质和整数完全不同——整数末尾加0会变大（50 > 5），而小数末尾加0大小不变（5.0 = 5）！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Property discovery -->
+  <section class="slide-page" data-page-type="concept" id="slide-4" data-tts="s04">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔍 探索：0.3 = 0.30？</h2>
+        <p>用分数的角度理解：</p>
+        <div class="grid-2">
+          <div class="interactive-box">
+            <p style="font-size:1.5rem;color:var(--brand);font-weight:800;">0.3</p>
+            <p>= 3/10</p>
+            <p>= 30/100</p>
+            <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="200" height="30" rx="4" fill="none" stroke="#ddd" stroke-width="1"/>
+              <rect x="0" y="0" width="60" height="30" fill="rgba(139,92,246,0.3)"/>
+              <text x="100" y="55" text-anchor="middle" font-size="11" fill="#666">10 格中有 3 格涂色</text>
+            </svg>
+          </div>
+          <div class="interactive-box">
+            <p style="font-size:1.5rem;color:var(--brand-2);font-weight:800;">0.30</p>
+            <p>= 30/100</p>
+            <p>= 3/10</p>
+            <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="200" height="30" rx="4" fill="none" stroke="#ddd" stroke-width="1"/>
+              <rect x="0" y="0" width="60" height="30" fill="rgba(6,182,212,0.3)"/>
+              <text x="100" y="55" text-anchor="middle" font-size="11" fill="#666">100 格中有 30 格涂色</text>
+            </svg>
+          </div>
+        </div>
+        <div class="formula-box mt-2">
+          <strong>0.3 = 0.30</strong><br>
+          <span style="font-size:1rem;color:var(--text-secondary);">因为 3/10 = 30/100，所以它们的大小相同！</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5: Property explanation -->
+  <section class="slide-page" data-page-type="concept" id="slide-5" data-tts="s05">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📐 理解小数的性质</h2>
+        <p>从计数单位的角度理解：</p>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 480 130" xmlns="http://www.w3.org/2000/svg">
+            <text x="30" y="40" font-size="16" fill="#8b5cf6" font-weight="700">0.3 = 3 个 0.1</text>
+            <line x1="230" y1="35" x2="270" y2="35" stroke="#8b5cf6" stroke-width="2"/>
+            <text x="280" y="40" font-size="16" fill="#06b6d4" font-weight="700">0.30 = 30 个 0.01</text>
+            <text x="480" y="40" font-size="14" fill="#666">  ↓</text>
+            
+            <rect x="30" y="55" width="30" height="30" rx="4" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6"/>
+            <rect x="65" y="55" width="30" height="30" rx="4" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6"/>
+            <rect x="100" y="55" width="30" height="30" rx="4" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6"/>
+            <text x="170" y="75" font-size="14" fill="#666">= 0.3</text>
+            
+            <text x="230" y="75" font-size="20" fill="#333">=</text>
+            
+            <rect x="280" y="55" width="8" height="30" fill="rgba(6,182,212,0.3)" stroke="#ddd"/>
+            <rect x="290" y="55" width="8" height="30" fill="rgba(6,182,212,0.3)" stroke="#ddd"/>
+            <rect x="300" y="55" width="8" height="30" fill="rgba(6,182,212,0.3)" stroke="#ddd"/>
+            <rect x="310" y="55" width="8" height="30" fill="rgba(6,182,212,0.3)" stroke="#ddd"/>
+            <rect x="320" y="55" width="8" height="30" fill="rgba(6,182,212,0.3)" stroke="#ddd"/>
+            <text x="345" y="55" text-anchor="middle" font-size="10" fill="#666">...30个</text>
+            <text x="420" y="75" font-size="14" fill="#666">= 0.30</text>
+          </svg>
+        </div>
+        <div class="hint">关键的发现：3 个 0.1 合起来，和 30 个 0.01 合起来，大小完全一样！因为 1 个 0.1 = 10 个 0.01。</div>
+        <div class="formula-box mt-2">小数的性质：<strong>小数的末尾添上"0"或去掉"0"，小数的大小不变。</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6: Simplify -->
+  <section class="slide-page" data-page-type="concept" id="slide-6" data-tts="s06">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>✂️ 化简小数</h2>
+        <p>根据小数的性质，可以把小数末尾的"0"<strong>去掉</strong>，使小数写起来更简洁。</p>
+        <div class="grid-2">
+          <div class="interactive-box">
+            <p style="font-size:1.8rem;font-weight:800;color:var(--brand);">0.70</p>
+            <p style="color:var(--text-secondary);">去掉末尾的0 →</p>
+            <p style="font-size:1.8rem;font-weight:800;color:var(--ok);">0.7</p>
+          </div>
+          <div class="interactive-box">
+            <p style="font-size:1.8rem;font-weight:800;color:var(--brand);">105.0900</p>
+            <p style="color:var(--text-secondary);">去掉末尾的0 →</p>
+            <p style="font-size:1.8rem;font-weight:800;color:var(--ok);">105.09</p>
+          </div>
+        </div>
+        <div class="warn-box mt-2">⚠️ 注意：只能去掉<strong>小数末尾</strong>的0！中间的0不能去。比如 3.05 ≠ 3.5！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Rewrite -->
+  <section class="slide-page" data-page-type="concept" id="slide-7" data-tts="s07">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>✏️ 改写小数</h2>
+        <p>有时需要把小数改写成指定小数位数的形式（比如统一单位、方便比较）。</p>
+        <div class="grid-2">
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">不改变大小，把 0.4 改写成三位小数：</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--brand);">0.4</p>
+            <p style="color:var(--muted);">末尾添两个0 →</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--ok);">0.400</p>
+          </div>
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">不改变大小，把 5 改写成两位小数：</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--brand-2);">5</p>
+            <p style="color:var(--muted);">加小数点再添0 →</p>
+            <p style="font-size:2rem;font-weight:800;color:var(--ok);">5.00</p>
+          </div>
+        </div>
+        <div class="hint mt-2">💡 整数改写成小数：先在个位右下角点上小数点，再根据需要添0。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Comparison method -->
+  <section class="slide-page" data-page-type="concept" id="slide-8" data-tts="s08">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>⚖️ 比较小数的大小</h2>
+        <p>比较 <strong>0.45 和 0.5</strong>，哪个大？</p>
+        <div class="figure-wrap">
+          <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg">
+            <text x="40" y="40" font-size="18" fill="#8b5cf6" font-weight="700">0.45</text>
+            <rect x="40" y="50" width="360" height="24" rx="4" fill="none" stroke="#ddd" stroke-width="1"/>
+            <rect x="40" y="50" width="162" height="24" fill="rgba(139,92,246,0.3)" rx="4"/>
+            <text x="220" y="68" text-anchor="middle" font-size="11" fill="#666">45/100 = 0.45</text>
+            
+            <text x="40" y="100" font-size="18" fill="#06b6d4" font-weight="700">0.50</text>
+            <rect x="40" y="110" width="360" height="24" rx="4" fill="none" stroke="#ddd" stroke-width="1"/>
+            <rect x="40" y="110" width="180" height="24" fill="rgba(6,182,212,0.3)" rx="4"/>
+            <text x="220" y="128" text-anchor="middle" font-size="11" fill="#666">50/100 = 0.50</text>
+            
+            <text x="220" y="155" text-anchor="middle" font-size="18" fill="#333" font-weight="800">0.50 > 0.45   →   0.5 > 0.45</text>
+          </svg>
+        </div>
+        <div class="formula-box">比较小数的方法：<br><span style="font-size:0.95rem;">① 先比<strong>整数部分</strong>，大的那个数就大<br>② 整数部分相同，比<strong>十分位</strong><br>③ 十分位相同，比<strong>百分位</strong>……依此类推</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9: Comparison examples -->
+  <section class="slide-page" data-page-type="concept" id="slide-9" data-tts="s09">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📊 比较练习</h2>
+        <div class="grid-2">
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">3.25 和 2.98</p>
+            <p style="font-size:1.5rem;">整数部分：<strong style="color:var(--brand);">3</strong> > <strong>2</strong></p>
+            <p style="font-size:1.5rem;color:var(--ok);">所以 3.25 > 2.98</p>
+          </div>
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">0.56 和 0.53</p>
+            <p style="font-size:1.5rem;">十分位相同：0.<strong style="color:var(--accent);">5</strong></p>
+            <p>百分位：<strong style="color:var(--brand);">6</strong> > <strong>3</strong></p>
+            <p style="font-size:1.5rem;color:var(--ok);">所以 0.56 > 0.53</p>
+          </div>
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">6.809 和 6.81</p>
+            <p>十分位相同：6.<strong style="color:var(--accent);">8</strong></p>
+            <p>百分位：<strong style="color:var(--brand);">0</strong> < <strong>1</strong></p>
+            <p style="font-size:1.5rem;color:var(--ok);">所以 6.809 < 6.81</p>
+          </div>
+          <div class="interactive-box">
+            <p style="color:var(--text-secondary);">战术：位数不同先统一</p>
+            <p>0.6 和 0.57：</p>
+            <p>0.6 = 0.60，0.60 > 0.57</p>
+            <p style="font-size:1.5rem;color:var(--ok);">所以 0.6 > 0.57</p>
+          </div>
+        </div>
+        <div class="warn-box mt-2">⚠️ 不要被小数位数迷惑！不是位数越多越大。0.6（一位）> 0.57（两位）！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10: Ordering -->
+  <section class="slide-page" data-page-type="interactive" id="slide-10" data-tts="s10">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔢 给小数排序</h2>
+        <p>把下面的小数按<strong>从大到小</strong>排列：</p>
+        <p style="font-size:1.4rem;text-align:center;margin:16px 0;">3.14 · 3.4 · 3.04 · 3.41 · 3.014</p>
+        <div class="hint">方法：先全部对齐位数（统一成三位小数）→ 3.140、3.400、3.040、3.410、3.014 → 比千分位 → 排序。</div>
+        <div class="formula-box mt-2">
+          从大到小：<strong>3.410 > 3.400 > 3.140 > 3.040 > 3.014</strong><br>
+          即：<span style="color:var(--brand);">3.41 > 3.4 > 3.14 > 3.04 > 3.014</span>
+        </div>
+        <p class="text-center" style="color:var(--muted);">💡 位数不同时，先在末尾补0统一位数，再逐位比较。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11: Quiz -->
+  <section class="slide-page" data-page-type="quiz" id="slide-11" data-tts="s11">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📝 练一练</h2>
+        <p><strong>第 1 题：</strong>下面哪个数和 0.8 相等？</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">A. 0.08</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 0.80</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">C. 8.0</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 正确！根据小数的性质，末尾添0或去0大小不变，所以 0.8 = 0.80。</p>
+
+        <p class="mt-2"><strong>第 2 题：</strong>在 2.05、2.50、2.5、2.005 中，最大的数是？</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">A. 2.05</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 2.50</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">C. 2.5</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">D. 2.005</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 正确！2.50 = 2.5，比十分位：2.5（十分位是5）最大。排序：2.50 = 2.5 > 2.05 > 2.005。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12 -->
+  <section class="slide-page" data-page-type="concept" id="slide-12" data-tts="s12">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤖 AI 学伴</h2>
+        <div class="tutor-card">
+          <div class="tutor-avatar">AI</div>
+          <div class="tutor-bubble">
+            <p><strong>AI 学伴：</strong>关于小数的性质和大小比较，你可以这样问我：</p>
+            <ul style="margin-top:8px;">
+              <li>"为什么整数末尾加0会变大，小数末尾加0却不变？"</li>
+              <li>"帮我比较 4.608 和 4.68 的大小"</li>
+              <li>"怎么判断 0.3、0.33、0.303 的大小顺序？"</li>
+              <li>"给我出几道小数化简的练习题"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13 -->
+  <section class="slide-page" data-page-type="summary" id="slide-13" data-tts="s13">
+    <div class="slide-inner">
+      <div class="card text-center">
+        <h2>🎉 课堂总结</h2>
+        <ol style="text-align:left;max-width:560px;margin:0 auto;">
+          <li><strong>小数的性质</strong>：小数的末尾添上"0"或去掉"0"，小数的大小不变。</li>
+          <li>根据性质可以<strong>化简</strong>小数（去末尾0）和<strong>改写</strong>小数（补0）。</li>
+          <li>比较大小：先比<strong>整数部分</strong> → 再比<strong>十分位</strong> → <strong>百分位</strong>…依此类推。</li>
+          <li>位数不同时，先在末尾<strong>补0统一位数</strong>再比较更不容易错。</li>
+          <li>不能根据小数位数多少来判断大小！</li>
+        </ol>
+        <div class="mt-3">
+          <a class="btn btn-primary" href="../index.html">返回目录</a>
+          <a class="btn btn-secondary" href="../lesson-3/index.html">下一课时：小数点移动</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="play-toolbar">
+  <button class="toolbar-btn" onclick="prevSlide()">⏮ 上一页</button>
+  <button class="toolbar-btn active" id="mode-btn" onclick="toggleMode()">📖 浏览模式</button>
+  <button class="toolbar-btn" onclick="toggleTTS()">🔊 播放讲解</button>
+  <button class="toolbar-btn" onclick="nextSlide()">下一页 ⏭</button>
+</footer>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" data-teachany-course-id="sujiao-math-g5u3-l2-decimal-properties"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"}]'></script>
+
+<script>
+let playMode = false;
+const slides = document.querySelectorAll('.slide-page');
+let current = 0;
+
+function updateSidenav() { document.querySelectorAll('.sidenav a').forEach((a,i)=>{a.classList.toggle('active',i===current);}); }
+function scrollToSlide(i) { if(i<0||i>=slides.length)return; current=i; slides[i].scrollIntoView({behavior:'smooth'}); updateSidenav(); }
+function nextSlide() { scrollToSlide(current+1); }
+function prevSlide() { scrollToSlide(current-1); }
+function toggleMode() { playMode=!playMode; document.body.classList.toggle('play-mode',playMode); document.getElementById('mode-btn').textContent=playMode?'▶️ 播放模式':'📖 浏览模式'; }
+function selectChoice(el) { el.parentElement.querySelectorAll('.choice-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); }
+function checkQuiz(el,isCorrect) { const card=el.closest('.card'); card.querySelectorAll('.quiz-option').forEach(o=>{o.style.pointerEvents='none'; if(o===el)o.classList.add(isCorrect?'correct':'wrong');}); }
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){current=Array.from(slides).indexOf(e.target);updateSidenav();}});},{root:document.getElementById('slides'),threshold:0.5});
+slides.forEach(s=>observer.observe(s));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' ')nextSlide(); if(e.key==='ArrowUp'||e.key==='ArrowLeft')prevSlide();});
+function toggleTTS(){if(window.teachanyTTS)window.teachanyTTS.playCurrent();}
+</script>
+</body>
+</html>
