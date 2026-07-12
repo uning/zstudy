@@ -1,0 +1,30 @@
+{
+  "node_id": "math-e-volume-units",
+  "topic": "math-e-volume-units",
+  "name_zh": "体积与容积单位",
+  "subject": "math",
+  "stage": "elementary",
+  "curriculum": "cn-national",
+  "lookup_at": "2026-07-12T12:00:00Z",
+  "sources": [],
+  "curriculum_excerpts": [],
+  "exercises": [],
+  "common_errors": [
+    "混淆升和毫升的使用场景（大容器用毫升、小容器用升）",
+    "换算时忘记×1000或÷1000，直接移动小数点方向错误"
+  ],
+  "prerequisites": [
+    "math-e-length-units",
+    "math-e-mass-units"
+  ],
+  "extends": [
+    "math-e-volume-calculation"
+  ],
+  "textbook_refs": [
+    "苏教版四年级数学上册第一单元"
+  ],
+  "md_path": null,
+  "kp_json_path": null,
+  "fallback_used": false,
+  "gaps": []
+}

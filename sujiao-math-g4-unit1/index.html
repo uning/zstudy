@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《苏教版四年级数学上册 第一单元 升和毫升》 · 数学 小学 G4 · TeachAny v7.20</title>
+<meta name="description" content="苏教版四年级数学上册第一单元课件目录">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --card: #ffffff;
+  --line: #ffe0b2; --line-subtle: rgba(255, 167, 38, 0.12);
+  --text: #333; --text-secondary: #555; --muted: #888;
+  --primary: #ff6b6b; --secondary: #4ecdc4; --accent: #ffe66d;
+  --ok: #22c55e; --warn: #f59e0b;
+  --card-radius: 20px; --card-radius-sm: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75; font-size: 16px;
+}
+
+.header {
+  max-width: 900px; margin: 0 auto; padding: 48px 24px 24px;
+  text-align: center;
+}
+.badge {
+  display: inline-block; padding: 6px 16px; border-radius: 999px;
+  background: var(--primary); color: #fff; font-size: 14px; font-weight: 600;
+  margin-bottom: 16px;
+}
+.header h1 { font-size: clamp(26px, 5vw, 36px); margin-bottom: 12px; }
+.subtitle { color: var(--text-secondary); font-size: 16px; }
+
+.unit-info { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.info-card {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  background: var(--card); border-radius: var(--card-radius);
+  padding: 20px; border: 1px solid var(--line-subtle);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.info-item { text-align: center; }
+.info-item .label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.info-item .value { font-size: 16px; font-weight: 700; color: var(--text); }
+
+.lessons { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+.lessons h2 {
+  font-size: 20px; font-weight: 700; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.lessons h2::before { content: ""; width: 4px; height: 20px; background: var(--secondary); border-radius: 2px; }
+
+.lesson-card {
+  display: block; position: relative;
+  background: var(--card); border-radius: var(--card-radius);
+  padding: 24px; margin-bottom: 16px; text-decoration: none; color: var(--text);
+  border: 1px solid var(--line-subtle);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.lesson-card:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.lesson-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.lesson-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700; flex-shrink: 0;
+}
+.lesson-title { font-size: 18px; font-weight: 700; }
+.lesson-desc { color: var(--text-secondary); font-size: 14px; margin-bottom: 12px; line-height: 1.6; }
+.lesson-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.meta-tag {
+  font-size: 12px; padding: 4px 10px; border-radius: 999px;
+  background: var(--bg-subtle); color: var(--muted);
+}
+.arrow {
+  position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
+  font-size: 24px; color: var(--muted); transition: all 0.2s;
+}
+.lesson-card:hover .arrow { color: var(--primary); transform: translateY(-50%) translateX(4px); }
+
+.knowledge-section { max-width: 900px; margin: 0 auto; padding: 0 24px 40px; }
+.knowledge-section h2 {
+  font-size: 20px; font-weight: 700; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.knowledge-section h2::before { content: ""; width: 4px; height: 20px; background: var(--secondary); border-radius: 2px; }
+.kp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.kp-item {
+  background: var(--card); border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius-sm); padding: 16px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.kp-item .icon { font-size: 20px; flex-shrink: 0; }
+.kp-item .text { font-size: 14px; color: var(--text-secondary); }
+.kp-item .text strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+.footer {
+  max-width: 900px; margin: 0 auto; padding: 24px; text-align: center;
+  color: var(--muted); font-size: 13px; border-top: 1px solid var(--line-subtle);
+}
+
+@media (max-width: 768px) {
+  .info-card { grid-template-columns: repeat(2, 1fr); }
+  .kp-grid { grid-template-columns: 1fr; }
+  .lesson-card .arrow { display: none; }
+}
+</style>
+
+<meta name="teachany-id" content="sujiao-math-g4u1-index">
+<meta name="teachany-name" content="苏教版四年级数学上册 第一单元 升和毫升">
+<meta name="teachany-node" content="math-e-volume-units">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="4">
+<meta name="teachany-version" content="v7.20">
+<meta name="teachany-author" content="TeachAny 用户">
+<meta name="teachany-curriculum" content="cn-national">
+</head>
+<body>
+
+<div class="header">
+  <span class="badge">📚 苏教版 · 四年级数学上册</span>
+  <h1>第一单元 升和毫升</h1>
+  <p class="subtitle">从一瓶水、一杯饮料到浴缸，一起认识容量单位升和毫升</p>
+</div>
+
+<div class="unit-info">
+  <div class="info-card">
+    <div class="info-item">
+      <div class="label">教材版本</div>
+      <div class="value">苏教版</div>
+    </div>
+    <div class="info-item">
+      <div class="label">年级学期</div>
+      <div class="value">四年级上册</div>
+    </div>
+    <div class="info-item">
+      <div class="label">单元</div>
+      <div class="value">第一单元</div>
+    </div>
+    <div class="info-item">
+      <div class="label">课时数</div>
+      <div class="value">1 课时</div>
+    </div>
+  </div>
+</div>
+
+<div class="lessons">
+  <h2>课件列表</h2>
+
+  <a class="lesson-card" href="lesson-1/index.html">
+    <div class="lesson-header">
+      <span class="lesson-num">1</span>
+      <span class="lesson-title">升和毫升（一）——认识升和毫升及换算</span>
+    </div>
+    <p class="lesson-desc">认识容量单位升（L）和毫升（mL），掌握 1 升 = 1000 毫升的换算关系，能判断生活中常见物品的容量单位，通过互动游戏巩固分类能力。</p>
+    <div class="lesson-meta">
+      <span class="meta-tag">🥛 升</span>
+      <span class="meta-tag">💧 毫升</span>
+      <span class="meta-tag">🔄 1L=1000mL</span>
+      <span class="meta-tag">📖 新授课</span>
+      <span class="meta-tag">📝 15页</span>
+      <span class="meta-tag">🎮 含互动</span>
+    </div>
+    <span class="arrow">→</span>
+  </a>
+</div>
+
+<div class="knowledge-section">
+  <h2>本单元知识点</h2>
+  <div class="kp-grid">
+    <div class="kp-item">
+      <span class="icon">🥛</span>
+      <div class="text"><strong>升（L）</strong>容量单位，表示比较多的液体，如饮料瓶、油桶</div>
+    </div>
+    <div class="kp-item">
+      <span class="icon">💧</span>
+      <div class="text"><strong>毫升（mL）</strong>容量单位，表示比较少的液体，如眼药水、口服液</div>
+    </div>
+    <div class="kp-item">
+      <span class="icon">🔄</span>
+      <div class="text"><strong>换算关系</strong>1 升 = 1000 毫升（升→毫升×1000，毫升→升÷1000）</div>
+    </div>
+    <div class="kp-item">
+      <span class="icon">🏠</span>
+      <div class="text"><strong>生活应用</strong>判断容器容量用升还是毫升（比一瓶矿泉水多→升，少→毫升）</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>TeachAny 互动课件 · 苏教版四年级数学上册第一单元</p>
+  <p style="margin-top:4px">制作日期：2026-07-12</p>
+</div>
+
+</body>
+</html>

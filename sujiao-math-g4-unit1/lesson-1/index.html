@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>升和毫升 — 苏教版四年级数学上册</title>
+<meta name="description" content="苏教版四年级数学上册第一单元：升和毫升的新授与自学互动课件">
+<meta name="course-id" content="liter-milliliter">
+<meta name="course-title" content="升和毫升">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="四年级">
+<meta name="course-version" content="1.0">
+<meta name="teachany-version" content="7.20.0">
+<meta name="teachany-node" content="math-e-volume-units">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="4">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="measurement">
+<meta name="teachany-lesson-type" content="新授+自学">
+<meta name="teachany-template-version" content="2.0">
+
+<style>
+/* ======================================================
+   TeachAny v2 — Elementary Warm Mode
+   苏教版四年级数学上册 · 升和毫升
+   ====================================================== */
+:root {
+  --bg: #FFF8F0;
+  --bg-subtle: #FFF0E5;
+  --panel: #FFFFFF;
+  --card: #FFFFFF;
+  --card-elevated: #FFFBF7;
+  --line: #FFD4C0;
+  --line-subtle: rgba(255, 107, 107, 0.10);
+  --text: #2D3436;
+  --text-secondary: #5A6268;
+  --muted: #8A9298;
+  --brand: #FF6B6B;
+  --brand-soft: rgba(255, 107, 107, 0.10);
+  --brand-2: #4ECDC4;
+  --brand-2-soft: rgba(78, 205, 196, 0.10);
+  --accent: #4ECDC4;
+  --accent-soft: rgba(78, 205, 196, 0.08);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+  --slide-height: 100vh;
+  --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+  --sidenav-width: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container {
+  scroll-snap-type: y proximity;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body.play-mode .slide-container {
+  scroll-snap-type: y mandatory;
+  overflow: hidden;
+}
+
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative;
+  overflow: hidden;
+}
+.slide-page .slide-inner {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+
+/* Page backgrounds — warm elementary */
+.slide-page[data-page-type="cover"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #FFE8D6 30%, #E8F8F5 70%, #FFF5EE 100%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(32px, 7vw, 56px);
+  line-height: 1.15;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8A65 50%, #4ECDC4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(16px, 3vw, 22px);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.slide-page[data-page-type="objectives"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 100%);
+}
+.slide-page[data-page-type="concept"] {
+  background: linear-gradient(135deg, #FFFBF7 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="interactive"] {
+  background: linear-gradient(135deg, #E8F8F5 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="quiz"] {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
+}
+.slide-page[data-page-type="summary"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 50%, #FFF5EE 100%);
+}
+
+/* Brand Bar */
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 10px 20px;
+  background: rgba(255, 248, 240, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle);
+  transition: transform 0.3s ease;
+}
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 15px; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: var(--muted); font-family: ui-monospace, monospace; background: rgba(0,0,0,.04); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 1px 0 rgba(0,0,0,0.02);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.card-accent { border-top: 3px solid; border-image: linear-gradient(90deg, var(--brand), var(--brand-2)) 1; }
+.card-glow { box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 0 40px rgba(255,107,107,0.08); }
+
+/* Section Header */
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; line-height: 1.3; }
+
+/* Phase Tag */
+.phase-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand); background: var(--brand-soft);
+  border: 1px solid rgba(255,107,107,0.2); border-radius: 999px;
+  padding: 5px 12px; font-size: 12px; font-weight: 600;
+}
+.phase-tag[data-variant="success"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(78,205,196,0.2); }
+.phase-tag[data-variant="purple"] { color: #a78bfa; background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.flex-row { display: flex; gap: 12px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.flex-row .choice { flex: 1; min-width: 120px; text-align: center; }
+
+/* Objectives */
+.objectives { display: grid; grid-template-columns: 1fr; gap: 10px; list-style: none; padding: 0; margin: 0; }
+.objectives li {
+  display: flex; align-items: flex-start; gap: 10px; padding: 14px 18px;
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  border: 1px solid var(--line-subtle); transition: background 0.2s;
+}
+.objectives li:hover { background: rgba(255,107,107,0.06); }
+.objectives li::before { content: "✦"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+/* Choice Buttons */
+.choice {
+  width: 100%; text-align: left; border: 1px solid rgba(255,107,107,0.15);
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  color: var(--text); padding: 16px 20px; cursor: pointer;
+  font-size: 15px; line-height: 1.5; transition: all 0.2s;
+}
+.choice:hover { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.3); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(255,107,107,0.10); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,0.06); }
+
+/* Result / Feedback */
+.result {
+  padding: 16px 20px; border-radius: var(--card-radius-sm);
+  background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15);
+  font-size: 15px; line-height: 1.6;
+}
+.result.warn { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.15); }
+.result.error { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.15); }
+
+/* Canvas */
+.canvas-wrap { overflow: auto; background: var(--bg-subtle); border: 1px solid var(--line-subtle); border-radius: 16px; padding: 16px; display: flex; justify-content: center; }
+
+/* Concept card */
+.concept-box {
+  padding: 20px; border-radius: var(--card-radius-sm);
+  background: linear-gradient(135deg, rgba(255,107,107,0.04), rgba(78,205,196,0.04));
+  border: 1px solid var(--line-subtle);
+}
+.concept-box h3 { font-size: 20px; color: var(--brand); margin-bottom: 10px; }
+.concept-box .highlight { display: inline-block; background: linear-gradient(120deg, rgba(255,107,107,0.15), rgba(255,107,107,0.05)); padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+
+/* Step grid */
+.step-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+.step-item { display: flex; gap: 12px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: var(--bg-subtle); border: 1px solid var(--line-subtle); }
+.step-item .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+
+/* Visual examples */
+.visual-example { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin: 20px 0; }
+.visual-example .ve-item { text-align: center; min-width: 100px; }
+.visual-example .ve-icon { font-size: 48px; display: block; margin-bottom: 8px; }
+.visual-example .ve-label { font-size: 13px; color: var(--text-secondary); }
+
+/* Conversion table */
+.convert-table { width: 100%; border-collapse: collapse; margin-top: 12px; border-radius: var(--card-radius-sm); overflow: hidden; }
+.convert-table th, .convert-table td { padding: 10px 16px; text-align: center; border: 1px solid var(--line-subtle); }
+.convert-table th { background: rgba(255,107,107,0.08); font-weight: 700; color: var(--brand); }
+.convert-table tr:nth-child(even) td { background: rgba(0,0,0,0.01); }
+
+/* Summary items */
+.summary-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); margin-bottom: 8px; }
+.summary-item .num { font-weight: 700; flex-shrink: 0; color: var(--brand); min-width: 24px; }
+
+/* Self-check */
+.self-check-input { margin: 12px 0; }
+.self-check-input label { display: block; color: var(--text-secondary); font-size: 14px; margin-bottom: 6px; }
+.self-check-input input {
+  width: 100%; max-width: 200px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--bg-subtle);
+  color: var(--text); padding: 12px 16px; font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.self-check-input input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.check-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 999px; border: none;
+  background: var(--brand); color: #fff; cursor: pointer;
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+  transition: all 0.2s;
+}
+.check-btn:hover { background: #ff5252; transform: scale(1.03); }
+
+/* Drag-drop zone for capacity game */
+.drop-zones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+.drop-zone {
+  width: 160px; min-height: 80px; border: 2px dashed var(--brand);
+  border-radius: var(--card-radius-sm); padding: 12px;
+  text-align: center; background: var(--brand-soft);
+  transition: all 0.2s;
+}
+.drop-zone.drag-over { border-color: var(--accent); background: var(--accent-soft); transform: scale(1.05); }
+.drop-zone h4 { font-size: 14px; color: var(--brand); margin-bottom: 8px; }
+.drop-items { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 12px 0; }
+.drag-item {
+  padding: 10px 18px; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--line);
+  cursor: grab; user-select: none; font-size: 14px;
+  transition: all 0.2s;
+}
+.drag-item:active { cursor: grabbing; transform: scale(1.05); }
+.drag-item.placed { opacity: 0.4; pointer-events: none; }
+
+/* TTS narrator button replacement */
+.tts-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--bg-subtle); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; transition: all 0.2s;
+}
+.tts-btn:hover { border-color: var(--brand); color: var(--brand); }
+
+/* Badge */
+.ta-badge {
+  position: fixed; bottom: 80px; left: 20px; z-index: 80;
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; background: rgba(255,255,255,0.9);
+  border-radius: 50px; backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,107,107,0.12);
+  font-size: 12px; color: var(--text-secondary);
+}
+.ta-badge img, .ta-badge .icon { width: 24px; height: 24px; border-radius: 50%; }
+
+/* Slide Progress */
+.slide-progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  z-index: 200; transition: width 0.3s ease;
+}
+
+/* Toolbar */
+.slide-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 10px 20px;
+  padding-bottom: calc(10px + var(--safe-bottom));
+  background: rgba(255,248,240,0.94); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+  transform: translateY(100%); transition: transform 0.3s ease;
+}
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: none; border-radius: 10px;
+  background: rgba(0,0,0,0.04); color: var(--text); cursor: pointer;
+  transition: all 0.2s; font-size: 18px;
+}
+.toolbar-btn:hover { background: rgba(0,0,0,0.08); }
+.toolbar-btn.active { background: var(--brand-soft); color: var(--brand); }
+.toolbar-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,0.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width 0.3s ease; }
+
+/* Side Nav */
+.slide-sidenav {
+  position: fixed; right: 12px; top: 50%; transform: translateY(-50%);
+  z-index: 90; display: flex; flex-direction: column; align-items: flex-end;
+  gap: 3px; opacity: 0; transition: opacity 0.3s ease;
+  max-height: 70vh; overflow-y: auto; scrollbar-width: none;
+  padding: 8px 4px; border-radius: 12px;
+  background: rgba(255,255,255,0.6); backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot {
+  width: 28px; height: 4px; border-radius: 2px;
+  background: rgba(0,0,0,0.08); border: none; cursor: pointer;
+  transition: all 0.3s; flex-shrink: 0; padding: 0;
+}
+.sidenav-dot:hover { background: rgba(255,107,107,0.3); width: 36px; }
+.sidenav-dot.active { background: var(--brand); width: 36px; height: 5px; box-shadow: 0 0 10px rgba(255,107,107,0.4); }
+.sidenav-dot[data-tooltip]::before {
+  content: attr(data-tooltip); position: absolute; right: calc(100% + 10px);
+  top: 50%; transform: translateY(-50%); padding: 5px 10px;
+  background: rgba(255,255,255,0.95); border: 1px solid var(--line);
+  border-radius: 6px; color: var(--text); font-size: 11px;
+  white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.sidenav-dot:hover[data-tooltip]::before { opacity: 1; }
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,0.35); text-align: center; padding: 4px 0 2px; width: 100%; }
+
+/* Play FAB */
+.play-mode-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%; border: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(255,107,107,0.3); transition: all 0.3s;
+}
+.play-mode-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(255,107,107,0.4); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+.play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* kg placeholder */
+.tkg-placeholder { text-align: center; padding: 20px; color: var(--muted); }
+.tkg-placeholder svg { width: 60px; height: 60px; margin-bottom: 8px; opacity: 0.3; }
+
+/* AI tutor placeholder */
+.ttc-placeholder { text-align: center; padding: 30px; }
+.ttc-placeholder .ttc-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
+
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; --card-radius: 16px; }
+  .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .grid, .grid-2, .objectives, .grid-2col { grid-template-columns: 1fr !important; }
+  .flex-row { flex-direction: column; }
+  .flex-row .choice { min-width: 100%; }
+  .card { padding: 18px; }
+  .teachany-brand-bar { padding: 8px 12px; }
+  .brand-name { display: none; }
+  .drop-zones { flex-direction: column; align-items: center; }
+  .drop-zone { width: 100%; max-width: 260px; }
+}
+
+@media (max-width: 480px) {
+  .slide-page[data-page-type="cover"] h1 { font-size: 28px; }
+  .toolbar-progress { max-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+
+<!-- Brand Bar -->
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="https://weponusa.github.io/teachany/">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <span class="brand-version">v1.0 · skill v7.20</span>
+  </div>
+</div>
+
+<!-- Slide Container -->
+<div class="slide-container" id="slide-container">
+
+<!-- Page 1: Cover -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="封面">
+  <div class="slide-inner">
+    <h1>升和毫升</h1>
+    <p class="subtitle">一瓶水有多少？升和毫升是什么关系？</p>
+    <figure class="ta-standard-figure" style="margin-top:32px">
+      <img src="./assets/liter-milliliter-hero.svg" alt="升和毫升知识结构图" style="max-width:720px">
+      <figcaption>容量单位升（L）和毫升（mL）的关系 · 知识结构总览</figcaption>
+    </figure>
+    <p style="color:var(--muted);margin-top:16px;font-size:14px">苏教版 · 四年级数学上册 · 第一单元</p>
+    <p style="color:var(--muted);font-size:13px">新授 + 自学互动课件</p>
+  </div>
+</section>
+
+<!-- Page 2: Problem Anchor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="problem-anchor" data-tsh="问题锚点">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag">Problem Anchor</span>
+        <h2>今天想解决什么问题？</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">选一个你关心的问题，后面的内容会围绕它展开。</p>
+      <div class="grid" id="problem-anchor-choices">
+        <button class="choice" data-anchor-choice="升和毫升是什么">🥛 升和毫升到底是什么单位？</button>
+        <button class="choice" data-anchor-choice="1升等于多少毫升">🤔 1升等于多少毫升？怎么换算？</button>
+        <button class="choice" data-anchor-choice="生活中怎么用升和毫升">🛒 生活中什么时候用到升和毫升？</button>
+      </div>
+      <label style="display:block;margin-top:16px;color:var(--muted);font-size:14px">或者，写下你自己想问的问题
+        <input id="learner-question-input" placeholder="把你好奇的问题写在这里" style="margin-top:8px">
+      </label>
+      <p id="anchor-feedback" class="result warn" style="margin-top:14px">👆 选择一个问题，或者写下你的疑问，课程会围绕它展开～</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 3: Learning Objectives -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Objectives</span>
+        <h2>学习目标</h2>
+      </div>
+      <ul class="objectives">
+        <li>认识容量单位 <b>升（L）</b>和<b>毫升（mL）</b>，知道它们的使用场景</li>
+        <li>掌握 <b>1 升 = 1000 毫升</b> 的换算关系，能进行简单换算</li>
+        <li>能通过<b>观察和比较</b>，判断常见容器的容量范围</li>
+        <li>会用升和毫升<b>描述和解决</b>生活中的实际问题</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Page 4: Pre-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="3" data-tts="pretest" data-tsh="前测">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">Pre-Test</span>
+        <h2>先来试试看 👀</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">别担心，答错了也没关系，试试看！</p>
+      <div style="margin-bottom:16px">
+        <p style="font-weight:600;margin-bottom:6px">Q1: 一大瓶可乐通常是多少？</p>
+        <button class="choice" data-quiz="pretest-q1" data-answer="correct" onclick="checkQuizBtn(this)">A. 2升</button>
+        <button class="choice" data-quiz="pretest-q1" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 2毫升</button>
+        <button class="choice" data-quiz="pretest-q1" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 200毫升</button>
+        <p class="result" id="pretest-q1-fb" style="display:none;margin-top:8px"></p>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="font-weight:600;margin-bottom:6px">Q2: 一瓶眼药水通常是多少？</p>
+        <button class="choice" data-quiz="pretest-q2" data-answer="wrong" onclick="checkQuizBtn(this)">A. 1升</button>
+        <button class="choice" data-quiz="pretest-q2" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 10毫升</button>
+        <button class="choice" data-quiz="pretest-q2" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 500毫升</button>
+        <p class="result" id="pretest-q2-fb" style="display:none;margin-top:8px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:6px">Q3: 1升和1000毫升是什么关系？</p>
+        <button class="choice" data-quiz="pretest-q3" data-answer="wrong" onclick="checkQuizBtn(this)">A. 1升 > 1000毫升</button>
+        <button class="choice" data-quiz="pretest-q3" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 1升 < 1000毫升</button>
+        <button class="choice" data-quiz="pretest-q3" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 1升 = 1000毫升</button>
+        <p class="result" id="pretest-q3-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 5: Concept 1 — 认识升 -->
+<section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="concept-liter" data-tsh="概念1 - 认识升">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 1</span>
+        <h2>认识「升」📏</h2>
+      </div>
+      <div class="concept-box">
+        <h3>升（L）是什么？</h3>
+        <p><span class="highlight">升</span>是<b>容量</b>（也叫容积）单位，用来表示容器<b>能装多少</b>东西。</p>
+        <p>字母符号是 <span class="highlight">L</span>（大写），比如 2L 表示 2 升。</p>
+      </div>
+      <div class="visual-example">
+        <div class="ve-item"><span class="ve-icon">🪣</span><span class="ve-label">大桶食用油<br>约 5 升</span></div>
+        <div class="ve-item"><span class="ve-icon">🥤</span><span class="ve-label">大瓶可乐<br>约 2 升</span></div>
+        <div class="ve-item"><span class="ve-icon">🫗</span><span class="ve-label">牛奶盒<br>约 1 升</span></div>
+        <div class="ve-item"><span class="ve-icon">🪴</span><span class="ve-label">浇水壶<br>约 3 升</span></div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"升"用来量<b>大</b>的东西——饮料瓶、油桶、水壶，都用升！
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：一瓶 1.5 升的矿泉水，用字母怎么表示？</label>
+        <input id="check-liter" placeholder="写下你的答案" oninput="checkSelf(this,'1.5L','check-liter-fb')">
+        <p class="result" id="check-liter-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 6: Concept 2 — 认识毫升 -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="concept-ml" data-tsh="概念2 - 认识毫升">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 2</span>
+        <h2>认识「毫升」💧</h2>
+      </div>
+      <div class="concept-box">
+        <h3>毫升（mL）是什么？</h3>
+        <p><span class="highlight">毫升</span>也是容量单位，用来表示<b>比较少的</b>液体。</p>
+        <p>字母符号是 <span class="highlight">mL</span>（小写 m + 大写 L），比如 500mL 表示 500 毫升。</p>
+      </div>
+      <div class="visual-example">
+        <div class="ve-item"><span class="ve-icon">💊</span><span class="ve-label">眼药水<br>约 10 毫升</span></div>
+        <div class="ve-item"><span class="ve-icon">🧴</span><span class="ve-label">口服液<br>约 15 毫升</span></div>
+        <div class="ve-item"><span class="ve-icon">🥄</span><span class="ve-label">一汤匙<br>约 15 毫升</span></div>
+        <div class="ve-item"><span class="ve-icon">🧃</span><span class="ve-label">酸奶杯<br>约 100 毫升</span></div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"毫升"用来量<b>小</b>的东西——眼药水、口服液、调料，都用毫升！
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：一瓶 500 毫升的矿泉水，用字母怎么表示？</label>
+        <input id="check-ml" placeholder="写下你的答案" oninput="checkSelf(this,'500mL','check-ml-fb')">
+        <p class="result" id="check-ml-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 7: Concept 3 — 升和毫升的换算 -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="concept-convert" data-tsh="概念3 - 换算">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 3</span>
+        <h2>升和毫升怎么换算？🔄</h2>
+      </div>
+      <div class="concept-box" style="text-align:center;padding:28px">
+        <h3 style="font-size:28px">1 升 = <span style="color:#FF6B6B;font-size:36px">1000</span> 毫升</h3>
+        <p style="margin-top:8px">1 L = 1000 mL</p>
+      </div>
+      <table class="convert-table">
+        <tr><th>升（L）</th><th>毫升（mL）</th><th>换算方法</th></tr>
+        <tr><td>1 L</td><td>1000 mL</td><td>1 × 1000</td></tr>
+        <tr><td>2 L</td><td>2000 mL</td><td>2 × 1000</td></tr>
+        <tr><td>0.5 L</td><td>500 mL</td><td>0.5 × 1000</td></tr>
+        <tr><td>0.25 L</td><td>250 mL</td><td>0.25 × 1000</td></tr>
+        <tr><td>3 L</td><td>3000 mL</td><td>3 × 1000</td></tr>
+      </table>
+      <div class="result" style="margin-top:12px">
+        💡 <b>换算规则：</b>升 → 毫升：<b>× 1000</b>；毫升 → 升：<b>÷ 1000</b>
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：5 升等于多少毫升？</label>
+        <input id="check-convert" placeholder="写下你的答案（数字+单位）" oninput="checkSelf(this,'5000mL','check-convert-fb')">
+        <p class="result" id="check-convert-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 8: Concept 4 — 生活中的升和毫升 -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="concept-life" data-tsh="概念4 - 生活中的容量">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 4</span>
+        <h2>生活中到处是升和毫升！🏠</h2>
+      </div>
+      <div class="grid grid-2" style="margin-top:12px">
+        <div class="concept-box" style="text-align:center">
+          <span style="font-size:40px">🥛</span>
+          <h3 style="font-size:16px;margin-top:8px">一杯水 ≈ 250 mL</h3>
+          <p style="font-size:13px;color:var(--muted)">4杯水 ≈ 1升</p>
+        </div>
+        <div class="concept-box" style="text-align:center">
+          <span style="font-size:40px">🚗</span>
+          <h3 style="font-size:16px;margin-top:8px">汽车油箱 ≈ 50 L</h3>
+          <p style="font-size:13px;color:var(--muted)">能装 50 瓶 1 升的牛奶！</p>
+        </div>
+        <div class="concept-box" style="text-align:center">
+          <span style="font-size:40px">🛁</span>
+          <h3 style="font-size:16px;margin-top:8px">浴缸 ≈ 200 L</h3>
+          <p style="font-size:13px;color:var(--muted)">约 800 杯水</p>
+        </div>
+        <div class="concept-box" style="text-align:center">
+          <span style="font-size:40px">💧</span>
+          <h3 style="font-size:16px;margin-top:8px">一滴水 ≈ 0.05 mL</h3>
+          <p style="font-size:13px;color:var(--muted)">很小很小的单位</p>
+        </div>
+      </div>
+      <div class="result" style="margin-top:14px">
+        💡 <b>小窍门：</b>判断用升还是毫升——想象一下，<b>比一瓶矿泉水多</b>的用升，<b>比一瓶矿泉水少</b>的用毫升！
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 9: Scaffold Practice -->
+<section class="slide-page" data-page-type="quiz" data-page-index="8" data-tts="scaffold" data-tsh="脚手架练习">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Scaffold</span>
+        <h2>三步练习 ✍️</h2>
+      </div>
+      <div class="step-grid">
+        <div class="step-item">
+          <span class="step-num">1</span>
+          <div>
+            <b>判断用升还是毫升：</b><br>
+            ① 一瓶酱油 → <input id="s1-1" style="width:80px;margin:0 4px;padding:6px 10px" placeholder="L或mL" oninput="checkStep(this,'mL','s1-1-fb')">
+            ② 饮水机水桶 → <input id="s1-2" style="width:80px;margin:0 4px;padding:6px 10px" placeholder="L或mL" oninput="checkStep(this,'L','s1-2-fb')">
+            <span id="s1-1-fb" style="font-size:13px;margin-left:8px"></span>
+            <span id="s1-2-fb" style="font-size:13px;margin-left:8px"></span>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">2</span>
+          <div>
+            <b>换算填空：</b><br>
+            ① 3 L = <input id="s2-1" style="width:80px;margin:0 4px;padding:6px 10px" placeholder="? mL" oninput="checkStep(this,'3000','s2-1-fb')"> mL
+            <span id="s2-1-fb" style="font-size:13px;margin-left:8px"></span><br>
+            ② 5000 mL = <input id="s2-2" style="width:80px;margin:0 4px;padding:6px 10px" placeholder="? L" oninput="checkStep(this,'5','s2-2-fb')"> L
+            <span id="s2-2-fb" style="font-size:13px;margin-left:8px"></span>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">3</span>
+          <div>
+            <b>挑战题：</b>一瓶 500mL 的矿泉水，几瓶才能装满 2L 的水壶？<br>
+            <input id="s3" style="width:80px;margin-top:6px;padding:6px 10px" placeholder="? 瓶" oninput="checkStep(this,'4','s3-fb')">
+            <span id="s3-fb" style="font-size:13px;margin-left:8px"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 10: ConceptTest -->
+<section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="conceptest" data-tsh="概念诊断">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">ConceptTest</span>
+        <h2>概念过关测试 🎯</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">4道题，看看你掌握了多少？</p>
+
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第1题：以下哪个最接近 1 升？</p>
+        <button class="choice" data-quiz="ct-q1" data-answer="wrong" onclick="checkQuizBtn(this)">A. 一瓶眼药水</button>
+        <button class="choice" data-quiz="ct-q1" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 一盒牛奶</button>
+        <button class="choice" data-quiz="ct-q1" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 一个浴缸</button>
+        <p class="result" id="ct-q1-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第2题：2500 毫升 = 多少升？</p>
+        <button class="choice" data-quiz="ct-q2" data-answer="wrong" onclick="checkQuizBtn(this)">A. 25 L</button>
+        <button class="choice" data-quiz="ct-q2" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 2.5 L</button>
+        <button class="choice" data-quiz="ct-q2" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 0.25 L</button>
+        <p class="result" id="ct-q2-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第3题：小明的杯子能装 300mL，倒满 3 杯水，一共多少？</p>
+        <button class="choice" data-quiz="ct-q3" data-answer="correct" onclick="checkQuizBtn(this)">A. 900 mL</button>
+        <button class="choice" data-quiz="ct-q3" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 90 mL</button>
+        <button class="choice" data-quiz="ct-q3" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 9 L</button>
+        <p class="result" id="ct-q3-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600">第4题：以下哪个单位更适合表示一瓶洗发水的容量？</p>
+        <button class="choice" data-quiz="ct-q4" data-answer="wrong" onclick="checkQuizBtn(this)">A. 升（L）</button>
+        <button class="choice" data-quiz="ct-q4" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 毫升（mL）</button>
+        <p class="result" id="ct-q4-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 11: Interactive — 容量分类游戏 -->
+<section class="slide-page" data-page-type="interactive" data-page-index="10" data-tts="interactive" data-tsh="互动 - 容量分类">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Interactive</span>
+        <h2>容量分类大挑战 🎮</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">把下面的物品拖到正确的"升"或"毫升"区域！</p>
+
+      <div class="drop-zones">
+        <div class="drop-zone" id="zone-liter" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>📏 升（L）</h4>
+          <div id="zone-liter-items"></div>
+        </div>
+        <div class="drop-zone" id="zone-ml" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>💧 毫升（mL）</h4>
+          <div id="zone-ml-items"></div>
+        </div>
+      </div>
+
+      <div class="drop-items" id="drag-items">
+        <div class="drag-item" draggable="true" data-correct="liter">🪣 水桶</div>
+        <div class="drag-item" draggable="true" data-correct="liter">🛢️ 食用油桶</div>
+        <div class="drag-item" draggable="true" data-correct="ml">💊 眼药水</div>
+        <div class="drag-item" draggable="true" data-correct="ml">🧴 口服液</div>
+        <div class="drag-item" draggable="true" data-correct="liter">🚰 饮水机桶</div>
+        <div class="drag-item" draggable="true" data-correct="ml">🥄 止咳糖浆</div>
+      </div>
+
+      <div id="drag-score" style="text-align:center;margin-top:12px;font-weight:700;font-size:16px;color:var(--brand)"></div>
+      <button class="check-btn" onclick="resetDragGame()" style="margin:8px auto;display:block">🔄 再来一次</button>
+    </div>
+  </div>
+</section>
+
+<!-- Page 12: Post-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="11" data-tts="posttest" data-tsh="后测">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Post-Test</span>
+        <h2>学后检测 ✅</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">学完了，来检验一下！</p>
+
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">Q1: 下列哪个物品的容量最适合用「升」表示？</p>
+        <button class="choice" data-quiz="post-q1" data-answer="wrong" onclick="checkQuizBtn(this)">A. 一瓶眼药水</button>
+        <button class="choice" data-quiz="post-q1" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 一支口服液</button>
+        <button class="choice" data-quiz="post-q1" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 一个饮水机水桶</button>
+        <p class="result" id="post-q1-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">Q2: 3.5 L = 多少 mL？</p>
+        <button class="choice" data-quiz="post-q2" data-answer="wrong" onclick="checkQuizBtn(this)">A. 35 mL</button>
+        <button class="choice" data-quiz="post-q2" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 350 mL</button>
+        <button class="choice" data-quiz="post-q2" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 3500 mL</button>
+        <p class="result" id="post-q2-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600">Q3: 小红的杯子是 200mL，她要喝 1L 水，需要喝几杯？</p>
+        <button class="choice" data-quiz="post-q3" data-answer="wrong" onclick="checkQuizBtn(this)">A. 2 杯</button>
+        <button class="choice" data-quiz="post-q3" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 5 杯</button>
+        <button class="choice" data-quiz="post-q3" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 10 杯</button>
+        <p class="result" id="post-q3-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 13: Summary -->
+<section class="slide-page" data-page-type="summary" data-page-index="12" data-tts="summary" data-tsh="课堂小结">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Summary</span>
+        <h2>课堂小结 📝</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">回顾一下，今天学到了什么？</p>
+      <div class="summary-item"><span class="num">1</span><div><b>升（L）</b>：容量单位，用来表示<b>比较多</b>的液体，如饮料瓶、油桶</div></div>
+      <div class="summary-item"><span class="num">2</span><div><b>毫升（mL）</b>：容量单位，用来表示<b>比较少</b>的液体，如眼药水、口服液</div></div>
+      <div class="summary-item"><span class="num">3</span><div><b>1 L = 1000 mL</b>：升 → 毫升 ×1000，毫升 → 升 ÷1000</div></div>
+      <div class="summary-item"><span class="num">4</span><div><b>判断技巧</b>：比一瓶矿泉水多 → 用升；比一瓶矿泉水少 → 用毫升</div></div>
+      <div class="result" style="margin-top:14px;text-align:center">
+        🎯 现在你能回答了吗？<b>一瓶水有多少？升和毫升是什么关系？</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 14: Knowledge Graph -->
+<section class="slide-page" data-page-type="summary" data-page-index="13" data-tts="knowledge-graph" data-tsh="知识图谱">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
+        <h2>知识图谱</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">升和毫升在知识树中的位置：</p>
+      <div data-teachany-kg="math-e-volume-units">
+        <div class="tkg-placeholder">
+          <svg viewBox="0 0 80 60" fill="none"><circle cx="40" cy="10" r="6" fill="#FF6B6B" opacity="0.6"/><circle cx="15" cy="45" r="5" fill="#4ECDC4" opacity="0.6"/><circle cx="65" cy="45" r="7" fill="#4ECDC4" opacity="0.6"/><line x1="37" y1="16" x2="18" y2="40" stroke="#ccc" stroke-width="1.5"/><line x1="43" y1="16" x2="62" y2="40" stroke="#ccc" stroke-width="1.5"/></svg>
+          <p style="font-size:13px;color:var(--muted)">⬅ 长度单位 → <b style="color:var(--brand)">升和毫升</b> → 面积单位 ➡</p>
+          <p style="font-size:12px;color:var(--muted)">完整知识图谱需要 TeachAny 平台支持</p>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;text-align:center">后续学习：体积与容积单位（五年级）</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 15: AI Tutor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="14" data-tts="ai-tutor" data-tsh="AI学伴">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">AI Tutor</span>
+        <h2>AI 学伴 🤖</h2>
+      </div>
+      <div data-teachany-tutor-card>
+        <div class="ttc-placeholder">
+          <div class="ttc-avatar">🤖</div>
+          <h3 style="color:var(--text);margin:0 0 8px;font-size:18px">学习小帮手</h3>
+          <p style="color:var(--muted)">在学习升和毫升时遇到问题了？</p>
+          <p style="color:var(--muted)">AI 学伴会帮你梳理思路～</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:12px">AI 学伴功能需要 TeachAny 平台支持</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- .slide-container -->
+
+<!-- Side Navigation -->
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<!-- Play Mode FAB -->
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式" title="切换播放模式">
+  <svg id="fab-icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+  <svg id="fab-icon-browse" viewBox="0 0 24 24" style="display:none"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+
+<!-- Bottom Toolbar -->
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页" title="上一页">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <div class="toolbar-progress" id="tb-progress" title="进度">
+    <div class="toolbar-progress-fill" id="tb-progress-fill"></div>
+  </div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 15</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页" title="下一页">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-autoplay" aria-label="自动播放" title="自动播放">
+    <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏" title="全屏">
+    <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+  </button>
+</div>
+
+<div class="ta-badge">
+  <span>🧑‍🏫</span><span>苏教版四上 · 升和毫升</span>
+</div>
+
+<script>
+/* ============================================================
+   TeachAny v2 — Slide Controller + Interactive Quizzes
+   ============================================================ */
+(function() {
+  'use strict';
+
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0, isPlayMode = false, isAutoPlay = false, autoPlayTimer = null;
+
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const fab = document.getElementById('play-mode-fab');
+  const fabIconPlay = document.getElementById('fab-icon-play');
+  const fabIconBrowse = document.getElementById('fab-icon-browse');
+  const toolbar = document.getElementById('slide-toolbar');
+  const tbPrev = document.getElementById('tb-prev');
+  const tbNext = document.getElementById('tb-next');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+  const tbProgress = document.getElementById('tb-progress');
+  const tbAutoplay = document.getElementById('tb-autoplay');
+  const tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const counter = document.createElement('div');
+    counter.className = 'sidenav-counter'; counter.id = 'sidenav-counter';
+    counter.textContent = '1/' + totalPages; sidenav.appendChild(counter);
+    pages.forEach((page, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-tooltip', page.dataset.tsh || ('第' + (i + 1) + '页'));
+      dot.setAttribute('aria-label', '跳转到第' + (i + 1) + '页');
+      dot.addEventListener('click', () => goToPage(i));
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    const progress = totalPages > 1 ? (currentPage / (totalPages - 1)) * 100 : 100;
+    progressBar.style.width = progress + '%';
+    tbProgressFill.style.width = progress + '%';
+    tbPageInfo.textContent = (currentPage + 1) + ' / ' + totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
+    const ce = document.getElementById('sidenav-counter'); if (ce) ce.textContent = (currentPage + 1) + '/' + totalPages;
+    tbPrev.style.opacity = currentPage === 0 ? '0.3' : '1';
+    tbNext.style.opacity = currentPage === totalPages - 1 ? '0.3' : '1';
+  }
+
+  function goToPage(index) {
+    if (index < 0 || index >= totalPages) return;
+    currentPage = index;
+    if (isPlayMode) pages[currentPage].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else container.scrollTo({ top: pages[currentPage].offsetTop, behavior: 'smooth' });
+    updateUI();
+  }
+
+  function nextPage() { if (currentPage < totalPages - 1) goToPage(currentPage + 1); }
+  function prevPage() { if (currentPage > 0) goToPage(currentPage - 1); }
+
+  let scrollTimeout;
+  container.addEventListener('scroll', () => {
+    if (isPlayMode) return;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      let closest = 0, minDist = Infinity;
+      pages.forEach((page, i) => {
+        const dist = Math.abs(page.offsetTop - container.scrollTop);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      if (closest !== currentPage) { currentPage = closest; updateUI(); }
+    }, 100);
+  }, { passive: true });
+
+  function togglePlayMode() {
+    isPlayMode = !isPlayMode;
+    document.body.classList.toggle('play-mode', isPlayMode);
+    document.body.classList.toggle('toolbar-visible', isPlayMode);
+    fabIconPlay.style.display = isPlayMode ? 'none' : 'block';
+    fabIconBrowse.style.display = isPlayMode ? 'block' : 'none';
+    if (isPlayMode) goToPage(currentPage);
+  }
+
+  fab.addEventListener('click', togglePlayMode);
+  tbPrev.addEventListener('click', prevPage);
+  tbNext.addEventListener('click', nextPage);
+  tbProgress.addEventListener('click', (e) => {
+    const rect = tbProgress.getBoundingClientRect();
+    goToPage(Math.round((e.clientX - rect.left) / rect.width * (totalPages - 1)));
+  });
+
+  tbAutoplay.addEventListener('click', () => {
+    isAutoPlay = !isAutoPlay; tbAutoplay.classList.toggle('active', isAutoPlay);
+    if (isAutoPlay) { stopAutoPlay(); autoPlayTimer = setInterval(() => { if (currentPage < totalPages - 1) nextPage(); else { stopAutoPlay(); isAutoPlay = false; tbAutoplay.classList.remove('active'); } }, 8000); }
+    else stopAutoPlay();
+  });
+  function stopAutoPlay() { if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; } }
+
+  tbFullscreen.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch(e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': e.preventDefault(); nextPage(); break;
+      case 'ArrowLeft': case 'ArrowUp': e.preventDefault(); prevPage(); break;
+      case 'f': case 'F': if (!e.ctrlKey && !e.metaKey) togglePlayMode(); break;
+      case 'Escape': if (isPlayMode) togglePlayMode(); break;
+    }
+  });
+
+  // Problem anchor
+  document.querySelectorAll('[data-anchor-choice]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-anchor-choice]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const fb = document.getElementById('anchor-feedback');
+      if (fb) fb.textContent = '✅ 好的！"' + (btn.getAttribute('data-anchor-choice') || btn.textContent.trim()) + '" — 课程内容会围绕这个问题展开。';
+    });
+  });
+
+  document.getElementById('learner-question-input')?.addEventListener('input', (e) => {
+    const fb = document.getElementById('anchor-feedback');
+    if (fb) fb.textContent = e.target.value.trim() ? '✅ 你的问题：' + e.target.value.trim() : '👆 选择一个问题，或者写下你的疑问～';
+  });
+
+  buildSidenav(); updateUI();
+  document.body.classList.add('toolbar-visible');
+  setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
+})();
+
+/* ─── Quiz Logic ─── */
+function checkQuizBtn(btn) {
+  const qId = btn.dataset.quiz;
+  const isCorrect = btn.dataset.answer === 'correct';
+  // Clear all buttons in this question
+  document.querySelectorAll('[data-quiz="' + qId + '"]').forEach(b => {
+    b.classList.remove('correct', 'wrong', 'selected');
+  });
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const fb = document.getElementById(qId + '-fb');
+  if (fb) {
+    fb.style.display = 'block';
+    fb.className = 'result' + (isCorrect ? '' : ' error');
+    fb.textContent = isCorrect ? '✅ 正确！很棒！' : '❌ 不对哦，再想想～';
+  }
+}
+
+/* ─── Self-check Logic ─── */
+function checkSelf(input, expected, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.style.display = 'none'; return; }
+  fb.style.display = 'block';
+  const normalized = val.replace(/\s+/g, '').toLowerCase();
+  const expNorm = expected.replace(/\s+/g, '').toLowerCase();
+  if (normalized === expNorm) {
+    fb.className = 'result'; fb.textContent = '✅ 正确！';
+  } else {
+    fb.className = 'result error'; fb.textContent = '❌ 不对哦，答案应该是 ' + expected + '，再试试看～';
+  }
+}
+
+/* ─── Step Check Logic ─── */
+function checkStep(input, expected, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.textContent = ''; return; }
+  if (val === expected || val.toLowerCase() === expected.toLowerCase()) {
+    fb.textContent = '✅'; fb.style.color = '#22c55e';
+  } else {
+    fb.textContent = '❌'; fb.style.color = '#ef4444';
+  }
+}
+
+/* ─── Drag & Drop Game ─── */
+let dragScore = 0, dragTotal = 0;
+
+document.querySelectorAll('.drag-item').forEach(item => {
+  item.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.textContent.trim());
+    e.dataTransfer.setData('correct', e.target.dataset.correct);
+    e.dataTransfer.setData('source', e.target.outerHTML);
+  });
+  item.addEventListener('dragend', function() {
+    // visual feedback
+  });
+});
+
+function handleDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+function handleDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+
+function handleDrop(e) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  const zoneId = e.currentTarget.id;
+  const zoneType = zoneId === 'zone-liter' ? 'liter' : 'ml';
+  const correct = e.dataTransfer.getData('correct');
+  const itemText = e.dataTransfer.getData('text/plain');
+
+  dragTotal++;
+  const itemsDiv = document.getElementById(zoneId + '-items');
+
+  if (correct === zoneType) {
+    dragScore++;
+    const tag = document.createElement('span');
+    tag.className = 'drag-item';
+    tag.style.cssText = 'background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);cursor:default';
+    tag.textContent = '✅ ' + itemText;
+    itemsDiv.appendChild(tag);
+  } else {
+    const tag = document.createElement('span');
+    tag.className = 'drag-item';
+    tag.style.cssText = 'background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2);cursor:default';
+    tag.textContent = '❌ ' + itemText;
+    itemsDiv.appendChild(tag);
+  }
+
+  // Disable the dragged item
+  document.querySelectorAll('.drag-item').forEach(item => {
+    if (item.textContent.trim() === itemText && !item.classList.contains('placed')) {
+      item.classList.add('placed');
+    }
+  });
+
+  // Update score
+  const scoreEl = document.getElementById('drag-score');
+  if (scoreEl) {
+    scoreEl.textContent = '得分：' + dragScore + ' / ' + dragTotal +
+      (dragScore === dragTotal ? ' 🎉 全部正确！' : '');
+  }
+}
+
+function resetDragGame() {
+  dragScore = 0; dragTotal = 0;
+  document.getElementById('zone-liter-items').innerHTML = '';
+  document.getElementById('zone-ml-items').innerHTML = '';
+  document.querySelectorAll('.drag-item').forEach(item => item.classList.remove('placed'));
+  document.getElementById('drag-score').textContent = '';
+}
+</script>
+</body>
+</html>
