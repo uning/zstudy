@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>多边形的面积 — 苏教版4升5暑假衔接（五上U2）</title>
+<meta name="description" content="苏教版4升5暑假衔接 · 五年级上册第二单元：多边形的面积（平行四边形、三角形、梯形）新授与自学互动课件">
+<meta name="course-id" content="polygon-area-g5">
+<meta name="course-title" content="多边形的面积">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="4升5衔接">
+<meta name="course-version" content="1.0">
+<meta name="teachany-version" content="7.20.0">
+<meta name="teachany-node" content="math-e-polygon-area">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="geometry-area">
+<meta name="teachany-lesson-type" content="新授+自学">
+<meta name="teachany-template-version" content="2.0">
+
+<style>
+/* ======================================================
+   TeachAny v2 — Elementary Warm Mode
+   苏教版4升5暑假衔接 · 多边形的面积（五上U2）
+   ====================================================== */
+:root {
+  --bg: #FFF8F0;
+  --bg-subtle: #FFF0E5;
+  --panel: #FFFFFF;
+  --card: #FFFFFF;
+  --card-elevated: #FFFBF7;
+  --line: #FFD4C0;
+  --line-subtle: rgba(255, 107, 107, 0.10);
+  --text: #2D3436;
+  --text-secondary: #5A6268;
+  --muted: #8A9298;
+  --brand: #FF6B6B;
+  --brand-soft: rgba(255, 107, 107, 0.10);
+  --brand-2: #4ECDC4;
+  --brand-2-soft: rgba(78, 205, 196, 0.10);
+  --accent: #4ECDC4;
+  --accent-soft: rgba(78, 205, 196, 0.08);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+  --slide-height: 100vh;
+  --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+  --sidenav-width: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container {
+  scroll-snap-type: y proximity;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body.play-mode .slide-container {
+  scroll-snap-type: y mandatory;
+  overflow: hidden;
+}
+
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative;
+  overflow: hidden;
+}
+.slide-page .slide-inner {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+
+/* Page backgrounds — warm elementary */
+.slide-page[data-page-type="cover"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #FFE8D6 30%, #E8F8F5 70%, #FFF5EE 100%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(32px, 7vw, 56px);
+  line-height: 1.15;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8A65 50%, #4ECDC4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(16px, 3vw, 22px);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.slide-page[data-page-type="objectives"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 100%);
+}
+.slide-page[data-page-type="concept"] {
+  background: linear-gradient(135deg, #FFFBF7 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="interactive"] {
+  background: linear-gradient(135deg, #E8F8F5 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="quiz"] {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
+}
+.slide-page[data-page-type="summary"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 50%, #FFF5EE 100%);
+}
+
+/* Brand Bar */
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 10px 20px;
+  background: rgba(255, 248, 240, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle);
+  transition: transform 0.3s ease;
+}
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 15px; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: var(--muted); font-family: ui-monospace, monospace; background: rgba(0,0,0,.04); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 1px 0 rgba(0,0,0,0.02);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.card-accent { border-top: 3px solid; border-image: linear-gradient(90deg, var(--brand), var(--brand-2)) 1; }
+.card-glow { box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 0 40px rgba(255,107,107,0.08); }
+
+/* Section Header */
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; line-height: 1.3; }
+
+/* Phase Tag */
+.phase-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand); background: var(--brand-soft);
+  border: 1px solid rgba(255,107,107,0.2); border-radius: 999px;
+  padding: 5px 12px; font-size: 12px; font-weight: 600;
+}
+.phase-tag[data-variant="success"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(78,205,196,0.2); }
+.phase-tag[data-variant="purple"] { color: #a78bfa; background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.flex-row { display: flex; gap: 12px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.flex-row .choice { flex: 1; min-width: 120px; text-align: center; }
+
+/* Objectives */
+.objectives { display: grid; grid-template-columns: 1fr; gap: 10px; list-style: none; padding: 0; margin: 0; }
+.objectives li {
+  display: flex; align-items: flex-start; gap: 10px; padding: 14px 18px;
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  border: 1px solid var(--line-subtle); transition: background 0.2s;
+}
+.objectives li:hover { background: rgba(255,107,107,0.06); }
+.objectives li::before { content: "✦"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+/* Choice Buttons */
+.choice {
+  width: 100%; text-align: left; border: 1px solid rgba(255,107,107,0.15);
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  color: var(--text); padding: 16px 20px; cursor: pointer;
+  font-size: 15px; line-height: 1.5; transition: all 0.2s;
+}
+.choice:hover { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.3); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(255,107,107,0.10); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,0.06); }
+
+/* Result / Feedback */
+.result {
+  padding: 16px 20px; border-radius: var(--card-radius-sm);
+  background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15);
+  font-size: 15px; line-height: 1.6;
+}
+.result.warn { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.15); }
+.result.error { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.15); }
+
+/* Canvas */
+.canvas-wrap { overflow: auto; background: var(--bg-subtle); border: 1px solid var(--line-subtle); border-radius: 16px; padding: 16px; display: flex; justify-content: center; }
+
+/* Concept card */
+.concept-box {
+  padding: 20px; border-radius: var(--card-radius-sm);
+  background: linear-gradient(135deg, rgba(255,107,107,0.04), rgba(78,205,196,0.04));
+  border: 1px solid var(--line-subtle);
+}
+.concept-box h3 { font-size: 20px; color: var(--brand); margin-bottom: 10px; }
+.concept-box .highlight { display: inline-block; background: linear-gradient(120deg, rgba(255,107,107,0.15), rgba(255,107,107,0.05)); padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+
+/* Step grid */
+.step-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+.step-item { display: flex; gap: 12px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: var(--bg-subtle); border: 1px solid var(--line-subtle); }
+.step-item .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+
+/* Visual examples */
+.visual-example { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin: 20px 0; }
+.visual-example .ve-item { text-align: center; min-width: 100px; }
+.visual-example .ve-icon { font-size: 48px; display: block; margin-bottom: 8px; }
+.visual-example .ve-label { font-size: 13px; color: var(--text-secondary); }
+
+/* Conversion table */
+.convert-table { width: 100%; border-collapse: collapse; margin-top: 12px; border-radius: var(--card-radius-sm); overflow: hidden; }
+.convert-table th, .convert-table td { padding: 10px 16px; text-align: center; border: 1px solid var(--line-subtle); }
+.convert-table th { background: rgba(255,107,107,0.08); font-weight: 700; color: var(--brand); }
+.convert-table tr:nth-child(even) td { background: rgba(0,0,0,0.01); }
+
+/* Summary items */
+.summary-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); margin-bottom: 8px; }
+.summary-item .num { font-weight: 700; flex-shrink: 0; color: var(--brand); min-width: 24px; }
+
+/* Self-check */
+.self-check-input { margin: 12px 0; }
+.self-check-input label { display: block; color: var(--text-secondary); font-size: 14px; margin-bottom: 6px; }
+.self-check-input input {
+  width: 100%; max-width: 200px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--bg-subtle);
+  color: var(--text); padding: 12px 16px; font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.self-check-input input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.check-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 999px; border: none;
+  background: var(--brand); color: #fff; cursor: pointer;
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+  transition: all 0.2s;
+}
+.check-btn:hover { background: #ff5252; transform: scale(1.03); }
+
+/* Drag-drop zone for formula game */
+.drop-zones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+.drop-zone {
+  width: 200px; min-height: 120px; border: 2px dashed var(--brand);
+  border-radius: var(--card-radius-sm); padding: 12px;
+  text-align: center; background: var(--brand-soft);
+  transition: all 0.2s;
+}
+.drop-zone.drag-over { border-color: var(--accent); background: var(--accent-soft); transform: scale(1.03); }
+.drop-zone h4 { font-size: 15px; color: var(--brand); margin-bottom: 8px; }
+.drop-zone svg { display:block; margin: 0 auto 8px; }
+.drop-items { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 12px 0; }
+.drag-item {
+  padding: 10px 18px; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--line);
+  cursor: grab; user-select: none; font-size: 14px;
+  transition: all 0.2s;
+}
+.drag-item:active { cursor: grabbing; transform: scale(1.05); }
+.drag-item.placed { opacity: 0.4; pointer-events: none; }
+.drag-item.selected { border-color: var(--brand); background: rgba(255,107,107,0.12); box-shadow: 0 0 0 3px rgba(255,107,107,0.12); }
+
+/* TTS narrator button replacement */
+.tts-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--bg-subtle); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; transition: all 0.2s;
+}
+.tts-btn:hover { border-color: var(--brand); color: var(--brand); }
+
+/* Badge */
+.ta-badge {
+  position: fixed; bottom: 80px; left: 20px; z-index: 80;
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; background: rgba(255,255,255,0.9);
+  border-radius: 50px; backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,107,107,0.12);
+  font-size: 12px; color: var(--text-secondary);
+}
+.ta-badge img, .ta-badge .icon { width: 24px; height: 24px; border-radius: 50%; }
+
+/* Slide Progress */
+.slide-progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  z-index: 200; transition: width 0.3s ease;
+}
+
+/* Toolbar */
+.slide-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 10px 20px;
+  padding-bottom: calc(10px + var(--safe-bottom));
+  background: rgba(255,248,240,0.94); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+  transform: translateY(100%); transition: transform 0.3s ease;
+}
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: none; border-radius: 10px;
+  background: rgba(0,0,0,0.04); color: var(--text); cursor: pointer;
+  transition: all 0.2s; font-size: 18px;
+}
+.toolbar-btn:hover { background: rgba(0,0,0,0.08); }
+.toolbar-btn.active { background: var(--brand-soft); color: var(--brand); }
+.toolbar-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,0.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width 0.3s ease; }
+
+/* Side Nav */
+.slide-sidenav {
+  position: fixed; right: 12px; top: 50%; transform: translateY(-50%);
+  z-index: 90; display: flex; flex-direction: column; align-items: flex-end;
+  gap: 3px; opacity: 0; transition: opacity 0.3s ease;
+  max-height: 70vh; overflow-y: auto; scrollbar-width: none;
+  padding: 8px 4px; border-radius: 12px;
+  background: rgba(255,255,255,0.6); backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot {
+  width: 28px; height: 4px; border-radius: 2px;
+  background: rgba(0,0,0,0.08); border: none; cursor: pointer;
+  transition: all 0.3s; flex-shrink: 0; padding: 0;
+}
+.sidenav-dot:hover { background: rgba(255,107,107,0.3); width: 36px; }
+.sidenav-dot.active { background: var(--brand); width: 36px; height: 5px; box-shadow: 0 0 10px rgba(255,107,107,0.4); }
+.sidenav-dot[data-tooltip]::before {
+  content: attr(data-tooltip); position: absolute; right: calc(100% + 10px);
+  top: 50%; transform: translateY(-50%); padding: 5px 10px;
+  background: rgba(255,255,255,0.95); border: 1px solid var(--line);
+  border-radius: 6px; color: var(--text); font-size: 11px;
+  white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.sidenav-dot:hover[data-tooltip]::before { opacity: 1; }
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,0.35); text-align: center; padding: 4px 0 2px; width: 100%; }
+
+/* Play FAB */
+.play-mode-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%; border: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(255,107,107,0.3); transition: all 0.3s;
+}
+.play-mode-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(255,107,107,0.4); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+.play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* kg placeholder */
+.tkg-placeholder { text-align: center; padding: 20px; color: var(--muted); }
+.tkg-placeholder svg { width: 60px; height: 60px; margin-bottom: 8px; opacity: 0.3; }
+
+/* AI tutor placeholder */
+.ttc-placeholder { text-align: center; padding: 30px; }
+.ttc-placeholder .ttc-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
+
+/* formula display */
+.formula-display { font-size: 22px; font-weight: 800; color: var(--brand); text-align: center; padding: 10px 0; }
+.formula-note { font-size: 13px; color: var(--muted); text-align:center; }
+
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; --card-radius: 16px; }
+  .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .grid, .grid-2, .objectives, .grid-2col { grid-template-columns: 1fr !important; }
+  .flex-row { flex-direction: column; }
+  .flex-row .choice { min-width: 100%; }
+  .card { padding: 18px; }
+  .teachany-brand-bar { padding: 8px 12px; }
+  .brand-name { display: none; }
+  .drop-zones { flex-direction: column; align-items: center; }
+  .drop-zone { width: 100%; max-width: 280px; }
+}
+
+@media (max-width: 480px) {
+  .slide-page[data-page-type="cover"] h1 { font-size: 28px; }
+  .toolbar-progress { max-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+
+<!-- Brand Bar -->
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="https://weponusa.github.io/teachany/">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <span class="brand-version">v1.0 · skill v7.20</span>
+  </div>
+</div>
+
+<!-- Slide Container -->
+<div class="slide-container" id="slide-container">
+
+<!-- Page 1: Cover -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tsh="封面">
+  <div class="slide-inner">
+    <h1>多边形的面积</h1>
+    <p class="subtitle">平行四边形、三角形、梯形的面积怎么算？底和高为什么要"配对"？</p>
+    <figure class="ta-standard-figure" style="margin-top:32px">
+      <img src="./assets/hero.svg" alt="多边形面积知识结构图" style="max-width:720px">
+      <figcaption>平行四边形 / 三角形 / 梯形 的面积公式 · 知识结构总览</figcaption>
+    </figure>
+    <p style="color:var(--muted);margin-top:16px;font-size:14px">苏教版 · 4升5暑假衔接 · 五年级上册第二单元</p>
+    <p style="color:var(--muted);font-size:13px">新授 + 自学互动课件</p>
+  </div>
+</section>
+
+<!-- Page 2: Problem Anchor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tsh="问题锚点">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag">Problem Anchor</span>
+        <h2>今天想解决什么问题？</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">选一个你关心的问题，后面的内容会围绕它展开。</p>
+      <div class="grid" id="problem-anchor-choices">
+        <button class="choice" data-anchor-choice="平行四边形面积怎么算">🔷 平行四边形的面积怎么算？</button>
+        <button class="choice" data-anchor-choice="三角形梯形面积公式">🔺 三角形和梯形的面积怎么求？</button>
+        <button class="choice" data-anchor-choice="底和高为什么要对应">📐 为什么"底"和"高"一定要对应？</button>
+      </div>
+      <label style="display:block;margin-top:16px;color:var(--muted);font-size:14px">或者，写下你自己想问的问题
+        <input id="learner-question-input" placeholder="把你好奇的问题写在这里" style="margin-top:8px">
+      </label>
+      <p id="anchor-feedback" class="result warn" style="margin-top:14px">👆 选择一个问题，或者写下你的疑问，课程会围绕它展开～</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 3: Learning Objectives -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tsh="学习目标">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Objectives</span>
+        <h2>学习目标</h2>
+      </div>
+      <ul class="objectives">
+        <li>通过<b>割补转化</b>，理解平行四边形面积 = <b>底 × 高</b></li>
+        <li>掌握<b>三角形</b>面积 = 底 × 高 ÷ 2，知道它和平行四边形的关系</li>
+        <li>掌握<b>梯形</b>面积 =（上底+下底）× 高 ÷ 2</li>
+        <li>能判断<b>底和高是否对应（互相垂直）</b>，正确计算简单图形的面积</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Page 4: Pre-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="3" data-tsh="前测">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">Pre-Test</span>
+        <h2>先来试试看 👀</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">别担心，答错了也没关系，试试看！</p>
+      <div style="margin-bottom:16px">
+        <p style="font-weight:600;margin-bottom:6px">Q1: 一个长方形，长 6 cm、宽 4 cm，面积是多少？</p>
+        <button class="choice" data-quiz="pretest-q1" data-answer="correct" data-explain="✅ 正确！长方形面积 = 长 × 宽 = 6 × 4 = 24 平方厘米。平行四边形就是用同样思路来算的。" onclick="checkQuizBtn(this)">A. 24 平方厘米</button>
+        <button class="choice" data-quiz="pretest-q1" data-answer="wrong" data-explain="❌ 不对哦。应该是 6 × 4 = 24，不是把长宽相加。" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 10 平方厘米</button>
+        <button class="choice" data-quiz="pretest-q1" data-answer="wrong" data-explain="❌ 不对哦。应该是 6 × 4 = 24，不是 6 + 4。" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 20 平方厘米</button>
+        <p class="result" id="pretest-q1-fb" style="display:none;margin-top:8px"></p>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="font-weight:600;margin-bottom:6px">Q2: 把一张平行四边形纸，沿高剪开拼成一个长方形，面积会怎样？</p>
+        <button class="choice" data-quiz="pretest-q2" data-answer="correct" data-explain="✅ 正确！割补只是形状变了，纸的大小没变，所以面积不变。" onclick="checkQuizBtn(this)">A. 面积不变</button>
+        <button class="choice" data-quiz="pretest-q2" data-answer="wrong" data-explain="❌ 不对哦。剪开再拼只是改变形状，没有撕掉纸，面积不变。" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 面积变大</button>
+        <button class="choice" data-quiz="pretest-q2" data-answer="wrong" data-explain="❌ 不对哦。剪开再拼只是改变形状，面积不变。" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 面积变小</button>
+        <p class="result" id="pretest-q2-fb" style="display:none;margin-top:8px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:6px">Q3: 两个完全一样的三角形，能拼成什么图形？</p>
+        <button class="choice" data-quiz="pretest-q3" data-answer="wrong" data-explain="❌ 不一定。两个完全一样的三角形拼成的是平行四边形哦。" onclick="checkQuizBtn(this)">A. 长方形</button>
+        <button class="choice" data-quiz="pretest-q3" data-answer="correct" data-explain="✅ 正确！两个完全一样的三角形可以拼成一个平行四边形，所以三角形面积 = 平行四边形面积 ÷ 2。" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 平行四边形</button>
+        <button class="choice" data-quiz="pretest-q3" data-answer="wrong" data-explain="❌ 不对哦。两个完全一样的三角形拼成的是平行四边形。" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 梯形</button>
+        <p class="result" id="pretest-q3-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 5: 推导引入 — 平行四边形割补成长方形 -->
+<section class="slide-page" data-page-type="concept" data-page-index="4" data-tsh="推导引入 - 割补法">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">推导引入</span>
+        <h2>平行四边形 → 长方形 🔧</h2>
+      </div>
+      <p style="color:var(--text-secondary);margin:0 0 12px">我们还不会直接算平行四边形面积。但会算长方形！那就把它"变"成长方形。</p>
+      <div class="canvas-wrap">
+        <svg viewBox="0 0 560 200" width="100%" style="max-width:560px" aria-label="平行四边形割补成长方形">
+          <!-- 平行四边形 -->
+          <polygon points="60,150 220,150 260,90 100,90" fill="rgba(255,107,107,0.12)" stroke="#FF6B6B" stroke-width="2.5"/>
+          <line x1="100" y1="90" x2="100" y2="150" stroke="#4ECDC4" stroke-width="2.5" stroke-dasharray="5 4"/>
+          <text x="160" y="178" text-anchor="middle" font-size="13" fill="#5A6268">底</text>
+          <text x="86" y="125" text-anchor="middle" font-size="13" fill="#4ECDC4">高</text>
+          <text x="160" y="125" text-anchor="middle" font-size="13" fill="#FF6B6B">剪下左三角</text>
+          <!-- 箭头 -->
+          <line x1="275" y1="120" x2="320" y2="120" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+          <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#999"/></marker></defs>
+          <!-- 长方形 -->
+          <rect x="330" y="90" width="200" height="60" fill="rgba(78,205,196,0.12)" stroke="#4ECDC4" stroke-width="2.5"/>
+          <line x1="330" y1="90" x2="330" y2="150" stroke="#FF6B6B" stroke-width="2.5" stroke-dasharray="5 4"/>
+          <text x="430" y="178" text-anchor="middle" font-size="13" fill="#5A6268">长 = 底</text>
+          <text x="318" y="125" text-anchor="middle" font-size="13" fill="#FF6B6B">宽 = 高</text>
+        </svg>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>关键发现：</b>割补后，长方形的<b>长 = 平行四边形的底</b>，长方形的<b>宽 = 平行四边形的高</b>。因为面积不变，所以：
+        <div class="formula-display" style="margin-top:8px">平行四边形面积 = 底 × 高</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 6: Concept 1 — 平行四边形的面积 -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tsh="概念1 - 平行四边形面积">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 1</span>
+        <h2>平行四边形的面积 🔷</h2>
+      </div>
+      <div class="concept-box">
+        <h3>公式</h3>
+        <p><span class="highlight">平行四边形面积 = 底 × 高</span></p>
+        <p>用字母表示：<b>S = a × h</b>（a 是底，h 是高）</p>
+      </div>
+      <div class="visual-example">
+        <div class="ve-item">
+          <svg width="90" height="60" viewBox="0 0 90 60"><polygon points="15,50 70,50 80,20 25,20" fill="rgba(255,107,107,0.12)" stroke="#FF6B6B" stroke-width="2.5"/><line x1="25" y1="20" x2="25" y2="50" stroke="#4ECDC4" stroke-width="2.5"/><text x="42" y="62" font-size="11" fill="#5A6268">底 a</text><text x="10" y="38" font-size="11" fill="#4ECDC4">高 h</text></svg>
+          <span class="ve-label">底 × 高</span>
+        </div>
+        <div class="ve-item"><span class="ve-icon">🟰</span><span class="ve-label">面积不变</span></div>
+        <div class="ve-item">
+          <svg width="80" height="60" viewBox="0 0 80 60"><rect x="10" y="20" width="60" height="30" fill="rgba(78,205,196,0.12)" stroke="#4ECDC4" stroke-width="2.5"/><text x="40" y="62" font-size="11" fill="#5A6268">长×宽</text></svg>
+          <span class="ve-label">转化成长方形</span>
+        </div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"平行四边形算面积，<b>底乘高</b>，别乘斜边要记牢！"（高要和底互相垂直）
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：一个平行四边形，底是 8 厘米，高是 5 厘米，面积是多少平方厘米？</label>
+        <input id="check-para" placeholder="写下你的答案（数字）" oninput="checkSelf(this,'40','check-para-fb')">
+        <p class="result" id="check-para-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 7: Concept 2 — 三角形的面积 -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tsh="概念2 - 三角形面积">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 2</span>
+        <h2>三角形的面积 🔺</h2>
+      </div>
+      <div class="concept-box">
+        <h3>公式</h3>
+        <p><span class="highlight">三角形面积 = 底 × 高 ÷ 2</span></p>
+        <p>用字母表示：<b>S = a × h ÷ 2</b></p>
+        <p>两个<b>完全一样</b>的三角形，可以拼成一个平行四边形；三角形面积是它的一半。</p>
+      </div>
+      <div class="canvas-wrap">
+        <svg viewBox="0 0 360 130" width="100%" style="max-width:360px" aria-label="两个一样三角形拼成平行四边形">
+          <polygon points="20,110 110,110 65,40" fill="rgba(78,205,196,0.18)" stroke="#4ECDC4" stroke-width="2.5"/>
+          <polygon points="110,110 200,110 155,40" fill="rgba(255,107,107,0.14)" stroke="#FF6B6B" stroke-width="2.5"/>
+          <text x="115" y="128" font-size="12" fill="#5A6268">两个一样的三角形 → 平行四边形</text>
+        </svg>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"三角形面积很好记，<b>底乘高再除以二</b>！"
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：一个三角形，底是 6 厘米，高是 4 厘米，面积是多少平方厘米？</label>
+        <input id="check-tri" placeholder="写下你的答案（数字）" oninput="checkSelf(this,'12','check-tri-fb')">
+        <p class="result" id="check-tri-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 8: Concept 3 — 梯形的面积 -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tsh="概念3 - 梯形面积">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 3</span>
+        <h2>梯形的面积 🔻</h2>
+      </div>
+      <div class="concept-box">
+        <h3>公式</h3>
+        <p><span class="highlight">梯形面积 =（上底 + 下底）× 高 ÷ 2</span></p>
+        <p>用字母表示：<b>S =（a + b）× h ÷ 2</b>（a 上底，b 下底，h 高）</p>
+        <p>两个<b>完全一样</b>的梯形，可以拼成一个平行四边形，它的底 = 上底+下底。</p>
+      </div>
+      <div class="canvas-wrap">
+        <svg viewBox="0 0 360 130" width="100%" style="max-width:360px" aria-label="两个一样梯形拼成平行四边形">
+          <polygon points="50,110 150,110 130,50 70,50" fill="rgba(245,158,11,0.18)" stroke="#f59e0b" stroke-width="2.5"/>
+          <polygon points="150,110 250,110 230,50 170,50" fill="rgba(255,107,107,0.14)" stroke="#FF6B6B" stroke-width="2.5"/>
+          <text x="150" y="128" font-size="12" fill="#5A6268">两个一样的梯形 → 底=上底+下底</text>
+        </svg>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"梯形面积要记清，<b>上底加下底，乘高再除以二</b>！"
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：一个梯形，上底 4 厘米、下底 6 厘米、高 5 厘米，面积是多少平方厘米？</label>
+        <input id="check-trap" placeholder="写下你的答案（数字）" oninput="checkSelf(this,'25','check-trap-fb')">
+        <p class="result" id="check-trap-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 9: Concept 4 — 底和高要对应 -->
+<section class="slide-page" data-page-type="concept" data-page-index="8" data-tsh="概念4 - 底和高对应">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">Concept 4</span>
+        <h2>⚠️ 底和高必须"对应"！</h2>
+      </div>
+      <div class="concept-box">
+        <h3>什么是"对应"？</h3>
+        <p><b>高</b>是从底边<b>垂直</b>向上（或向下）到对边的距离。选了哪条<b>底</b>，就要用和它<b>互相垂直</b>的那条高，不能随便用一条斜边或别的高。</p>
+      </div>
+      <div class="canvas-wrap">
+        <svg viewBox="0 0 360 160" width="100%" style="max-width:360px" aria-label="底和高要对应">
+          <polygon points="40,130 260,130 310,60 90,60" fill="rgba(255,107,107,0.10)" stroke="#FF6B6B" stroke-width="2.5"/>
+          <line x1="90" y1="60" x2="90" y2="130" stroke="#4ECDC4" stroke-width="3"/>
+          <text x="150" y="150" font-size="12" fill="#5A6268">底 a</text>
+          <text x="72" y="100" font-size="12" fill="#4ECDC4">✓ 对应的高 h</text>
+          <line x1="180" y1="130" x2="270" y2="78" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4"/>
+          <text x="280" y="100" font-size="11" fill="#ef4444">✗ 不垂直</text>
+        </svg>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"底和高，要配对，<b>垂直相连</b>才算对；斜边不能当高用，对应错了全白费！"
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：求面积时，底和高之间必须满足什么关系？（写一个词）</label>
+        <input id="check-correspond" placeholder="写下你的答案" oninput="checkSelf(this,'垂直','check-correspond-fb')">
+        <p class="result" id="check-correspond-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 10: Scaffold Practice -->
+<section class="slide-page" data-page-type="quiz" data-page-index="9" data-tsh="脚手架练习">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Scaffold</span>
+        <h2>分步练习 ✍️</h2>
+      </div>
+      <div class="step-grid">
+        <div class="step-item">
+          <span class="step-num">1</span>
+          <div>
+            <b>平行四边形：</b>底 12 cm，高 4 cm，面积 =<br>
+            <input id="s1" style="width:90px;margin-top:6px;padding:6px 10px" placeholder="? cm²" oninput="checkStep(this,'48','s1-fb')"> cm²
+            <span id="s1-fb" style="font-size:13px;margin-left:8px"></span>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">2</span>
+          <div>
+            <b>三角形：</b>底 10 cm，高 6 cm，面积 =<br>
+            <input id="s2" style="width:90px;margin-top:6px;padding:6px 10px" placeholder="? cm²" oninput="checkStep(this,'30','s2-fb')"> cm²
+            <span id="s2-fb" style="font-size:13px;margin-left:8px"></span>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">3</span>
+          <div>
+            <b>梯形：</b>上底 5 cm，下底 7 cm，高 4 cm，面积 =<br>
+            <input id="s3" style="width:90px;margin-top:6px;padding:6px 10px" placeholder="? cm²" oninput="checkStep(this,'24','s3-fb')"> cm²
+            <span id="s3-fb" style="font-size:13px;margin-left:8px"></span>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">4</span>
+          <div>
+            <b>逆推：</b>一个平行四边形面积 24 cm²，底 8 cm，高 =<br>
+            <input id="s4" style="width:90px;margin-top:6px;padding:6px 10px" placeholder="? cm" oninput="checkStep(this,'3','s4-fb')"> cm
+            <span id="s4-fb" style="font-size:13px;margin-left:8px"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 11: ConceptTest -->
+<section class="slide-page" data-page-type="quiz" data-page-index="10" data-tsh="概念诊断">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">ConceptTest</span>
+        <h2>概念过关测试 🎯</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">4道题，看看你掌握了多少？</p>
+
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第1题：平行四边形底 9 cm、高 3 cm，面积是多少？</p>
+        <button class="choice" data-quiz="ct-q1" data-answer="correct" data-explain="✅ 正确！9 × 3 = 27 平方厘米。" onclick="checkQuizBtn(this)">A. 27 cm²</button>
+        <button class="choice" data-quiz="ct-q1" data-answer="wrong" data-explain="❌ 不对哦。平行四边形面积 = 底 × 高 = 9 × 3 = 27。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 12 cm²</button>
+        <button class="choice" data-quiz="ct-q1" data-answer="wrong" data-explain="❌ 不对哦。应该是底 × 高 = 9 × 3 = 27，不是斜边相乘。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 18 cm²</button>
+        <p class="result" id="ct-q1-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第2题：三角形面积 24 cm²、底 8 cm，高是多少？</p>
+        <button class="choice" data-quiz="ct-q2" data-answer="wrong" data-explain="❌ 不对哦。高 = 面积 × 2 ÷ 底 = 24 × 2 ÷ 8 = 6 cm。" onclick="checkQuizBtn(this)">A. 3 cm</button>
+        <button class="choice" data-quiz="ct-q2" data-answer="correct" data-explain="✅ 正确！高 = 面积 × 2 ÷ 底 = 24 × 2 ÷ 8 = 6 cm。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 6 cm</button>
+        <button class="choice" data-quiz="ct-q2" data-answer="wrong" data-explain="❌ 不对哦。高 = 24 × 2 ÷ 8 = 6 cm，不是直接用面积除以底（那会漏掉 ÷2 的反运算）。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 16 cm</button>
+        <p class="result" id="ct-q2-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第3题：一个图形由两个三角形拼成（如图），求总面积可以先算什么？</p>
+        <button class="choice" data-quiz="ct-q3" data-answer="wrong" data-explain="❌ 不太对。组合图形可以先分割成已学图形（如平行四边形+三角形），分别求面积再相加。" onclick="checkQuizBtn(this)">A. 直接量周长</button>
+        <button class="choice" data-quiz="ct-q3" data-answer="correct" data-explain="✅ 正确！组合图形常先'分割'成平行四边形、三角形等基本图形，分别求面积再相加。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 分割成基本图形分别算再相加</button>
+        <button class="choice" data-quiz="ct-q3" data-answer="wrong" data-explain="❌ 不对哦。组合图形面积一般靠分割/添补成学过的图形来算，不是估出来。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 凭眼睛估算</button>
+        <p class="result" id="ct-q3-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600">第4题：下面哪种"高"能用？（底和高要对应）</p>
+        <button class="choice" data-quiz="ct-q4" data-answer="correct" data-explain="✅ 正确！高必须和底互相垂直（从底边垂直引到对边）。" onclick="checkQuizBtn(this)">A. 从底边垂直画到对边的线段</button>
+        <button class="choice" data-quiz="ct-q4" data-answer="wrong" data-explain="❌ 不对哦。斜边不垂直于底，不能当高用。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 平行四边形的一条斜边</button>
+        <button class="choice" data-quiz="ct-q4" data-answer="wrong" data-explain="❌ 不对哦。高必须和所选的底互相垂直才对应。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 随便一条不垂直的线</button>
+        <p class="result" id="ct-q4-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 12: Interactive — 公式分类游戏 -->
+<section class="slide-page" data-page-type="interactive" data-page-index="11" data-tsh="互动 - 公式分类">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Interactive</span>
+        <h2>公式分类大挑战 🎮</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">把右边的<b>公式卡</b>拖到（或点击选中后点）对应的图形区域！</p>
+
+      <div class="drop-zones">
+        <div class="drop-zone" id="zone-para" data-zone="para" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" onclick="placeSelected('para')">
+          <svg width="80" height="44" viewBox="0 0 80 44"><polygon points="14,38 66,38 74,14 22,14" fill="rgba(255,107,107,0.12)" stroke="#FF6B6B" stroke-width="2.5"/></svg>
+          <h4>🔷 平行四边形</h4>
+          <div class="zone-items" id="zone-para-items"></div>
+        </div>
+        <div class="drop-zone" id="zone-tri" data-zone="tri" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" onclick="placeSelected('tri')">
+          <svg width="80" height="44" viewBox="0 0 80 44"><polygon points="40,8 70,38 10,38" fill="rgba(78,205,196,0.16)" stroke="#4ECDC4" stroke-width="2.5"/></svg>
+          <h4>🔺 三角形</h4>
+          <div class="zone-items" id="zone-tri-items"></div>
+        </div>
+        <div class="drop-zone" id="zone-trap" data-zone="trap" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" onclick="placeSelected('trap')">
+          <svg width="80" height="44" viewBox="0 0 80 44"><polygon points="26,38 54,38 64,14 16,14" fill="rgba(245,158,11,0.16)" stroke="#f59e0b" stroke-width="2.5"/></svg>
+          <h4>🔻 梯形</h4>
+          <div class="zone-items" id="zone-trap-items"></div>
+        </div>
+      </div>
+
+      <div class="drop-items" id="formula-items">
+        <div class="drag-item" draggable="true" data-correct="para" data-label="底 × 高">底 × 高</div>
+        <div class="drag-item" draggable="true" data-correct="tri" data-label="底 × 高 ÷ 2">底 × 高 ÷ 2</div>
+        <div class="drag-item" draggable="true" data-correct="trap" data-label="(上底+下底)×高÷2">(上底+下底)×高÷2</div>
+      </div>
+
+      <div id="drag-score" style="text-align:center;margin-top:12px;font-weight:700;font-size:16px;color:var(--brand)"></div>
+      <button class="check-btn" onclick="resetFormulaGame()" style="margin:8px auto;display:block">🔄 再来一次</button>
+    </div>
+  </div>
+</section>
+
+<!-- Page 13: Post-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="12" data-tsh="后测">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Post-Test</span>
+        <h2>学后检测 ✅</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">学完了，来检验一下！</p>
+
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">Q1: 梯形上底 3 cm、下底 7 cm、高 4 cm，面积是多少？</p>
+        <button class="choice" data-quiz="post-q1" data-answer="wrong" data-explain="❌ 不对哦。(3+7)×4÷2 = 20 平方厘米。" onclick="checkQuizBtn(this)">A. 10 cm²</button>
+        <button class="choice" data-quiz="post-q1" data-answer="wrong" data-explain="❌ 不对哦。(3+7)×4÷2 = 20，不是 40（要记得 ÷2）。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 40 cm²</button>
+        <button class="choice" data-quiz="post-q1" data-answer="correct" data-explain="✅ 正确！(3+7)×4÷2 = 20 平方厘米。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 20 cm²</button>
+        <p class="result" id="post-q1-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">Q2: 三角形底 10 cm、高 8 cm，面积是多少？</p>
+        <button class="choice" data-quiz="post-q2" data-answer="wrong" data-explain="❌ 不对哦。10 × 8 ÷ 2 = 40 平方厘米，不是 80（要 ÷2）。" onclick="checkQuizBtn(this)">A. 80 cm²</button>
+        <button class="choice" data-quiz="post-q2" data-answer="correct" data-explain="✅ 正确！10 × 8 ÷ 2 = 40 平方厘米。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 40 cm²</button>
+        <button class="choice" data-quiz="post-q2" data-answer="wrong" data-explain="❌ 不对哦。10 × 8 ÷ 2 = 40，不是 18。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 18 cm²</button>
+        <p class="result" id="post-q2-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600">Q3: 平行四边形面积 36 cm²、高 6 cm，底是多少？</p>
+        <button class="choice" data-quiz="post-q3" data-answer="wrong" data-explain="❌ 不对哦。底 = 面积 ÷ 高 = 36 ÷ 6 = 6 cm。" onclick="checkQuizBtn(this)">A. 12 cm</button>
+        <button class="choice" data-quiz="post-q3" data-answer="correct" data-explain="✅ 正确！底 = 面积 ÷ 高 = 36 ÷ 6 = 6 cm。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 6 cm</button>
+        <button class="choice" data-quiz="post-q3" data-answer="wrong" data-explain="❌ 不对哦。36 ÷ 6 = 6 cm，不是 216。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 216 cm</button>
+        <p class="result" id="post-q3-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 14: Summary -->
+<section class="slide-page" data-page-type="summary" data-page-index="13" data-tsh="课堂小结">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Summary</span>
+        <h2>课堂小结 📝</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">回顾一下，今天学到了什么？</p>
+      <div class="summary-item"><span class="num">1</span><div><b>平行四边形</b>：面积 = <b>底 × 高</b>（由长方形割补而来，面积不变）</div></div>
+      <div class="summary-item"><span class="num">2</span><div><b>三角形</b>：面积 = <b>底 × 高 ÷ 2</b>（两个一样三角形拼成平行四边形）</div></div>
+      <div class="summary-item"><span class="num">3</span><div><b>梯形</b>：面积 =（<b>上底 + 下底</b>）× 高 ÷ 2</div></div>
+      <div class="summary-item"><span class="num">4</span><div><b>关键提醒</b>：底和高必须<b>互相垂直、互相对应</b>；单位用平方厘米 / 平方米</div></div>
+      <div class="result" style="margin-top:14px;text-align:center">
+        🎯 现在你能回答了吗？<b>平行四边形、三角形、梯形的面积分别怎么算？底和高为什么要配对？</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 15: Knowledge Graph -->
+<section class="slide-page" data-page-type="summary" data-page-index="14" data-tsh="知识图谱">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
+        <h2>知识图谱</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">多边形面积在知识树中的位置：</p>
+      <div data-teachany-kg="math-e-polygon-area">
+        <div class="tkg-placeholder">
+          <svg viewBox="0 0 80 60" fill="none"><circle cx="40" cy="10" r="6" fill="#FF6B6B" opacity="0.6"/><circle cx="15" cy="45" r="5" fill="#4ECDC4" opacity="0.6"/><circle cx="65" cy="45" r="7" fill="#4ECDC4" opacity="0.6"/><line x1="37" y1="16" x2="18" y2="40" stroke="#ccc" stroke-width="1.5"/><line x1="43" y1="16" x2="62" y2="40" stroke="#ccc" stroke-width="1.5"/></svg>
+          <p style="font-size:13px;color:var(--muted)">⬅ 长方形面积 → <b style="color:var(--brand)">多边形面积</b> → 组合图形 ➡</p>
+          <p style="font-size:12px;color:var(--muted)">完整知识图谱需要 TeachAny 平台支持（点击节点可展开）</p>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;text-align:center">后续学习：组合图形面积、公顷与平方千米（五年级）</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 16: AI Tutor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="15" data-tsh="AI学伴">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">AI Tutor</span>
+        <h2>AI 学伴 🤖</h2>
+      </div>
+      <div data-teachany-tutor-card>
+        <div class="ttc-placeholder">
+          <div class="ttc-avatar">🤖</div>
+          <h3 style="color:var(--text);margin:0 0 8px;font-size:18px">学习小帮手</h3>
+          <p style="color:var(--muted)">在算多边形面积时遇到困难了？</p>
+          <p style="color:var(--muted)">AI 学伴会帮你梳理思路～</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:12px">AI 学伴功能需要 TeachAny 平台支持</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- .slide-container -->
+
+<!-- Side Navigation -->
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<!-- Play Mode FAB -->
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式" title="切换播放模式">
+  <svg id="fab-icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+  <svg id="fab-icon-browse" viewBox="0 0 24 24" style="display:none"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+
+<!-- Bottom Toolbar -->
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页" title="上一页">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <div class="toolbar-progress" id="tb-progress" title="进度">
+    <div class="toolbar-progress-fill" id="tb-progress-fill"></div>
+  </div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 16</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页" title="下一页">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-autoplay" aria-label="自动播放" title="自动播放">
+    <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏" title="全屏">
+    <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+  </button>
+</div>
+
+<div class="ta-badge">
+  <span>🧑‍🏫</span><span>苏教版4升5 · 多边形的面积</span>
+</div>
+
+<script>
+/* ============================================================
+   TeachAny v2 — Slide Controller + Interactive Quizzes
+   ============================================================ */
+(function() {
+  'use strict';
+
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0, isPlayMode = false, isAutoPlay = false, autoPlayTimer = null;
+
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const fab = document.getElementById('play-mode-fab');
+  const fabIconPlay = document.getElementById('fab-icon-play');
+  const fabIconBrowse = document.getElementById('fab-icon-browse');
+  const toolbar = document.getElementById('slide-toolbar');
+  const tbPrev = document.getElementById('tb-prev');
+  const tbNext = document.getElementById('tb-next');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+  const tbProgress = document.getElementById('tb-progress');
+  const tbAutoplay = document.getElementById('tb-autoplay');
+  const tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const counter = document.createElement('div');
+    counter.className = 'sidenav-counter'; counter.id = 'sidenav-counter';
+    counter.textContent = '1/' + totalPages; sidenav.appendChild(counter);
+    pages.forEach((page, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-tooltip', page.dataset.tsh || ('第' + (i + 1) + '页'));
+      dot.setAttribute('aria-label', '跳转到第' + (i + 1) + '页');
+      dot.addEventListener('click', () => goToPage(i));
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    const progress = totalPages > 1 ? (currentPage / (totalPages - 1)) * 100 : 100;
+    progressBar.style.width = progress + '%';
+    tbProgressFill.style.width = progress + '%';
+    tbPageInfo.textContent = (currentPage + 1) + ' / ' + totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
+    const ce = document.getElementById('sidenav-counter'); if (ce) ce.textContent = (currentPage + 1) + '/' + totalPages;
+    tbPrev.style.opacity = currentPage === 0 ? '0.3' : '1';
+    tbNext.style.opacity = currentPage === totalPages - 1 ? '0.3' : '1';
+  }
+
+  function goToPage(index) {
+    if (index < 0 || index >= totalPages) return;
+    currentPage = index;
+    if (isPlayMode) pages[currentPage].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else container.scrollTo({ top: pages[currentPage].offsetTop, behavior: 'smooth' });
+    updateUI();
+  }
+
+  function nextPage() { if (currentPage < totalPages - 1) goToPage(currentPage + 1); }
+  function prevPage() { if (currentPage > 0) goToPage(currentPage - 1); }
+
+  let scrollTimeout;
+  container.addEventListener('scroll', () => {
+    if (isPlayMode) return;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      let closest = 0, minDist = Infinity;
+      pages.forEach((page, i) => {
+        const dist = Math.abs(page.offsetTop - container.scrollTop);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      if (closest !== currentPage) { currentPage = closest; updateUI(); }
+    }, 100);
+  }, { passive: true });
+
+  function togglePlayMode() {
+    isPlayMode = !isPlayMode;
+    document.body.classList.toggle('play-mode', isPlayMode);
+    document.body.classList.toggle('toolbar-visible', isPlayMode);
+    fabIconPlay.style.display = isPlayMode ? 'none' : 'block';
+    fabIconBrowse.style.display = isPlayMode ? 'block' : 'none';
+    if (isPlayMode) goToPage(currentPage);
+  }
+
+  fab.addEventListener('click', togglePlayMode);
+  tbPrev.addEventListener('click', prevPage);
+  tbNext.addEventListener('click', nextPage);
+
+  tbProgress.addEventListener('click', (e) => {
+    const rect = tbProgress.getBoundingClientRect();
+    goToPage(Math.round((e.clientX - rect.left) / rect.width * (totalPages - 1)));
+  });
+
+  tbAutoplay.addEventListener('click', () => {
+    isAutoPlay = !isAutoPlay; tbAutoplay.classList.toggle('active', isAutoPlay);
+    if (isAutoPlay) { stopAutoPlay(); autoPlayTimer = setInterval(() => { if (currentPage < totalPages - 1) nextPage(); else { stopAutoPlay(); isAutoPlay = false; tbAutoplay.classList.remove('active'); } }, 8000); }
+    else stopAutoPlay();
+  });
+  function stopAutoPlay() { if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; } }
+
+  tbFullscreen.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch(e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': e.preventDefault(); nextPage(); break;
+      case 'ArrowLeft': case 'ArrowUp': e.preventDefault(); prevPage(); break;
+      case 'f': case 'F': if (!e.ctrlKey && !e.metaKey) togglePlayMode(); break;
+      case 'Escape': if (isPlayMode) togglePlayMode(); break;
+    }
+  });
+
+  // Problem anchor
+  document.querySelectorAll('[data-anchor-choice]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-anchor-choice]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const fb = document.getElementById('anchor-feedback');
+      if (fb) fb.textContent = '✅ 好的！"' + (btn.getAttribute('data-anchor-choice') || btn.textContent.trim()) + '" — 课程内容会围绕这个问题展开。';
+    });
+  });
+
+  document.getElementById('learner-question-input')?.addEventListener('input', (e) => {
+    const fb = document.getElementById('anchor-feedback');
+    if (fb) fb.textContent = e.target.value.trim() ? '✅ 你的问题：' + e.target.value.trim() : '👆 选择一个问题，或者写下你的疑问～';
+  });
+
+  buildSidenav(); updateUI();
+  document.body.classList.add('toolbar-visible');
+  setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
+})();
+
+/* ─── Quiz Logic (with explanation) ─── */
+function checkQuizBtn(btn) {
+  const qId = btn.dataset.quiz;
+  const isCorrect = btn.dataset.answer === 'correct';
+  document.querySelectorAll('[data-quiz="' + qId + '"]').forEach(b => {
+    b.classList.remove('correct', 'wrong', 'selected');
+  });
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const fb = document.getElementById(qId + '-fb');
+  if (fb) {
+    fb.style.display = 'block';
+    fb.className = 'result' + (isCorrect ? '' : ' error');
+    fb.textContent = (btn.dataset.explain || (isCorrect ? '✅ 正确！很棒！' : '❌ 不对哦，再想想～'));
+  }
+}
+
+/* ─── Self-check Logic ─── */
+function checkSelf(input, expected, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.style.display = 'none'; return; }
+  fb.style.display = 'block';
+  const normalized = val.replace(/\s+/g, '').toLowerCase();
+  const expNorm = expected.replace(/\s+/g, '').toLowerCase();
+  if (normalized === expNorm) {
+    fb.className = 'result'; fb.textContent = '✅ 正确！';
+  } else {
+    fb.className = 'result error'; fb.textContent = '❌ 不对哦，答案应该是 ' + expected + '，再试试看～';
+  }
+}
+
+/* ─── Step Check Logic ─── */
+function checkStep(input, expected, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.textContent = ''; return; }
+  if (val === expected || val.toLowerCase() === expected.toLowerCase()) {
+    fb.textContent = '✅'; fb.style.color = '#22c55e';
+  } else {
+    fb.textContent = '❌'; fb.style.color = '#ef4444';
+  }
+}
+
+/* ─── Formula Classification Game ─── */
+let formulaScore = 0, formulaTotal = 0, selectedFormula = null;
+
+document.querySelectorAll('#formula-items .drag-item').forEach(item => {
+  item.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('correct', e.currentTarget.dataset.correct);
+    e.dataTransfer.setData('label', e.currentTarget.dataset.label);
+    e.dataTransfer.setData('id', e.currentTarget.dataset.label);
+  });
+  item.addEventListener('click', () => {
+    if (item.classList.contains('placed')) return;
+    document.querySelectorAll('#formula-items .drag-item').forEach(d => d.classList.remove('selected'));
+    item.classList.add('selected');
+    selectedFormula = item;
+  });
+});
+
+function handleDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+function handleDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+
+function handleDrop(e) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  const zoneType = e.currentTarget.dataset.zone;
+  const correct = e.dataTransfer.getData('correct');
+  const label = e.dataTransfer.getData('label');
+  placeFormulaInternal(label, correct, zoneType);
+}
+
+function placeSelected(zoneType) {
+  if (!selectedFormula) return;
+  const label = selectedFormula.dataset.label;
+  const correct = selectedFormula.dataset.correct;
+  selectedFormula.classList.remove('selected');
+  selectedFormula = null;
+  placeFormulaInternal(label, correct, zoneType);
+}
+
+function placeFormulaInternal(label, correct, zoneType) {
+  formulaTotal++;
+  const itemsDiv = document.getElementById('zone-' + zoneType + '-items');
+
+  if (correct === zoneType) {
+    formulaScore++;
+    const tag = document.createElement('span');
+    tag.className = 'drag-item';
+    tag.style.cssText = 'background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);cursor:default;margin:3px';
+    tag.textContent = '✅ ' + label;
+    itemsDiv.appendChild(tag);
+  } else {
+    const tag = document.createElement('span');
+    tag.className = 'drag-item';
+    tag.style.cssText = 'background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2);cursor:default;margin:3px';
+    tag.textContent = '❌ ' + label;
+    itemsDiv.appendChild(tag);
+  }
+
+  // Disable the matching formula card
+  document.querySelectorAll('#formula-items .drag-item').forEach(item => {
+    if (item.dataset.label === label && !item.classList.contains('placed')) {
+      item.classList.add('placed');
+    }
+  });
+
+  const scoreEl = document.getElementById('drag-score');
+  if (scoreEl) {
+    scoreEl.textContent = '得分：' + formulaScore + ' / ' + formulaTotal +
+      (formulaTotal > 0 && formulaScore === formulaTotal ? ' 🎉 全部正确！' : '');
+  }
+}
+
+function resetFormulaGame() {
+  formulaScore = 0; formulaTotal = 0; selectedFormula = null;
+  ['para','tri','trap'].forEach(z => document.getElementById('zone-' + z + '-items').innerHTML = '');
+  document.querySelectorAll('#formula-items .drag-item').forEach(item => item.classList.remove('placed','selected'));
+  document.getElementById('drag-score').textContent = '';
+}
+</script>
+</body>
+</html>

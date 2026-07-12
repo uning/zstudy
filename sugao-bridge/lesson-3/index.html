@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>小数乘法和除法 — 苏教版4升5暑假衔接</title>
+<meta name="description" content="苏教版四年级升五年级暑假衔接：小数乘法和除法（五上 U4 / U6 核心算理）的新授与自学互动课件">
+<meta name="course-id" content="sugiao-4to5-decimal-md">
+<meta name="course-title" content="小数乘法和除法">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="四年级升五年级">
+<meta name="course-version" content="1.0">
+<meta name="teachany-version" content="7.20.0">
+<meta name="teachany-node" content="math-e-decimal-mult-div">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="4-5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="number-operation">
+<meta name="teachany-lesson-type" content="新授+自学">
+<meta name="teachany-template-version" content="2.0">
+
+<style>
+/* ======================================================
+   TeachAny v2 — Elementary Warm Mode
+   苏教版4升5暑假衔接 · 小数乘法和除法（五上 U4/U6）
+   ====================================================== */
+:root {
+  --bg: #FFF8F0;
+  --bg-subtle: #FFF0E5;
+  --panel: #FFFFFF;
+  --card: #FFFFFF;
+  --card-elevated: #FFFBF7;
+  --line: #FFD4C0;
+  --line-subtle: rgba(255, 107, 107, 0.10);
+  --text: #2D3436;
+  --text-secondary: #5A6268;
+  --muted: #8A9298;
+  --brand: #FF6B6B;
+  --brand-soft: rgba(255, 107, 107, 0.10);
+  --brand-2: #4ECDC4;
+  --brand-2-soft: rgba(78, 205, 196, 0.10);
+  --accent: #4ECDC4;
+  --accent-soft: rgba(78, 205, 196, 0.08);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+  --slide-height: 100vh;
+  --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+  --sidenav-width: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container {
+  scroll-snap-type: y proximity;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body.play-mode .slide-container {
+  scroll-snap-type: y mandatory;
+  overflow: hidden;
+}
+
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative;
+  overflow: hidden;
+}
+.slide-page .slide-inner {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+
+/* Page backgrounds — warm elementary */
+.slide-page[data-page-type="cover"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #FFE8D6 30%, #E8F8F5 70%, #FFF5EE 100%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(32px, 7vw, 56px);
+  line-height: 1.15;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8A65 50%, #4ECDC4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(16px, 3vw, 22px);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.slide-page[data-page-type="objectives"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 100%);
+}
+.slide-page[data-page-type="concept"] {
+  background: linear-gradient(135deg, #FFFBF7 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="interactive"] {
+  background: linear-gradient(135deg, #E8F8F5 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="quiz"] {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
+}
+.slide-page[data-page-type="summary"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 50%, #FFF5EE 100%);
+}
+
+/* Brand Bar */
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 10px 20px;
+  background: rgba(255, 248, 240, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle);
+  transition: transform 0.3s ease;
+}
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 15px; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: var(--muted); font-family: ui-monospace, monospace; background: rgba(0,0,0,.04); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 1px 0 rgba(0,0,0,0.02);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.card-accent { border-top: 3px solid; border-image: linear-gradient(90deg, var(--brand), var(--brand-2)) 1; }
+.card-glow { box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 0 40px rgba(255,107,107,0.08); }
+
+/* Section Header */
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; line-height: 1.3; }
+
+/* Phase Tag */
+.phase-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand); background: var(--brand-soft);
+  border: 1px solid rgba(255,107,107,0.2); border-radius: 999px;
+  padding: 5px 12px; font-size: 12px; font-weight: 600;
+}
+.phase-tag[data-variant="success"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(78,205,196,0.2); }
+.phase-tag[data-variant="purple"] { color: #a78bfa; background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.flex-row { display: flex; gap: 12px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.flex-row .choice { flex: 1; min-width: 120px; text-align: center; }
+
+/* Objectives */
+.objectives { display: grid; grid-template-columns: 1fr; gap: 10px; list-style: none; padding: 0; margin: 0; }
+.objectives li {
+  display: flex; align-items: flex-start; gap: 10px; padding: 14px 18px;
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  border: 1px solid var(--line-subtle); transition: background 0.2s;
+}
+.objectives li:hover { background: rgba(255,107,107,0.06); }
+.objectives li::before { content: "✦"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+/* Choice Buttons */
+.choice {
+  width: 100%; text-align: left; border: 1px solid rgba(255,107,107,0.15);
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  color: var(--text); padding: 16px 20px; cursor: pointer;
+  font-size: 15px; line-height: 1.5; transition: all 0.2s;
+}
+.choice:hover { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.3); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(255,107,107,0.10); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,0.06); }
+
+/* Result / Feedback */
+.result {
+  padding: 16px 20px; border-radius: var(--card-radius-sm);
+  background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15);
+  font-size: 15px; line-height: 1.6;
+}
+.result.warn { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.15); }
+.result.error { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.15); }
+
+/* Canvas */
+.canvas-wrap { overflow: auto; background: var(--bg-subtle); border: 1px solid var(--line-subtle); border-radius: 16px; padding: 16px; display: flex; justify-content: center; }
+
+/* Concept card */
+.concept-box {
+  padding: 20px; border-radius: var(--card-radius-sm);
+  background: linear-gradient(135deg, rgba(255,107,107,0.04), rgba(78,205,196,0.04));
+  border: 1px solid var(--line-subtle);
+}
+.concept-box h3 { font-size: 20px; color: var(--brand); margin-bottom: 10px; }
+.concept-box .highlight { display: inline-block; background: linear-gradient(120deg, rgba(255,107,107,0.15), rgba(255,107,107,0.05)); padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+
+/* Step grid */
+.step-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+.step-item { display: flex; gap: 12px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: var(--bg-subtle); border: 1px solid var(--line-subtle); }
+.step-item .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+
+/* Visual examples */
+.visual-example { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin: 20px 0; }
+.visual-example .ve-item { text-align: center; min-width: 100px; }
+.visual-example .ve-icon { font-size: 48px; display: block; margin-bottom: 8px; }
+.visual-example .ve-label { font-size: 13px; color: var(--text-secondary); }
+
+/* Conversion table */
+.convert-table { width: 100%; border-collapse: collapse; margin-top: 12px; border-radius: var(--card-radius-sm); overflow: hidden; }
+.convert-table th, .convert-table td { padding: 10px 16px; text-align: center; border: 1px solid var(--line-subtle); }
+.convert-table th { background: rgba(255,107,107,0.08); font-weight: 700; color: var(--brand); }
+.convert-table tr:nth-child(even) td { background: rgba(0,0,0,0.01); }
+
+/* Summary items */
+.summary-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); margin-bottom: 8px; }
+.summary-item .num { font-weight: 700; flex-shrink: 0; color: var(--brand); min-width: 24px; }
+
+/* Self-check */
+.self-check-input { margin: 12px 0; }
+.self-check-input label { display: block; color: var(--text-secondary); font-size: 14px; margin-bottom: 6px; }
+.self-check-input input {
+  width: 100%; max-width: 200px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--bg-subtle);
+  color: var(--text); padding: 12px 16px; font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.self-check-input input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.check-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 999px; border: none;
+  background: var(--brand); color: #fff; cursor: pointer;
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+  transition: all 0.2s;
+}
+.check-btn:hover { background: #ff5252; transform: scale(1.03); }
+
+/* Drag-drop zone (decimal game) */
+.drop-zones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+.drop-zone {
+  width: 180px; min-height: 90px; border: 2px dashed var(--brand);
+  border-radius: var(--card-radius-sm); padding: 12px;
+  text-align: center; background: var(--brand-soft);
+  transition: all 0.2s;
+}
+.drop-zone.drag-over { border-color: var(--accent); background: var(--accent-soft); transform: scale(1.05); }
+.drop-zone h4 { font-size: 14px; color: var(--brand); margin-bottom: 8px; }
+.drop-items { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 12px 0; }
+.drag-item {
+  padding: 10px 18px; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--line);
+  cursor: grab; user-select: none; font-size: 14px;
+  transition: all 0.2s;
+}
+.drag-item:active { cursor: grabbing; transform: scale(1.05); }
+.drag-item.placed { opacity: 0.4; pointer-events: none; }
+
+/* TTS narrator button replacement */
+.tts-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--bg-subtle); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; transition: all 0.2s;
+}
+.tts-btn:hover { border-color: var(--brand); color: var(--brand); }
+
+/* Badge */
+.ta-badge {
+  position: fixed; bottom: 80px; left: 20px; z-index: 80;
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; background: rgba(255,255,255,0.9);
+  border-radius: 50px; backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,107,107,0.12);
+  font-size: 12px; color: var(--text-secondary);
+}
+.ta-badge img, .ta-badge .icon { width: 24px; height: 24px; border-radius: 50%; }
+
+/* Slide Progress */
+.slide-progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  z-index: 200; transition: width 0.3s ease;
+}
+
+/* Toolbar */
+.slide-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 10px 20px;
+  padding-bottom: calc(10px + var(--safe-bottom));
+  background: rgba(255,248,240,0.94); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+  transform: translateY(100%); transition: transform 0.3s ease;
+}
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: none; border-radius: 10px;
+  background: rgba(0,0,0,0.04); color: var(--text); cursor: pointer;
+  transition: all 0.2s; font-size: 18px;
+}
+.toolbar-btn:hover { background: rgba(0,0,0,0.08); }
+.toolbar-btn.active { background: var(--brand-soft); color: var(--brand); }
+.toolbar-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,0.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width 0.3s ease; }
+
+/* Side Nav */
+.slide-sidenav {
+  position: fixed; right: 12px; top: 50%; transform: translateY(-50%);
+  z-index: 90; display: flex; flex-direction: column; align-items: flex-end;
+  gap: 3px; opacity: 0; transition: opacity 0.3s ease;
+  max-height: 70vh; overflow-y: auto; scrollbar-width: none;
+  padding: 8px 4px; border-radius: 12px;
+  background: rgba(255,255,255,0.6); backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot {
+  width: 28px; height: 4px; border-radius: 2px;
+  background: rgba(0,0,0,0.08); border: none; cursor: pointer;
+  transition: all 0.3s; flex-shrink: 0; padding: 0;
+}
+.sidenav-dot:hover { background: rgba(255,107,107,0.3); width: 36px; }
+.sidenav-dot.active { background: var(--brand); width: 36px; height: 5px; box-shadow: 0 0 10px rgba(255,107,107,0.4); }
+.sidenav-dot[data-tooltip]::before {
+  content: attr(data-tooltip); position: absolute; right: calc(100% + 10px);
+  top: 50%; transform: translateY(-50%); padding: 5px 10px;
+  background: rgba(255,255,255,0.95); border: 1px solid var(--line);
+  border-radius: 6px; color: var(--text); font-size: 11px;
+  white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.sidenav-dot:hover[data-tooltip]::before { opacity: 1; }
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,0.35); text-align: center; padding: 4px 0 2px; width: 100%; }
+
+/* Play FAB */
+.play-mode-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%; border: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(255,107,107,0.3); transition: all 0.3s;
+}
+.play-mode-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(255,107,107,0.4); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+.play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* kg placeholder */
+.tkg-placeholder { text-align: center; padding: 20px; color: var(--muted); }
+.tkg-placeholder svg { width: 60px; height: 60px; margin-bottom: 8px; opacity: 0.3; }
+
+/* AI tutor placeholder */
+.ttc-placeholder { text-align: center; padding: 30px; }
+.ttc-placeholder .ttc-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
+
+/* Knowledge graph interactive */
+.kg-svg-wrap { background: var(--bg-subtle); border: 1px solid var(--line-subtle); border-radius: 16px; padding: 16px; text-align: center; }
+.kg-node { cursor: pointer; transition: all 0.2s; }
+.kg-node:hover { filter: brightness(1.06); }
+.kg-node circle { transition: all 0.2s; }
+.kg-node:hover circle { stroke-width: 4; }
+.kg-info {
+  margin-top: 14px; padding: 14px 18px; border-radius: var(--card-radius-sm);
+  background: linear-gradient(135deg, rgba(255,107,107,0.05), rgba(78,205,196,0.05));
+  border: 1px solid var(--line-subtle); font-size: 15px; line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; --card-radius: 16px; }
+  .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .grid, .grid-2, .objectives, .grid-2col { grid-template-columns: 1fr !important; }
+  .flex-row { flex-direction: column; }
+  .flex-row .choice { min-width: 100%; }
+  .card { padding: 18px; }
+  .teachany-brand-bar { padding: 8px 12px; }
+  .brand-name { display: none; }
+  .drop-zones { flex-direction: column; align-items: center; }
+  .drop-zone { width: 100%; max-width: 260px; }
+}
+
+@media (max-width: 480px) {
+  .slide-page[data-page-type="cover"] h1 { font-size: 28px; }
+  .toolbar-progress { max-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+
+<!-- Brand Bar -->
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="https://weponusa.github.io/teachany/">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <span class="brand-version">v1.0 · skill v7.20</span>
+  </div>
+</div>
+
+<!-- Slide Container -->
+<div class="slide-container" id="slide-container">
+
+<!-- Page 1: Cover -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="封面">
+  <div class="slide-inner">
+    <h1>小数乘法和除法</h1>
+    <p class="subtitle">四年级升五年级暑假衔接 · 五上 U4 / U6 核心算理</p>
+    <figure class="ta-standard-figure" style="margin-top:32px">
+      <img src="./assets/hero.svg" alt="小数乘法和除法知识结构图" style="max-width:720px">
+      <figcaption>小数乘除四块核心算理 · 知识结构总览</figcaption>
+    </figure>
+    <p style="color:var(--muted);margin-top:16px;font-size:14px">苏教版 · 四年级升五年级 · 暑假衔接</p>
+    <p style="color:var(--muted);font-size:13px">新授 + 自学互动课件</p>
+  </div>
+</section>
+
+<!-- Page 2: Problem Anchor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="problem-anchor" data-tsh="问题锚点">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag">Problem Anchor</span>
+        <h2>今天想弄懂什么问题？</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">选一个你最想知道的问题，后面的内容会围绕它展开。</p>
+      <div class="grid" id="problem-anchor-choices">
+        <button class="choice" data-anchor-choice="小数乘法怎么点小数点">🧮 小数乘法：积的小数点到底怎么点？</button>
+        <button class="choice" data-anchor-choice="除数是小数怎么办">➗ 除数变成小数了，该怎么算？</button>
+        <button class="choice" data-anchor-choice="怎么判断小数位数">🔍 怎么快速判断积或商有几位小数？</button>
+      </div>
+      <label style="display:block;margin-top:16px;color:var(--muted);font-size:14px">或者，写下你自己想问的问题
+        <input id="learner-question-input" placeholder="把你好奇的问题写在这里" style="margin-top:8px">
+      </label>
+      <p id="anchor-feedback" class="result warn" style="margin-top:14px">👆 选择一个问题，或者写下你的疑问，课程会围绕它展开～</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 3: Learning Objectives -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Objectives</span>
+        <h2>学习目标</h2>
+      </div>
+      <ul class="objectives">
+        <li>掌握<span class="highlight">小数乘法</span>算理：先按整数乘，再看因数共有几位小数，从积右边起数出几位点上小数点</li>
+        <li>掌握<span class="highlight">小数除法·除数是整数</span>：商的小数点要和被除数的小数点对齐</li>
+        <li>掌握<span class="highlight">小数除法·除数是小数</span>：移位把除数变整数，被除数跟着移相同的位数</li>
+        <li>能<span class="highlight">判断</span>积或商的小数位数，并用估算验证计算结果</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Page 4: Pre-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="3" data-tts="pretest" data-tsh="前测">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">Pre-Test</span>
+        <h2>先来试试看 👀</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">别担心，答错了也没关系，试试看！</p>
+      <div style="margin-bottom:16px">
+        <p style="font-weight:600;margin-bottom:6px">Q1: 0.2 × 0.3 的结果是多少？</p>
+        <button class="choice" data-quiz="pretest-q1" data-answer="wrong" data-explain="再想想：先按整数算 2×3=6，两个因数共 1+1=2 位小数，从右边起数2位点上小数点 → 0.06。" onclick="checkQuizBtn(this)">A. 0.6</button>
+        <button class="choice" data-quiz="pretest-q1" data-answer="correct" data-explain="正确！先按整数算 2×3=6；两个因数共 2 位小数，从右边起数 2 位点小数点 → 0.06。" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 0.06</button>
+        <button class="choice" data-quiz="pretest-q1" data-answer="wrong" data-explain="再想想：结果要比 0.2 和 0.3 都小，应该是 0.06。" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 0.5</button>
+        <p class="result" id="pretest-q1-fb" style="display:none;margin-top:8px"></p>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="font-weight:600;margin-bottom:6px">Q2: 12.8 ÷ 4，商的小数点应该放在哪里？</p>
+        <button class="choice" data-quiz="pretest-q2" data-answer="correct" data-explain="正确！除数是整数时，商的小数点要和被除数的小数点对齐：12.8÷4=3.2。" onclick="checkQuizBtn(this)">A. 和被除数的小数点对齐</button>
+        <button class="choice" data-quiz="pretest-q2" data-answer="wrong" data-explain="再想想：商的小数点不是随便放的，要和被除数的小数点对齐。" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 放在最高位前面</button>
+        <button class="choice" data-quiz="pretest-q2" data-answer="wrong" data-explain="再想想：12.8÷4=3.2，商有小数部分。" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 商一定是整数</button>
+        <p class="result" id="pretest-q2-fb" style="display:none;margin-top:8px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:6px">Q3: 计算 5.6 ÷ 0.8 时，第一步应该怎么做？</p>
+        <button class="choice" data-quiz="pretest-q3" data-answer="wrong" data-explain="再想想：除数是小数，不能直接除，要先把除数变成整数。" onclick="checkQuizBtn(this)">A. 直接按 56÷8 算</button>
+        <button class="choice" data-quiz="pretest-q3" data-answer="correct" data-explain="正确！除数 0.8 小数点右移 1 位变成 8（整数），被除数 5.6 也右移 1 位变成 56，再算 56÷8=7。" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 除数0.8右移1位变8，被除数5.6也右移1位变56</button>
+        <button class="choice" data-quiz="pretest-q3" data-answer="wrong" data-explain="再想想：除数和被除数要移动相同的位数，不能只移一个。" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 只把被除数移动，除数不动</button>
+        <p class="result" id="pretest-q3-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 5: Concept 1 — 小数乘法算理 -->
+<section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="concept-mult" data-tsh="概念1 - 小数乘法">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 1</span>
+        <h2>小数乘法怎么算？🧮</h2>
+      </div>
+      <div class="concept-box">
+        <h3>核心算理（三步）</h3>
+        <p><b>第一步：</b>先按<b>整数乘法</b>算出积（假装没有小数点）。</p>
+        <p><b>第二步：</b>看两个因数中<b>一共有几位小数</b>。</p>
+        <p><b>第三步：</b>从积的<b>右边起</b>数出几位，点上小数点；<b>位数不够用 0 补足</b>。</p>
+      </div>
+      <div class="visual-example">
+        <div class="ve-item"><span class="ve-icon">➊</span><span class="ve-label">0.8×0.7<br>8×7=56</span></div>
+        <div class="ve-item"><span class="ve-icon">➋</span><span class="ve-label">共 1+1=2 位</span></div>
+        <div class="ve-item"><span class="ve-icon">➌</span><span class="ve-label">56→0.56</span></div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"先当整数乘，再看小数位；<b>右起数几位，点上小数点</b>，不够补零别忘记！"
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：0.3 × 0.4，先按整数算几乘几？结果（带小数点）是多少？</label>
+        <input id="check-mult" placeholder="如：3×4=12 → 0.12" oninput="checkSelf(this,'0.12','check-mult-fb')">
+        <p class="result" id="check-mult-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 6: Concept 2 — 小数除法（除数是整数） -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="concept-div-int" data-tsh="概念2 - 除数是整数">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 2</span>
+        <h2>除数是整数怎么除？➗</h2>
+      </div>
+      <div class="concept-box">
+        <h3>核心算理</h3>
+        <p><b>按整数除法</b>的方法除，<span class="highlight">商的小数点要和被除数的小数点对齐</span>。</p>
+        <p>如果除到被除数的末位还有余数，就<b>添 0 继续除</b>。</p>
+      </div>
+      <div class="visual-example">
+        <div class="ve-item"><span class="ve-icon">📐</span><span class="ve-label">7.8 ÷ 3<br>先算 78÷3=26</span></div>
+        <div class="ve-item"><span class="ve-icon">📍</span><span class="ve-label">商的小数点<br>对齐 7.8 的点</span></div>
+        <div class="ve-item"><span class="ve-icon">✅</span><span class="ve-label">= 2.6</span></div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"整数除法照常做，<b>商点对齐被除点</b>；末位有余添零除，一直除到没余数！"
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：9.6 ÷ 4，商是多少？（提示：96÷4=24，点对齐）</label>
+        <input id="check-div-int" placeholder="写下你的答案" oninput="checkSelf(this,'2.4','check-div-int-fb')">
+        <p class="result" id="check-div-int-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 7: Concept 3 — 小数除法（除数是小数） -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="concept-div-dec" data-tsh="概念3 - 除数是小数">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 3</span>
+        <h2>除数是小数怎么办？🔄</h2>
+      </div>
+      <div class="concept-box">
+        <h3>核心算理（移位法）</h3>
+        <p><b>第一步：</b>看除数，把它的小数点向<b>右</b>移几位变成<b>整数</b>。</p>
+        <p><b>第二步：</b>被除数的小数点也向<b>右</b>移<b>相同的几位</b>（位数不够用 0 补足）。</p>
+        <p><b>第三步：</b>按<b>除数是整数</b>的方法算。</p>
+      </div>
+      <div class="visual-example">
+        <div class="ve-item"><span class="ve-icon">➊</span><span class="ve-label">0.8→右移1位→8</span></div>
+        <div class="ve-item"><span class="ve-icon">➋</span><span class="ve-label">5.6→右移1位→56</span></div>
+        <div class="ve-item"><span class="ve-icon">➌</span><span class="ve-label">56÷8=7</span></div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"除数小数要移位，<b>右移几位变整数</b>；被除数也移几位，再按整数除法除！"
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：7.98 ÷ 4.2，除数右移几位变整数？被除数变成多少？</label>
+        <input id="check-div-dec" placeholder="如：右移1位，79.8" oninput="checkSelf(this,'79.8','check-div-dec-fb')">
+        <p class="result" id="check-div-dec-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 8: Concept 4 — 积或商的小数位数判断 -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="concept-judge" data-tsh="概念4 - 位数判断">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 4</span>
+        <h2>怎么判断小数位数？🔍</h2>
+      </div>
+      <div class="concept-box">
+        <h3>积的小数位数</h3>
+        <p><span class="highlight">积的小数位数 = 两个因数小数位数之和</span>（<b>末尾的 0 除外</b>）。</p>
+        <p style="margin-top:8px">例：1.25 × 0.8，2位+1位=3位 → 1.000，去掉末尾0是 1（整数）。</p>
+        <h3 style="margin-top:14px">商的判断 & 估算验证</h3>
+        <p>除数是整数：商的小数点对齐被除数，<b>商的小数位数 ≈ 被除数的小数位数</b>（有余添0）。</p>
+        <p>算完用<b>估算</b>验证：如 2.5×0.4，估算约 2.5×0.4≈1，结果应接近 1。</p>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"因数小数位相加，<b>就是积的小数位</b>；末尾有0划掉它，估算验证不出错！"
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：0.3 × 0.25，积有几位小数？（先算位数和，再想末尾0）</label>
+        <input id="check-judge" placeholder="写下你的答案（几位数）" oninput="checkSelf(this,'3','check-judge-fb')">
+        <p class="result" id="check-judge-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 9: Concept 5 — 估算与验算 -->
+<section class="slide-page" data-page-type="concept" data-page-index="8" data-tts="concept-check" data-tsh="概念5 - 估算与验算">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Concept 5</span>
+        <h2>算完别急，先验算！🛡️</h2>
+      </div>
+      <div class="concept-box">
+        <h3>两招检查算得对不对</h3>
+        <p><b>① 估算验证：</b>把小数看成接近的整数或简单小数，估计结果大概是多少。</p>
+        <p style="margin-top:6px">例：2.05×3.98 ≈ 2×4 = 8，如果算出 80 或 0.8 一定错了。</p>
+        <p><b>② 逆运算验算：</b>乘法用除法验算，除法用乘法验算。</p>
+        <p style="margin-top:6px">例：0.56÷0.8=0.7，验算 0.7×0.8=0.56 ✓</p>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"算完先用估算看，大小差太远就重算；<b>乘除互为验算法</b>，对得上才放心！"
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：3.1×4.9 估算约等于多少？用整十数附近的简便算法。</label>
+        <input id="check-check" placeholder="如：约15" oninput="checkSelf(this,'15','check-check-fb')">
+        <p class="result" id="check-check-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 10: 易错提醒 -->
+<section class="slide-page" data-page-type="concept" data-page-index="9" data-tts="pitfall" data-tsh="易错提醒">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">Pitfall</span>
+        <h2>四个最容易错的地方 ⚠️</h2>
+      </div>
+      <div class="step-grid">
+        <div class="step-item"><span class="step-num">!</span><div><b>积的位数不够：</b>0.3×0.04，3×4=12，共 1+2=3 位，12 只有两位 → 前面补 0：<b>0.012</b>。</div></div>
+        <div class="step-item"><span class="step-num">!</span><div><b>末尾的 0：</b>0.5×0.2=0.10，应化简成 <b>0.1</b>（1 位小数），不是 2 位。</div></div>
+        <div class="step-item"><span class="step-num">!</span><div><b>商点没对齐：</b>除数是整数时，商的小数点务必对齐被除数小数点。</div></div>
+        <div class="step-item"><span class="step-num">!</span><div><b>移位不同步：</b>除数是小数，除数移几位，被除数必须移<b>相同</b>几位。</div></div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>"位数不够前面补 0，末尾 0 要划掉；商点对齐被除点，移位同步不能少！"
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 11: Scaffold Practice -->
+<section class="slide-page" data-page-type="quiz" data-page-index="10" data-tts="scaffold" data-tsh="脚手架练习">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Scaffold</span>
+        <h2>分步练习 ✍️</h2>
+      </div>
+      <div class="step-grid">
+        <div class="step-item">
+          <span class="step-num">1</span>
+          <div>
+            <b>小数乘法 0.8 × 0.7：</b><br>
+            ① 先按整数算 8 × 7 = <input id="s1-1" style="width:70px;margin:0 4px;padding:6px 10px" placeholder="?" oninput="checkStep(this,'56','s1-1-fb')">
+            <span id="s1-1-fb" style="font-size:13px;margin-left:6px"></span><br>
+            ② 因数共 1+1= <input id="s1-2" style="width:70px;margin-top:6px;padding:6px 10px" placeholder="?位" oninput="checkStep(this,'2','s1-2-fb')"> 位小数
+            <span id="s1-2-fb" style="font-size:13px;margin-left:6px"></span><br>
+            ③ 从右数2位点小数点：0.8×0.7= <input id="s1-3" style="width:80px;margin-top:6px;padding:6px 10px" placeholder="?" oninput="checkStep(this,'0.56','s1-3-fb')">
+            <span id="s1-3-fb" style="font-size:13px;margin-left:6px"></span>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">2</span>
+          <div>
+            <b>除数是整数 7.8 ÷ 3：</b><br>
+            ① 先算 78 ÷ 3 = <input id="s2-1" style="width:70px;margin:0 4px;padding:6px 10px" placeholder="?" oninput="checkStep(this,'26','s2-1-fb')">
+            <span id="s2-1-fb" style="font-size:13px;margin-left:6px"></span><br>
+            ② 商点对齐被除数：7.8÷3= <input id="s2-2" style="width:80px;margin-top:6px;padding:6px 10px" placeholder="?" oninput="checkStep(this,'2.6','s2-2-fb')">
+            <span id="s2-2-fb" style="font-size:13px;margin-left:6px"></span>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">3</span>
+          <div>
+            <b>除数是小数 5.6 ÷ 0.8：</b><br>
+            ① 除数 0.8 右移1位→ <input id="s3-1" style="width:70px;margin:0 4px;padding:6px 10px" placeholder="?" oninput="checkStep(this,'8','s3-1-fb')">
+            <span id="s3-1-fb" style="font-size:13px;margin-left:6px"></span>，被除数 5.6 右移1位→ <input id="s3-2" style="width:70px;margin:0 4px;padding:6px 10px" placeholder="?" oninput="checkStep(this,'56','s3-2-fb')">
+            <span id="s3-2-fb" style="font-size:13px;margin-left:6px"></span><br>
+            ② 56 ÷ 8 = <input id="s3-3" style="width:70px;margin-top:6px;padding:6px 10px" placeholder="?" oninput="checkStep(this,'7','s3-3-fb')">
+            <span id="s3-3-fb" style="font-size:13px;margin-left:6px"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 12: ConceptTest -->
+<section class="slide-page" data-page-type="quiz" data-page-index="11" data-tts="conceptest" data-tsh="概念诊断">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">ConceptTest</span>
+        <h2>概念过关测试 🎯</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">4道题，看看你掌握了多少？</p>
+
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第1题：0.25 × 0.4 的积有几位小数？</p>
+        <button class="choice" data-quiz="ct-q1" data-answer="wrong" data-explain="再想想：0.25 有 2 位，0.4 有 1 位，共 3 位 → 0.100，去掉末尾0是 0.1（1位）。所以积有 1 位。" onclick="checkQuizBtn(this)">A. 3 位</button>
+        <button class="choice" data-quiz="ct-q1" data-answer="correct" data-explain="正确！2位+1位=3位，0.25×0.4=0.100，末尾0去掉后是 0.1，所以积有 1 位小数。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 1 位</button>
+        <button class="choice" data-quiz="ct-q1" data-answer="wrong" data-explain="再想想：0.25×0.4 结果很小，是 0.1，只有 1 位。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 2 位</button>
+        <p class="result" id="ct-q1-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第2题：4.26 ÷ 3 的商，小数点应该？</p>
+        <button class="choice" data-quiz="ct-q2" data-answer="correct" data-explain="正确！除数是整数，商的小数点要和被除数的小数点对齐：4.26÷3=1.42。" onclick="checkQuizBtn(this)">A. 和被除数的小数点对齐</button>
+        <button class="choice" data-quiz="ct-q2" data-answer="wrong" data-explain="再想想：商是 1.42，不是整数。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 商一定是整数</button>
+        <button class="choice" data-quiz="ct-q2" data-answer="wrong" data-explain="再想想：对齐的是被除数的小数点，不是随便放。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 放在最左边</button>
+        <p class="result" id="ct-q2-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第3题：计算 91.2 ÷ 0.38，除数和被除数小数点各右移几位？</p>
+        <button class="choice" data-quiz="ct-q3" data-answer="wrong" data-explain="再想想：0.38 有 2 位小数，要右移 2 位才变整数（38），被除数也要右移 2 位。" onclick="checkQuizBtn(this)">A. 1 位</button>
+        <button class="choice" data-quiz="ct-q3" data-answer="correct" data-explain="正确！0.38 右移 2 位变 38（整数），91.2 也右移 2 位变 9120，再算 9120÷38。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 2 位</button>
+        <button class="choice" data-quiz="ct-q3" data-answer="wrong" data-explain="再想想：除数有 2 位小数，必须移 2 位才能变成整数。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 不变</button>
+        <p class="result" id="ct-q3-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600">第4题：算出 0.72÷0.9=0.8，下面哪种验算最合适？</p>
+        <button class="choice" data-quiz="ct-q4" data-answer="wrong" data-explain="再想想：验算除法要用乘法，不是再加一遍。" onclick="checkQuizBtn(this)">A. 再算一遍 0.72+0.9</button>
+        <button class="choice" data-quiz="ct-q4" data-answer="correct" data-explain="正确！除法用乘法验算：0.8 × 0.9 = 0.72，与被除数一致，说明算对了。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 0.8 × 0.9，看是否等于 0.72</button>
+        <button class="choice" data-quiz="ct-q4" data-answer="wrong" data-explain="再想想：验算要能验证原算式，0.9÷0.8 与原题无关。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 0.9 ÷ 0.8</button>
+        <p class="result" id="ct-q4-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 13: Interactive — 拖拽分类游戏 -->
+<section class="slide-page" data-page-type="interactive" data-page-index="12" data-tts="interactive" data-tsh="互动 - 小数位分类">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Interactive</span>
+        <h2>积有几位小数 · 分类大挑战 🎮</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">把算式卡拖到正确的「积有几位小数」区域！（提示：先想因数小数位之和，去掉末尾0）</p>
+
+      <div class="drop-zones">
+        <div class="drop-zone" id="zone-1" data-zone="1" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>🔢 积有 1 位小数</h4>
+          <div id="zone-1-items"></div>
+        </div>
+        <div class="drop-zone" id="zone-2" data-zone="2" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>🔢 积有 2 位小数</h4>
+          <div id="zone-2-items"></div>
+        </div>
+        <div class="drop-zone" id="zone-3" data-zone="3" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>🔢 积有 3 位小数</h4>
+          <div id="zone-3-items"></div>
+        </div>
+      </div>
+
+      <div class="drop-items" id="drag-items">
+        <div class="drag-item" draggable="true" data-correct="1" data-product="0.4×0.5=0.2">0.4 × 0.5</div>
+        <div class="drag-item" draggable="true" data-correct="1" data-product="1.2×0.5=0.6">1.2 × 0.5</div>
+        <div class="drag-item" draggable="true" data-correct="2" data-product="0.3×0.4=0.12">0.3 × 0.4</div>
+        <div class="drag-item" draggable="true" data-correct="2" data-product="0.6×0.8=0.48">0.6 × 0.8</div>
+        <div class="drag-item" draggable="true" data-correct="3" data-product="0.3×0.25=0.075">0.3 × 0.25</div>
+        <div class="drag-item" draggable="true" data-correct="3" data-product="0.07×0.9=0.063">0.07 × 0.9</div>
+      </div>
+
+      <div id="drag-score" style="text-align:center;margin-top:12px;font-weight:700;font-size:16px;color:var(--brand)"></div>
+      <button class="check-btn" onclick="resetDragGame()" style="margin:8px auto;display:block">🔄 再来一次</button>
+    </div>
+  </div>
+</section>
+
+<!-- Page 14: Post-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="13" data-tts="posttest" data-tsh="后测">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Post-Test</span>
+        <h2>学后检测 ✅</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">学完了，来检验一下！</p>
+
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">Q1: 2.5 × 0.4 的结果是多少？</p>
+        <button class="choice" data-quiz="post-q1" data-answer="correct" data-explain="正确！先算 25×4=100；共 1+1=2 位小数 → 1.00，去掉末尾0是 1。" onclick="checkQuizBtn(this)">A. 1</button>
+        <button class="choice" data-quiz="post-q1" data-answer="wrong" data-explain="再想想：2.5×0.4=1.00=1，不是 10。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 10</button>
+        <button class="choice" data-quiz="post-q1" data-answer="wrong" data-explain="再想想：两个小于1或带小数的数相乘，结果不会是 0.1 这么小。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 0.1</button>
+        <p class="result" id="post-q1-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">Q2: 7.98 ÷ 4.2，先把除数变成整数，除数和被除数小数点各右移几位？</p>
+        <button class="choice" data-quiz="post-q2" data-answer="correct" data-explain="正确！4.2 有 1 位小数，右移 1 位变 42；7.98 也右移 1 位变 79.8，再算 79.8÷42。" onclick="checkQuizBtn(this)">A. 各右移 1 位</button>
+        <button class="choice" data-quiz="post-q2" data-answer="wrong" data-explain="再想想：4.2 只有 1 位小数，移 1 位就够，不用移 2 位。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 各右移 2 位</button>
+        <button class="choice" data-quiz="post-q2" data-answer="wrong" data-explain="再想想：除数是小数必须先移位变成整数才能算。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 不移动</button>
+        <p class="result" id="post-q2-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600">Q3: 1.25 × 0.8 的积是几位小数？</p>
+        <button class="choice" data-quiz="post-q3" data-answer="wrong" data-explain="再想想：2位+1位=3位 → 1.000，去掉末尾0是 1，所以积是 0 位（整数）。" onclick="checkQuizBtn(this)">A. 3 位</button>
+        <button class="choice" data-quiz="post-q3" data-answer="wrong" data-explain="再想想：1.25×0.8=1.000=1，化简后是整数。" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 1 位</button>
+        <button class="choice" data-quiz="post-q3" data-answer="correct" data-explain="正确！2位+1位=3位，1.25×0.8=1.000，去掉末尾0后是 1，所以积是 0 位小数（整数）。" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 0 位（整数）</button>
+        <p class="result" id="post-q3-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 15: Summary -->
+<section class="slide-page" data-page-type="summary" data-page-index="14" data-tts="summary" data-tsh="课堂小结">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Summary</span>
+        <h2>课堂小结 📝</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">回顾一下，今天学到了什么？</p>
+      <div class="summary-item"><span class="num">1</span><div><b>小数乘法：</b>先按整数乘，看因数共几位小数，从积右边起数出几位点小数点，不够补 0</div></div>
+      <div class="summary-item"><span class="num">2</span><div><b>除数是整数：</b>按整数除法除，<b>商的小数点对齐被除数小数点</b></div></div>
+      <div class="summary-item"><span class="num">3</span><div><b>除数是小数：</b>除数右移变整数，被除数也右移相同位数，再按除数是整数算</div></div>
+      <div class="summary-item"><span class="num">4</span><div><b>判断与验证：</b>积的小数位 = 两因数位之和（末尾0除外）；用估算和逆运算验算</div></div>
+      <div class="result" style="margin-top:14px;text-align:center">
+        🎯 现在你能回答了吗？<b>小数乘法小数点怎么点？除数是小数时怎么移位？</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 16: Knowledge Graph -->
+<section class="slide-page" data-page-type="summary" data-page-index="15" data-tts="knowledge-graph" data-tsh="知识图谱">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
+        <h2>知识图谱（点一点 ✨）</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">小数乘除在知识树中的位置，点击节点查看说明：</p>
+      <div data-teachany-kg="math-e-decimal-mult-div">
+        <div class="kg-svg-wrap">
+          <svg id="kg-svg" viewBox="0 0 640 300" width="100%" style="max-width:600px">
+            <!-- edges -->
+            <line x1="120" y1="150" x2="280" y2="80" stroke="#FFB3A0" stroke-width="3"/>
+            <line x1="120" y1="150" x2="280" y2="220" stroke="#9FE3DD" stroke-width="3"/>
+            <line x1="360" y1="80" x2="500" y2="80" stroke="#FFB3A0" stroke-width="3"/>
+            <line x1="360" y1="220" x2="500" y2="220" stroke="#9FE3DD" stroke-width="3"/>
+            <!-- root -->
+            <g class="kg-node" data-info="小数乘除：核心思路都是先把小数按整数算，再处理小数点位置。">
+              <circle cx="120" cy="150" r="42" fill="#FF6B6B"/>
+              <text x="120" y="146" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">小数</text>
+              <text x="120" y="164" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">乘除</text>
+            </g>
+            <!-- mult -->
+            <g class="kg-node" data-info="小数乘法：先按整数乘法算出积，看因数共有几位小数，从积右边起数出几位点上小数点（位数不够用0补足）。">
+              <circle cx="280" cy="80" r="42" fill="#FF8A65"/>
+              <text x="280" y="76" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">小数</text>
+              <text x="280" y="94" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">乘法</text>
+            </g>
+            <!-- div -->
+            <g class="kg-node" data-info="小数除法：分两类——除数是整数（商点对齐被除点）和除数是小数（移位变整数再除）。">
+              <circle cx="280" cy="220" r="42" fill="#4ECDC4"/>
+              <text x="280" y="216" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">小数</text>
+              <text x="280" y="234" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">除法</text>
+            </g>
+            <!-- judge -->
+            <g class="kg-node" data-info="判断与验算：积的小数位=两因数位之和（末尾0除外）；用估算和逆运算验证结果。">
+              <circle cx="500" cy="80" r="42" fill="#FF6B6B"/>
+              <text x="500" y="76" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">位数</text>
+              <text x="500" y="94" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">判断</text>
+            </g>
+            <!-- estimate -->
+            <g class="kg-node" data-info="估算与验算：算完先用估算看大小是否合理，再用乘除互为逆运算验算。">
+              <circle cx="500" cy="220" r="42" fill="#4ECDC4"/>
+              <text x="500" y="216" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">估算</text>
+              <text x="500" y="234" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">验算</text>
+            </g>
+          </svg>
+        </div>
+        <div class="kg-info" id="kg-info">👆 点击上面的任意节点，查看这块知识的要点说明。</div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;text-align:center">后续学习：小数四则混合运算、循环小数（五年级）</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 17: AI Tutor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="16" data-tts="ai-tutor" data-tsh="AI学伴">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">AI Tutor</span>
+        <h2>AI 学伴 🤖</h2>
+      </div>
+      <div data-teachany-tutor-card>
+        <div class="ttc-placeholder">
+          <div class="ttc-avatar">🤖</div>
+          <h3 style="color:var(--text);margin:0 0 8px;font-size:18px">小数乘除小帮手</h3>
+          <p style="color:var(--muted)">在练习小数乘除时遇到困难了？</p>
+          <p style="color:var(--muted)">AI 学伴会一步步帮你理清算理～</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:12px">AI 学伴功能需要 TeachAny 平台支持</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- .slide-container -->
+
+<!-- Side Navigation -->
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<!-- Play Mode FAB -->
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式" title="切换播放模式">
+  <svg id="fab-icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+  <svg id="fab-icon-browse" viewBox="0 0 24 24" style="display:none"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+
+<!-- Bottom Toolbar -->
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页" title="上一页">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <div class="toolbar-progress" id="tb-progress" title="进度">
+    <div class="toolbar-progress-fill" id="tb-progress-fill"></div>
+  </div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 17</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页" title="下一页">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-autoplay" aria-label="自动播放" title="自动播放">
+    <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏" title="全屏">
+    <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+  </button>
+</div>
+
+<div class="ta-badge">
+  <span>🧑‍🏫</span><span>苏教版4升5 · 小数乘除</span>
+</div>
+
+<script>
+/* ============================================================
+   TeachAny v2 — Slide Controller + Interactive Quizzes
+   ============================================================ */
+(function() {
+  'use strict';
+
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0, isPlayMode = false, isAutoPlay = false, autoPlayTimer = null;
+
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const fab = document.getElementById('play-mode-fab');
+  const fabIconPlay = document.getElementById('fab-icon-play');
+  const fabIconBrowse = document.getElementById('fab-icon-browse');
+  const toolbar = document.getElementById('slide-toolbar');
+  const tbPrev = document.getElementById('tb-prev');
+  const tbNext = document.getElementById('tb-next');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+  const tbProgress = document.getElementById('tb-progress');
+  const tbAutoplay = document.getElementById('tb-autoplay');
+  const tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const counter = document.createElement('div');
+    counter.className = 'sidenav-counter'; counter.id = 'sidenav-counter';
+    counter.textContent = '1/' + totalPages; sidenav.appendChild(counter);
+    pages.forEach((page, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-tooltip', page.dataset.tsh || ('第' + (i + 1) + '页'));
+      dot.setAttribute('aria-label', '跳转到第' + (i + 1) + '页');
+      dot.addEventListener('click', () => goToPage(i));
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    const progress = totalPages > 1 ? (currentPage / (totalPages - 1)) * 100 : 100;
+    progressBar.style.width = progress + '%';
+    tbProgressFill.style.width = progress + '%';
+    tbPageInfo.textContent = (currentPage + 1) + ' / ' + totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
+    const ce = document.getElementById('sidenav-counter'); if (ce) ce.textContent = (currentPage + 1) + '/' + totalPages;
+    tbPrev.style.opacity = currentPage === 0 ? '0.3' : '1';
+    tbNext.style.opacity = currentPage === totalPages - 1 ? '0.3' : '1';
+  }
+
+  function goToPage(index) {
+    if (index < 0 || index >= totalPages) return;
+    currentPage = index;
+    if (isPlayMode) pages[currentPage].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else container.scrollTo({ top: pages[currentPage].offsetTop, behavior: 'smooth' });
+    updateUI();
+  }
+
+  function nextPage() { if (currentPage < totalPages - 1) goToPage(currentPage + 1); }
+  function prevPage() { if (currentPage > 0) goToPage(currentPage - 1); }
+
+  let scrollTimeout;
+  container.addEventListener('scroll', () => {
+    if (isPlayMode) return;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      let closest = 0, minDist = Infinity;
+      pages.forEach((page, i) => {
+        const dist = Math.abs(page.offsetTop - container.scrollTop);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      if (closest !== currentPage) { currentPage = closest; updateUI(); }
+    }, 100);
+  }, { passive: true });
+
+  function togglePlayMode() {
+    isPlayMode = !isPlayMode;
+    document.body.classList.toggle('play-mode', isPlayMode);
+    document.body.classList.toggle('toolbar-visible', isPlayMode);
+    fabIconPlay.style.display = isPlayMode ? 'none' : 'block';
+    fabIconBrowse.style.display = isPlayMode ? 'block' : 'none';
+    if (isPlayMode) goToPage(currentPage);
+  }
+
+  fab.addEventListener('click', togglePlayMode);
+  tbPrev.addEventListener('click', prevPage);
+  tbNext.addEventListener('click', nextPage);
+
+  tbProgress.addEventListener('click', (e) => {
+    const rect = tbProgress.getBoundingClientRect();
+    goToPage(Math.round((e.clientX - rect.left) / rect.width * (totalPages - 1)));
+  });
+
+  tbAutoplay.addEventListener('click', () => {
+    isAutoPlay = !isAutoPlay; tbAutoplay.classList.toggle('active', isAutoPlay);
+    if (isAutoPlay) { stopAutoPlay(); autoPlayTimer = setInterval(() => { if (currentPage < totalPages - 1) nextPage(); else { stopAutoPlay(); isAutoPlay = false; tbAutoplay.classList.remove('active'); } }, 8000); }
+    else stopAutoPlay();
+  });
+  function stopAutoPlay() { if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; } }
+
+  tbFullscreen.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch(e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': e.preventDefault(); nextPage(); break;
+      case 'ArrowLeft': case 'ArrowUp': e.preventDefault(); prevPage(); break;
+      case 'f': case 'F': if (!e.ctrlKey && !e.metaKey) togglePlayMode(); break;
+      case 'Escape': if (isPlayMode) togglePlayMode(); break;
+    }
+  });
+
+  // Problem anchor
+  document.querySelectorAll('[data-anchor-choice]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-anchor-choice]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const fb = document.getElementById('anchor-feedback');
+      if (fb) fb.textContent = '✅ 好的！"' + (btn.getAttribute('data-anchor-choice') || btn.textContent.trim()) + '" — 课程内容会围绕这个问题展开。';
+    });
+  });
+
+  document.getElementById('learner-question-input')?.addEventListener('input', (e) => {
+    const fb = document.getElementById('anchor-feedback');
+    if (fb) fb.textContent = e.target.value.trim() ? '✅ 你的问题：' + e.target.value.trim() : '👆 选择一个问题，或者写下你的疑问～';
+  });
+
+  // Knowledge graph interactive
+  document.querySelectorAll('.kg-node').forEach(node => {
+    node.addEventListener('click', () => {
+      const info = node.getAttribute('data-info');
+      const box = document.getElementById('kg-info');
+      if (box && info) box.textContent = '✨ ' + info;
+    });
+    node.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); node.click(); } });
+    node.setAttribute('tabindex', '0');
+    node.setAttribute('role', 'button');
+  });
+
+  buildSidenav(); updateUI();
+  document.body.classList.add('toolbar-visible');
+  setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
+})();
+
+/* ─── Quiz Logic（含解析） ─── */
+function checkQuizBtn(btn) {
+  const qId = btn.dataset.quiz;
+  const isCorrect = btn.dataset.answer === 'correct';
+  document.querySelectorAll('[data-quiz="' + qId + '"]').forEach(b => {
+    b.classList.remove('correct', 'wrong', 'selected');
+  });
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const fb = document.getElementById(qId + '-fb');
+  if (fb) {
+    fb.style.display = 'block';
+    fb.className = 'result' + (isCorrect ? '' : ' error');
+    const explain = btn.dataset.explain || '';
+    fb.innerHTML = (isCorrect ? '✅ 正确！' : '❌ 不对哦。') + (explain ? ' ' + explain : '');
+  }
+}
+
+/* ─── Self-check Logic ─── */
+function checkSelf(input, expected, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.style.display = 'none'; return; }
+  fb.style.display = 'block';
+  // flexible numeric compare: accept answer containing expected number-ish
+  const norm = val.replace(/[\s×x*=→\-]/g, '').toLowerCase();
+  const expNorm = expected.replace(/[\s×x*=→\-]/g, '').toLowerCase();
+  if (norm === expNorm || norm.indexOf(expNorm) !== -1 || expNorm.indexOf(norm) !== -1) {
+    fb.className = 'result'; fb.textContent = '✅ 正确！';
+  } else {
+    fb.className = 'result error'; fb.textContent = '❌ 不对哦，答案应该接近「' + expected + '」，再试试看～';
+  }
+}
+
+/* ─── Step Check Logic ─── */
+function checkStep(input, expected, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.textContent = ''; return; }
+  if (val === expected || val.toLowerCase() === expected.toLowerCase()) {
+    fb.textContent = '✅'; fb.style.color = '#22c55e';
+  } else {
+    fb.textContent = '❌'; fb.style.color = '#ef4444';
+  }
+}
+
+/* ─── Drag & Drop Game（积有几位小数） ─── */
+let dragScore = 0, dragTotal = 0, dragPlaced = 0, dragAll = 0;
+
+document.querySelectorAll('.drag-item').forEach(item => {
+  item.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.dataset.product || e.target.textContent.trim());
+    e.dataTransfer.setData('correct', e.target.dataset.correct);
+    e.dataTransfer.setData('expr', e.target.textContent.trim());
+  });
+});
+
+function handleDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+function handleDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+
+function handleDrop(e) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  const zoneId = e.currentTarget.id;
+  const zoneType = e.currentTarget.dataset.zone;
+  const correct = e.dataTransfer.getData('correct');
+  const itemText = e.dataTransfer.getData('expr');
+  const product = e.dataTransfer.getData('text/plain');
+
+  dragTotal++;
+  const itemsDiv = document.getElementById(zoneId + '-items');
+
+  if (correct === zoneType) {
+    dragScore++;
+    const tag = document.createElement('span');
+    tag.className = 'drag-item';
+    tag.style.cssText = 'background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);cursor:default';
+    tag.textContent = '✅ ' + product;
+    itemsDiv.appendChild(tag);
+  } else {
+    const tag = document.createElement('span');
+    tag.className = 'drag-item';
+    tag.style.cssText = 'background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2);cursor:default';
+    tag.textContent = '❌ ' + product;
+    itemsDiv.appendChild(tag);
+  }
+
+  document.querySelectorAll('.drag-item').forEach(item => {
+    if (item.textContent.trim() === itemText && !item.classList.contains('placed')) {
+      item.classList.add('placed');
+    }
+  });
+
+  const scoreEl = document.getElementById('drag-score');
+  if (scoreEl) {
+    scoreEl.textContent = '得分：' + dragScore + ' / ' + dragTotal +
+      (dragScore === dragTotal ? ' 🎉 全部正确！' : '');
+  }
+}
+
+function resetDragGame() {
+  dragScore = 0; dragTotal = 0;
+  document.getElementById('zone-1-items').innerHTML = '';
+  document.getElementById('zone-2-items').innerHTML = '';
+  document.getElementById('zone-3-items').innerHTML = '';
+  document.querySelectorAll('.drag-item').forEach(item => item.classList.remove('placed'));
+  document.getElementById('drag-score').textContent = '';
+}
+</script>
+</body>
+</html>

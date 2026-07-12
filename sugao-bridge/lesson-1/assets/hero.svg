@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-label="负数的初步认识知识结构图：温度计、海拔与数轴">
+  <defs>
+    <style>
+      .t{font-family:"PingFang SC","Microsoft YaHei",sans-serif;}
+      .panel{fill:#FFFFFF;stroke:#FFD4C0;stroke-width:2;}
+      .brand{fill:#FF6B6B;}
+      .mint{fill:#4ECDC4;}
+      .blue{fill:#4A90D9;}
+      .ink{fill:#2D3436;}
+      .mut{fill:#8A9298;}
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="800" height="420" rx="24" fill="#FFF8F0"/>
+
+  <!-- title -->
+  <text class="t" x="400" y="42" text-anchor="middle" font-size="26" font-weight="700" fill="#FF6B6B">负数的初步认识</text>
+  <text class="t" x="400" y="68" text-anchor="middle" font-size="14" fill="#5A6268">零上·零下 ｜ 海平面以上·以下 ｜ 正与负</text>
+
+  <!-- ============ Panel 1: Thermometer ============ -->
+  <rect class="panel" x="40" y="96" width="240" height="288" rx="18"/>
+  <text class="t" x="160" y="124" text-anchor="middle" font-size="17" font-weight="700" fill="#FF6B6B">温度计</text>
+
+  <!-- tube outline -->
+  <rect x="146" y="150" width="28" height="178" rx="14" fill="#FFF0E5" stroke="#FFB89A" stroke-width="2"/>
+  <!-- bulb -->
+  <circle cx="160" cy="336" r="24" fill="#FF6B6B"/>
+  <!-- blue (below 0) -->
+  <rect x="150" y="250" width="20" height="84" rx="0" fill="#4A90D9"/>
+  <!-- red (above 0) -->
+  <rect x="150" y="200" width="20" height="50" rx="0" fill="#FF6B6B"/>
+  <!-- 0 line -->
+  <line x1="138" y1="250" x2="182" y2="250" stroke="#2D3436" stroke-width="2"/>
+  <!-- ticks -->
+  <line x1="146" y1="200" x2="156" y2="200" stroke="#cbb" stroke-width="1.5"/>
+  <line x1="146" y1="225" x2="156" y2="225" stroke="#cbb" stroke-width="1.5"/>
+  <line x1="146" y1="275" x2="156" y2="275" stroke="#cbb" stroke-width="1.5"/>
+  <line x1="146" y1="300" x2="156" y2="300" stroke="#cbb" stroke-width="1.5"/>
+  <line x1="146" y1="325" x2="156" y2="325" stroke="#cbb" stroke-width="1.5"/>
+  <!-- labels -->
+  <text class="t" x="190" y="205" font-size="13" fill="#FF6B6B">+20℃</text>
+  <text class="t" x="190" y="255" font-size="13" font-weight="700" fill="#2D3436">0℃</text>
+  <text class="t" x="190" y="305" font-size="13" fill="#4A90D9">−10℃</text>
+  <text class="t" x="160" y="378" text-anchor="middle" font-size="13" font-weight="700" fill="#FF6B6B">零上↑</text>
+  <text class="t" x="160" y="362" text-anchor="middle" font-size="12" fill="#8A9298">（正数）</text>
+
+  <!-- ============ Panel 2: Sea level ============ -->
+  <rect class="panel" x="320" y="96" width="440" height="288" rx="18"/>
+  <text class="t" x="540" y="124" text-anchor="middle" font-size="17" font-weight="700" fill="#FF6B6B">海拔（以海平面为 0）</text>
+
+  <!-- sea level line -->
+  <line x1="345" y1="250" x2="735" y2="250" stroke="#4ECDC4" stroke-width="3"/>
+  <text class="t" x="540" y="244" text-anchor="middle" font-size="12" fill="#4ECDC4">—— 海平面（0 米）——</text>
+
+  <!-- mountain above (positive) -->
+  <polygon points="470,150 410,250 530,250" fill="#4ECDC4" opacity="0.85"/>
+  <text class="t" x="470" y="200" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">+8844</text>
+  <text class="t" x="470" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="#4ECDC4">珠峰（高于海平面）</text>
+
+  <!-- below sea (negative) -->
+  <rect x="600" y="270" width="90" height="60" rx="10" fill="#4A90D9" opacity="0.9"/>
+  <text class="t" x="645" y="305" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">−155</text>
+  <text class="t" x="645" y="350" text-anchor="middle" font-size="12" font-weight="700" fill="#4A90D9">盆地（低于海平面）</text>
+
+  <!-- arrows -->
+  <path d="M470 240 L470 200" stroke="#4ECDC4" stroke-width="2" marker-end="url(#up)"/>
+  <path d="M645 250 L645 275" stroke="#4A90D9" stroke-width="2" marker-end="url(#down)"/>
+  <defs>
+    <marker id="up" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,7 L4,1 L8,7 Z" fill="#4ECDC4"/>
+    </marker>
+    <marker id="down" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,1 L4,7 L8,1 Z" fill="#4A90D9"/>
+    </marker>
+  </defs>
+
+  <!-- ============ Number line ============ -->
+  <text class="t" x="400" y="372" text-anchor="middle" font-size="14" font-weight="700" fill="#FF6B6B">数轴上的正与负（右大左小）</text>
+  <line x1="120" y1="398" x2="700" y2="398" stroke="#2D3436" stroke-width="2" marker-end="url(#arr)"/>
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2D3436"/>
+    </marker>
+  </defs>
+  <!-- ticks -->
+  <g font-family="sans-serif" font-size="13" text-anchor="middle">
+    <line x1="230" y1="392" x2="230" y2="404" stroke="#2D3436"/>
+    <line x1="290" y1="392" x2="290" y2="404" stroke="#2D3436"/>
+    <line x1="350" y1="392" x2="350" y2="404" stroke="#2D3436"/>
+    <line x1="410" y1="388" x2="410" y2="408" stroke="#FF6B6B" stroke-width="2"/>
+    <line x1="470" y1="392" x2="470" y2="404" stroke="#2D3436"/>
+    <line x1="530" y1="392" x2="530" y2="404" stroke="#2D3436"/>
+    <line x1="590" y1="392" x2="590" y2="404" stroke="#2D3436"/>
+    <text x="230" y="420" fill="#FF6B6B">−3</text>
+    <text x="290" y="420" fill="#FF6B6B">−2</text>
+    <text x="350" y="420" fill="#FF6B6B">−1</text>
+    <text x="410" y="420" font-weight="700" fill="#FF6B6B">0</text>
+    <text x="470" y="420" fill="#4ECDC4">+1</text>
+    <text x="530" y="420" fill="#4ECDC4">+2</text>
+    <text x="590" y="420" fill="#4ECDC4">+3</text>
+  </g>
+</svg>

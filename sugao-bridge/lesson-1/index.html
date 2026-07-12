@@ -1,0 +1,1307 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>负数的初步认识 — 苏教版五年级数学上册U1</title>
+<meta name="description" content="苏教版五年级数学上册第一单元：负数的初步认识，4升5暑假衔接自学互动课件">
+<meta name="course-id" content="negative-numbers-intro">
+<meta name="course-title" content="负数的初步认识">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-version" content="1.0">
+<meta name="teachany-version" content="7.20.0">
+<meta name="teachany-node" content="math-e-negative-numbers">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="number-and-operation">
+<meta name="teachany-lesson-type" content="新授+自学">
+<meta name="teachany-template-version" content="2.0">
+<meta name="bridge-phase" content="4升5暑假衔接">
+
+<style>
+/* ======================================================
+   TeachAny v2 — Elementary Warm Mode
+   苏教版五年级数学上册 · 负数的初步认识（4升5衔接）
+   视觉基准来自 sujiao-math-g4-unit1/lesson-1/index.html
+   小学暖色 · 珊瑚红#FF6B6B + 薄荷绿#4ECDC4 · 圆角卡片 · 温暖米色背景
+   ====================================================== */
+:root {
+  --bg: #FFF8F0;
+  --bg-subtle: #FFF0E5;
+  --panel: #FFFFFF;
+  --card: #FFFFFF;
+  --card-elevated: #FFFBF7;
+  --line: #FFD4C0;
+  --line-subtle: rgba(255, 107, 107, 0.10);
+  --text: #2D3436;
+  --text-secondary: #5A6268;
+  --muted: #8A9298;
+  --brand: #FF6B6B;
+  --brand-soft: rgba(255, 107, 107, 0.10);
+  --brand-2: #4ECDC4;
+  --brand-2-soft: rgba(78, 205, 196, 0.10);
+  --accent: #4ECDC4;
+  --accent-soft: rgba(78, 205, 196, 0.08);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --neg: #4A90D9;
+  --neg-soft: rgba(74, 144, 217, 0.10);
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+  --slide-height: 100vh;
+  --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+  --sidenav-width: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container {
+  scroll-snap-type: y proximity;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body.play-mode .slide-container {
+  scroll-snap-type: y mandatory;
+  overflow: hidden;
+}
+
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative;
+  overflow: hidden;
+}
+.slide-page .slide-inner {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+
+/* Page backgrounds — warm elementary */
+.slide-page[data-page-type="cover"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #FFE8D6 30%, #E8F8F5 70%, #FFF5EE 100%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(32px, 7vw, 56px);
+  line-height: 1.15;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8A65 50%, #4ECDC4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(16px, 3vw, 22px);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.slide-page[data-page-type="objectives"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 100%);
+}
+.slide-page[data-page-type="concept"] {
+  background: linear-gradient(135deg, #FFFBF7 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="interactive"] {
+  background: linear-gradient(135deg, #E8F8F5 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="quiz"] {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
+}
+.slide-page[data-page-type="summary"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 50%, #FFF5EE 100%);
+}
+
+/* Brand Bar */
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 10px 20px;
+  background: rgba(255, 248, 240, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle);
+  transition: transform 0.3s ease;
+}
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 15px; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: var(--muted); font-family: ui-monospace, monospace; background: rgba(0,0,0,.04); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 1px 0 rgba(0,0,0,0.02);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.card-accent { border-top: 3px solid; border-image: linear-gradient(90deg, var(--brand), var(--brand-2)) 1; }
+.card-glow { box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 0 40px rgba(255,107,107,0.08); }
+
+/* Section Header */
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; line-height: 1.3; }
+
+/* Phase Tag */
+.phase-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand); background: var(--brand-soft);
+  border: 1px solid rgba(255,107,107,0.2); border-radius: 999px;
+  padding: 5px 12px; font-size: 12px; font-weight: 600;
+}
+.phase-tag[data-variant="success"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(78,205,196,0.2); }
+.phase-tag[data-variant="purple"] { color: #a78bfa; background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
+.phase-tag[data-variant="neg"] { color: var(--neg); background: var(--neg-soft); border-color: rgba(74,144,217,0.25); }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.flex-row { display: flex; gap: 12px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.flex-row .choice { flex: 1; min-width: 120px; text-align: center; }
+
+/* Objectives */
+.objectives { display: grid; grid-template-columns: 1fr; gap: 10px; list-style: none; padding: 0; margin: 0; }
+.objectives li {
+  display: flex; align-items: flex-start; gap: 10px; padding: 14px 18px;
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  border: 1px solid var(--line-subtle); transition: background 0.2s;
+}
+.objectives li:hover { background: rgba(255,107,107,0.06); }
+.objectives li::before { content: "✦"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+/* Choice Buttons */
+.choice {
+  width: 100%; text-align: left; border: 1px solid rgba(255,107,107,0.15);
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  color: var(--text); padding: 16px 20px; cursor: pointer;
+  font-size: 15px; line-height: 1.5; transition: all 0.2s;
+}
+.choice:hover { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.3); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(255,107,107,0.10); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,0.06); }
+
+/* Result / Feedback */
+.result {
+  padding: 16px 20px; border-radius: var(--card-radius-sm);
+  background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15);
+  font-size: 15px; line-height: 1.6;
+}
+.result.warn { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.15); }
+.result.error { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.15); }
+
+/* Canvas */
+.canvas-wrap { overflow: auto; background: var(--bg-subtle); border: 1px solid var(--line-subtle); border-radius: 16px; padding: 16px; display: flex; justify-content: center; }
+
+/* Concept card */
+.concept-box {
+  padding: 20px; border-radius: var(--card-radius-sm);
+  background: linear-gradient(135deg, rgba(255,107,107,0.04), rgba(78,205,196,0.04));
+  border: 1px solid var(--line-subtle);
+}
+.concept-box h3 { font-size: 20px; color: var(--brand); margin-bottom: 10px; }
+.concept-box .highlight { display: inline-block; background: linear-gradient(120deg, rgba(255,107,107,0.15), rgba(255,107,107,0.05)); padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+
+/* Step grid */
+.step-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+.step-item { display: flex; gap: 12px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: var(--bg-subtle); border: 1px solid var(--line-subtle); }
+.step-item .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+
+/* Visual examples */
+.visual-example { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin: 20px 0; }
+.visual-example .ve-item { text-align: center; min-width: 100px; }
+.visual-example .ve-icon { font-size: 48px; display: block; margin-bottom: 8px; }
+.visual-example .ve-label { font-size: 13px; color: var(--text-secondary); }
+
+/* Conversion / compare table */
+.convert-table { width: 100%; border-collapse: collapse; margin-top: 12px; border-radius: var(--card-radius-sm); overflow: hidden; }
+.convert-table th, .convert-table td { padding: 10px 16px; text-align: center; border: 1px solid var(--line-subtle); }
+.convert-table th { background: rgba(255,107,107,0.08); font-weight: 700; color: var(--brand); }
+.convert-table tr:nth-child(even) td { background: rgba(0,0,0,0.01); }
+.convert-table .pos { color: var(--brand-2); font-weight: 700; }
+.convert-table .neg { color: var(--neg); font-weight: 700; }
+
+/* Number line widget */
+.numberline { width: 100%; max-width: 640px; margin: 18px auto; display: block; }
+
+/* Summary items */
+.summary-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); margin-bottom: 8px; }
+.summary-item .num { font-weight: 700; flex-shrink: 0; color: var(--brand); min-width: 24px; }
+
+/* Self-check */
+.self-check-input { margin: 12px 0; }
+.self-check-input label { display: block; color: var(--text-secondary); font-size: 14px; margin-bottom: 6px; }
+.self-check-input input {
+  width: 100%; max-width: 240px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--bg-subtle);
+  color: var(--text); padding: 12px 16px; font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.self-check-input input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.check-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 999px; border: none;
+  background: var(--brand); color: #fff; cursor: pointer;
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+  transition: all 0.2s;
+}
+.check-btn:hover { background: #ff5252; transform: scale(1.03); }
+
+/* Drag-drop zones for number game */
+.drop-zones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+.drop-zone {
+  width: 170px; min-height: 90px; border: 2px dashed var(--brand);
+  border-radius: var(--card-radius-sm); padding: 12px;
+  text-align: center; background: var(--brand-soft);
+  transition: all 0.2s;
+}
+.drop-zone[data-zone="negative"] { border-color: var(--neg); background: var(--neg-soft); }
+.drop-zone[data-zone="zero"] { border-color: var(--accent); background: var(--accent-soft); }
+.drop-zone.drag-over { transform: scale(1.05); }
+.drop-zone[data-zone="negative"].drag-over { box-shadow: 0 0 0 3px rgba(74,144,217,0.3); }
+.drop-zone[data-zone="zero"].drag-over { box-shadow: 0 0 0 3px rgba(78,205,196,0.3); }
+.drop-zone[data-zone="positive"].drag-over { box-shadow: 0 0 0 3px rgba(255,107,107,0.3); }
+.drop-zone h4 { font-size: 14px; margin-bottom: 8px; }
+.drop-zone[data-zone="positive"] h4 { color: var(--brand); }
+.drop-zone[data-zone="negative"] h4 { color: var(--neg); }
+.drop-zone[data-zone="zero"] h4 { color: var(--accent); }
+.drop-zone .zone-items { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.drop-items { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 12px 0; }
+.drag-item {
+  padding: 10px 18px; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--line);
+  cursor: grab; user-select: none; font-size: 14px; font-weight: 600;
+  transition: all 0.2s;
+}
+.drag-item:active { cursor: grabbing; transform: scale(1.05); }
+.drag-item.placed { opacity: 0.4; pointer-events: none; }
+
+/* Click-to-classify fallback chips */
+.cls-toolbar { display: flex; gap: 8px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+.cls-btn { padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--bg-subtle); cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; }
+.cls-btn[data-cls="positive"] { color: var(--brand); border-color: rgba(255,107,107,0.3); }
+.cls-btn[data-cls="negative"] { color: var(--neg); border-color: rgba(74,144,217,0.3); }
+.cls-btn[data-cls="zero"] { color: var(--accent); border-color: rgba(78,205,196,0.3); }
+.cls-btn.active { transform: scale(1.05); }
+.cls-btn[data-cls="positive"].active { background: var(--brand-soft); }
+.cls-btn[data-cls="negative"].active { background: var(--neg-soft); }
+.cls-btn[data-cls="zero"].active { background: var(--accent-soft); }
+
+/* TTS narrator button replacement */
+.tts-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--bg-subtle); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; transition: all 0.2s;
+}
+.tts-btn:hover { border-color: var(--brand); color: var(--brand); }
+
+/* Badge */
+.ta-badge {
+  position: fixed; bottom: 80px; left: 20px; z-index: 80;
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; background: rgba(255,255,255,0.9);
+  border-radius: 50px; backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,107,107,0.12);
+  font-size: 12px; color: var(--text-secondary);
+}
+.ta-badge img, .ta-badge .icon { width: 24px; height: 24px; border-radius: 50%; }
+
+/* Slide Progress */
+.slide-progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  z-index: 200; transition: width 0.3s ease;
+}
+
+/* Toolbar */
+.slide-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 10px 20px;
+  padding-bottom: calc(10px + var(--safe-bottom));
+  background: rgba(255,248,240,0.94); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+  transform: translateY(100%); transition: transform 0.3s ease;
+}
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: none; border-radius: 10px;
+  background: rgba(0,0,0,0.04); color: var(--text); cursor: pointer;
+  transition: all 0.2s; font-size: 18px;
+}
+.toolbar-btn:hover { background: rgba(0,0,0,0.08); }
+.toolbar-btn.active { background: var(--brand-soft); color: var(--brand); }
+.toolbar-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,0.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width 0.3s ease; }
+
+/* Side Nav */
+.slide-sidenav {
+  position: fixed; right: 12px; top: 50%; transform: translateY(-50%);
+  z-index: 90; display: flex; flex-direction: column; align-items: flex-end;
+  gap: 3px; opacity: 0; transition: opacity 0.3s ease;
+  max-height: 70vh; overflow-y: auto; scrollbar-width: none;
+  padding: 8px 4px; border-radius: 12px;
+  background: rgba(255,255,255,0.6); backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot {
+  width: 28px; height: 4px; border-radius: 2px;
+  background: rgba(0,0,0,0.08); border: none; cursor: pointer;
+  transition: all 0.3s; flex-shrink: 0; padding: 0;
+}
+.sidenav-dot:hover { background: rgba(255,107,107,0.3); width: 36px; }
+.sidenav-dot.active { background: var(--brand); width: 36px; height: 5px; box-shadow: 0 0 10px rgba(255,107,107,0.4); }
+.sidenav-dot[data-tooltip]::before {
+  content: attr(data-tooltip); position: absolute; right: calc(100% + 10px);
+  top: 50%; transform: translateY(-50%); padding: 5px 10px;
+  background: rgba(255,255,255,0.95); border: 1px solid var(--line);
+  border-radius: 6px; color: var(--text); font-size: 11px;
+  white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.sidenav-dot:hover[data-tooltip]::before { opacity: 1; }
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,0.35); text-align: center; padding: 4px 0 2px; width: 100%; }
+
+/* Play FAB */
+.play-mode-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%; border: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(255,107,107,0.3); transition: all 0.3s;
+}
+.play-mode-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(255,107,107,0.4); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+.play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* kg placeholder */
+.tkg-placeholder { text-align: center; padding: 20px; color: var(--muted); }
+.tkg-placeholder svg { width: 60px; height: 60px; margin-bottom: 8px; opacity: 0.3; }
+
+/* AI tutor placeholder */
+.ttc-placeholder { text-align: center; padding: 30px; }
+.ttc-placeholder .ttc-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
+
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; --card-radius: 16px; }
+  .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .grid, .grid-2, .objectives, .grid-2col { grid-template-columns: 1fr !important; }
+  .flex-row { flex-direction: column; }
+  .flex-row .choice { min-width: 100%; }
+  .card { padding: 18px; }
+  .teachany-brand-bar { padding: 8px 12px; }
+  .brand-name { display: none; }
+  .drop-zones { flex-direction: column; align-items: center; }
+  .drop-zone { width: 100%; max-width: 280px; }
+}
+
+@media (max-width: 480px) {
+  .slide-page[data-page-type="cover"] h1 { font-size: 28px; }
+  .toolbar-progress { max-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+
+<!-- Brand Bar -->
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="#" onclick="return false">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <span class="brand-version">v1.0 · 4升5衔接</span>
+  </div>
+</div>
+
+<!-- Slide Container -->
+<div class="slide-container" id="slide-container">
+
+<!-- Page 1: Cover -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="封面">
+  <div class="slide-inner">
+    <h1>负数的初步认识</h1>
+    <p class="subtitle">温度能降到 0℃ 以下吗？海平面以下怎么表示？一起来认识「负数」！</p>
+    <figure class="ta-standard-figure" style="margin-top:28px">
+      <img src="./assets/hero.svg" alt="负数的初步认识知识结构图" style="max-width:720px">
+      <figcaption>零上·零下 ｜ 海平面以上·以下 ｜ 正数·负数·0 · 知识结构总览</figcaption>
+    </figure>
+    <p style="color:var(--muted);margin-top:16px;font-size:14px">苏教版 · 五年级数学上册 · 第一单元</p>
+    <p style="color:var(--muted);font-size:13px">4升5暑假衔接 · 新授 + 自学互动课件</p>
+  </div>
+</section>
+
+<!-- Page 2: Problem Anchor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="problem-anchor" data-tsh="问题锚点">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag">Problem Anchor</span>
+        <h2>今天想解决什么问题？</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">选一个你关心的生活疑问，后面的内容会围绕它展开。</p>
+      <div class="grid" id="problem-anchor-choices">
+        <button class="choice" data-anchor-choice="零下温度怎么写">🌡️ 冬天的零下温度，怎么用数学写出来？</button>
+        <button class="choice" data-anchor-choice="海拔以下怎么表示">🏔️ 比海平面还低的地方，数该怎么表示？</button>
+        <button class="choice" data-anchor-choice="赚钱和亏钱怎么区分">💰 赚钱和亏钱，怎么一眼区分？</button>
+      </div>
+      <label style="display:block;margin-top:16px;color:var(--muted);font-size:14px">或者，写下你自己想问的问题
+        <input id="learner-question-input" placeholder="把你好奇的问题写在这里" style="margin-top:8px">
+      </label>
+      <p id="anchor-feedback" class="result warn" style="margin-top:14px">👆 选择一个问题，或者写下你的疑问，课程会围绕它展开～</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 3: Learning Objectives -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Objectives</span>
+        <h2>学习目标</h2>
+      </div>
+      <ul class="objectives">
+        <li>认识<b>正数</b>和<b>负数</b>，知道它们用什么符号表示</li>
+        <li>理解<b>0 既不是正数也不是负数</b>，它是正负数的分界点</li>
+        <li>会在<b>数轴上</b>比较大小：右边的数总比左边的大</li>
+        <li>能看懂生活中的<b>相反意义的量</b>（盈利/亏损、向东/向西）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Page 4: Pre-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="3" data-tts="pretest" data-tsh="前测">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">Pre-Test</span>
+        <h2>先来试试看 👀</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">别担心，答错了也没关系，试试看！</p>
+      <div style="margin-bottom:16px">
+        <p style="font-weight:600;margin-bottom:6px">Q1: 比 0℃ 还冷的温度，应该用什么数表示？</p>
+        <button class="choice" data-quiz="pretest-q1" data-answer="wrong" onclick="checkQuizBtn(this)">A. 正数</button>
+        <button class="choice" data-quiz="pretest-q1" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 负数</button>
+        <button class="choice" data-quiz="pretest-q1" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 0</button>
+        <p class="result" id="pretest-q1-fb" style="display:none;margin-top:8px"></p>
+      </div>
+      <div style="margin-bottom:16px">
+        <p style="font-weight:600;margin-bottom:6px">Q2: −5 中的 "−" 号可以省略不写吗？</p>
+        <button class="choice" data-quiz="pretest-q2" data-answer="wrong" onclick="checkQuizBtn(this)">A. 可以，像 +3 一样省掉</button>
+        <button class="choice" data-quiz="pretest-q2" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 不可以，"−" 不能省略</button>
+        <button class="choice" data-quiz="pretest-q2" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 都一样，写不写无所谓</button>
+        <p class="result" id="pretest-q2-fb" style="display:none;margin-top:8px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600;margin-bottom:6px">Q3: 0 是正数还是负数？</p>
+        <button class="choice" data-quiz="pretest-q3" data-answer="wrong" onclick="checkQuizBtn(this)">A. 是正数</button>
+        <button class="choice" data-quiz="pretest-q3" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:6px">B. 是负数</button>
+        <button class="choice" data-quiz="pretest-q3" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:6px">C. 既不是正数也不是负数</button>
+        <p class="result" id="pretest-q3-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 5: Concept 1 — 正数 -->
+<section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="concept-positive" data-tsh="概念1 - 正数">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Concept 1</span>
+        <h2>认识「正数」🟢</h2>
+      </div>
+      <div class="concept-box">
+        <h3>正数（&gt; 0）是什么？</h3>
+        <p><span class="highlight">正数</span>就是<b>比 0 大</b>的数，比如 +3、+8、0.5、100。</p>
+        <p>前面可以写 <span class="highlight">"+"</span>（正号），但<b>通常可以省略</b>，所以 3 一般就写成 3，不写 +。</p>
+      </div>
+      <div class="visual-example">
+        <div class="ve-item"><span class="ve-icon">🌡️</span><span class="ve-label">零上 20℃<br>记作 +20℃ 或 20℃</span></div>
+        <div class="ve-item"><span class="ve-icon">🏔️</span><span class="ve-label">海拔 +8844 米<br>（比海平面高）</span></div>
+        <div class="ve-item"><span class="ve-icon">📈</span><span class="ve-label">赚了 +50 元<br>（收入为正）</span></div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>正数像"爬坡"，<b>往大走</b>；"+"号可省，数字本身就表示正！
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：零上 15 摄氏度，用正数怎么写？（写出你会的两种写法）</label>
+        <input id="check-positive" placeholder="写下你的答案" oninput="checkSelfFree(this,['+15','15','+15℃','15℃','正15'])">
+        <p class="result" id="check-positive-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 6: Concept 2 — 负数 -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="concept-negative" data-tsh="概念2 - 负数">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="neg">Concept 2</span>
+        <h2>认识「负数」🔵</h2>
+      </div>
+      <div class="concept-box">
+        <h3>负数（&lt; 0）是什么？</h3>
+        <p><span class="highlight">负数</span>就是<b>比 0 小</b>的数，比如 −5、−1.2、−100。</p>
+        <p>前面必须写 <span class="highlight">"−"</span>（负号），<b>不能省略</b>！少写"−"就变成正数了。</p>
+      </div>
+      <div class="visual-example">
+        <div class="ve-item"><span class="ve-icon">❄️</span><span class="ve-label">零下 10℃<br>记作 −10℃</span></div>
+        <div class="ve-item"><span class="ve-icon">🌊</span><span class="ve-label">海拔 −155 米<br>（比海平面低）</span></div>
+        <div class="ve-item"><span class="ve-icon">📉</span><span class="ve-label">亏了 −30 元<br>（支出为负）</span></div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>负数像"下楼梯"，<b>往小走</b>；"−"号不离身，丢了就出错！
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：比 0 小 7 的数，用负数怎么写？</label>
+        <input id="check-negative" placeholder="写下你的答案" oninput="checkSelfFree(this,['-7','−7','负7','-7','−7℃'])">
+        <p class="result" id="check-negative-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 7: Concept 3 — 0是分界 -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="concept-zero" data-tsh="概念3 - 0是分界">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">Concept 3</span>
+        <h2>0 是分界线 ⚖️</h2>
+      </div>
+      <div class="concept-box" style="text-align:center;padding:28px">
+        <h3 style="font-size:28px">0 既不是<b style="color:var(--brand-2)">正数</b>，也不是<b style="color:var(--neg)">负数</b></h3>
+        <p style="margin-top:8px">它是正数和负数之间的<b>分界点</b>。</p>
+      </div>
+      <div class="visual-example">
+        <div class="ve-item"><span class="ve-icon">🟢</span><span class="ve-label">0 的右边是正数<br>（比 0 大）</span></div>
+        <div class="ve-item"><span class="ve-icon">⚖️</span><span class="ve-label">0 自己<br>中立不站队</span></div>
+        <div class="ve-item"><span class="ve-icon">🔵</span><span class="ve-label">0 的左边是负数<br>（比 0 小）</span></div>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>0 是"裁判员"，正数、负数两边站，自己不算哪一队！
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：下面三个数 +2、0、−3 中，哪个是分界点（既不是正也不是负）？</label>
+        <input id="check-zero" placeholder="写下你的答案" oninput="checkSelfFree(this,['0','零','0是分界','0（零）'])">
+        <p class="result" id="check-zero-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 8: Concept 4 — 比较大小 -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="concept-compare" data-tsh="概念4 - 比较大小">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">Concept 4</span>
+        <h2>谁大谁小？看数轴！📏</h2>
+      </div>
+      <svg class="numberline" viewBox="0 0 640 140" role="img" aria-label="数轴上右边的数大于左边的数">
+        <line x1="40" y1="70" x2="600" y2="70" stroke="#2D3436" stroke-width="3" marker-end="url(#nl-arr)"/>
+        <defs><marker id="nl-arr" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2D3436"/></marker></defs>
+        <g font-family="sans-serif" font-size="15" text-anchor="middle">
+          <line x1="120" y1="60" x2="120" y2="80" stroke="#2D3436" stroke-width="2"/><text x="120" y="102" fill="#4A90D9">−3</text>
+          <line x1="200" y1="60" x2="200" y2="80" stroke="#2D3436" stroke-width="2"/><text x="200" y="102" fill="#4A90D9">−2</text>
+          <line x1="280" y1="60" x2="280" y2="80" stroke="#2D3436" stroke-width="2"/><text x="280" y="102" fill="#4A90D9">−1</text>
+          <line x1="360" y1="54" x2="360" y2="86" stroke="#FF6B6B" stroke-width="3"/><text x="360" y="102" font-weight="700" fill="#FF6B6B">0</text>
+          <line x1="440" y1="60" x2="440" y2="80" stroke="#2D3436" stroke-width="2"/><text x="440" y="102" fill="#4ECDC4">+1</text>
+          <line x1="520" y1="60" x2="520" y2="80" stroke="#2D3436" stroke-width="2"/><text x="520" y="102" fill="#4ECDC4">+2</text>
+        </g>
+        <text x="320" y="40" text-anchor="middle" font-size="13" fill="#8A9298">↑ 越往右，数越大</text>
+        <text x="320" y="128" text-anchor="middle" font-size="13" fill="#8A9298">越往左，数越小 ↓</text>
+      </svg>
+      <div class="concept-box">
+        <h3>比较大小的两条金规则</h3>
+        <p>① 在<b>数轴</b>上，<span class="highlight">右边的数 &gt; 左边的数</span>。</p>
+        <p>② <span class="highlight">正数 &gt; 0 &gt; 负数</span>，所以任何正数都比负数大。</p>
+      </div>
+      <div class="result" style="margin-top:12px">
+        💡 例：−5 和 +3 比，+3 更大（−5 在左，+3 在右）。
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：−2 和 +1 相比，谁更大？（写 "+1" 或 "−2"）</label>
+        <input id="check-compare" placeholder="写下你的答案" oninput="checkSelfFree(this,['+1','1','正1','+1更大','1更大'])">
+        <p class="result" id="check-compare-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 9: Concept 5 — 相反意义的量 -->
+<section class="slide-page" data-page-type="concept" data-page-index="8" data-tts="concept-opposite" data-tsh="概念5 - 相反意义的量">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Concept 5</span>
+        <h2>相反意义的量 🔄</h2>
+      </div>
+      <div class="concept-box">
+        <h3>什么是一对"相反意义的量"？</h3>
+        <p>生活中很多量是<b>成对相反</b>的：一个用<b>正数</b>表示，另一个就用<b>负数</b>表示，它们合起来就是相反意义的量。</p>
+      </div>
+      <table class="convert-table">
+        <tr><th>正向（正数 +）</th><th>负向（负数 −）</th></tr>
+        <tr><td class="pos">盈利 +200 元</td><td class="neg">亏损 −200 元</td></tr>
+        <tr><td class="pos">向东走 +500 米</td><td class="neg">向西走 −500 米</td></tr>
+        <tr><td class="pos">存入 +1000 元</td><td class="neg">取出 −1000 元</td></tr>
+        <tr><td class="pos">零上 +8℃</td><td class="neg">零下 −8℃</td></tr>
+      </table>
+      <div class="result" style="margin-top:12px">
+        💡 <b>记忆口诀：</b>相反意义一对对，正号负号来配对；先定"正方向"，反着就加"−"。
+      </div>
+      <div class="self-check-input">
+        <label>✏️ 自检：如果"收入 80 元"记作 +80，那"支出 80 元"该怎么记？</label>
+        <input id="check-opposite" placeholder="写下你的答案" oninput="checkSelfFree(this,['-80','−80','负80','-80元','−80元'])">
+        <p class="result" id="check-opposite-fb" style="display:none;margin-top:8px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 10: Scaffold Practice -->
+<section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="scaffold" data-tsh="脚手架练习">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Scaffold</span>
+        <h2>三步练习 ✍️</h2>
+      </div>
+      <div class="step-grid">
+        <div class="step-item">
+          <span class="step-num">1</span>
+          <div>
+            <b>判断正负：</b><br>
+            ① −8 是<input id="s1-1" style="width:70px;margin:0 4px;padding:6px 10px" placeholder="正/负" oninput="checkStep(this,'负','s1-1-fb')">
+            ② 12 是<input id="s1-2" style="width:70px;margin:0 4px;padding:6px 10px" placeholder="正/负" oninput="checkStep(this,'正','s1-2-fb')">
+            <span id="s1-1-fb" style="font-size:13px;margin-left:6px"></span>
+            <span id="s1-2-fb" style="font-size:13px;margin-left:6px"></span>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">2</span>
+          <div>
+            <b>补全写法：</b><br>
+            ① 零下 6℃ 写作<input id="s2-1" style="width:80px;margin:0 4px;padding:6px 10px" placeholder="? " oninput="checkStepFree(this,['-6℃','−6℃','-6','−6','负6'])">
+            <span id="s2-1-fb" style="font-size:13px;margin-left:6px"></span><br>
+            ② 比 0 小的数是<input id="s2-2" style="width:80px;margin:0 4px;padding:6px 10px" placeholder="正/负/0" oninput="checkStep(this,'负','s2-2-fb')">
+            <span id="s2-2-fb" style="font-size:13px;margin-left:6px"></span>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">3</span>
+          <div>
+            <b>比较大小：</b>−3 〇 +1（填 &gt; 或 &lt;）<br>
+            <input id="s3" style="width:70px;margin-top:6px;padding:6px 10px" placeholder="? " oninput="checkStepFree(this,['<','＜','小于','< +1','−3 <'])">
+            <span id="s3-fb" style="font-size:13px;margin-left:6px"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 11: ConceptTest -->
+<section class="slide-page" data-page-type="quiz" data-page-index="10" data-tts="conceptest" data-tsh="概念诊断">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">ConceptTest</span>
+        <h2>概念过关测试 🎯</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">4道题，看看你掌握了多少？</p>
+
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第1题：在 −4、0、+3 中，最大的数是？</p>
+        <button class="choice" data-quiz="ct-q1" data-answer="wrong" onclick="checkQuizBtn(this)">A. −4</button>
+        <button class="choice" data-quiz="ct-q1" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 0</button>
+        <button class="choice" data-quiz="ct-q1" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">C. +3</button>
+        <p class="result" id="ct-q1-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第2题：数轴上，−2 在 −5 的哪一边？</p>
+        <button class="choice" data-quiz="ct-q2" data-answer="correct" onclick="checkQuizBtn(this)">A. 右边（更大）</button>
+        <button class="choice" data-quiz="ct-q2" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 左边（更小）</button>
+        <button class="choice" data-quiz="ct-q2" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 和 −5 是同一个点</button>
+        <p class="result" id="ct-q2-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">第3题：下面哪一组是"相反意义的量"？</p>
+        <button class="choice" data-quiz="ct-q3" data-answer="wrong" onclick="checkQuizBtn(this)">A. 身高 150cm 和体重 40kg</button>
+        <button class="choice" data-quiz="ct-q3" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 盈利 200 元和亏损 200 元</button>
+        <button class="choice" data-quiz="ct-q3" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 红色和蓝色</button>
+        <p class="result" id="ct-q3-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600">第4题：关于 0，下列说法正确的是？</p>
+        <button class="choice" data-quiz="ct-q4" data-answer="wrong" onclick="checkQuizBtn(this)">A. 0 是正数中最小的数</button>
+        <button class="choice" data-quiz="ct-q4" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 0 是负数中最大的数</button>
+        <button class="choice" data-quiz="ct-q4" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 0 既不是正数也不是负数</button>
+        <p class="result" id="ct-q4-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 12: Interactive — 数字分类游戏 -->
+<section class="slide-page" data-page-type="interactive" data-page-index="11" data-tts="interactive" data-tsh="互动 - 数字分类">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Interactive</span>
+        <h2>数字分类大挑战 🎮</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">把下面的数字拖到正确的分类区域！（手机上也可以点数字再点区域分类）</p>
+
+      <div class="drop-zones">
+        <div class="drop-zone" data-zone="positive" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>🟢 正数</h4>
+          <div class="zone-items" id="zone-positive-items"></div>
+        </div>
+        <div class="drop-zone" data-zone="negative" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>🔵 负数</h4>
+          <div class="zone-items" id="zone-negative-items"></div>
+        </div>
+        <div class="drop-zone" data-zone="zero" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>⚖️ 0</h4>
+          <div class="zone-items" id="zone-zero-items"></div>
+        </div>
+      </div>
+
+      <div class="drop-items" id="drag-items">
+        <div class="drag-item" draggable="true" data-correct="positive" data-label="+3">+3</div>
+        <div class="drag-item" draggable="true" data-correct="negative" data-label="−5">−5</div>
+        <div class="drag-item" draggable="true" data-correct="zero" data-label="0">0</div>
+        <div class="drag-item" draggable="true" data-correct="negative" data-label="−1.2">−1.2</div>
+        <div class="drag-item" draggable="true" data-correct="positive" data-label="+8">+8</div>
+        <div class="drag-item" draggable="true" data-correct="positive" data-label="0.5">0.5</div>
+      </div>
+
+      <div class="cls-toolbar">
+        <span style="font-size:13px;color:var(--muted)">点数字选中，再点区域：</span>
+        <button class="cls-btn" data-cls="positive" onclick="selectZone('positive')">🟢 正数</button>
+        <button class="cls-btn" data-cls="negative" onclick="selectZone('negative')">🔵 负数</button>
+        <button class="cls-btn" data-cls="zero" onclick="selectZone('zero')">⚖️ 0</button>
+      </div>
+
+      <div id="drag-score" style="text-align:center;margin-top:12px;font-weight:700;font-size:16px;color:var(--brand)"></div>
+      <button class="check-btn" onclick="resetDragGame()" style="margin:8px auto;display:block">🔄 再来一次</button>
+    </div>
+  </div>
+</section>
+
+<!-- Page 13: Post-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="12" data-tts="posttest" data-tsh="后测">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Post-Test</span>
+        <h2>学后检测 ✅</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">学完了，来检验一下！</p>
+
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">Q1: 海拔 −120 米表示什么？</p>
+        <button class="choice" data-quiz="post-q1" data-answer="wrong" onclick="checkQuizBtn(this)">A. 高于海平面 120 米</button>
+        <button class="choice" data-quiz="post-q1" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">B. 低于海平面 120 米</button>
+        <button class="choice" data-quiz="post-q1" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 就在海平面上</button>
+        <p class="result" id="post-q1-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div style="margin-bottom:14px">
+        <p style="font-weight:600">Q2: 比较大小：−1 和 −4，哪个更大？</p>
+        <button class="choice" data-quiz="post-q2" data-answer="correct" onclick="checkQuizBtn(this)">A. −1 更大</button>
+        <button class="choice" data-quiz="post-q2" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">B. −4 更大</button>
+        <button class="choice" data-quiz="post-q2" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 一样大</button>
+        <p class="result" id="post-q2-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+      <div>
+        <p style="font-weight:600">Q3: 如果"向东走 30 米"记作 +30，那"向西走 30 米"记作？</p>
+        <button class="choice" data-quiz="post-q3" data-answer="wrong" onclick="checkQuizBtn(this)">A. +30</button>
+        <button class="choice" data-quiz="post-q3" data-answer="correct" onclick="checkQuizBtn(this)" style="margin-top:4px">B. −30</button>
+        <button class="choice" data-quiz="post-q3" data-answer="wrong" onclick="checkQuizBtn(this)" style="margin-top:4px">C. 0</button>
+        <p class="result" id="post-q3-fb" style="display:none;margin-top:6px;font-size:14px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 14: Summary -->
+<section class="slide-page" data-page-type="summary" data-page-index="13" data-tts="summary" data-tsh="课堂小结">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">Summary</span>
+        <h2>课堂小结 📝</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">回顾一下，今天学到了什么？</p>
+      <div class="summary-item"><span class="num">1</span><div><b>正数（&gt;0）</b>：比 0 大的数，"+" 通常可省略</div></div>
+      <div class="summary-item"><span class="num">2</span><div><b>负数（&lt;0）</b>：比 0 小的数，"−" 号<b>不能省略</b></div></div>
+      <div class="summary-item"><span class="num">3</span><div><b>0 是分界点</b>：既不是正数也不是负数</div></div>
+      <div class="summary-item"><span class="num">4</span><div><b>比较大小</b>：数轴上右大左小；正数 &gt; 0 &gt; 负数</div></div>
+      <div class="summary-item"><span class="num">5</span><div><b>相反意义的量</b>：盈利/亏损、向东/向西，一正一负配对</div></div>
+      <div class="result" style="margin-top:14px;text-align:center">
+        🎯 现在你能回答了吗？<b>温度降到 0℃ 以下、海拔在海平面以下，怎么表示？</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Page 15: Knowledge Graph -->
+<section class="slide-page" data-page-type="summary" data-page-index="14" data-tts="knowledge-graph" data-tsh="知识图谱">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
+        <h2>知识图谱</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">负数在知识树中的位置与关系：</p>
+      <div data-teachany-kg="math-e-negative-numbers">
+        <div class="canvas-wrap">
+          <svg viewBox="0 0 640 320" width="640" height="320" role="img" aria-label="负数知识图谱：整数包含正整数、0、负整数">
+            <defs>
+              <marker id="kg-arr" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#cbb"/></marker>
+            </defs>
+            <!-- root: 数 -->
+            <rect x="270" y="14" width="100" height="40" rx="12" fill="#FF6B6B" />
+            <text x="320" y="39" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">数</text>
+            <!-- 整数 -->
+            <rect x="265" y="84" width="110" height="40" rx="12" fill="#4ECDC4"/>
+            <text x="320" y="109" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">整数</text>
+            <line x1="320" y1="54" x2="320" y2="84" stroke="#cbb" stroke-width="2" marker-end="url(#kg-arr)"/>
+            <!-- three children -->
+            <rect x="60" y="170" width="130" height="44" rx="12" fill="#4ECDC4" opacity="0.9"/>
+            <text x="125" y="197" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">正整数(正数)</text>
+            <rect x="255" y="170" width="130" height="44" rx="12" fill="#FF6B6B" opacity="0.9"/>
+            <text x="320" y="197" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">0（分界）</text>
+            <rect x="450" y="170" width="130" height="44" rx="12" fill="#4A90D9" opacity="0.9"/>
+            <text x="515" y="197" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">负整数(负数)</text>
+            <line x1="290" y1="124" x2="155" y2="170" stroke="#cbb" stroke-width="2" marker-end="url(#kg-arr)"/>
+            <line x1="320" y1="124" x2="320" y2="170" stroke="#cbb" stroke-width="2" marker-end="url(#kg-arr)"/>
+            <line x1="350" y1="124" x2="485" y2="170" stroke="#cbb" stroke-width="2" marker-end="url(#kg-arr)"/>
+            <!-- examples -->
+            <text x="125" y="240" text-anchor="middle" fill="#5A6268" font-size="13">+1, +3, 100…</text>
+            <text x="320" y="240" text-anchor="middle" fill="#5A6268" font-size="13">中立点</text>
+            <text x="515" y="240" text-anchor="middle" fill="#5A6268" font-size="13">−1, −5, −1.2…</text>
+            <!-- 数轴 link -->
+            <rect x="230" y="270" width="180" height="36" rx="12" fill="#FFF0E5" stroke="#FFD4C0"/>
+            <text x="320" y="293" text-anchor="middle" fill="#FF6B6B" font-size="13" font-weight="700">用数轴比较大小 → 右大左小</text>
+          </svg>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px;text-align:center">后续学习：小数的负数、负数的四则运算（五上·五下）</p>
+    </div>
+  </div>
+</section>
+
+<!-- Page 16: AI Tutor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="15" data-tts="ai-tutor" data-tsh="AI学伴">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">AI Tutor</span>
+        <h2>AI 学伴 🤖</h2>
+      </div>
+      <div data-teachany-tutor-card>
+        <div class="ttc-placeholder">
+          <div class="ttc-avatar">🤖</div>
+          <h3 style="color:var(--text);margin:0 0 8px;font-size:18px">学习小帮手</h3>
+          <p style="color:var(--muted)">在学负数时遇到困难了？</p>
+          <p style="color:var(--muted)">AI 学伴可以帮你：</p>
+          <p style="color:var(--muted);font-size:14px">· 一步步讲清"为什么 0 不是正数"<br>· 出更多数轴比较的练习题<br>· 用你喜欢的例子（游戏分数、零花钱）举例</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:12px">AI 学伴功能需要 TeachAny 平台支持（联网与模型服务）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- .slide-container -->
+
+<!-- Side Navigation -->
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<!-- Play Mode FAB -->
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式" title="切换播放模式">
+  <svg id="fab-icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+  <svg id="fab-icon-browse" viewBox="0 0 24 24" style="display:none"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+
+<!-- Bottom Toolbar -->
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页" title="上一页">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <div class="toolbar-progress" id="tb-progress" title="进度">
+    <div class="toolbar-progress-fill" id="tb-progress-fill"></div>
+  </div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 16</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页" title="下一页">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-autoplay" aria-label="自动播放" title="自动播放">
+    <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏" title="全屏">
+    <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+  </button>
+</div>
+
+<div class="ta-badge">
+  <span>🧑‍🏫</span><span>苏教版五上U1 · 负数的初步认识</span>
+</div>
+
+<script>
+/* ============================================================
+   TeachAny v2 — Slide Controller + Interactive Quizzes
+   负数初步认识 · 4升5衔接
+   ============================================================ */
+(function() {
+  'use strict';
+
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0, isPlayMode = false, isAutoPlay = false, autoPlayTimer = null;
+
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const fab = document.getElementById('play-mode-fab');
+  const fabIconPlay = document.getElementById('fab-icon-play');
+  const fabIconBrowse = document.getElementById('fab-icon-browse');
+  const toolbar = document.getElementById('slide-toolbar');
+  const tbPrev = document.getElementById('tb-prev');
+  const tbNext = document.getElementById('tb-next');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+  const tbProgress = document.getElementById('tb-progress');
+  const tbAutoplay = document.getElementById('tb-autoplay');
+  const tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const counter = document.createElement('div');
+    counter.className = 'sidenav-counter'; counter.id = 'sidenav-counter';
+    counter.textContent = '1/' + totalPages; sidenav.appendChild(counter);
+    pages.forEach((page, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-tooltip', page.dataset.tsh || ('第' + (i + 1) + '页'));
+      dot.setAttribute('aria-label', '跳转到第' + (i + 1) + '页');
+      dot.addEventListener('click', () => goToPage(i));
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    const progress = totalPages > 1 ? (currentPage / (totalPages - 1)) * 100 : 100;
+    progressBar.style.width = progress + '%';
+    tbProgressFill.style.width = progress + '%';
+    tbPageInfo.textContent = (currentPage + 1) + ' / ' + totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
+    const ce = document.getElementById('sidenav-counter'); if (ce) ce.textContent = (currentPage + 1) + '/' + totalPages;
+    tbPrev.style.opacity = currentPage === 0 ? '0.3' : '1';
+    tbNext.style.opacity = currentPage === totalPages - 1 ? '0.3' : '1';
+  }
+
+  function goToPage(index) {
+    if (index < 0 || index >= totalPages) return;
+    currentPage = index;
+    if (isPlayMode) pages[currentPage].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else container.scrollTo({ top: pages[currentPage].offsetTop, behavior: 'smooth' });
+    updateUI();
+  }
+
+  function nextPage() { if (currentPage < totalPages - 1) goToPage(currentPage + 1); }
+  function prevPage() { if (currentPage > 0) goToPage(currentPage - 1); }
+
+  let scrollTimeout;
+  container.addEventListener('scroll', () => {
+    if (isPlayMode) return;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      let closest = 0, minDist = Infinity;
+      pages.forEach((page, i) => {
+        const dist = Math.abs(page.offsetTop - container.scrollTop);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      if (closest !== currentPage) { currentPage = closest; updateUI(); }
+    }, 100);
+  }, { passive: true });
+
+  function togglePlayMode() {
+    isPlayMode = !isPlayMode;
+    document.body.classList.toggle('play-mode', isPlayMode);
+    document.body.classList.toggle('toolbar-visible', isPlayMode);
+    fabIconPlay.style.display = isPlayMode ? 'none' : 'block';
+    fabIconBrowse.style.display = isPlayMode ? 'block' : 'none';
+    if (isPlayMode) goToPage(currentPage);
+  }
+
+  fab.addEventListener('click', togglePlayMode);
+  tbPrev.addEventListener('click', prevPage);
+  tbNext.addEventListener('click', nextPage);
+
+  tbProgress.addEventListener('click', (e) => {
+    const rect = tbProgress.getBoundingClientRect();
+    goToPage(Math.round((e.clientX - rect.left) / rect.width * (totalPages - 1)));
+  });
+
+  tbAutoplay.addEventListener('click', () => {
+    isAutoPlay = !isAutoPlay; tbAutoplay.classList.toggle('active', isAutoPlay);
+    if (isAutoPlay) { stopAutoPlay(); autoPlayTimer = setInterval(() => { if (currentPage < totalPages - 1) nextPage(); else { stopAutoPlay(); isAutoPlay = false; tbAutoplay.classList.remove('active'); } }, 8000); }
+    else stopAutoPlay();
+  });
+  function stopAutoPlay() { if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; } }
+
+  tbFullscreen.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch(e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': e.preventDefault(); nextPage(); break;
+      case 'ArrowLeft': case 'ArrowUp': e.preventDefault(); prevPage(); break;
+      case 'f': case 'F': if (!e.ctrlKey && !e.metaKey) togglePlayMode(); break;
+      case 'Escape': if (isPlayMode) togglePlayMode(); break;
+    }
+  });
+
+  // Problem anchor
+  document.querySelectorAll('[data-anchor-choice]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-anchor-choice]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const fb = document.getElementById('anchor-feedback');
+      if (fb) fb.textContent = '✅ 好的！"' + (btn.getAttribute('data-anchor-choice') || btn.textContent.trim()) + '" — 课程内容会围绕这个问题展开。';
+    });
+  });
+
+  document.getElementById('learner-question-input')?.addEventListener('input', (e) => {
+    const fb = document.getElementById('anchor-feedback');
+    if (fb) fb.textContent = e.target.value.trim() ? '✅ 你的问题：' + e.target.value.trim() : '👆 选择一个问题，或者写下你的疑问～';
+  });
+
+  buildSidenav(); updateUI();
+  document.body.classList.add('toolbar-visible');
+  setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
+})();
+
+/* ─── Quiz Logic ─── */
+function checkQuizBtn(btn) {
+  const qId = btn.dataset.quiz;
+  const isCorrect = btn.dataset.answer === 'correct';
+  document.querySelectorAll('[data-quiz="' + qId + '"]').forEach(b => {
+    b.classList.remove('correct', 'wrong', 'selected');
+  });
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const fb = document.getElementById(qId + '-fb');
+  if (fb) {
+    fb.style.display = 'block';
+    fb.className = 'result' + (isCorrect ? '' : ' error');
+    if (isCorrect) {
+      fb.textContent = '✅ 正确！很棒！';
+    } else {
+      // provide brief explanation
+      const explain = {
+        'pretest-q1':'❌ 不对哦。0℃ 以下比 0 还冷，要用负数（如 −3℃）表示。',
+        'pretest-q2':'❌ 不对哦。"−" 是负数的标志，不能省略，省了就变成正数啦。',
+        'pretest-q3':'❌ 不对哦。0 是分界点，既不是正数也不是负数。',
+        'ct-q1':'❌ 不对哦。正数 &gt; 0 &gt; 负数，所以 +3 最大。',
+        'ct-q2':'❌ 不对哦。数轴上 −2 在 −5 的右边，所以 −2 &gt; −5。',
+        'ct-q3':'❌ 不对哦。相反意义的量要能一正一负配对，盈利与亏损正好相反。',
+        'ct-q4':'❌ 不对哦。0 是分界线，它既不属于正数也不属于负数。',
+        'post-q1':'❌ 不对哦。"−" 表示低于海平面，−120 米就是低于海平面 120 米。',
+        'post-q2':'❌ 不对哦。−1 在 −4 的右边，所以 −1 &gt; −4。',
+        'post-q3':'❌ 不对哦。向东为 +，向西就相反，记作 −30。'
+      };
+      fb.innerHTML = explain[qId] || '❌ 不对哦，再想想～';
+    }
+  }
+}
+
+/* ─── Self-check Logic (free form, multiple accepted answers) ─── */
+function checkSelfFree(input, accepted) {
+  const fb = document.getElementById(input.id + '-fb');
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.style.display = 'none'; return; }
+  fb.style.display = 'block';
+  const norm = val.replace(/\s+/g, '').toLowerCase();
+  const isOk = accepted.some(a => a.replace(/\s+/g, '').toLowerCase() === norm);
+  if (isOk) {
+    fb.className = 'result'; fb.textContent = '✅ 正确！';
+  } else {
+    fb.className = 'result error'; fb.textContent = '❌ 再想想～ 参考答案：' + accepted[0];
+  }
+}
+
+/* ─── Step Check Logic ─── */
+function checkStep(input, expected, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.textContent = ''; return; }
+  if (val === expected || val.toLowerCase() === expected.toLowerCase()) {
+    fb.textContent = '✅'; fb.style.color = '#22c55e';
+  } else {
+    fb.textContent = '❌'; fb.style.color = '#ef4444';
+  }
+}
+function checkStepFree(input, accepted, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.textContent = ''; return; }
+  const norm = val.replace(/\s+/g, '').toLowerCase();
+  const isOk = accepted.some(a => a.replace(/\s+/g, '').toLowerCase() === norm);
+  fb.textContent = isOk ? '✅' : '❌';
+  fb.style.color = isOk ? '#22c55e' : '#ef4444';
+}
+
+/* ─── Drag & Drop Game (3 zones: positive/negative/zero) ─── */
+let dragScore = 0, dragTotal = 0;
+let selectedItem = null;
+
+document.querySelectorAll('.drag-item').forEach(item => {
+  item.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', item.dataset.label);
+    e.dataTransfer.setData('correct', item.dataset.correct);
+  });
+  item.addEventListener('click', () => {
+    if (item.classList.contains('placed')) return;
+    document.querySelectorAll('.drag-item').forEach(i => i.classList.remove('selected'));
+    item.classList.add('selected');
+    selectedItem = item;
+  });
+});
+
+function handleDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+function handleDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+
+function handleDrop(e) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  const zoneType = e.currentTarget.dataset.zone;
+  const correct = e.dataTransfer.getData('correct');
+  const itemText = e.dataTransfer.getData('text/plain');
+  placeItem(zoneType, correct, itemText);
+}
+
+function selectZone(zoneType) {
+  if (!selectedItem) return;
+  placeItem(zoneType, selectedItem.dataset.correct, selectedItem.dataset.label);
+}
+
+function placeItem(zoneType, correct, itemText) {
+  if (!zoneType || !itemText) return;
+  dragTotal++;
+  const itemsDiv = document.getElementById('zone-' + zoneType + '-items');
+
+  if (correct === zoneType) {
+    dragScore++;
+    const tag = document.createElement('span');
+    tag.className = 'drag-item';
+    tag.style.cssText = 'background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);cursor:default';
+    tag.textContent = '✅ ' + itemText;
+    itemsDiv.appendChild(tag);
+  } else {
+    const tag = document.createElement('span');
+    tag.className = 'drag-item';
+    tag.style.cssText = 'background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2);cursor:default';
+    tag.textContent = '❌ ' + itemText;
+    itemsDiv.appendChild(tag);
+  }
+
+  // Disable the dragged item
+  document.querySelectorAll('.drag-item').forEach(item => {
+    if (item.dataset.label === itemText && !item.classList.contains('placed')) {
+      item.classList.add('placed');
+      item.classList.remove('selected');
+    }
+  });
+  selectedItem = null;
+  document.querySelectorAll('.cls-btn').forEach(b => b.classList.remove('active'));
+
+  const scoreEl = document.getElementById('drag-score');
+  if (scoreEl) {
+    const total = document.querySelectorAll('.drag-item').length;
+    scoreEl.textContent = '得分：' + dragScore + ' / ' + dragTotal +
+      (dragTotal === total && dragScore === total ? ' 🎉 全部正确！' :
+       dragTotal === total ? ' 完成啦，看看哪个放错了～' : '');
+  }
+}
+
+function resetDragGame() {
+  dragScore = 0; dragTotal = 0; selectedItem = null;
+  document.getElementById('zone-positive-items').innerHTML = '';
+  document.getElementById('zone-negative-items').innerHTML = '';
+  document.getElementById('zone-zero-items').innerHTML = '';
+  document.querySelectorAll('.drag-item').forEach(item => item.classList.remove('placed', 'selected'));
+  document.querySelectorAll('.cls-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('drag-score').textContent = '';
+}
+
+/* highlight selected zone buttons */
+document.querySelectorAll('.cls-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cls-btn').forEach(b => b.classList.remove('active'));
+    if (selectedItem) btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

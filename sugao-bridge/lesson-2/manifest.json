@@ -1,0 +1,74 @@
+{
+  "courseId": "polygon-area-g5",
+  "title": "多边形的面积",
+  "subject": "math",
+  "grade": "4升5衔接",
+  "textbook": "苏教版",
+  "unit": "五年级上册第二单元（U2）",
+  "lessonType": "新授+自学",
+  "stage": "elementary",
+  "domain": "geometry-area",
+  "version": "1.0",
+  "teachAnyVersion": "7.20.0",
+  "templateVersion": "2.0",
+  "node": "math-e-polygon-area",
+  "description": "苏教版4升5暑假衔接互动课件：通过割补转化法学习平行四边形、三角形、梯形的面积计算，强调底和高必须互相垂直对应。",
+  "objectives": [
+    "通过割补转化，理解平行四边形面积 = 底 × 高",
+    "掌握三角形面积 = 底 × 高 ÷ 2，知道它和平行四边形的关系",
+    "掌握梯形面积 =（上底+下底）× 高 ÷ 2",
+    "能判断底和高是否对应（互相垂直），正确计算简单图形的面积"
+  ],
+  "pageCount": 16,
+  "pageTypes": [
+    "cover",
+    "problem-anchor",
+    "objectives",
+    "pre-test",
+    "concept-derivation",
+    "concept-parallelogram",
+    "concept-triangle",
+    "concept-trapezoid",
+    "concept-correspondence",
+    "scaffold",
+    "conceptest",
+    "interactive-formula-game",
+    "post-test",
+    "summary",
+    "knowledge-graph",
+    "ai-tutor"
+  ],
+  "modules": [
+    "cover",
+    "problem-anchor",
+    "objectives",
+    "pre-test",
+    "concept-x4",
+    "scaffold-practice",
+    "conceptest",
+    "drag-classification-game",
+    "post-test",
+    "summary",
+    "knowledge-graph",
+    "ai-tutor"
+  ],
+  "formulas": {
+    "parallelogram": "S = a × h",
+    "triangle": "S = a × h ÷ 2",
+    "trapezoid": "S = (a + b) × h ÷ 2"
+  },
+  "assets": {
+    "hero": "./assets/hero.svg"
+  },
+  "selfContained": true,
+  "requiresNetwork": false,
+  "baseline": {
+    "courseIdMeta": true,
+    "pageCountGE15": true,
+    "modulesComplete": true,
+    "elementaryVisualMode": true,
+    "navigationToolbar": true,
+    "playModeFab": true,
+    "instantFeedback": true
+  }
+}
