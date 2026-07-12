@@ -1,0 +1,59 @@
+{
+  "id": "sujiao-math-g5u4-decimal-add-sub",
+  "name": "小数加法和减法",
+  "node_id": "math-e-decimal-operations",
+  "subject": "math",
+  "grade": 5,
+  "author": "TeachAny 用户",
+  "description": "苏教版五年级数学上册第4单元：掌握小数加减法的算理与算法，小数点对齐是关键。含竖式计算、混合运算和实际问题。",
+  "version": "1.0.0",
+  "teachany_version": "v7.9",
+  "curriculum": "cn-national",
+  "free_mode": false,
+  "course_id": "sujiao-math-g5u4-decimal-add-sub",
+  "name_en": "Decimal Addition and Subtraction",
+  "stage": "elementary",
+  "domain": "number-algebra",
+  "lesson_type": "new-concept",
+  "status": "community",
+  "template_version": "2.0",
+  "tags": [
+    "小数",
+    "加减法",
+    "竖式计算",
+    "苏教版"
+  ],
+  "prerequisites": [
+    "math-e-decimals-meaning",
+    "math-e-multi-digit-addition-subtraction"
+  ],
+  "leads_to": [
+    "math-e-decimal-operations"
+  ],
+  "learning_objectives": [
+    "理解小数加减法的算理，掌握\"小数点对齐\"的计算方法",
+    "能正确进行小数加减法竖式计算，处理位数不同、进位和退位",
+    "能运用小数加减法解决两步及以上混合运算和实际问题"
+  ],
+  "assets": {
+    "hero": "assets/sujiao-math-g5u4-decimal-add-sub-hero.webp",
+    "tts_manifest": "tts/manifest.json",
+    "videos": [],
+    "images": [
+      "assets/sujiao-math-g5u4-decimal-add-sub-hero.webp"
+    ]
+  },
+  "has_tts": true,
+  "has_video": false,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "feedback": {
+    "require_password": true,
+    "password_sha256": "72466136f6cd040842fbec04999a83ddc9760ea33968f6d4a9a6a74629c77dc2",
+    "password_hint": "请向授课教师索取课堂反馈口令"
+  },
+  "created_at": "2026-07-12",
+  "updated_at": "2026-07-12"
+}

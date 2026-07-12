@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffbf0"/>
+      <stop offset="100%" stop-color="#e8f8f5"/>
+    </linearGradient>
+    <linearGradient id="titleBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4ecdc4"/>
+      <stop offset="100%" stop-color="#7eddd6"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.1"/></filter>
+  </defs>
+  
+  <rect width="600" height="320" fill="url(#bg)" rx="20"/>
+  <rect x="20" y="20" width="560" height="42" fill="url(#titleBar)" rx="12" filter="url(#shadow)"/>
+  <text x="300" y="47" text-anchor="middle" fill="white" font-family="PingFang SC, sans-serif" font-size="18" font-weight="bold">🛒 生活中的小数加减法：购物小票挑战</text>
+  
+  <!-- Receipt -->
+  <rect x="40" y="82" width="240" height="210" fill="white" rx="12" filter="url(#shadow)"/>
+  <text x="160" y="108" text-anchor="middle" fill="#333" font-family="PingFang SC, sans-serif" font-size="15" font-weight="bold">🛍️ 超市小票</text>
+  <line x1="60" y1="118" x2="260" y2="118" stroke="#eee" stroke-width="1"/>
+  <text x="70" y="140" fill="#555" font-family="PingFang SC, sans-serif" font-size="13">笔记本</text><text x="240" y="140" text-anchor="end" fill="#333" font-family="Courier New, monospace" font-size="13">¥2.50</text>
+  <text x="70" y="162" fill="#555" font-family="PingFang SC, sans-serif" font-size="13">铅笔盒</text><text x="240" y="162" text-anchor="end" fill="#333" font-family="Courier New, monospace" font-size="13">¥3.08</text>
+  <text x="70" y="184" fill="#555" font-family="PingFang SC, sans-serif" font-size="13">橡皮擦</text><text x="240" y="184" text-anchor="end" fill="#333" font-family="Courier New, monospace" font-size="13">¥0.90</text>
+  <line x1="60" y1="198" x2="260" y2="198" stroke="#eee" stroke-width="1"/>
+  <text x="70" y="218" fill="#333" font-family="PingFang SC, sans-serif" font-size="14" font-weight="bold">合计</text>
+  <text x="260" y="218" text-anchor="end" fill="#ff6b6b" font-family="Courier New, monospace" font-size="16" font-weight="bold">¥6.48</text>
+  <text x="160" y="248" text-anchor="middle" fill="#999" font-family="PingFang SC, sans-serif" font-size="11">2.50+3.08+0.9 → 小数点对齐 → 6.48</text>
+  <text x="160" y="270" text-anchor="middle" fill="#4ecdc4" font-family="PingFang SC, sans-serif" font-size="12">✅ 给 10 元 → 找零 3.52 元</text>
+  
+  <!-- Right side: Number line -->
+  <rect x="310" y="82" width="270" height="100" fill="white" rx="12" filter="url(#shadow)"/>
+  <text x="445" y="108" text-anchor="middle" fill="#333" font-family="PingFang SC, sans-serif" font-size="15" font-weight="bold">📏 身高比较：1.35m vs 1.4m</text>
+  <text x="320" y="138" fill="#555" font-family="PingFang SC, sans-serif" font-size="13">小明：1.35m</text>
+  <text x="320" y="158" fill="#555" font-family="PingFang SC, sans-serif" font-size="13">小华：1.40m</text>
+  <text x="500" y="148" text-anchor="middle" fill="#ff6b6b" font-family="PingFang SC, sans-serif" font-size="14" font-weight="bold">差: 0.05m</text>
+  
+  <!-- Right bottom: Method box -->
+  <rect x="310" y="200" width="270" height="92" fill="white" rx="12" filter="url(#shadow)"/>
+  <text x="445" y="225" text-anchor="middle" fill="#333" font-family="PingFang SC, sans-serif" font-size="15" font-weight="bold">🔢 计算技巧</text>
+  <text x="320" y="250" fill="#555" font-family="PingFang SC, sans-serif" font-size="12">• 1.4 = 1.40（末尾补0）</text>
+  <text x="320" y="270" fill="#555" font-family="PingFang SC, sans-serif" font-size="12">• 1.40 - 1.35 = 0.05</text>
+  <text x="320" y="288" fill="#4ecdc4" font-family="PingFang SC, sans-serif" font-size="12">• 补零让对齐更简单！</text>
+</svg>

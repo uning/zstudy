@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffbf0"/>
+      <stop offset="100%" stop-color="#ffe8cc"/>
+    </linearGradient>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="100%" stop-color="#ff8e8e"/>
+    </linearGradient>
+    <linearGradient id="correct" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4ecdc4"/>
+      <stop offset="100%" stop-color="#7eddd6"/>
+    </linearGradient>
+    <linearGradient id="wrong" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="100%" stop-color="#ff9b9b"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#bg)" rx="20"/>
+  
+  <!-- Title Bar -->
+  <rect x="30" y="20" width="540" height="50" fill="url(#header)" rx="14" filter="url(#shadow)"/>
+  <text x="300" y="50" text-anchor="middle" fill="white" font-family="PingFang SC, sans-serif" font-size="20" font-weight="bold">📐 小数加法竖式：小数点对齐才是王道！</text>
+  
+  <!-- Wrong Example -->
+  <rect x="30" y="90" width="250" height="180" fill="white" rx="14" stroke="#ff6b6b" stroke-width="2" filter="url(#shadow)"/>
+  <text x="155" y="120" text-anchor="middle" fill="#ff6b6b" font-family="PingFang SC, sans-serif" font-size="16" font-weight="bold">❌ 错误：末位对齐</text>
+  
+  <!-- Number columns - wrong way -->
+  <text x="145" y="155" text-anchor="middle" fill="#333" font-family="Courier New, monospace" font-size="18">3.0 8</text>
+  <text x="145" y="180" text-anchor="middle" fill="#333" font-family="Courier New, monospace" font-size="18">+ 0.9</text>
+  <line x1="90" y1="190" x2="200" y2="190" stroke="#999" stroke-width="1"/>
+  <text x="145" y="212" text-anchor="middle" fill="#ff6b6b" font-family="Courier New, monospace" font-size="18">3.9 8 → 错！</text>
+  <text x="155" y="250" text-anchor="middle" fill="#999" font-family="PingFang SC, sans-serif" font-size="13">8和9对齐→十分位≠百分位</text>
+  
+  <!-- Right Example -->
+  <rect x="310" y="90" width="260" height="180" fill="white" rx="14" stroke="#4ecdc4" stroke-width="2" filter="url(#shadow)"/>
+  <text x="440" y="120" text-anchor="middle" fill="#4ecdc4" font-family="PingFang SC, sans-serif" font-size="16" font-weight="bold">✅ 正确：小数点对齐</text>
+  
+  <text x="430" y="155" text-anchor="middle" fill="#333" font-family="Courier New, monospace" font-size="18">3.0 8</text>
+  <text x="430" y="180" text-anchor="middle" fill="#333" font-family="Courier New, monospace" font-size="18">+ 0.9 0</text>
+  <line x1="370" y1="190" x2="490" y2="190" stroke="#999" stroke-width="1"/>
+  <text x="430" y="212" text-anchor="middle" fill="#4ecdc4" font-family="Courier New, monospace" font-size="18">3.9 8 → 对！</text>
+  <text x="440" y="250" text-anchor="middle" fill="#999" font-family="PingFang SC, sans-serif" font-size="13">小数点对齐 = 相同数位对齐</text>
+  
+  <!-- Tip Box -->
+  <rect x="30" y="290" width="540" height="90" fill="white" rx="14" filter="url(#shadow)"/>
+  <text x="300" y="318" text-anchor="middle" fill="#ff6b6b" font-family="PingFang SC, sans-serif" font-size="16" font-weight="bold">💡 核心口诀</text>
+  <text x="300" y="345" text-anchor="middle" fill="#333" font-family="PingFang SC, sans-serif" font-size="15">小数点对齐 → 数位要对齐 → 从右往左加 → 进位别忘记！</text>
+  <text x="300" y="368" text-anchor="middle" fill="#999" font-family="PingFang SC, sans-serif" font-size="13">（位数不同时，在末尾补0，让小数点对齐更直观）</text>
+</svg>
