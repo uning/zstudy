@@ -641,9 +641,10 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
         <p style="color:var(--muted);margin:0 0 16px">回车键提交,自动批改并切换下一题。</p>
         <div class="flex-row" style="margin-bottom:16px">
           <select id="trainer-count" style="max-width:100px">
-            <option value="3">3 题</option>
-            <option value="5" selected>5 题</option>
-            <option value="10">10 题</option>
+            <option value="10" selected>10 题</option>
+            <option value="20">20 题</option>
+            <option value="30">30 题</option>
+            <option value="40">40 题</option>
           </select>
           <button class="choice" id="btn-generate-today" style="max-width:160px;text-align:center">🎯 开始今日训练</button>
           <span class="badge" id="streak-badge">准备好开始</span>
@@ -1122,83 +1123,133 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   const dayThemes = {
     1: { name: '回头检查', method: 'lookback', tip: '算完先检查数字、符号和答案合理性。',
       questions: [
-        { q: '234 + 125 = ?', a: 359, op: '+', hint: '验算:359 - 125 = 234 ✓', method: 'lookback' },
-        { q: '567 - 234 = ?', a: 333, op: '-', hint: '验算:333 + 234 = 567 ✓', method: 'lookback' },
-        { q: '408 + 361 = ?', a: 769, op: '+', hint: '验算:769 - 361 = 408 ✓', method: 'lookback' },
-        { q: '876 - 432 = ?', a: 444, op: '-', hint: '验算:444 + 432 = 876 ✓', method: 'lookback' },
-        { q: '150 + 230 = ?', a: 380, op: '+', hint: '验算:380 - 230 = 150 ✓', method: 'lookback' }
+        { q: '234 + 125 = ?', a: 359, op: '+', hint: '验算:359 − 125 = 234 ✓', method: 'lookback' },
+        { q: '567 − 234 = ?', a: 333, op: '−', hint: '验算:333 + 234 = 567 ✓', method: 'lookback' },
+        { q: '408 + 361 = ?', a: 769, op: '+', hint: '验算:769 − 361 = 408 ✓', method: 'lookback' },
+        { q: '876 − 432 = ?', a: 444, op: '−', hint: '验算:444 + 432 = 876 ✓', method: 'lookback' },
+        { q: '150 + 230 = ?', a: 380, op: '+', hint: '验算:380 − 230 = 150 ✓', method: 'lookback' },
+        { q: '654 + 213 = ?', a: 867, op: '+', hint: '验算:867 − 213 = 654 ✓', method: 'lookback' },
+        { q: '987 − 543 = ?', a: 444, op: '−', hint: '验算:444 + 543 = 987 ✓', method: 'lookback' },
+        { q: '320 + 450 = ?', a: 770, op: '+', hint: '验算:770 − 450 = 320 ✓', method: 'lookback' },
+        { q: '501 + 209 = ?', a: 710, op: '+', hint: '验算:710 − 209 = 501 ✓', method: 'lookback' },
+        { q: '777 − 333 = ?', a: 444, op: '−', hint: '验算:444 + 333 = 777 ✓', method: 'lookback' }
       ]},
-    2: { name: '加法验算', method: 'add-inverse', tip: '用"和 - 一个加数"或"交换加数位置"验算。',
+    2: { name: '加法验算', method: 'add-inverse', tip: '用「和 − 一个加数」或「交换加数位置」验算。',
       questions: [
-        { q: '247 + 568 = ?', a: 815, op: '+', hint: '验算1:815 - 568 = 247\n验算2:568 + 247 = 815', method: 'add-inverse' },
-        { q: '389 + 445 = ?', a: 834, op: '+', hint: '验算1:834 - 445 = 389\n验算2:445 + 389 = 834', method: 'add-inverse' },
-        { q: '675 + 298 = ?', a: 973, op: '+', hint: '验算1:973 - 298 = 675\n验算2:298 + 675 = 973', method: 'add-inverse' },
-        { q: '156 + 789 = ?', a: 945, op: '+', hint: '验算1:945 - 789 = 156\n验算2:789 + 156 = 945', method: 'add-inverse' },
-        { q: '823 + 197 = ?', a: 1020, op: '+', hint: '验算1:1020 - 197 = 823\n验算2:197 + 823 = 1020', method: 'add-inverse' }
+        { q: '247 + 568 = ?', a: 815, op: '+', hint: '验算1:815 − 568 = 247\n验算2:568 + 247 = 815', method: 'add-inverse' },
+        { q: '389 + 445 = ?', a: 834, op: '+', hint: '验算1:834 − 445 = 389\n验算2:445 + 389 = 834', method: 'add-inverse' },
+        { q: '675 + 298 = ?', a: 973, op: '+', hint: '验算1:973 − 298 = 675\n验算2:298 + 675 = 973', method: 'add-inverse' },
+        { q: '156 + 789 = ?', a: 945, op: '+', hint: '验算1:945 − 789 = 156\n验算2:789 + 156 = 945', method: 'add-inverse' },
+        { q: '823 + 197 = ?', a: 1020, op: '+', hint: '验算1:1020 − 197 = 823\n验算2:197 + 823 = 1020', method: 'add-inverse' },
+        { q: '456 + 678 = ?', a: 1134, op: '+', hint: '验算1:1134 − 678 = 456\n验算2:678 + 456 = 1134', method: 'add-inverse' },
+        { q: '234 + 789 = ?', a: 1023, op: '+', hint: '验算1:1023 − 789 = 234\n验算2:789 + 234 = 1023', method: 'add-inverse' },
+        { q: '567 + 358 = ?', a: 925, op: '+', hint: '验算1:925 − 358 = 567\n验算2:358 + 567 = 925', method: 'add-inverse' },
+        { q: '418 + 637 = ?', a: 1055, op: '+', hint: '验算1:1055 − 637 = 418\n验算2:637 + 418 = 1055', method: 'add-inverse' },
+        { q: '339 + 486 = ?', a: 825, op: '+', hint: '验算1:825 − 486 = 339\n验算2:486 + 339 = 825', method: 'add-inverse' }
       ]},
-    3: { name: '减法验算', method: 'sub-inverse', tip: '用"差 + 减数"或"被减数 - 差"验算,注意退位!',
+    3: { name: '减法验算', method: 'sub-inverse', tip: '用「差 + 减数」或「被减数 − 差」验算，注意退位！',
       questions: [
-        { q: '725 - 348 = ?', a: 377, op: '-', hint: '验算1:377 + 348 = 725\n口诀:0上有点当作9', method: 'sub-inverse' },
-        { q: '603 - 287 = ?', a: 316, op: '-', hint: '验算1:316 + 287 = 603\n注意:个位不够向十位借', method: 'sub-inverse' },
-        { q: '842 - 569 = ?', a: 273, op: '-', hint: '验算1:273 + 569 = 842\n注意:连续退位', method: 'sub-inverse' },
-        { q: '500 - 267 = ?', a: 233, op: '-', hint: '验算1:233 + 267 = 500\n注意:中间有0的退位', method: 'sub-inverse' },
-        { q: '931 - 456 = ?', a: 475, op: '-', hint: '验算1:475 + 456 = 931\n二次确认:931 - 475 = 456', method: 'sub-inverse' }
+        { q: '725 − 348 = ?', a: 377, op: '−', hint: '验算1:377 + 348 = 725\n口诀:0上有点当作9', method: 'sub-inverse' },
+        { q: '603 − 287 = ?', a: 316, op: '−', hint: '验算1:316 + 287 = 603\n注意:个位不够向十位借', method: 'sub-inverse' },
+        { q: '842 − 569 = ?', a: 273, op: '−', hint: '验算1:273 + 569 = 842\n注意:连续退位', method: 'sub-inverse' },
+        { q: '500 − 267 = ?', a: 233, op: '−', hint: '验算1:233 + 267 = 500\n注意:中间有0的退位', method: 'sub-inverse' },
+        { q: '931 − 456 = ?', a: 475, op: '−', hint: '验算1:475 + 456 = 931\n二次确认:931 − 475 = 456', method: 'sub-inverse' },
+        { q: '812 − 375 = ?', a: 437, op: '−', hint: '验算1:437 + 375 = 812\n个位2−5不够,借位→12−5=7', method: 'sub-inverse' },
+        { q: '654 − 289 = ?', a: 365, op: '−', hint: '验算1:365 + 289 = 654\n十位不够,向百位借1', method: 'sub-inverse' },
+        { q: '400 − 163 = ?', a: 237, op: '−', hint: '验算1:237 + 163 = 400\n注意:中间有0的借位技巧', method: 'sub-inverse' },
+        { q: '1000 − 487 = ?', a: 513, op: '−', hint: '验算1:513 + 487 = 1000\n多0退位特训', method: 'sub-inverse' },
+        { q: '723 − 498 = ?', a: 225, op: '−', hint: '验算1:225 + 498 = 723\n连续退位,逐位核对', method: 'sub-inverse' }
       ]},
-    4: { name: '乘法验算', method: 'mul-inverse', tip: '用"积 ÷ 因数"或"交换因数位置"验算。',
+    4: { name: '乘法验算', method: 'mul-inverse', tip: '用「积 ÷ 因数」或「交换因数位置」验算。',
       questions: [
         { q: '24 × 7 = ?', a: 168, op: '×', hint: '验算1:168 ÷ 7 = 24\n验算2:7 × 24 = 168', method: 'mul-inverse' },
         { q: '56 × 8 = ?', a: 448, op: '×', hint: '验算1:448 ÷ 8 = 56\n验算2:8 × 56 = 448', method: 'mul-inverse' },
         { q: '39 × 6 = ?', a: 234, op: '×', hint: '验算1:234 ÷ 6 = 39\n验算2:6 × 39 = 234', method: 'mul-inverse' },
         { q: '78 × 5 = ?', a: 390, op: '×', hint: '验算1:390 ÷ 5 = 78\n验算2:5 × 78 = 390', method: 'mul-inverse' },
-        { q: '63 × 9 = ?', a: 567, op: '×', hint: '验算1:567 ÷ 9 = 63\n验算2:9 × 63 = 567', method: 'mul-inverse' }
+        { q: '63 × 9 = ?', a: 567, op: '×', hint: '验算1:567 ÷ 9 = 63\n验算2:9 × 63 = 567', method: 'mul-inverse' },
+        { q: '45 × 8 = ?', a: 360, op: '×', hint: '验算1:360 ÷ 8 = 45\n验算2:8 × 45 = 360', method: 'mul-inverse' },
+        { q: '37 × 6 = ?', a: 222, op: '×', hint: '验算1:222 ÷ 6 = 37\n验算2:6 × 37 = 222', method: 'mul-inverse' },
+        { q: '52 × 9 = ?', a: 468, op: '×', hint: '验算1:468 ÷ 9 = 52\n验算2:9 × 52 = 468', method: 'mul-inverse' },
+        { q: '86 × 4 = ?', a: 344, op: '×', hint: '验算1:344 ÷ 4 = 86\n验算2:4 × 86 = 344', method: 'mul-inverse' },
+        { q: '71 × 7 = ?', a: 497, op: '×', hint: '验算1:497 ÷ 7 = 71\n验算2:7 × 71 = 497', method: 'mul-inverse' }
       ]},
-    5: { name: '除法验算', method: 'div-inverse', tip: '用"商 × 除数 + 余数 = 被除数",且余数 < 除数。',
+    5: { name: '除法验算', method: 'div-inverse', tip: '用「商 × 除数 + 余数 = 被除数」，且余数 < 除数。',
       questions: [
-        { q: '85 ÷ 6 = ?......?', a: 14, a2: 1, op: '÷', hint: '验算:14 × 6 + 1 = 84 + 1 = 85\n检查:余数1 < 除数6 ✓', method: 'div-inverse' },
-        { q: '73 ÷ 8 = ?......?', a: 9, a2: 1, op: '÷', hint: '验算:9 × 8 + 1 = 73\n检查:余数1 < 除数8 ✓', method: 'div-inverse' },
-        { q: '97 ÷ 5 = ?......?', a: 19, a2: 2, op: '÷', hint: '验算:19 × 5 + 2 = 95 + 2 = 97\n检查:余数2 < 除数5 ✓', method: 'div-inverse' },
-        { q: '64 ÷ 7 = ?......?', a: 9, a2: 1, op: '÷', hint: '验算:9 × 7 + 1 = 63 + 1 = 64\n检查:余数1 < 除数7 ✓', method: 'div-inverse' },
-        { q: '89 ÷ 3 = ?......?', a: 29, a2: 2, op: '÷', hint: '验算:29 × 3 + 2 = 87 + 2 = 89\n检查:余数2 < 除数3 ✓', method: 'div-inverse' }
+        { q: '85 ÷ 6 = ?……?', a: 14, a2: 1, op: '÷', hint: '验算:14 × 6 + 1 = 84 + 1 = 85\n检查:余数1 < 除数6 ✓', method: 'div-inverse' },
+        { q: '73 ÷ 8 = ?……?', a: 9, a2: 1, op: '÷', hint: '验算:9 × 8 + 1 = 73\n检查:余数1 < 除数8 ✓', method: 'div-inverse' },
+        { q: '97 ÷ 5 = ?……?', a: 19, a2: 2, op: '÷', hint: '验算:19 × 5 + 2 = 95 + 2 = 97\n检查:余数2 < 除数5 ✓', method: 'div-inverse' },
+        { q: '64 ÷ 7 = ?……?', a: 9, a2: 1, op: '÷', hint: '验算:9 × 7 + 1 = 63 + 1 = 64\n检查:余数1 < 除数7 ✓', method: 'div-inverse' },
+        { q: '89 ÷ 3 = ?……?', a: 29, a2: 2, op: '÷', hint: '验算:29 × 3 + 2 = 87 + 2 = 89\n检查:余数2 < 除数3 ✓', method: 'div-inverse' },
+        { q: '58 ÷ 4 = ?……?', a: 14, a2: 2, op: '÷', hint: '验算:14 × 4 + 2 = 58\n检查:余数2 < 除数4 ✓', method: 'div-inverse' },
+        { q: '76 ÷ 9 = ?……?', a: 8, a2: 4, op: '÷', hint: '验算:8 × 9 + 4 = 76\n检查:余数4 < 除数9 ✓', method: 'div-inverse' },
+        { q: '45 ÷ 6 = ?……?', a: 7, a2: 3, op: '÷', hint: '验算:7 × 6 + 3 = 45\n检查:余数3 < 除数6 ✓', method: 'div-inverse' },
+        { q: '100 ÷ 7 = ?……?', a: 14, a2: 2, op: '÷', hint: '验算:14 × 7 + 2 = 98 + 2 = 100\n检查:余数2 < 除数7 ✓', method: 'div-inverse' },
+        { q: '83 ÷ 5 = ?……?', a: 16, a2: 3, op: '÷', hint: '验算:16 × 5 + 3 = 80 + 3 = 83\n检查:余数3 < 除数5 ✓', method: 'div-inverse' }
       ]},
-    6: { name: '估算对比', method: 'estimate', tip: '先四舍五入估算,再精确计算,最后对比是否接近。',
+    6: { name: '估算对比', method: 'estimate', tip: '先四舍五入估算，再精确计算，最后对比是否接近。',
       questions: [
-        { q: '328 + 495 ≈ ?(先估算再精算)', a: 823, op: '+', hint: '估算:330 + 500 ≈ 830\n精算:328 + 495 = 823\n823 ≈ 830,合理!', method: 'estimate' },
-        { q: '761 - 389 ≈ ?(先估算再精算)', a: 372, op: '-', hint: '估算:760 - 390 ≈ 370\n精算:761 - 389 = 372\n372 ≈ 370,相差很小!', method: 'estimate' },
-        { q: '504 + 398 ≈ ?(先估算再精算)', a: 902, op: '+', hint: '估算:500 + 400 = 900\n精算:504 + 398 = 902\n902 ≈ 900,合理!', method: 'estimate' },
-        { q: '900 - 567 ≈ ?(先估算再精算)', a: 333, op: '-', hint: '估算:900 - 570 = 330\n精算:900 - 567 = 333\n333 ≈ 330,合理!', method: 'estimate' },
-        { q: '215 + 686 ≈ ?(先估算再精算)', a: 901, op: '+', hint: '估算:220 + 690 = 910\n精算:215 + 686 = 901\n901 ≈ 910,合理!', method: 'estimate' }
+        { q: '328 + 495 ≈ ?(先估再精算)', a: 823, op: '+', hint: '估算:330 + 500 ≈ 830\n精算:328 + 495 = 823\n823 ≈ 830，合理！', method: 'estimate' },
+        { q: '761 − 389 ≈ ?(先估再精算)', a: 372, op: '−', hint: '估算:760 − 390 ≈ 370\n精算:761 − 389 = 372\n372 ≈ 370，相差很小！', method: 'estimate' },
+        { q: '504 + 398 ≈ ?(先估再精算)', a: 902, op: '+', hint: '估算:500 + 400 = 900\n精算:504 + 398 = 902\n902 ≈ 900，合理！', method: 'estimate' },
+        { q: '900 − 567 ≈ ?(先估再精算)', a: 333, op: '−', hint: '估算:900 − 570 = 330\n精算:900 − 567 = 333\n333 ≈ 330，合理！', method: 'estimate' },
+        { q: '215 + 686 ≈ ?(先估再精算)', a: 901, op: '+', hint: '估算:220 + 690 = 910\n精算:215 + 686 = 901\n901 ≈ 910，合理！', method: 'estimate' },
+        { q: '427 + 366 ≈ ?(先估再精算)', a: 793, op: '+', hint: '估算:430 + 370 = 800\n精算:427 + 366 = 793\n793 ≈ 800，合理！', method: 'estimate' },
+        { q: '888 − 299 ≈ ?(先估再精算)', a: 589, op: '−', hint: '估算:890 − 300 = 590\n精算:888 − 299 = 589\n589 ≈ 590，完美！', method: 'estimate' },
+        { q: '153 + 748 ≈ ?(先估再精算)', a: 901, op: '+', hint: '估算:150 + 750 = 900\n精算:153 + 748 = 901\n901 ≈ 900，合理！', method: 'estimate' },
+        { q: '612 + 294 ≈ ?(先估再精算)', a: 906, op: '+', hint: '估算:610 + 290 = 900\n精算:612 + 294 = 906\n906 ≈ 900，合理！', method: 'estimate' },
+        { q: '700 − 213 ≈ ?(先估再精算)', a: 487, op: '−', hint: '估算:700 − 210 = 490\n精算:700 − 213 = 487\n487 ≈ 490，合理！', method: 'estimate' }
       ]},
-    7: { name: '尾数排雷', method: 'tail', tip: '先看个位对不对,快速发现粗心错误。',
+    7: { name: '尾数排雷', method: 'tail', tip: '先看个位对不对，快速发现粗心错误。',
       questions: [
-        { q: '1234 + 5678 = ?', a: 6912, op: '+', hint: '个位:4+8=12 → 2 ✓\n验算:6912 - 5678 = 1234', method: 'tail' },
-        { q: '8765 - 4321 = ?', a: 4444, op: '-', hint: '个位:5-1=4 ✓\n验算:4444 + 4321 = 8765', method: 'tail' },
-        { q: '3456 + 2891 = ?', a: 6347, op: '+', hint: '个位:6+1=7 ✓\n验算:6347 - 3456 = 2891', method: 'tail' },
-        { q: '7000 - 2846 = ?', a: 4154, op: '-', hint: '个位:0-6 → 借位 10-6=4 ✓\n验算:4154 + 2846 = 7000', method: 'tail' },
-        { q: '5608 + 1379 = ?', a: 6987, op: '+', hint: '个位:8+9=17 → 7 ✓\n验算:6987 - 5608 = 1379', method: 'tail' }
+        { q: '1234 + 5678 = ?', a: 6912, op: '+', hint: '个位:4+8=12 → 2 ✓\n验算:6912 − 5678 = 1234', method: 'tail' },
+        { q: '8765 − 4321 = ?', a: 4444, op: '−', hint: '个位:5−1=4 ✓\n验算:4444 + 4321 = 8765', method: 'tail' },
+        { q: '3456 + 2891 = ?', a: 6347, op: '+', hint: '个位:6+1=7 ✓\n验算:6347 − 3456 = 2891', method: 'tail' },
+        { q: '7000 − 2846 = ?', a: 4154, op: '−', hint: '个位:0−6 → 借位10−6=4 ✓\n验算:4154 + 2846 = 7000', method: 'tail' },
+        { q: '5608 + 1379 = ?', a: 6987, op: '+', hint: '个位:8+9=17 → 7 ✓\n验算:6987 − 5608 = 1379', method: 'tail' },
+        { q: '2468 + 3579 = ?', a: 6047, op: '+', hint: '个位:8+9=17 → 7 ✓\n验算:6047 − 3579 = 2468', method: 'tail' },
+        { q: '5432 − 1689 = ?', a: 3743, op: '−', hint: '个位:2−9 → 借位12−9=3 ✓\n验算:3743 + 1689 = 5432', method: 'tail' },
+        { q: '3145 + 4855 = ?', a: 8000, op: '+', hint: '个位:5+5=10 → 0 ✓\n验算:8000 − 4855 = 3145', method: 'tail' },
+        { q: '4091 + 2809 = ?', a: 6900, op: '+', hint: '个位:1+9=10 → 0 ✓\n验算:6900 − 4091 = 2809', method: 'tail' },
+        { q: '9876 − 1234 = ?', a: 8642, op: '−', hint: '个位:6−4=2 ✓\n验算:8642 + 1234 = 9876', method: 'tail' }
       ]},
     8: { name: '错题攻克', method: 'mixed', tip: '集中攻克易错题型:中间有0、连续进退位。',
       questions: [
-        { q: '508 + 396 = ?', a: 904, op: '+', hint: '验算:904 - 396 = 508\n注意:个位8+6=14进1,十位0+9+1=10', method: 'add-inverse' },
-        { q: '700 - 456 = ?', a: 244, op: '-', hint: '验算:244 + 456 = 700\n注意:中间有0,0上有点当作9', method: 'sub-inverse' },
+        { q: '508 + 396 = ?', a: 904, op: '+', hint: '验算:904 − 396 = 508\n注意:个位8+6=14进1,十位0+9+1=10', method: 'add-inverse' },
+        { q: '700 − 456 = ?', a: 244, op: '−', hint: '验算:244 + 456 = 700\n注意:中间有0,0上有点当作9', method: 'sub-inverse' },
         { q: '48 × 7 = ?', a: 336, op: '×', hint: '验算:336 ÷ 7 = 48\n注意:8×7=56进5,4×7=28+5=33', method: 'mul-inverse' },
-        { q: '92 ÷ 5 = ?......?', a: 18, a2: 2, op: '÷', hint: '验算:18 × 5 + 2 = 92\n检查:余数2 < 除数5 ✓', method: 'div-inverse' },
-        { q: '604 - 378 = ?', a: 226, op: '-', hint: '验算:226 + 378 = 604\n注意:中间有0的连续退位', method: 'sub-inverse' }
+        { q: '92 ÷ 5 = ?……?', a: 18, a2: 2, op: '÷', hint: '验算:18 × 5 + 2 = 92\n检查:余数2 < 除数5 ✓', method: 'div-inverse' },
+        { q: '604 − 378 = ?', a: 226, op: '−', hint: '验算:226 + 378 = 604\n注意:中间有0的连续退位', method: 'sub-inverse' },
+        { q: '307 + 596 = ?', a: 903, op: '+', hint: '验算:903 − 596 = 307\n注意:个位7+6=13进1,十位0+9+1=10', method: 'add-inverse' },
+        { q: '902 − 467 = ?', a: 435, op: '−', hint: '验算:435 + 467 = 902\n注意:个位不够,十位是0怎么办?', method: 'sub-inverse' },
+        { q: '37 × 8 = ?', a: 296, op: '×', hint: '验算:296 ÷ 8 = 37\n注意:7×8=56进5', method: 'mul-inverse' },
+        { q: '78 ÷ 6 = ?', a: 13, op: '÷', hint: '验算:13 × 6 = 78\n正好整除，没有余数', method: 'div-inverse' },
+        { q: '1006 − 728 = ?', a: 278, op: '−', hint: '验算:278 + 728 = 1006\n多0连续退位，仔细核对', method: 'sub-inverse' }
       ]},
-    9: { name: '限时挑战', method: 'timed', tip: '又快又准!每题都要验算,争取5分钟完成。',
+    9: { name: '限时挑战', method: 'timed', tip: '又快又准！每题都要验算，争取5分钟完成。',
       questions: [
-        { q: '4678 + 2359 = ?', a: 7037, op: '+', hint: '验算:7037 - 2359 = 4678', method: 'tail' },
-        { q: '5032 - 1856 = ?', a: 3176, op: '-', hint: '验算:3176 + 1856 = 5032', method: 'sub-inverse' },
+        { q: '4678 + 2359 = ?', a: 7037, op: '+', hint: '验算:7037 − 2359 = 4678', method: 'tail' },
+        { q: '5032 − 1856 = ?', a: 3176, op: '−', hint: '验算:3176 + 1856 = 5032', method: 'sub-inverse' },
         { q: '84 × 9 = ?', a: 756, op: '×', hint: '验算:756 ÷ 9 = 84', method: 'mul-inverse' },
-        { q: '156 ÷ 8 = ?......?', a: 19, a2: 4, op: '÷', hint: '验算:19 × 8 + 4 = 156', method: 'div-inverse' },
-        { q: '3456 - 1789 = ?', a: 1667, op: '-', hint: '验算:1667 + 1789 = 3456', method: 'sub-inverse' }
+        { q: '156 ÷ 8 = ?……?', a: 19, a2: 4, op: '÷', hint: '验算:19 × 8 + 4 = 156', method: 'div-inverse' },
+        { q: '3456 − 1789 = ?', a: 1667, op: '−', hint: '验算:1667 + 1789 = 3456', method: 'sub-inverse' },
+        { q: '2765 + 4389 = ?', a: 7154, op: '+', hint: '验算:7154 − 4389 = 2765', method: 'tail' },
+        { q: '6120 − 3478 = ?', a: 2642, op: '−', hint: '验算:2642 + 3478 = 6120', method: 'sub-inverse' },
+        { q: '97 × 6 = ?', a: 582, op: '×', hint: '验算:582 ÷ 6 = 97', method: 'mul-inverse' },
+        { q: '247 ÷ 7 = ?……?', a: 35, a2: 2, op: '÷', hint: '验算:35 × 7 + 2 = 245 + 2 = 247', method: 'div-inverse' },
+        { q: '8436 − 5678 = ?', a: 2758, op: '−', hint: '验算:2758 + 5678 = 8436', method: 'sub-inverse' }
       ]},
-    10: { name: '综合验收', method: 'final', tip: '综合运用所有验算方法,为训练营画上圆满句号!',
+    10: { name: '综合验收', method: 'final', tip: '综合运用所有验算方法，为训练营画上圆满句号！',
       questions: [
-        { q: '5678 + 2345 = ?', a: 8023, op: '+', hint: '验算1:8023 - 2345 = 5678\n验算2:交换加数 2345+5678', method: 'add-inverse' },
-        { q: '9000 - 3456 = ?', a: 5544, op: '-', hint: '验算1:5544 + 3456 = 9000\n注意:连续退位', method: 'sub-inverse' },
+        { q: '5678 + 2345 = ?', a: 8023, op: '+', hint: '验算1:8023 − 2345 = 5678\n验算2:交换加数2345+5678', method: 'add-inverse' },
+        { q: '9000 − 3456 = ?', a: 5544, op: '−', hint: '验算1:5544 + 3456 = 9000\n注意:连续退位', method: 'sub-inverse' },
         { q: '95 × 7 = ?', a: 665, op: '×', hint: '验算1:665 ÷ 7 = 95\n验算2:7 × 95 = 665', method: 'mul-inverse' },
-        { q: '237 ÷ 8 = ?......?', a: 29, a2: 5, op: '÷', hint: '验算:29 × 8 + 5 = 232 + 5 = 237\n检查:余数5 < 除数8 ✓', method: 'div-inverse' },
-        { q: '4008 + 2986 = ?', a: 6994, op: '+', hint: '验算1:6994 - 2986 = 4008\n个位检查:8+6=14 → 4 ✓', method: 'tail' }
+        { q: '237 ÷ 8 = ?……?', a: 29, a2: 5, op: '÷', hint: '验算:29 × 8 + 5 = 232 + 5 = 237\n检查:余数5 < 除数8 ✓', method: 'div-inverse' },
+        { q: '4008 + 2986 = ?', a: 6994, op: '+', hint: '验算1:6994 − 2986 = 4008\n个位检查:8+6=14 → 4 ✓', method: 'tail' },
+        { q: '10000 − 4321 = ?', a: 5679, op: '−', hint: '验算1:5679 + 4321 = 10000\n注意:多0连续退位', method: 'sub-inverse' },
+        { q: '76 × 9 = ?', a: 684, op: '×', hint: '验算1:684 ÷ 9 = 76\n验算2:9 × 76 = 684', method: 'mul-inverse' },
+        { q: '365 ÷ 7 = ?……?', a: 52, a2: 1, op: '÷', hint: '验算:52 × 7 + 1 = 364 + 1 = 365\n检查:余数1 < 除数7 ✓', method: 'div-inverse' },
+        { q: '7286 + 1935 = ?', a: 9221, op: '+', hint: '验算1:9221 − 1935 = 7286\n尾数:6+5=11 → 1 ✓', method: 'tail' },
+        { q: '5043 − 2876 = ?', a: 2167, op: '−', hint: '验算1:2167 + 2876 = 5043\n每个数位都验算一遍', method: 'sub-inverse' }
       ]}
   };
   const StorageKey = 'check10_progress_v1';
@@ -1393,7 +1444,9 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
     const day = getCurrentDay();
     const theme = dayThemes[day];
     const count = parseInt(document.getElementById('trainer-count').value, 10);
-    const all = theme.questions;
+    const all = [...theme.questions];
+    // Shuffle for variety, then pick count (cycle back if >pool)
+    for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [all[i], all[j]] = [all[j], all[i]]; }
     trainerQuestions = [];
     for (let i = 0; i < count; i++) trainerQuestions.push({ ...all[i % all.length], origIdx: i });
     trainerIdx = 0; trainerCorrect = 0; trainerResults = [];
