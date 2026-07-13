@@ -1,0 +1,62 @@
+{
+  "id": "math-review-calculation-check-10days",
+  "course_id": "math-review-calculation-check-10days",
+  "node_id": "math-e-multi-digit-addition-subtraction",
+  "name": "10天验算训练营",
+  "name_en": "10-Day Calculation Check Training",
+  "subject": "math",
+  "grade": "3",
+  "stage": "elementary",
+  "domain": "number-algebra",
+  "lesson_type": "review",
+  "status": "community",
+  "author": "TeachAny",
+  "version": "1.0.0",
+  "teachany_version": "7.20.0",
+  "template_version": "2.0",
+  "curriculum": "CN-2022",
+  "description": "小学3-4年级10天计算验算能力互动训练，包含自动批改、错题追踪、10天打卡和AI学伴一键出题。帮助学生养成先算后验的好习惯，掌握逆运算、交换、估算、尾数检查等4种验算方法。",
+  "tags": [
+    "计算验算",
+    "小学数学",
+    "10天训练",
+    "自动批改",
+    "AI学伴",
+    "错题追踪"
+  ],
+  "prerequisites": [
+    "math-e-numbers-within-100",
+    "math-e-addition-subtraction-within-100"
+  ],
+  "leads_to": [
+    "math-e-mixed-operations"
+  ],
+  "learning_objectives": [
+    "说出并正确使用4种验算方法：逆运算、交换、估算、尾数检查",
+    "算完每道题后，主动用至少1种方法检查",
+    "发现自己的薄弱点，并针对性练习同类题目",
+    "用AI学伴一键生成适合自己的练习题"
+  ],
+  "assets": {
+    "hero": "assets/math-review-calculation-check-10days-hero.svg",
+    "tts_manifest": "tts/manifest.json",
+    "videos": [],
+    "images": [
+      "assets/math-review-calculation-check-10days-hero.svg"
+    ]
+  },
+  "has_tts": true,
+  "has_video": false,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "free_mode": false,
+  "feedback": {
+    "require_password": true,
+    "password_sha256": "",
+    "password_hint": ""
+  },
+  "created_at": "2026-07-13",
+  "updated_at": "2026-07-13"
+}

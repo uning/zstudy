@@ -1,0 +1,92 @@
+[
+  {
+    "id": "ai-tutor",
+    "src": "tts/ai-tutor.mp3",
+    "size": 40752
+  },
+  {
+    "id": "calendar",
+    "src": "tts/calendar.mp3",
+    "size": 74016
+  },
+  {
+    "id": "canvas-game",
+    "src": "tts/canvas-game.mp3",
+    "size": 110592
+  },
+  {
+    "id": "conceptest",
+    "src": "tts/conceptest.mp3",
+    "size": 80928
+  },
+  {
+    "id": "deep-understanding",
+    "src": "tts/deep-understanding.mp3",
+    "size": 111744
+  },
+  {
+    "id": "hero",
+    "src": "tts/hero.mp3",
+    "size": 38448
+  },
+  {
+    "id": "knowledge-graph",
+    "src": "tts/knowledge-graph.mp3",
+    "size": 65808
+  },
+  {
+    "id": "main-interaction",
+    "src": "tts/main-interaction.mp3",
+    "size": 62208
+  },
+  {
+    "id": "module-1",
+    "src": "tts/module-1.mp3",
+    "size": 77616
+  },
+  {
+    "id": "module-2",
+    "src": "tts/module-2.mp3",
+    "size": 90576
+  },
+  {
+    "id": "objectives",
+    "src": "tts/objectives.mp3",
+    "size": 78624
+  },
+  {
+    "id": "posttest",
+    "src": "tts/posttest.mp3",
+    "size": 87552
+  },
+  {
+    "id": "pretest",
+    "src": "tts/pretest.mp3",
+    "size": 74592
+  },
+  {
+    "id": "problem-anchor",
+    "src": "tts/problem-anchor.mp3",
+    "size": 65664
+  },
+  {
+    "id": "real-world",
+    "src": "tts/real-world.mp3",
+    "size": 183456
+  },
+  {
+    "id": "summary",
+    "src": "tts/summary.mp3",
+    "size": 61488
+  },
+  {
+    "id": "weakness-analysis",
+    "src": "tts/weakness-analysis.mp3",
+    "size": 68256
+  },
+  {
+    "id": "worked-example",
+    "src": "tts/worked-example.mp3",
+    "size": 122400
+  }
+]
