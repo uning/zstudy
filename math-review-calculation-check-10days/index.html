@@ -354,16 +354,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
 .trainer-score.good { color: var(--brand-2); }
 .trainer-score.ok { color: var(--warn); }
 .trainer-score.poor { color: var(--danger); }
-/* === Mini Calendar (homepage) === */
-.mini-cal-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-.mini-cal-cell {
-  text-align: center; padding: 8px 4px; border-radius: 10px; font-size: 11px; font-weight: 700;
-  background: var(--bg-subtle); border: 2px solid var(--line-subtle); cursor: pointer; transition: all .2s;
-}
-.mini-cal-cell:hover { border-color: var(--brand); }
-.mini-cal-cell.done { background: var(--ok-soft); border-color: var(--ok); }
-.mini-cal-cell.done::after { content: ' ✓'; color: var(--ok); }
-.mini-cal-cell.active { border-color: var(--brand); box-shadow: 0 0 0 2px var(--brand-soft); }
+
 /* Speed skill tips */
 .speed-skill-bar {
   display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 6px; justify-content: center;
@@ -429,10 +420,6 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div style="text-align:center"><img src="assets/icon-autograde.png" alt="自动批改" style="width:48px;height:48px;margin-bottom:6px"><p style="margin:0;font-size:13px;color:var(--muted)">自动批改</p></div>
       <div style="text-align:center"><img src="assets/icon-track.png" alt="错题追踪" style="width:48px;height:48px;margin-bottom:6px"><p style="margin:0;font-size:13px;color:var(--muted)">错题追踪</p></div>
       <div style="text-align:center"><img src="assets/icon-ai-tutor.png" alt="AI学伴" style="width:48px;height:48px;margin-bottom:6px"><p style="margin:0;font-size:13px;color:var(--muted)">AI学伴</p></div>
-    </div>
-    <div class="mini-calendar" style="margin-top:20px;max-width:600px">
-      <h3 style="font-size:14px;color:var(--muted);margin:0 0 8px">📅 10天打卡进度</h3>
-      <div class="mini-cal-grid" id="mini-cal-grid"></div>
     </div>
   </section>
 
@@ -1549,30 +1536,6 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   document.getElementById('btn-generate-today').addEventListener('click', renderTrainer);
   document.getElementById('btn-retry-trainer').addEventListener('click', renderTrainer);
 
-  // Mini calendar on homepage
-  function renderMiniCalendar() {
-    const grid = document.getElementById('mini-cal-grid');
-    if (!grid) return;
-    const p = JSON.parse(localStorage.getItem('ta-calc-progress') || '{}');
-    let html = '';
-    for (let d = 1; d <= 10; d++) {
-      const done = p.records && p.records[d] && p.records[d].done;
-      const active = d === getCurrentDay();
-      const cls = [done ? 'done' : '', active ? 'active' : ''].filter(Boolean).join(' ');
-      const theme = dayThemes[d];
-      html += `<div class="mini-cal-cell ${cls}" data-day="${d}" title="${theme.name}: ${theme.tip}">D${d}<br><small>${theme.name}</small></div>`;
-    }
-    grid.innerHTML = html;
-    grid.querySelectorAll('.mini-cal-cell').forEach(cell => {
-      cell.addEventListener('click', () => {
-        const d = parseInt(cell.dataset.day, 10);
-        setCurrentDay(d);
-        renderMiniCalendar();
-        updateCalendarUI();
-      });
-    });
-  }
-
   function markDayDone(day) {
     const p = ensureProgress();
     if (!p.records) p.records = {};
@@ -1599,7 +1562,6 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       if (p.records && p.records[d]) cell.classList.add('done');
       if (d === day) cell.classList.add('current');
     });
-    renderMiniCalendar();
   }
   document.querySelectorAll('#day-calendar .day-cell').forEach(cell => {
     cell.addEventListener('click', () => {
@@ -1751,7 +1713,6 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   updateUI();
   updateCalendarUI();
   updateWeaknessUI();
-  renderMiniCalendar();
 
   document.body.classList.add('toolbar-visible');
   setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
