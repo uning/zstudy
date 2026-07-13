@@ -1005,18 +1005,88 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   bindChoiceGroup('conceptest-choices', 'conceptest');
   bindChoiceGroup('posttest-choices', 'posttest');
 
-  // Daily trainer
+  // Daily trainer — progressive question bank
   const dayThemes = {
-    1: { name: '回头看', method: 'lookback', tip: '算完先检查数字、符号和答案合理性。' },
-    2: { name: '加法验算', method: 'add-inverse', tip: '用和减一个加数，或交换加数位置再算。' },
-    3: { name: '减法验算', method: 'sub-inverse', tip: '用差加减数，看是否等于被减数。' },
-    4: { name: '乘法验算', method: 'mul-inverse', tip: '交换乘数位置，或积除以因数。' },
-    5: { name: '除法验算', method: 'div-inverse', tip: '商×除数+余数=被除数，余数<除数。' },
-    6: { name: '估算', method: 'estimate', tip: '先四舍五入，再精算对照。' },
-    7: { name: '尾数检查', method: 'tail', tip: '先看个位，快速排雷。' },
-    8: { name: '错题医院', method: 'mixed', tip: '重做错题，找到错误类型。' },
-    9: { name: '限时挑战', method: 'timed', tip: '又快又准，还要验算。' },
-    10: { name: '综合验收', method: 'final', tip: '综合运用所有验算方法。' }
+    1: { name: '回头检查', method: 'lookback', tip: '算完先检查数字、符号和答案合理性。',
+      questions: [
+        { q: '234 + 125 = ?', a: 359, op: '+', hint: '验算：359 − 125 = 234 ✓', method: 'lookback' },
+        { q: '567 − 234 = ?', a: 333, op: '−', hint: '验算：333 + 234 = 567 ✓', method: 'lookback' },
+        { q: '408 + 361 = ?', a: 769, op: '+', hint: '验算：769 − 361 = 408 ✓', method: 'lookback' },
+        { q: '876 − 432 = ?', a: 444, op: '−', hint: '验算：444 + 432 = 876 ✓', method: 'lookback' },
+        { q: '150 + 230 = ?', a: 380, op: '+', hint: '验算：380 − 230 = 150 ✓', method: 'lookback' }
+      ]},
+    2: { name: '加法验算', method: 'add-inverse', tip: '用"和 − 一个加数"或"交换加数位置"验算。',
+      questions: [
+        { q: '247 + 568 = ?', a: 815, op: '+', hint: '验算①：815 − 568 = 247\n验算②：568 + 247 = 815', method: 'add-inverse' },
+        { q: '389 + 445 = ?', a: 834, op: '+', hint: '验算①：834 − 445 = 389\n验算②：445 + 389 = 834', method: 'add-inverse' },
+        { q: '675 + 298 = ?', a: 973, op: '+', hint: '验算①：973 − 298 = 675\n验算②：298 + 675 = 973', method: 'add-inverse' },
+        { q: '156 + 789 = ?', a: 945, op: '+', hint: '验算①：945 − 789 = 156\n验算②：789 + 156 = 945', method: 'add-inverse' },
+        { q: '823 + 197 = ?', a: 1020, op: '+', hint: '验算①：1020 − 197 = 823\n验算②：197 + 823 = 1020', method: 'add-inverse' }
+      ]},
+    3: { name: '减法验算', method: 'sub-inverse', tip: '用"差 + 减数"或"被减数 − 差"验算，注意退位！',
+      questions: [
+        { q: '725 − 348 = ?', a: 377, op: '−', hint: '验算①：377 + 348 = 725\n口诀：0上有点当作9', method: 'sub-inverse' },
+        { q: '603 − 287 = ?', a: 316, op: '−', hint: '验算①：316 + 287 = 603\n注意：个位不够向十位借', method: 'sub-inverse' },
+        { q: '842 − 569 = ?', a: 273, op: '−', hint: '验算①：273 + 569 = 842\n注意：连续退位', method: 'sub-inverse' },
+        { q: '500 − 267 = ?', a: 233, op: '−', hint: '验算①：233 + 267 = 500\n注意：中间有0的退位', method: 'sub-inverse' },
+        { q: '931 − 456 = ?', a: 475, op: '−', hint: '验算①：475 + 456 = 931\n二次确认：931 − 475 = 456', method: 'sub-inverse' }
+      ]},
+    4: { name: '乘法验算', method: 'mul-inverse', tip: '用"积 ÷ 因数"或"交换因数位置"验算。',
+      questions: [
+        { q: '24 × 7 = ?', a: 168, op: '×', hint: '验算①：168 ÷ 7 = 24\n验算②：7 × 24 = 168', method: 'mul-inverse' },
+        { q: '56 × 8 = ?', a: 448, op: '×', hint: '验算①：448 ÷ 8 = 56\n验算②：8 × 56 = 448', method: 'mul-inverse' },
+        { q: '39 × 6 = ?', a: 234, op: '×', hint: '验算①：234 ÷ 6 = 39\n验算②：6 × 39 = 234', method: 'mul-inverse' },
+        { q: '78 × 5 = ?', a: 390, op: '×', hint: '验算①：390 ÷ 5 = 78\n验算②：5 × 78 = 390', method: 'mul-inverse' },
+        { q: '63 × 9 = ?', a: 567, op: '×', hint: '验算①：567 ÷ 9 = 63\n验算②：9 × 63 = 567', method: 'mul-inverse' }
+      ]},
+    5: { name: '除法验算', method: 'div-inverse', tip: '用"商 × 除数 + 余数 = 被除数"，且余数 < 除数。',
+      questions: [
+        { q: '85 ÷ 6 = ?……?', a: 14, a2: 1, op: '÷', hint: '验算：14 × 6 + 1 = 84 + 1 = 85\n检查：余数1 < 除数6 ✓', method: 'div-inverse' },
+        { q: '73 ÷ 8 = ?……?', a: 9, a2: 1, op: '÷', hint: '验算：9 × 8 + 1 = 73\n检查：余数1 < 除数8 ✓', method: 'div-inverse' },
+        { q: '97 ÷ 5 = ?……?', a: 19, a2: 2, op: '÷', hint: '验算：19 × 5 + 2 = 95 + 2 = 97\n检查：余数2 < 除数5 ✓', method: 'div-inverse' },
+        { q: '64 ÷ 7 = ?……?', a: 9, a2: 1, op: '÷', hint: '验算：9 × 7 + 1 = 63 + 1 = 64\n检查：余数1 < 除数7 ✓', method: 'div-inverse' },
+        { q: '89 ÷ 3 = ?……?', a: 29, a2: 2, op: '÷', hint: '验算：29 × 3 + 2 = 87 + 2 = 89\n检查：余数2 < 除数3 ✓', method: 'div-inverse' }
+      ]},
+    6: { name: '估算对比', method: 'estimate', tip: '先四舍五入估算，再精确计算，最后对比是否接近。',
+      questions: [
+        { q: '328 + 495 ≈ ?（先估算再精算）', a: 823, op: '+', hint: '估算：330 + 500 ≈ 830\n精算：328 + 495 = 823\n823 ≈ 830，合理！', method: 'estimate' },
+        { q: '761 − 389 ≈ ?（先估算再精算）', a: 372, op: '−', hint: '估算：760 − 390 ≈ 370\n精算：761 − 389 = 372\n372 ≈ 370，相差很小！', method: 'estimate' },
+        { q: '504 + 398 ≈ ?（先估算再精算）', a: 902, op: '+', hint: '估算：500 + 400 = 900\n精算：504 + 398 = 902\n902 ≈ 900，合理！', method: 'estimate' },
+        { q: '900 − 567 ≈ ?（先估算再精算）', a: 333, op: '−', hint: '估算：900 − 570 = 330\n精算：900 − 567 = 333\n333 ≈ 330，合理！', method: 'estimate' },
+        { q: '215 + 686 ≈ ?（先估算再精算）', a: 901, op: '+', hint: '估算：220 + 690 = 910\n精算：215 + 686 = 901\n901 ≈ 910，合理！', method: 'estimate' }
+      ]},
+    7: { name: '尾数排雷', method: 'tail', tip: '先看个位对不对，快速发现粗心错误。',
+      questions: [
+        { q: '1234 + 5678 = ?', a: 6912, op: '+', hint: '个位：4+8=12 → 2 ✓\n验算：6912 − 5678 = 1234', method: 'tail' },
+        { q: '8765 − 4321 = ?', a: 4444, op: '−', hint: '个位：5−1=4 ✓\n验算：4444 + 4321 = 8765', method: 'tail' },
+        { q: '3456 + 2891 = ?', a: 6347, op: '+', hint: '个位：6+1=7 ✓\n验算：6347 − 3456 = 2891', method: 'tail' },
+        { q: '7000 − 2846 = ?', a: 4154, op: '−', hint: '个位：0−6 → 借位 10−6=4 ✓\n验算：4154 + 2846 = 7000', method: 'tail' },
+        { q: '5608 + 1379 = ?', a: 6987, op: '+', hint: '个位：8+9=17 → 7 ✓\n验算：6987 − 5608 = 1379', method: 'tail' }
+      ]},
+    8: { name: '错题攻克', method: 'mixed', tip: '集中攻克易错题型：中间有0、连续进退位。',
+      questions: [
+        { q: '508 + 396 = ?', a: 904, op: '+', hint: '验算：904 − 396 = 508\n注意：个位8+6=14进1，十位0+9+1=10', method: 'add-inverse' },
+        { q: '700 − 456 = ?', a: 244, op: '−', hint: '验算：244 + 456 = 700\n注意：中间有0，0上有点当作9', method: 'sub-inverse' },
+        { q: '48 × 7 = ?', a: 336, op: '×', hint: '验算：336 ÷ 7 = 48\n注意：8×7=56进5，4×7=28+5=33', method: 'mul-inverse' },
+        { q: '92 ÷ 5 = ?……?', a: 18, a2: 2, op: '÷', hint: '验算：18 × 5 + 2 = 92\n检查：余数2 < 除数5 ✓', method: 'div-inverse' },
+        { q: '604 − 378 = ?', a: 226, op: '−', hint: '验算：226 + 378 = 604\n注意：中间有0的连续退位', method: 'sub-inverse' }
+      ]},
+    9: { name: '限时挑战', method: 'timed', tip: '又快又准！每题都要验算，争取5分钟完成。',
+      questions: [
+        { q: '4678 + 2359 = ?', a: 7037, op: '+', hint: '验算：7037 − 2359 = 4678', method: 'tail' },
+        { q: '5032 − 1856 = ?', a: 3176, op: '−', hint: '验算：3176 + 1856 = 5032', method: 'sub-inverse' },
+        { q: '84 × 9 = ?', a: 756, op: '×', hint: '验算：756 ÷ 9 = 84', method: 'mul-inverse' },
+        { q: '156 ÷ 8 = ?……?', a: 19, a2: 4, op: '÷', hint: '验算：19 × 8 + 4 = 156', method: 'div-inverse' },
+        { q: '3456 − 1789 = ?', a: 1667, op: '−', hint: '验算：1667 + 1789 = 3456', method: 'sub-inverse' }
+      ]},
+    10: { name: '综合验收', method: 'final', tip: '综合运用所有验算方法，为训练营画上圆满句号！',
+      questions: [
+        { q: '5678 + 2345 = ?', a: 8023, op: '+', hint: '验算①：8023 − 2345 = 5678\n验算②：交换加数 2345+5678', method: 'add-inverse' },
+        { q: '9000 − 3456 = ?', a: 5544, op: '−', hint: '验算①：5544 + 3456 = 9000\n注意：连续退位', method: 'sub-inverse' },
+        { q: '95 × 7 = ?', a: 665, op: '×', hint: '验算①：665 ÷ 7 = 95\n验算②：7 × 95 = 665', method: 'mul-inverse' },
+        { q: '237 ÷ 8 = ?……?', a: 29, a2: 5, op: '÷', hint: '验算：29 × 8 + 5 = 232 + 5 = 237\n检查：余数5 < 除数8 ✓', method: 'div-inverse' },
+        { q: '4008 + 2986 = ?', a: 6994, op: '+', hint: '验算①：6994 − 2986 = 4008\n个位检查：8+6=14 → 4 ✓', method: 'tail' }
+      ]}
   };
   const StorageKey = 'check10_progress_v1';
   function loadProgress() {
@@ -1093,44 +1163,68 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
     if (method === 'mul-inverse') return '乘法口诀/进位';
     if (method === 'div-inverse') return '有余数除法';
     if (method === 'estimate') return '估算范围判断';
-    if (method === 'tail') return '个位/数位检查';
+    if (method === 'tail') return '四位数/尾数检查';
+    if (method === 'lookback') return '基础计算粗心';
+    if (method === 'timed') return '限时计算';
+    if (method === 'final') return '综合验算';
+    if (method === 'mixed') return '易错题型';
     return '计算粗心';
   }
   let currentQuestions = [];
   function renderTrainer() {
     const day = getCurrentDay();
     const theme = dayThemes[day];
-    const grade = document.getElementById('trainer-grade').value;
-    currentQuestions = [];
-    for (let i = 0; i < 5; i++) currentQuestions.push(generateQuestion(grade, theme.method));
+    currentQuestions = theme.questions;
     let html = '<table class="checkmate-table"><tbody>';
     currentQuestions.forEach((q, i) => {
-      html += `<tr><td style="width:40%;font-weight:600">${q.q}</td><td>
-        <input class="q-answer-input" data-idx="${i}" type="number" placeholder="答案" aria-label="第${i+1}题答案"></td>
-        <td style="width:30%"><span class="check-tag pending" id="tag-${i}">待提交</span></td></tr>`;
+      const isDiv = q.op === '÷';
+      html += `<tr><td style="width:38%;font-weight:600">${q.q}</td><td style="padding:4px">
+        <input class="q-answer-input" data-idx="${i}" type="number" placeholder="${isDiv ? '商' : '答案'}" aria-label="第${i+1}题${isDiv ? '商' : '答案'}" style="width:${isDiv ? '55' : '72'}px">
+        ${isDiv ? '<input class="q-answer-input-r" data-idx="'+i+'" type="number" placeholder="余" aria-label="第'+(i+1)+'题余数" style="width:48px;margin-left:4px">' : ''}
+        <span class="check-tag pending" id="tag-${i}" style="margin-left:${isDiv ? '4' : '6'}px">待答</span>
+        </td></tr>`;
     });
     html += '</tbody></table>';
-    html += '<div style="margin-top:14px"><button class="choice" id="btn-submit-trainer" style="max-width:200px;text-align:center">提交批改</button></div>';
+    html += '<div style="margin-top:14px"><button class="choice" id="btn-submit-trainer" style="max-width:200px;text-align:center">✅ 提交批改</button></div>';
+    html += '<div id="trainer-verify-hints" style="margin-top:12px"></div>';
     document.getElementById('trainer-panel').innerHTML = `<p style="color:var(--brand);font-weight:700">Day ${day}：${theme.name}</p><p style="color:var(--muted);font-size:14px">${theme.tip}</p>` + html;
     document.getElementById('streak-badge').textContent = '今日进度：0 / 5';
     document.getElementById('btn-submit-trainer').addEventListener('click', submitTrainer);
   }
   function submitTrainer() {
-    let correct = 0;
+    let correct = 0, hintsHtml = '';
     currentQuestions.forEach((q, i) => {
       const input = document.querySelector(`.q-answer-input[data-idx="${i}"]`);
       const tag = document.getElementById('tag-' + i);
       const val = input ? parseInt(input.value, 10) : NaN;
-      const isRight = !isNaN(val) && val === q.a;
-      tag.className = 'check-tag ' + (isRight ? 'ok' : 'wrong');
-      tag.textContent = isRight ? '✓ 正确' : '✗ 答案：' + q.a;
-      if (!isRight) {
-        addError({ type: errorTypeFromQuestion(q.op, q.method), q: q.q, answer: q.a, hint: q.hint, day: getCurrentDay() });
+      let isRight;
+      if (q.op === '÷') {
+        const inputR = document.querySelector(`.q-answer-input-r[data-idx="${i}"]`);
+        const valR = inputR ? parseInt(inputR.value, 10) : NaN;
+        isRight = !isNaN(val) && !isNaN(valR) && val === q.a && valR === (q.a2||0);
+        if (!isRight) {
+          tag.className = 'check-tag wrong';
+          tag.textContent = '✗ 商' + q.a + ' 余' + (q.a2||0);
+        }
+      } else {
+        isRight = !isNaN(val) && val === q.a;
+        if (!isRight) {
+          tag.className = 'check-tag wrong';
+          tag.textContent = '✗ 答案：' + q.a;
+        }
       }
-      if (isRight) correct++;
+      if (isRight) {
+        tag.className = 'check-tag ok';
+        tag.textContent = '✓ 正确';
+        correct++;
+      } else {
+        addError({ type: errorTypeFromQuestion(q.op, q.method), q: q.q, answer: q.a, hint: q.hint, day: getCurrentDay() });
+        hintsHtml += `<div class="hint-box" style="background:var(--bg-subtle);border-left:3px solid var(--brand);padding:8px 12px;border-radius:0 8px 8px 0;margin:6px 0;font-size:13px;line-height:1.7;white-space:pre-line"><b>${q.q.replace('?','')}：</b>${q.hint}</div>`;
+      }
     });
     document.getElementById('streak-badge').textContent = '今日进度：' + correct + ' / 5';
-    document.getElementById('trainer-summary').textContent = correct === 5 ? '太棒了！全部正确，明天继续挑战！' : `错了 ${5 - correct} 题，已记入错题医院。点击查看薄弱点。`;
+    document.getElementById('trainer-summary').textContent = correct === 5 ? '🎉 太棒了！全部正确，明天继续挑战！' : `错了 ${5 - correct} 题。下方有验算方法，学会后再练一次！`;
+    document.getElementById('trainer-verify-hints').innerHTML = hintsHtml;
     if (correct === 5) markDayDone(getCurrentDay());
     updateWeaknessUI();
     updateCalendarUI();
