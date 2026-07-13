@@ -354,6 +354,26 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
 .trainer-score.good { color: var(--brand-2); }
 .trainer-score.ok { color: var(--warn); }
 .trainer-score.poor { color: var(--danger); }
+/* === Mini Calendar (homepage) === */
+.mini-cal-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.mini-cal-cell {
+  text-align: center; padding: 8px 4px; border-radius: 10px; font-size: 11px; font-weight: 700;
+  background: var(--bg-subtle); border: 2px solid var(--line-subtle); cursor: pointer; transition: all .2s;
+}
+.mini-cal-cell:hover { border-color: var(--brand); }
+.mini-cal-cell.done { background: var(--ok-soft); border-color: var(--ok); }
+.mini-cal-cell.done::after { content: ' ✓'; color: var(--ok); }
+.mini-cal-cell.active { border-color: var(--brand); box-shadow: 0 0 0 2px var(--brand-soft); }
+/* Speed skill tips */
+.speed-skill-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 6px; justify-content: center;
+}
+.speed-skill-tag {
+  font-size: 12px; padding: 4px 10px; border-radius: 999px; cursor: pointer;
+  background: var(--bg-subtle); border: 1px solid var(--line); transition: all .2s;
+}
+.speed-skill-tag:hover { background: var(--brand-soft); border-color: var(--brand); }
+.speed-skill-tag.active { background: var(--brand); color: #fff; border-color: var(--brand); }
 </style>
 </head>
 <body>
@@ -409,6 +429,10 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div style="text-align:center"><img src="assets/icon-autograde.png" alt="自动批改" style="width:48px;height:48px;margin-bottom:6px"><p style="margin:0;font-size:13px;color:var(--muted)">自动批改</p></div>
       <div style="text-align:center"><img src="assets/icon-track.png" alt="错题追踪" style="width:48px;height:48px;margin-bottom:6px"><p style="margin:0;font-size:13px;color:var(--muted)">错题追踪</p></div>
       <div style="text-align:center"><img src="assets/icon-ai-tutor.png" alt="AI学伴" style="width:48px;height:48px;margin-bottom:6px"><p style="margin:0;font-size:13px;color:var(--muted)">AI学伴</p></div>
+    </div>
+    <div class="mini-calendar" style="margin-top:20px;max-width:600px">
+      <h3 style="font-size:14px;color:var(--muted);margin:0 0 8px">📅 10天打卡进度</h3>
+      <div class="mini-cal-grid" id="mini-cal-grid"></div>
     </div>
   </section>
 
@@ -646,8 +670,20 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
             <option value="30">30 题</option>
             <option value="40">40 题</option>
           </select>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;white-space:nowrap" title="AI会根据薄弱点智能出题">
+            <input type="checkbox" id="trainer-ai-toggle" style="accent-color:var(--brand-2);width:16px;height:16px;margin:0">🤖 AI出题
+          </label>
           <button class="choice" id="btn-generate-today" style="max-width:160px;text-align:center">🎯 开始今日训练</button>
           <span class="badge" id="streak-badge">准备好开始</span>
+        </div>
+        <div class="speed-skill-bar" id="speed-skill-bar">
+          <span style="font-size:12px;color:var(--muted);margin-right:4px">⚡速算技巧:</span>
+          <span class="speed-skill-tag" data-skill="round">🔢 凑整法</span>
+          <span class="speed-skill-tag" data-skill="split">✂️ 拆分法</span>
+          <span class="speed-skill-tag" data-skill="base">📏 基准数</span>
+          <span class="speed-skill-tag" data-skill="complement">🔄 补数法</span>
+          <span class="speed-skill-tag" data-skill="guess">🎪 估算法</span>
+          <span class="speed-skill-tag" data-skill="tail">🎯 尾数法</span>
         </div>
         <div class="trainer-quiz-wrap" id="trainer-quiz-wrap">
           <div class="trainer-quiz-card" id="trainer-quiz-card">
@@ -1119,6 +1155,17 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   bindChoiceGroup('conceptest-choices', 'conceptest');
   bindChoiceGroup('posttest-choices', 'posttest');
 
+  // Speed calculation techniques
+  const speedTechniques = {
+    round: { name: '凑整法', emoji: '🔢', tip: '先凑整再加减：398+456 → 400+456−2 = 854', example: '597+268 = 600+268−3 = 865' },
+    split: { name: '拆分法', emoji: '✂️', tip: '拆成容易算的部分：67×8 → (60×8)+(7×8) = 480+56 = 536', example: '76×5 = 70×5+6×5 = 350+30 = 380' },
+    base: { name: '基准数法', emoji: '📏', tip: '找基准数算差再合并：98+103+97+105 → 100×4−2+3−3+5 = 403', example: '99+101+98+102 → 400' },
+    complement: { name: '补数法', emoji: '🔄', tip: '用补数简化减法：1000−347 → 999−347+1 = 653', example: '2000−856 = 1999−856+1 = 1144' },
+    guess: { name: '估算法', emoji: '🎪', tip: '先估算范围：347×6 ≈ 350×6=2100，精算得2082，接近！', example: '判数量级、排除不靠谱答案' },
+    tail: { name: '尾数法', emoji: '🎯', tip: '只算个位快速验：4567+3128个位7+8=15→5 ✓', example: '大规模计算时先做尾数预检' }
+  };
+  let currentSpeedSkill = null;
+
   // Daily trainer - progressive question bank
   const dayThemes = {
     1: { name: '回头检查', method: 'lookback', tip: '算完先检查数字、符号和答案合理性。',
@@ -1287,39 +1334,46 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   }
   function randomInt(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
   function generateQuestion(grade, method) {
-    const ops = ['+', '-', '×', '÷'];
-    let op, a, b, ans, qText, hint;
+    const ops = ['+', '−', '×', '÷'];
+    let op, a, b, ans, a2, qText, hint;
     if (grade === 'g2') {
-      op = Math.random() < 0.5 ? '+' : '-';
+      op = Math.random() < 0.5 ? '+' : '−';
       a = randomInt(10, 99); b = randomInt(10, 99);
-      if (op === '-' && a < b) [a, b] = [b, a];
+      if (op === '−' && a < b) [a, b] = [b, a];
       ans = op === '+' ? a + b : a - b;
       qText = `${a} ${op} ${b} = ?`;
-      hint = op === '+' ? `${ans} - ${b} = ?` : `${b} + ${ans} = ?`;
+      hint = op === '+' ? `${ans} − ${b} = ?` : `${b} + ${ans} = ?`;
     } else if (grade === 'g5') {
       op = ops[randomInt(0, 3)];
       if (op === '+') { a = randomInt(100, 999); b = randomInt(100, 999); ans = a + b; }
-      else if (op === '-') { a = randomInt(200, 999); b = randomInt(100, a); ans = a - b; }
+      else if (op === '−') { a = randomInt(200, 999); b = randomInt(100, a); ans = a - b; }
       else if (op === '×') { a = randomInt(12, 99); b = randomInt(2, 9); ans = a * b; }
-      else { b = randomInt(2, 9); ans = randomInt(10, 99); a = ans * b + randomInt(0, b - 1); }
+      else { b = randomInt(2, 9); ans = randomInt(10, 99); a2 = randomInt(0, b - 1); a = ans * b + a2; }
       qText = `${a} ${op} ${b} = ?`;
-      hint = methodHint(op, a, b, ans);
+      hint = methodHint(op, a, b, ans, a2);
     } else {
-      op = ops[randomInt(0, 3)];
+      // g3: 3-4年级, align with daily themes
+      if (method === 'div-inverse') op = '÷';
+      else if (method === 'mul-inverse') op = '×';
+      else if (method === 'sub-inverse') op = '−';
+      else if (method === 'add-inverse') op = '+';
+      else op = ops[randomInt(0, 3)];
+
       if (op === '+') { a = randomInt(100, 999); b = randomInt(100, 999); ans = a + b; }
-      else if (op === '-') { a = randomInt(200, 999); b = randomInt(100, a); ans = a - b; }
+      else if (op === '−') { a = randomInt(200, 999); b = randomInt(100, a); ans = a - b; }
       else if (op === '×') { a = randomInt(2, 99); b = randomInt(2, 9); ans = a * b; }
-      else { b = randomInt(2, 9); ans = randomInt(2, 99); a = ans * b + randomInt(0, b - 1); }
-      qText = `${a} ${op} ${b} = ?`;
-      hint = methodHint(op, a, b, ans);
+      else { b = randomInt(2, 9); ans = randomInt(2, 99); a2 = randomInt(0, b - 1); a = ans * b + a2; }
+      qText = op === '÷' ? `${a} ${op} ${b} = ?……?` : `${a} ${op} ${b} = ?`;
+      hint = methodHint(op, a, b, ans, a2);
     }
-    return { q: qText, a: ans, op, hint, method };
+    return { q: qText, a: ans, a2: a2 || 0, op, hint, method };
   }
-  function methodHint(op, a, b, ans) {
-    if (op === '+') return `验算:${ans} - ${b} = ? 或 ${b} + ${a} = ?`;
-    if (op === '-') return `验算:${b} + ${ans} = ? 或 ${a} - ${ans} = ?`;
+  function methodHint(op, a, b, ans, a2) {
+    if (op === '+') return `验算:${ans} − ${b} = ? 或 ${b} + ${a} = ?`;
+    if (op === '−') return `验算:${b} + ${ans} = ? 或 ${a} − ${ans} = ?`;
     if (op === '×') return `验算:${ans} ÷ ${b} = ? 或 ${b} × ${a} = ?`;
-    return `验算:${ans} × ${b} + 余数 = ${a},且余数 < ${b}`;
+    const r = a2 || 0;
+    return `验算:${ans} × ${b} + ${r} = ${a}\n检查:余数${r} < 除数${b} ✓`;
   }
   function errorTypeFromQuestion(op, method) {
     if (method === 'add-inverse') return '加法进位/数位对齐';
@@ -1440,21 +1494,45 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
     updateCalendarUI();
   }
 
+  function showSpeedTip(skill) {
+    currentSpeedSkill = skill;
+    const t = speedTechniques[skill];
+    const hint = document.getElementById('trainer-q-hint');
+    hint.textContent = `${t.emoji} ${t.name}：${t.tip}`;
+    document.querySelectorAll('.speed-skill-tag').forEach(el => el.classList.toggle('active', el.dataset.skill === skill));
+  }
+  document.getElementById('speed-skill-bar').addEventListener('click', (e) => {
+    const tag = e.target.closest('.speed-skill-tag');
+    if (tag) {
+      if (currentSpeedSkill === tag.dataset.skill) { currentSpeedSkill = null; document.getElementById('trainer-q-hint').textContent = ''; tag.classList.remove('active'); }
+      else showSpeedTip(tag.dataset.skill);
+    }
+  });
+
   function renderTrainer() {
     const day = getCurrentDay();
     const theme = dayThemes[day];
     const count = parseInt(document.getElementById('trainer-count').value, 10);
-    const all = [...theme.questions];
-    // Shuffle for variety, then pick count (cycle back if >pool)
-    for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [all[i], all[j]] = [all[j], all[i]]; }
-    trainerQuestions = [];
-    for (let i = 0; i < count; i++) trainerQuestions.push({ ...all[i % all.length], origIdx: i });
+    const useAI = document.getElementById('trainer-ai-toggle').checked;
+
+    if (useAI) {
+      // AI dynamic generation: generate random questions of current day's type
+      trainerQuestions = [];
+      for (let i = 0; i < count; i++) trainerQuestions.push(generateQuestion('g3', theme.method));
+    } else {
+      const all = [...theme.questions];
+      for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [all[i], all[j]] = [all[j], all[i]]; }
+      trainerQuestions = [];
+      for (let i = 0; i < count; i++) trainerQuestions.push({ ...all[i % all.length], origIdx: i });
+    }
     trainerIdx = 0; trainerCorrect = 0; trainerResults = [];
+    currentSpeedSkill = null;
+    document.querySelectorAll('.speed-skill-tag').forEach(el => el.classList.remove('active'));
 
     document.getElementById('trainer-summary').textContent = '';
     document.getElementById('trainer-result-summary').style.display = 'none';
     document.getElementById('trainer-quiz-card').style.display = '';
-    document.getElementById('streak-badge').textContent = `Day ${day} · ${theme.name}`;
+    document.getElementById('streak-badge').textContent = `Day ${day} · ${theme.name}${useAI ? ' 🤖AI' : ''}`;
     document.getElementById('btn-generate-today').textContent = '🔄 重新开始';
 
     showTrainerQuestion();
@@ -1470,6 +1548,30 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
 
   document.getElementById('btn-generate-today').addEventListener('click', renderTrainer);
   document.getElementById('btn-retry-trainer').addEventListener('click', renderTrainer);
+
+  // Mini calendar on homepage
+  function renderMiniCalendar() {
+    const grid = document.getElementById('mini-cal-grid');
+    if (!grid) return;
+    const p = JSON.parse(localStorage.getItem('ta-calc-progress') || '{}');
+    let html = '';
+    for (let d = 1; d <= 10; d++) {
+      const done = p.records && p.records[d] && p.records[d].done;
+      const active = d === getCurrentDay();
+      const cls = [done ? 'done' : '', active ? 'active' : ''].filter(Boolean).join(' ');
+      const theme = dayThemes[d];
+      html += `<div class="mini-cal-cell ${cls}" data-day="${d}" title="${theme.name}: ${theme.tip}">D${d}<br><small>${theme.name}</small></div>`;
+    }
+    grid.innerHTML = html;
+    grid.querySelectorAll('.mini-cal-cell').forEach(cell => {
+      cell.addEventListener('click', () => {
+        const d = parseInt(cell.dataset.day, 10);
+        setCurrentDay(d);
+        renderMiniCalendar();
+        updateCalendarUI();
+      });
+    });
+  }
 
   function markDayDone(day) {
     const p = ensureProgress();
@@ -1497,6 +1599,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       if (p.records && p.records[d]) cell.classList.add('done');
       if (d === day) cell.classList.add('current');
     });
+    renderMiniCalendar();
   }
   document.querySelectorAll('#day-calendar .day-cell').forEach(cell => {
     cell.addEventListener('click', () => {
@@ -1648,6 +1751,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   updateUI();
   updateCalendarUI();
   updateWeaknessUI();
+  renderMiniCalendar();
 
   document.body.classList.add('toolbar-visible');
   setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
