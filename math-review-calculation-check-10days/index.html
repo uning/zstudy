@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>10天验算训练营｜小学生计算验算能力互动训练</title>
-<meta name="description" content="小学3-4年级10天计算验算能力训练计划，包含自动批改、错题追踪、AI学伴一键出题，帮助学生养成先算后验的好习惯。">
+<title>10天验算训练营|小学生计算验算能力互动训练</title>
+<meta name="description" content="小学3-4年级10天计算验算能力训练计划,包含自动批改、错题追踪、AI学伴一键出题,帮助学生养成先算后验的好习惯。">
 
 <!-- TeachAny routing meta -->
 <meta name="course-id" content="math-review-calculation-check-10days">
@@ -272,6 +272,88 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
 .tutor-loading:nth-child(2) { animation-delay: .2s; }
 .tutor-loading:nth-child(3) { animation-delay: .4s; }
 @keyframes dotPulse { 0%,80%,100% { transform: scale(0); } 40% { transform: scale(1); } }
+/* --- Hero Visual (CSS-only, no blurry images) --- */
+.hero-visual { display: flex; justify-content: center; max-width: 600px; margin: 0 auto; }
+.hero-card {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 40%, #ffb347 100%);
+  border-radius: 24px; padding: 32px 28px 24px; width: 100%;
+  box-shadow: 0 12px 40px rgba(255,107,107,0.3);
+  text-align: center;
+}
+.hero-badge-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 24px; }
+.hero-badge {
+  background: rgba(255,255,255,0.25); backdrop-filter: blur(4px);
+  color: #fff; padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: .5px;
+}
+.hero-equation, .hero-verify {
+  display: flex; align-items: center; justify-content: center; gap: 10px; margin: 12px 0;
+}
+.hero-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 48px; height: 40px; padding: 0 10px;
+  border-radius: 10px; font-size: 22px; font-weight: 800;
+  font-family: 'SF Mono','Menlo','Consolas',monospace;
+  color: #fff; background: rgba(255,255,255,0.18);
+}
+.hero-result {
+  background: rgba(78,205,196,0.5); font-weight: 900;
+}
+.hero-verify-num {
+  font-size: 17px; min-width: 40px; height: 34px;
+  background: rgba(255,255,255,0.12);
+}
+.hero-op {
+  font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.85);
+}
+.hero-check {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #2ecc71; color: #fff; display: inline-flex;
+  align-items: center; justify-content: center; font-size: 18px; font-weight: 900;
+  box-shadow: 0 3px 10px rgba(46,204,113,0.4);
+}
+.hero-verify .hero-op { font-size: 18px; }
+.hero-verify-label {
+  color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 700; margin-right: 4px;
+}
+@media (max-width: 580px) {
+  .hero-card { padding: 20px 14px 16px; }
+  .hero-badge { font-size: 11px; padding: 4px 10px; }
+  .hero-num { font-size: 18px; min-width: 38px; height: 34px; }
+  .hero-verify-num { font-size: 14px; min-width: 32px; height: 28px; }
+  .hero-op { font-size: 18px; }
+  .hero-check { width: 26px; height: 26px; font-size: 15px; }
+}
+/* === One-at-a-time Quiz Trainer === */
+.trainer-quiz-wrap { min-height: 220px; display: flex; align-items: center; justify-content: center; }
+.trainer-quiz-card {
+  width: 100%; max-width: 480px; background: var(--panel); border-radius: var(--card-radius);
+  border: 2px solid var(--line-subtle); padding: 28px 24px; text-align: center;
+  transition: all .3s ease;
+}
+.trainer-quiz-card.correct { border-color: var(--ok); box-shadow: 0 0 0 4px rgba(46,204,113,.15); }
+.trainer-quiz-card.wrong { border-color: var(--danger); box-shadow: 0 0 0 4px rgba(231,76,60,.12); animation: shake .4s ease; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+.trainer-q-progress { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 12px; }
+.trainer-q-text {
+  font-size: clamp(22px, 6vw, 34px); font-weight: 800; color: var(--text);
+  margin-bottom: 6px; font-family: 'SF Mono','Menlo','Consolas',monospace; letter-spacing: 1px;
+}
+.trainer-q-hint { font-size: 13px; color: var(--muted); margin-bottom: 18px; min-height: 20px; }
+.trainer-q-inputs { display: flex; gap: 8px; justify-content: center; align-items: center; margin-bottom: 12px; }
+.trainer-q-inp {
+  width: 110px; height: 52px; text-align: center; font-size: 24px; font-weight: 800; font-family: 'SF Mono','Menlo','Consolas',monospace;
+  border-radius: 14px; border: 2px solid var(--line); background: var(--bg-subtle); outline: none; transition: all .2s;
+}
+.trainer-q-inp:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
+.trainer-q-inp:disabled { opacity: .5; cursor: not-allowed; }
+.trainer-q-feedback { min-height: 28px; font-size: 18px; font-weight: 800; margin: 8px 0; }
+.trainer-q-verify-hint { font-size: 13px; color: var(--muted); line-height: 1.6; white-space: pre-line; min-height: 20px; }
+.trainer-result-summary { display: none; margin-top: 16px; width: 100%; }
+.trainer-score { text-align: center; font-size: 48px; font-weight: 900; margin: 12px 0 8px; }
+.trainer-score.perfect { color: var(--ok); }
+.trainer-score.good { color: var(--brand-2); }
+.trainer-score.ok { color: var(--warn); }
+.trainer-score.poor { color: var(--danger); }
 </style>
 </head>
 <body>
@@ -294,25 +376,39 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   <section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="封面 - 10天验算训练营">
     <div class="slide-inner">
       <h1>10天验算训练营</h1>
-      <p class="subtitle">先算后验，让错误无处藏身！每天20分钟，养成计算检查好习惯。</p>
-      <figure class="ta-standard-figure" style="margin-top:32px">
-        <img class="hero-cover-img" src="./assets/math-review-calculation-check-10days-hero.png" alt="10天验算训练营知识结构图：加法验算、减法验算、乘法验算、除法验算、估算、尾数检查">
-        <figcaption>6 种验算招式，每天解锁新技能</figcaption>
-      </figure>
-      <div class="grid" style="margin-top:24px">
-        <div class="card animate-in stagger-1" style="padding:18px;text-align:center">
-          <img src="assets/icon-calculator.png" alt="计算器图标" style="width:56px;height:56px;margin-bottom:10px">
-          <p style="margin:0;color:var(--text-secondary);font-size:14px">自动批改</p>
-        </div>
-        <div class="card animate-in stagger-2" style="padding:18px;text-align:center">
-          <img src="assets/icon-check.png" alt="对勾图标" style="width:56px;height:56px;margin-bottom:10px">
-          <p style="margin:0;color:var(--text-secondary);font-size:14px">错题追踪</p>
-        </div>
-        <div class="card animate-in stagger-3" style="padding:18px;text-align:center">
-          <img src="assets/icon-checklist.png" alt="打卡图标" style="width:56px;height:56px;margin-bottom:10px">
-          <p style="margin:0;color:var(--text-secondary);font-size:14px">10天打卡</p>
+      <p class="subtitle">先算后验,让错误无处藏身!每天20分钟,养成计算检查好习惯。</p>
+      <div class="hero-visual" style="margin-top:32px">
+        <div class="hero-card">
+          <div class="hero-badge-row">
+            <span class="hero-badge">🎯 自动批改</span>
+            <span class="hero-badge">📊 错题追踪</span>
+            <span class="hero-badge">🤖 AI学伴</span>
+            <span class="hero-badge">🏅 10天打卡</span>
+          </div>
+          <div class="hero-equation">
+            <span class="hero-num">247</span>
+            <span class="hero-op">+</span>
+            <span class="hero-num">568</span>
+            <span class="hero-op">=</span>
+            <span class="hero-num hero-result">815</span>
+            <span class="hero-check">✓</span>
+          </div>
+          <div class="hero-verify">
+            <span class="hero-verify-label">验算</span>
+            <span class="hero-num hero-verify-num">815</span>
+            <span class="hero-op">-</span>
+            <span class="hero-num hero-verify-num">568</span>
+            <span class="hero-op">=</span>
+            <span class="hero-num hero-verify-num">247</span>
+            <span class="hero-check">✓</span>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="grid grid-3" style="margin-top:24px;max-width:600px">
+      <div style="text-align:center"><img src="assets/icon-autograde.png" alt="自动批改" style="width:48px;height:48px;margin-bottom:6px"><p style="margin:0;font-size:13px;color:var(--muted)">自动批改</p></div>
+      <div style="text-align:center"><img src="assets/icon-track.png" alt="错题追踪" style="width:48px;height:48px;margin-bottom:6px"><p style="margin:0;font-size:13px;color:var(--muted)">错题追踪</p></div>
+      <div style="text-align:center"><img src="assets/icon-ai-tutor.png" alt="AI学伴" style="width:48px;height:48px;margin-bottom:6px"><p style="margin:0;font-size:13px;color:var(--muted)">AI学伴</p></div>
     </div>
   </section>
 
@@ -322,18 +418,18 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div class="card card-accent">
         <div class="section-header">
           <span class="phase-tag">Problem Anchor</span>
-          <h2>今天想解决什么问题？</h2>
+          <h2>今天想解决什么问题?</h2>
         </div>
-        <p style="color:var(--muted);margin:0 0 16px">选一个你关心的问题，后面的内容会围绕它展开。</p>
+        <p style="color:var(--muted);margin:0 0 16px">选一个你关心的问题,后面的内容会围绕它展开。</p>
         <div class="grid" id="problem-anchor-choices">
-          <button class="choice" data-anchor-choice="算完后怎么知道对不对？">算完后怎么知道对不对？</button>
-          <button class="choice" data-anchor-choice="老师不在，谁能帮我检查？">老师不在，谁能帮我检查？</button>
-          <button class="choice" data-anchor-choice="我总是同一种错误反复犯，怎么办？">我总是同一种错误反复犯，怎么办？</button>
+          <button class="choice" data-anchor-choice="算完后怎么知道对不对?">算完后怎么知道对不对?</button>
+          <button class="choice" data-anchor-choice="老师不在,谁能帮我检查?">老师不在,谁能帮我检查?</button>
+          <button class="choice" data-anchor-choice="我总是同一种错误反复犯,怎么办?">我总是同一种错误反复犯,怎么办?</button>
         </div>
-        <label style="display:block;margin-top:20px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+        <label style="display:block;margin-top:20px;color:var(--muted);font-size:14px">或者,写下你自己的问题
           <input id="learner-question-input" placeholder="把你卡住的问题写在这里">
         </label>
-        <p id="anchor-feedback" class="result warn" style="margin-top:16px">选择或输入后，本课会围绕你的问题展开。</p>
+        <p id="anchor-feedback" class="result warn" style="margin-top:16px">选择或输入后,本课会围绕你的问题展开。</p>
       </div>
     </div>
   </section>
@@ -344,12 +440,12 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div class="card">
         <div class="section-header">
           <span class="phase-tag" data-variant="success">Objectives</span>
-          <h2>10天后，我能做到</h2>
+          <h2>10天后,我能做到</h2>
         </div>
         <ul class="objectives">
-          <li>说出并正确使用 4 种验算方法：逆运算、交换、估算、尾数检查</li>
-          <li>算完每道题后，主动用至少 1 种方法检查</li>
-          <li>发现自己的薄弱点，并针对性练习同类题目</li>
+          <li>说出并正确使用 4 种验算方法:逆运算、交换、估算、尾数检查</li>
+          <li>算完每道题后,主动用至少 1 种方法检查</li>
+          <li>发现自己的薄弱点,并针对性练习同类题目</li>
           <li>用 AI 学伴一键生成适合自己的练习题</li>
         </ul>
       </div>
@@ -362,15 +458,15 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div class="card card-accent">
         <div class="section-header">
           <span class="phase-tag" data-variant="warn">Pretest</span>
-          <h2>前测：你会先算后验吗？</h2>
+          <h2>前测:你会先算后验吗?</h2>
         </div>
-        <p style="color:var(--muted);margin:0 0 20px">小马虎算了一道题：456 + 389 = 735。他觉得自己算对了。你觉得应该怎么办？</p>
+        <p style="color:var(--muted);margin:0 0 20px">小马虎算了一道题:456 + 389 = 735。他觉得自己算对了。你觉得应该怎么办?</p>
         <div class="grid" id="pretest-choices">
-          <button class="choice animate-in stagger-1" data-answer="wrong" data-diagnosis="不对哦，把答案直接交给老师不是验算。验算是自己先用方法检查一遍。">A. 把答案交给老师批改</button>
-          <button class="choice animate-in stagger-2" data-answer="correct" data-diagnosis="没错！交换两个加数位置再算一遍，或用和减一个加数看是否等于另一个加数，都是加法验算的好方法。">B. 交换两个加数位置，再算一遍</button>
-          <button class="choice animate-in stagger-3" data-answer="wrong" data-diagnosis="再算一遍和验算不一样。验算要用不同的方法，比如用减法倒推，才能发现错误。">C. 用同样的方法再算一遍</button>
+          <button class="choice animate-in stagger-1" data-answer="wrong" data-diagnosis="不对哦,把答案直接交给老师不是验算。验算是自己先用方法检查一遍。">A. 把答案交给老师批改</button>
+          <button class="choice animate-in stagger-2" data-answer="correct" data-diagnosis="没错!交换两个加数位置再算一遍,或用和减一个加数看是否等于另一个加数,都是加法验算的好方法。">B. 交换两个加数位置,再算一遍</button>
+          <button class="choice animate-in stagger-3" data-answer="wrong" data-diagnosis="再算一遍和验算不一样。验算要用不同的方法,比如用减法倒推,才能发现错误。">C. 用同样的方法再算一遍</button>
         </div>
-        <div class="result warn" data-feedback-for="pretest" style="margin-top:16px">先独立判断，再看诊断反馈。</div>
+        <div class="result warn" data-feedback-for="pretest" style="margin-top:16px">先独立判断,再看诊断反馈。</div>
       </div>
     </div>
   </section>
@@ -381,25 +477,25 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div class="card">
         <div class="section-header">
           <span class="phase-tag">Concept</span>
-          <h2>为什么算完要看一眼？</h2>
+          <h2>为什么算完要看一眼?</h2>
         </div>
         <div class="card glass" style="margin:16px 0;padding:20px;border-radius:var(--card-radius-sm)">
-          <p style="margin:0 0 8px"><strong style="color:var(--brand-2)">已经知道：</strong>我会列竖式计算加减乘除。</p>
-          <p style="margin:0 0 8px"><strong style="color:var(--brand)">但是问题是：</strong>算完后不知道自己有没有抄错、进错、退错位。</p>
-          <p style="margin:0"><strong style="color:var(--brand-2)">所以这一段要解决：</strong>学会用“验算”给自己当小老师。</p>
+          <p style="margin:0 0 8px"><strong style="color:var(--brand-2)">已经知道:</strong>我会列竖式计算加减乘除。</p>
+          <p style="margin:0 0 8px"><strong style="color:var(--brand)">但是问题是:</strong>算完后不知道自己有没有抄错、进错、退错位。</p>
+          <p style="margin:0"><strong style="color:var(--brand-2)">所以这一段要解决:</strong>学会用"验算"给自己当小老师。</p>
         </div>
         <div class="grid" style="margin-top:20px">
           <div class="card animate-in stagger-1" style="padding:18px">
             <h3 style="color:var(--brand);margin-bottom:8px;font-size:16px">🔍 回头看</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:15px">数字有没有抄错？运算符号有没有看错？答案合理吗？</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:15px">数字有没有抄错?运算符号有没有看错?答案合理吗?</p>
           </div>
           <div class="card animate-in stagger-2" style="padding:18px">
             <h3 style="color:var(--brand-2);margin-bottom:8px;font-size:16px">🔄 逆运算</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:15px">加法用减法验，减法用加法验，乘除也互逆。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:15px">加法用减法验,减法用加法验,乘除也互逆。</p>
           </div>
           <div class="card animate-in stagger-3" style="padding:18px">
             <h3 style="color:var(--warn);margin-bottom:8px;font-size:16px">🎯 估算</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:15px">先估一个大概范围，再和精确答案对比。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:15px">先估一个大概范围,再和精确答案对比。</p>
           </div>
         </div>
       </div>
@@ -417,19 +513,19 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
         <div class="grid" style="margin-top:16px">
           <div class="card animate-in stagger-1" style="padding:18px;border-left:4px solid var(--brand)">
             <h3 style="color:var(--brand);margin-bottom:8px;font-size:16px">➕ 加法验算</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:15px">和 − 一个加数 = 另一个加数；或交换加数位置再算。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:15px">和 - 一个加数 = 另一个加数;或交换加数位置再算。</p>
           </div>
           <div class="card animate-in stagger-2" style="padding:18px;border-left:4px solid var(--brand-2)">
             <h3 style="color:var(--brand-2);margin-bottom:8px;font-size:16px">➖ 减法验算</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:15px">差 + 减数 = 被减数；或被减数 − 差 = 减数。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:15px">差 + 减数 = 被减数;或被减数 - 差 = 减数。</p>
           </div>
           <div class="card animate-in stagger-3" style="padding:18px;border-left:4px solid var(--warn)">
             <h3 style="color:var(--warn);margin-bottom:8px;font-size:16px">✖️ 乘法验算</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:15px">交换乘数位置再算；或积 ÷ 一个因数 = 另一个因数。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:15px">交换乘数位置再算;或积 ÷ 一个因数 = 另一个因数。</p>
           </div>
           <div class="card animate-in stagger-4" style="padding:18px;border-left:4px solid #9b59b6">
             <h3 style="color:#9b59b6;margin-bottom:8px;font-size:16px">➗ 除法验算</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:15px">商 × 除数 + 余数 = 被除数，余数一定要小于除数。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:15px">商 × 除数 + 余数 = 被除数,余数一定要小于除数。</p>
           </div>
         </div>
       </div>
@@ -442,29 +538,29 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div class="card">
         <div class="section-header">
           <span class="phase-tag" data-variant="success">Worked Example</span>
-          <h2>例题讲解：513 − 248 = ?</h2>
+          <h2>例题讲解:513 - 248 = ?</h2>
         </div>
         <div class="grid" style="margin-top:16px">
           <div class="card animate-in stagger-1" style="padding:20px;border-left:3px solid var(--accent)">
-            <h3 style="color:var(--warn);margin-bottom:10px;font-size:15px">🟡 第一步：列竖式计算</h3>
+            <h3 style="color:var(--warn);margin-bottom:10px;font-size:15px">🟡 第一步:列竖式计算</h3>
             <p style="color:var(--text-secondary);margin:0;font-size:15px">
-              513 − 248 = 265<br>
-              <span style="color:var(--muted);font-size:13px">（个位3不够减8，从十位借1；十位1变成0，再向百位借1）</span>
+              513 - 248 = 265<br>
+              <span style="color:var(--muted);font-size:13px">(个位3不够减8,从十位借1;十位1变成0,再向百位借1)</span>
             </p>
           </div>
           <div class="card animate-in stagger-2" style="padding:20px;border-left:3px solid var(--brand-2)">
-            <h3 style="color:var(--brand-2);margin-bottom:10px;font-size:15px">🟢 第二步：用加法验算</h3>
+            <h3 style="color:var(--brand-2);margin-bottom:10px;font-size:15px">🟢 第二步:用加法验算</h3>
             <p style="color:var(--text-secondary);margin:0;font-size:15px">
               差 + 减数 = 被减数<br>
               265 + 248 = 513 ✓<br>
-              <span style="color:var(--muted);font-size:13px">如果相加不等于被减数，说明计算有错误。</span>
+              <span style="color:var(--muted);font-size:13px">如果相加不等于被减数,说明计算有错误。</span>
             </p>
           </div>
           <div class="card animate-in stagger-3" style="padding:20px;border-left:3px solid var(--brand)">
-            <h3 style="color:var(--brand);margin-bottom:10px;font-size:15px">🔵 第三步：用估算检查</h3>
+            <h3 style="color:var(--brand);margin-bottom:10px;font-size:15px">🔵 第三步:用估算检查</h3>
             <p style="color:var(--text-secondary);margin:0;font-size:15px">
-              513 ≈ 500，248 ≈ 250，500 − 250 = 250<br>
-              265 接近 250，答案合理 ✓
+              513 ≈ 500,248 ≈ 250,500 - 250 = 250<br>
+              265 接近 250,答案合理 ✓
             </p>
           </div>
           <div class="card animate-in stagger-4" style="padding:20px;border-left:3px solid #9b59b6">
@@ -473,7 +569,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
               <source src="assets/tip-video.mp4" type="video/mp4">
               你的浏览器不支持视频播放。
             </video>
-            <p style="color:var(--muted);margin:8px 0 0;font-size:13px">养成先算后验的好习惯，让计算更准确。</p>
+            <p style="color:var(--muted);margin:8px 0 0;font-size:13px">养成先算后验的好习惯,让计算更准确。</p>
           </div>
         </div>
       </div>
@@ -486,28 +582,28 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div class="card">
         <div class="section-header">
           <span class="phase-tag" data-variant="purple">Deep Understanding</span>
-          <h2>🔍 深层理解：5个镜头看验算</h2>
+          <h2>🔍 深层理解:5个镜头看验算</h2>
         </div>
         <div class="grid" style="margin-top:16px">
           <div class="card insight-box animate-in stagger-1" style="padding:18px">
             <h3 style="color:var(--brand);margin-bottom:8px;font-size:16px">1️⃣ 看见它</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:14px">把算式“倒过来”写一遍：加→减，减→加，乘→除，除→乘。不同的方向看同一道题，更容易发现错误。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:14px">把算式"倒过来"写一遍:加→减,减→加,乘→除,除→乘。不同的方向看同一道题,更容易发现错误。</p>
           </div>
           <div class="card insight-box animate-in stagger-2" style="padding:18px">
             <h3 style="color:var(--brand-2);margin-bottom:8px;font-size:16px">2️⃣ 拆开它</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:14px">把大数拆成整百+整十+个位，分别验算：513 = 500 + 10 + 3，248 = 200 + 40 + 8，逐位对比更容易。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:14px">把大数拆成整百+整十+个位,分别验算:513 = 500 + 10 + 3,248 = 200 + 40 + 8,逐位对比更容易。</p>
           </div>
           <div class="card insight-box animate-in stagger-3" style="padding:18px">
             <h3 style="color:var(--warn);margin-bottom:8px;font-size:16px">3️⃣ 解释它</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:14px">为什么“差 + 减数 = 被减数”？因为减法是加法的逆运算，验算就是在问“减回去能不能回到原来的数”。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:14px">为什么"差 + 减数 = 被减数"?因为减法是加法的逆运算,验算就是在问"减回去能不能回到原来的数"。</p>
           </div>
           <div class="card insight-box animate-in stagger-4" style="padding:18px">
             <h3 style="color:#9b59b6;margin-bottom:8px;font-size:16px">4️⃣ 比较它</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:14px">精确答案 265 和估算答案 250 差多少？相差 15 算合理，如果相差 100 就要警惕。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:14px">精确答案 265 和估算答案 250 差多少?相差 15 算合理,如果相差 100 就要警惕。</p>
           </div>
           <div class="card insight-box animate-in stagger-5" style="padding:18px">
             <h3 style="color:var(--brand);margin-bottom:8px;font-size:16px">5️⃣ 迁移它</h3>
-            <p style="color:var(--text-secondary);margin:0;font-size:14px">加法验算的思想也能用在乘法里：交换位置、用逆运算。验算不是每道题的“负担”，而是通用工具。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:14px">加法验算的思想也能用在乘法里:交换位置、用逆运算。验算不是每道题的"负担",而是通用工具。</p>
           </div>
         </div>
       </div>
@@ -520,16 +616,16 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div class="card card-accent" data-conceptest="true">
         <div class="section-header">
           <span class="phase-tag" data-variant="purple">ConcepTest</span>
-          <h2>下面哪道题最适合用“估算”来验算？</h2>
+          <h2>下面哪道题最适合用"估算"来验算?</h2>
         </div>
-        <p style="color:var(--text-secondary);margin:0 0 20px;font-size:16px;line-height:1.8">估算最适合快速判断答案“大概对不对”，不是用来得到精确答案。</p>
+        <p style="color:var(--text-secondary);margin:0 0 20px;font-size:16px;line-height:1.8">估算最适合快速判断答案"大概对不对",不是用来得到精确答案。</p>
         <div class="grid" id="conceptest-choices">
-          <button class="choice animate-in stagger-1" data-choice="A" data-correct="false" data-diagnosis="47+28 数字比较小，直接精确计算加逆运算验算更稳妥。估算也能用，但不是最适合。">A. 47 + 28</button>
-          <button class="choice animate-in stagger-2" data-choice="B" data-correct="true" data-diagnosis="正确！298 ≈ 300，507 ≈ 500，估算和约 800；再精算 805，非常接近，说明答案合理。">B. 298 + 507</button>
-          <button class="choice animate-in stagger-3" data-choice="C" data-correct="false" data-diagnosis="156 ÷ 7 应该用乘法逆运算验算：商 × 7 + 余数 = 156。估算只能判断大概范围。">C. 156 ÷ 7</button>
-          <button class="choice animate-in stagger-4" data-choice="D" data-correct="false" data-diagnosis="900 − 368 可以用差 + 减数 = 被减数来精确验算；估算只能辅助。">D. 900 − 368</button>
+          <button class="choice animate-in stagger-1" data-choice="A" data-correct="false" data-diagnosis="47+28 数字比较小,直接精确计算加逆运算验算更稳妥。估算也能用,但不是最适合。">A. 47 + 28</button>
+          <button class="choice animate-in stagger-2" data-choice="B" data-correct="true" data-diagnosis="正确!298 ≈ 300,507 ≈ 500,估算和约 800;再精算 805,非常接近,说明答案合理。">B. 298 + 507</button>
+          <button class="choice animate-in stagger-3" data-choice="C" data-correct="false" data-diagnosis="156 ÷ 7 应该用乘法逆运算验算:商 × 7 + 余数 = 156。估算只能判断大概范围。">C. 156 ÷ 7</button>
+          <button class="choice animate-in stagger-4" data-choice="D" data-correct="false" data-diagnosis="900 - 368 可以用差 + 减数 = 被减数来精确验算;估算只能辅助。">D. 900 - 368</button>
         </div>
-        <div class="result warn" data-feedback-for="conceptest" style="margin-top:16px">先独立判断，再看诊断反馈。</div>
+        <div class="result warn" data-feedback-for="conceptest" style="margin-top:16px">先独立判断,再看诊断反馈。</div>
       </div>
     </div>
   </section>
@@ -540,24 +636,41 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div class="card card-glow">
         <div class="section-header">
           <span class="phase-tag" data-variant="success">Interactive</span>
-          <h2>每日训练器：做 5 题，自动批改</h2>
+          <h2>每日训练器:逐题练习,自动批改</h2>
         </div>
-        <p style="color:var(--muted);margin:0 0 16px">选择年级难度，然后做题并提交。错题会进入“错题医院”。</p>
+        <p style="color:var(--muted);margin:0 0 16px">回车键提交,自动批改并切换下一题。</p>
         <div class="flex-row" style="margin-bottom:16px">
-          <select id="trainer-grade" style="max-width:160px">
-            <option value="g2">1-2年级</option>
-            <option value="g3" selected>3-4年级</option>
-            <option value="g5">5-6年级</option>
+          <select id="trainer-count" style="max-width:100px">
+            <option value="3">3 题</option>
+            <option value="5" selected>5 题</option>
+            <option value="10">10 题</option>
           </select>
-          <button class="choice" id="btn-generate-today" style="max-width:180px;text-align:center">生成今日题目</button>
-          <span class="badge" id="streak-badge">今日进度：0 / 5</span>
+          <button class="choice" id="btn-generate-today" style="max-width:160px;text-align:center">🎯 开始今日训练</button>
+          <span class="badge" id="streak-badge">准备好开始</span>
         </div>
-        <div class="canvas-wrap" style="min-height:260px">
-          <div id="trainer-panel">
-            <p style="color:var(--muted);text-align:center">点击“生成今日题目”开始训练。</p>
+        <div class="trainer-quiz-wrap" id="trainer-quiz-wrap">
+          <div class="trainer-quiz-card" id="trainer-quiz-card">
+            <div class="trainer-q-progress" id="trainer-q-progress">第 1 / 5 题</div>
+            <div class="trainer-q-text" id="trainer-q-text">点击上方按钮开始</div>
+            <div class="trainer-q-hint" id="trainer-q-hint"></div>
+            <div class="trainer-q-inputs" id="trainer-q-inputs">
+              <input class="trainer-q-inp" id="trainer-q-inp" type="number" placeholder="输入答案" disabled autocomplete="off">
+              <input class="trainer-q-inp" id="trainer-q-inp-r" type="number" placeholder="余数" disabled autocomplete="off" style="display:none">
+            </div>
+            <div class="trainer-q-feedback" id="trainer-q-feedback"></div>
+            <div class="trainer-q-verify-hint" id="trainer-q-verify-hint"></div>
           </div>
         </div>
-        <div class="result" id="trainer-summary" style="margin-top:16px">完成今日训练，错题会自动归类。</div>
+        <div id="trainer-summary" style="margin-top:16px"></div>
+        <div class="trainer-result-summary" id="trainer-result-summary" style="display:none">
+          <div class="section-header" style="margin-top:12px">
+            <span class="phase-tag" data-variant="purple">结果</span>
+            <h2 id="trainer-result-title">成绩单</h2>
+          </div>
+          <div class="trainer-score" id="trainer-score"></div>
+          <div id="trainer-result-list"></div>
+          <button class="choice" id="btn-retry-trainer" style="max-width:200px;text-align:center;margin-top:12px">🔁 再来一组</button>
+        </div>
       </div>
     </div>
   </section>
@@ -570,12 +683,12 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
           <span class="phase-tag" data-variant="purple">AI Coach</span>
           <h2>错题医院 & 薄弱点分析</h2>
         </div>
-        <p style="color:var(--muted);margin:0 0 16px">系统会根据你的错题，自动推荐下一步练习方向。</p>
+        <p style="color:var(--muted);margin:0 0 16px">系统会根据你的错题,自动推荐下一步练习方向。</p>
         <div class="grid grid-2" style="margin-top:16px">
           <div class="card animate-in stagger-1" style="padding:18px">
             <h3 style="color:var(--brand);margin-bottom:10px;font-size:16px">📊 我的薄弱点</h3>
             <div id="weakness-tags" style="display:flex;flex-wrap:wrap;gap:8px">
-              <span class="check-tag pending">暂无数据，先完成训练</span>
+              <span class="check-tag pending">暂无数据,先完成训练</span>
             </div>
           </div>
           <div class="card animate-in stagger-2" style="padding:18px">
@@ -602,7 +715,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
           <span class="phase-tag" data-variant="success">10-Day Plan</span>
           <h2>10 天打卡表</h2>
         </div>
-        <p style="color:var(--muted);margin:0 0 16px">每天完成 1 次训练，即可点亮当天。点击某天查看当日主题。</p>
+        <p style="color:var(--muted);margin:0 0 16px">每天完成 1 次训练,即可点亮当天。点击某天查看当日主题。</p>
         <div class="calendar-grid" id="day-calendar">
           <div class="day-cell" data-day="1">Day 1<br><small>回头看</small></div>
           <div class="day-cell" data-day="2">Day 2<br><small>加法验算</small></div>
@@ -615,7 +728,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
           <div class="day-cell" data-day="9">Day 9<br><small>限时挑战</small></div>
           <div class="day-cell" data-day="10">Day 10<br><small>综合验收</small></div>
         </div>
-        <div class="result" id="calendar-detail" style="margin-top:16px">点击上方某天，查看当天训练主题。</div>
+        <div class="result" id="calendar-detail" style="margin-top:16px">点击上方某天,查看当天训练主题。</div>
       </div>
     </div>
   </section>
@@ -626,15 +739,15 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       <div class="card card-accent">
         <div class="section-header">
           <span class="phase-tag" data-variant="warn">Posttest</span>
-          <h2>后测：你能当小老师吗？</h2>
+          <h2>后测:你能当小老师吗?</h2>
         </div>
-        <p style="color:var(--text-secondary);margin:0 0 20px;font-size:16px">小东计算 378 + 456 = 824，然后用 824 − 378 验算，得到 446。这说明什么？</p>
+        <p style="color:var(--text-secondary);margin:0 0 20px;font-size:16px">小东计算 378 + 456 = 824,然后用 824 - 378 验算,得到 446。这说明什么?</p>
         <div class="grid" id="posttest-choices">
-          <button class="choice animate-in stagger-1" data-posttest-choice="A" data-correct="false" data-diagnosis="减法计算本身可能出错，但验算方法是对的。不能只看一次结果就下结论。">A. 验算方法错了</button>
-          <button class="choice animate-in stagger-2" data-posttest-choice="B" data-correct="true" data-diagnosis="正确！824 − 378 应该等于 456，现在等于 446，说明 378 + 456 的答案 824 算错了。">B. 378 + 456 的答案算错了</button>
-          <button class="choice animate-in stagger-3" data-posttest-choice="C" data-correct="false" data-diagnosis="差 446 不等于减数 456，所以不是“大概对”，而是精确错了。">C. 答案大概是对的</button>
+          <button class="choice animate-in stagger-1" data-posttest-choice="A" data-correct="false" data-diagnosis="减法计算本身可能出错,但验算方法是对的。不能只看一次结果就下结论。">A. 验算方法错了</button>
+          <button class="choice animate-in stagger-2" data-posttest-choice="B" data-correct="true" data-diagnosis="正确!824 - 378 应该等于 456,现在等于 446,说明 378 + 456 的答案 824 算错了。">B. 378 + 456 的答案算错了</button>
+          <button class="choice animate-in stagger-3" data-posttest-choice="C" data-correct="false" data-diagnosis="差 446 不等于减数 456,所以不是"大概对",而是精确错了。">C. 答案大概是对的</button>
         </div>
-        <div class="result warn" data-feedback-for="posttest" style="margin-top:16px">先独立判断，再看诊断反馈。</div>
+        <div class="result warn" data-feedback-for="posttest" style="margin-top:16px">先独立判断,再看诊断反馈。</div>
       </div>
     </div>
   </section>
@@ -647,23 +760,23 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
           <span class="phase-tag" data-variant="success">Summary</span>
           <h2>我的验算秘籍</h2>
         </div>
-        <p style="color:var(--text-secondary);margin:0 0 16px;font-size:16px;line-height:1.8">现在你可以回答开头的问题了：算完后怎么知道对不对？用这 4 步。</p>
+        <p style="color:var(--text-secondary);margin:0 0 16px;font-size:16px;line-height:1.8">现在你可以回答开头的问题了:算完后怎么知道对不对?用这 4 步。</p>
         <div style="display:flex;flex-direction:column;gap:12px">
           <div class="animate-in stagger-1" style="display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-radius:var(--card-radius-sm);background:var(--bg-subtle);border:1px solid var(--line-subtle)">
             <span style="color:var(--brand);font-weight:700;flex-shrink:0">01</span>
-            <span style="color:var(--text-secondary)"><strong>回头看</strong>：数字、符号、答案合理性。</span>
+            <span style="color:var(--text-secondary)"><strong>回头看</strong>:数字、符号、答案合理性。</span>
           </div>
           <div class="animate-in stagger-2" style="display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-radius:var(--card-radius-sm);background:var(--bg-subtle);border:1px solid var(--line-subtle)">
             <span style="color:var(--brand-2);font-weight:700;flex-shrink:0">02</span>
-            <span style="color:var(--text-secondary)"><strong>逆运算</strong>：加减互逆、乘除互逆。</span>
+            <span style="color:var(--text-secondary)"><strong>逆运算</strong>:加减互逆、乘除互逆。</span>
           </div>
           <div class="animate-in stagger-3" style="display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-radius:var(--card-radius-sm);background:var(--bg-subtle);border:1px solid var(--line-subtle)">
             <span style="color:var(--warn);font-weight:700;flex-shrink:0">03</span>
-            <span style="color:var(--text-secondary)"><strong>估算</strong>：先估范围，再对精算。</span>
+            <span style="color:var(--text-secondary)"><strong>估算</strong>:先估范围,再对精算。</span>
           </div>
           <div class="animate-in stagger-4" style="display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-radius:var(--card-radius-sm);background:var(--bg-subtle);border:1px solid var(--line-subtle)">
             <span style="color:#9b59b6;font-weight:700;flex-shrink:0">04</span>
-            <span style="color:var(--text-secondary)"><strong>尾数/数位</strong>：一眼排雷，快速检查。</span>
+            <span style="color:var(--text-secondary)"><strong>尾数/数位</strong>:一眼排雷,快速检查。</span>
           </div>
         </div>
       </div>
@@ -680,22 +793,22 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
         </div>
         <div class="card glass animate-in" style="margin:16px 0;padding:20px;border-radius:var(--card-radius-sm)">
           <h3 style="color:var(--brand);margin-bottom:10px;font-size:16px">🛒 生活情境</h3>
-          <p style="color:var(--text-secondary);margin:0;font-size:15px;line-height:1.7">妈妈带了 500 元，买一双鞋花了 186 元。售货员说应该找回 314 元。你能在付款时快速验算她算得对不对吗？</p>
-          <p style="color:var(--muted);margin:10px 0 0;font-size:14px">提示：用 314 + 186，看是不是正好等于 500。</p>
+          <p style="color:var(--text-secondary);margin:0;font-size:15px;line-height:1.7">妈妈带了 500 元,买一双鞋花了 186 元。售货员说应该找回 314 元。你能在付款时快速验算她算得对不对吗?</p>
+          <p style="color:var(--muted);margin:10px 0 0;font-size:14px">提示:用 314 + 186,看是不是正好等于 500。</p>
         </div>
-        <h3 style="margin:20px 0 12px;color:var(--text)">📚 今日分层练习（选做）</h3>
+        <h3 style="margin:20px 0 12px;color:var(--text)">📚 今日分层练习(选做)</h3>
         <div class="grid" style="margin-top:12px">
           <div class="card animate-in stagger-1" style="padding:18px;border-left:4px solid #ffd700">
             <h4 style="color:#d4a000;margin-bottom:8px;font-size:15px">⭐ Level 1 基础巩固</h4>
-            <p style="color:var(--text-secondary);margin:0;font-size:14px">计算 247 + 568，再用两种方法验算。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:14px">计算 247 + 568,再用两种方法验算。</p>
           </div>
           <div class="card animate-in stagger-2" style="padding:18px;border-left:4px solid #ff8c00">
             <h4 style="color:#e67e00;margin-bottom:8px;font-size:15px">⭐⭐ Level 2 能力应用</h4>
-            <p style="color:var(--text-secondary);margin:0;font-size:14px">小军算 900 − 368 = 542，先用加法验算，再用估算判断是否合理。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:14px">小军算 900 - 368 = 542,先用加法验算,再用估算判断是否合理。</p>
           </div>
           <div class="card animate-in stagger-3" style="padding:18px;border-left:4px solid #e74c3c">
             <h4 style="color:#c0392b;margin-bottom:8px;font-size:15px">⭐⭐⭐ 迁移挑战</h4>
-            <p style="color:var(--text-secondary);margin:0;font-size:14px">超市小票上 3 件商品价格分别为 98、127、245 元，收银员说共 470 元。请用两种方法验算。</p>
+            <p style="color:var(--text-secondary);margin:0;font-size:14px">超市小票上 3 件商品价格分别为 98、127、245 元,收银员说共 470 元。请用两种方法验算。</p>
           </div>
         </div>
       </div>
@@ -726,7 +839,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
           <span class="phase-tag" data-variant="purple">Canvas</span>
           <h2>🎨 数位验算画布</h2>
         </div>
-        <p style="color:var(--muted);margin:0 0 16px">在画布上点击数位，验证 247 + 568 的每一位是否正确。</p>
+        <p style="color:var(--muted);margin:0 0 16px">在画布上点击数位,验证 247 + 568 的每一位是否正确。</p>
         <div class="canvas-wrap" style="min-height:320px">
           <canvas id="check-canvas" width="700" height="280" style="width:100%;height:280px;border-radius:12px;background:#fff;cursor:pointer"></canvas>
         </div>
@@ -734,7 +847,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
           <button class="choice" id="btn-check-canvas" style="max-width:160px;text-align:center">验算</button>
           <button class="choice" id="btn-reset-canvas" style="max-width:160px;text-align:center">重置</button>
         </div>
-        <div class="result" id="canvas-result" style="margin-top:12px">点击画布上的数位，然后按“验算”检查。</div>
+        <div class="result" id="canvas-result" style="margin-top:12px">点击画布上的数位,然后按"验算"检查。</div>
       </div>
     </div>
   </section>
@@ -747,26 +860,26 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
           <span class="phase-tag" data-variant="purple">🤖 AI</span>
           <h2>聪明狗AI学伴</h2>
         </div>
-        <p style="color:var(--muted);margin:0 0 12px;font-size:15px">问我验算问题、帮你出题、讲解错题，随叫随到！</p>
+        <p style="color:var(--muted);margin:0 0 12px;font-size:15px">问我验算问题、帮你出题、讲解错题,随叫随到!</p>
         <!-- Quick Actions -->
         <div class="tutor-quick-actions" id="tutor-quick-actions">
-          <button class="tutor-quick-btn" data-msg="我今天错了哪些题？帮我分析一下">🔍 分析错题</button>
-          <button class="tutor-quick-btn" data-msg="针对我的薄弱点，出3道题给我练">🎯 针对出题</button>
-          <button class="tutor-quick-btn" data-msg="怎么验算加法？教教我">📖 教我怎么验算</button>
-          <button class="tutor-quick-btn" data-msg="减法退位总是出错，怎么办？">💡 减法退位技巧</button>
+          <button class="tutor-quick-btn" data-msg="我今天错了哪些题?帮我分析一下">🔍 分析错题</button>
+          <button class="tutor-quick-btn" data-msg="针对我的薄弱点,出3道题给我练">🎯 针对出题</button>
+          <button class="tutor-quick-btn" data-msg="怎么验算加法?教教我">📖 教我怎么验算</button>
+          <button class="tutor-quick-btn" data-msg="减法退位总是出错,怎么办?">💡 减法退位技巧</button>
         </div>
         <!-- Chat Messages -->
         <div class="tutor-chat" id="tutor-chat">
           <div class="tutor-msg tutor-msg-bot">
             <div class="tutor-avatar">🐶</div>
             <div class="tutor-bubble">
-              你好！我是聪明狗🐶，你的AI验算教练。<br>点上面的按钮，或者直接问我验算问题吧！
+              你好!我是聪明狗🐶,你的AI验算教练。<br>点上面的按钮,或者直接问我验算问题吧!
             </div>
           </div>
         </div>
         <!-- Input -->
         <div class="tutor-input-row">
-          <input type="text" class="tutor-input" id="tutor-input" placeholder="输入你的问题…" autocomplete="off">
+          <input type="text" class="tutor-input" id="tutor-input" placeholder="输入你的问题..." autocomplete="off">
           <button class="tutor-send-btn" id="tutor-send-btn">发送</button>
         </div>
       </div>
@@ -970,7 +1083,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   function setLearnerQuestion(q) {
     window.__TEACHANY_LEARNER_QUESTION__ = q || '';
     const fb = document.getElementById('anchor-feedback');
-    if (fb) fb.textContent = q ? '你的问题：' + q : '选择或输入后，本课会围绕你的问题展开。';
+    if (fb) fb.textContent = q ? '你的问题:' + q : '选择或输入后,本课会围绕你的问题展开。';
   }
   document.querySelectorAll('[data-anchor-choice]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -997,7 +1110,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
           }
         });
         const fb = document.querySelector('[data-feedback-for="' + feedbackAttr + '"]');
-        if (fb) { fb.className = 'result ' + (isCorrect ? '' : 'warn'); fb.textContent = btn.dataset.diagnosis || (isCorrect ? '回答正确！' : '再想一想。'); }
+        if (fb) { fb.className = 'result ' + (isCorrect ? '' : 'warn'); fb.textContent = btn.dataset.diagnosis || (isCorrect ? '回答正确!' : '再想一想。'); }
       });
     });
   }
@@ -1005,87 +1118,87 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   bindChoiceGroup('conceptest-choices', 'conceptest');
   bindChoiceGroup('posttest-choices', 'posttest');
 
-  // Daily trainer — progressive question bank
+  // Daily trainer - progressive question bank
   const dayThemes = {
     1: { name: '回头检查', method: 'lookback', tip: '算完先检查数字、符号和答案合理性。',
       questions: [
-        { q: '234 + 125 = ?', a: 359, op: '+', hint: '验算：359 − 125 = 234 ✓', method: 'lookback' },
-        { q: '567 − 234 = ?', a: 333, op: '−', hint: '验算：333 + 234 = 567 ✓', method: 'lookback' },
-        { q: '408 + 361 = ?', a: 769, op: '+', hint: '验算：769 − 361 = 408 ✓', method: 'lookback' },
-        { q: '876 − 432 = ?', a: 444, op: '−', hint: '验算：444 + 432 = 876 ✓', method: 'lookback' },
-        { q: '150 + 230 = ?', a: 380, op: '+', hint: '验算：380 − 230 = 150 ✓', method: 'lookback' }
+        { q: '234 + 125 = ?', a: 359, op: '+', hint: '验算:359 - 125 = 234 ✓', method: 'lookback' },
+        { q: '567 - 234 = ?', a: 333, op: '-', hint: '验算:333 + 234 = 567 ✓', method: 'lookback' },
+        { q: '408 + 361 = ?', a: 769, op: '+', hint: '验算:769 - 361 = 408 ✓', method: 'lookback' },
+        { q: '876 - 432 = ?', a: 444, op: '-', hint: '验算:444 + 432 = 876 ✓', method: 'lookback' },
+        { q: '150 + 230 = ?', a: 380, op: '+', hint: '验算:380 - 230 = 150 ✓', method: 'lookback' }
       ]},
-    2: { name: '加法验算', method: 'add-inverse', tip: '用"和 − 一个加数"或"交换加数位置"验算。',
+    2: { name: '加法验算', method: 'add-inverse', tip: '用"和 - 一个加数"或"交换加数位置"验算。',
       questions: [
-        { q: '247 + 568 = ?', a: 815, op: '+', hint: '验算①：815 − 568 = 247\n验算②：568 + 247 = 815', method: 'add-inverse' },
-        { q: '389 + 445 = ?', a: 834, op: '+', hint: '验算①：834 − 445 = 389\n验算②：445 + 389 = 834', method: 'add-inverse' },
-        { q: '675 + 298 = ?', a: 973, op: '+', hint: '验算①：973 − 298 = 675\n验算②：298 + 675 = 973', method: 'add-inverse' },
-        { q: '156 + 789 = ?', a: 945, op: '+', hint: '验算①：945 − 789 = 156\n验算②：789 + 156 = 945', method: 'add-inverse' },
-        { q: '823 + 197 = ?', a: 1020, op: '+', hint: '验算①：1020 − 197 = 823\n验算②：197 + 823 = 1020', method: 'add-inverse' }
+        { q: '247 + 568 = ?', a: 815, op: '+', hint: '验算1:815 - 568 = 247\n验算2:568 + 247 = 815', method: 'add-inverse' },
+        { q: '389 + 445 = ?', a: 834, op: '+', hint: '验算1:834 - 445 = 389\n验算2:445 + 389 = 834', method: 'add-inverse' },
+        { q: '675 + 298 = ?', a: 973, op: '+', hint: '验算1:973 - 298 = 675\n验算2:298 + 675 = 973', method: 'add-inverse' },
+        { q: '156 + 789 = ?', a: 945, op: '+', hint: '验算1:945 - 789 = 156\n验算2:789 + 156 = 945', method: 'add-inverse' },
+        { q: '823 + 197 = ?', a: 1020, op: '+', hint: '验算1:1020 - 197 = 823\n验算2:197 + 823 = 1020', method: 'add-inverse' }
       ]},
-    3: { name: '减法验算', method: 'sub-inverse', tip: '用"差 + 减数"或"被减数 − 差"验算，注意退位！',
+    3: { name: '减法验算', method: 'sub-inverse', tip: '用"差 + 减数"或"被减数 - 差"验算,注意退位!',
       questions: [
-        { q: '725 − 348 = ?', a: 377, op: '−', hint: '验算①：377 + 348 = 725\n口诀：0上有点当作9', method: 'sub-inverse' },
-        { q: '603 − 287 = ?', a: 316, op: '−', hint: '验算①：316 + 287 = 603\n注意：个位不够向十位借', method: 'sub-inverse' },
-        { q: '842 − 569 = ?', a: 273, op: '−', hint: '验算①：273 + 569 = 842\n注意：连续退位', method: 'sub-inverse' },
-        { q: '500 − 267 = ?', a: 233, op: '−', hint: '验算①：233 + 267 = 500\n注意：中间有0的退位', method: 'sub-inverse' },
-        { q: '931 − 456 = ?', a: 475, op: '−', hint: '验算①：475 + 456 = 931\n二次确认：931 − 475 = 456', method: 'sub-inverse' }
+        { q: '725 - 348 = ?', a: 377, op: '-', hint: '验算1:377 + 348 = 725\n口诀:0上有点当作9', method: 'sub-inverse' },
+        { q: '603 - 287 = ?', a: 316, op: '-', hint: '验算1:316 + 287 = 603\n注意:个位不够向十位借', method: 'sub-inverse' },
+        { q: '842 - 569 = ?', a: 273, op: '-', hint: '验算1:273 + 569 = 842\n注意:连续退位', method: 'sub-inverse' },
+        { q: '500 - 267 = ?', a: 233, op: '-', hint: '验算1:233 + 267 = 500\n注意:中间有0的退位', method: 'sub-inverse' },
+        { q: '931 - 456 = ?', a: 475, op: '-', hint: '验算1:475 + 456 = 931\n二次确认:931 - 475 = 456', method: 'sub-inverse' }
       ]},
     4: { name: '乘法验算', method: 'mul-inverse', tip: '用"积 ÷ 因数"或"交换因数位置"验算。',
       questions: [
-        { q: '24 × 7 = ?', a: 168, op: '×', hint: '验算①：168 ÷ 7 = 24\n验算②：7 × 24 = 168', method: 'mul-inverse' },
-        { q: '56 × 8 = ?', a: 448, op: '×', hint: '验算①：448 ÷ 8 = 56\n验算②：8 × 56 = 448', method: 'mul-inverse' },
-        { q: '39 × 6 = ?', a: 234, op: '×', hint: '验算①：234 ÷ 6 = 39\n验算②：6 × 39 = 234', method: 'mul-inverse' },
-        { q: '78 × 5 = ?', a: 390, op: '×', hint: '验算①：390 ÷ 5 = 78\n验算②：5 × 78 = 390', method: 'mul-inverse' },
-        { q: '63 × 9 = ?', a: 567, op: '×', hint: '验算①：567 ÷ 9 = 63\n验算②：9 × 63 = 567', method: 'mul-inverse' }
+        { q: '24 × 7 = ?', a: 168, op: '×', hint: '验算1:168 ÷ 7 = 24\n验算2:7 × 24 = 168', method: 'mul-inverse' },
+        { q: '56 × 8 = ?', a: 448, op: '×', hint: '验算1:448 ÷ 8 = 56\n验算2:8 × 56 = 448', method: 'mul-inverse' },
+        { q: '39 × 6 = ?', a: 234, op: '×', hint: '验算1:234 ÷ 6 = 39\n验算2:6 × 39 = 234', method: 'mul-inverse' },
+        { q: '78 × 5 = ?', a: 390, op: '×', hint: '验算1:390 ÷ 5 = 78\n验算2:5 × 78 = 390', method: 'mul-inverse' },
+        { q: '63 × 9 = ?', a: 567, op: '×', hint: '验算1:567 ÷ 9 = 63\n验算2:9 × 63 = 567', method: 'mul-inverse' }
       ]},
-    5: { name: '除法验算', method: 'div-inverse', tip: '用"商 × 除数 + 余数 = 被除数"，且余数 < 除数。',
+    5: { name: '除法验算', method: 'div-inverse', tip: '用"商 × 除数 + 余数 = 被除数",且余数 < 除数。',
       questions: [
-        { q: '85 ÷ 6 = ?……?', a: 14, a2: 1, op: '÷', hint: '验算：14 × 6 + 1 = 84 + 1 = 85\n检查：余数1 < 除数6 ✓', method: 'div-inverse' },
-        { q: '73 ÷ 8 = ?……?', a: 9, a2: 1, op: '÷', hint: '验算：9 × 8 + 1 = 73\n检查：余数1 < 除数8 ✓', method: 'div-inverse' },
-        { q: '97 ÷ 5 = ?……?', a: 19, a2: 2, op: '÷', hint: '验算：19 × 5 + 2 = 95 + 2 = 97\n检查：余数2 < 除数5 ✓', method: 'div-inverse' },
-        { q: '64 ÷ 7 = ?……?', a: 9, a2: 1, op: '÷', hint: '验算：9 × 7 + 1 = 63 + 1 = 64\n检查：余数1 < 除数7 ✓', method: 'div-inverse' },
-        { q: '89 ÷ 3 = ?……?', a: 29, a2: 2, op: '÷', hint: '验算：29 × 3 + 2 = 87 + 2 = 89\n检查：余数2 < 除数3 ✓', method: 'div-inverse' }
+        { q: '85 ÷ 6 = ?......?', a: 14, a2: 1, op: '÷', hint: '验算:14 × 6 + 1 = 84 + 1 = 85\n检查:余数1 < 除数6 ✓', method: 'div-inverse' },
+        { q: '73 ÷ 8 = ?......?', a: 9, a2: 1, op: '÷', hint: '验算:9 × 8 + 1 = 73\n检查:余数1 < 除数8 ✓', method: 'div-inverse' },
+        { q: '97 ÷ 5 = ?......?', a: 19, a2: 2, op: '÷', hint: '验算:19 × 5 + 2 = 95 + 2 = 97\n检查:余数2 < 除数5 ✓', method: 'div-inverse' },
+        { q: '64 ÷ 7 = ?......?', a: 9, a2: 1, op: '÷', hint: '验算:9 × 7 + 1 = 63 + 1 = 64\n检查:余数1 < 除数7 ✓', method: 'div-inverse' },
+        { q: '89 ÷ 3 = ?......?', a: 29, a2: 2, op: '÷', hint: '验算:29 × 3 + 2 = 87 + 2 = 89\n检查:余数2 < 除数3 ✓', method: 'div-inverse' }
       ]},
-    6: { name: '估算对比', method: 'estimate', tip: '先四舍五入估算，再精确计算，最后对比是否接近。',
+    6: { name: '估算对比', method: 'estimate', tip: '先四舍五入估算,再精确计算,最后对比是否接近。',
       questions: [
-        { q: '328 + 495 ≈ ?（先估算再精算）', a: 823, op: '+', hint: '估算：330 + 500 ≈ 830\n精算：328 + 495 = 823\n823 ≈ 830，合理！', method: 'estimate' },
-        { q: '761 − 389 ≈ ?（先估算再精算）', a: 372, op: '−', hint: '估算：760 − 390 ≈ 370\n精算：761 − 389 = 372\n372 ≈ 370，相差很小！', method: 'estimate' },
-        { q: '504 + 398 ≈ ?（先估算再精算）', a: 902, op: '+', hint: '估算：500 + 400 = 900\n精算：504 + 398 = 902\n902 ≈ 900，合理！', method: 'estimate' },
-        { q: '900 − 567 ≈ ?（先估算再精算）', a: 333, op: '−', hint: '估算：900 − 570 = 330\n精算：900 − 567 = 333\n333 ≈ 330，合理！', method: 'estimate' },
-        { q: '215 + 686 ≈ ?（先估算再精算）', a: 901, op: '+', hint: '估算：220 + 690 = 910\n精算：215 + 686 = 901\n901 ≈ 910，合理！', method: 'estimate' }
+        { q: '328 + 495 ≈ ?(先估算再精算)', a: 823, op: '+', hint: '估算:330 + 500 ≈ 830\n精算:328 + 495 = 823\n823 ≈ 830,合理!', method: 'estimate' },
+        { q: '761 - 389 ≈ ?(先估算再精算)', a: 372, op: '-', hint: '估算:760 - 390 ≈ 370\n精算:761 - 389 = 372\n372 ≈ 370,相差很小!', method: 'estimate' },
+        { q: '504 + 398 ≈ ?(先估算再精算)', a: 902, op: '+', hint: '估算:500 + 400 = 900\n精算:504 + 398 = 902\n902 ≈ 900,合理!', method: 'estimate' },
+        { q: '900 - 567 ≈ ?(先估算再精算)', a: 333, op: '-', hint: '估算:900 - 570 = 330\n精算:900 - 567 = 333\n333 ≈ 330,合理!', method: 'estimate' },
+        { q: '215 + 686 ≈ ?(先估算再精算)', a: 901, op: '+', hint: '估算:220 + 690 = 910\n精算:215 + 686 = 901\n901 ≈ 910,合理!', method: 'estimate' }
       ]},
-    7: { name: '尾数排雷', method: 'tail', tip: '先看个位对不对，快速发现粗心错误。',
+    7: { name: '尾数排雷', method: 'tail', tip: '先看个位对不对,快速发现粗心错误。',
       questions: [
-        { q: '1234 + 5678 = ?', a: 6912, op: '+', hint: '个位：4+8=12 → 2 ✓\n验算：6912 − 5678 = 1234', method: 'tail' },
-        { q: '8765 − 4321 = ?', a: 4444, op: '−', hint: '个位：5−1=4 ✓\n验算：4444 + 4321 = 8765', method: 'tail' },
-        { q: '3456 + 2891 = ?', a: 6347, op: '+', hint: '个位：6+1=7 ✓\n验算：6347 − 3456 = 2891', method: 'tail' },
-        { q: '7000 − 2846 = ?', a: 4154, op: '−', hint: '个位：0−6 → 借位 10−6=4 ✓\n验算：4154 + 2846 = 7000', method: 'tail' },
-        { q: '5608 + 1379 = ?', a: 6987, op: '+', hint: '个位：8+9=17 → 7 ✓\n验算：6987 − 5608 = 1379', method: 'tail' }
+        { q: '1234 + 5678 = ?', a: 6912, op: '+', hint: '个位:4+8=12 → 2 ✓\n验算:6912 - 5678 = 1234', method: 'tail' },
+        { q: '8765 - 4321 = ?', a: 4444, op: '-', hint: '个位:5-1=4 ✓\n验算:4444 + 4321 = 8765', method: 'tail' },
+        { q: '3456 + 2891 = ?', a: 6347, op: '+', hint: '个位:6+1=7 ✓\n验算:6347 - 3456 = 2891', method: 'tail' },
+        { q: '7000 - 2846 = ?', a: 4154, op: '-', hint: '个位:0-6 → 借位 10-6=4 ✓\n验算:4154 + 2846 = 7000', method: 'tail' },
+        { q: '5608 + 1379 = ?', a: 6987, op: '+', hint: '个位:8+9=17 → 7 ✓\n验算:6987 - 5608 = 1379', method: 'tail' }
       ]},
-    8: { name: '错题攻克', method: 'mixed', tip: '集中攻克易错题型：中间有0、连续进退位。',
+    8: { name: '错题攻克', method: 'mixed', tip: '集中攻克易错题型:中间有0、连续进退位。',
       questions: [
-        { q: '508 + 396 = ?', a: 904, op: '+', hint: '验算：904 − 396 = 508\n注意：个位8+6=14进1，十位0+9+1=10', method: 'add-inverse' },
-        { q: '700 − 456 = ?', a: 244, op: '−', hint: '验算：244 + 456 = 700\n注意：中间有0，0上有点当作9', method: 'sub-inverse' },
-        { q: '48 × 7 = ?', a: 336, op: '×', hint: '验算：336 ÷ 7 = 48\n注意：8×7=56进5，4×7=28+5=33', method: 'mul-inverse' },
-        { q: '92 ÷ 5 = ?……?', a: 18, a2: 2, op: '÷', hint: '验算：18 × 5 + 2 = 92\n检查：余数2 < 除数5 ✓', method: 'div-inverse' },
-        { q: '604 − 378 = ?', a: 226, op: '−', hint: '验算：226 + 378 = 604\n注意：中间有0的连续退位', method: 'sub-inverse' }
+        { q: '508 + 396 = ?', a: 904, op: '+', hint: '验算:904 - 396 = 508\n注意:个位8+6=14进1,十位0+9+1=10', method: 'add-inverse' },
+        { q: '700 - 456 = ?', a: 244, op: '-', hint: '验算:244 + 456 = 700\n注意:中间有0,0上有点当作9', method: 'sub-inverse' },
+        { q: '48 × 7 = ?', a: 336, op: '×', hint: '验算:336 ÷ 7 = 48\n注意:8×7=56进5,4×7=28+5=33', method: 'mul-inverse' },
+        { q: '92 ÷ 5 = ?......?', a: 18, a2: 2, op: '÷', hint: '验算:18 × 5 + 2 = 92\n检查:余数2 < 除数5 ✓', method: 'div-inverse' },
+        { q: '604 - 378 = ?', a: 226, op: '-', hint: '验算:226 + 378 = 604\n注意:中间有0的连续退位', method: 'sub-inverse' }
       ]},
-    9: { name: '限时挑战', method: 'timed', tip: '又快又准！每题都要验算，争取5分钟完成。',
+    9: { name: '限时挑战', method: 'timed', tip: '又快又准!每题都要验算,争取5分钟完成。',
       questions: [
-        { q: '4678 + 2359 = ?', a: 7037, op: '+', hint: '验算：7037 − 2359 = 4678', method: 'tail' },
-        { q: '5032 − 1856 = ?', a: 3176, op: '−', hint: '验算：3176 + 1856 = 5032', method: 'sub-inverse' },
-        { q: '84 × 9 = ?', a: 756, op: '×', hint: '验算：756 ÷ 9 = 84', method: 'mul-inverse' },
-        { q: '156 ÷ 8 = ?……?', a: 19, a2: 4, op: '÷', hint: '验算：19 × 8 + 4 = 156', method: 'div-inverse' },
-        { q: '3456 − 1789 = ?', a: 1667, op: '−', hint: '验算：1667 + 1789 = 3456', method: 'sub-inverse' }
+        { q: '4678 + 2359 = ?', a: 7037, op: '+', hint: '验算:7037 - 2359 = 4678', method: 'tail' },
+        { q: '5032 - 1856 = ?', a: 3176, op: '-', hint: '验算:3176 + 1856 = 5032', method: 'sub-inverse' },
+        { q: '84 × 9 = ?', a: 756, op: '×', hint: '验算:756 ÷ 9 = 84', method: 'mul-inverse' },
+        { q: '156 ÷ 8 = ?......?', a: 19, a2: 4, op: '÷', hint: '验算:19 × 8 + 4 = 156', method: 'div-inverse' },
+        { q: '3456 - 1789 = ?', a: 1667, op: '-', hint: '验算:1667 + 1789 = 3456', method: 'sub-inverse' }
       ]},
-    10: { name: '综合验收', method: 'final', tip: '综合运用所有验算方法，为训练营画上圆满句号！',
+    10: { name: '综合验收', method: 'final', tip: '综合运用所有验算方法,为训练营画上圆满句号!',
       questions: [
-        { q: '5678 + 2345 = ?', a: 8023, op: '+', hint: '验算①：8023 − 2345 = 5678\n验算②：交换加数 2345+5678', method: 'add-inverse' },
-        { q: '9000 − 3456 = ?', a: 5544, op: '−', hint: '验算①：5544 + 3456 = 9000\n注意：连续退位', method: 'sub-inverse' },
-        { q: '95 × 7 = ?', a: 665, op: '×', hint: '验算①：665 ÷ 7 = 95\n验算②：7 × 95 = 665', method: 'mul-inverse' },
-        { q: '237 ÷ 8 = ?……?', a: 29, a2: 5, op: '÷', hint: '验算：29 × 8 + 5 = 232 + 5 = 237\n检查：余数5 < 除数8 ✓', method: 'div-inverse' },
-        { q: '4008 + 2986 = ?', a: 6994, op: '+', hint: '验算①：6994 − 2986 = 4008\n个位检查：8+6=14 → 4 ✓', method: 'tail' }
+        { q: '5678 + 2345 = ?', a: 8023, op: '+', hint: '验算1:8023 - 2345 = 5678\n验算2:交换加数 2345+5678', method: 'add-inverse' },
+        { q: '9000 - 3456 = ?', a: 5544, op: '-', hint: '验算1:5544 + 3456 = 9000\n注意:连续退位', method: 'sub-inverse' },
+        { q: '95 × 7 = ?', a: 665, op: '×', hint: '验算1:665 ÷ 7 = 95\n验算2:7 × 95 = 665', method: 'mul-inverse' },
+        { q: '237 ÷ 8 = ?......?', a: 29, a2: 5, op: '÷', hint: '验算:29 × 8 + 5 = 232 + 5 = 237\n检查:余数5 < 除数8 ✓', method: 'div-inverse' },
+        { q: '4008 + 2986 = ?', a: 6994, op: '+', hint: '验算1:6994 - 2986 = 4008\n个位检查:8+6=14 → 4 ✓', method: 'tail' }
       ]}
   };
   const StorageKey = 'check10_progress_v1';
@@ -1123,19 +1236,19 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   }
   function randomInt(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
   function generateQuestion(grade, method) {
-    const ops = ['+', '−', '×', '÷'];
+    const ops = ['+', '-', '×', '÷'];
     let op, a, b, ans, qText, hint;
     if (grade === 'g2') {
-      op = Math.random() < 0.5 ? '+' : '−';
+      op = Math.random() < 0.5 ? '+' : '-';
       a = randomInt(10, 99); b = randomInt(10, 99);
-      if (op === '−' && a < b) [a, b] = [b, a];
+      if (op === '-' && a < b) [a, b] = [b, a];
       ans = op === '+' ? a + b : a - b;
       qText = `${a} ${op} ${b} = ?`;
-      hint = op === '+' ? `${ans} − ${b} = ?` : `${b} + ${ans} = ?`;
+      hint = op === '+' ? `${ans} - ${b} = ?` : `${b} + ${ans} = ?`;
     } else if (grade === 'g5') {
       op = ops[randomInt(0, 3)];
       if (op === '+') { a = randomInt(100, 999); b = randomInt(100, 999); ans = a + b; }
-      else if (op === '−') { a = randomInt(200, 999); b = randomInt(100, a); ans = a - b; }
+      else if (op === '-') { a = randomInt(200, 999); b = randomInt(100, a); ans = a - b; }
       else if (op === '×') { a = randomInt(12, 99); b = randomInt(2, 9); ans = a * b; }
       else { b = randomInt(2, 9); ans = randomInt(10, 99); a = ans * b + randomInt(0, b - 1); }
       qText = `${a} ${op} ${b} = ?`;
@@ -1143,7 +1256,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
     } else {
       op = ops[randomInt(0, 3)];
       if (op === '+') { a = randomInt(100, 999); b = randomInt(100, 999); ans = a + b; }
-      else if (op === '−') { a = randomInt(200, 999); b = randomInt(100, a); ans = a - b; }
+      else if (op === '-') { a = randomInt(200, 999); b = randomInt(100, a); ans = a - b; }
       else if (op === '×') { a = randomInt(2, 99); b = randomInt(2, 9); ans = a * b; }
       else { b = randomInt(2, 9); ans = randomInt(2, 99); a = ans * b + randomInt(0, b - 1); }
       qText = `${a} ${op} ${b} = ?`;
@@ -1152,10 +1265,10 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
     return { q: qText, a: ans, op, hint, method };
   }
   function methodHint(op, a, b, ans) {
-    if (op === '+') return `验算：${ans} − ${b} = ? 或 ${b} + ${a} = ?`;
-    if (op === '−') return `验算：${b} + ${ans} = ? 或 ${a} − ${ans} = ?`;
-    if (op === '×') return `验算：${ans} ÷ ${b} = ? 或 ${b} × ${a} = ?`;
-    return `验算：${ans} × ${b} + 余数 = ${a}，且余数 < ${b}`;
+    if (op === '+') return `验算:${ans} - ${b} = ? 或 ${b} + ${a} = ?`;
+    if (op === '-') return `验算:${b} + ${ans} = ? 或 ${a} - ${ans} = ?`;
+    if (op === '×') return `验算:${ans} ÷ ${b} = ? 或 ${b} × ${a} = ?`;
+    return `验算:${ans} × ${b} + 余数 = ${a},且余数 < ${b}`;
   }
   function errorTypeFromQuestion(op, method) {
     if (method === 'add-inverse') return '加法进位/数位对齐';
@@ -1170,78 +1283,153 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
     if (method === 'mixed') return '易错题型';
     return '计算粗心';
   }
-  let currentQuestions = [];
-  function renderTrainer() {
-    const day = getCurrentDay();
-    const theme = dayThemes[day];
-    currentQuestions = theme.questions;
-    let html = '<table class="checkmate-table"><tbody>';
-    currentQuestions.forEach((q, i) => {
-      const isDiv = q.op === '÷';
-      html += `<tr><td style="width:38%;font-weight:600">${q.q}</td><td style="padding:4px">
-        <input class="q-answer-input" data-idx="${i}" type="number" placeholder="${isDiv ? '商' : '答案'}" aria-label="第${i+1}题${isDiv ? '商' : '答案'}" style="width:${isDiv ? '55' : '72'}px">
-        ${isDiv ? '<input class="q-answer-input-r" data-idx="'+i+'" type="number" placeholder="余" aria-label="第'+(i+1)+'题余数" style="width:48px;margin-left:4px">' : ''}
-        <span class="check-tag pending" id="tag-${i}" style="margin-left:${isDiv ? '4' : '6'}px">待答</span>
-        </td></tr>`;
-    });
-    html += '</tbody></table>';
-    html += '<div style="margin-top:14px"><button class="choice" id="btn-submit-trainer" style="max-width:200px;text-align:center">✅ 提交批改</button></div>';
-    html += '<div id="trainer-verify-hints" style="margin-top:12px"></div>';
-    document.getElementById('trainer-panel').innerHTML = `<p style="color:var(--brand);font-weight:700">Day ${day}：${theme.name}</p><p style="color:var(--muted);font-size:14px">${theme.tip}</p>` + html;
-    document.getElementById('streak-badge').textContent = '今日进度：0 / 5';
-    document.getElementById('btn-submit-trainer').addEventListener('click', submitTrainer);
+  let trainerQuestions = [], trainerIdx = 0, trainerCorrect = 0, trainerResults = [];
+
+  function showTrainerQuestion() {
+    if (trainerIdx >= trainerQuestions.length) { showTrainerResults(); return; }
+    const q = trainerQuestions[trainerIdx];
+    const total = trainerQuestions.length;
+    const isDiv = q.op === '÷';
+
+    document.getElementById('trainer-q-progress').textContent = `第 ${trainerIdx + 1} / ${total} 题`;
+    document.getElementById('trainer-q-text').textContent = q.q;
+    document.getElementById('trainer-q-hint').textContent = '';
+    document.getElementById('trainer-q-feedback').textContent = '';
+    document.getElementById('trainer-q-verify-hint').textContent = '';
+
+    const card = document.getElementById('trainer-quiz-card');
+    card.classList.remove('correct', 'wrong');
+
+    const inp = document.getElementById('trainer-q-inp');
+    const inpR = document.getElementById('trainer-q-inp-r');
+    inp.value = ''; inp.disabled = false;
+    inp.placeholder = isDiv ? '商' : '答案';
+    if (isDiv) { inpR.style.display = 'inline-block'; inpR.value = ''; inpR.disabled = false; inpR.focus(); }
+    else { inpR.style.display = 'none'; inp.focus(); }
   }
-  function submitTrainer() {
-    let correct = 0, hintsHtml = '';
-    currentQuestions.forEach((q, i) => {
-      const input = document.querySelector(`.q-answer-input[data-idx="${i}"]`);
-      const tag = document.getElementById('tag-' + i);
-      const val = input ? parseInt(input.value, 10) : NaN;
-      let isRight;
-      if (q.op === '÷') {
-        const inputR = document.querySelector(`.q-answer-input-r[data-idx="${i}"]`);
-        const valR = inputR ? parseInt(inputR.value, 10) : NaN;
-        isRight = !isNaN(val) && !isNaN(valR) && val === q.a && valR === (q.a2||0);
-        if (!isRight) {
-          tag.className = 'check-tag wrong';
-          tag.textContent = '✗ 商' + q.a + ' 余' + (q.a2||0);
-        }
-      } else {
-        isRight = !isNaN(val) && val === q.a;
-        if (!isRight) {
-          tag.className = 'check-tag wrong';
-          tag.textContent = '✗ 答案：' + q.a;
-        }
-      }
-      if (isRight) {
-        tag.className = 'check-tag ok';
-        tag.textContent = '✓ 正确';
-        correct++;
-      } else {
-        addError({ type: errorTypeFromQuestion(q.op, q.method), q: q.q, answer: q.a, hint: q.hint, day: getCurrentDay() });
-        hintsHtml += `<div class="hint-box" style="background:var(--bg-subtle);border-left:3px solid var(--brand);padding:8px 12px;border-radius:0 8px 8px 0;margin:6px 0;font-size:13px;line-height:1.7;white-space:pre-line"><b>${q.q.replace('?','')}：</b>${q.hint}</div>`;
+
+  function submitTrainerAnswer() {
+    if (trainerIdx >= trainerQuestions.length) return;
+    const q = trainerQuestions[trainerIdx];
+    const inp = document.getElementById('trainer-q-inp');
+    const inpR = document.getElementById('trainer-q-inp-r');
+    const val = parseInt(inp.value, 10);
+    if (isNaN(val)) return;
+
+    let isRight;
+    if (q.op === '÷') {
+      const valR = parseInt(inpR.value, 10);
+      if (isNaN(valR)) return;
+      isRight = val === q.a && valR === (q.a2 || 0);
+    } else {
+      isRight = val === q.a;
+    }
+
+    const card = document.getElementById('trainer-quiz-card');
+    const fb = document.getElementById('trainer-q-feedback');
+    const vh = document.getElementById('trainer-q-verify-hint');
+    inp.disabled = true; inpR.disabled = true;
+
+    if (isRight) {
+      card.classList.add('correct');
+      fb.innerHTML = '<span style="color:var(--ok)">✅ 正确！</span>';
+      vh.textContent = '';
+      trainerCorrect++;
+    } else {
+      card.classList.add('wrong');
+      const correctAns = q.op === '÷' ? `商 ${q.a}，余 ${q.a2 || 0}` : q.a;
+      fb.innerHTML = '<span style="color:var(--danger)">✗ 正确答案：' + correctAns + '</span>';
+      vh.textContent = q.hint || '';
+      addError({ type: errorTypeFromQuestion(q.op, q.method), q: q.q, answer: q.a, hint: q.hint, day: getCurrentDay() });
+    }
+    trainerResults.push({ q: q.q, isRight, answer: q.a, a2: q.a2, hint: q.hint });
+
+    const total = trainerQuestions.length;
+    document.getElementById('streak-badge').textContent = `已答 ${trainerIdx + 1}/${total} · 对 ${trainerCorrect}`;
+
+    // Auto-advance
+    setTimeout(() => {
+      trainerIdx++;
+      showTrainerQuestion();
+    }, isRight ? 1000 : 2200);
+  }
+
+  function showTrainerResults() {
+    const total = trainerQuestions.length;
+    const pct = Math.round(trainerCorrect / total * 100);
+    let scoreClass = pct >= 90 ? 'perfect' : pct >= 70 ? 'good' : pct >= 50 ? 'ok' : 'poor';
+    let emoji = pct >= 90 ? '🎉' : pct >= 70 ? '👍' : pct >= 50 ? '💪' : '📚';
+
+    document.getElementById('trainer-quiz-card').style.display = 'none';
+    document.getElementById('streak-badge').textContent = `完成 ${trainerCorrect}/${total}`;
+    document.getElementById('trainer-summary').textContent = pct === 100
+      ? '🎉 全对！计算能力超强！' : `错了 ${total - trainerCorrect} 题，下方有验算解析，学会后再练！`;
+
+    const summary = document.getElementById('trainer-result-summary');
+    summary.style.display = 'block';
+    document.getElementById('trainer-result-title').textContent = '成绩单';
+    document.getElementById('trainer-score').innerHTML = `<span class="trainer-score ${scoreClass}">${emoji} ${trainerCorrect}/${total}</span><div style="font-size:16px;color:var(--muted);margin-top:4px">正确率 ${pct}%</div>`;
+
+    let listHtml = '';
+    trainerResults.forEach((r, i) => {
+      const icon = r.isRight ? '✅' : '❌';
+      listHtml += `<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;margin:4px 0;background:${r.isRight ? 'rgba(46,204,113,.06)' : 'rgba(231,76,60,.06)'}">
+        <span style="font-size:20px">${icon}</span>
+        <span style="font-weight:600;flex:1">${r.q}</span>
+        <span style="font-weight:800;min-width:40px;text-align:right">${r.isRight ? r.answer : r.a2 !== undefined ? '商'+r.answer+'余'+r.a2 : r.answer}</span>
+      </div>`;
+      if (!r.isRight && r.hint) {
+        listHtml += `<div style="font-size:12px;color:var(--muted);padding:4px 12px 4px 38px;line-height:1.6;white-space:pre-line">${r.hint}</div>`;
       }
     });
-    document.getElementById('streak-badge').textContent = '今日进度：' + correct + ' / 5';
-    document.getElementById('trainer-summary').textContent = correct === 5 ? '🎉 太棒了！全部正确，明天继续挑战！' : `错了 ${5 - correct} 题。下方有验算方法，学会后再练一次！`;
-    document.getElementById('trainer-verify-hints').innerHTML = hintsHtml;
-    if (correct === 5) markDayDone(getCurrentDay());
+    document.getElementById('trainer-result-list').innerHTML = listHtml;
+
+    if (pct >= 80) markDayDone(getCurrentDay());
     updateWeaknessUI();
     updateCalendarUI();
   }
+
+  function renderTrainer() {
+    const day = getCurrentDay();
+    const theme = dayThemes[day];
+    const count = parseInt(document.getElementById('trainer-count').value, 10);
+    const all = theme.questions;
+    trainerQuestions = [];
+    for (let i = 0; i < count; i++) trainerQuestions.push({ ...all[i % all.length], origIdx: i });
+    trainerIdx = 0; trainerCorrect = 0; trainerResults = [];
+
+    document.getElementById('trainer-summary').textContent = '';
+    document.getElementById('trainer-result-summary').style.display = 'none';
+    document.getElementById('trainer-quiz-card').style.display = '';
+    document.getElementById('streak-badge').textContent = `Day ${day} · ${theme.name}`;
+    document.getElementById('btn-generate-today').textContent = '🔄 重新开始';
+
+    showTrainerQuestion();
+  }
+
+  // Enter key to submit
+  document.getElementById('trainer-q-inp').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') submitTrainerAnswer();
+  });
+  document.getElementById('trainer-q-inp-r').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') submitTrainerAnswer();
+  });
+
+  document.getElementById('btn-generate-today').addEventListener('click', renderTrainer);
+  document.getElementById('btn-retry-trainer').addEventListener('click', renderTrainer);
+
   function markDayDone(day) {
     const p = ensureProgress();
     if (!p.records) p.records = {};
     p.records[day] = { done: true, at: new Date().toISOString() };
     saveProgress(p);
   }
-  document.getElementById('btn-generate-today').addEventListener('click', renderTrainer);
 
   // Weakness UI
   function updateWeaknessUI() {
     const w = getWeaknesses();
     const el = document.getElementById('weakness-tags');
-    if (!w.length) { el.innerHTML = '<span class="check-tag pending">暂无数据，先完成训练</span>'; return; }
+    if (!w.length) { el.innerHTML = '<span class="check-tag pending">暂无数据,先完成训练</span>'; return; }
     let tags = [];
     w.forEach(([type, count]) => { tags.push(`<span class="check-tag wrong">${type} ×${count}</span>`); });
     el.innerHTML = tags.join('');
@@ -1262,7 +1450,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       const d = parseInt(cell.dataset.day, 10);
       setCurrentDay(d);
       const t = dayThemes[d];
-      document.getElementById('calendar-detail').innerHTML = `<strong>Day ${d}：${t.name}</strong><br>${t.tip}<br><button class="choice" id="btn-go-train" style="margin-top:8px;max-width:160px;text-align:center">去训练</button>`;
+      document.getElementById('calendar-detail').innerHTML = `<strong>Day ${d}:${t.name}</strong><br>${t.tip}<br><button class="choice" id="btn-go-train" style="margin-top:8px;max-width:160px;text-align:center">去训练</button>`;
       document.getElementById('btn-go-train').addEventListener('click', () => {
         goToPage(8);
         renderTrainer();
@@ -1273,7 +1461,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
   // AI generate questions
   function generateAIQuestions() {
     const w = getWeaknesses();
-    const grade = document.getElementById('trainer-grade').value;
+    const grade = 'g3';
     const method = w.length ? weaknessToMethod(w[0][0]) : 'mixed';
     const questions = [];
     for (let i = 0; i < 3; i++) questions.push(generateQuestion(grade, method));
@@ -1290,7 +1478,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
         const val = input ? parseInt(input.value, 10) : NaN;
         const isRight = !isNaN(val) && val === q.a;
         tag.className = 'check-tag ' + (isRight ? 'ok' : 'wrong');
-        tag.textContent = isRight ? '✓ 正确' : '✗ 答案：' + q.a;
+        tag.textContent = isRight ? '✓ 正确' : '✗ 答案:' + q.a;
       });
     });
   }
@@ -1334,7 +1522,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       ctx.fillText('2 4 7', cx - 40, top + lineH);
       ctx.fillText('+', cx - 110, top + lineH * 2);
       ctx.fillText('5 6 8', cx - 40, top + lineH * 2);
-      ctx.fillText('————', cx, top + lineH * 2 + 8);
+      ctx.fillText('----', cx, top + lineH * 2 + 8);
       ctx.fillText('8 1 5', cx - 40, top + lineH * 3 + 8);
       // 数位标签
       ctx.font = '14px sans-serif';
@@ -1388,17 +1576,17 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
     document.getElementById('btn-check-canvas').addEventListener('click', function() {
       const result = document.getElementById('canvas-result');
       if (checkedDigits.length === 3 && checkedDigits.includes(0) && checkedDigits.includes(1) && checkedDigits.includes(2)) {
-        result.textContent = '✅ 验算通过！百位8、十位1、个位5，全部正确。';
+        result.textContent = '✅ 验算通过!百位8、十位1、个位5,全部正确。';
         result.className = 'result ok';
       } else {
-        result.textContent = '❌ 还有未标记的数位，请继续检查。';
+        result.textContent = '❌ 还有未标记的数位,请继续检查。';
         result.className = 'result warn';
       }
     });
     document.getElementById('btn-reset-canvas').addEventListener('click', function() {
       checkedDigits = [];
       drawCanvas();
-      document.getElementById('canvas-result').textContent = '点击画布上的数位，然后按“验算”检查。';
+      document.getElementById('canvas-result').textContent = '点击画布上的数位,然后按"验算"检查。';
       document.getElementById('canvas-result').className = 'result';
     });
   })();
@@ -1434,12 +1622,12 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
 
   // Knowledge base
   const tutorKB = {
-    add: { title: '加法验算', tip: '用两种方法验证：<br>① 交换加数再算一遍<br>② 和 − 一个加数 = 另一个加数<br><b>举例</b>：274+568=842，验算 842−568=274 ✓' },
-    sub: { title: '减法验算', tip: '用两种方法验证：<br>① 差 + 减数 = 被减数<br>② 被减数 − 差 = 减数<br><b>注意</b>：退位时"0上有点当作9"！' },
-    mul: { title: '乘法验算', tip: '① 交换因数再乘一遍<br>② 积 ÷ 一个因数 = 另一个因数<br><b>推荐</b>：用除法验算最可靠！' },
-    div: { title: '除法验算', tip: '商 × 除数 + 余数 = 被减数<br><b>关键</b>：务必检查 <b>余数 < 除数</b>！' },
-    carry: { title: '进位/退位技巧', tip: '<b>加法进位</b>：个位满10向十位进1，别忘了加进位！<br><b>减法退位</b>：不够减向前借1当10；0上有点当作9，0上无点还是0。<br><b>口诀</b>："0上有点当作9，0上无点还是0"' },
-    quick: { title: '快速检查法', tip: '<b>个位检查</b>：只看个位对不对，能快速发现粗心错误。<br><b>估算</b>：先估算大概多少，再精确算。<br><b>重算</b>：换一种顺序再算一遍最可靠！' }
+    add: { title: '加法验算', tip: '用两种方法验证:<br>1 交换加数再算一遍<br>2 和 - 一个加数 = 另一个加数<br><b>举例</b>:274+568=842,验算 842-568=274 ✓' },
+    sub: { title: '减法验算', tip: '用两种方法验证:<br>1 差 + 减数 = 被减数<br>2 被减数 - 差 = 减数<br><b>注意</b>:退位时"0上有点当作9"!' },
+    mul: { title: '乘法验算', tip: '1 交换因数再乘一遍<br>2 积 ÷ 一个因数 = 另一个因数<br><b>推荐</b>:用除法验算最可靠!' },
+    div: { title: '除法验算', tip: '商 × 除数 + 余数 = 被减数<br><b>关键</b>:务必检查 <b>余数 < 除数</b>!' },
+    carry: { title: '进位/退位技巧', tip: '<b>加法进位</b>:个位满10向十位进1,别忘了加进位!<br><b>减法退位</b>:不够减向前借1当10;0上有点当作9,0上无点还是0。<br><b>口诀</b>:"0上有点当作9,0上无点还是0"' },
+    quick: { title: '快速检查法', tip: '<b>个位检查</b>:只看个位对不对,能快速发现粗心错误。<br><b>估算</b>:先估算大概多少,再精确算。<br><b>重算</b>:换一种顺序再算一遍最可靠!' }
   };
 
   function tutorMatchTopic(msg) {
@@ -1493,23 +1681,23 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
       if (topic && tutorKB[topic]) {
         const k = tutorKB[topic];
         tutorAddBotMsg('<b>' + k.title + '</b><br>' + k.tip);
-        setTimeout(() => { tutorAddBotMsg('要不要针对<b>' + k.title + '</b>出几道题练练？<button class="tutor-quick-btn" data-msg="出几道' + k.title + '的题给我练" style="margin-top:6px">🎯 出' + k.title + '题</button>'); bindTutorQuickBtns(); }, 500);
+        setTimeout(() => { tutorAddBotMsg('要不要针对<b>' + k.title + '</b>出几道题练练?<button class="tutor-quick-btn" data-msg="出几道' + k.title + '的题给我练" style="margin-top:6px">🎯 出' + k.title + '题</button>'); bindTutorQuickBtns(); }, 500);
       } else {
-        tutorAddBotMsg('好的！关于验算，我可以帮你：<br>• 分析你的<b>错题</b>和薄弱点<br>• 针对弱项<b>出题练习</b><br>• 讲解<b>加法/减法/乘法/除法</b>验算方法<br>• 分享<b>快速检查技巧</b><br><br>试试点上面的彩色按钮~ 😊');
+        tutorAddBotMsg('好的!关于验算,我可以帮你:<br>• 分析你的<b>错题</b>和薄弱点<br>• 针对弱项<b>出题练习</b><br>• 讲解<b>加法/减法/乘法/除法</b>验算方法<br>• 分享<b>快速检查技巧</b><br><br>试试点上面的彩色按钮~ 😊');
       }
     }, 600 + Math.random() * 400);
   }
 
   function tutorAnalyzeWeaknesses() {
     const w = getWeaknesses();
-    if (!w.length) { tutorAddBotMsg('你还没有错题记录哦～<br>先去<b>每日训练器</b>做几道题，我就能帮你分析啦！💪'); return; }
+    if (!w.length) { tutorAddBotMsg('你还没有错题记录哦~<br>先去<b>每日训练器</b>做几道题,我就能帮你分析啦!💪'); return; }
     let html = '<b>📊 你的薄弱点分析</b><br><br>';
     w.forEach(([type, count], i) => {
-      html += (i+1) + '. <b>' + type + '</b>：错了 ' + count + ' 题<br>';
-      if (type.includes('加法')) html += '  ↳ 建议：练习交换加数验算<br>';
-      if (type.includes('减法')) html += '  ↳ 建议：注意"0上有点当作9"<br>';
-      if (type.includes('进位')) html += '  ↳ 建议：检查是否漏了进位<br>';
-      if (type.includes('余数')) html += '  ↳ 建议：检查余数是否小于除数<br>';
+      html += (i+1) + '. <b>' + type + '</b>:错了 ' + count + ' 题<br>';
+      if (type.includes('加法')) html += '  ↳ 建议:练习交换加数验算<br>';
+      if (type.includes('减法')) html += '  ↳ 建议:注意"0上有点当作9"<br>';
+      if (type.includes('进位')) html += '  ↳ 建议:检查是否漏了进位<br>';
+      if (type.includes('余数')) html += '  ↳ 建议:检查余数是否小于除数<br>';
     });
     html += '<br><button class="tutor-quick-btn" data-msg="针对我的薄弱点出3道题" style="margin-top:6px">🎯 一键出题</button>';
     tutorAddBotMsg(html);
@@ -1518,11 +1706,11 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
 
   function tutorGenerateQuestions() {
     const w = getWeaknesses();
-    const grade = document.getElementById('trainer-grade')?.value || 'g3';
+    const grade = 'g3';
     const method = w.length ? weaknessToMethod(w[0][0]) : 'mixed';
     const questions = [];
     for (let i = 0; i < 3; i++) questions.push(generateQuestion(grade, method));
-    let html = '<b>🎯 为你出了 3 道题</b>（' + (w.length ? w[0][0] : '综合') + '）<br><br>';
+    let html = '<b>🎯 为你出了 3 道题</b>(' + (w.length ? w[0][0] : '综合') + ')<br><br>';
     html += '<table class="checkmate-table" style="font-size:13px"><tbody>';
     questions.forEach((q, i) => {
       html += '<tr><td style="width:50%;font-weight:600">' + q.q + '</td><td><input class="tutor-answer-input" data-idx="' + i + '" data-a="' + q.a + '" data-type="' + errorTypeFromQuestion(q.op, q.method) + '" data-q="' + q.q.replace(/"/g, '&quot;') + '" type="number" placeholder="?" style="width:70px;padding:4px 8px;border-radius:8px;border:1px solid var(--line)" aria-label="答案"></td><td><span class="check-tag pending" id="tu-tag-' + i + '">待答</span></td></tr>';
@@ -1544,7 +1732,7 @@ body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
           else { tag.className = 'check-tag wrong'; tag.textContent = '✗ '+ans; addError({ type: inp.dataset.type, q: inp.dataset.q, answer: ans, hint: '', day: getCurrentDay() }); }
         });
         const r = document.getElementById('tutor-result');
-        if (r) r.innerHTML = correct === 3 ? '<span style="color:var(--ok);font-weight:700">🎉 全对！太厉害了！</span>' : '<span style="color:var(--brand)">对了 '+correct+'/3 题，错题已记入错题医院。💪</span>';
+        if (r) r.innerHTML = correct === 3 ? '<span style="color:var(--ok);font-weight:700">🎉 全对!太厉害了!</span>' : '<span style="color:var(--brand)">对了 '+correct+'/3 题,错题已记入错题医院。💪</span>';
         updateCalendarUI(); updateWeaknessUI();
       });
     }, 150);
