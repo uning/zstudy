@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《三角形（分类、性质、内角和）》 · 数学 小学 G5 · TeachAny v7.18</title>
+<meta name="description" content="认识三角形的定义与分类，探究内角和等于180°，通过GeoGebra互动工具直观操作">
+<meta name="course-id" content="sujiao-math-g5u4-l2-triangles">
+<meta name="course-title" content="三角形（分类、性质、内角和）">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="math-e-triangle-properties">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="geometry">
+<meta name="teachany-lesson-type" content="概念课">
+<meta name="teachany-template-version" content="2.0">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff;
+  --card: #ffffff; --card-elevated: #fffbf5;
+  --line: #d5e8d5; --line-subtle: rgba(78,205,196,0.10);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --brand: #4ecdc4; --brand-soft: rgba(78,205,196,0.10);
+  --brand-2: #ff6b6b; --brand-2-soft: rgba(255,107,107,0.10);
+  --accent: #ffe66d; --accent-soft: rgba(255,230,109,0.15);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px; --sidenav-width: 48px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body { padding-top: var(--safe-top); background: var(--bg); color: var(--text); font-family: "PingFang SC", system-ui, sans-serif; line-height: 1.75; font-size: 16px; }
+a { color: var(--brand); text-decoration: none; } a:hover { text-decoration: underline; }
+button, a, input, textarea { min-height: 44px; } img, svg, canvas { max-width: 100%; height: auto; }
+h1, h2, h3 { margin: 0; }
+.slide-container { scroll-snap-type: y mandatory; overflow-y: auto; height: var(--slide-height-fallback, var(--slide-height)); scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+.slide-page { min-height: var(--slide-height-fallback, var(--slide-height)); scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--page-padding); padding-bottom: calc(var(--page-padding) + var(--toolbar-height)); position: relative; overflow: hidden; }
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+.slide-page[data-page-type="cover"] { background: radial-gradient(ellipse at 20% 20%, rgba(78,205,196,.15), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(255,107,107,.10), transparent 50%); text-align: center; }
+.slide-page[data-page-type="cover"] h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.15; background: linear-gradient(135deg, #4ecdc4 0%, #ff6b6b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(78,205,196,.1), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(78,205,196,.06), transparent 35%), radial-gradient(circle at 70% 80%, rgba(255,107,107,.04), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(78,205,196,.1), transparent 40%), radial-gradient(circle at 80% 100%, rgba(255,107,107,.05), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(245,158,11,.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(78,205,196,.08), transparent 45%); }
+.card { background: linear-gradient(160deg, rgba(255,255,255,.98), rgba(255,251,245,.95)); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px; box-shadow: 0 2px 16px rgba(0,0,0,.04); }
+.card-accent { border-top: 3px solid var(--brand); }
+.card-glow { box-shadow: 0 2px 16px rgba(0,0,0,.04), 0 0 30px rgba(78,205,196,.06); }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; }
+.phase-tag { display: inline-flex; align-items: center; gap: 6px; color: var(--brand); background: var(--brand-soft); border: 1px solid rgba(78,205,196,.2); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 600; }
+.phase-tag[data-variant="success"] { color: #ff6b6b; background: rgba(255,107,107,.1); border-color: rgba(255,107,107,.2); }
+.phase-tag[data-variant="purple"] { color: #8b5cf6; background: rgba(139,92,246,.1); border-color: rgba(139,92,246,.2); }
+.objectives { list-style: none; padding: 0; display: grid; gap: 10px; }
+.objectives li { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: rgba(78,205,196,.04); border: 1px solid var(--line-subtle); }
+.objectives li::before { content: "\25B3"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.grid { display: grid; gap: 12px; } .grid-2 { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: repeat(3, 1fr); }
+.choice { width: 100%; text-align: left; border: 1px solid rgba(78,205,196,.15); border-radius: var(--card-radius-sm); background: rgba(78,205,196,.03); color: var(--text); padding: 14px 18px; cursor: pointer; font-size: 15px; transition: all .2s; margin-bottom: 8px; }
+.choice:hover { background: rgba(78,205,196,.08); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(78,205,196,.12); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,.1); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,.06); }
+.result { padding: 14px 18px; border-radius: var(--card-radius-sm); font-size: 15px; display: none; }
+.result.success { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); }
+.result.error { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); }
+.info-box { background: rgba(78,205,196,.06); border: 1px solid rgba(78,205,196,.15); border-radius: var(--card-radius-sm); padding: 14px 18px; margin: 10px 0; font-size: 15px; }
+.inner-card { margin: 10px 0; padding: 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); background: rgba(255,251,240,.6); text-align: center; }
+.svg-diagram { display: block; margin: 12px auto; max-width: 100%; }
+.angle-sum-canvas { background: #fff; border-radius: 12px; border: 1px solid rgba(0,0,0,.06); display: block; margin: 10px auto; }
+.slide-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--brand-2)); z-index: 200; transition: width .3s; border-radius: 0 2px 2px 0; }
+.slide-toolbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; padding-bottom: calc(10px + var(--safe-bottom)); background: rgba(255,251,240,.94); backdrop-filter: blur(12px); border-top: 1px solid var(--line-subtle); transform: translateY(100%); transition: transform .3s; }
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; border-radius: 10px; background: rgba(0,0,0,.04); color: var(--text); cursor: pointer; font-size: 18px; transition: all .2s; }
+.toolbar-btn:hover { background: rgba(0,0,0,.08); }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width .3s; }
+.slide-sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 90; display: flex; flex-direction: column; gap: 3px; opacity: 0; transition: opacity .3s; padding: 8px 4px; border-radius: 12px; background: rgba(255,251,240,.5); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,.05); max-height: 70vh; overflow-y: auto; scrollbar-width: none; }
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot { width: 24px; height: 4px; border-radius: 2px; background: rgba(0,0,0,.1); border: none; cursor: pointer; transition: all .3s; padding: 0; flex-shrink: 0; }
+.sidenav-dot:hover { background: rgba(78,205,196,.4); width: 32px; }
+.sidenav-dot.active { background: var(--brand); width: 32px; height: 5px; }
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,.35); text-align: center; padding: 4px 0 2px; }
+.play-mode-fab { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 48px; height: 48px; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(78,205,196,.3); transition: all .3s; }
+.play-mode-fab:hover { transform: scale(1.1); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+@media (max-width: 768px) { :root { --page-padding: 16px; } .grid-2, .grid-3 { grid-template-columns: 1fr !important; } .card { padding: 18px; } }
+</style>
+</head>
+<body class="teachany-elementary">
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+<div class="slide-container" id="slide-container">
+
+<!-- P1: Cover -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="封面">
+<div class="slide-inner">
+<h1>三角形</h1>
+<p class="subtitle">为什么金字塔是三角形？自行车的车架为什么用三角形？<br>一起探索三角形的分类、特性和内角和的秘密！</p>
+<svg viewBox="0 0 640 200" class="svg-diagram" style="max-width:500px">
+  <polygon points="320,20 100,180 540,180" fill="rgba(78,205,196,.12)" stroke="#4ecdc4" stroke-width="2.5"/>
+  <polygon points="320,20 100,180 540,180" fill="none" stroke="#4ecdc4" stroke-width="2.5"/>
+  <circle cx="320" cy="20" r="5" fill="#ff6b6b"/>
+  <circle cx="100" cy="180" r="5" fill="#ff6b6b"/>
+  <circle cx="540" cy="180" r="5" fill="#ff6b6b"/>
+  <text x="320" y="12" text-anchor="middle" font-size="13" fill="#ff6b6b">A</text>
+  <text x="85" y="195" text-anchor="middle" font-size="13" fill="#ff6b6b">B</text>
+  <text x="555" y="195" text-anchor="middle" font-size="13" fill="#ff6b6b">C</text>
+  <text x="320" y="100" text-anchor="middle" font-size="16" fill="#555">三角形 ABC</text>
+  <text x="320" y="122" text-anchor="middle" font-size="13" fill="#888">△ABC</text>
+  <text x="320" y="155" text-anchor="middle" font-size="12" fill="#4ecdc4">3个顶点 · 3条边 · 3个角</text>
+</svg>
+</div>
+</section>
+
+<!-- P2: Problem Anchor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="anchor" data-tsh="问题锚点">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Problem Anchor</span><h2>今天想解决什么问题？</h2></div>
+<p style="color:var(--muted);margin:0 0 14px">选一个你最好奇的问题：</p>
+<button class="choice" data-anchor-choice="三角形可以怎么分类？">三角形可以怎么分类？按角分和按边分有什么区别？</button>
+<button class="choice" data-anchor-choice="三角形有什么特殊性质？">三角形有什么特殊性质？为什么三角形最稳定？</button>
+<button class="choice" data-anchor-choice="三角形的三个内角加起来是多少度？">三角形的三个内角加起来是多少度？怎么证明？</button>
+<label style="display:block;margin-top:16px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+<input id="learner-question-input" placeholder="把你卡住的问题写在这里" style="margin-top:8px;border-radius:12px;border:1px solid var(--line);padding:12px;width:100%;font-size:15px;">
+</label>
+<p id="anchor-feedback" style="margin-top:14px;padding:12px;border-radius:12px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);font-size:14px;">选择或输入后，本课会围绕你的问题展开。</p>
+</div>
+</div>
+</section>
+
+<!-- P3: Objectives -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag" data-variant="success">Objectives</span><h2>学习目标</h2></div>
+<ul class="objectives">
+<li>理解三角形的定义，认识三角形的各部分（顶点、边、角、高）</li>
+<li>学会按角分类（锐角三角形、直角三角形、钝角三角形）</li>
+<li>学会按边分类（等边三角形、等腰三角形、不等边三角形）</li>
+<li>通过动手操作探究并证明"三角形内角和 = 180°"</li>
+<li>理解三角形的稳定性及其在生活中的应用</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- P4: What is a Triangle -->
+<section class="slide-page" data-page-type="concept" data-page-index="3" data-tts="triangle-def" data-tsh="三角形的定义">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Concept</span><h2>什么是三角形？</h2></div>
+<svg viewBox="0 0 640 240" class="svg-diagram" style="max-width:560px">
+  <polygon points="320,25 90,200 550,200" fill="rgba(78,205,196,.1)" stroke="#4ecdc4" stroke-width="2.5"/>
+  <circle cx="320" cy="25" r="6" fill="#ff6b6b"/>
+  <circle cx="90" cy="200" r="6" fill="#ff6b6b"/>
+  <circle cx="550" cy="200" r="6" fill="#ff6b6b"/>
+  <text x="320" y="17" text-anchor="middle" font-size="14" fill="#ff6b6b" font-weight="700">顶点A</text>
+  <text x="70" y="218" text-anchor="middle" font-size="14" fill="#ff6b6b" font-weight="700">顶点B</text>
+  <text x="570" y="218" text-anchor="middle" font-size="14" fill="#ff6b6b" font-weight="700">顶点C</text>
+  <text x="210" y="120" font-size="14" fill="#4ecdc4" font-weight="700">边 AB</text>
+  <text x="430" y="120" font-size="14" fill="#4ecdc4" font-weight="700">边 AC</text>
+  <text x="320" y="210" text-anchor="middle" font-size="14" fill="#4ecdc4" font-weight="700">边 BC</text>
+  <rect x="40" y="12" width="220" height="50" rx="10" fill="rgba(78,205,196,.08)"/>
+  <text x="150" y="26" text-anchor="middle" font-size="12" fill="#888">定义</text>
+  <text x="150" y="46" text-anchor="middle" font-size="14" fill="#555">由3条线段围成的封闭图形</text>
+</svg>
+<div class="info-box"><strong>关键特征：</strong>三角形有<strong>3个顶点</strong>、<strong>3条边</strong>和<strong>3个角</strong>。用符号"△"表示，如△ABC。</div>
+</div>
+</div>
+</section>
+
+<!-- P5: Classification by Angles -->
+<section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="angle-class" data-tsh="按角分类">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Classification</span><h2>按角分类</h2></div>
+<div class="grid grid-3">
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><polygon points="80,20 20,120 140,120" fill="rgba(78,205,196,.15)" stroke="#4ecdc4" stroke-width="2"/>
+<text x="80" y="100" text-anchor="middle" font-size="13" fill="#555">3个角都&lt;90°</text></svg>
+<div style="font-weight:700;color:var(--brand);margin-top:8px">锐角三角形</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><polygon points="20,20 20,120 140,120" fill="rgba(255,107,107,.15)" stroke="#ff6b6b" stroke-width="2"/>
+<rect x="28" y="112" width="10" height="10" fill="none" stroke="#333" stroke-width="1"/><text x="80" y="100" text-anchor="middle" font-size="13" fill="#555">1个角=90°</text></svg>
+<div style="font-weight:700;color:#ff6b6b;margin-top:8px">直角三角形</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><polygon points="80,20 10,120 150,120" fill="rgba(139,92,246,.15)" stroke="#8b5cf6" stroke-width="2"/>
+<text x="80" y="100" text-anchor="middle" font-size="13" fill="#555">1个角&gt;90°</text></svg>
+<div style="font-weight:700;color:#8b5cf6;margin-top:8px">钝角三角形</div>
+</div>
+</div>
+<div class="info-box"><strong>判断方法：</strong>看最大的那个角。最大角是锐角→锐角三角形；最大角是直角→直角三角形；最大角是钝角→钝角三角形。</div>
+</div>
+</div>
+</section>
+
+<!-- P6: Classification by Sides -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="side-class" data-tsh="按边分类">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Classification</span><h2>按边分类</h2></div>
+<div class="grid grid-3">
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><polygon points="80,20 30,120 130,120" fill="rgba(78,205,196,.15)" stroke="#4ecdc4" stroke-width="2"/>
+<text x="55" y="92" font-size="10" fill="#888">||</text><text x="105" y="92" font-size="10" fill="#888">||</text><text x="80" y="98" font-size="10" fill="#888">|</text></svg>
+<div style="font-weight:700;color:var(--brand);margin-top:8px">等腰三角形</div>
+<div style="font-size:12px;color:var(--muted)">两边相等</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><polygon points="80,15 35,110 125,110" fill="rgba(255,107,107,.15)" stroke="#ff6b6b" stroke-width="2"/>
+<text x="57" y="90" font-size="10" fill="#888">|||</text><text x="103" y="90" font-size="10" fill="#888">|||</text><text x="80" y="100" font-size="10" fill="#888">|||</text></svg>
+<div style="font-weight:700;color:#ff6b6b;margin-top:8px">等边三角形</div>
+<div style="font-size:12px;color:var(--muted)">三边相等</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><polygon points="80,25 20,118 140,115" fill="rgba(139,92,246,.15)" stroke="#8b5cf6" stroke-width="2"/></svg>
+<div style="font-weight:700;color:#8b5cf6;margin-top:8px">不等边三角形</div>
+<div style="font-size:12px;color:var(--muted)">三边都不相等</div>
+</div>
+</div>
+<div class="info-box"><strong>补充：</strong>等边三角形是特殊的等腰三角形（三边都相等）。等腰三角形的两腰相等，两底角也相等。</div>
+</div>
+</div>
+</section>
+
+<!-- P7: Angle Sum - Interactive Demo -->
+<section class="slide-page" data-page-type="interactive" data-page-index="6" data-tts="angle-sum-demo" data-tsh="内角和演示">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Discovery</span><h2>动手做：三角形的内角和是多少？</h2></div>
+<p style="color:var(--muted);margin:0 0 16px;font-size:14px">拖动下面的三角形顶点，观察三个角的度数之和。你会有什么发现？</p>
+<canvas id="angle-sum-canvas" class="angle-sum-canvas" width="640" height="340"></canvas>
+<div id="angle-display" style="text-align:center;margin-top:8px;font-size:16px;font-weight:700">
+∠A + ∠B + ∠C = <span style="color:var(--brand);font-size:22px">180°</span>
+</div>
+<div class="info-box" style="text-align:center;margin-top:12px"><strong>惊天大发现：</strong>无论三角形长什么样，三个内角的和永远等于 <span style="color:var(--brand);font-size:20px;font-weight:800">180°</span> !</div>
+</div>
+</div>
+</section>
+
+<!-- P8: Triangle Stability -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="stability" data-tsh="三角形的稳定性">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Property</span><h2>三角形的稳定性</h2></div>
+<svg viewBox="0 0 640 200" class="svg-diagram" style="max-width:560px">
+  <!-- Triangle (stable) -->
+  <polygon points="120,155 50,50 190,50" fill="rgba(78,205,196,.15)" stroke="#4ecdc4" stroke-width="2.5"/>
+  <circle cx="120" cy="155" r="4" fill="#333"/><circle cx="50" cy="50" r="4" fill="#333"/><circle cx="190" cy="50" r="4" fill="#333"/>
+  <text x="120" y="175" text-anchor="middle" font-size="13" fill="#555">三角形</text>
+  <text x="120" y="190" text-anchor="middle" font-size="12" fill="#4ecdc4">稳定不变</text>
+  <!-- Quadrilateral (unstable) -->
+  <polygon points="400,155 340,50 480,40 500,150" fill="rgba(255,107,107,.15)" stroke="#ff6b6b" stroke-width="2.5"/>
+  <text x="420" y="175" text-anchor="middle" font-size="13" fill="#555">四边形</text>
+  <text x="420" y="190" text-anchor="middle" font-size="12" fill="#ff6b6b">可以变形</text>
+  <!-- Brace: triangle inside quad makes it stable -->
+  <line x1="400" y1="155" x2="480" y2="50" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="450" y="95" font-size="12" fill="#f59e0b">加斜撑→稳</text>
+</svg>
+<div class="info-box"><strong>原因：</strong>三条边的长度一旦确定，三角形的形状就唯一确定了——无法变形。这就是为什么屋顶、桥梁、自行车架都要用三角形结构。</div>
+</div>
+</div>
+</section>
+
+<!-- P9: GeoGebra Explorer -->
+<section class="slide-page" data-page-type="interactive" data-page-index="8" data-tts="geogebra" data-tsh="GeoGebra探索">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Interactive</span><h2>GeoGebra 互动：画三角形、拖顶点、量角度</h2></div>
+<p style="color:var(--muted);margin:0 0 12px;font-size:14px">用 GeoGebra 画出不同形状的三角形，拖动顶点改变形状，观察角度变化。注意看角度之和！</p>
+<div style="width:100%;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06)">
+<iframe src="https://www.geogebra.org/geometry?lang=zh_CN" width="100%" height="460" frameborder="0" allowfullscreen loading="lazy"></iframe>
+</div>
+<p style="color:var(--muted);font-size:12px;margin-top:8px">提示：用多边形工具画三角形，用角度工具显示每个角的度数。试着拖动顶点！</p>
+</div>
+</div>
+</section>
+
+<!-- P10: Quiz 1 -->
+<section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="quiz1" data-tsh="练习一">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Quiz</span><h2>第一关：三角形分类</h2></div>
+<div id="q1"><p style="font-weight:600;margin-bottom:10px">1. 一个三角形中最大的角是85°，它是什么三角形？</p>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q1-fb')">A. 锐角三角形</button>
+<button class="choice" onclick="checkAnswer(this,'q1-fb')">B. 直角三角形</button>
+<button class="choice" onclick="checkAnswer(this,'q1-fb')">C. 钝角三角形</button>
+<div id="q1-fb" class="result"></div></div>
+<div id="q2" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">2. 有一个角是90°的三角形是？</p>
+<button class="choice" onclick="checkAnswer(this,'q2-fb')">A. 锐角三角形</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q2-fb')">B. 直角三角形</button>
+<button class="choice" onclick="checkAnswer(this,'q2-fb')">C. 钝角三角形</button>
+<div id="q2-fb" class="result"></div></div>
+<div id="q3" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">3. 等边三角形按角分类是什么三角形？</p>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q3-fb')">A. 锐角三角形（每个角60°）</button>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">B. 直角三角形</button>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">C. 钝角三角形</button>
+<div id="q3-fb" class="result"></div></div>
+</div>
+</div>
+</section>
+
+<!-- P11: Quiz 2 -->
+<section class="slide-page" data-page-type="quiz" data-page-index="10" data-tts="quiz2" data-tsh="练习二">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Quiz</span><h2>第二关：内角和与性质</h2></div>
+<div id="q4"><p style="font-weight:600;margin-bottom:10px">4. 任何三角形的内角和都是？</p>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">A. 90°</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q4-fb')">B. 180°</button>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">C. 360°</button>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">D. 270°</button>
+<div id="q4-fb" class="result"></div></div>
+<div id="q5" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">5. 直角三角形中，两个锐角的和是？</p>
+<button class="choice" onclick="checkAnswer(this,'q5-fb')">A. 0°</button>
+<button class="choice" onclick="checkAnswer(this,'q5-fb')">B. 45°</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q5-fb')">C. 90°（因为 180° - 90° = 90°）</button>
+<button class="choice" onclick="checkAnswer(this,'q5-fb')">D. 180°</button>
+<div id="q5-fb" class="result"></div></div>
+<div id="q6" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">6. 为什么三角形具有稳定性？</p>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">A. 因为它有三个角</button>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">B. 因为它有三条边</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q6-fb')">C. 三条边的长度确定后，形状唯一确定</button>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">D. 因为内角和是180°</button>
+<div id="q6-fb" class="result"></div></div>
+</div>
+</div>
+</section>
+
+<!-- P12: Summary -->
+<section class="slide-page" data-page-type="summary" data-page-index="11" data-tts="summary" data-tsh="知识总结">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Summary</span><h2>知识总结</h2></div>
+<div class="grid grid-2" style="margin-top:12px">
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">📐</div><div style="font-weight:700;color:var(--brand)">按角分类</div><div style="font-size:13px;color:var(--muted);margin-top:4px">锐角△·直角△·钝角△<br>看最大的那个角</div></div>
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">📏</div><div style="font-weight:700;color:#ff6b6b">按边分类</div><div style="font-size:13px;color:var(--muted);margin-top:4px">等腰△·等边△·不等边△<br>等边△是特殊的等腰△</div></div>
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">180°</div><div style="font-weight:700;color:#8b5cf6">内角和</div><div style="font-size:13px;color:var(--muted);margin-top:4px">任意三角形内角和<br>恒等于180°</div></div>
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">🔺</div><div style="font-weight:700;color:#f59e0b">稳定性</div><div style="font-size:13px;color:var(--muted);margin-top:4px">三边定形<br>广泛用于建筑结构</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P13: Knowledge Graph -->
+<section class="slide-page" data-page-type="summary" data-page-index="12" data-tts="kg" data-tsh="知识图谱">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Knowledge Graph</span><h2>知识图谱</h2></div>
+<p style="color:var(--muted);margin:0 0 16px">本节点的前置、后续和同域知识。</p>
+<div data-teachany-kg="math-e-triangle-properties">
+<canvas class="tkg-fallback-canvas" width="720" height="120" style="display:block;width:100%;max-height:140px;border-radius:12px;"></canvas>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P14: AI Tutor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="13" data-tts="ai-tutor" data-tsh="AI学伴">
+<div class="slide-inner"><div data-teachany-tutor-card></div></div>
+</section>
+
+</div>
+
+<div id="audio-config" data-teachany-audio hidden>
+<script type="application/json" data-teachany-audio-playlist>
+[{"section":"hero","src":"./tts/s01.mp3","label":"封面"},{"section":"anchor","src":"./tts/s02.mp3","label":"问题锚点"},{"section":"objectives","src":"./tts/s03.mp3","label":"学习目标"},{"section":"triangle-def","src":"./tts/s04.mp3","label":"三角形定义"},{"section":"angle-class","src":"./tts/s05.mp3","label":"按角分类"},{"section":"side-class","src":"./tts/s06.mp3","label":"按边分类"},{"section":"angle-sum-demo","src":"./tts/s07.mp3","label":"内角和演示"},{"section":"stability","src":"./tts/s08.mp3","label":"三角形稳定性"},{"section":"geogebra","src":"./tts/s09.mp3","label":"互动探索"},{"section":"quiz1","src":"./tts/s10.mp3","label":"练习一"},{"section":"quiz2","src":"./tts/s11.mp3","label":"练习二"},{"section":"summary","src":"./tts/s12.mp3","label":"知识总结"},{"section":"kg","src":"./tts/s13.mp3","label":"知识图谱"}]
+</script>
+</div>
+
+<nav class="slide-sidenav" id="slide-sidenav"></nav>
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式">
+<svg id="fab-icon-play" viewBox="0 0 24 24" width="22" height="22"><polygon points="5 3 19 12 5 21 5 3" fill="#fff"></polygon></svg>
+<svg id="fab-icon-browse" viewBox="0 0 24 24" width="22" height="22" style="display:none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#fff" stroke-width="2" fill="none"></path></svg>
+</button>
+
+<div class="slide-toolbar" id="slide-toolbar">
+<button class="toolbar-btn" id="tb-prev">◀</button>
+<div class="toolbar-progress" id="tb-progress"><div class="toolbar-progress-fill" id="tb-progress-fill"></div></div>
+<span class="toolbar-page-info" id="tb-page-info">1 / 14</span>
+<button class="toolbar-btn" id="tb-next">▶</button>
+<button class="toolbar-btn" id="tb-fullscreen">⛶</button>
+</div>
+
+<script>
+function checkAnswer(btn, fbId) {
+  var p = btn.parentElement, all = p.querySelectorAll('.choice'), fb = document.getElementById(fbId);
+  all.forEach(function(b){ b.disabled = true; b.style.pointerEvents = 'none'; });
+  if (btn.dataset.correct === 'true') {
+    btn.classList.add('correct');
+    fb.className = 'result success';
+    fb.innerHTML = '\u2705 太棒了，回答正确！';
+  } else {
+    btn.classList.add('wrong');
+    all.forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+    fb.className = 'result error';
+    fb.innerHTML = '\u274C 再想想！正确答案已经标出。';
+  }
+  fb.style.display = 'block';
+}
+
+// Angle sum interactive canvas
+(function(){
+  var c = document.getElementById('angle-sum-canvas');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  c.width = 640 * dpr; c.height = 340 * dpr;
+  c.style.width = '640px'; c.style.height = '340px';
+  ctx.scale(dpr, dpr);
+
+  var pts = [{x:320,y:60},{x:100,y:280},{x:540,y:280}];
+  var dragIdx = -1;
+
+  function draw(){
+    ctx.clearRect(0,0,640,340);
+    // Triangle
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    ctx.lineTo(pts[1].x, pts[1].y);
+    ctx.lineTo(pts[2].x, pts[2].y);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(78,205,196,0.1)';
+    ctx.fill();
+    ctx.strokeStyle = '#4ecdc4';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // Vertices
+    pts.forEach(function(p,i){
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 8, 0, Math.PI*2);
+      ctx.fillStyle = '#ff6b6b';
+      ctx.fill();
+      ctx.fillStyle = '#333';
+      ctx.font = '14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(String.fromCharCode(65+i), p.x, p.y-16);
+    });
+
+    // Calculate angles
+    function angleBetween(a,b,c){
+      var ab = Math.sqrt((b.x-a.x)*(b.x-a.x)+(b.y-a.y)*(b.y-a.y));
+      var bc = Math.sqrt((c.x-b.x)*(c.x-b.x)+(c.y-b.y)*(c.y-b.y));
+      var ac = Math.sqrt((c.x-a.x)*(c.x-a.x)+(c.y-a.y)*(c.y-a.y));
+      var cos = (ab*ab + bc*bc - ac*ac)/(2*ab*bc);
+      return Math.round(Math.acos(Math.max(-1,Math.min(1,cos)))*180/Math.PI);
+    }
+    var aA = angleBetween(pts[2], pts[0], pts[1]);
+    var aB = angleBetween(pts[0], pts[1], pts[2]);
+    var aC = angleBetween(pts[1], pts[2], pts[0]);
+    var sum = aA + aB + aC;
+
+    // Angle arc labels
+    ctx.fillStyle = '#555';
+    ctx.font = '13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(aA+'\u00B0', pts[0].x+30, pts[0].y+20);
+    ctx.fillText(aB+'\u00B0', pts[1].x+25, pts[1].y-20);
+    ctx.fillText(aC+'\u00B0', pts[2].x-25, pts[2].y-20);
+
+    document.getElementById('angle-display').innerHTML = '\u2220A + \u2220B + \u2220C = <span style="color:#4ecdc4;font-size:22px">'+sum+'\u00B0</span>';
+  }
+
+  function getPos(e){
+    var rect = c.getBoundingClientRect();
+    return {x: e.clientX - rect.left, y: e.clientY - rect.top};
+  }
+
+  c.addEventListener('mousedown', function(e){
+    var pos = getPos(e);
+    for (var i=0; i<pts.length; i++) {
+      var dx = pos.x - pts[i].x, dy = pos.y - pts[i].y;
+      if (dx*dx + dy*dy < 200) { dragIdx = i; break; }
+    }
+  });
+  c.addEventListener('mousemove', function(e){
+    if (dragIdx < 0) return;
+    var pos = getPos(e);
+    pts[dragIdx].x = Math.max(30, Math.min(610, pos.x));
+    pts[dragIdx].y = Math.max(30, Math.min(310, pos.y));
+    draw();
+  });
+  c.addEventListener('mouseup', function(){ dragIdx = -1; });
+  c.addEventListener('touchstart', function(e){
+    e.preventDefault();
+    var pos = getPos(e.touches[0]);
+    for (var i=0; i<pts.length; i++) {
+      var dx = pos.x - pts[i].x, dy = pos.y - pts[i].y;
+      if (dx*dx + dy*dy < 300) { dragIdx = i; break; }
+    }
+  });
+  c.addEventListener('touchmove', function(e){
+    e.preventDefault();
+    if (dragIdx < 0) return;
+    var pos = getPos(e.touches[0]);
+    pts[dragIdx].x = Math.max(30, Math.min(610, pos.x));
+    pts[dragIdx].y = Math.max(30, Math.min(310, pos.y));
+    draw();
+  });
+  c.addEventListener('touchend', function(){ dragIdx = -1; });
+  draw();
+})();
+
+// Slide controller (shared across all lessons)
+(function() {
+  var container = document.getElementById('slide-container');
+  var pages = Array.from(document.querySelectorAll('.slide-page'));
+  var totalPages = pages.length;
+  var currentPage = 0, isPlayMode = false;
+  var progressBar = document.getElementById('slide-progress-bar');
+  var sidenav = document.getElementById('slide-sidenav');
+  var fab = document.getElementById('play-mode-fab');
+  var tbPrev = document.getElementById('tb-prev');
+  var tbNext = document.getElementById('tb-next');
+  var tbPageInfo = document.getElementById('tb-page-info');
+  var tbProgressFill = document.getElementById('tb-progress-fill');
+  var tbProgress = document.getElementById('tb-progress');
+  var tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    var counter = document.createElement('div');
+    counter.className = 'sidenav-counter';
+    counter.id = 'sidenav-counter';
+    counter.textContent = '1/' + totalPages;
+    sidenav.appendChild(counter);
+    pages.forEach(function(page, i){
+      var dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i===0?' active':'');
+      dot.addEventListener('click', function(){ goToPage(i); });
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    var p = totalPages > 1 ? (currentPage/(totalPages-1))*100 : 100;
+    progressBar.style.width = p + '%';
+    tbProgressFill.style.width = p + '%';
+    tbPageInfo.textContent = (currentPage+1) + ' / ' + totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach(function(d,i){ d.classList.toggle('active', i===currentPage); });
+    var c = document.getElementById('sidenav-counter');
+    if (c) c.textContent = (currentPage+1) + '/' + totalPages;
+    tbPrev.style.opacity = currentPage === 0 ? '0.3' : '1';
+    tbNext.style.opacity = currentPage === totalPages-1 ? '0.3' : '1';
+  }
+
+  function goToPage(i) {
+    if (i < 0 || i >= totalPages) return;
+    currentPage = i;
+    if (isPlayMode) pages[currentPage].scrollIntoView({behavior:'smooth',block:'start'});
+    else container.scrollTo({top: pages[currentPage].offsetTop, behavior:'smooth'});
+    updateUI();
+  }
+
+  function nextPage() { if (currentPage < totalPages-1) goToPage(currentPage+1); }
+  function prevPage() { if (currentPage > 0) goToPage(currentPage-1); }
+
+  var scrollTimeout;
+  container.addEventListener('scroll', function() {
+    if (isPlayMode) return;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(function() {
+      var st = container.scrollTop;
+      var closest = 0, minDist = Infinity;
+      pages.forEach(function(pg, i){ var d = Math.abs(pg.offsetTop - st); if (d < minDist) { minDist = d; closest = i; } });
+      if (closest !== currentPage) { currentPage = closest; updateUI(); }
+    }, 100);
+  }, {passive: true});
+
+  function togglePlayMode() {
+    isPlayMode = !isPlayMode;
+    document.body.classList.toggle('play-mode', isPlayMode);
+    document.body.classList.toggle('toolbar-visible', isPlayMode);
+    document.getElementById('fab-icon-play').style.display = isPlayMode ? 'none' : 'block';
+    document.getElementById('fab-icon-browse').style.display = isPlayMode ? 'block' : 'none';
+    if (isPlayMode) goToPage(currentPage);
+  }
+
+  fab.addEventListener('click', togglePlayMode);
+  tbPrev.addEventListener('click', prevPage);
+  tbNext.addEventListener('click', nextPage);
+  tbProgress.addEventListener('click', function(e){
+    var rect = tbProgress.getBoundingClientRect();
+    goToPage(Math.round(((e.clientX - rect.left) / rect.width) * (totalPages-1)));
+  });
+  tbFullscreen.addEventListener('click', function(){
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextPage(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevPage(); }
+    if (e.key === 'f' || e.key === 'F') { if (!e.ctrlKey && !e.metaKey) togglePlayMode(); }
+  });
+
+  window.__TEACHANY_LEARNER_QUESTION__ = '';
+  window.__TEACHANY_TUTOR_CONFIG__ = {
+    courseId: 'sujiao-math-g5u4-l2-triangles',
+    courseTitle: '\u4E09\u89D2\u5F62',
+    subject: 'math', grade: '5',
+    nodeId: 'math-e-triangle-properties',
+    lessonType: '\u6982\u5FF5\u8BFE',
+    getLearnerQuestion: function(){ return window.__TEACHANY_LEARNER_QUESTION__ || ''; },
+    getContext: function(){ return (pages[currentPage] || document.body).innerText.slice(0, 3000); }
+  };
+
+  document.querySelectorAll('[data-anchor-choice]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('[data-anchor-choice]').forEach(function(b){ b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      window.__TEACHANY_LEARNER_QUESTION__ = btn.getAttribute('data-anchor-choice') || btn.textContent.trim();
+      document.getElementById('anchor-feedback').textContent = '\u4F60\u7684\u95EE\u9898\uFF1A' + window.__TEACHANY_LEARNER_QUESTION__;
+    });
+  });
+  document.getElementById('learner-question-input')?.addEventListener('input', function(e){
+    window.__TEACHANY_LEARNER_QUESTION__ = e.target.value.trim();
+    document.getElementById('anchor-feedback').textContent = window.__TEACHANY_LEARNER_QUESTION__ ? '\u4F60\u7684\u95EE\u9898\uFF1A' + window.__TEACHANY_LEARNER_QUESTION__ : '\u9009\u62E9\u6216\u8F93\u5165\u540E\uFF0C\u672C\u8BFE\u4F1A\u56F4\u7ED5\u4F60\u7684\u95EE\u9898\u5C55\u5F00\u3002';
+  });
+
+  buildSidenav(); updateUI();
+  document.body.classList.add('toolbar-visible');
+  setTimeout(function(){ if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
+})();
+</script>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+</body>
+</html>

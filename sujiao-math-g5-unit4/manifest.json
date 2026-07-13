@@ -1,0 +1,20 @@
+{
+  "id": "sujiao-math-g5u4-index",
+  "name": "苏教版五年级数学 几何综合：垂线与平行线、三角形与四边形、变换、面积周长",
+  "node_id": "math-e-area-calculation",
+  "subject": "math",
+  "grade": 5,
+  "author": "TeachAny 用户",
+  "description": "苏教版五年级数学几何综合课件：垂线与平行线（角）、三角形、平行四边形与梯形、平移旋转和轴对称、面积公式推导与综合练习",
+  "version": "1.0.0",
+  "teachany_version": "7.18.0",
+  "curriculum": "cn-national",
+  "free_mode": false,
+  "lessons": [
+    {"id": "sujiao-math-g5u4-l1-lines-angles", "name": "垂线与平行线（角的概念与度量）", "path": "lesson-1/"},
+    {"id": "sujiao-math-g5u4-l2-triangles", "name": "三角形（分类、性质、内角和）", "path": "lesson-2/"},
+    {"id": "sujiao-math-g5u4-l3-parallelogram-trapezoid", "name": "平行四边形与梯形", "path": "lesson-3/"},
+    {"id": "sujiao-math-g5u4-l4-transformations", "name": "平移、旋转和轴对称", "path": "lesson-4/"},
+    {"id": "sujiao-math-g5u4-l5-area-perimeter", "name": "面积公式推导与综合练习", "path": "lesson-5/"}
+  ]
+}

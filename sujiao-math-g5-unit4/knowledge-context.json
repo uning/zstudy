@@ -1,0 +1,16 @@
+{
+  "primary_node": "math-e-area-calculation",
+  "related_nodes": [
+    "math-e-angle-concept",
+    "math-e-triangle-properties",
+    "math-e-triangles-quadrilaterals",
+    "math-e-symmetry-translation-rotation",
+    "math-e-perimeter",
+    "math-e-plane-shapes"
+  ],
+  "subject": "math",
+  "domain": "geometry",
+  "stage": "elementary",
+  "grade": 5,
+  "curriculum": "苏教版"
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苏教版五年级数学 几何综合 · TeachAny</title>
+<style>
+:root {
+  --bg: #fffbf0; --text: #333; --muted: #888;
+  --brand: #ff6b6b; --brand2: #4ecdc4; --accent: #ffe66d;
+  --card: #fff; --radius: 16px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: "PingFang SC", system-ui, sans-serif; line-height: 1.6; padding: 24px; }
+.container { max-width: 800px; margin: 0 auto; }
+.header { text-align: center; padding: 40px 0 30px; }
+.header h1 { font-size: clamp(24px, 5vw, 36px); background: linear-gradient(135deg, var(--brand), var(--brand2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header p { color: var(--muted); margin-top: 8px; }
+.lesson-list { display: flex; flex-direction: column; gap: 12px; }
+.lesson-card {
+  display: flex; align-items: center; gap: 16px; padding: 20px 24px;
+  background: var(--card); border-radius: var(--radius);
+  border: 1px solid rgba(0,0,0,.06); box-shadow: 0 2px 12px rgba(0,0,0,.04);
+  text-decoration: none; color: var(--text); transition: all .2s;
+}
+.lesson-card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.08); border-color: var(--brand); }
+.lesson-num { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: #fff; flex-shrink: 0; }
+.lesson-card:nth-child(1) .lesson-num { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+.lesson-card:nth-child(2) .lesson-num { background: linear-gradient(135deg, #4ecdc4, #44bd32); }
+.lesson-card:nth-child(3) .lesson-num { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+.lesson-card:nth-child(4) .lesson-num { background: linear-gradient(135deg, #f0932b, #f6e58d); }
+.lesson-card:nth-child(5) .lesson-num { background: linear-gradient(135deg, #0984e3, #74b9ff); }
+.lesson-info h3 { font-size: 17px; margin-bottom: 4px; }
+.lesson-info span { font-size: 13px; color: var(--muted); }
+.back-link { display: inline-block; margin-top: 32px; color: var(--brand); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>几何综合：图形与变换</h1>
+    <p>苏教版五年级数学 · 垂线/平行线 · 三角形/平行四边形/梯形 · 变换 · 面积周长</p>
+  </div>
+  <div class="lesson-list">
+    <a class="lesson-card" href="lesson-1/">
+      <div class="lesson-num">1</div>
+      <div class="lesson-info">
+        <h3>垂线与平行线（角的概念与度量）</h3>
+        <span>角的定义与分类 · 垂线 · 平行线 · GeoGebra 互动</span>
+      </div>
+    </a>
+    <a class="lesson-card" href="lesson-2/">
+      <div class="lesson-num">2</div>
+      <div class="lesson-info">
+        <h3>三角形（分类、性质、内角和）</h3>
+        <span>按角/按边分类 · 内角和 = 180° · 动画推导</span>
+      </div>
+    </a>
+    <a class="lesson-card" href="lesson-3/">
+      <div class="lesson-num">3</div>
+      <div class="lesson-info">
+        <h3>平行四边形与梯形</h3>
+        <span>特征与判定 · 分类体系（正方形→长方形→菱形→平行四边形→梯形）</span>
+      </div>
+    </a>
+    <a class="lesson-card" href="lesson-4/">
+      <div class="lesson-num">4</div>
+      <div class="lesson-info">
+        <h3>平移、旋转和轴对称</h3>
+        <span>平移 · 旋转 · 轴对称 · Canvas 动画演示</span>
+      </div>
+    </a>
+    <a class="lesson-card" href="lesson-5/">
+      <div class="lesson-num">5</div>
+      <div class="lesson-info">
+        <h3>面积公式推导与综合练习</h3>
+        <span>面积公式动画推导 · 周长回顾 · 分层练习（基础/进阶/挑战）</span>
+      </div>
+    </a>
+  </div>
+  <a class="back-link" href="../">← 返回上级</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《面积公式推导与综合练习》 · 数学 小学 G5 · TeachAny v7.18</title>
+<meta name="description" content="通过动画演示推导平行四边形、三角形、梯形的面积公式，回顾周长计算，进行分层综合练习">
+<meta name="course-id" content="sujiao-math-g5u4-l5-area-perimeter">
+<meta name="course-title" content="面积公式推导与综合练习">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="math-e-area-calculation">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="geometry">
+<meta name="teachany-lesson-type" content="探究课">
+<meta name="teachany-template-version" content="2.0">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff;
+  --card: #ffffff; --card-elevated: #fffbf5;
+  --line: #b0d5f5; --line-subtle: rgba(9,132,227,0.10);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --brand: #0984e3; --brand-soft: rgba(9,132,227,0.10);
+  --brand-2: #22c55e; --brand-2-soft: rgba(34,197,94,0.10);
+  --accent: #f59e0b; --accent-soft: rgba(245,158,11,0.10);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px; --sidenav-width: 48px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body { padding-top: var(--safe-top); background: var(--bg); color: var(--text); font-family: "PingFang SC", system-ui, sans-serif; line-height: 1.75; font-size: 16px; }
+a { color: var(--brand); text-decoration: none; } a:hover { text-decoration: underline; }
+button, a, input, textarea { min-height: 44px; } img, svg, canvas { max-width: 100%; height: auto; }
+h1, h2, h3 { margin: 0; }
+.slide-container { scroll-snap-type: y mandatory; overflow-y: auto; height: var(--slide-height-fallback, var(--slide-height)); scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+.slide-page { min-height: var(--slide-height-fallback, var(--slide-height)); scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--page-padding); padding-bottom: calc(var(--page-padding) + var(--toolbar-height)); position: relative; overflow: hidden; }
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+.slide-page[data-page-type="cover"] { background: radial-gradient(ellipse at 20% 20%, rgba(9,132,227,.12), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(34,197,94,.10), transparent 50%); text-align: center; }
+.slide-page[data-page-type="cover"] h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.15; background: linear-gradient(135deg, #0984e3 0%, #22c55e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(9,132,227,.1), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(9,132,227,.06), transparent 35%), radial-gradient(circle at 70% 80%, rgba(34,197,94,.04), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(34,197,94,.1), transparent 40%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(245,158,11,.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(9,132,227,.08), transparent 45%); }
+.card { background: linear-gradient(160deg, rgba(255,255,255,.98), rgba(255,251,245,.95)); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px; box-shadow: 0 2px 16px rgba(0,0,0,.04); }
+.card-accent { border-top: 3px solid var(--brand); }
+.card-glow { box-shadow: 0 2px 16px rgba(0,0,0,.04), 0 0 30px rgba(9,132,227,.06); }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; }
+.phase-tag { display: inline-flex; align-items: center; gap: 6px; color: var(--brand); background: var(--brand-soft); border: 1px solid rgba(9,132,227,.2); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 600; }
+.phase-tag[data-variant="success"] { color: var(--brand-2); background: var(--brand-2-soft); border-color: rgba(34,197,94,.2); }
+.phase-tag[data-variant="purple"] { color: #8b5cf6; background: rgba(139,92,246,.1); border-color: rgba(139,92,246,.2); }
+.objectives { list-style: none; padding: 0; display: grid; gap: 10px; }
+.objectives li { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: rgba(9,132,227,.04); border: 1px solid var(--line-subtle); }
+.objectives li::before { content: "\221A"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.grid { display: grid; gap: 12px; } .grid-2 { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: repeat(3, 1fr); }
+.choice { width: 100%; text-align: left; border: 1px solid rgba(9,132,227,.15); border-radius: var(--card-radius-sm); background: rgba(9,132,227,.03); color: var(--text); padding: 14px 18px; cursor: pointer; font-size: 15px; transition: all .2s; margin-bottom: 8px; }
+.choice:hover { background: rgba(9,132,227,.08); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(9,132,227,.12); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,.1); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,.06); }
+.result { padding: 14px 18px; border-radius: var(--card-radius-sm); font-size: 15px; display: none; margin-top: 8px; }
+.result.success { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); }
+.result.error { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); }
+.info-box { background: rgba(9,132,227,.06); border: 1px solid rgba(9,132,227,.15); border-radius: var(--card-radius-sm); padding: 14px 18px; margin: 10px 0; font-size: 15px; }
+.inner-card { margin: 10px 0; padding: 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); background: rgba(255,251,240,.6); text-align: center; }
+.formula-box { display: inline-block; padding: 8px 20px; background: linear-gradient(135deg, rgba(9,132,227,.08), rgba(34,197,94,.08)); border-radius: 10px; font-weight: 800; font-size: 20px; color: var(--brand); border: 2px solid rgba(9,132,227,.15); margin: 8px; }
+.svg-diagram { display: block; margin: 12px auto; max-width: 100%; }
+.area-demo-canvas { background: #fff; border-radius: 12px; border: 1px solid rgba(0,0,0,.06); display: block; margin: 10px auto; cursor: pointer; }
+.btn-group { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+.btn-sm { padding: 8px 18px; border-radius: 8px; border: 1px solid var(--brand); background: var(--brand-soft); color: var(--brand); cursor: pointer; font-size: 14px; min-height: 36px; transition: all .2s; }
+.btn-sm:hover { background: rgba(9,132,227,.15); }
+.btn-sm.active { background: var(--brand); color: #fff; }
+.level-badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+.level-easy { background: rgba(34,197,94,.15); color: #22c55e; }
+.level-mid { background: rgba(245,158,11,.15); color: #f59e0b; }
+.level-hard { background: rgba(239,68,68,.15); color: #ef4444; }
+
+.slide-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--brand-2)); z-index: 200; transition: width .3s; border-radius: 0 2px 2px 0; }
+.slide-toolbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; padding-bottom: calc(10px + var(--safe-bottom)); background: rgba(255,251,240,.94); backdrop-filter: blur(12px); border-top: 1px solid var(--line-subtle); transform: translateY(100%); transition: transform .3s; }
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; border-radius: 10px; background: rgba(0,0,0,.04); color: var(--text); cursor: pointer; font-size: 18px; transition: all .2s; }
+.toolbar-btn:hover { background: rgba(0,0,0,.08); }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width .3s; }
+.slide-sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 90; display: flex; flex-direction: column; gap: 3px; opacity: 0; transition: opacity .3s; padding: 8px 4px; border-radius: 12px; background: rgba(255,251,240,.5); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,.05); max-height: 70vh; overflow-y: auto; scrollbar-width: none; }
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot { width: 24px; height: 4px; border-radius: 2px; background: rgba(0,0,0,.1); border: none; cursor: pointer; transition: all .3s; padding: 0; flex-shrink: 0; }
+.sidenav-dot:hover { background: rgba(9,132,227,.4); width: 32px; }
+.sidenav-dot.active { background: var(--brand); width: 32px; height: 5px; }
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,.35); text-align: center; padding: 4px 0 2px; }
+.play-mode-fab { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 48px; height: 48px; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(9,132,227,.3); transition: all .3s; }
+.play-mode-fab:hover { transform: scale(1.1); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+@media (max-width: 768px) { :root { --page-padding: 16px; } .grid-2, .grid-3 { grid-template-columns: 1fr !important; } .card { padding: 18px; } .formula-box { font-size: 16px; padding: 6px 14px; } }
+</style>
+</head>
+<body class="teachany-elementary">
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+<div class="slide-container" id="slide-container">
+
+<!-- P1: Cover -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="封面">
+<div class="slide-inner">
+<h1>面积公式推导<br>& 综合练习</h1>
+<p class="subtitle">长方形 → 平行四边形 → 三角形 → 梯形<br>所有面积公式都从一个长方形开始！</p>
+<svg viewBox="0 0 640 160" class="svg-diagram" style="max-width:560px">
+  <rect x="30" y="30" width="100" height="70" fill="rgba(9,132,227,.15)" stroke="#0984e3" stroke-width="2"/>
+  <text x="80" y="120" text-anchor="middle" font-size="11" fill="#0984e3">长方形 S=ab</text>
+  <text x="140" y="70" font-size="18" fill="#888">→</text>
+  <polygon points="180,30 280,30 260,100 160,100" fill="rgba(34,197,94,.15)" stroke="#22c55e" stroke-width="2"/>
+  <text x="220" y="120" text-anchor="middle" font-size="11" fill="#22c55e">平行四边形</text>
+  <text x="300" y="70" font-size="18" fill="#888">→</text>
+  <polygon points="360,100 440,100 400,25" fill="rgba(245,158,11,.15)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="400" y="120" text-anchor="middle" font-size="11" fill="#f59e0b">三角形</text>
+  <text x="460" y="70" font-size="18" fill="#888">→</text>
+  <polygon points="520,100 600,100 590,25 530,25" fill="rgba(139,92,246,.15)" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="560" y="120" text-anchor="middle" font-size="11" fill="#8b5cf6">梯形</text>
+</svg>
+</div>
+</section>
+
+<!-- P2: Problem Anchor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="anchor" data-tsh="问题锚点">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Problem Anchor</span><h2>今天想解决什么问题？</h2></div>
+<p style="color:var(--muted);margin:0 0 14px">选一个你最关心的问题：</p>
+<button class="choice" data-anchor-choice="平行四边形的面积公式怎么来的？">平行四边形的面积公式 S=底×高 是怎么推导出来的？</button>
+<button class="choice" data-anchor-choice="三角形的面积为什么要除以2？">三角形的面积公式 S=底×高÷2，为什么要"÷2"？</button>
+<button class="choice" data-anchor-choice="梯形的面积公式怎么推导？">梯形的面积公式 S=(上底+下底)×高÷2 怎么来的？</button>
+<label style="display:block;margin-top:16px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+<input id="learner-question-input" placeholder="把你卡住的问题写在这里" style="margin-top:8px;border-radius:12px;border:1px solid var(--line);padding:12px;width:100%;font-size:15px;">
+</label>
+<p id="anchor-feedback" style="margin-top:14px;padding:12px;border-radius:12px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);font-size:14px;">选择或输入后，本课会围绕你的问题展开。</p>
+</div>
+</div>
+</section>
+
+<!-- P3: Objectives -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag" data-variant="success">Objectives</span><h2>学习目标</h2></div>
+<ul class="objectives">
+<li>通过"割补法"理解平行四边形面积公式 S = 底 × 高的推导过程</li>
+<li>通过"两个三角形拼平行四边形"理解 S = 底 × 高 ÷ 2 的推导过程</li>
+<li>通过"两个梯形拼平行四边形"理解 S = (上底+下底) × 高 ÷ 2 的推导</li>
+<li>掌握各图形的周长公式并能在实际问题中应用</li>
+<li>完成分层练习：基础题 → 进阶题 → 挑战题</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- P4: Rectangle Area Review -->
+<section class="slide-page" data-page-type="concept" data-page-index="3" data-tts="rect-area" data-tsh="回顾：长方形面积">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Review</span><h2>从长方形开始 —— 面积公式的"基石"</h2></div>
+<svg viewBox="0 0 640 200" class="svg-diagram" style="max-width:520px">
+<rect x="60" y="30" width="300" height="140" fill="rgba(9,132,227,.08)" stroke="#0984e3" stroke-width="2"/>
+<line x1="60" y1="30" x2="360" y2="30" stroke="#f0932b" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="210" y="22" text-anchor="middle" font-size="14" fill="#f0932b">长 (a)</text>
+<line x1="360" y1="30" x2="360" y2="170" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3"/>
+<text x="375" y="105" font-size="14" fill="#22c55e">宽 (b)</text>
+<rect x="380" y="30" width="220" height="140" rx="12" fill="#fff" stroke="rgba(0,0,0,.06)"/>
+<text x="490" y="60" text-anchor="middle" font-size="16" font-weight="700" color="#555">核心公式</text>
+<line x1="400" y1="72" x2="580" y2="72" stroke="rgba(0,0,0,.06)"/>
+<text x="490" y="100" text-anchor="middle" font-size="20" font-weight="800" fill="#0984e3">S = a × b</text>
+<text x="490" y="130" text-anchor="middle" font-size="14" fill="#888">面积 = 长 × 宽</text>
+<text x="490" y="155" text-anchor="middle" font-size="14" fill="#888">C = 2(a + b) 周长</text>
+</svg>
+<div class="info-box"><strong>基石公式：</strong>长方形面积 = 长 × 宽。所有多边形面积公式的起点。理解它，后面的推导都水到渠成。</div>
+</div>
+</div>
+</section>
+
+<!-- P5: Parallelogram Area Derivation -->
+<section class="slide-page" data-page-type="interactive" data-page-index="4" data-tts="par-area" data-tsh="平行四边形面积推导">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Derivation</span><h2>平行四边形面积 —— "割补法"变长方形</h2></div>
+<p style="color:var(--muted);margin:0 0 10px;font-size:14px">点击按钮，看看怎样把平行四边形"割"一块补过去，变成我们已经会算的长方形!</p>
+<canvas id="par-area-canvas" class="area-demo-canvas" width="640" height="280"></canvas>
+<div class="btn-group">
+<button class="btn-sm" onclick="parAnimStart()">播放"割补法"动画</button>
+<button class="btn-sm" onclick="parAnimReset()">重置</button>
+<span id="par-status" style="padding:8px 14px;border-radius:8px;font-size:14px;color:var(--muted)"></span>
+</div>
+<div class="info-box"><strong>推导结论：</strong>平行四边形的面积 = <strong>底 × 高</strong>。因为割补后变成了一个长方——长=底，宽=高。<span class="formula-box">S平行四边形 = a × h</span></div>
+</div>
+</div>
+</section>
+
+<!-- P6: Triangle Area Derivation -->
+<section class="slide-page" data-page-type="interactive" data-page-index="5" data-tts="tri-area" data-tsh="三角形面积推导">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Derivation</span><h2>三角形面积 —— 两个一样的三角形拼平行四边形</h2></div>
+<canvas id="tri-area-canvas" class="area-demo-canvas" width="640" height="280"></canvas>
+<div class="btn-group">
+<button class="btn-sm" onclick="triAnimStart()">播放"拼合"动画</button>
+<button class="btn-sm" onclick="triAnimReset()">重置</button>
+<span id="tri-status" style="padding:8px 14px;border-radius:8px;font-size:14px;color:var(--muted)"></span>
+</div>
+<div class="info-box"><strong>推导：</strong>两个完全一样的三角形可以拼成一个平行四边形。所以<strong>每个三角形面积 = 平行四边形面积÷2</strong>。<span class="formula-box">S三角形 = a × h ÷ 2</span></div>
+</div>
+</div>
+</section>
+
+<!-- P7: Trapezoid Area Derivation -->
+<section class="slide-page" data-page-type="interactive" data-page-index="6" data-tts="trap-area" data-tsh="梯形面积推导">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Derivation</span><h2>梯形面积 —— 两个一样的梯形拼成平行四边形</h2></div>
+<canvas id="trap-area-canvas" class="area-demo-canvas" width="640" height="280"></canvas>
+<div class="btn-group">
+<button class="btn-sm" onclick="trapAnimStart()">播放"拼合"动画</button>
+<button class="btn-sm" onclick="trapAnimReset()">重置</button>
+<span id="trap-status" style="padding:8px 14px;border-radius:8px;font-size:14px;color:var(--muted)"></span>
+</div>
+<div class="info-box"><strong>推导：</strong>两个完全一样的梯形拼成一个平行四边形，平行四边形的底 = 上底+下底。每个梯形面积 = 平行四边形÷2。<span class="formula-box">S梯形 = (a + b) × h ÷ 2</span></div>
+</div>
+</div>
+</section>
+
+<!-- P8: Formula Summary Table -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="formula-table" data-tsh="公式总表">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Summary</span><h2>面积与周长公式总表</h2></div>
+<svg viewBox="0 0 640 340" class="svg-diagram" style="max-width:600px">
+  <!-- Table headers -->
+  <rect x="20" y="10" width="600" height="30" rx="6" fill="rgba(9,132,227,.1)"/>
+  <text x="80" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#0984e3">图形</text>
+  <text x="230" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#0984e3">面积公式</text>
+  <text x="420" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#0984e3">周长公式</text>
+  <text x="550" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#0984e3">关键</text>
+  <!-- Row 1: Rectangle -->
+  <rect x="20" y="45" width="600" height="52" rx="6" fill="rgba(9,132,227,.03)"/>
+  <text x="80" y="75" text-anchor="middle" font-size="13" fill="#555">长方形</text>
+  <text x="230" y="75" text-anchor="middle" font-size="14" font-weight="700" fill="#0984e3">S = a × b</text>
+  <text x="420" y="75" text-anchor="middle" font-size="14" fill="#555">C = 2(a+b)</text>
+  <text x="550" y="75" text-anchor="middle" font-size="12" fill="#888">长×宽</text>
+  <!-- Row 2: Square -->
+  <rect x="20" y="102" width="600" height="52" fill="rgba(9,132,227,.02)"/>
+  <text x="80" y="132" text-anchor="middle" font-size="13" fill="#555">正方形</text>
+  <text x="230" y="132" text-anchor="middle" font-size="14" font-weight="700" fill="#0984e3">S = a²</text>
+  <text x="420" y="132" text-anchor="middle" font-size="14" fill="#555">C = 4a</text>
+  <text x="550" y="132" text-anchor="middle" font-size="12" fill="#888">边长²</text>
+  <!-- Row 3: Parallelogram -->
+  <rect x="20" y="159" width="600" height="52" fill="rgba(9,132,227,.03)"/>
+  <text x="80" y="189" text-anchor="middle" font-size="13" fill="#555">平行四边形</text>
+  <text x="230" y="189" text-anchor="middle" font-size="14" font-weight="700" fill="#22c55e">S = a × h</text>
+  <text x="420" y="189" text-anchor="middle" font-size="14" fill="#555">C = 2(a+b)</text>
+  <text x="550" y="189" text-anchor="middle" font-size="12" fill="#888">底×高</text>
+  <!-- Row 4: Triangle -->
+  <rect x="20" y="216" width="600" height="52" fill="rgba(9,132,227,.02)"/>
+  <text x="80" y="246" text-anchor="middle" font-size="13" fill="#555">三角形</text>
+  <text x="230" y="246" text-anchor="middle" font-size="14" font-weight="700" fill="#f59e0b">S = a × h ÷ 2</text>
+  <text x="420" y="246" text-anchor="middle" font-size="14" fill="#555">C = a+b+c</text>
+  <text x="550" y="246" text-anchor="middle" font-size="12" fill="#888">底×高÷2</text>
+  <!-- Row 5: Trapezoid -->
+  <rect x="20" y="273" width="600" height="52" fill="rgba(9,132,227,.03)"/>
+  <text x="80" y="303" text-anchor="middle" font-size="13" fill="#555">梯形</text>
+  <text x="230" y="303" text-anchor="middle" font-size="14" font-weight="700" fill="#8b5cf6">S = (a+b) × h ÷ 2</text>
+  <text x="420" y="303" text-anchor="middle" font-size="14" fill="#555">C = a+b+c+d</text>
+  <text x="550" y="303" text-anchor="middle" font-size="12" fill="#888">(上+下)×高÷2</text>
+</svg>
+</div>
+</div>
+</section>
+
+<!-- P9: Quiz - Basic -->
+<section class="slide-page" data-page-type="quiz" data-page-index="8" data-tts="quiz1" data-tsh="练习：基础题">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Quiz</span><h2><span class="level-badge level-easy">基础</span> 第一关：直接套公式</h2></div>
+<div id="q1"><p style="font-weight:600;margin-bottom:8px">1. 长方形长8cm，宽5cm，面积=？</p>
+<button class="choice" onclick="checkAnswer(this,'q1-fb')">A. 13 cm²</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q1-fb')">B. 40 cm²</button>
+<button class="choice" onclick="checkAnswer(this,'q1-fb')">C. 26 cm²</button>
+<button class="choice" onclick="checkAnswer(this,'q1-fb')">D. 80 cm²</button>
+<div id="q1-fb" class="result"></div></div>
+<div id="q2" style="margin-top:12px"><p style="font-weight:600;margin-bottom:8px">2. 平行四边形底6dm，高4dm，面积=？</p>
+<button class="choice" onclick="checkAnswer(this,'q2-fb')">A. 10 dm²</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q2-fb')">B. 24 dm²</button>
+<button class="choice" onclick="checkAnswer(this,'q2-fb')">C. 12 dm²</button>
+<button class="choice" onclick="checkAnswer(this,'q2-fb')">D. 48 dm²</button>
+<div id="q2-fb" class="result"></div></div>
+<div id="q3" style="margin-top:12px"><p style="font-weight:600;margin-bottom:8px">3. 三角形底10m，高6m，面积=？</p>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">A. 60 m²</button>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">B. 16 m²</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q3-fb')">C. 30 m²</button>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">D. 15 m²</button>
+<div id="q3-fb" class="result"></div></div>
+</div>
+</div>
+</section>
+
+<!-- P10: Quiz - Medium -->
+<section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="quiz2" data-tsh="练习：进阶题">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Quiz</span><h2><span class="level-badge level-mid">进阶</span> 第二关：灵活运用</h2></div>
+<div id="q4"><p style="font-weight:600;margin-bottom:8px">4. 梯形上底3cm，下底7cm，高5cm，面积=？</p>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q4-fb')">A. 25 cm²</button>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">B. 50 cm²</button>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">C. 35 cm²</button>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">D. 17.5 cm²</button>
+<div id="q4-fb" class="result"></div></div>
+<div id="q5" style="margin-top:12px"><p style="font-weight:600;margin-bottom:8px">5. 平行四边形面积48cm²，高8cm，底=？</p>
+<button class="choice" onclick="checkAnswer(this,'q5-fb')">A. 4 cm</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q5-fb')">B. 6 cm</button>
+<button class="choice" onclick="checkAnswer(this,'q5-fb')">C. 8 cm</button>
+<button class="choice" onclick="checkAnswer(this,'q5-fb')">D. 12 cm</button>
+<div id="q5-fb" class="result"></div></div>
+<div id="q6" style="margin-top:12px"><p style="font-weight:600;margin-bottom:8px">6. 正方形边长7m，周长=？</p>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">A. 14 m</button>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">B. 21 m</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q6-fb')">C. 28 m</button>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">D. 49 m</button>
+<div id="q6-fb" class="result"></div></div>
+</div>
+</div>
+</section>
+
+<!-- P11: Quiz - Challenge -->
+<section class="slide-page" data-page-type="quiz" data-page-index="10" data-tts="quiz3" data-tsh="练习：挑战题">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Quiz</span><h2><span class="level-badge level-hard">挑战</span> 第三关：综合应用</h2></div>
+<div id="q7"><p style="font-weight:600;margin-bottom:8px">7. 一个三角形和一个平行四边形等底等高。平行四边形面积=36cm²，三角形面积=？</p>
+<button class="choice" onclick="checkAnswer(this,'q7-fb')">A. 36 cm²</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q7-fb')">B. 18 cm²</button>
+<button class="choice" onclick="checkAnswer(this,'q7-fb')">C. 72 cm²</button>
+<button class="choice" onclick="checkAnswer(this,'q7-fb')">D. 9 cm²</button>
+<div id="q7-fb" class="result"></div></div>
+<div id="q8" style="margin-top:12px"><p style="font-weight:600;margin-bottom:8px">8. 一个梯形与一个平行四边形等高等面积。梯形上底+下底=14cm，平行四边形的底=？</p>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q8-fb')">A. 7 cm</button>
+<button class="choice" onclick="checkAnswer(this,'q8-fb')">B. 14 cm</button>
+<button class="choice" onclick="checkAnswer(this,'q8-fb')">C. 28 cm</button>
+<button class="choice" onclick="checkAnswer(this,'q8-fb')">D. 无法确定</button>
+<div id="q8-fb" class="result"></div></div>
+<div id="q9" style="margin-top:12px"><p style="font-weight:600;margin-bottom:8px">9. 长方形长12cm，宽增加3cm后面积增加36cm²，原来宽=？</p>
+<button class="choice" onclick="checkAnswer(this,'q9-fb')">A. 3 cm</button>
+<button class="choice" onclick="checkAnswer(this,'q9-fb')">B. 6 cm</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q9-fb')">C. 9 cm</button>
+<button class="choice" onclick="checkAnswer(this,'q9-fb')">D. 12 cm</button>
+<div id="q9-fb" class="result"></div></div>
+</div>
+</div>
+</section>
+
+<!-- P12: Summary -->
+<section class="slide-page" data-page-type="summary" data-page-index="11" data-tts="summary" data-tsh="知识总结">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Summary</span><h2>知识总结：面积推导的统一思路</h2></div>
+<div style="margin-top:12px">
+<div class="inner-card" style="text-align:left">
+<div style="font-weight:700;color:var(--brand);font-size:15px">统一思想：<strong>转化法</strong>（化未知为已知）</div>
+<div style="font-size:14px;color:#555;margin-top:8px">
+1. <strong>平行四边形</strong> → 割补 → 长方形：S = 底 × 高<br>
+2. <strong>三角形</strong> → 两个拼 → 平行四边形 → ÷2：S = 底 × 高 ÷ 2<br>
+3. <strong>梯形</strong> → 两个拼 → 平行四边形（底=上底+下底）→ ÷2：S = (上底+下底) × 高 ÷ 2
+</div>
+</div>
+<div class="grid grid-2" style="margin-top:10px">
+<div class="inner-card"><div style="font-weight:700;color:var(--brand)">📐 面积</div><div style="font-size:13px;color:var(--muted)">封闭图形表面的大小<br>单位：cm², dm², m², km²</div></div>
+<div class="inner-card"><div style="font-weight:700;color:#f59e0b">📏 周长</div><div style="font-size:13px;color:var(--muted)">封闭图形一周的长度<br>单位：cm, dm, m, km</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P13: KG -->
+<section class="slide-page" data-page-type="summary" data-page-index="12" data-tts="kg" data-tsh="知识图谱">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Knowledge Graph</span><h2>知识图谱</h2></div>
+<div data-teachany-kg="math-e-area-calculation">
+<canvas class="tkg-fallback-canvas" width="720" height="120" style="display:block;width:100%;max-height:140px;border-radius:12px;"></canvas>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P14: AI Tutor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="13" data-tts="ai-tutor" data-tsh="AI学伴">
+<div class="slide-inner"><div data-teachany-tutor-card></div></div>
+</section>
+
+</div>
+
+<div id="audio-config" data-teachany-audio hidden><script type="application/json" data-teachany-audio-playlist>
+[{"section":"hero","src":"./tts/s01.mp3","label":"封面"},{"section":"anchor","src":"./tts/s02.mp3","label":"问题锚点"},{"section":"objectives","src":"./tts/s03.mp3","label":"学习目标"},{"section":"rect-area","src":"./tts/s04.mp3","label":"长方形回顾"},{"section":"par-area","src":"./tts/s05.mp3","label":"平行四边形推导"},{"section":"tri-area","src":"./tts/s06.mp3","label":"三角形推导"},{"section":"trap-area","src":"./tts/s07.mp3","label":"梯形推导"},{"section":"formula-table","src":"./tts/s08.mp3","label":"公式总表"},{"section":"quiz1","src":"./tts/s09.mp3","label":"基础练习"},{"section":"quiz2","src":"./tts/s10.mp3","label":"进阶练习"},{"section":"quiz3","src":"./tts/s11.mp3","label":"挑战练习"},{"section":"summary","src":"./tts/s12.mp3","label":"知识总结"},{"section":"kg","src":"./tts/s13.mp3","label":"知识图谱"}]
+</script></div>
+
+<nav class="slide-sidenav" id="slide-sidenav"></nav>
+<button class="play-mode-fab" id="play-mode-fab">
+<svg id="fab-icon-play" viewBox="0 0 24 24" width="22" height="22"><polygon points="5 3 19 12 5 21 5 3" fill="#fff"></polygon></svg>
+<svg id="fab-icon-browse" viewBox="0 0 24 24" width="22" height="22" style="display:none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#fff" stroke-width="2" fill="none"></path></svg>
+</button>
+
+<div class="slide-toolbar" id="slide-toolbar">
+<button class="toolbar-btn" id="tb-prev">◀</button>
+<div class="toolbar-progress" id="tb-progress"><div class="toolbar-progress-fill" id="tb-progress-fill"></div></div>
+<span class="toolbar-page-info" id="tb-page-info">1 / 14</span>
+<button class="toolbar-btn" id="tb-next">▶</button>
+<button class="toolbar-btn" id="tb-fullscreen">⛶</button>
+</div>
+
+<script>
+function checkAnswer(btn, fbId) {
+  var p = btn.parentElement, all = p.querySelectorAll('.choice'), fb = document.getElementById(fbId);
+  all.forEach(function(b){ b.disabled = true; b.style.pointerEvents = 'none'; });
+  if (btn.dataset.correct === 'true') {
+    btn.classList.add('correct'); fb.className = 'result success'; fb.innerHTML = '\u2705 太棒了，回答正确！';
+  } else {
+    btn.classList.add('wrong'); all.forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+    fb.className = 'result error'; fb.innerHTML = '\u274C 再想想！正确答案已经标出。';
+  }
+  fb.style.display = 'block';
+}
+
+// === Parallelogram Area Animation ===
+(function(){
+  var c = document.getElementById('par-area-canvas');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  c.width = 640 * dpr; c.height = 280 * dpr;
+  c.style.width = '640px'; c.style.height = '280px';
+  ctx.scale(dpr, dpr);
+  var animProgress = 0, animating = false;
+
+  function draw(progress) {
+    ctx.clearRect(0, 0, 640, 280);
+    var p = progress || 0; // 0=parallelogram, 1=rectangle
+
+    // Parallelogram: A(100,200) B(320,200) C(380,60) D(160,60)
+    // Rectangle: A(100,200) B(320,200) C(320,60) D(100,60)
+    var ax = 100, ay = 200;
+    var bx = 320, by = 200;
+    var cx = 380 - p * 60, cy1 = 60;
+    var dx = 160 - p * 60, dy1 = 60;
+
+    // Main shape
+    ctx.beginPath();
+    ctx.moveTo(ax, ay); ctx.lineTo(bx, by);
+    ctx.lineTo(cx, cy1); ctx.lineTo(dx, dy1); ctx.closePath();
+    ctx.fillStyle = 'rgba(9,132,227,0.12)'; ctx.fill();
+    ctx.strokeStyle = '#0984e3'; ctx.lineWidth = 2.5; ctx.stroke();
+
+    // Triangle cut region
+    if (p < 0.99) {
+      var tx = 320 - p * 60;
+      ctx.beginPath();
+      ctx.moveTo(tx, 200);
+      ctx.lineTo(380 - p * 60, 60);
+      ctx.lineTo(tx + (60 * (1-p)), 60);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(245,158,11,0.25)'; ctx.fill();
+      ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2; ctx.setLineDash([5,3]); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#f59e0b'; ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
+      if (p < 0.5) ctx.fillText('割', 355 - p * 60, 130);
+      else ctx.fillText('补', 310, 130);
+    }
+
+    // Label
+    ctx.fillStyle = '#0984e3'; ctx.font = 'bold 16px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(p < 0.5 ? '平行四边形' : '长方形！', 240, 240);
+    ctx.fillStyle = '#0984e3'; ctx.font = '14px sans-serif';
+    ctx.fillText('底 = ' + (380 - 100) + '', 240, 260);
+    ctx.fillText('高 = 140 (不变)', 240, 278);
+    document.getElementById('par-status').textContent = p < 0.5 ? '割补中...' : (p < 0.99 ? '补到右边...' : '变成长方形！S = 底 × 高');
+  }
+
+  window.parAnimStart = function() {
+    if (animating) return;
+    animating = true; animProgress = 0;
+    function step() {
+      animProgress += 0.03;
+      if (animProgress >= 1) { animProgress = 1; animating = false; }
+      draw(animProgress);
+      if (animProgress < 1) requestAnimationFrame(step);
+    }
+    step();
+  };
+  window.parAnimReset = function() { animating = false; animProgress = 0; draw(0); document.getElementById('par-status').textContent = ''; };
+  draw(0);
+})();
+
+// === Triangle Area Animation ===
+(function(){
+  var c = document.getElementById('tri-area-canvas');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  c.width = 640 * dpr; c.height = 280 * dpr;
+  c.style.width = '640px'; c.style.height = '280px';
+  ctx.scale(dpr, dpr);
+  var p = 0, animating = false;
+
+  function draw(progress) {
+    ctx.clearRect(0, 0, 640, 280);
+    var t = progress || 0;
+
+    // Triangle 1 (left): A(100,220) B(220,220) C(160,60)
+    ctx.beginPath();
+    ctx.moveTo(100, 220); ctx.lineTo(220, 220); ctx.lineTo(160, 60); ctx.closePath();
+    ctx.fillStyle = 'rgba(245,158,11,0.15)'; ctx.fill();
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.5; ctx.stroke();
+    ctx.fillStyle = '#555'; ctx.font = '14px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('三角形1', 160, 245);
+
+    // Triangle 2 (right): starts at right of tri1, moves to form parallelogram
+    var t2x = 220 + t * 120;
+    var t2y = 220 - t * 0;
+    ctx.beginPath();
+    var r = t < 0.3 ? 0 : (t - 0.3) / 0.7;
+    var angle = r * Math.PI;
+    ctx.save();
+    ctx.translate(220, 220);
+    ctx.rotate(angle);
+    ctx.beginPath();
+    ctx.moveTo(0, 0); ctx.lineTo(120, 0); ctx.lineTo(60, -160); ctx.closePath();
+    ctx.fillStyle = 'rgba(9,132,227,0.15)'; ctx.fill();
+    ctx.strokeStyle = '#0984e3'; ctx.lineWidth = 2.5; ctx.stroke();
+    ctx.restore();
+    ctx.fillStyle = '#555'; ctx.fillText('三角形2', 280 + t * 60, 245);
+
+    // Parallelogram formed
+    if (t > 0.9) {
+      ctx.fillStyle = '#0984e3'; ctx.font = 'bold 15px sans-serif';
+      ctx.fillText('拼成平行四边形！', 400, 245);
+      ctx.fillText('S三 = S平 ÷ 2', 400, 265);
+      ctx.fillText('= 底 × 高 ÷ 2', 400, 280);
+    }
+    document.getElementById('tri-status').textContent = t < 0.3 ? '分开的两个三角形...' : (t < 0.9 ? '旋转拼合中...' : '拼成平行四边形！');
+  }
+
+  window.triAnimStart = function() {
+    if (animating) return;
+    animating = true; p = 0;
+    function step() {
+      p += 0.025; if (p >= 1) { p = 1; animating = false; }
+      draw(p); if (p < 1) requestAnimationFrame(step);
+    }
+    step();
+  };
+  window.triAnimReset = function() { animating = false; p = 0; draw(0); document.getElementById('tri-status').textContent = ''; };
+  draw(0);
+})();
+
+// === Trapezoid Area Animation ===
+(function(){
+  var c = document.getElementById('trap-area-canvas');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  c.width = 640 * dpr; c.height = 280 * dpr;
+  c.style.width = '640px'; c.style.height = '280px';
+  ctx.scale(dpr, dpr);
+  var p = 0, animating = false;
+
+  function draw(progress) {
+    ctx.clearRect(0, 0, 640, 280);
+    var t = progress || 0;
+
+    // Trapezoid 1: A(100,220) B(260,220) C(240,60) D(120,60)
+    ctx.beginPath();
+    ctx.moveTo(100, 220); ctx.lineTo(260, 220); ctx.lineTo(240, 60); ctx.lineTo(120, 60); ctx.closePath();
+    ctx.fillStyle = 'rgba(139,92,246,0.15)'; ctx.fill();
+    ctx.strokeStyle = '#8b5cf6'; ctx.lineWidth = 2.5; ctx.stroke();
+    ctx.fillStyle = '#555'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('梯形1 (上底+下底)', 180, 245);
+    ctx.font = '11px sans-serif'; ctx.fillText('上底', 130, 75); ctx.fillText('下底', 180, 235);
+
+    // Trapezoid 2: rotate 180 and attach to form parallelogram
+    var r = Math.min(1, Math.max(0, (t - 0.15) / 0.7));
+    var angle = r * Math.PI;
+    ctx.save();
+    ctx.translate(260, 220);
+    ctx.rotate(angle);
+    ctx.beginPath();
+    ctx.moveTo(0, 0); ctx.lineTo(160, 0); ctx.lineTo(140, -160); ctx.lineTo(20, -160); ctx.closePath();
+    ctx.fillStyle = 'rgba(9,132,227,0.15)'; ctx.fill();
+    ctx.strokeStyle = '#0984e3'; ctx.lineWidth = 2.5; ctx.stroke();
+    ctx.restore();
+    if (t > 0.2) {
+      ctx.fillStyle = '#555';
+      ctx.fillText('梯形2', 340, 245);
+    }
+
+    if (t > 0.9) {
+      ctx.fillStyle = '#0984e3'; ctx.font = 'bold 15px sans-serif';
+      ctx.fillText('拼成平行四边形！', 450, 240);
+      ctx.fillText('底 = 上底 + 下底', 450, 258);
+      ctx.fillText('S梯 = (上底+下底)×高÷2', 450, 276);
+    }
+    document.getElementById('trap-status').textContent = t < 0.2 ? '两个完全一样的梯形...' : (t < 0.9 ? '旋转拼合中...' : '平行四边形底=上底+下底！');
+  }
+
+  window.trapAnimStart = function() {
+    if (animating) return;
+    animating = true; p = 0;
+    function step() {
+      p += 0.025; if (p >= 1) { p = 1; animating = false; }
+      draw(p); if (p < 1) requestAnimationFrame(step);
+    }
+    step();
+  };
+  window.trapAnimReset = function() { animating = false; p = 0; draw(0); document.getElementById('trap-status').textContent = ''; };
+  draw(0);
+})();
+
+// === Slide Controller ===
+(function(){
+var c=document.getElementById('slide-container');
+var pages=Array.from(document.querySelectorAll('.slide-page'));
+var total=pages.length,cp=0,pm=false;
+var pb=document.getElementById('slide-progress-bar');
+var sn=document.getElementById('slide-sidenav');
+var fab=document.getElementById('play-mode-fab');
+var tp=document.getElementById('tb-prev'),tn=document.getElementById('tb-next');
+var ti=document.getElementById('tb-page-info'),tf=document.getElementById('tb-progress-fill');
+var tg=document.getElementById('tb-progress'),fs=document.getElementById('tb-fullscreen');
+function bs(){
+  sn.innerHTML='';
+  var ct=document.createElement('div');ct.className='sidenav-counter';ct.id='sidenav-counter';ct.textContent='1/'+total;sn.appendChild(ct);
+  pages.forEach(function(p,i){
+    var d=document.createElement('button');d.className='sidenav-dot'+(i===0?' active':'');
+    d.addEventListener('click',function(){go(i);});sn.appendChild(d);
+  });
+}
+function up(){
+  var pct=total>1?(cp/(total-1))*100:100;
+  pb.style.width=pct+'%';tf.style.width=pct+'%';
+  ti.textContent=(cp+1)+' / '+total;
+  sn.querySelectorAll('.sidenav-dot').forEach(function(d,i){d.classList.toggle('active',i===cp);});
+  var cc=document.getElementById('sidenav-counter');if(cc)cc.textContent=(cp+1)+'/'+total;
+  tp.style.opacity=cp===0?'0.3':'1';tn.style.opacity=cp===total-1?'0.3':'1';
+}
+function go(i){if(i<0||i>=total)return;cp=i;
+  if(pm)pages[cp].scrollIntoView({behavior:'smooth',block:'start'});
+  else c.scrollTo({top:pages[cp].offsetTop,behavior:'smooth'});up();}
+function nx(){if(cp<total-1)go(cp+1);}
+function pv(){if(cp>0)go(cp-1);}
+var st;c.addEventListener('scroll',function(){if(pm)return;clearTimeout(st);st=setTimeout(function(){
+  var s=c.scrollTop,cl=0,md=Infinity;
+  pages.forEach(function(p,i){var d=Math.abs(p.offsetTop-s);if(d<md){md=d;cl=i;}});
+  if(cl!==cp){cp=cl;up();}},100);},{passive:true});
+function tp2(){pm=!pm;document.body.classList.toggle('play-mode',pm);document.body.classList.toggle('toolbar-visible',pm);
+  document.getElementById('fab-icon-play').style.display=pm?'none':'block';
+  document.getElementById('fab-icon-browse').style.display=pm?'block':'none';if(pm)go(cp);}
+fab.addEventListener('click',tp2);tp.addEventListener('click',pv);tn.addEventListener('click',nx);
+tg.addEventListener('click',function(e){var r=tg.getBoundingClientRect();go(Math.round(((e.clientX-r.left)/r.width)*(total-1)));});
+fs.addEventListener('click',function(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();});
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();nx();}
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();pv();}
+  if(e.key==='f'||e.key==='F'){if(!e.ctrlKey&&!e.metaKey)tp2();}
+});
+window.__TEACHANY_LEARNER_QUESTION__='';
+window.__TEACHANY_TUTOR_CONFIG__={courseId:'sujiao-math-g5u4-l5-area-perimeter',courseTitle:'\u9762\u79EF\u516C\u5F0F\u63A8\u5BFC\u4E0E\u7EFC\u5408\u7EC3\u4E60',subject:'math',grade:'5',nodeId:'math-e-area-calculation',lessonType:'\u63A2\u7A76\u8BFE',getLearnerQuestion:function(){return window.__TEACHANY_LEARNER_QUESTION__||'';},getContext:function(){return(pages[cp]||document.body).innerText.slice(0,3000);}};
+document.querySelectorAll('[data-anchor-choice]').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('[data-anchor-choice]').forEach(function(x){x.classList.remove('selected');});
+  b.classList.add('selected');window.__TEACHANY_LEARNER_QUESTION__=b.getAttribute('data-anchor-choice')||b.textContent.trim();
+  document.getElementById('anchor-feedback').textContent='\u4F60\u7684\u95EE\u9898\uFF1A'+window.__TEACHANY_LEARNER_QUESTION__;});});
+document.getElementById('learner-question-input')?.addEventListener('input',function(e){window.__TEACHANY_LEARNER_QUESTION__=e.target.value.trim();
+  document.getElementById('anchor-feedback').textContent=window.__TEACHANY_LEARNER_QUESTION__?'\u4F60\u7684\u95EE\u9898\uFF1A'+window.__TEACHANY_LEARNER_QUESTION__:'\u9009\u62E9\u6216\u8F93\u5165\u540E\uFF0C\u672C\u8BFE\u4F1A\u56F4\u7ED5\u4F60\u7684\u95EE\u9898\u5C55\u5F00\u3002';});
+bs();up();document.body.classList.add('toolbar-visible');
+setTimeout(function(){if(!pm)document.body.classList.remove('toolbar-visible');},3000);
+})();
+</script>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+</body>
+</html>

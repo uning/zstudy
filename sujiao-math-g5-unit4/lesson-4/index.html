@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《平移、旋转和轴对称》 · 数学 小学 G5 · TeachAny v7.18</title>
+<meta name="description" content="探索图形的三种基本变换：平移、旋转和轴对称，通过动画和互动直观理解变换的特征">
+<meta name="course-id" content="sujiao-math-g5u4-l4-transformations">
+<meta name="course-title" content="平移、旋转和轴对称">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="math-e-symmetry-translation-rotation">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="geometry">
+<meta name="teachany-lesson-type" content="概念课">
+<meta name="teachany-template-version" content="2.0">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff;
+  --card: #ffffff; --card-elevated: #fffbf5;
+  --line: #f5d5b0; --line-subtle: rgba(245,158,11,0.10);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --brand: #f0932b; --brand-soft: rgba(240,147,43,0.10);
+  --brand-2: #0984e3; --brand-2-soft: rgba(9,132,227,0.10);
+  --accent: #4ecdc4; --accent-soft: rgba(78,205,196,0.10);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px; --sidenav-width: 48px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body { padding-top: var(--safe-top); background: var(--bg); color: var(--text); font-family: "PingFang SC", system-ui, sans-serif; line-height: 1.75; font-size: 16px; }
+a { color: var(--brand); text-decoration: none; } a:hover { text-decoration: underline; }
+button, a, input, textarea { min-height: 44px; } img, svg, canvas { max-width: 100%; height: auto; }
+h1, h2, h3 { margin: 0; }
+.slide-container { scroll-snap-type: y mandatory; overflow-y: auto; height: var(--slide-height-fallback, var(--slide-height)); scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+.slide-page { min-height: var(--slide-height-fallback, var(--slide-height)); scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--page-padding); padding-bottom: calc(var(--page-padding) + var(--toolbar-height)); position: relative; overflow: hidden; }
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+.slide-page[data-page-type="cover"] { background: radial-gradient(ellipse at 20% 20%, rgba(240,147,43,.12), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(9,132,227,.10), transparent 50%); text-align: center; }
+.slide-page[data-page-type="cover"] h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.15; background: linear-gradient(135deg, #f0932b 0%, #0984e3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(240,147,43,.1), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(240,147,43,.06), transparent 35%), radial-gradient(circle at 70% 80%, rgba(9,132,227,.04), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(78,205,196,.1), transparent 40%), radial-gradient(circle at 80% 100%, rgba(240,147,43,.05), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(245,158,11,.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(240,147,43,.08), transparent 45%); }
+.card { background: linear-gradient(160deg, rgba(255,255,255,.98), rgba(255,251,245,.95)); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px; box-shadow: 0 2px 16px rgba(0,0,0,.04); }
+.card-accent { border-top: 3px solid var(--brand); }
+.card-glow { box-shadow: 0 2px 16px rgba(0,0,0,.04), 0 0 30px rgba(240,147,43,.06); }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; }
+.phase-tag { display: inline-flex; align-items: center; gap: 6px; color: var(--brand); background: var(--brand-soft); border: 1px solid rgba(240,147,43,.2); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 600; }
+.phase-tag[data-variant="success"] { color: var(--brand-2); background: var(--brand-2-soft); border-color: rgba(9,132,227,.2); }
+.phase-tag[data-variant="purple"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(78,205,196,.2); }
+.objectives { list-style: none; padding: 0; display: grid; gap: 10px; }
+.objectives li { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: rgba(240,147,43,.04); border: 1px solid var(--line-subtle); }
+.objectives li::before { content: "\2194"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.grid { display: grid; gap: 12px; } .grid-2 { grid-template-columns: repeat(2, 1fr); }
+.choice { width: 100%; text-align: left; border: 1px solid rgba(240,147,43,.15); border-radius: var(--card-radius-sm); background: rgba(240,147,43,.03); color: var(--text); padding: 14px 18px; cursor: pointer; font-size: 15px; transition: all .2s; margin-bottom: 8px; }
+.choice:hover { background: rgba(240,147,43,.08); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(240,147,43,.12); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,.1); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,.06); }
+.result { padding: 14px 18px; border-radius: var(--card-radius-sm); font-size: 15px; display: none; }
+.result.success { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); }
+.result.error { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); }
+.info-box { background: rgba(240,147,43,.06); border: 1px solid rgba(240,147,43,.15); border-radius: var(--card-radius-sm); padding: 14px 18px; margin: 10px 0; font-size: 15px; }
+.inner-card { margin: 10px 0; padding: 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); background: rgba(255,251,240,.6); text-align: center; }
+.svg-diagram { display: block; margin: 12px auto; max-width: 100%; }
+.transform-canvas { background: #fff; border-radius: 12px; border: 1px solid rgba(0,0,0,.06); display: block; margin: 10px auto; cursor: pointer; }
+
+.slide-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--brand-2)); z-index: 200; transition: width .3s; border-radius: 0 2px 2px 0; }
+.slide-toolbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; padding-bottom: calc(10px + var(--safe-bottom)); background: rgba(255,251,240,.94); backdrop-filter: blur(12px); border-top: 1px solid var(--line-subtle); transform: translateY(100%); transition: transform .3s; }
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; border-radius: 10px; background: rgba(0,0,0,.04); color: var(--text); cursor: pointer; font-size: 18px; transition: all .2s; }
+.toolbar-btn:hover { background: rgba(0,0,0,.08); }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width .3s; }
+.slide-sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 90; display: flex; flex-direction: column; gap: 3px; opacity: 0; transition: opacity .3s; padding: 8px 4px; border-radius: 12px; background: rgba(255,251,240,.5); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,.05); max-height: 70vh; overflow-y: auto; scrollbar-width: none; }
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot { width: 24px; height: 4px; border-radius: 2px; background: rgba(0,0,0,.1); border: none; cursor: pointer; transition: all .3s; padding: 0; flex-shrink: 0; }
+.sidenav-dot:hover { background: rgba(240,147,43,.4); width: 32px; }
+.sidenav-dot.active { background: var(--brand); width: 32px; height: 5px; }
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,.35); text-align: center; padding: 4px 0 2px; }
+.play-mode-fab { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 48px; height: 48px; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(240,147,43,.3); transition: all .3s; }
+.play-mode-fab:hover { transform: scale(1.1); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+@media (max-width: 768px) { :root { --page-padding: 16px; } .grid-2 { grid-template-columns: 1fr !important; } .card { padding: 18px; } }
+</style>
+</head>
+<body class="teachany-elementary">
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+<div class="slide-container" id="slide-container">
+
+<!-- P1: Cover -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="封面">
+<div class="slide-inner">
+<h1>平移、旋转和轴对称</h1>
+<p class="subtitle">升降电梯在做什么？风车在做什么？蝴蝶翅膀有什么特点？<br>一起来玩图形的三种"魔法变换"！</p>
+<svg viewBox="0 0 640 200" class="svg-diagram" style="max-width:540px">
+  <!-- Translation arrow -->
+  <polygon points="120,140 160,120 160,130 220,130 220,150 160,150 160,160" fill="#f0932b"/>
+  <text x="170" y="110" text-anchor="middle" font-size="13" fill="#f0932b">平移</text>
+  <!-- Rotation arc -->
+  <circle cx="370" cy="130" r="40" fill="none" stroke="#0984e3" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <polygon points="410,130 400,122 404,130 400,138" fill="#0984e3"/>
+  <text x="370" y="190" text-anchor="middle" font-size="13" fill="#0984e3">旋转</text>
+  <!-- Symmetry -->
+  <line x1="560" y1="30" x2="560" y2="180" stroke="#4ecdc4" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="520,160 560,60 600,160" fill="rgba(78,205,196,.15)" stroke="#4ecdc4" stroke-width="2"/>
+  <polygon points="520,160 560,60 600,160" fill="none" stroke="#4ecdc4" stroke-width="2"/>
+  <text x="560" y="20" text-anchor="middle" font-size="13" fill="#4ecdc4">轴对称</text>
+</svg>
+</div>
+</section>
+
+<!-- P2: Problem Anchor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="anchor" data-tsh="问题锚点">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Problem Anchor</span><h2>今天想解决什么问题？</h2></div>
+<p style="color:var(--muted);margin:0 0 14px">选一个你最好奇的问题：</p>
+<button class="choice" data-anchor-choice="什么是平移？平移改变了什么？">什么是平移？平移的时候图形的大小和形状会变吗？方向呢？</button>
+<button class="choice" data-anchor-choice="什么是旋转？旋转有什么特点？">什么是旋转？旋转的中心、方向和角度怎么确定？</button>
+<button class="choice" data-anchor-choice="什么是轴对称？怎么判断轴对称图形？">什么是轴对称？怎么判断一个图形是不是轴对称图形？</button>
+<label style="display:block;margin-top:16px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+<input id="learner-question-input" placeholder="把你卡住的问题写在这里" style="margin-top:8px;border-radius:12px;border:1px solid var(--line);padding:12px;width:100%;font-size:15px;">
+</label>
+<p id="anchor-feedback" style="margin-top:14px;padding:12px;border-radius:12px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);font-size:14px;">选择或输入后，本课会围绕你的问题展开。</p>
+</div>
+</div>
+</section>
+
+<!-- P3: Objectives -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag" data-variant="success">Objectives</span><h2>学习目标</h2></div>
+<ul class="objectives">
+<li>理解平移的概念：图形沿直线方向移动，大小、形状、方向都不变</li>
+<li>理解旋转的三要素：旋转中心、旋转方向、旋转角度</li>
+<li>理解轴对称的概念：对折后两边完全重合</li>
+<li>能判断和画出轴对称图形的对称轴</li>
+<li>通过动画互动直观感受三种变换的区别和联系</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- P4: Translation -->
+<section class="slide-page" data-page-type="concept" data-page-index="3" data-tts="translation" data-tsh="平移">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Concept</span><h2>平移 —— 图形的"滑动"</h2></div>
+<canvas id="trans-canvas" class="transform-canvas" width="640" height="240"></canvas>
+<div style="display:flex;gap:10px;justify-content:center;margin-top:8px;flex-wrap:wrap">
+<button onclick="moveShape(-40)" style="padding:8px 20px;border-radius:8px;border:1px solid #f0932b;background:rgba(240,147,43,.08);color:#f0932b;cursor:pointer;font-size:14px;min-height:36px">← 向左平移</button>
+<button onclick="moveShape(40)" style="padding:8px 20px;border-radius:8px;border:1px solid #f0932b;background:rgba(240,147,43,.08);color:#f0932b;cursor:pointer;font-size:14px;min-height:36px">向右平移 →</button>
+<button onclick="resetTrans()" style="padding:8px 20px;border-radius:8px;border:1px solid #888;background:rgba(0,0,0,.04);color:#555;cursor:pointer;font-size:14px;min-height:36px">重置</button>
+</div>
+<div class="info-box"><strong>关键：</strong>平移只改变图形的<strong>位置</strong>，不改变<strong>大小</strong>、<strong>形状</strong>和<strong>方向</strong>。平移后的图形和原图形全等。</div>
+</div>
+</div>
+</section>
+
+<!-- P5: Rotation -->
+<section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="rotation" data-tsh="旋转">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Concept</span><h2>旋转 —— 图形的"转动"</h2></div>
+<canvas id="rot-canvas" class="transform-canvas" width="640" height="260"></canvas>
+<div style="display:flex;gap:10px;justify-content:center;margin-top:8px;flex-wrap:wrap">
+<button onclick="rotateShape(-30)" style="padding:8px 20px;border-radius:8px;border:1px solid #0984e3;background:rgba(9,132,227,.08);color:#0984e3;cursor:pointer;font-size:14px;min-height:36px">逆时针转30°</button>
+<button onclick="rotateShape(30)" style="padding:8px 20px;border-radius:8px;border:1px solid #0984e3;background:rgba(9,132,227,.08);color:#0984e3;cursor:pointer;font-size:14px;min-height:36px">顺时针转30°</button>
+<button onclick="resetRot()" style="padding:8px 20px;border-radius:8px;border:1px solid #888;background:rgba(0,0,0,.04);color:#555;cursor:pointer;font-size:14px;min-height:36px">重置</button>
+<span id="rot-angle" style="padding:8px 16px;background:rgba(9,132,227,.06);border-radius:8px;font-size:14px;color:#0984e3">0°</span>
+</div>
+<div class="info-box"><strong>旋转三要素：</strong>①旋转中心（绕谁转）、②旋转方向（顺时针/逆时针）、③旋转角度（转多少度）。旋转不改变图形的大小和形状。</div>
+</div>
+</div>
+</section>
+
+<!-- P6: Axial Symmetry -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="symmetry" data-tsh="轴对称">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Concept</span><h2>轴对称 —— 图形的"镜像"</h2></div>
+<svg viewBox="0 0 640 240" class="svg-diagram" style="max-width:520px">
+  <line x1="320" y1="20" x2="320" y2="220" stroke="#4ecdc4" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="308" y="16" font-size="12" fill="#4ecdc4">对称轴</text>
+  <!-- Left half -->
+  <polygon points="220,200 290,80 300,120 320,100" fill="rgba(240,147,43,.15)" stroke="#f0932b" stroke-width="2"/>
+  <circle cx="260" cy="160" r="20" fill="rgba(240,147,43,.1)" stroke="#f0932b" stroke-width="1.5"/>
+  <!-- Right half (mirror) -->
+  <polygon points="420,200 350,80 340,120 320,100" fill="rgba(9,132,227,.15)" stroke="#0984e3" stroke-width="2"/>
+  <circle cx="380" cy="160" r="20" fill="rgba(9,132,227,.1)" stroke="#0984e3" stroke-width="1.5"/>
+  <!-- Arrow showing mirror -->
+  <text x="310" y="130" font-size="18" fill="#4ecdc4">↔ 对折后完全重合</text>
+</svg>
+<div class="info-box"><strong>定义：</strong>将一个图形沿着一条直线对折，两边能完全重合，这个图形就是<strong>轴对称图形</strong>，这条直线叫<strong>对称轴</strong>。对称点到对称轴的距离相等。</div>
+</div>
+</div>
+</section>
+
+<!-- P7: Symmetry Examples -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="sym-examples" data-tsh="轴对称举例">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag" data-variant="success">Examples</span><h2>轴对称图形举例</h2></div>
+<div class="grid grid-2" style="margin-top:12px">
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><line x1="80" y1="10" x2="80" y2="130" stroke="#4ecdc4" stroke-width="1" stroke-dasharray="4,3"/>
+<polygon points="40,120 80,20 120,120" fill="rgba(78,205,196,.15)" stroke="#4ecdc4" stroke-width="2"/>
+<rect x="40" y="60" width="80" height="60" fill="rgba(78,205,196,.08)" stroke="#4ecdc4" stroke-width="1"/>
+</svg><div style="font-weight:700;color:#4ecdc4;margin-top:6px">等腰三角形</div><div style="font-size:12px;color:var(--muted)">1条对称轴</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><line x1="80" y1="10" x2="80" y2="130" stroke="#f0932b" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="10" y1="70" x2="150" y2="70" stroke="#f0932b" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="30" y="30" width="100" height="80" fill="rgba(240,147,43,.12)" stroke="#f0932b" stroke-width="2"/>
+</svg><div style="font-weight:700;color:#f0932b;margin-top:6px">长方形</div><div style="font-size:12px;color:var(--muted)">2条对称轴</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><line x1="80" y1="10" x2="80" y2="130" stroke="#0984e3" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="10" y1="70" x2="150" y2="70" stroke="#0984e3" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="10" y1="10" x2="150" y2="130" stroke="#0984e3" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="150" y1="10" x2="10" y2="130" stroke="#0984e3" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="30" y="30" width="100" height="80" fill="rgba(9,132,227,.12)" stroke="#0984e3" stroke-width="2"/>
+</svg><div style="font-weight:700;color:#0984e3;margin-top:6px">正方形</div><div style="font-size:12px;color:var(--muted)">4条对称轴</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 160 140"><line x1="80" y1="10" x2="80" y2="130" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4,3"/>
+<circle cx="80" cy="70" r="40" fill="rgba(255,107,107,.12)" stroke="#ff6b6b" stroke-width="2"/>
+</svg><div style="font-weight:700;color:#ff6b6b;margin-top:6px">圆形</div><div style="font-size:12px;color:var(--muted)">无数条对称轴</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P8: Symmetry Drawing -->
+<section class="slide-page" data-page-type="interactive" data-page-index="7" data-tts="sym-draw" data-tsh="轴对称画图">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Interactive</span><h2>动手画：补全轴对称图形</h2></div>
+<p style="color:var(--muted);margin:0 0 10px;font-size:14px">左边已经画了一半，请你点击右边的格子，补出对称的另一半！对称轴在中间（橙色虚线）。</p>
+<canvas id="sym-canvas" class="transform-canvas" width="640" height="280" style="cursor:crosshair"></canvas>
+<div style="display:flex;gap:10px;justify-content:center;margin-top:8px">
+<button onclick="resetSymCanvas()" style="padding:8px 20px;border-radius:8px;border:1px solid #888;background:rgba(0,0,0,.04);color:#555;cursor:pointer;font-size:14px;min-height:36px">清空重画</button>
+<button onclick="autoComplete()" style="padding:8px 20px;border-radius:8px;border:1px solid #4ecdc4;background:rgba(78,205,196,.08);color:#4ecdc4;cursor:pointer;font-size:14px;min-height:36px">自动补全</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P9: GeoGebra -->
+<section class="slide-page" data-page-type="interactive" data-page-index="8" data-tts="geogebra" data-tsh="GeoGebra探索">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Interactive</span><h2>GeoGebra 探索三种变换</h2></div>
+<p style="color:var(--muted);margin:0 0 12px;font-size:14px">用 GeoGebra 工具来实际操作平移、旋转和轴对称：画出图形后用"变换"工具试试！</p>
+<div style="width:100%;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06)">
+<iframe src="https://www.geogebra.org/geometry?lang=zh_CN" width="100%" height="460" frameborder="0" allowfullscreen loading="lazy"></iframe>
+</div>
+<p style="color:var(--muted);font-size:12px;margin-top:8px">提示：GeoGebra 工具栏中有"平移"、"旋转"和"对称"三个变换工具！</p>
+</div>
+</div>
+</section>
+
+<!-- P10: Quiz 1 -->
+<section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="quiz1" data-tsh="练习一">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Quiz</span><h2>第一关：辨一辨变换</h2></div>
+<div id="q1"><p style="font-weight:600;margin-bottom:10px">1. 电梯上下运动是什么变换？</p>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q1-fb')">A. 平移</button>
+<button class="choice" onclick="checkAnswer(this,'q1-fb')">B. 旋转</button>
+<button class="choice" onclick="checkAnswer(this,'q1-fb')">C. 轴对称</button>
+<div id="q1-fb" class="result"></div></div>
+<div id="q2" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">2. 风车的转动是什么变换？</p>
+<button class="choice" onclick="checkAnswer(this,'q2-fb')">A. 平移</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q2-fb')">B. 旋转</button>
+<button class="choice" onclick="checkAnswer(this,'q2-fb')">C. 轴对称</button>
+<div id="q2-fb" class="result"></div></div>
+<div id="q3" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">3. 平移后图形的______改变。</p>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">A. 大小</button>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">B. 形状</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q3-fb')">C. 位置</button>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">D. 方向</button>
+<div id="q3-fb" class="result"></div></div>
+</div>
+</div>
+</section>
+
+<!-- P11: Quiz 2 -->
+<section class="slide-page" data-page-type="quiz" data-page-index="10" data-tts="quiz2" data-tsh="练习二">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Quiz</span><h2>第二关：轴对称判断</h2></div>
+<div id="q4"><p style="font-weight:600;margin-bottom:10px">4. 正方形有几条对称轴？</p>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">A. 1条</button>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">B. 2条</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q4-fb')">C. 4条</button>
+<div id="q4-fb" class="result"></div></div>
+<div id="q5" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">5. 说不全等的等腰三角形是轴对称图形吗？</p>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q5-fb')">A. 是（有一条对称轴）</button>
+<button class="choice" onclick="checkAnswer(this,'q5-fb')">B. 否</button>
+<div id="q5-fb" class="result"></div></div>
+<div id="q6" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">6. 旋转的三要素不包括？</p>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">A. 旋转中心</button>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">B. 旋转方向</button>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">C. 旋转角度</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q6-fb')">D. 旋转速度</button>
+<div id="q6-fb" class="result"></div></div>
+</div>
+</div>
+</section>
+
+<!-- P12: Summary -->
+<section class="slide-page" data-page-type="summary" data-page-index="11" data-tts="summary" data-tsh="知识总结">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Summary</span><h2>知识总结：三种变换对比</h2></div>
+<div class="grid grid-2" style="margin-top:12px">
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">→</div><div style="font-weight:700;color:#f0932b">平移</div><div style="font-size:13px;color:var(--muted);margin-top:4px">沿直线方向移动<br>大小、形状、方向不变<br>电梯、推拉门</div></div>
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">↻</div><div style="font-weight:700;color:#0984e3">旋转</div><div style="font-size:13px;color:var(--muted);margin-top:4px">绕中心点转动<br>三要素：中心+方向+角度<br>风车、时钟指针</div></div>
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">↔</div><div style="font-weight:700;color:#4ecdc4">轴对称</div><div style="font-size:13px;color:var(--muted);margin-top:4px">沿对称轴对折重合<br>对称点到轴距离相等<br>蝴蝶、窗花、人脸</div></div>
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">✨</div><div style="font-weight:700;color:#ff6b6b">共同点</div><div style="font-size:13px;color:var(--muted);margin-top:4px">都是刚体变换<br>不改变图形大小和形状<br>变换后图形全等</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P13: KG -->
+<section class="slide-page" data-page-type="summary" data-page-index="12" data-tts="kg" data-tsh="知识图谱">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Knowledge Graph</span><h2>知识图谱</h2></div>
+<div data-teachany-kg="math-e-symmetry-translation-rotation">
+<canvas class="tkg-fallback-canvas" width="720" height="120" style="display:block;width:100%;max-height:140px;border-radius:12px;"></canvas>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P14: AI Tutor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="13" data-tts="ai-tutor" data-tsh="AI学伴">
+<div class="slide-inner"><div data-teachany-tutor-card></div></div>
+</section>
+
+</div>
+
+<div id="audio-config" data-teachany-audio hidden><script type="application/json" data-teachany-audio-playlist>
+[{"section":"hero","src":"./tts/s01.mp3","label":"封面"},{"section":"anchor","src":"./tts/s02.mp3","label":"问题锚点"},{"section":"objectives","src":"./tts/s03.mp3","label":"学习目标"},{"section":"translation","src":"./tts/s04.mp3","label":"平移"},{"section":"rotation","src":"./tts/s05.mp3","label":"旋转"},{"section":"symmetry","src":"./tts/s06.mp3","label":"轴对称"},{"section":"sym-examples","src":"./tts/s07.mp3","label":"轴对称举例"},{"section":"sym-draw","src":"./tts/s08.mp3","label":"轴对称画图"},{"section":"geogebra","src":"./tts/s09.mp3","label":"互动探索"},{"section":"quiz1","src":"./tts/s10.mp3","label":"练习一"},{"section":"quiz2","src":"./tts/s11.mp3","label":"练习二"},{"section":"summary","src":"./tts/s12.mp3","label":"知识总结"},{"section":"kg","src":"./tts/s13.mp3","label":"知识图谱"}]
+</script></div>
+
+<nav class="slide-sidenav" id="slide-sidenav"></nav>
+<button class="play-mode-fab" id="play-mode-fab">
+<svg id="fab-icon-play" viewBox="0 0 24 24" width="22" height="22"><polygon points="5 3 19 12 5 21 5 3" fill="#fff"></polygon></svg>
+<svg id="fab-icon-browse" viewBox="0 0 24 24" width="22" height="22" style="display:none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#fff" stroke-width="2" fill="none"></path></svg>
+</button>
+
+<div class="slide-toolbar" id="slide-toolbar">
+<button class="toolbar-btn" id="tb-prev">◀</button>
+<div class="toolbar-progress" id="tb-progress"><div class="toolbar-progress-fill" id="tb-progress-fill"></div></div>
+<span class="toolbar-page-info" id="tb-page-info">1 / 14</span>
+<button class="toolbar-btn" id="tb-next">▶</button>
+<button class="toolbar-btn" id="tb-fullscreen">⛶</button>
+</div>
+
+<script>
+function checkAnswer(btn, fbId) {
+  var p = btn.parentElement, all = p.querySelectorAll('.choice'), fb = document.getElementById(fbId);
+  all.forEach(function(b){ b.disabled = true; b.style.pointerEvents = 'none'; });
+  if (btn.dataset.correct === 'true') {
+    btn.classList.add('correct'); fb.className = 'result success'; fb.innerHTML = '\u2705 太棒了，回答正确！';
+  } else {
+    btn.classList.add('wrong'); all.forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+    fb.className = 'result error'; fb.innerHTML = '\u274C 再想想！正确答案已经标出。';
+  }
+  fb.style.display = 'block';
+}
+
+// === Translation Canvas ===
+(function(){
+  var c = document.getElementById('trans-canvas');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  c.width = 640 * dpr; c.height = 240 * dpr;
+  c.style.width = '640px'; c.style.height = '240px';
+  ctx.scale(dpr, dpr);
+  var tx = 0, origX = 180;
+
+  function drawTrans() {
+    ctx.clearRect(0, 0, 640, 240);
+    // Original
+    ctx.strokeStyle = '#999'; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+    ctx.strokeRect(origX, 40, 100, 80);
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(240,147,43,0.2)'; ctx.fillRect(origX, 40, 100, 80);
+    ctx.strokeStyle = '#f0932b'; ctx.lineWidth = 2; ctx.strokeRect(origX, 40, 100, 80);
+    ctx.fillStyle = '#f0932b'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('原图形', origX+50, 140);
+
+    // Translated
+    var nx = origX + tx;
+    ctx.fillStyle = 'rgba(9,132,227,0.2)'; ctx.fillRect(nx+10, 40, 100, 80);
+    ctx.strokeStyle = '#0984e3'; ctx.lineWidth = 2; ctx.strokeRect(nx+10, 40, 100, 80);
+    ctx.fillStyle = '#0984e3'; ctx.fillText('平移后', nx+60, 140);
+
+    // Arrow
+    ctx.strokeStyle = '#888'; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+    var ax = origX + 100 + 10, ay = 80;
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax + Math.max(0, tx - 30), ay);
+    if (tx > 10) {
+      ctx.moveTo(ax + tx - 30, ay - 5); ctx.lineTo(ax + tx - 20, ay); ctx.lineTo(ax + tx - 30, ay + 5);
+    }
+    ctx.stroke();
+    if (tx > 0) ctx.fillStyle = '#555'; ctx.fillText(tx/10 + ' 格', ax + Math.max(0, tx-30)/2, ay-10);
+    ctx.setLineDash([]);
+  }
+  window.moveShape = function(d) {
+    var oldTx = tx;
+    tx = Math.max(-170, Math.min(320, tx + d));
+    // Animate
+    var steps = 10, step = (tx - oldTx) / steps, count = 0;
+    function anim() {
+      if (count >= steps) { drawTrans(); return; }
+      origX += step; count++;
+      drawTrans();
+      requestAnimationFrame(anim);
+    }
+    anim();
+  };
+  window.resetTrans = function() { origX = 180; tx = 0; drawTrans(); };
+  drawTrans();
+})();
+
+// === Rotation Canvas ===
+(function(){
+  var c = document.getElementById('rot-canvas');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  c.width = 640 * dpr; c.height = 260 * dpr;
+  c.style.width = '640px'; c.style.height = '260px';
+  ctx.scale(dpr, dpr);
+  var angle = 0;
+
+  function drawRot() {
+    ctx.clearRect(0, 0, 640, 260);
+    var cx = 280, cy = 130;
+    // Center
+    ctx.beginPath(); ctx.arc(cx, cy, 6, 0, Math.PI*2);
+    ctx.fillStyle = '#333'; ctx.fill();
+    ctx.fillStyle = '#555'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('旋转中心', cx, cy - 16);
+
+    // Draw original rectangle with rotation
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(angle * Math.PI / 180);
+    // Original shape (not rotated) shown dashed
+    ctx.save();
+    ctx.rotate(0);
+    ctx.strokeStyle = '#ccc'; ctx.setLineDash([4,3]);
+    ctx.strokeRect(-30, -50, 60, 100);
+    ctx.setLineDash([]);
+    ctx.restore();
+
+    // Rotated shape
+    ctx.fillStyle = 'rgba(9,132,227,0.2)';
+    ctx.fillRect(-30, -50, 60, 100);
+    ctx.strokeStyle = '#0984e3'; ctx.lineWidth = 2;
+    ctx.strokeRect(-30, -50, 60, 100);
+    ctx.fillStyle = '#0984e3'; ctx.fillText('\u2191', 0, -60);
+    ctx.restore();
+
+    // Arc indicator
+    ctx.beginPath();
+    ctx.arc(cx, cy, 50, -Math.PI/2, -Math.PI/2 + angle*Math.PI/180, angle < 0);
+    ctx.strokeStyle = '#f0932b'; ctx.lineWidth = 1.5; ctx.setLineDash([3,2]);
+    ctx.stroke(); ctx.setLineDash([]);
+
+    document.getElementById('rot-angle').textContent = angle + '\u00B0';
+  }
+
+  window.rotateShape = function(d) {
+    var old = angle, target = old + d, steps = 15, step = d / steps, count = 0;
+    function anim() {
+      if (count >= steps) { angle = target; drawRot(); return; }
+      angle = old + step * (count + 1); count++;
+      drawRot();
+      requestAnimationFrame(anim);
+    }
+    anim();
+  };
+  window.resetRot = function() { angle = 0; drawRot(); };
+  drawRot();
+})();
+
+// === Symmetry Drawing ===
+(function(){
+  var c = document.getElementById('sym-canvas');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  c.width = 640 * dpr; c.height = 280 * dpr;
+  c.style.width = '640px'; c.style.height = '280px';
+  ctx.scale(dpr, dpr);
+
+  var grid = 20, rows = 13, cols = 31, midCol = 15;
+  // Grid: 0 = empty, 1 = left painted, 2 = right painted
+  var cells = [];
+  for (var r = 0; r < rows; r++) { cells[r] = []; for (var c = 0; c < cols; c++) cells[r][c] = 0; }
+
+  // Pre-fill left side with a shape
+  var preset = [
+    [2,4],[2,5],[3,3],[3,4],[3,5],[3,6],
+    [4,3],[4,4],[4,5],[4,6],[4,7],
+    [5,4],[5,5],[5,6]
+  ];
+  preset.forEach(function(p){ cells[p[0]][p[1]] = 1; });
+
+  function drawSym() {
+    ctx.clearRect(0, 0, 640, 280);
+    // Grid
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var x = c * grid + 50, y = r * grid + 15;
+        ctx.strokeStyle = 'rgba(0,0,0,0.06)'; ctx.lineWidth = 0.5;
+        ctx.strokeRect(x, y, grid, grid);
+        if (cells[r][c] === 1) {
+          ctx.fillStyle = 'rgba(240,147,43,0.3)'; ctx.fillRect(x+1, y+1, grid-2, grid-2);
+        } else if (cells[r][c] === 2) {
+          ctx.fillStyle = 'rgba(9,132,227,0.3)'; ctx.fillRect(x+1, y+1, grid-2, grid-2);
+        }
+      }
+    }
+    // Symmetry axis
+    var ax = midCol * grid + 50;
+    ctx.strokeStyle = '#f0932b'; ctx.lineWidth = 2; ctx.setLineDash([6,4]);
+    ctx.beginPath(); ctx.moveTo(ax, 15); ctx.lineTo(ax, rows * grid + 15); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#f0932b'; ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('对称轴', ax, rows * grid + 28);
+  }
+
+  c.addEventListener('click', function(e){
+    var rect = c.getBoundingClientRect();
+    var x = e.clientX - rect.left, y = e.clientY - rect.top;
+    var col = Math.floor((x - 50) / grid), row = Math.floor((y - 15) / grid);
+    if (row < 0 || row >= rows || col < 0 || col >= cols || col === midCol) return;
+    if (col > midCol) {
+      // Right side: paint it
+      cells[row][col] = cells[row][col] === 2 ? 0 : 2;
+      // Mirror to left
+      var mc = midCol - (col - midCol);
+      cells[row][mc] = cells[row][col] === 2 ? 1 : 0;
+    }
+    drawSym();
+  });
+
+  window.resetSymCanvas = function() {
+    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) cells[r][c] = 0;
+    drawSym();
+  };
+  window.autoComplete = function() {
+    for (var r = 0; r < rows; r++) {
+      for (var c = midCol + 1; c < cols; c++) {
+        var mc = midCol - (c - midCol);
+        cells[r][c] = cells[r][mc] === 1 ? 2 : 0;
+      }
+    }
+    drawSym();
+  };
+  drawSym();
+})();
+
+// === Slide Controller ===
+(function(){
+var c=document.getElementById('slide-container');
+var pages=Array.from(document.querySelectorAll('.slide-page'));
+var total=pages.length,cp=0,pm=false;
+var pb=document.getElementById('slide-progress-bar');
+var sn=document.getElementById('slide-sidenav');
+var fab=document.getElementById('play-mode-fab');
+var tp=document.getElementById('tb-prev'),tn=document.getElementById('tb-next');
+var ti=document.getElementById('tb-page-info'),tf=document.getElementById('tb-progress-fill');
+var tg=document.getElementById('tb-progress'),fs=document.getElementById('tb-fullscreen');
+function bs(){
+  sn.innerHTML='';
+  var ct=document.createElement('div');ct.className='sidenav-counter';ct.id='sidenav-counter';ct.textContent='1/'+total;sn.appendChild(ct);
+  pages.forEach(function(p,i){
+    var d=document.createElement('button');d.className='sidenav-dot'+(i===0?' active':'');
+    d.addEventListener('click',function(){go(i);});sn.appendChild(d);
+  });
+}
+function up(){
+  var pct=total>1?(cp/(total-1))*100:100;
+  pb.style.width=pct+'%';tf.style.width=pct+'%';
+  ti.textContent=(cp+1)+' / '+total;
+  sn.querySelectorAll('.sidenav-dot').forEach(function(d,i){d.classList.toggle('active',i===cp);});
+  var cc=document.getElementById('sidenav-counter');if(cc)cc.textContent=(cp+1)+'/'+total;
+  tp.style.opacity=cp===0?'0.3':'1';tn.style.opacity=cp===total-1?'0.3':'1';
+}
+function go(i){if(i<0||i>=total)return;cp=i;
+  if(pm)pages[cp].scrollIntoView({behavior:'smooth',block:'start'});
+  else c.scrollTo({top:pages[cp].offsetTop,behavior:'smooth'});up();}
+function nx(){if(cp<total-1)go(cp+1);}
+function pv(){if(cp>0)go(cp-1);}
+var st;c.addEventListener('scroll',function(){if(pm)return;clearTimeout(st);st=setTimeout(function(){
+  var s=c.scrollTop,cl=0,md=Infinity;
+  pages.forEach(function(p,i){var d=Math.abs(p.offsetTop-s);if(d<md){md=d;cl=i;}});
+  if(cl!==cp){cp=cl;up();}},100);},{passive:true});
+function tp2(){pm=!pm;document.body.classList.toggle('play-mode',pm);document.body.classList.toggle('toolbar-visible',pm);
+  document.getElementById('fab-icon-play').style.display=pm?'none':'block';
+  document.getElementById('fab-icon-browse').style.display=pm?'block':'none';if(pm)go(cp);}
+fab.addEventListener('click',tp2);tp.addEventListener('click',pv);tn.addEventListener('click',nx);
+tg.addEventListener('click',function(e){var r=tg.getBoundingClientRect();go(Math.round(((e.clientX-r.left)/r.width)*(total-1)));});
+fs.addEventListener('click',function(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();});
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();nx();}
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();pv();}
+  if(e.key==='f'||e.key==='F'){if(!e.ctrlKey&&!e.metaKey)tp2();}
+});
+window.__TEACHANY_LEARNER_QUESTION__='';
+window.__TEACHANY_TUTOR_CONFIG__={courseId:'sujiao-math-g5u4-l4-transformations',courseTitle:'\u5E73\u79FB\u3001\u65CB\u8F6C\u548C\u8F74\u5BF9\u79F0',subject:'math',grade:'5',nodeId:'math-e-symmetry-translation-rotation',lessonType:'\u6982\u5FF5\u8BFE',getLearnerQuestion:function(){return window.__TEACHANY_LEARNER_QUESTION__||'';},getContext:function(){return(pages[cp]||document.body).innerText.slice(0,3000);}};
+document.querySelectorAll('[data-anchor-choice]').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('[data-anchor-choice]').forEach(function(x){x.classList.remove('selected');});
+  b.classList.add('selected');window.__TEACHANY_LEARNER_QUESTION__=b.getAttribute('data-anchor-choice')||b.textContent.trim();
+  document.getElementById('anchor-feedback').textContent='\u4F60\u7684\u95EE\u9898\uFF1A'+window.__TEACHANY_LEARNER_QUESTION__;});});
+document.getElementById('learner-question-input')?.addEventListener('input',function(e){window.__TEACHANY_LEARNER_QUESTION__=e.target.value.trim();
+  document.getElementById('anchor-feedback').textContent=window.__TEACHANY_LEARNER_QUESTION__?'\u4F60\u7684\u95EE\u9898\uFF1A'+window.__TEACHANY_LEARNER_QUESTION__:'\u9009\u62E9\u6216\u8F93\u5165\u540E\uFF0C\u672C\u8BFE\u4F1A\u56F4\u7ED5\u4F60\u7684\u95EE\u9898\u5C55\u5F00\u3002';});
+bs();up();document.body.classList.add('toolbar-visible');
+setTimeout(function(){if(!pm)document.body.classList.remove('toolbar-visible');},3000);
+})();
+</script>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+</body>
+</html>

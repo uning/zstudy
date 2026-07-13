@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《平行四边形与梯形》 · 数学 小学 G5 · TeachAny v7.18</title>
+<meta name="description" content="认识平行四边形和梯形的定义、特征和分类，通过互动工具直观探索四边形家族的关系">
+<meta name="course-id" content="sujiao-math-g5u4-l3-parallelogram-trapezoid">
+<meta name="course-title" content="平行四边形与梯形">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="math-e-triangles-quadrilaterals">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="geometry">
+<meta name="teachany-lesson-type" content="概念课">
+<meta name="teachany-template-version" content="2.0">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff;
+  --card: #ffffff; --card-elevated: #fffbf5;
+  --line: #e0d4f5; --line-subtle: rgba(139,92,246,0.10);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --brand: #8b5cf6; --brand-soft: rgba(139,92,246,0.10);
+  --brand-2: #f59e0b; --brand-2-soft: rgba(245,158,11,0.10);
+  --accent: #4ecdc4; --accent-soft: rgba(78,205,196,0.10);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px; --sidenav-width: 48px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body { padding-top: var(--safe-top); background: var(--bg); color: var(--text); font-family: "PingFang SC", system-ui, sans-serif; line-height: 1.75; font-size: 16px; }
+a { color: var(--brand); text-decoration: none; } a:hover { text-decoration: underline; }
+button, a, input, textarea { min-height: 44px; } img, svg, canvas { max-width: 100%; height: auto; }
+h1, h2, h3 { margin: 0; }
+.slide-container { scroll-snap-type: y mandatory; overflow-y: auto; height: var(--slide-height-fallback, var(--slide-height)); scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+.slide-page { min-height: var(--slide-height-fallback, var(--slide-height)); scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--page-padding); padding-bottom: calc(var(--page-padding) + var(--toolbar-height)); position: relative; overflow: hidden; }
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+.slide-page[data-page-type="cover"] { background: radial-gradient(ellipse at 20% 20%, rgba(139,92,246,.12), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(245,158,11,.10), transparent 50%); text-align: center; }
+.slide-page[data-page-type="cover"] h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.15; background: linear-gradient(135deg, #8b5cf6 0%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(139,92,246,.1), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(139,92,246,.06), transparent 35%), radial-gradient(circle at 70% 80%, rgba(245,158,11,.04), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(78,205,196,.1), transparent 40%), radial-gradient(circle at 80% 100%, rgba(139,92,246,.05), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(245,158,11,.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(139,92,246,.08), transparent 45%); }
+.card { background: linear-gradient(160deg, rgba(255,255,255,.98), rgba(255,251,245,.95)); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px; box-shadow: 0 2px 16px rgba(0,0,0,.04); }
+.card-accent { border-top: 3px solid var(--brand); }
+.card-glow { box-shadow: 0 2px 16px rgba(0,0,0,.04), 0 0 30px rgba(139,92,246,.06); }
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; }
+.phase-tag { display: inline-flex; align-items: center; gap: 6px; color: var(--brand); background: var(--brand-soft); border: 1px solid rgba(139,92,246,.2); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 600; }
+.phase-tag[data-variant="success"] { color: var(--brand-2); background: var(--brand-2-soft); border-color: rgba(245,158,11,.2); }
+.phase-tag[data-variant="purple"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(78,205,196,.2); }
+.objectives { list-style: none; padding: 0; display: grid; gap: 10px; }
+.objectives li { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: rgba(139,92,246,.04); border: 1px solid var(--line-subtle); }
+.objectives li::before { content: "\25C7"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.grid { display: grid; gap: 12px; } .grid-2 { grid-template-columns: repeat(2, 1fr); }
+.choice { width: 100%; text-align: left; border: 1px solid rgba(139,92,246,.15); border-radius: var(--card-radius-sm); background: rgba(139,92,246,.03); color: var(--text); padding: 14px 18px; cursor: pointer; font-size: 15px; transition: all .2s; margin-bottom: 8px; }
+.choice:hover { background: rgba(139,92,246,.08); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(139,92,246,.12); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,.1); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,.06); }
+.result { padding: 14px 18px; border-radius: var(--card-radius-sm); font-size: 15px; display: none; }
+.result.success { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); }
+.result.error { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); }
+.info-box { background: rgba(139,92,246,.06); border: 1px solid rgba(139,92,246,.15); border-radius: var(--card-radius-sm); padding: 14px 18px; margin: 10px 0; font-size: 15px; }
+.inner-card { margin: 10px 0; padding: 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); background: rgba(255,251,240,.6); text-align: center; }
+.svg-diagram { display: block; margin: 12px auto; max-width: 100%; }
+.slide-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--brand-2)); z-index: 200; transition: width .3s; border-radius: 0 2px 2px 0; }
+.slide-toolbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; padding-bottom: calc(10px + var(--safe-bottom)); background: rgba(255,251,240,.94); backdrop-filter: blur(12px); border-top: 1px solid var(--line-subtle); transform: translateY(100%); transition: transform .3s; }
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; border-radius: 10px; background: rgba(0,0,0,.04); color: var(--text); cursor: pointer; font-size: 18px; transition: all .2s; }
+.toolbar-btn:hover { background: rgba(0,0,0,.08); }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width .3s; }
+.slide-sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 90; display: flex; flex-direction: column; gap: 3px; opacity: 0; transition: opacity .3s; padding: 8px 4px; border-radius: 12px; background: rgba(255,251,240,.5); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,.05); max-height: 70vh; overflow-y: auto; scrollbar-width: none; }
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot { width: 24px; height: 4px; border-radius: 2px; background: rgba(0,0,0,.1); border: none; cursor: pointer; transition: all .3s; padding: 0; flex-shrink: 0; }
+.sidenav-dot:hover { background: rgba(139,92,246,.4); width: 32px; }
+.sidenav-dot.active { background: var(--brand); width: 32px; height: 5px; }
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,.35); text-align: center; padding: 4px 0 2px; }
+.play-mode-fab { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 48px; height: 48px; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(139,92,246,.3); transition: all .3s; }
+.play-mode-fab:hover { transform: scale(1.1); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+@media (max-width: 768px) { :root { --page-padding: 16px; } .grid-2 { grid-template-columns: 1fr !important; } .card { padding: 18px; } }
+</style>
+</head>
+<body class="teachany-elementary">
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+<div class="slide-container" id="slide-container">
+
+<!-- P1: Cover -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="封面">
+<div class="slide-inner">
+<h1>平行四边形与梯形</h1>
+<p class="subtitle">平行四边形为什么叫"平行"四边形？梯形和它有什么不同？<br>一起探索四边形家族的秘密！</p>
+<svg viewBox="0 0 640 200" class="svg-diagram" style="max-width:560px">
+  <!-- Parallelogram -->
+  <polygon points="180,180 460,180 540,50 260,50" fill="rgba(139,92,246,.15)" stroke="#8b5cf6" stroke-width="2.5"/>
+  <text x="360" y="125" text-anchor="middle" font-size="16" fill="#8b5cf6" font-weight="700">平行四边形</text>
+  <text x="220" y="165" font-size="10" fill="#888">∥</text><text x="500" y="165" font-size="10" fill="#888">∥</text>
+  <text x="225" y="65" font-size="10" fill="#888">∥</text><text x="505" y="65" font-size="10" fill="#888">∥</text>
+  <!-- Trapezoid -->
+  <polygon points="90,155 520,155 480,45 130,45" fill="rgba(245,158,11,.12)" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="305" y="60" text-anchor="middle" font-size="16" fill="#f59e0b" font-weight="700">梯形</text>
+  <text x="110" y="140" font-size="10" fill="#888">∥</text><text x="500" y="140" font-size="10" fill="#888">∥</text>
+</svg>
+</div>
+</section>
+
+<!-- P2: Problem Anchor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="anchor" data-tsh="问题锚点">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Problem Anchor</span><h2>今天想解决什么问题？</h2></div>
+<p style="color:var(--muted);margin:0 0 14px">选一个你最好奇的问题：</p>
+<button class="choice" data-anchor-choice="平行四边形有什么特征？">平行四边形有什么特征？怎么判断一个四边形是不是平行四边形？</button>
+<button class="choice" data-anchor-choice="梯形和平行四边形有什么区别？">梯形和平行四边形有什么区别？梯形有哪些种类？</button>
+<button class="choice" data-anchor-choice="正方形、长方形、菱形和普通平行四边形是什么关系？">正方形、长方形、菱形和普通平行四边形之间是什么关系？</button>
+<label style="display:block;margin-top:16px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+<input id="learner-question-input" placeholder="把你卡住的问题写在这里" style="margin-top:8px;border-radius:12px;border:1px solid var(--line);padding:12px;width:100%;font-size:15px;">
+</label>
+<p id="anchor-feedback" style="margin-top:14px;padding:12px;border-radius:12px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);font-size:14px;">选择或输入后，本课会围绕你的问题展开。</p>
+</div>
+</div>
+</section>
+
+<!-- P3: Objectives -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag" data-variant="success">Objectives</span><h2>学习目标</h2></div>
+<ul class="objectives">
+<li>认识平行四边形的特征：对边平行且相等、对角相等</li>
+<li>认识梯形的特征：只有一组对边平行</li>
+<li>掌握梯形分类（一般梯形、等腰梯形、直角梯形）</li>
+<li>理解四边形家族的关系：正方形⊂长方形⊂平行四边形⊂四边形</li>
+<li>能用特征判断平行四边形和梯形</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- P4: Parallelogram Definition -->
+<section class="slide-page" data-page型="concept" data-page-index="3" data-tts="parallelogram-def" data-tsh="平行四边形定义">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Concept</span><h2>什么是平行四边形？</h2></div>
+<svg viewBox="0 0 640 260" class="svg-diagram" style="max-width:560px">
+  <polygon points="180,200 500,200 560,60 240,60" fill="rgba(139,92,246,.12)" stroke="#8b5cf6" stroke-width="2.5"/>
+  <circle cx="180" cy="200" r="5" fill="#333"/><circle cx="500" cy="200" r="5" fill="#333"/>
+  <circle cx="560" cy="60" r="5" fill="#333"/><circle cx="240" cy="60" r="5" fill="#333"/>
+  <text x="165" y="215" font-size="14" fill="#555">A</text><text x="510" y="215" font-size="14" fill="#555">B</text>
+  <text x="572" y="55" font-size="14" fill="#555">C</text><text x="225" y="55" font-size="14" fill="#555">D</text>
+  <text x="340" y="205" font-size="13" fill="#555">AB ∥ DC</text>
+  <text x="400" y="140" font-size="13" fill="#555">AD ∥ BC</text>
+  <text x="350" y="185" font-size="11" fill="#888">∥</text><text x="420" y="110" font-size="11" fill="#888">∥</text>
+  <rect x="30" y="15" width="240" height="100" rx="12" fill="rgba(139,92,246,.06)" stroke="rgba(139,92,246,.12)"/>
+  <text x="150" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#8b5cf6">定义</text>
+  <text x="150" y="62" text-anchor="middle" font-size="13" fill="#555">两组对边分别平行</text>
+  <text x="150" y="82" text-anchor="middle" font-size="13" fill="#555">的四边形</text>
+  <text x="150" y="106" text-anchor="middle" font-size="12" fill="#888">记作：▱ABCD</text>
+</svg>
+<div class="info-box"><strong>关键特征：</strong>①两组对边分别<strong>平行</strong>；②两组对边分别<strong>相等</strong>；③两组对角分别<strong>相等</strong>；④邻角互补（和=180°）。</div>
+</div>
+</div>
+</section>
+
+<!-- P5: Quad Family -->
+<section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="quad-family" data-tsh="四边形家族">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Classification</span><h2>四边形家族关系图</h2></div>
+<svg viewBox="0 0 640 340" class="svg-diagram" style="max-width:600px">
+  <!-- Outermost: 四边形 -->
+  <rect x="40" y="30" width="560" height="280" rx="120" fill="rgba(200,200,200,.1)" stroke="#ccc" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="320" y="18" text-anchor="middle" font-size="14" fill="#999">四边形</text>
+  <!-- 梯形 -->
+  <rect x="120" y="80" width="400" height="220" rx="100" fill="rgba(245,158,11,.1)" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="320" y="70" text-anchor="middle" font-size="14" fill="#f59e0b">梯形（一组对边平行）</text>
+  <!-- 平行四边形 -->
+  <rect x="180" y="120" width="280" height="160" rx="80" fill="rgba(139,92,246,.15)" stroke="#8b5cf6" stroke-width="2.5"/>
+  <text x="320" y="112" text-anchor="middle" font-size="14" fill="#8b5cf6" font-weight="700">平行四边形（两组对边平行）</text>
+  <!-- 长方形 -->
+  <rect x="225" y="155" width="190" height="100" rx="50" fill="rgba(78,205,196,.2)" stroke="#4ecdc4" stroke-width="2.5"/>
+  <text x="320" y="148" text-anchor="middle" font-size="13" fill="#4ecdc4" font-weight="700">长方形（四个角都是直角）</text>
+  <!-- 正方形 -->
+  <rect x="265" y="185" width="110" height="55" rx="30" fill="rgba(255,107,107,.25)" stroke="#ff6b6b" stroke-width="2.5"/>
+  <text x="320" y="220" text-anchor="middle" font-size="13" fill="#ff6b6b" font-weight="700">正方形</text>
+  <text x="320" y="260" text-anchor="middle" font-size="11" fill="#888">四边等长+四个直角</text>
+</svg>
+<div class="info-box"><strong>包含关系：</strong>正方形 ⊂ 长方形 ⊂ 平行四边形 ⊂ 梯形 ⊂ 四边形。正方形是特殊的长方形，长方形是特殊的平行四边形。</div>
+</div>
+</div>
+</section>
+
+<!-- P6: Special Parallelograms -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="special" data-tsh="特殊平行四边形">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag" data-variant="success">Special</span><h2>特殊的平行四边形</h2></div>
+<div class="grid grid-2" style="margin-top:12px">
+<div class="inner-card">
+<svg viewBox="0 0 180 140"><rect x="20" y="20" width="140" height="100" fill="rgba(78,205,196,.15)" stroke="#4ecdc4" stroke-width="2"/><rect x="28" y="28" width="12" height="12" fill="none" stroke="#333" stroke-width="1"/><rect x="140" y="108" width="12" height="12" fill="none" stroke="#333" stroke-width="1"/></svg>
+<div style="font-weight:700;color:#4ecdc4">长方形（矩形）</div>
+<div style="font-size:12px;color:var(--muted);margin-top:4px">四个角都是直角<br>对角线相等</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 180 140"><rect x="40" y="10" width="100" height="100" fill="rgba(255,107,107,.15)" stroke="#ff6b6b" stroke-width="2"/></svg>
+<div style="font-weight:700;color:#ff6b6b">正方形</div>
+<div style="font-size:12px;color:var(--muted);margin-top:4px">四边相等，四角都是直角<br>既是长方形也是菱形</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 180 140"><polygon points="90,10 170,70 90,130 10,70" fill="rgba(139,92,246,.15)" stroke="#8b5cf6" stroke-width="2"/><text x="90" y="48" font-size="10" fill="#888">∥</text><text x="140" y="80" font-size="10" fill="#888">∥</text></svg>
+<div style="font-weight:700;color:#8b5cf6">菱形</div>
+<div style="font-size:12px;color:var(--muted);margin-top:4px">四边相等<br>对角线互相垂直</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 180 140"><polygon points="30,120 130,120 170,30 70,30" fill="rgba(245,158,11,.15)" stroke="#f59e0b" stroke-width="2"/></svg>
+<div style="font-weight:700;color:#f59e0b">一般平行四边形</div>
+<div style="font-size:12px;color:var(--muted);margin-top:4px">两组对边平行且相等<br>对角相等</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P7: Trapezoid -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="trapezoid" data-tsh="梯形">
+<div class="slide-inner">
+<div class="card card-accent">
+<div class="section-header"><span class="phase-tag">Concept</span><h2>什么是梯形？</h2></div>
+<div class="grid grid-3" style="margin-top:12px">
+<div class="inner-card">
+<svg viewBox="0 0 180 130"><polygon points="20,100 160,100 140,30 40,30" fill="rgba(245,158,11,.15)" stroke="#f59e0b" stroke-width="2"/><text x="60" y="90" font-size="10" fill="#888">∥</text><text x="120" y="90" font-size="10" fill="#888">∥</text></svg>
+<div style="font-weight:700;color:#f59e0b">一般梯形</div>
+<div style="font-size:12px;color:var(--muted)">只有一组对边平行</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 180 130"><polygon points="30,100 150,100 150,110 150,30 30,30" fill="rgba(78,205,196,.15)" stroke="#4ecdc4" stroke-width="2"/><rect x="30" y="100" width="120" height="0"/><text x="60" y="90" font-size="10" fill="#888">∥</text><text x="120" y="90" font-size="10" fill="#888">∥</text></svg>
+<text x="90" y="70" text-anchor="middle" font-size="12" fill="#4ecdc4">直角梯形</text>
+<div style="font-size:12px;color:var(--muted)">一腰垂直于底</div>
+</div>
+<div class="inner-card">
+<svg viewBox="0 0 180 130"><polygon points="40,100 140,100 120,30 60,30" fill="rgba(139,92,246,.15)" stroke="#8b5cf6" stroke-width="2"/><text x="70" y="90" font-size="10" fill="#888">∥</text><text x="110" y="90" font-size="10" fill="#888">∥</text></svg>
+<div style="font-weight:700;color:#8b5cf6">等腰梯形</div>
+<div style="font-size:12px;color:var(--muted)">两腰相等</div>
+</div>
+</div>
+<div class="info-box"><strong>定义：</strong>只有<strong>一组</strong>对边平行的四边形叫做梯形。互相平行的一组对边分别叫做<strong>上底</strong>和<strong>下底</strong>，不平行的一组对边叫做<strong>腰</strong>。</div>
+</div>
+</div>
+</section>
+
+<!-- P8: Compare -->
+<section class="slide-page" data-page型="concept" data-page-index="7" data-tts="compare" data-tsh="对比">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Compare</span><h2>平行四边形 vs 梯形</h2></div>
+<div class="grid grid-2" style="margin-top:12px">
+<div class="inner-card" style="text-align:left;">
+<div style="font-weight:700;color:#8b5cf6;font-size:16px;margin-bottom:8px">平行四边形 ▱</div>
+<div style="font-size:14px;color:#555;">✅ 两组对边分别平行</div>
+<div style="font-size:14px;color:#555;">✅ 对边相等</div>
+<div style="font-size:14px;color:#555;">✅ 对角相等</div>
+<div style="font-size:14px;color:#555;">✅ 邻角互补（和=180°）</div>
+<div style="font-size:14px;color:#555;">✅ 对角线互相平分</div>
+</div>
+<div class="inner-card" style="text-align:left;">
+<div style="font-weight:700;color:#f59e0b;font-size:16px;margin-bottom:8px">梯形</div>
+<div style="font-size:14px;color:#555;">✅ 只有一组对边平行</div>
+<div style="font-size:14px;color:#555;">❌ 另一组对边不平行</div>
+<div style="font-size:14px;color:#555;">✅ 平行的叫上底、下底</div>
+<div style="font-size:14px;color:#555;">✅ 不平行的叫腰</div>
+<div style="font-size:14px;color:#555;">✅ 等腰梯形 → 两腰相等</div>
+</div>
+</div>
+<div class="info-box"><strong>核心区别：</strong>平行四边形的两组对边<strong>都</strong>平行，梯形<strong>只有一组</strong>对边平行。平行四边形包含长方形和正方形，梯形是"更少的限制条件"。</div>
+</div>
+</div>
+</section>
+
+<!-- P9: Quad Family Chalkboard -->
+<section class="slide-page" data-page-type="interactive" data-page-index="8" data-tts="geogebra" data-tsh="互动探索">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Interactive</span><h2>GeoGebra 互动：画四边形，探索特征</h2></div>
+<p style="color:var(--muted);margin:0 0 12px;font-size:14px">用多边形工具画出不同四边形，拖动顶点观察边和角的变化。试试画出平行四边形和梯形！</p>
+<div style="width:100%;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06)">
+<iframe src="https://www.geogebra.org/geometry?lang=zh_CN" width="100%" height="460" frameborder="0" allowfullscreen loading="lazy"></iframe>
+</div>
+<p style="color:var(--muted);font-size:12px;margin-top:8px">提示：画四边形后用"角度"工具显示每个内角，用"平行线"检查是否平行。</p>
+</div>
+</div>
+</section>
+
+<!-- P10: Quiz 1 -->
+<section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="quiz1" data-tsh="练习一">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Quiz</span><h2>第一关：判一判</h2></div>
+<div id="q1"><p style="font-weight:600;margin-bottom:10px">1. 平行四边形中，两组对边分别______。</p>
+<button class="choice" onclick="checkAnswer(this,'q1-fb')">A. 相等但不平行</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q1-fb')">B. 平行且相等</button>
+<button class="choice" onclick="checkAnswer(this,'q1-fb')">C. 只有一组平行</button>
+<div id="q1-fb" class="result"></div></div>
+<div id="q2" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">2. 下面哪个说法是正确的？</p>
+<button class="choice" onclick="checkAnswer(this,'q2-fb')">A. 长方形不是平行四边形</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q2-fb')">B. 正方形是特殊的长方形，长方形是特殊的平行四边形</button>
+<button class="choice" onclick="checkAnswer(this,'q2-fb')">C. 梯形是特殊的平行四边形</button>
+<div id="q2-fb" class="result"></div></div>
+<div id="q3" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">3. 梯形有______组对边平行。</p>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">A. 0</button>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">B. 2</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q3-fb')">C. 1</button>
+<button class="choice" onclick="checkAnswer(this,'q3-fb')">D. 3</button>
+<div id="q3-fb" class="result"></div></div>
+</div>
+</div>
+</section>
+
+<!-- P11: Quiz 2 -->
+<section class="slide-page" data-page-type="quiz" data-page-index="10" data-tts="quiz2" data-tsh="练习二">
+<div class="slide-inner">
+<div class="card">
+<div class="section-header"><span class="phase-tag">Quiz</span><h2>第二关：选一选</h2></div>
+<div id="q4"><p style="font-weight:600;margin-bottom:10px">4. 菱形是特殊的______。</p>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">A. 梯形</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q4-fb')">B. 平行四边形（四边相等）</button>
+<button class="choice" onclick="checkAnswer(this,'q4-fb')">C. 三角形</button>
+<div id="q4-fb" class="result"></div></div>
+<div id="q5" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">5. 在等腰梯形中，两腰______。</p>
+<button class="choice" onclick="checkAnswer(this,'q5-fb')">A. 互相垂直</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q5-fb')">B. 长度相等</button>
+<button class="choice" onclick="checkAnswer(this,'q5-fb')">C. 互相平行</button>
+<div id="q5-fb" class="result"></div></div>
+<div id="q6" style="margin-top:14px"><p style="font-weight:600;margin-bottom:10px">6. 平行四边形的对角______。</p>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">A. 不相等</button>
+<button class="choice" data-correct="true" onclick="checkAnswer(this,'q6-fb')">B. 相等</button>
+<button class="choice" onclick="checkAnswer(this,'q6-fb')">C. 互补</button>
+<div id="q6-fb" class="result"></div></div>
+</div>
+</div>
+</section>
+
+<!-- P12: Summary -->
+<section class="slide-page" data-page-type="summary" data-page-index="11" data-tts="summary" data-tsh="知识总结">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Summary</span><h2>知识总结</h2></div>
+<div class="grid grid-2" style="margin-top:12px">
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">▱</div><div style="font-weight:700;color:#8b5cf6">平行四边形</div><div style="font-size:13px;color:var(--muted);margin-top:4px">两组对边分别平行且相等<br>对角相等·含长方形·正方形</div></div>
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">⬡</div><div style="font-weight:700;color:#f59e0b">梯形</div><div style="font-size:13px;color:var(--muted);margin-top:4px">只有一组对边平行<br>含等腰梯形·直角梯形</div></div>
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">🏠</div><div style="font-weight:700;color:#4ecdc4">四边形家族</div><div style="font-size:13px;color:var(--muted);margin-top:4px">正方形⊂长方形⊂平行四边形<br>⊂梯形⊂四边形</div></div>
+<div class="inner-card"><div style="font-size:32px;margin-bottom:4px">🔍</div><div style="font-weight:700;color:#ff6b6b">判断方法</div><div style="font-size:13px;color:var(--muted);margin-top:4px">看对边是否平行<br>一组→梯形·两组→平行四边形</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P13: Knowledge Graph -->
+<section class="slide-page" data-page-type="summary" data-page-index="12" data-tts="kg" data-tsh="知识图谱">
+<div class="slide-inner">
+<div class="card card-glow">
+<div class="section-header"><span class="phase-tag" data-variant="purple">Knowledge Graph</span><h2>知识图谱</h2></div>
+<p style="color:var(--muted);margin:0 0 16px">本节点的前置、后续和同域知识。</p>
+<div data-teachany-kg="math-e-triangles-quadrilaterals">
+<canvas class="tkg-fallback-canvas" width="720" height="120" style="display:block;width:100%;max-height:140px;border-radius:12px;"></canvas>
+</div>
+</div>
+</div>
+</section>
+
+<!-- P14: AI Tutor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="13" data-tts="ai-tutor" data-tsh="AI学伴">
+<div class="slide-inner"><div data-teachany-tutor-card></div></div>
+</section>
+
+</div>
+
+<div id="audio-config" data-teachany-audio hidden>
+<script type="application/json" data-teachany-audio-playlist>
+[{"section":"hero","src":"./tts/s01.mp3","label":"封面"},{"section":"anchor","src":"./tts/s02.mp3","label":"问题锚点"},{"section":"objectives","src":"./tts/s03.mp3","label":"学习目标"},{"section":"parallelogram-def","src":"./tts/s04.mp3","label":"平行四边形定义"},{"section":"quad-family","src":"./tts/s05.mp3","label":"四边形家族"},{"section":"special","src":"./tts/s06.mp3","label":"特殊平行四边形"},{"section":"trapezoid","src":"./tts/s07.mp3","label":"梯形"},{"section":"compare","src":"./tts/s08.mp3","label":"对比"},{"section":"geogebra","src":"./tts/s09.mp3","label":"互动探索"},{"section":"quiz1","src":"./tts/s10.mp3","label":"练习一"},{"section":"quiz2","src":"./tts/s11.mp3","label":"练习二"},{"section":"summary","src":"./tts/s12.mp3","label":"知识总结"},{"section":"kg","src":"./tts/s13.mp3","label":"知识图谱"}]
+</script>
+</div>
+
+<nav class="slide-sidenav" id="slide-sidenav"></nav>
+<button class="play-mode-fab" id="play-mode-fab">
+<svg id="fab-icon-play" viewBox="0 0 24 24" width="22" height="22"><polygon points="5 3 19 12 5 21 5 3" fill="#fff"></polygon></svg>
+<svg id="fab-icon-browse" viewBox="0 0 24 24" width="22" height="22" style="display:none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#fff" stroke-width="2" fill="none"></path></svg>
+</button>
+
+<div class="slide-toolbar" id="slide-toolbar">
+<button class="toolbar-btn" id="tb-prev">◀</button>
+<div class="toolbar-progress" id="tb-progress"><div class="toolbar-progress-fill" id="tb-progress-fill"></div></div>
+<span class="toolbar-page-info" id="tb-page-info">1 / 14</span>
+<button class="toolbar-btn" id="tb-next">▶</button>
+<button class="toolbar-btn" id="tb-fullscreen">⛶</button>
+</div>
+
+<script>
+function checkAnswer(btn, fbId) {
+  var p = btn.parentElement, all = p.querySelectorAll('.choice'), fb = document.getElementById(fbId);
+  all.forEach(function(b){ b.disabled = true; b.style.pointerEvents = 'none'; });
+  if (btn.dataset.correct === 'true') {
+    btn.classList.add('correct');
+    fb.className = 'result success';
+    fb.innerHTML = '\u2705 太棒了，回答正确！';
+  } else {
+    btn.classList.add('wrong');
+    all.forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+    fb.className = 'result error';
+    fb.innerHTML = '\u274C 再想想！正确答案已经标出。';
+  }
+  fb.style.display = 'block';
+}
+(function(){
+var c=document.getElementById('slide-container');
+var pages=Array.from(document.querySelectorAll('.slide-page'));
+var total=pages.length,cp=0,pm=false;
+var pb=document.getElementById('slide-progress-bar');
+var sn=document.getElementById('slide-sidenav');
+var fab=document.getElementById('play-mode-fab');
+var tp=document.getElementById('tb-prev'),tn=document.getElementById('tb-next');
+var ti=document.getElementById('tb-page-info'),tf=document.getElementById('tb-progress-fill');
+var tg=document.getElementById('tb-progress'),fs=document.getElementById('tb-fullscreen');
+function bs(){
+  sn.innerHTML='';
+  var ct=document.createElement('div');ct.className='sidenav-counter';ct.id='sidenav-counter';ct.textContent='1/'+total;sn.appendChild(ct);
+  pages.forEach(function(p,i){
+    var d=document.createElement('button');d.className='sidenav-dot'+(i===0?' active':'');
+    d.addEventListener('click',function(){go(i);});sn.appendChild(d);
+  });
+}
+function up(){
+  var pct=total>1?(cp/(total-1))*100:100;
+  pb.style.width=pct+'%';tf.style.width=pct+'%';
+  ti.textContent=(cp+1)+' / '+total;
+  sn.querySelectorAll('.sidenav-dot').forEach(function(d,i){d.classList.toggle('active',i===cp);});
+  var c=document.getElementById('sidenav-counter');if(c)c.textContent=(cp+1)+'/'+total;
+  tp.style.opacity=cp===0?'0.3':'1';tn.style.opacity=cp===total-1?'0.3':'1';
+}
+function go(i){if(i<0||i>=total)return;cp=i;
+  if(pm)pages[cp].scrollIntoView({behavior:'smooth',block:'start'});
+  else c.scrollTo({top:pages[cp].offsetTop,behavior:'smooth'});up();}
+function nx(){if(cp<total-1)go(cp+1);}
+function pv(){if(cp>0)go(cp-1);}
+var st;c.addEventListener('scroll',function(){if(pm)return;clearTimeout(st);st=setTimeout(function(){
+  var s=c.scrollTop,cl=0,md=Infinity;
+  pages.forEach(function(p,i){var d=Math.abs(p.offsetTop-s);if(d<md){md=d;cl=i;}});
+  if(cl!==cp){cp=cl;up();}},100);},{passive:true});
+function tp2(){pm=!pm;document.body.classList.toggle('play-mode',pm);document.body.classList.toggle('toolbar-visible',pm);
+  document.getElementById('fab-icon-play').style.display=pm?'none':'block';
+  document.getElementById('fab-icon-browse').style.display=pm?'block':'none';if(pm)go(cp);}
+fab.addEventListener('click',tp2);tp.addEventListener('click',pv);tn.addEventListener('click',nx);
+tg.addEventListener('click',function(e){var r=tg.getBoundingClientRect();go(Math.round(((e.clientX-r.left)/r.width)*(total-1)));});
+fs.addEventListener('click',function(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();});
+document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();nx();}
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();pv();}
+  if(e.key==='f'||e.key==='F'){if(!e.ctrlKey&&!e.metaKey)tp2();}});
+window.__TEACHANY_LEARNER_QUESTION__='';
+window.__TEACHANY_TUTOR_CONFIG__={courseId:'sujiao-math-g5u4-l3-parallelogram-trapezoid',courseTitle:'\u5E73\u884C\u56DB\u8FB9\u5F62\u4E0E\u68AF\u5F62',subject:'math',grade:'5',nodeId:'math-e-triangles-quadrilaterals',lessonType:'\u6982\u5FF5\u8BFE',getLearnerQuestion:function(){return window.__TEACHANY_LEARNER_QUESTION__||'';},getContext:function(){return(pages[cp]||document.body).innerText.slice(0,3000);}};
+document.querySelectorAll('[data-anchor-choice]').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('[data-anchor-choice]').forEach(function(x){x.classList.remove('selected');});
+  b.classList.add('selected');window.__TEACHANY_LEARNER_QUESTION__=b.getAttribute('data-anchor-choice')||b.textContent.trim();
+  document.getElementById('anchor-feedback').textContent='\u4F60\u7684\u95EE\u9898\uFF1A'+window.__TEACHANY_LEARNER_QUESTION__;});});
+document.getElementById('learner-question-input')?.addEventListener('input',function(e){window.__TEACHANY_LEARNER_QUESTION__=e.target.value.trim();
+  document.getElementById('anchor-feedback').textContent=window.__TEACHANY_LEARNER_QUESTION__?'\u4F60\u7684\u95EE\u9898\uFF1A'+window.__TEACHANY_LEARNER_QUESTION__:'\u9009\u62E9\u6216\u8F93\u5165\u540E\uFF0C\u672C\u8BFE\u4F1A\u56F4\u7ED5\u4F60\u7684\u95EE\u9898\u5C55\u5F00\u3002';});
+bs();up();document.body.classList.add('toolbar-visible');
+setTimeout(function(){if(!pm)document.body.classList.remove('toolbar-visible');},3000);
+})();
+</script>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+</body>
+</html>
