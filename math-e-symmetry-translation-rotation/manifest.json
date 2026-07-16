@@ -1,0 +1,65 @@
+{
+  "id": "math-e-symmetry-translation-rotation",
+  "name": "旋转、对称与平移 — 图形变身大闯关",
+  "node_id": "math-e-symmetry-translation-rotation",
+  "subject": "math",
+  "grade": 3,
+  "author": "TeachAny 用户",
+  "description": "通过互动游戏和动手操作，探索轴对称、平移和旋转三种图形变换的奥秘，发现生活中隐藏的对称美。",
+  "version": "1.0.0",
+  "teachany_version": "v7.9",
+  "curriculum": "cn-national",
+  "free_mode": false,
+  "course_id": "math-e-symmetry-translation-rotation",
+  "name_en": "Rotation, Symmetry and Translation",
+  "stage": "elementary",
+  "domain": "geometry",
+  "lesson_type": "new-concept",
+  "status": "community",
+  "template_version": "2.0",
+  "tags": [
+    "轴对称",
+    "平移",
+    "旋转",
+    "图形变换",
+    "小学几何"
+  ],
+  "prerequisites": [
+    "math-e-plane-shapes"
+  ],
+  "leads_to": [
+    "math-e-patterns"
+  ],
+  "learning_objectives": [
+    "辨别生活中的轴对称图形，找到对称轴",
+    "用方向和距离描述图形的平移运动",
+    "识别旋转现象，知道旋转围绕着中心点转动",
+    "区分三种变换：平移、旋转、对称，说出它们的不同",
+    "动手操作完成平移、旋转、对称闯关任务"
+  ],
+  "assets": {
+    "hero": "assets/math-e-symmetry-translation-rotation-hero.png",
+    "tts_manifest": "tts/manifest.json",
+    "videos": [
+      "assets/video/math-e-symmetry-translation-rotation-main.mp4"
+    ],
+    "images": [
+      "assets/math-e-symmetry-translation-rotation-hero.svg",
+      "assets/three-transforms.png",
+      "assets/real-life-examples.png"
+    ]
+  },
+  "has_tts": true,
+  "has_video": true,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "feedback": {
+    "require_password": true,
+    "password_sha256": "e2d833a3825bacfba36715285294bffd07b566b1113cbc6b2f9da575d1948f53",
+    "password_hint": "课件ID就是密码"
+  },
+  "created_at": "2026-07-16",
+  "updated_at": "2026-07-16"
+}

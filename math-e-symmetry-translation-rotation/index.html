@@ -1,0 +1,1735 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《旋转、对称与平移 — 图形变身大闯关》 · 数学 小学 G3 · TeachAny v7.9</title>
+<meta name="description" content="通过互动游戏和动手操作，探索轴对称、平移和旋转三种图形变换的奥秘，发现生活中隐藏的对称美。">
+
+<meta name="course-id" content="math-e-symmetry-translation-rotation">
+<meta name="course-title" content="旋转、对称与平移">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="3">
+<meta name="course-prereqs" content="math-e-plane-shapes">
+<meta name="course-next" content="math-e-patterns">
+<meta name="course-version" content="1.0.0">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="./assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-floating-dock.css">
+
+<style>
+/* ─── 小学暖色视觉模式 ─── */
+:root {
+  --bg: #fffbf0;
+  --bg-subtle: #fff8e7;
+  --panel: #fffdf7;
+  --card: #ffffff;
+  --card-elevated: #fffdf5;
+  --line: #e8ddd0;
+  --line-subtle: rgba(180, 160, 140, 0.15);
+  --text: #3d3226;
+  --text-secondary: #5c5040;
+  --muted: #8b7e6e;
+  --brand: #ff6b6b;
+  --brand-soft: rgba(255, 107, 107, 0.1);
+  --brand-2: #4ecdc4;
+  --brand-2-soft: rgba(78, 205, 196, 0.1);
+  --accent: #ffe66d;
+  --accent-soft: rgba(255, 230, 109, 0.15);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --purple: #cc5de8;
+  --orange: #ff922b;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+  --slide-height: 100vh;
+  --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+  --sidenav-width: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.85;
+  font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative;
+  overflow: hidden;
+}
+.slide-page .slide-inner {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+
+/* Page type decorations - elementary */
+.slide-page[data-page-type="cover"] {
+  background: linear-gradient(180deg, rgba(255,107,107,0.08) 0%, rgba(78,205,196,0.06) 40%, rgba(255,230,109,0.04) 100%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(34px, 7vw, 52px);
+  line-height: 1.2;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--orange) 40%, var(--brand-2) 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(16px, 3vw, 22px);
+  max-width: 640px;
+  margin: 0 auto;
+}
+.slide-page[data-page-type="interactive"] {
+  background: linear-gradient(180deg, rgba(255,107,107,0.04) 0%, rgba(78,205,196,0.03) 50%, transparent 100%);
+}
+.slide-page[data-page-type="quiz"] {
+  background: linear-gradient(180deg, rgba(255,230,109,0.08) 0%, rgba(204,93,232,0.04) 100%);
+}
+.slide-page[data-page-type="summary"] {
+  background: linear-gradient(180deg, rgba(78,205,196,0.08) 0%, rgba(255,107,107,0.04) 100%);
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(0,0,0,0.06); }
+.card-accent { border-top: 4px solid; border-image: linear-gradient(90deg, var(--brand), var(--orange), var(--brand-2)) 1; }
+.card-glow { box-shadow: 0 4px 24px rgba(0,0,0,0.04), 0 0 40px rgba(255,107,107,0.05); }
+.card .card { padding: 18px; box-shadow: none; border: 1px solid var(--line-subtle); }
+
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 800; line-height: 1.3; }
+
+/* Phase tag */
+.phase-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand); background: var(--brand-soft); border: 1px solid rgba(255,107,107,0.2);
+  border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+}
+.phase-tag[data-variant="success"] { color: var(--brand-2); background: var(--brand-2-soft); border-color: rgba(78,205,196,0.2); }
+.phase-tag[data-variant="purple"] { color: var(--purple); background: rgba(204,93,232,0.08); border-color: rgba(204,93,232,0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
+
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid > * { min-width: 0; }
+
+.flex-row { display: flex; gap: 12px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.flex-row .choice { flex: 1; min-width: 120px; text-align: center; }
+
+.objectives {
+  display: grid; grid-template-columns: 1fr; gap: 10px; list-style: none; padding: 0; margin: 0;
+}
+.objectives li {
+  display: flex; align-items: flex-start; gap: 10px; padding: 14px 18px;
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  border: 1px solid var(--line-subtle); transition: background 0.2s; font-weight: 600;
+}
+.objectives li:hover { background: rgba(255,107,107,0.06); }
+.objectives li::before {
+  content: "🌟"; color: var(--brand); font-size: 16px; margin-top: 1px; flex-shrink: 0;
+}
+
+.choice {
+  width: 100%; text-align: left; border: 2px solid rgba(255,107,107,0.15);
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.02);
+  color: var(--text); padding: 16px 20px; cursor: pointer; font-size: 16px;
+  line-height: 1.5; transition: all 0.25s cubic-bezier(0.4,0,0.2,1); font-weight: 600;
+}
+.choice:hover { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.35); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(255,107,107,0.12); box-shadow: 0 0 0 3px rgba(255,107,107,0.1); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,0.1); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,0.06); }
+
+input, textarea {
+  width: 100%; border-radius: 14px; border: 2px solid var(--line); background: var(--bg);
+  color: var(--text); padding: 14px 16px; font-size: 15px; transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, textarea:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255,107,107,0.08); }
+
+.result {
+  padding: 16px 20px; border-radius: var(--card-radius-sm); font-size: 15px; line-height: 1.6;
+}
+.result.ok { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); }
+.result.warn { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
+.result.error { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); }
+
+.canvas-wrap {
+  overflow: auto; background: #fffef9; border: 2px solid var(--line-subtle);
+  border-radius: 16px; padding: 16px; display: flex; justify-content: center;
+}
+
+.ta-standard-figure { margin: 20px auto; max-width: 720px; }
+.ta-standard-figure img { display: block; width: 100%; border-radius: 16px; border: 1px solid var(--line-subtle); }
+.ta-standard-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; text-align: center; }
+
+/* Game section styling */
+.game-controls {
+  display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; justify-content: center;
+}
+.game-btn {
+  padding: 12px 28px; border: none; border-radius: 14px; font-size: 16px; font-weight: 700;
+  cursor: pointer; transition: all 0.2s; min-height: 48px;
+}
+.game-btn.primary { background: linear-gradient(135deg, var(--brand), var(--orange)); color: #fff; }
+.game-btn.secondary { background: var(--brand-2-soft); color: var(--brand-2); border: 2px solid var(--brand-2); }
+.game-btn.success { background: rgba(34,197,94,0.12); color: var(--ok); border: 2px solid var(--ok); }
+.game-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+
+/* Star rating */
+.star-rating { font-size: 32px; text-align: center; margin: 12px 0; letter-spacing: 4px; }
+
+/* Progress bar */
+.slide-progress-bar {
+  position: fixed; top: 0; left: 0; height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--orange), var(--brand-2));
+  z-index: 200; transition: width 0.3s ease; border-radius: 0 2px 2px 0;
+}
+
+/* Bottom toolbar */
+.slide-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 20px; padding-bottom: calc(10px + var(--safe-bottom));
+  background: rgba(255,255,255,0.94); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+  transform: translateY(100%); transition: transform 0.3s ease;
+}
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+
+.toolbar-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: none; border-radius: 12px;
+  background: rgba(0,0,0,0.04); color: var(--text); cursor: pointer;
+  transition: all 0.2s; font-size: 18px;
+}
+.toolbar-btn:hover { background: rgba(255,107,107,0.1); }
+.toolbar-btn.active { background: rgba(255,107,107,0.12); color: var(--brand); }
+.toolbar-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,0.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width 0.3s ease; }
+
+/* Side nav */
+.slide-sidenav {
+  position: fixed; right: 12px; top: 50%; transform: translateY(-50%);
+  z-index: 90; display: flex; flex-direction: column; align-items: flex-end; gap: 3px;
+  opacity: 0; transition: opacity 0.3s ease;
+  max-height: 70vh; overflow-y: auto; scrollbar-width: none;
+  padding: 8px 4px; border-radius: 12px;
+  background: rgba(255,255,255,0.5); backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+
+.sidenav-dot {
+  width: 28px; height: 4px; border-radius: 2px;
+  background: rgba(0,0,0,0.08); border: none; cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1); padding: 0; flex-shrink: 0;
+}
+.sidenav-dot:hover { background: rgba(255,107,107,0.3); width: 36px; }
+.sidenav-dot.active { background: var(--brand); width: 36px; height: 5px; box-shadow: 0 0 8px rgba(255,107,107,0.4); }
+.sidenav-dot[data-tooltip]::before {
+  content: attr(data-tooltip); position: absolute; right: calc(100% + 10px); top: 50%;
+  transform: translateY(-50%); padding: 5px 10px;
+  background: rgba(255,255,255,0.95); border: 1px solid var(--line);
+  border-radius: 6px; color: var(--text); font-size: 11px;
+  white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.sidenav-dot:hover[data-tooltip]::before { opacity: 1; }
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,0.3); text-align: center; padding: 4px 0 2px; }
+
+/* Play mode FAB */
+.play-mode-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%; border: none;
+  background: linear-gradient(135deg, var(--brand), var(--orange));
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(255,107,107,0.3); transition: all 0.3s ease;
+}
+.play-mode-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(255,107,107,0.4); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+.play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Brand bar (simplified elementary) */
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 20px; background: rgba(255,251,240,0.9); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle); transition: transform 0.3s ease;
+}
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: var(--muted); font-family: ui-monospace, monospace; background: rgba(0,0,0,0.04); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+/* Quiz option styling */
+.quiz-option {
+  width: 100%; text-align: left; border: 2px solid rgba(255,107,107,0.12);
+  border-radius: 14px; background: rgba(255,107,107,0.02);
+  color: var(--text); padding: 14px 18px; cursor: pointer;
+  font-size: 15px; line-height: 1.5; transition: all 0.2s;
+}
+.quiz-option:hover { background: rgba(255,107,107,0.06); border-color: rgba(255,107,107,0.25); }
+.quiz-option.correct-chosen { border-color: var(--ok); background: rgba(34,197,94,0.1); }
+.quiz-option.wrong-chosen { border-color: var(--danger); background: rgba(239,68,68,0.06); }
+.quiz-option.reveal-correct { border-color: var(--ok); background: rgba(34,197,94,0.05); }
+
+.feedback-emoji { font-size: 48px; text-align: center; margin-bottom: 8px; }
+
+/* Utility */
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand), var(--orange));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.animate-in { animation: fadeUp 0.5s ease-out both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.stagger-1 { animation-delay: 0.1s; } .stagger-2 { animation-delay: 0.2s; } .stagger-3 { animation-delay: 0.3s; }
+
+/* Bounce animation */
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.bounce { animation: bounce 2s infinite; }
+
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; --card-radius: 16px; }
+  .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .grid, .grid-2, .grid-3 { grid-template-columns: 1fr !important; }
+  .flex-row { flex-direction: column; }
+  .card { padding: 18px; }
+  .slide-sidenav { right: 6px; gap: 2px; padding: 6px 3px; }
+  .sidenav-dot { width: 22px; height: 3px; }
+  .brand-name { display: none; }
+}
+
+@media (max-width: 480px) {
+  .slide-page[data-page-type="cover"] h1 { font-size: 28px; }
+  .toolbar-progress { max-width: 120px; }
+}
+</style>
+
+  <meta name="teachany-id" content="math-e-symmetry-translation-rotation">
+  <meta name="teachany-name" content="旋转、对称与平移 — 图形变身大闯关">
+  <meta name="teachany-node" content="math-e-symmetry-translation-rotation">
+  <meta name="teachany-subject" content="math">
+  <meta name="teachany-grade" content="3">
+  <meta name="teachany-version" content="v6">
+  <meta name="teachany-author" content="TeachAny 用户">
+  <meta name="teachany-curriculum" content="cn-national">
+</head>
+<body class="teachany-elementary">
+
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="https://www.teachany.cn/" aria-label="TeachAny Gallery">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <a class="brand-link" href="https://www.teachany.cn/">Gallery</a>
+    <span class="brand-version">v1.0.0 · skill v7.20.0</span>
+  </div>
+</div>
+
+<div class="slide-container" id="slide-container">
+
+<!-- ═══ Page 0: Cover ═══ -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="开场 - 图形变身大闯关">
+  <div class="slide-inner">
+    <h1>🔄 旋转、对称与平移</h1>
+    <p class="subtitle">图形变身大闯关 — 发现图形移动的秘密！</p>
+    <figure class="ta-standard-figure" style="margin-top:32px">
+      <img class="hero-cover-img" src="./assets/math-e-symmetry-translation-rotation-hero.png" alt="旋转、对称与平移知识结构图">
+      <figcaption>图形变换的三种魔法：翻转、滑动、旋转</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ Page 1: ABT 叙事引入 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="1" data-tts="abt" data-tsh="情境引入 - 为什么学三种变换">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">🤔 为什么要学？</span>
+        <h2>图形也会"动"？</h2>
+      </div>
+      <div class="grid" style="gap:14px">
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 18px;background:rgba(255,107,107,0.04);border-radius:14px;border:1px solid rgba(255,107,107,0.1)">
+          <span style="font-size:28px">🧩</span>
+          <div>
+            <strong style="color:var(--brand)">你已经知道：</strong>
+            <p style="margin:4px 0 0;font-size:15px">长方形、正方形、三角形……这些都是平面图形。你会画它们、认它们。</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 18px;background:rgba(204,93,232,0.05);border-radius:14px;border:1px solid rgba(204,93,232,0.1)">
+          <span style="font-size:28px">❓</span>
+          <div>
+            <strong style="color:var(--purple)">但现在遇到新问题：</strong>
+            <p style="margin:4px 0 0;font-size:15px">图形除了"画出来"，还能"动起来"！推一推、转一转、对折一下……它们会变成什么样？为什么有些图形怎么转都一样？</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:14px 18px;background:rgba(78,205,196,0.06);border-radius:14px;border:1px solid rgba(78,205,196,0.1)">
+          <span style="font-size:28px">🎯</span>
+          <div>
+            <strong style="color:var(--brand-2)">所以我们要学：</strong>
+            <p style="margin:4px 0 0;font-size:15px"><strong>平移、旋转、轴对称</strong>——三种让图形"变身"的魔法，发现它们在生活中无处不在！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 2: Problem Anchor ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="problem-anchor" data-tsh="问题锚点 - 先确定你想解决的问题">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag">💡 问题锚点</span>
+        <h2>今天想解决什么问题？</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">选一个你好奇的问题，后面的探索会围绕它展开！</p>
+      <div class="grid" id="problem-anchor-choices">
+        <button class="choice" data-anchor-choice="剪纸对折剪出图案，打开后两边为什么一模一样？">
+          ✂️ 剪纸对折剪出图案，打开后两边为什么一模一样？
+        </button>
+        <button class="choice" data-anchor-choice="大风车一直在转为什么不倒？">
+          🎡 大风车一直在转为什么不倒？
+        </button>
+        <button class="choice" data-anchor-choice="推箱子时箱子移动了位置，但大小变了吗？">
+          📦 推箱子时箱子移动了位置，但大小变了吗？
+        </button>
+      </div>
+      <label style="display:block;margin-top:20px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+        <input id="learner-question-input" placeholder="把你好奇的问题写在这里" style="margin-top:8px">
+      </label>
+      <p id="anchor-feedback" class="result warn" style="margin-top:16px">👆 选择或输入一个问题，本课会围绕它展开。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 2: Learning Objectives ═══ -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标 - 明确这节课能做到什么">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">🎯 学习目标</span>
+        <h2>学完这节课，你将能够：</h2>
+      </div>
+      <ul class="objectives">
+        <li>辨别生活中的轴对称图形，找到对称轴</li>
+        <li>用方向和距离描述图形的平移运动</li>
+        <li>识别旋转现象，知道旋转围绕着中心点转</li>
+        <li>区分三种变换：平移、旋转、对称，说出它们的不同</li>
+        <li>动手操作完成平移、旋转、对称闯关任务</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 3: Pretest ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="3" data-tts="pretest" data-tsh="前测 - 看看你的起点">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">📝 课前小测</span>
+        <h2>看看你准备好了吗？</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">3道小题，试试看！（答完点下方"揭晓答案"）</p>
+      <div id="pretest-container">
+        <div class="grid">
+          <div class="inner-card" style="border:2px solid var(--line-subtle);padding:16px">
+            <p style="font-weight:700">1. 下面哪个图形对折后两边能完全重合？</p>
+            <div class="flex-row" style="margin-top:8px">
+              <button class="quiz-option pretest-q" data-q="0" data-a="0">⚪ 圆形</button>
+              <button class="quiz-option pretest-q" data-q="0" data-a="1">🔺 任意三角形</button>
+              <button class="quiz-option pretest-q" data-q="0" data-a="2">▱ 任意四边形</button>
+            </div>
+          </div>
+          <div class="inner-card" style="border:2px solid var(--line-subtle);padding:16px">
+            <p style="font-weight:700">2. 推桌子从教室前移到后，桌子的大小会？</p>
+            <div class="flex-row" style="margin-top:8px">
+              <button class="quiz-option pretest-q" data-q="1" data-a="0">变大</button>
+              <button class="quiz-option pretest-q" data-q="1" data-a="1">不变</button>
+              <button class="quiz-option pretest-q" data-q="1" data-a="2">变小</button>
+            </div>
+          </div>
+          <div class="inner-card" style="border:2px solid var(--line-subtle);padding:16px">
+            <p style="font-weight:700">3. 时钟的指针从12走到3，发生了什么？</p>
+            <div class="flex-row" style="margin-top:8px">
+              <button class="quiz-option pretest-q" data-q="2" data-a="0">平移</button>
+              <button class="quiz-option pretest-q" data-q="2" data-a="1">旋转</button>
+              <button class="quiz-option pretest-q" data-q="2" data-a="2">对称</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:16px">
+          <button class="game-btn primary" id="pretest-check">🔍 揭晓答案</button>
+          <div id="pretest-result" style="margin-top:12px;display:none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 4: Module 1 - 认识对称 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="module-1" data-tsh="模块1 - 认识轴对称">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">📐 模块一</span>
+        <h2>认识"轴对称" — 对折魔法</h2>
+      </div>
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <img src="./assets/real-life-examples.png" alt="生活中的图形变换" style="width:100%;max-width:700px;display:block;margin:0 auto 16px;border-radius:14px">
+      <p style="font-size:17px;line-height:1.8">
+            🪞 <strong>轴对称</strong>就像是<em>照镜子</em>：把一个图形沿着一条直线<strong>对折</strong>，对折后两边能<strong>完全重合</strong>，这条直线就叫<strong style="color:var(--brand)">对称轴</strong>。
+          </p>
+          <p style="font-size:15px;color:var(--muted);margin-top:12px">
+            ✨ 想一想：蝴蝶的翅膀、人脸的五官、剪纸图案……你还能想到什么是对称的？
+          </p>
+        </div>
+        <div style="flex:0 0 240px;text-align:center">
+          <canvas id="symmetry-demo" width="240" height="240" style="border-radius:16px;background:#fffef9;border:2px solid var(--line-subtle)"></canvas>
+          <p style="font-size:12px;color:var(--muted);margin-top:6px">试试移动鼠标看对称效果 👆</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 5: Module 2 - 认识平移 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="module-2" data-tsh="模块2 - 认识平移">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">📐 模块二</span>
+        <h2>认识"平移" — 滑动魔法</h2>
+      </div>
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <p style="font-size:17px;line-height:1.8">
+            ➡️ <strong>平移</strong>就是让图形沿着<strong>直线方向</strong>滑动一段距离。图形只是<strong>换了位置</strong>，方向和大小都<strong>没有改变</strong>！
+          </p>
+          <p style="font-size:15px;color:var(--muted);margin-top:12px">
+            ✨ 想一想：推抽屉、电梯上下、滑滑梯……这些都是平移！
+          </p>
+        </div>
+        <div style="flex:0 0 240px">
+          <canvas id="translation-demo" width="240" height="240" style="border-radius:16px;background:#fffef9;border:2px solid var(--line-subtle)"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 6: Module 3 - 认识旋转 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="module-3" data-tsh="模块3 - 认识旋转">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">📐 模块三</span>
+        <h2>认识"旋转" — 转动魔法</h2>
+      </div>
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <p style="font-size:17px;line-height:1.8">
+            🔃 <strong>旋转</strong>就是图形围绕一个<strong style="color:var(--brand)">中心点</strong>转动。旋转时图形的<strong>大小不变</strong>，但<strong>方向改变了</strong>。
+          </p>
+          <p style="font-size:15px;color:var(--muted);margin-top:12px">
+            ✨ 想一想：风车转动、时钟指针、旋转木马……还有一个秘密：它们都绕着<strong>同一个点</strong>转！
+          </p>
+        </div>
+        <div style="flex:0 0 240px">
+          <canvas id="rotation-demo" width="240" height="240" style="border-radius:16px;background:#fffef9;border:2px solid var(--line-subtle)"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 7: 教学视频 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="video" data-tsh="教学视频 - 图形变换动画演示">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">🎬 动画演示</span>
+        <h2>三种图形变换</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">💡 观看动画，直观感受平移、旋转、对称的变化过程</p>
+      <div style="border-radius:16px;overflow:hidden;border:2px solid var(--line-subtle)">
+        <video controls playsinline style="width:100%;display:block" poster="./assets/math-e-symmetry-translation-rotation-hero.svg">
+          <source src="./assets/video/math-e-symmetry-translation-rotation-main.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 8: GeoGebra 旋转探究 ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="7" data-tts="geogebra" data-tsh="GeoGebra - 动手探究旋转中心与角度">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">🔬 动手探究</span>
+        <h2>旋转实验：拖动小红点试试！</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px">💡 拖动三角形顶点或滑块，看看旋转中心和角度怎么影响图形</p>
+      <div id="ggb-applet" style="width:100%;max-width:800px;margin:0 auto;aspect-ratio:4/3;border-radius:16px;overflow:hidden;border:2px solid var(--line-subtle)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 8: Interactive Games - 闯关大作战 ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="8" data-tts="games" data-tsh="闯关大作战 - 综合互动游戏">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">🎮 闯关大作战</span>
+        <h2 id="game-level-title">第一关：对称小达人</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 12px" id="game-hint">点击右侧点，画出左侧图形的对称图案！</p>
+      <div class="canvas-wrap" style="display:flex;flex-direction:column;align-items:center">
+        <canvas id="game-canvas" width="600" height="340" style="max-width:100%;border-radius:12px;touch-action:none"></canvas>
+        <div class="star-rating" id="game-stars"></div>
+        <div class="game-controls">
+          <button class="game-btn primary" id="game-check">✅ 提交检查</button>
+          <button class="game-btn secondary" id="game-reset">🔄 重新来过</button>
+          <button class="game-btn secondary" id="game-next" style="display:none">➡️ 下一关</button>
+        </div>
+        <div id="game-feedback" style="margin-top:8px;font-weight:700;min-height:24px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 9: ConcepTest ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="conceptest" data-tsh="概念辨析 - 你能区分三种变换吗">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">🧠 概念辨析</span>
+        <h2>你能区分三种变换吗？</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">每题选一个答案，答完点"提交检查"看结果</p>
+      <div id="conceptest-container">
+        <div class="grid">
+          <div class="inner-card"><p style="font-weight:700">① 电梯从1楼升到5楼</p>
+            <div class="flex-row">
+              <button class="quiz-option ct-q" data-q="0" data-a="0">平移</button>
+              <button class="quiz-option ct-q" data-q="0" data-a="1">旋转</button>
+              <button class="quiz-option ct-q" data-q="0" data-a="2">对称</button>
+            </div>
+          </div>
+          <div class="inner-card"><p style="font-weight:700">② 摩天轮上的小房子</p>
+            <div class="flex-row">
+              <button class="quiz-option ct-q" data-q="1" data-a="0">平移</button>
+              <button class="quiz-option ct-q" data-q="1" data-a="1">旋转</button>
+              <button class="quiz-option ct-q" data-q="1" data-a="2">对称</button>
+            </div>
+          </div>
+          <div class="inner-card"><p style="font-weight:700">③ 蝴蝶的两只翅膀</p>
+            <div class="flex-row">
+              <button class="quiz-option ct-q" data-q="2" data-a="0">平移</button>
+              <button class="quiz-option ct-q" data-q="2" data-a="1">旋转</button>
+              <button class="quiz-option ct-q" data-q="2" data-a="2">对称</button>
+            </div>
+          </div>
+          <div class="inner-card"><p style="font-weight:700">④ 打开窗户 (绕合页转动)</p>
+            <div class="flex-row">
+              <button class="quiz-option ct-q" data-q="3" data-a="0">平移</button>
+              <button class="quiz-option ct-q" data-q="3" data-a="1">旋转</button>
+              <button class="quiz-option ct-q" data-q="3" data-a="2">对称</button>
+            </div>
+          </div>
+          <div class="inner-card"><p style="font-weight:700">⑤ 把书从桌子左边推到右边</p>
+            <div class="flex-row">
+              <button class="quiz-option ct-q" data-q="4" data-a="0">平移</button>
+              <button class="quiz-option ct-q" data-q="4" data-a="1">旋转</button>
+              <button class="quiz-option ct-q" data-q="4" data-a="2">对称</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:16px">
+          <button class="game-btn primary" id="ct-check">🔍 提交检查</button>
+          <div id="ct-result" class="result ok" style="margin-top:12px;display:none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 10: Posttest ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="10" data-tts="posttest" data-tsh="后测 - 检验学习成果">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">🏆 课后挑战</span>
+        <h2>学完了，挑战一下吧！</h2>
+      </div>
+      <div id="posttest-container">
+        <div class="grid">
+          <div class="inner-card"><p style="font-weight:700">1. 正方形有几条对称轴？</p>
+            <div class="flex-row">
+              <button class="quiz-option pt-q" data-q="0" data-a="0">2条</button>
+              <button class="quiz-option pt-q" data-q="0" data-a="1">4条</button>
+              <button class="quiz-option pt-q" data-q="0" data-a="2">无数条</button>
+            </div>
+          </div>
+          <div class="inner-card"><p style="font-weight:700">2. 一块三角形向右平移5格后</p>
+            <div class="flex-row">
+              <button class="quiz-option pt-q" data-q="1" data-a="0">形状变了</button>
+              <button class="quiz-option pt-q" data-q="1" data-a="1">位置变了形状不变</button>
+              <button class="quiz-option pt-q" data-q="1" data-a="2">方向变了</button>
+            </div>
+          </div>
+          <div class="inner-card"><p style="font-weight:700">3. 下面哪个是旋转现象？</p>
+            <div class="flex-row">
+              <button class="quiz-option pt-q" data-q="2" data-a="0">电梯上下</button>
+              <button class="quiz-option pt-q" data-q="2" data-a="1">推抽屉</button>
+              <button class="quiz-option pt-q" data-q="2" data-a="2">风车转动</button>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:16px">
+          <button class="game-btn primary" id="pt-check">🔍 揭晓答案</button>
+          <div id="pt-result" style="margin-top:12px;display:none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 11: 核心概念 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="11" data-tts="core-concept" data-tsh="核心概念 - 三句话记住图形变换">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">📌 核心概念</span>
+        <h2>三句话记住图形变换</h2>
+      </div>
+      <div class="grid" style="gap:14px">
+        <div style="padding:16px 20px;background:rgba(255,107,107,0.05);border-radius:14px;border-left:5px solid var(--brand)">
+          <strong style="font-size:18px;color:var(--brand)">↔️ 平移：</strong>
+          <span style="font-size:16px">图形沿直线方向移动，<em>只改变位置</em>，大小、形状、方向都不变。</span>
+        </div>
+        <div style="padding:16px 20px;background:rgba(78,205,196,0.05);border-radius:14px;border-left:5px solid var(--brand-2)">
+          <strong style="font-size:18px;color:var(--brand-2)">🔃 旋转：</strong>
+          <span style="font-size:16px">图形绕中心点转动，<em>方向改变了</em>，但大小和形状不变。关键要素：旋转中心、旋转角度。</span>
+        </div>
+        <div style="padding:16px 20px;background:rgba(204,93,232,0.05);border-radius:14px;border-left:5px solid var(--purple)">
+          <strong style="font-size:18px;color:var(--purple)">🪞 轴对称：</strong>
+          <span style="font-size:16px">沿对称轴对折后<em>两边完全重合</em>。对称轴是对折的那条线，不同图形的对称轴数量不同。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 12: 例题 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="12" data-tts="example" data-tsh="例题 - 一步一步解题示范">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">📝 例题</span>
+        <h2>看看例题怎么做</h2>
+      </div>
+      <div class="grid" style="gap:14px">
+        <div style="padding:16px 20px;background:rgba(255,107,107,0.04);border-radius:14px">
+          <strong style="color:var(--brand)">例1 · 平移判断：</strong>
+          <p style="margin:6px 0;font-size:15px">把△向右平移4格，平移后的三角形________</p>
+          <p style="margin:4px 0;font-size:14px;color:var(--ok)">✅ 答案：和原来一模一样（大小形状都不变）</p>
+          <p style="font-size:13px;color:var(--muted)">💡 判断关键：平移只有位置变了，图形的"长相"没变。</p>
+        </div>
+        <div style="padding:16px 20px;background:rgba(78,205,196,0.04);border-radius:14px">
+          <strong style="color:var(--brand-2)">例2 · 旋转观察：</strong>
+          <p style="margin:6px 0;font-size:15px">时钟从12:00走到12:15，分针发生了什么运动？</p>
+          <p style="margin:4px 0;font-size:14px;color:var(--ok)">✅ 答案：旋转——分针绕表盘中心顺时针旋转了90°</p>
+          <p style="font-size:13px;color:var(--muted)">💡 旋转三要素：绕哪个点、往哪转、转了多少度。</p>
+        </div>
+        <div style="padding:16px 20px;background:rgba(204,93,232,0.04);border-radius:14px">
+          <strong style="color:var(--purple)">例3 · 对称轴数量：</strong>
+          <p style="margin:6px 0;font-size:15px">长方形有几条对称轴？正方形呢？</p>
+          <p style="margin:4px 0;font-size:14px;color:var(--ok)">✅ 长方形有2条，正方形有4条（含2条对角线）</p>
+          <p style="font-size:13px;color:var(--muted)">💡 正方形是特殊的长方形，每条边都相等，所以多了2条对角线对称轴！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 13: 习题讲解 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="13" data-tts="practice" data-tsh="习题讲解 - 考题思路拆解">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">✏️ 习题讲解</span>
+        <h2>常见考题思路拆解</h2>
+      </div>
+      <div class="grid" style="gap:12px">
+        <div style="padding:14px 18px;border:1px solid var(--line-subtle);border-radius:12px">
+          <strong>🔢 第1类："下列哪个是平移现象？"</strong>
+          <p style="margin:4px 0;font-size:14px;color:var(--text-secondary)">→ 判断标准：物体是否沿直线移动？位置变了，方向和大小没变？</p>
+          <p style="font-size:13px;color:var(--muted)">常见正确项：推窗、滑滑梯、电梯 / 常见干扰项：钟摆（旋转）、折纸（对称）</p>
+        </div>
+        <div style="padding:14px 18px;border:1px solid var(--line-subtle);border-radius:12px">
+          <strong>🔢 第2类："这个图形有几条对称轴？"</strong>
+          <p style="margin:4px 0;font-size:14px;color:var(--text-secondary)">→ 方法：先画出所有可能的对折线（横、竖、斜），再逐一检查是否重合</p>
+          <p style="font-size:13px;color:var(--muted)">关键记忆：正方形4条、长方形2条、等边三角形3条、圆无数条</p>
+        </div>
+        <div style="padding:14px 18px;border:1px solid var(--line-subtle);border-radius:12px">
+          <strong>🔢 第3类："画出图形绕O点旋转90°后的位置"</strong>
+          <p style="margin:4px 0;font-size:14px;color:var(--text-secondary)">→ 步骤：①找到旋转中心 ②连接中心和关键点 ③将连线旋转指定角度 ④连点成形</p>
+          <p style="font-size:13px;color:var(--muted)">在GeoGebra页面拖动滑块练习，观察每个点的运动轨迹！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 14: 五镜头深层理解 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="11" data-tts="five-lens" data-tsh="五镜头 - 从多个角度理解图形变换">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">🔍 五个角度</span>
+        <h2>换个角度看图形变换</h2>
+      </div>
+      <div class="grid" style="gap:10px">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,107,107,0.05);border-radius:12px">
+          <span style="font-size:28px">📖</span>
+          <div><strong style="color:var(--brand)">定义镜：</strong>平移是沿直线滑动的运动，旋转是绕中心点转动的运动，轴对称是对折后两边完全重合。</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(78,205,196,0.05);border-radius:12px">
+          <span style="font-size:28px">⚖️</span>
+          <div><strong style="color:var(--brand-2)">辨析镜：</strong>平移只看位置变了没，旋转看方向变了没，对称看能不能对折重合。用这三个标准来区分！</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,230,109,0.1);border-radius:12px">
+          <span style="font-size:28px">🏠</span>
+          <div><strong style="color:var(--orange)">生活镜：</strong>电梯是平移，摩天轮是旋转，蝴蝶是对称……生活中处处是图形变换，你能找到更多例子吗？</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(204,93,232,0.05);border-radius:12px">
+          <span style="font-size:28px">🔄</span>
+          <div><strong style="color:var(--purple)">变化镜：</strong>同一个三角形，平移5格、旋转90度、沿对称轴翻转——三次变换后，三角形变成了三个不同的位置，但形状和大小始终没变！</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(34,197,94,0.06);border-radius:12px">
+          <span style="font-size:28px">🎨</span>
+          <div><strong style="color:var(--ok)">创造镜：</strong>只用一种图形，通过平移、旋转、对称组合，能设计出美丽的图案！这就是图形变换的创造力。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 12: 易错点预警 ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="12" data-tts="pitfalls" data-tsh="易错点 - 注意避开这些坑">
+  <div class="slide-inner">
+    <div class="card card-accent">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="warn">⚠️ 注意避坑</span>
+        <h2>同学们最容易搞混的几件事</h2>
+      </div>
+      <div class="grid" style="gap:12px">
+        <div style="padding:14px 18px;background:rgba(255,107,107,0.04);border-radius:12px;border-left:4px solid var(--brand)">
+          <strong style="color:var(--brand)">🚫 易错点1：误以为"移动=改变大小"</strong>
+          <p style="margin:6px 0 0;font-size:14px;color:var(--muted)">平移、旋转、对称都不会改变图形的大小和形状！只有"缩放"才会。考试常考："平移后图形变大了对吗？"——当然不对！</p>
+        </div>
+        <div style="padding:14px 18px;background:rgba(204,93,232,0.04);border-radius:12px;border-left:4px solid var(--purple)">
+          <strong style="color:var(--purple)">🚫 易错点2：分不清旋转和对称</strong>
+          <p style="margin:6px 0 0;font-size:14px;color:var(--muted)">旋转是"转动"，对称是"对折"。一个关键判断：旋转后的图形和原图方向不同，但无法通过对折重合；轴对称图形对折后能重合。</p>
+        </div>
+        <div style="padding:14px 18px;background:rgba(78,205,196,0.04);border-radius:12px;border-left:4px solid var(--brand-2)">
+          <strong style="color:var(--brand-2)">🚫 易错点3：以为所有图形都有对称轴</strong>
+          <p style="margin:6px 0 0;font-size:14px;color:var(--muted)">不是所有图形都有对称轴！一般三角形没有对称轴，等腰三角形有1条，等边三角形有3条，正方形有4条，圆形有无数条。</p>
+        </div>
+        <div style="padding:14px 18px;background:rgba(255,146,43,0.04);border-radius:12px;border-left:4px solid var(--orange)">
+          <strong style="color:var(--orange)">🚫 易错点4：没找准旋转中心</strong>
+          <p style="margin:6px 0 0;font-size:14px;color:var(--muted)">旋转一定要说清楚"绕哪个点转"。同样的图形，绕不同的中心点旋转，结果完全不一样！GeoGebra里拖动中心点试试看~</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 13: Summary ═══ -->
+<section class="slide-page" data-page-type="summary" data-page-index="14" data-tts="summary" data-tsh="总结 - 三种图形变换对比">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="success">📋 本课总结</span>
+        <h2>三种图形变换，你学会了吗？</h2>
+      </div>
+      <div class="grid grid-3" style="margin-top:12px">
+        <div style="background:rgba(255,107,107,0.06);padding:20px;border-radius:14px;text-align:center">
+          <div style="font-size:40px">↔️</div>
+          <h3 style="margin:8px 0;color:var(--brand)">平移</h3>
+          <p style="font-size:14px;color:var(--muted);line-height:1.6">沿直线滑动<br>位置变，方向大小不变</p>
+        </div>
+        <div style="background:rgba(78,205,196,0.08);padding:20px;border-radius:14px;text-align:center">
+          <div style="font-size:40px">🔃</div>
+          <h3 style="margin:8px 0;color:var(--brand-2)">旋转</h3>
+          <p style="font-size:14px;color:var(--muted);line-height:1.6">绕中心点转动<br>方向变，大小不变</p>
+        </div>
+        <div style="background:rgba(204,93,232,0.06);padding:20px;border-radius:14px;text-align:center">
+          <div style="font-size:40px">🪞</div>
+          <h3 style="margin:8px 0;color:var(--purple)">轴对称</h3>
+          <p style="font-size:14px;color:var(--muted);line-height:1.6">沿对称轴对折<br>两边完全重合</p>
+        </div>
+      </div>
+      <img src="./assets/three-transforms.png" alt="三种图形变换对比" style="width:100%;max-width:700px;display:block;margin:0 auto 16px;border-radius:14px">
+      <p style="text-align:center;margin-top:20px;font-size:16px;font-weight:700;color:var(--text-secondary)">
+        🎉 图形变换不变的是<strong style="color:var(--brand)">形状和大小</strong>，变的是<strong style="color:var(--brand-2)">位置或方向</strong>！
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 12: Knowledge Graph ═══ -->
+<section class="slide-page" data-page-type="summary" data-page-index="15" data-tts="knowledge-graph" data-tsh="知识图谱 - 查看前置与后续知识">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag" data-variant="purple">🗺️ 知识图谱</span>
+        <h2>知识连接</h2>
+      </div>
+      <p style="color:var(--muted);margin:0 0 16px">本课在知识树中的位置：前置 → 本课 → 后续</p>
+      <div data-teachany-kg="math-e-symmetry-translation-rotation">
+        <canvas class="tkg-fallback-canvas" width="720" height="120" aria-label="知识图谱互动画布" style="display:block;width:100%;max-height:140px;border-radius:12px"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 13: AI Tutor ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="16" data-tts="ai-tutor" data-tsh="AI 学伴 - 有不懂的随时问">
+  <div class="slide-inner">
+    <div data-teachany-tutor-card></div>
+  </div>
+</section>
+
+</div><!-- .slide-container -->
+
+<div id="audio-config" data-teachany-audio hidden>
+  <script type="application/json" data-teachany-audio-playlist>
+[
+  {"section":"hero","src":"./tts/hero.mp3","label":"开场"},
+  {"section":"abt","src":"./tts/hero.mp3","label":"情境引入"},
+  {"section":"problem-anchor","src":"./tts/problem-anchor.mp3","label":"问题锚点"},
+  {"section":"objectives","src":"./tts/objectives.mp3","label":"学习目标"},
+  {"section":"pretest","src":"./tts/pretest.mp3","label":"课前小测"},
+  {"section":"module-1","src":"./tts/module-1.mp3","label":"轴对称"},
+  {"section":"module-2","src":"./tts/module-2.mp3","label":"平移"},
+  {"section":"module-3","src":"./tts/module-3.mp3","label":"旋转"},
+  {"section":"geogebra","src":"./tts/geogebra.mp3","label":"动手探究"},
+  {"section":"games","src":"./tts/games.mp3","label":"闯关大作战"},
+  {"section":"conceptest","src":"./tts/conceptest.mp3","label":"概念辨析"},
+  {"section":"posttest","src":"./tts/posttest.mp3","label":"课后挑战"},
+  {"section":"summary","src":"./tts/summary.mp3","label":"本课总结"}
+]
+  </script>
+</div>
+
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式" title="切换播放模式">
+  <svg id="fab-icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+  <svg id="fab-icon-browse" viewBox="0 0 24 24" style="display:none"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+  <div class="toolbar-progress" id="tb-progress"><div class="toolbar-progress-fill" id="tb-progress-fill"></div></div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 14</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+  <button class="toolbar-btn" id="tb-autoplay" aria-label="自动播放"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏"><svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></button>
+</div>
+
+<!-- ═══ GeoGebra Deploy API ═══ -->
+<script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+<script>
+/* ============================================================
+   Slide Controller
+   ============================================================ */
+(function() {
+  'use strict';
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0, isPlayMode = false, isAutoPlay = false, autoPlayTimer = null;
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const fab = document.getElementById('play-mode-fab');
+  const fabIconPlay = document.getElementById('fab-icon-play');
+  const fabIconBrowse = document.getElementById('fab-icon-browse');
+  const toolbar = document.getElementById('slide-toolbar');
+  const tbPrev = document.getElementById('tb-prev'), tbNext = document.getElementById('tb-next');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+  const tbProgress = document.getElementById('tb-progress');
+  const tbAutoplay = document.getElementById('tb-autoplay');
+  const tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const counter = document.createElement('div');
+    counter.className = 'sidenav-counter'; counter.id = 'sidenav-counter';
+    counter.textContent = '1/' + totalPages; sidenav.appendChild(counter);
+    pages.forEach((page, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i===0?' active':'');
+      dot.setAttribute('data-tooltip', (page.dataset.tsh||'').split(' - ')[0] || '第'+(i+1)+'页');
+      dot.setAttribute('aria-label', '跳转到第'+(i+1)+'页');
+      dot.addEventListener('click', () => goToPage(i));
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    const p = totalPages>1 ? (currentPage/(totalPages-1))*100 : 100;
+    progressBar.style.width = p+'%'; tbProgressFill.style.width = p+'%';
+    tbPageInfo.textContent = (currentPage+1)+' / '+totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach((d,i) => d.classList.toggle('active', i===currentPage));
+    const ce = document.getElementById('sidenav-counter'); if(ce) ce.textContent = (currentPage+1)+'/'+totalPages;
+    tbPrev.style.opacity = currentPage===0?'0.3':'1';
+    tbNext.style.opacity = currentPage===totalPages-1?'0.3':'1';
+  }
+
+  function goToPage(i) {
+    if(i<0||i>=totalPages) return; currentPage=i;
+    if(isPlayMode) pages[currentPage].scrollIntoView({behavior:'smooth',block:'start'});
+    else container.scrollTo({top:pages[currentPage].offsetTop,behavior:'smooth'});
+    updateUI(); dispatchPageAudio();
+  }
+  function nextPage(){if(currentPage<totalPages-1)goToPage(currentPage+1);}
+  function prevPage(){if(currentPage>0)goToPage(currentPage-1);}
+
+  let scrollTO;
+  container.addEventListener('scroll', () => {
+    if(isPlayMode) return;
+    clearTimeout(scrollTO);
+    scrollTO = setTimeout(() => {
+      const st=container.scrollTop; let cl=0, md=Infinity;
+      pages.forEach((p,i)=>{const d=Math.abs(p.offsetTop-st);if(d<md){md=d;cl=i;}});
+      if(cl!==currentPage){currentPage=cl;updateUI();}
+    },100);
+  },{passive:true});
+
+  function togglePlayMode() {
+    isPlayMode=!isPlayMode; document.body.classList.toggle('play-mode',isPlayMode);
+    document.body.classList.toggle('toolbar-visible',isPlayMode);
+    fabIconPlay.style.display=isPlayMode?'none':'block';
+    fabIconBrowse.style.display=isPlayMode?'block':'none';
+    if(isPlayMode)goToPage(currentPage);
+  }
+  fab.addEventListener('click',togglePlayMode);
+  tbPrev.addEventListener('click',prevPage);
+  tbNext.addEventListener('click',nextPage);
+  tbProgress.addEventListener('click',e=>{
+    const r=tbProgress.getBoundingClientRect();
+    goToPage(Math.round(((e.clientX-r.left)/r.width)*(totalPages-1)));
+  });
+  tbAutoplay.addEventListener('click',()=>{
+    isAutoPlay=!isAutoPlay; tbAutoplay.classList.toggle('active',isAutoPlay);
+    if(isAutoPlay){autoPlayTimer=setInterval(()=>{if(currentPage<totalPages-1)nextPage();else{tbAutoplay.classList.remove('active');isAutoPlay=false;clearInterval(autoPlayTimer);}},8000);}
+    else clearInterval(autoPlayTimer);
+  });
+  tbFullscreen.addEventListener('click',()=>{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();});
+  document.addEventListener('keydown',e=>{
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+    switch(e.key){case'ArrowRight':case'ArrowDown':case' ':e.preventDefault();nextPage();break;case'ArrowLeft':case'ArrowUp':e.preventDefault();prevPage();break;case'f':case'F':if(!e.ctrlKey&&!e.metaKey)togglePlayMode();break;case'Escape':if(isPlayMode)togglePlayMode();break;}
+  });
+
+  function dispatchPageAudio() {
+    const ttsId=pages[currentPage].dataset.tts;
+    if(ttsId&&window.__TEACHANY_AUDIO_PLAYER__) window.__TEACHANY_AUDIO_PLAYER__.playSection(ttsId);
+  }
+  document.addEventListener('teachany-audio-ended',()=>{
+    if(isAutoPlay&&currentPage<totalPages-1) setTimeout(nextPage,1000);
+  });
+
+  window.__TEACHANY_LEARNER_QUESTION__='';
+  window.__TEACHANY_TUTOR_CONFIG__={
+    courseId:'math-e-symmetry-translation-rotation', courseTitle:'旋转、对称与平移',
+    subject:'math', grade:'3', nodeId:'math-e-symmetry-translation-rotation',
+    lessonType:'new-concept',
+    getLearnerQuestion:()=>window.__TEACHANY_LEARNER_QUESTION__||'',
+    getContext:()=>(pages[currentPage]||document.body).innerText.slice(0,3000)
+  };
+  function setLearnerQuestion(q){
+    window.__TEACHANY_LEARNER_QUESTION__=q||'';
+    const fb=document.getElementById('anchor-feedback');
+    if(fb)fb.textContent=q?'🎯 你的问题：'+q:'👆 选择或输入一个问题，本课会围绕它展开。';
+  }
+  document.querySelectorAll('[data-anchor-choice]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-anchor-choice]').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected'); setLearnerQuestion(btn.getAttribute('data-anchor-choice')||btn.textContent.trim());
+    });
+  });
+  document.getElementById('learner-question-input')?.addEventListener('input',e=>setLearnerQuestion(e.target.value.trim()));
+  buildSidenav(); updateUI();
+  document.body.classList.add('toolbar-visible');
+  setTimeout(()=>{if(!isPlayMode)document.body.classList.remove('toolbar-visible');},3000);
+})();
+</script>
+
+<!-- ═══ Demo Canvases (concept pages) ═══ -->
+<script>
+(function() {
+  // --- Symmetry demo canvas (page 4) ---
+  const symCanvas = document.getElementById('symmetry-demo');
+  if(symCanvas) {
+    const ctx = symCanvas.getContext('2d');
+    const cx = 120, cy = 120;
+    let mx = 60, my = 120;
+    function drawSymmetry(mirrorX) {
+      ctx.clearRect(0,0,240,240);
+      // Mirror line
+      ctx.strokeStyle = '#cc5de8'; ctx.lineWidth = 2; ctx.setLineDash([8,4]);
+      ctx.beginPath(); ctx.moveTo(cx, 20); ctx.lineTo(cx, 220); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#4ecdc4'; ctx.font = '12px sans-serif';
+      ctx.fillText('对称轴', cx+8, 30);
+      // Draw left half shape
+      ctx.fillStyle = '#ff6b6b'; ctx.globalAlpha = 0.6;
+      ctx.beginPath(); ctx.moveTo(40,cy); ctx.lineTo(mirrorX,my-30); ctx.lineTo(mirrorX,my+30); ctx.closePath(); ctx.fill();
+      // Mirror right half
+      ctx.fillStyle = '#4ecdc4'; ctx.globalAlpha = 0.5;
+      const rmx = cx + (cx - mirrorX);
+      ctx.beginPath(); ctx.moveTo(200,cy); ctx.lineTo(rmx,my-30); ctx.lineTo(rmx,my+30); ctx.closePath(); ctx.fill();
+      ctx.globalAlpha = 1;
+      // Labels
+      ctx.fillStyle = '#ff6b6b'; ctx.font = 'bold 11px sans-serif';
+      ctx.fillText('原图', 30, 200);
+      ctx.fillStyle = '#4ecdc4';
+      ctx.fillText('镜像', 180, 200);
+    }
+    drawSymmetry(60);
+    symCanvas.addEventListener('mousemove', function(e) {
+      const rect = symCanvas.getBoundingClientRect();
+      const scaleX = 240 / rect.width;
+      mx = (e.clientX - rect.left) * scaleX;
+      mx = Math.max(30, Math.min(cx, mx));
+      drawSymmetry(mx);
+    });
+    symCanvas.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+      const rect = symCanvas.getBoundingClientRect();
+      const scaleX = 240 / rect.width;
+      mx = (e.touches[0].clientX - rect.left) * scaleX;
+      mx = Math.max(30, Math.min(cx, mx));
+      drawSymmetry(mx);
+    }, {passive:false});
+  }
+
+  // --- Translation demo canvas (page 5) ---
+  const trCanvas = document.getElementById('translation-demo');
+  if(trCanvas) {
+    const ctx = trCanvas.getContext('2d');
+    let tx = 40, ty = 120, dragging = false;
+    function drawTranslation() {
+      ctx.clearRect(0,0,240,240);
+      // Grid
+      ctx.strokeStyle = '#e8ddd0'; ctx.lineWidth = 0.5;
+      for(let i=0;i<=240;i+=30){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i,240);ctx.stroke();ctx.beginPath();ctx.moveTo(0,i);ctx.lineTo(240,i);ctx.stroke();}
+      // Arrow hint
+      ctx.strokeStyle = '#ff6b6b'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(40,100); ctx.lineTo(200,100); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(195,95); ctx.lineTo(200,100); ctx.lineTo(195,105); ctx.stroke();
+      // Box
+      ctx.fillStyle = '#ff6b6b'; ctx.globalAlpha = 0.7;
+      ctx.fillRect(tx-15,ty-15,30,30);
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = '#ff6b6b'; ctx.lineWidth = 2;
+      ctx.strokeRect(tx-15,ty-15,30,30);
+      // Label
+      ctx.fillStyle = '#3d3226'; ctx.font = '12px sans-serif';
+      ctx.fillText('拖我→', tx-18, ty-22);
+      ctx.fillStyle = '#8b7e6e'; ctx.font = '11px sans-serif';
+      ctx.fillText('形状大小不变！', 130, 200);
+    }
+    drawTranslation();
+    trCanvas.addEventListener('mousedown',function(e){
+      const r=trCanvas.getBoundingClientRect();const sx=240/r.width,sy=240/r.height;
+      const mx=(e.clientX-r.left)*sx,my=(e.clientY-r.top)*sy;
+      if(Math.abs(mx-tx)<20&&Math.abs(my-ty)<20){dragging=true;}
+    });
+    trCanvas.addEventListener('mousemove',function(e){
+      if(!dragging)return;
+      const r=trCanvas.getBoundingClientRect();const sx=240/r.width;
+      tx=Math.max(30,Math.min(210,(e.clientX-r.left)*sx));
+      drawTranslation();
+    });
+    trCanvas.addEventListener('mouseup',()=>{dragging=false;});
+    trCanvas.addEventListener('touchstart',function(e){
+      e.preventDefault();
+      const r=trCanvas.getBoundingClientRect();const sx=240/r.width,sy=240/r.height;
+      const mx=(e.touches[0].clientX-r.left)*sx,my=(e.touches[0].clientY-r.top)*sy;
+      if(Math.abs(mx-tx)<20&&Math.abs(my-ty)<20)dragging=true;
+    },{passive:false});
+    trCanvas.addEventListener('touchmove',function(e){
+      e.preventDefault();if(!dragging)return;
+      const r=trCanvas.getBoundingClientRect();
+      tx=Math.max(30,Math.min(210,(e.touches[0].clientX-r.left)*(240/r.width)));
+      drawTranslation();
+    },{passive:false});
+    trCanvas.addEventListener('touchend',()=>{dragging=false;});
+  }
+
+  // --- Rotation demo canvas (page 6) ---
+  const rotCanvas = document.getElementById('rotation-demo');
+  if(rotCanvas) {
+    const ctx = rotCanvas.getContext('2d');
+    const rcx=120,rcy=120; let angle=0, rotating=false;
+    function drawRotation() {
+      ctx.clearRect(0,0,240,240);
+      // Center point
+      ctx.fillStyle='#ff6b6b'; ctx.beginPath(); ctx.arc(rcx,rcy,5,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#3d3226'; ctx.font='11px sans-serif'; ctx.fillText('中心点',rcx+10,rcy-8);
+      // Rotating arrow
+      ctx.save(); ctx.translate(rcx,rcy); ctx.rotate(angle);
+      ctx.fillStyle='#4ecdc4'; ctx.globalAlpha=0.7;
+      ctx.beginPath(); ctx.moveTo(0,-40); ctx.lineTo(-15,0); ctx.lineTo(15,0); ctx.closePath(); ctx.fill();
+      ctx.globalAlpha=1;
+      ctx.restore();
+      // Circle track
+      ctx.strokeStyle='#e8ddd0'; ctx.lineWidth=1; ctx.setLineDash([4,4]);
+      ctx.beginPath(); ctx.arc(rcx,rcy,40,0,Math.PI*2); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle='#8b7e6e'; ctx.font='11px sans-serif';
+      ctx.fillText('拖箭头转动 ↻', 60, 200);
+    }
+    drawRotation();
+    function getAngle(e){
+      const r=rotCanvas.getBoundingClientRect();
+      return Math.atan2((e.clientY||e.touches[0].clientY)-r.top-r.height/2,(e.clientX||e.touches[0].clientX)-r.left-r.width/2);
+    }
+    rotCanvas.addEventListener('mousedown',function(e){rotating=true;angle=getAngle(e);drawRotation();});
+    rotCanvas.addEventListener('mousemove',function(e){if(!rotating)return;angle=getAngle(e);drawRotation();});
+    rotCanvas.addEventListener('mouseup',()=>{rotating=false;});
+    rotCanvas.addEventListener('touchstart',function(e){e.preventDefault();rotating=true;angle=getAngle(e);drawRotation();},{passive:false});
+    rotCanvas.addEventListener('touchmove',function(e){e.preventDefault();if(!rotating)return;angle=getAngle(e);drawRotation();},{passive:false});
+    rotCanvas.addEventListener('touchend',()=>{rotating=false;});
+  }
+})();
+</script>
+
+<!-- ═══ GeoGebra Applet ═══ -->
+<script>
+window.addEventListener('load', function() {
+  try {
+    new GGBApplet({
+      appName: "geometry",
+      width: 800, height: 480,
+      showMenuBar: false, showAlgebraInput: false, showToolBar: true,
+      showResetIcon: true, language: "zh-CN",
+      appletOnLoad: function(api) {
+        // Create a triangle
+        api.evalCommand("A = (2, 3)");
+        api.evalCommand("B = (5, 2)");
+        api.evalCommand("C = (4, 5)");
+        api.evalCommand("t1 = Polygon(A, B, C)");
+        // Rotation center point
+        api.evalCommand("O = (0, 0)");
+        api.setColor("O", 255, 107, 107);
+        api.setPointSize("O", 6);
+        // Angle slider
+        api.evalCommand("α = 60°");
+        api.setColor("α", 78, 205, 196);
+        // Rotate triangle
+        api.evalCommand("t2 = Rotate(t1, α, O)");
+        api.setColor("t2", 78, 205, 196);
+        api.setColor("t1", 255, 107, 107);
+        api.setLabelVisible("t1", true);
+        api.setLabelVisible("t2", true);
+        api.setCaption("t1", "原图");
+        api.setCaption("t2", "旋转后");
+        api.setLabelStyle("t1", 2);
+        api.setLabelStyle("t2", 2);
+        api.setCoordSystem(-6, 8, -3, 7);
+      }
+    }, '5.0').inject('ggb-applet');
+  } catch(e) {
+    document.getElementById('ggb-applet').innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted)">GeoGebra 加载中，请稍候或刷新页面重试 🔄</div>';
+  }
+});
+</script>
+
+<!-- ═══ Interactive Game (page 8 - 闯关大作战) ═══ -->
+<script>
+(function() {
+  const gameCanvas = document.getElementById('game-canvas');
+  if(!gameCanvas) return;
+  const ctx = gameCanvas.getContext('2d');
+  const W=600, H=340;
+  let currentLevel = 0;
+  const totalLevels = 3;
+  const levelNames = ['🧩 第一关：对称小达人', '📦 第二关：平移小能手', '🎡 第三关：旋转小学霸'];
+  const levelHints = [
+    '点击右侧点，画出左侧图形的对称图案！',
+    '把三角形拖到虚线框里，完成平移任务！',
+    '点击旋转按钮，把箭头转到正确方向！'
+  ];
+
+  // Game state
+  let userPoints = []; // Points user placed for level 1
+  let dragTarget = null;
+  let targetPos = {x:400, y:170}; // Level 2 target
+  let objectPos = {x:180, y:170};
+  let rotationAngle = 0; // Level 3
+  let targetAngle = Math.PI/2; // Target: 90 degrees
+  let levelComplete = [false, false, false];
+
+  function drawLevel1() {
+    ctx.clearRect(0,0,W,H);
+    // Mirror line
+    ctx.strokeStyle = '#cc5de8'; ctx.lineWidth = 3; ctx.setLineDash([10,6]);
+    ctx.beginPath(); ctx.moveTo(300,30); ctx.lineTo(300,310); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#cc5de8'; ctx.font = 'bold 14px sans-serif';
+    ctx.fillText('对称轴', 308, 50);
+
+    // Left side: source triangle
+    ctx.fillStyle = '#ff6b6b'; ctx.globalAlpha = 0.7;
+    ctx.beginPath();
+    ctx.moveTo(120, 120);
+    ctx.lineTo(80, 220);
+    ctx.lineTo(200, 200);
+    ctx.closePath();
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = '#ff6b6b'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(120, 120);
+    ctx.lineTo(80, 220);
+    ctx.lineTo(200, 200);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fillStyle = '#3d3226'; ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('原图', 120, 160);
+
+    // Right side: grid hint dots
+    const mirrorPairs = [
+      {lx:120,ly:120,rx:480,ry:120},
+      {lx:80,ly:220,rx:520,ry:220},
+      {lx:200,ly:200,rx:400,ry:200}
+    ];
+    mirrorPairs.forEach(p => {
+      ctx.fillStyle = '#e8ddd0';
+      ctx.beginPath(); ctx.arc(p.rx, p.ry, 6, 0, Math.PI*2); ctx.fill();
+      ctx.strokeStyle = '#ccc'; ctx.lineWidth = 0.5;
+      ctx.beginPath(); ctx.moveTo(p.lx, p.ly); ctx.lineTo(p.rx, p.ry); ctx.stroke();
+    });
+
+    // User drawn points
+    userPoints.forEach(p => {
+      ctx.fillStyle = '#4ecdc4'; ctx.beginPath(); ctx.arc(p.x, p.y, 8, 0, Math.PI*2); ctx.fill();
+      ctx.strokeStyle = '#4ecdc4'; ctx.lineWidth = 2;
+      if(userPoints.length >= 2) {
+        ctx.beginPath();
+        ctx.moveTo(userPoints[0].x, userPoints[0].y);
+        for(let i=1;i<userPoints.length;i++) ctx.lineTo(userPoints[i].x, userPoints[i].y);
+        if(userPoints.length===3) ctx.closePath();
+        ctx.stroke();
+      }
+    });
+
+    ctx.fillStyle = '#8b7e6e'; ctx.font = '13px sans-serif';
+    ctx.fillText('在右边灰色圆点附近点击，画出镜像图案 👆', 310, 310);
+  }
+
+  function drawLevel2() {
+    ctx.clearRect(0,0,W,H);
+    // Target dashed box
+    ctx.strokeStyle = '#4ecdc4'; ctx.lineWidth = 3; ctx.setLineDash([8,4]);
+    ctx.strokeRect(targetPos.x-25, targetPos.y-25, 50, 50);
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#4ecdc4'; ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('目标位置', targetPos.x-22, targetPos.y-32);
+
+    // Object
+    ctx.fillStyle = '#ff6b6b'; ctx.globalAlpha = 0.7;
+    ctx.beginPath();
+    ctx.moveTo(objectPos.x, objectPos.y-30);
+    ctx.lineTo(objectPos.x-20, objectPos.y+20);
+    ctx.lineTo(objectPos.x+20, objectPos.y+20);
+    ctx.closePath();
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = '#ff6b6b'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(objectPos.x, objectPos.y-30);
+    ctx.lineTo(objectPos.x-20, objectPos.y+20);
+    ctx.lineTo(objectPos.x+20, objectPos.y+20);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fillStyle = '#3d3226'; ctx.font = 'bold 11px sans-serif';
+    ctx.fillText('拖我→', objectPos.x-18, objectPos.y-38);
+
+    // Check if close to target
+    const dx = objectPos.x - targetPos.x, dy = objectPos.y - targetPos.y;
+    const dist = Math.sqrt(dx*dx+dy*dy);
+    if(dist < 30) {
+      ctx.fillStyle = '#22c55e'; ctx.font = 'bold 16px sans-serif';
+      ctx.fillText('✅ 太棒了！已经对准！', 200, 300);
+    }
+    ctx.fillStyle = '#8b7e6e'; ctx.font = '13px sans-serif';
+    ctx.fillText('把红色三角形拖到绿色虚线框里 👆', 150, 330);
+  }
+
+  function drawLevel3() {
+    ctx.clearRect(0,0,W,H);
+    const cx=300, cy=170;
+    // Center
+    ctx.fillStyle='#ff6b6b'; ctx.beginPath(); ctx.arc(cx,cy,6,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#3d3226'; ctx.font='bold 12px sans-serif'; ctx.fillText('中心点', cx+12, cy-10);
+    // Target direction (dashed)
+    ctx.save(); ctx.translate(cx,cy);
+    ctx.strokeStyle='#4ecdc4'; ctx.lineWidth=3; ctx.setLineDash([6,4]);
+    ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,-80); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(-8,-70); ctx.lineTo(0,-80); ctx.lineTo(8,-70); ctx.stroke();
+    ctx.fillStyle='#4ecdc4'; ctx.font='bold 12px sans-serif'; ctx.fillText('目标方向', 10, -50);
+    // Current direction
+    ctx.rotate(rotationAngle);
+    ctx.fillStyle='#ff6b6b'; ctx.globalAlpha=0.7;
+    ctx.beginPath(); ctx.moveTo(0,-80); ctx.lineTo(-12,0); ctx.lineTo(12,0); ctx.closePath(); ctx.fill();
+    ctx.globalAlpha=1;
+    ctx.strokeStyle='#ff6b6b'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(0,-80); ctx.lineTo(-12,0); ctx.lineTo(12,0); ctx.closePath(); ctx.stroke();
+    ctx.restore();
+    // Check
+    const diff = Math.abs(rotationAngle - targetAngle) % (Math.PI*2);
+    const minDiff = Math.min(diff, Math.PI*2-diff);
+    if(minDiff < 0.2) {
+      ctx.fillStyle = '#22c55e'; ctx.font = 'bold 16px sans-serif';
+      ctx.fillText('✅ 完美！方向正确！', 200, 300);
+    }
+    ctx.fillStyle = '#8b7e6e'; ctx.font = '13px sans-serif';
+    ctx.fillText('点击下方旋转按钮，把箭头转到绿色方向 👆', 150, 330);
+  }
+
+  function draw() {
+    if(currentLevel===0) drawLevel1();
+    else if(currentLevel===1) drawLevel2();
+    else drawLevel3();
+  }
+
+  function checkLevel() {
+    let ok = false;
+    if(currentLevel===0) {
+      ok = userPoints.length >= 3;
+      if(!ok) { document.getElementById('game-feedback').textContent='💪 再试试！至少点击3个点来画出对称三角形'; return; }
+      // Check symmetry: for each point, its mirror should be within 40px of correct position
+      const correctMirrors = [{x:480,y:120},{x:520,y:220},{x:400,y:200}];
+      let correctCount = 0;
+      correctMirrors.forEach(cm => {
+        const near = userPoints.some(p => {
+          const d = Math.sqrt((p.x-cm.x)**2+(p.y-cm.y)**2);
+          return d < 50;
+        });
+        if(near) correctCount++;
+      });
+      ok = correctCount >= 3;
+    } else if(currentLevel===1) {
+      const dx=objectPos.x-targetPos.x, dy=objectPos.y-targetPos.y;
+      ok = Math.sqrt(dx*dx+dy*dy) < 35;
+    } else {
+      const diff = Math.abs(rotationAngle - targetAngle) % (Math.PI*2);
+      ok = Math.min(diff, Math.PI*2-diff) < 0.3;
+    }
+    if(ok) {
+      levelComplete[currentLevel] = true;
+      document.getElementById('game-feedback').innerHTML = '🎉 <strong>太棒了！闯关成功！</strong>';
+      document.getElementById('game-stars').textContent = getStars();
+      document.getElementById('game-next').style.display = 'inline-flex';
+    } else {
+      document.getElementById('game-feedback').innerHTML = '💪 还差一点点，再试试！';
+    }
+  }
+
+  function getStars() {
+    const count = levelComplete.filter(Boolean).length;
+    return '⭐'.repeat(count) + '☆'.repeat(totalLevels-count);
+  }
+
+  function resetLevel() {
+    if(currentLevel===0) { userPoints = []; }
+    else if(currentLevel===1) { objectPos = {x:180, y:170}; }
+    else { rotationAngle = 0; }
+    document.getElementById('game-feedback').textContent = '';
+    document.getElementById('game-next').style.display = 'none';
+    draw();
+  }
+
+  function nextLevel() {
+    if(currentLevel < totalLevels-1) { currentLevel++; resetLevel(); }
+    else { currentLevel = 0; levelComplete.fill(false); resetLevel(); }
+    document.getElementById('game-level-title').textContent = levelNames[currentLevel];
+    document.getElementById('game-hint').textContent = levelHints[currentLevel];
+    document.getElementById('game-stars').textContent = getStars();
+    draw();
+  }
+
+  // Init
+  document.getElementById('game-stars').textContent = '☆☆☆';
+
+  // Canvas events
+  gameCanvas.addEventListener('mousedown', function(e) {
+    const r = gameCanvas.getBoundingClientRect();
+    const sx = W/r.width, sy = H/r.height;
+    const mx = (e.clientX-r.left)*sx, my = (e.clientY-r.top)*sy;
+    if(currentLevel===0 && mx > 300) {
+      userPoints.push({x:Math.round(mx), y:Math.round(my)});
+      if(userPoints.length > 3) userPoints.shift();
+      draw();
+    } else if(currentLevel===1) {
+      const dx=mx-objectPos.x, dy=my-objectPos.y;
+      if(Math.abs(dx)<30&&Math.abs(dy)<35) dragTarget = 'obj';
+    }
+  });
+  gameCanvas.addEventListener('mousemove', function(e) {
+    if(!dragTarget) return;
+    const r = gameCanvas.getBoundingClientRect();
+    const sx = W/r.width, sy = H/r.height;
+    objectPos.x = Math.max(40, Math.min(W-40, (e.clientX-r.left)*sx));
+    objectPos.y = Math.max(50, Math.min(H-50, (e.clientY-r.top)*sy));
+    draw();
+  });
+  gameCanvas.addEventListener('mouseup', () => { dragTarget = null; });
+  // Touch
+  gameCanvas.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    const r = gameCanvas.getBoundingClientRect();
+    const sx = W/r.width, sy = H/r.height;
+    const mx = (e.touches[0].clientX-r.left)*sx, my = (e.touches[0].clientY-r.top)*sy;
+    if(currentLevel===0 && mx > 300) {
+      userPoints.push({x:Math.round(mx), y:Math.round(my)});
+      if(userPoints.length > 3) userPoints.shift();
+      draw();
+    } else if(currentLevel===1) {
+      const dx=mx-objectPos.x, dy=my-objectPos.y;
+      if(Math.abs(dx)<30&&Math.abs(dy)<35) dragTarget = 'obj';
+    }
+  }, {passive:false});
+  gameCanvas.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    if(!dragTarget) return;
+    const r = gameCanvas.getBoundingClientRect();
+    objectPos.x = Math.max(40, Math.min(W-40, (e.touches[0].clientX-r.left)*(W/r.width)));
+    objectPos.y = Math.max(50, Math.min(H-50, (e.touches[0].clientY-r.top)*(H/r.height)));
+    draw();
+  }, {passive:false});
+  gameCanvas.addEventListener('touchend', () => { dragTarget = null; });
+
+  // Buttons
+  document.getElementById('game-check').addEventListener('click', checkLevel);
+  document.getElementById('game-reset').addEventListener('click', resetLevel);
+  document.getElementById('game-next').addEventListener('click', nextLevel);
+
+  // Level 3 rotation buttons
+  const rotBtns = document.createElement('div');
+  rotBtns.style.cssText = 'display:flex;gap:8px;margin-top:8px;justify-content:center';
+  [-30, -15, 15, 30].forEach(deg => {
+    const b = document.createElement('button');
+    b.className = 'game-btn secondary';
+    b.textContent = (deg>0?'↻+':'↺')+Math.abs(deg)+'°';
+    b.style.minWidth = '50px'; b.style.padding = '8px 14px'; b.style.fontSize = '13px';
+    b.addEventListener('click', () => {
+      rotationAngle += deg * Math.PI/180;
+      draw();
+    });
+    rotBtns.appendChild(b);
+  });
+  document.getElementById('game-feedback').after(rotBtns);
+
+  draw();
+})();
+</script>
+
+<!-- ═══ Quiz Logic (pretest, conceptest, posttest) ═══ -->
+<script>
+(function() {
+  const pretestAnswers = [0, 1, 1]; // 0=圆形, 1=不变, 1=旋转
+  const ctAnswers = [0, 1, 2, 1, 0]; // 平移/旋转/对称/旋转/平移
+  const ptAnswers = [1, 1, 2]; // 4条/位置变了形状不变/风车转动
+
+  function setupQuiz(prefix, answers) {
+    const btns = document.querySelectorAll('.'+prefix+'-q');
+    const userAnswers = {};
+    btns.forEach(b => {
+      b.addEventListener('click', function() {
+        const q = parseInt(this.dataset.q), a = parseInt(this.dataset.a);
+        // Deselect others in same question
+        document.querySelectorAll('.'+prefix+'-q[data-q="'+q+'"]').forEach(x => x.classList.remove('selected'));
+        this.classList.add('selected');
+        userAnswers[q] = a;
+      });
+    });
+    return userAnswers;
+  }
+
+  const pretestUser = setupQuiz('pretest', pretestAnswers);
+  const ctUser = setupQuiz('ct', ctAnswers);
+  const ptUser = setupQuiz('pt', ptAnswers);
+
+  function gradeQuiz(prefix, answers, userAnswers, diagnostics) {
+    let correct = 0, total = answers.length;
+    const btns = document.querySelectorAll('.'+prefix+'-q');
+    btns.forEach(b => { b.classList.remove('correct-chosen','wrong-chosen','reveal-correct'); });
+    const details = [];
+    for(let i=0;i<total;i++) {
+      if(userAnswers[i] === answers[i]) correct++;
+      document.querySelectorAll('.'+prefix+'-q[data-q="'+i+'"][data-a="'+userAnswers[i]+'"]').forEach(b => {
+        b.classList.add(userAnswers[i]===answers[i]?'correct-chosen':'wrong-chosen');
+      });
+      document.querySelectorAll('.'+prefix+'-q[data-q="'+i+'"][data-a="'+answers[i]+'"]').forEach(b => {
+        if(userAnswers[i]!==answers[i]) b.classList.add('reveal-correct');
+      });
+      if(diagnostics && userAnswers[i] !== undefined && userAnswers[i] !== answers[i]) {
+        details.push(diagnostics[i][userAnswers[i]] || '再想想为什么');
+      }
+    }
+    return {correct, total, details};
+  }
+
+  // 诊断反馈：针对每道题的错误选项给出具体错因分析
+  const pretestDiag = [
+    {1:'三角形对折后两边不一定重合，只有等腰三角形沿中垂线对折才能重合。圆形无论怎么对折都重合——它有无数条对称轴！',2:'四边形对折后两边不一定重合，只有特殊四边形（如长方形、正方形）才有对称轴。'},
+    {0:'推桌子时桌子只是换了位置，形状和大小都不会变——这就是平移的特性！',2:'推桌子不会让桌子变小，平移只改变位置，不改变大小和形状。'},
+    {0:'时钟指针是绕着中心点转动的，不是沿直线平移哦。',2:'指针的运动不是对折重合，而是围绕轴心转动——这是典型的旋转。'}
+  ];
+  const ctDiag = [
+    {1:'电梯是沿垂直方向直线移动，不是旋转。旋转是绕着一个点转圈哦。',2:'电梯不是对折重合，而是整体沿直线移动——这就是平移。'},
+    {0:'摩天轮上的小房子是绕着摩天轮中心转圈的，不是沿直线移动。',2:'小房子的运动不是对折，它是在绕圈——这是旋转。'},
+    {0:'蝴蝶翅膀不是沿直线移动，而是关于身体中轴线两边一样——这是对称！',1:'蝴蝶翅膀不是转动，而是关于一条线两边一样——这是轴对称！'},
+    {0:'窗户是绕着合页这个轴转动的，不是沿直线平移。想想看：你推开窗时窗在转还是在滑？',2:'窗户的运动不是对折，它绕着合页转动——这正是旋转。'},
+    {1:'书从左边滑到右边，是沿直线移动——这就是平移，不是旋转。',2:'书不是对折重合，而是在桌面上直线滑动——这是平移。'}
+  ];
+  const ptDiag = [
+    {0:'正方形不仅有横竖2条，还有2条对角线方向的对称轴，总共4条！试试画出来看看。',2:'正方形只有4条对称轴，不是无数条。圆形才有无数条对称轴。'},
+    {0:'平移只是移动位置，三角形的形状不会改变！大小、方向、形状都保持不变。',2:'平移不改变方向。三角形平移后方向和原来一样，只是位置变了。'},
+    {0:'电梯上下是沿直线移动——这是平移，不是旋转。',1:'推抽屉是沿直线移动——这是平移，不是旋转。风车绕着中心转动，是旋转。'}
+  ];
+
+  document.getElementById('pretest-check').addEventListener('click', function() {
+    const r = gradeQuiz('pretest', pretestAnswers, pretestUser, pretestDiag);
+    const div = document.getElementById('pretest-result');
+    div.style.display = 'block';
+    const pct = r.correct/r.total;
+    let diagHtml = '';
+    if(r.details && r.details.length>0) {
+      diagHtml = '<div style="margin-top:8px;font-size:14px;color:var(--text-secondary)">'+(function(){var a=[];r.details.forEach(function(d,i){a.push('💡 第'+(i+1)+'题：'+d)});return a.join('<br>')})()+'</div>';
+    }
+    if(pct===1) div.innerHTML = '<div class="result ok">🎉 全对！你已经对图形的变换有很好的感觉了，接下来我们深入学习！</div>';
+    else if(pct>=0.5) div.innerHTML = '<div class="result warn">👍 答对了'+r.correct+'/'+r.total+'题，还不错！让我们通过下面的学习加深理解。</div>'+diagHtml;
+    else div.innerHTML = '<div class="result error">💪 答对了'+r.correct+'/'+r.total+'题。没关系，下面的学习会帮你弄懂这些概念！</div>'+diagHtml;
+  });
+
+  document.getElementById('ct-check').addEventListener('click', function() {
+    const r = gradeQuiz('ct', ctAnswers, ctUser, ctDiag);
+    const div = document.getElementById('ct-result');
+    div.style.display = 'block';
+    const pct = r.correct/r.total;
+    let diagHtml = '';
+    if(r.details && r.details.length>0) {
+      diagHtml = '<div style="margin-top:8px;font-size:14px;color:var(--text-secondary)">'+(function(){var a=[];r.details.forEach(function(d,i){a.push('💡 第'+(i+1)+'题：'+d)});return a.join('<br>')})()+'</div>';
+    }
+    if(pct===1) div.innerHTML = '🎉 太厉害了！5道题全部答对，你已经能准确区分三种变换了！';
+    else if(pct>=0.6) div.innerHTML = '👍 答对了'+r.correct+'/'+r.total+'题，不错！绿色是正确答案，红色是你答错的，再看看~'+diagHtml;
+    else div.innerHTML = '💪 答对了'+r.correct+'/'+r.total+'题。仔细看看绿色答案和你的答案有什么不同？'+diagHtml;
+  });
+
+  document.getElementById('pt-check').addEventListener('click', function() {
+    const r = gradeQuiz('pt', ptAnswers, ptUser, ptDiag);
+    const div = document.getElementById('pt-result');
+    div.style.display = 'block';
+    const pct = r.correct/r.total;
+    let diagHtml = '';
+    if(r.details && r.details.length>0) {
+      diagHtml = '<div style="margin-top:8px;font-size:14px;color:var(--text-secondary)">'+(function(){var a=[];r.details.forEach(function(d,i){a.push('💡 第'+(i+1)+'题：'+d)});return a.join('<br>')})()+'</div>';
+    }
+    if(pct===1) div.innerHTML = '<div class="result ok">🎉 满分通过！你已经完全掌握了旋转、对称和平移！</div>';
+    else if(pct>=0.5) div.innerHTML = '<div class="result warn">👍 答对了'+r.correct+'/'+r.total+'题，回顾一下前面学的内容再试试！</div>'+diagHtml;
+    else div.innerHTML = '<div class="result error">💪 答对了'+r.correct+'/'+r.total+'题。建议回头看看模块三的旋转概念~</div>'+diagHtml;
+  });
+})();
+</script>
+
+<!-- Standard modules -->
+<script src="./assets/scripts/ai-tutor.js"></script>
+<script src="./assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="./assets/scripts/teachany-tts-narrator.js" data-tts-disabled="true" defer></script>
+<script src="./assets/scripts/teachany-section-hints.js" defer></script>
+<script src="./assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="./assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+
+</body>
+</html>
