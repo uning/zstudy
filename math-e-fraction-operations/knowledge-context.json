@@ -1,0 +1,71 @@
+{
+  "course_id": "math-e-fraction-operations",
+  "node_id": "math-e-fraction-operations",
+  "subject": "math",
+  "stage": "elementary",
+  "grade": "5",
+  "domain": "number-algebra",
+  "curriculum_excerpts": [
+    {
+      "source": "义务教育数学课程标准（2022年版）",
+      "stage": "第二学段（3-4年级）/第三学段（5-6年级）",
+      "text": "在第三学段，学生应能进行简单分数四则运算，理解通分和约分的意义。能运用分数运算解决简单的实际问题。",
+      "competency": "数感、运算能力"
+    },
+    {
+      "source": "人教版小学数学五年级下册",
+      "stage": "五年级",
+      "text": "理解分数加减法的算理，掌握同分母和异分母分数加减法的计算方法。理解分数乘除法的意义，掌握分数乘除法的计算方法，能正确进行分数四则混合运算。",
+      "competency": "数与代数"
+    }
+  ],
+  "exercises": [
+    {
+      "title": "例1：同分母加减",
+      "question": "小明吃了一个披萨的3/8，又吃了2/8，一共吃了多少？",
+      "solution": "3/8+2/8=5/8。分母不变，分子3+2=5。",
+      "key_point": "同分母加减：分母不变，分子相加减",
+      "common_mistake": "把分母也加起来，得到3/8+2/8=5/16"
+    },
+    {
+      "title": "例2：异分母通分",
+      "question": "做蛋糕用了1/2杯面粉和1/3杯糖，一共用了多少杯？",
+      "solution": "先通分：1/2=3/6，1/3=2/6。3/6+2/6=5/6杯。",
+      "key_point": "异分母加减：先通分，再加减",
+      "common_mistake": "不加通分直接分子分母分别相加"
+    },
+    {
+      "title": "例3：分数除法",
+      "question": "3/4升牛奶倒入每个1/8升的杯子，能倒几杯？",
+      "solution": "3/4÷1/8=3/4×8/1=24/4=6杯。",
+      "key_point": "除以一个分数等于乘以它的倒数",
+      "common_mistake": "忘记把除数换成倒数，直接除"
+    }
+  ],
+  "common_errors": [
+    {
+      "error": "同分母加减时把分母也加起来了",
+      "description": "如3/8+2/8=5/16，错误地把分母也加了",
+      "remediation": "牢记：分母相同的情况下分母不变，只加分子。分母表示每一份的大小，加的时候大小不变。"
+    },
+    {
+      "error": "异分母不加通分直接运算",
+      "description": "如1/2+2/3=3/5，把分子分母分别相加",
+      "remediation": "分母不同意味着每一份大小不同，必须先统一成同样大小（通分），才能加减。"
+    },
+    {
+      "error": "除法忘记化乘倒数",
+      "description": "如2/3÷3/4，直接用2÷3/3÷4，或当成乘法",
+      "remediation": "分数除法唯一规则：除以一个数等于乘以它的倒数。÷3/4 → ×4/3。"
+    },
+    {
+      "error": "结果忘记约分",
+      "description": "如计算出4/8后不化简，或约分错误",
+      "remediation": "最终结果要化成最简分数：分子分母同时除以最大公约数。4/8→1/2，6/8→3/4。"
+    }
+  ],
+  "prerequisites": ["math-e-fractions-meaning"],
+  "leads_to": ["math-e-fraction-decimal-percent"],
+  "keywords": ["分数", "四则运算", "通分", "约分", "倒数", "最小公倍数", "最大公约数"],
+  "generated_at": "2026-07-16"
+}

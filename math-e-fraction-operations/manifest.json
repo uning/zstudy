@@ -1,0 +1,55 @@
+{
+  "id": "math-e-fraction-operations",
+  "course_id": "math-e-fraction-operations",
+  "node_id": "math-e-fraction-operations",
+  "name": "分数四则运算 — 厨房里的分数魔法",
+  "name_en": "Fraction Operations - Kitchen Math Magic",
+  "subject": "math",
+  "grade": "5",
+  "stage": "elementary",
+  "domain": "number-algebra",
+  "lesson_type": "new-concept",
+  "status": "community",
+  "author": "TeachAny",
+  "version": "1.0.0",
+  "teachany_version": "7.20.0",
+  "template_version": "2.0",
+  "curriculum": "cn",
+  "description": "以厨房情境驱动，通过交互画板和闯关游戏学习分数四则运算。覆盖同分母加减、通分、乘法、除法与约分。",
+  "tags": ["分数", "加减乘除", "通分", "约分", "四则运算", "小学五年级"],
+  "prerequisites": ["math-e-fractions-meaning"],
+  "leads_to": ["math-e-fraction-decimal-percent"],
+  "learning_objectives": [
+    "掌握同分母分数的加减法",
+    "学会通分，计算异分母分数的加减法",
+    "理解分数乘法：分子×分子，分母×分母",
+    "掌握分数除法：除以一个数=乘它的倒数",
+    "解决生活中的分数实际问题"
+  ],
+  "assets": {
+    "hero": "assets/math-e-fraction-operations-hero.png",
+    "tts_manifest": "tts/manifest.json",
+    "videos": [
+      "assets/video/math-e-fraction-operations-main.mp4"
+    ],
+    "images": [
+      "assets/math-e-fraction-operations-hero.png",
+      "assets/fraction-operations-visual.png",
+      "assets/recipe-fractions.png"
+    ]
+  },
+  "has_tts": true,
+  "has_video": true,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "free_mode": false,
+  "feedback": {
+    "require_password": true,
+    "password_sha256": "e2d833a3825bacfba36715285294bffd07b566b1113cbc6b2f9da575d1948f53",
+    "password_hint": "课件ID就是密码"
+  },
+  "created_at": "2026-07-16",
+  "updated_at": "2026-07-16"
+}

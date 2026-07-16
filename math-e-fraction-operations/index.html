@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="teachany-node" content="math-e-fraction-operations">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="number-algebra">
+<meta name="teachany-lesson-type" content="new-concept">
+<meta name="teachany-version" content="7.20.0">
+<meta name="teachany-prerequisites" content="math-e-fractions-meaning">
+<meta name="teachany-next" content="math-e-fraction-decimal-percent">
+<title>分数四则运算 — 厨房里的分数魔法 · 数学 小学 G5 · TeachAny</title>
+<link rel="stylesheet" href="./assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-floating-dock.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="./assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-tutor-card.css">
+<style>
+:root {
+  --bg: #fffbf0; --card: #ffffff; --text: #3d3226; --text-secondary: #5c4f3d;
+  --brand: #ff6b6b; --brand-2: #4ecdc4; --accent: #ffe66d;
+  --ok: #22c55e; --warn: #f59e0b; --error: #ef4444;
+  --orange: #ff922b; --purple: #cc5de8;
+  --muted: #8b7e6e; --line-subtle: #e8dfd0;
+  --radius: 20px; --shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; }
+.brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 4px; background: linear-gradient(90deg,var(--brand),var(--brand-2),var(--accent)); }
+.progress-bar { position: fixed; top: 4px; left: 0; height: 3px; background: var(--brand); z-index: 100; transition: width 0.3s; border-radius: 0 2px 2px 0; }
+.slide-container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide-page { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 40px 20px 100px; }
+.slide-inner { width: 100%; max-width: 780px; }
+.card { background: var(--card); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
+.card-accent { border-left: 5px solid var(--brand); }
+.card-glow { box-shadow: 0 4px 24px rgba(255,107,107,0.1); }
+.grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.section-header { margin-bottom: 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.section-header h2 { font-size: 1.5rem; }
+.phase-tag { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; background: rgba(255,107,107,0.1); color: var(--brand); }
+.phase-tag[data-variant="success"] { background: rgba(34,197,94,0.1); color: var(--ok); }
+.phase-tag[data-variant="warn"] { background: rgba(245,158,11,0.1); color: var(--warn); }
+.phase-tag[data-variant="purple"] { background: rgba(204,93,232,0.1); color: var(--purple); }
+
+/* Cover */
+.hero-cover { text-align: center; padding: 40px 0; }
+.hero-cover-img { max-width: 500px; width: 100%; border-radius: 16px; margin-bottom: 20px; }
+.hero-title { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, var(--brand), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-subtitle { font-size: 1.1rem; color: var(--muted); margin-top: 8px; }
+
+/* Buttons */
+.btn { display: inline-block; padding: 12px 28px; border-radius: 30px; border: none; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn-primary { background: var(--brand); color: white; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,107,107,0.4); }
+.btn-outline { background: transparent; border: 2px solid var(--brand); color: var(--brand); }
+.btn-small { padding: 6px 16px; font-size: 13px; }
+
+/* Quiz */
+.quiz-item { margin-bottom: 16px; padding: 14px; border-radius: 12px; background: rgba(255,251,240,0.6); }
+.quiz-item .q { font-weight: 600; margin-bottom: 8px; }
+.quiz-item label { display: inline-block; margin-right: 14px; cursor: pointer; padding: 4px 0; }
+.quiz-item input[type="radio"] { margin-right: 4px; accent-color: var(--brand); }
+.result { margin-top: 12px; padding: 12px 16px; border-radius: 10px; font-weight: 600; }
+.result.ok { background: rgba(34,197,94,0.1); color: var(--ok); }
+.result.warn { background: rgba(245,158,11,0.1); color: var(--warn); }
+.result.error { background: rgba(239,68,68,0.1); color: var(--error); }
+
+/* Fraction blocks */
+.frac-block { display: inline-flex; flex-direction: column; align-items: center; font-size: 1.4rem; font-weight: 700; vertical-align: middle; margin: 0 4px; }
+.frac-block .num { border-bottom: 2px solid currentColor; padding: 0 6px; }
+.frac-block .den { padding: 0 6px; }
+
+/* Canvas area */
+.canvas-area { width: 100%; border-radius: 14px; border: 2px solid var(--line-subtle); background: #fff; display: block; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .hero-title { font-size: 1.6rem; }
+  .card { padding: 20px; }
+  .slide-page { padding: 20px 12px 80px; }
+}
+
+/* Nav bar */
+.nav-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-top: 1px solid var(--line-subtle); padding: 10px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+.nav-btn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--line-subtle); background: white; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.nav-btn:hover { border-color: var(--brand); color: var(--brand); }
+.nav-btn:disabled { opacity: 0.3; cursor: default; }
+.nav-info { font-size: 14px; color: var(--muted); min-width: 80px; text-align: center; }
+.nav-dots { display: flex; gap: 6px; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line-subtle); cursor: pointer; transition: all 0.2s; }
+.nav-dot.active { background: var(--brand); transform: scale(1.3); }
+
+/* Feedback colours */
+.fb-correct { color: var(--ok) !important; font-weight: 700; }
+.fb-wrong { color: var(--error) !important; text-decoration: line-through; }
+</style>
+</head>
+<body>
+<div class="brand-bar"></div>
+<div class="progress-bar" id="progress-bar"></div>
+<div class="slide-container" id="slide-container">
+
+<!-- ═══ Page 0: Cover ═══ -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero">
+  <div class="slide-inner">
+    <div class="hero-cover">
+      <img class="hero-cover-img" src="./assets/math-e-fraction-operations-hero.png" alt="分数四则运算">
+      <h1 class="hero-title">厨房里的分数魔法</h1>
+      <p class="hero-subtitle">分数加减乘除 · 小学五年级数学</p>
+      <p style="color:var(--muted);margin-top:6px">🎂 分蛋糕、调配方、比分数——厨房就是最好的数学教室</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 1: ABT 情境引入 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="1" data-tts="abt">
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header">
+        <span class="phase-tag">🎬 情境引入</span>
+        <h2>小厨师的分数难题</h2>
+      </div>
+      <p style="font-size:16px;line-height:1.9">
+        🧑‍🍳 <strong>AND</strong>：你已经认识了分数，知道 <span class="frac-block"><span class="num">1</span><span class="den">2</span></span>、
+        <span class="frac-block"><span class="num">1</span><span class="den">3</span></span>、
+        <span class="frac-block"><span class="num">3</span><span class="den">4</span></span> 是什么意思。<br>
+        🎯 <strong>BUT</strong>：但当你要把两个分数加在一起、乘几倍、或比较大小的时候，常常不知道该怎么做——特别是分母不一样的时候！<br>
+        🔧 <strong>THEREFORE</strong>：今天你就是小厨师，在厨房里通过分蛋糕、调配方、算比例，掌握分数的加减乘除四则运算！
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 2: Problem Anchor ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="2" data-tts="problem-anchor">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header">
+        <span class="phase-tag">❓ 问题锚点</span>
+        <h2>先来选一个你最好奇的问题</h2>
+      </div>
+      <div class="grid" style="gap:12px">
+        <div style="padding:16px 20px;background:rgba(255,107,107,0.04);border-radius:12px;cursor:pointer" onclick="alert('🎂 答案：吃了 1/2+1/4 个蛋糕 = 3/4 个！分母不同先通分，1/2=2/4，2/4+1/4=3/4。')">
+          <strong>🎂 第一问：</strong>小明吃了 <span class="frac-block"><span class="num">1</span><span class="den">2</span></span> 个蛋糕，又吃了 <span class="frac-block"><span class="num">1</span><span class="den">4</span></span> 个，一共吃了多少个？
+        </div>
+        <div style="padding:16px 20px;background:rgba(78,205,196,0.04);border-radius:12px;cursor:pointer" onclick="alert('📝 答案：每碗减少为1/2×2/3=1/3杯。分数乘法：分子乘分子(1×2)，分母乘分母(2×3)=2/6=1/3杯。')">
+          <strong>📝 第二问：</strong>食谱需要 <span class="frac-block"><span class="num">1</span><span class="den">2</span></span> 杯糖，小明只想做 <span class="frac-block"><span class="num">2</span><span class="den">3</span></span> 的量，需要多少糖？
+        </div>
+        <div style="padding:16px 20px;background:rgba(204,93,232,0.04);border-radius:12px;cursor:pointer" onclick="alert('🏆 答案：3/4 > 2/3。通分：9/12 > 8/12。所以小红组赢了！分数比较：先通分再比分子。')">
+          <strong>🏆 第三问：</strong>小红组完成了任务的 <span class="frac-block"><span class="num">3</span><span class="den">4</span></span>，小蓝组完成了 <span class="frac-block"><span class="num">2</span><span class="den">3</span></span>，谁更快？
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 3: Learning Objectives ═══ -->
+<section class="slide-page" data-page-type="objectives" data-page-index="3" data-tts="objectives">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header"><span class="phase-tag">🎯 学习目标</span><h2>这节课你要做到</h2></div>
+      <div class="grid" style="gap:10px">
+        <div style="padding:12px 18px;background:rgba(34,197,94,0.05);border-radius:10px">✅ 掌握同分母分数的加减法（分母不变，分子相加减）</div>
+        <div style="padding:12px 18px;background:rgba(78,205,196,0.05);border-radius:10px">✅ 学会通分，计算异分母分数的加减法</div>
+        <div style="padding:12px 18px;background:rgba(255,107,107,0.05);border-radius:10px">✅ 理解分数乘法：分子×分子，分母×分母</div>
+        <div style="padding:12px 18px;background:rgba(204,93,232,0.05);border-radius:10px">✅ 掌握分数除法：除以一个数=乘它的倒数</div>
+        <div style="padding:12px 18px;background:rgba(255,146,43,0.05);border-radius:10px">✅ 能解决生活中的分数实际问题（分食物、调配方、比分数）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 4: Pretest ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="4" data-tts="pretest">
+  <div class="slide-inner">
+    <div class="card"><div class="section-header"><span class="phase-tag">📋 课前小测</span><h2>看看你的起点</h2></div>
+    <div id="pretest-q1" class="quiz-item"><div class="q">1. <span class="frac-block"><span class="num">2</span><span class="den">5</span></span> + <span class="frac-block"><span class="num">1</span><span class="den">5</span></span> = ？</div><label><input type="radio" name="p1" value="0"> <span class="frac-block"><span class="num">3</span><span class="den">5</span></span></label><label><input type="radio" name="p1" value="1"> <span class="frac-block"><span class="num">3</span><span class="den">10</span></span></label><label><input type="radio" name="p1" value="2"> <span class="frac-block"><span class="num">1</span><span class="den">5</span></span></label></div>
+    <div id="pretest-q2" class="quiz-item"><div class="q">2. <span class="frac-block"><span class="num">2</span><span class="den">3</span></span> × <span class="frac-block"><span class="num">1</span><span class="den">2</span></span> = ？</div><label><input type="radio" name="p2" value="0"> <span class="frac-block"><span class="num">1</span><span class="den">3</span></span></label><label><input type="radio" name="p2" value="1"> <span class="frac-block"><span class="num">2</span><span class="den">6</span></span></label><label><input type="radio" name="p2" value="2"> <span class="frac-block"><span class="num">4</span><span class="den">6</span></span></label></div>
+    <div id="pretest-q3" class="quiz-item"><div class="q">3. <span class="frac-block"><span class="num">1</span><span class="den">2</span></span> + <span class="frac-block"><span class="num">1</span><span class="den">3</span></span> = ？</div><label><input type="radio" name="p3" value="0"> <span class="frac-block"><span class="num">5</span><span class="den">6</span></span></label><label><input type="radio" name="p3" value="1"> <span class="frac-block"><span class="num">2</span><span class="den">5</span></span></label><label><input type="radio" name="p3" value="2"> <span class="frac-block"><span class="num">2</span><span class="den">6</span></span></label></div>
+    <button class="btn btn-primary btn-small" id="pretest-check">检查答案</button>
+    <div id="pretest-result" style="display:none"></div></div>
+  </div>
+</section>
+
+<!-- ═══ Page 5: Video ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="video">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">🎬 动画讲解</span><h2>分数运算入门</h2></div>
+    <div style="border-radius:16px;overflow:hidden">
+      <video controls playsinline style="width:100%" poster="./assets/math-e-fraction-operations-hero.png">
+        <source src="./assets/video/math-e-fraction-operations-main.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 5: Module 1 - 同分母加减 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="module-1">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header"><span class="phase-tag">📖 模块一</span><h2>同分母分数加减法</h2></div>
+      <p style="font-size:16px;line-height:1.9">
+        🎂 同分母分数加减：<strong>分母不变，分子相加减</strong>。<br>
+        比如：<span class="frac-block"><span class="num">2</span><span class="den">8</span></span> + <span class="frac-block"><span class="num">3</span><span class="den">8</span></span> = <span class="frac-block"><span class="num">5</span><span class="den">8</span></span>（把蛋糕分成8份，2份+3份=5份）<br>
+        <span class="frac-block"><span class="num">5</span><span class="den">7</span></span> - <span class="frac-block"><span class="num">2</span><span class="den">7</span></span> = <span class="frac-block"><span class="num">3</span><span class="den">7</span></span>（7份里的5份拿走2份=剩3份）
+      </p>
+      <canvas class="canvas-area" id="canvas-add" width="700" height="200" style="margin-top:12px"></canvas>
+      <img src="./assets/fraction-operations-visual.png" alt="分数运算可视化" style="width:100%;max-width:700px;display:block;margin:8px auto;border-radius:12px">
+      <p style="font-size:13px;color:var(--muted);text-align:center">👆 拖动橙色条观察同分母加法：<span id="frac-display">2/8 + 3/8 = 5/8</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 6: Module 2 - 异分母加减（通分） ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="module-2">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header"><span class="phase-tag" data-variant="purple">📖 模块二</span><h2>异分母加减法 · 通分</h2></div>
+      <p style="font-size:16px;line-height:1.9">
+        🧩 分母不同怎么加？先<strong>通分</strong>——找分母的最小公倍数，变成相同分母！<br>
+        <span class="frac-block"><span class="num">1</span><span class="den">2</span></span> + <span class="frac-block"><span class="num">1</span><span class="den">3</span></span> = <span class="frac-block"><span class="num">3</span><span class="den">6</span></span> + <span class="frac-block"><span class="num">2</span><span class="den">6</span></span> = <span class="frac-block"><span class="num">5</span><span class="den">6</span></span>（分母2和3的最小公倍数是6）
+      </p>
+      <canvas class="canvas-area" id="canvas-lcm" width="700" height="220" style="margin-top:12px"></canvas>
+      <p style="font-size:13px;color:var(--muted);text-align:center">👆 拖动滑块选择两个分母，观察通分过程</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 7: Module 3 - 分数乘法 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="module-3">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header"><span class="phase-tag" data-variant="success">📖 模块三</span><h2>分数乘法</h2></div>
+      <p style="font-size:16px;line-height:1.9">
+        ✖️ 分数乘法口诀：<strong>分子乘分子，分母乘分母</strong><br>
+        <span class="frac-block"><span class="num">2</span><span class="den">3</span></span> × <span class="frac-block"><span class="num">1</span><span class="den">2</span></span> = <span class="frac-block"><span class="num">2×1</span><span class="den">3×2</span></span> = <span class="frac-block"><span class="num">2</span><span class="den">6</span></span> = <span class="frac-block"><span class="num">1</span><span class="den">3</span></span><br>
+        理解：<span class="frac-block"><span class="num">1</span><span class="den">2</span></span> 的 <span class="frac-block"><span class="num">2</span><span class="den">3</span></span> 是多少？——把一半分成3份取2份！
+      </p>
+      <canvas class="canvas-area" id="canvas-mul" width="700" height="220" style="margin-top:12px"></canvas>
+      <img src="./assets/recipe-fractions.png" alt="厨房分数应用" style="width:100%;max-width:700px;display:block;margin:8px auto;border-radius:12px">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 8: Module 4 - 分数除法 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="8" data-tts="module-4">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header"><span class="phase-tag" data-variant="warn">📖 模块四</span><h2>分数除法</h2></div>
+      <p style="font-size:16px;line-height:1.9">
+        ➗ 分数除法秘籍：<strong>除以一个数 = 乘它的倒数！</strong><br>
+        <span class="frac-block"><span class="num">1</span><span class="den">2</span></span> ÷ <span class="frac-block"><span class="num">2</span><span class="den">3</span></span> = <span class="frac-block"><span class="num">1</span><span class="den">2</span></span> × <span class="frac-block"><span class="num">3</span><span class="den">2</span></span> = <span class="frac-block"><span class="num">1×3</span><span class="den">2×2</span></span> = <span class="frac-block"><span class="num">3</span><span class="den">4</span></span><br>
+        理解：<span class="frac-block"><span class="num">1</span><span class="den">2</span></span> 里面有几个 <span class="frac-block"><span class="num">2</span><span class="den">3</span></span>？——变成乘法来算！
+      </p>
+      <canvas class="canvas-area" id="canvas-div" width="700" height="220" style="margin-top:12px"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 9: Interactive Game - 分数运算闯关 ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="9" data-tts="games">
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header"><span class="phase-tag">🎮 闯关挑战</span><h2>厨房大作战</h2></div>
+      <p style="text-align:center;color:var(--muted);margin-bottom:12px" id="game-status">搅拌机就绪！选择一关开始挑战 →</p>
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;justify-content:center">
+        <button class="btn btn-outline btn-small" onclick="startGame(0)">🥄 第一关：同分母加减</button>
+        <button class="btn btn-outline btn-small" onclick="startGame(1)">🥣 第二关：异分母通分</button>
+        <button class="btn btn-outline btn-small" onclick="startGame(2)">🍰 第三关：综合运算</button>
+      </div>
+      <canvas class="canvas-area" id="canvas-game" width="700" height="260"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Page 10: ConcepTest ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="10" data-tts="conceptest">
+  <div class="slide-inner">
+    <div class="card"><div class="section-header"><span class="phase-tag" data-variant="purple">🔍 概念辨析</span><h2>你能区分这些概念吗？</h2></div>
+    <div class="quiz-item"><div class="q">1. <span class="frac-block"><span class="num">3</span><span class="den">8</span></span> + <span class="frac-block"><span class="num">2</span><span class="den">8</span></span> = ？</div><label><input type="radio" name="c1" value="0"> <span class="frac-block"><span class="num">5</span><span class="den">8</span></span></label><label><input type="radio" name="c1" value="1"> <span class="frac-block"><span class="num">5</span><span class="den">16</span></span></label></div>
+    <div class="quiz-item"><div class="q">2. <span class="frac-block"><span class="num">1</span><span class="den">3</span></span> + <span class="frac-block"><span class="num">1</span><span class="den">4</span></span> = ？</div><label><input type="radio" name="c2" value="0"> <span class="frac-block"><span class="num">7</span><span class="den">12</span></span></label><label><input type="radio" name="c2" value="1"> <span class="frac-block"><span class="num">2</span><span class="den">7</span></span></label><label><input type="radio" name="c2" value="2"> <span class="frac-block"><span class="num">2</span><span class="den">12</span></span></label></div>
+    <div class="quiz-item"><div class="q">3. <span class="frac-block"><span class="num">2</span><span class="den">5</span></span> × <span class="frac-block"><span class="num">3</span><span class="den">4</span></span> = ？</div><label><input type="radio" name="c3" value="0"> <span class="frac-block"><span class="num">6</span><span class="den">20</span></span></label><label><input type="radio" name="c3" value="1"> <span class="frac-block"><span class="num">5</span><span class="den">9</span></span></label><label><input type="radio" name="c3" value="2"> <span class="frac-block"><span class="num">3</span><span class="den">10</span></span></label></div>
+    <div class="quiz-item"><div class="q">4. <span class="frac-block"><span class="num">3</span><span class="den">5</span></span> ÷ <span class="frac-block"><span class="num">1</span><span class="den">3</span></span> = ？</div><label><input type="radio" name="c4" value="0"> <span class="frac-block"><span class="num">9</span><span class="den">5</span></span></label><label><input type="radio" name="c4" value="1"> <span class="frac-block"><span class="num">3</span><span class="den">15</span></span></label><label><input type="radio" name="c4" value="2"> <span class="frac-block"><span class="num">1</span><span class="den">5</span></span></label></div>
+    <div class="quiz-item"><div class="q">5. 关于分数运算，以下哪个说法<strong>正确</strong>？</div><label><input type="radio" name="c5" value="0"> 加减法：分母不同必须先通分</label><label><input type="radio" name="c5" value="1"> 乘法：分母相加，分子相加</label><label><input type="radio" name="c5" value="2"> 除法：乘以相同的数</label></div>
+    <button class="btn btn-primary btn-small" id="ct-check">检查答案</button>
+    <div id="ct-result" style="display:none"></div></div>
+  </div>
+</section>
+
+<!-- ═══ Page 11: Posttest ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="11" data-tts="posttest">
+  <div class="slide-inner">
+    <div class="card"><div class="section-header"><span class="phase-tag" data-variant="warn">✏️ 课后挑战</span><h2>检验学习成果</h2></div>
+    <div class="quiz-item"><div class="q">1. <span class="frac-block"><span class="num">3</span><span class="den">4</span></span> - <span class="frac-block"><span class="num">1</span><span class="den">4</span></span> = ？</div><label><input type="radio" name="t1" value="0"> <span class="frac-block"><span class="num">2</span><span class="den">4</span></span></label><label><input type="radio" name="t1" value="1"> <span class="frac-block"><span class="num">1</span><span class="den">4</span></span></label><label><input type="radio" name="t1" value="2"> <span class="frac-block"><span class="num">1</span><span class="den">2</span></span></label></div>
+    <div class="quiz-item"><div class="q">2. <span class="frac-block"><span class="num">1</span><span class="den">2</span></span> × <span class="frac-block"><span class="num">4</span><span class="den">5</span></span> = ？</div><label><input type="radio" name="t2" value="0"> <span class="frac-block"><span class="num">4</span><span class="den">10</span></span></label><label><input type="radio" name="t2" value="1"> <span class="frac-block"><span class="num">2</span><span class="den">5</span></span></label><label><input type="radio" name="t2" value="2"> <span class="frac-block"><span class="num">5</span><span class="den">7</span></span></label></div>
+    <div class="quiz-item"><div class="q">3. <span class="frac-block"><span class="num">5</span><span class="den">6</span></span> ÷ <span class="frac-block"><span class="num">2</span><span class="den">3</span></span> = ？</div><label><input type="radio" name="t3" value="0"> <span class="frac-block"><span class="num">5</span><span class="den">4</span></span></label><label><input type="radio" name="t3" value="1"> <span class="frac-block"><span class="num">10</span><span class="den">18</span></span></label><label><input type="radio" name="t3" value="2"> <span class="frac-block"><span class="num">4</span><span class="den">5</span></span></label></div>
+    <button class="btn btn-primary btn-small" id="pt-check">检查答案</button>
+    <div id="pt-result" style="display:none"></div></div>
+  </div>
+</section>
+
+<!-- ═══ Page 12: 核心概念 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="12" data-tts="core-concept">
+  <div class="slide-inner"><div class="card card-accent">
+    <div class="section-header"><span class="phase-tag" data-variant="success">📌 核心概念</span><h2>四句话记住分数运算</h2></div>
+    <div class="grid" style="gap:14px">
+      <div style="padding:16px 20px;background:rgba(255,107,107,0.05);border-radius:14px;border-left:5px solid var(--brand)"><strong style="font-size:18px;color:var(--brand)">➕➖ 加减：</strong><span style="font-size:16px">分母相同→分子直接加减；分母不同→先通分（找最小公倍数），再分子加减。</span></div>
+      <div style="padding:16px 20px;background:rgba(78,205,196,0.05);border-radius:14px;border-left:5px solid var(--brand-2)"><strong style="font-size:18px;color:var(--brand-2)">✖️ 乘法：</strong><span style="font-size:16px">分子×分子，分母×分母。结果能约分的要约分。</span></div>
+      <div style="padding:16px 20px;background:rgba(204,93,232,0.05);border-radius:14px;border-left:5px solid var(--purple)"><strong style="font-size:18px;color:var(--purple)">➗ 除法：</strong><span style="font-size:16px">除以一个分数 = 乘它的倒数（分子分母对调）。</span></div>
+      <div style="padding:16px 20px;background:rgba(255,146,43,0.05);border-radius:14px;border-left:5px solid var(--orange)"><strong style="font-size:18px;color:var(--orange)">🔄 约分：</strong><span style="font-size:16px">最终结果要化成最简分数（分子分母同时除以最大公约数）。</span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 13: 例题 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="13" data-tts="example">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">📝 例题</span><h2>一步一步看例题</h2></div>
+    <div class="grid" style="gap:14px">
+      <div style="padding:16px 20px;background:rgba(255,107,107,0.04);border-radius:14px"><strong style="color:var(--brand)">例1 · 同分母减法：</strong><p style="margin:6px 0">姐姐吃了 <span class="frac-block"><span class="num">5</span><span class="den">8</span></span> 个披萨，弟弟吃了 <span class="frac-block"><span class="num">3</span><span class="den">8</span></span> 个，姐姐比弟弟多吃多少？</p><p style="color:var(--ok)">✅ 5/8 - 3/8 = 2/8 = 1/4</p></div>
+      <div style="padding:16px 20px;background:rgba(78,205,196,0.04);border-radius:14px"><strong style="color:var(--brand-2)">例2 · 异分母加法：</strong><p style="margin:6px 0">面粉用了 <span class="frac-block"><span class="num">1</span><span class="den">3</span></span> 袋，糖用了 <span class="frac-block"><span class="num">1</span><span class="den">4</span></span> 袋，一共用了多少？</p><p style="color:var(--ok)">✅ 通分：4/12 + 3/12 = 7/12 袋</p></div>
+      <div style="padding:16px 20px;background:rgba(204,93,232,0.04);border-radius:14px"><strong style="color:var(--purple)">例3 · 分数除法应用：</strong><p style="margin:6px 0"><span class="frac-block"><span class="num">2</span><span class="den">3</span></span> 升牛奶倒进每个杯子 <span class="frac-block"><span class="num">1</span><span class="den">6</span></span> 升，能倒几杯？</p><p style="color:var(--ok)">✅ 2/3 ÷ 1/6 = 2/3 × 6/1 = 12/3 = 4 杯</p></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 14: 习题讲解 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="14" data-tts="practice">
+  <div class="slide-inner"><div class="card card-accent">
+    <div class="section-header"><span class="phase-tag" data-variant="warn">✏️ 习题讲解</span><h2>常见考题思路拆解</h2></div>
+    <div class="grid" style="gap:12px">
+      <div style="padding:14px 18px;border:1px solid var(--line-subtle);border-radius:12px"><strong>🔢 第1类："同分母分数加减"</strong><p style="margin:4px 0;font-size:14px;color:var(--text-secondary)">→ 分母不变，分子直接加减。记得约分！</p><p style="font-size:13px;color:var(--muted)">易错：不要连分母一起加！3/8+2/8=5/8，不是5/16。</p></div>
+      <div style="padding:14px 18px;border:1px solid var(--line-subtle);border-radius:12px"><strong>🔢 第2类："异分母加减"</strong><p style="margin:4px 0;font-size:14px;color:var(--text-secondary)">→ 先通分→找到分母的最小公倍数→变成同分母→再加减。</p><p style="font-size:13px;color:var(--muted)">1/2+1/3：分母2和3的最小公倍数是6，通分=3/6+2/6=5/6。</p></div>
+      <div style="padding:14px 18px;border:1px solid var(--line-subtle);border-radius:12px"><strong>🔢 第3类："分数乘除法"</strong><p style="margin:4px 0;font-size:14px;color:var(--text-secondary)">→ 乘法：分子×分子，分母×分母。除法：×倒数！</p><p style="font-size:13px;color:var(--muted)">2/3÷3/4 → 2/3×4/3=8/9，不要当作2/3×3/4！</p></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 15: 易错点 ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="15" data-tts="pitfalls">
+  <div class="slide-inner"><div class="card card-accent">
+    <div class="section-header"><span class="phase-tag" data-variant="warn">⚠️ 注意避坑</span><h2>最容易搞混的几件事</h2></div>
+    <div class="grid" style="gap:12px">
+      <div style="padding:14px 18px;background:rgba(255,107,107,0.04);border-radius:12px;border-left:4px solid var(--brand)"><strong style="color:var(--brand)">🚫 别把分母也加起来！</strong><p style="margin:6px 0 0;font-size:14px;color:var(--muted)">3/8+2/8=5/8 ✅ 不是5/16 ❌。只有乘法时才会分母乘分母。</p></div>
+      <div style="padding:14px 18px;background:rgba(204,93,232,0.04);border-radius:12px;border-left:4px solid var(--purple)"><strong style="color:var(--purple)">🚫 除法别忘记倒数！</strong><p style="margin:6px 0 0;font-size:14px;color:var(--muted)">÷2/3 要变成 ×3/2！不是继续除，不是×2/3。倒数是分子分母对调。</p></div>
+      <div style="padding:14px 18px;background:rgba(78,205,196,0.04);border-radius:12px;border-left:4px solid var(--brand-2)"><strong style="color:var(--brand-2)">🚫 最终结果要化简！</strong><p style="margin:6px 0 0;font-size:14px;color:var(--muted)">结果写成最简分数。2/4→1/2，6/8→3/4。分子分母同时除以最大公约数。</p></div>
+      <div style="padding:14px 18px;background:rgba(255,146,43,0.04);border-radius:12px;border-left:4px solid var(--orange)"><strong style="color:var(--orange)">🚫 通分找对公倍数！</strong><p style="margin:6px 0 0;font-size:14px;color:var(--muted)">1/2+1/3的通分是3/6+2/6=5/6 ✅，不是1/5+1/5=2/5 ❌。找最小公倍数，不是相加！</p></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 16: 五镜头 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="16" data-tts="five-lens">
+  <div class="slide-inner"><div class="card card-glow">
+    <div class="section-header"><span class="phase-tag" data-variant="purple">🔍 五个角度</span><h2>换个角度看分数运算</h2></div>
+    <div class="grid" style="gap:10px">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,107,107,0.05);border-radius:12px"><span style="font-size:28px">📖</span><div><strong style="color:var(--brand)">定义镜：</strong>分数加减看分母，分母相同分子加减；不同先通分。乘法分子×分子、分母×分母。除法×倒数。</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(78,205,196,0.05);border-radius:12px"><span style="font-size:28px">⚖️</span><div><strong style="color:var(--brand-2)">辨析镜：</strong>加法和乘法容易混——加法看分母（同分母直接加，异分母要通分）；乘法不care分母是否相同。</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,230,109,0.1);border-radius:12px"><span style="font-size:28px">🏠</span><div><strong style="color:var(--orange)">生活镜：</strong>分披萨用加法（1/4+1/4=1/2），按比例调配方用乘法（1/2杯×2/3=1/3杯），分牛奶用除法。</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(204,93,232,0.05);border-radius:12px"><span style="font-size:28px">🔄</span><div><strong style="color:var(--purple)">变化镜：</strong>同一个分数1/2，乘以1/3变成1/6（变小），除以1/3变成3/2（变大）。运算类型不同，结果方向也不同。</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(34,197,94,0.06);border-radius:12px"><span style="font-size:28px">🎨</span><div><strong style="color:var(--ok)">创造镜：</strong>用分数设计一份食谱：1/2杯面粉+1/4杯糖，做出的饼干每块含多少？分数让精确配比成为可能。</div></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 17: Summary ═══ -->
+<section class="slide-page" data-page-type="summary" data-page-index="17" data-tts="summary">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">📊 本课总结</span><h2>分数四则运算速查表</h2></div>
+    <div class="grid grid-2" style="gap:12px;font-size:14px">
+      <div style="padding:14px;background:rgba(255,107,107,0.05);border-radius:12px"><strong>➕ 加法</strong><br>同分母：分子相加<br>异分母：先通分再加</div>
+      <div style="padding:14px;background:rgba(78,205,196,0.05);border-radius:12px"><strong>➖ 减法</strong><br>同分母：分子相减<br>异分母：先通分再减</div>
+      <div style="padding:14px;background:rgba(204,93,232,0.05);border-radius:12px"><strong>✖️ 乘法</strong><br>分子×分子<br>分母×分母→约分</div>
+      <div style="padding:14px;background:rgba(255,146,43,0.05);border-radius:12px"><strong>➗ 除法</strong><br>÷一个分数=×它的倒数<br>然后按乘法算</div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:16px;font-weight:700;color:var(--text-secondary)">🎓 口诀：<span style="color:var(--brand)">加减看分母</span> · <span style="color:var(--brand-2)">乘法对角线</span> · <span style="color:var(--purple)">除法翻倒数</span> · <span style="color:var(--orange)">结果要约简</span></p>
+  </div></div>
+</section>
+
+<!-- ═══ Page 18: Knowledge Graph ═══ -->
+<section class="slide-page" data-page-type="summary" data-page-index="18" data-tts="knowledge-graph">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">🗺️ 知识图谱</span><h2>你的学习路径</h2></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;padding:20px">
+      <div style="padding:12px 18px;background:rgba(78,205,196,0.1);border-radius:10px;text-align:center">⬅️ <strong>前置</strong><br>分数的意义和性质<br><span style="font-size:12px;color:var(--muted)">G5 数感</span></div>
+      <div style="font-size:24px">→</div>
+      <div style="padding:16px 24px;background:linear-gradient(135deg,rgba(255,107,107,0.15),rgba(204,93,232,0.15));border-radius:14px;text-align:center;border:2px solid var(--brand)"><strong>⭐ 你现在的位置</strong><br>分数四则运算<br><span style="font-size:12px;color:var(--muted)">G5 数与代数</span></div>
+      <div style="font-size:24px">→</div>
+      <div style="padding:12px 18px;background:rgba(255,146,43,0.1);border-radius:10px;text-align:center">➡️ <strong>后续</strong><br>分数/小数/百分数互化<br><span style="font-size:12px;color:var(--muted)">G6</span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 19: AI Tutor ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="19" data-tts="ai-tutor">
+  <div class="slide-inner">
+    <div data-teachany-tutor-card></div>
+  </div>
+</section>
+
+</div><!-- /slide-container -->
+
+<!-- Nav bar -->
+<div class="nav-bar" id="nav-bar">
+  <button class="nav-btn" id="nav-prev" title="上一页">◀</button>
+  <div class="nav-dots" id="nav-dots"></div>
+  <span class="nav-info" id="nav-info">1 / 20</span>
+  <button class="nav-btn" id="nav-next" title="下一页">▶</button>
+</div>
+
+<!-- Audio player -->
+<div id="audio-player-container" style="display:none">
+  <audio id="teachany-audio" controls style="display:none"></audio>
+</div>
+<div id="audio-playlist" data-playlist='[{"section":"hero","src":"./tts/hero.mp3","label":"开场"},{"section":"abt","src":"./tts/hero.mp3","label":"情境"},{"section":"problem-anchor","src":"./tts/hero.mp3","label":"问题"},{"section":"objectives","src":"./tts/hero.mp3","label":"目标"},{"section":"pretest","src":"./tts/hero.mp3","label":"前测"},{"section":"module-1","src":"./tts/hero.mp3","label":"模块1"},{"section":"module-2","src":"./tts/hero.mp3","label":"模块2"},{"section":"module-3","src":"./tts/hero.mp3","label":"模块3"},{"section":"module-4","src":"./tts/hero.mp3","label":"模块4"},{"section":"games","src":"./tts/hero.mp3","label":"闯关"},{"section":"conceptest","src":"./tts/hero.mp3","label":"概念"},{"section":"posttest","src":"./tts/hero.mp3","label":"后测"},{"section":"core-concept","src":"./tts/hero.mp3","label":"核心"},{"section":"example","src":"./tts/hero.mp3","label":"例题"},{"section":"practice","src":"./tts/hero.mp3","label":"习题"},{"section":"pitfalls","src":"./tts/hero.mp3","label":"易错"},{"section":"five-lens","src":"./tts/hero.mp3","label":"五镜头"},{"section":"summary","src":"./tts/hero.mp3","label":"总结"},{"section":"knowledge-graph","src":"./tts/hero.mp3","label":"图谱"},{"section":"ai-tutor","src":"./tts/hero.mp3","label":"AI学伴"}]'></div>
+
+<script src="./assets/scripts/teachany-tts-narrator.js" data-tts-disabled="true" defer></script>
+<script src="./assets/scripts/teachany-audio-player.js" defer></script>
+<script src="./assets/scripts/teachany-floating-dock.js" defer></script>
+<script src="./assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="./assets/scripts/teachany-section-hints.js" defer></script>
+<script src="./assets/scripts/ai-tutor.js"></script>
+<script src="./assets/scripts/teachany-tutor-card.js" defer></script>
+
+<script>
+/* ═══════ Slide Controller ═══════ */
+(function() {
+  var container = document.getElementById('slide-container');
+  var pages = document.querySelectorAll('.slide-page');
+  var total = pages.length;
+  var current = 0;
+  var navDots = document.getElementById('nav-dots');
+  var navInfo = document.getElementById('nav-info');
+  var progressBar = document.getElementById('progress-bar');
+
+  // Build nav dots
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('span');
+    dot.className = 'nav-dot';
+    dot.title = '第' + (i+1) + '页';
+    dot.onclick = (function(idx) { return function() { goTo(idx); }; })(i);
+    navDots.appendChild(dot);
+  }
+
+  function updateUI(idx) {
+    current = idx;
+    var dots = navDots.querySelectorAll('.nav-dot');
+    for (var i = 0; i < dots.length; i++) { dots[i].classList.toggle('active', i === idx); }
+    navInfo.textContent = (idx + 1) + ' / ' + total;
+    progressBar.style.width = ((idx + 1) / total * 100) + '%';
+    document.getElementById('nav-prev').disabled = (idx === 0);
+    document.getElementById('nav-next').disabled = (idx === total - 1);
+  }
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= total) return;
+    pages[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Scroll observer
+  var ticking = false;
+  container.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        var scrollTop = container.scrollTop;
+        var containerH = container.clientHeight;
+        var best = 0, bestDist = Infinity;
+        for (var i = 0; i < total; i++) {
+          var top = pages[i].offsetTop - container.offsetTop;
+          var dist = Math.abs(scrollTop - top);
+          if (dist < bestDist) { bestDist = dist; best = i; }
+        }
+        updateUI(best);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  document.getElementById('nav-prev').onclick = function() { goTo(current - 1); };
+  document.getElementById('nav-next').onclick = function() { goTo(current + 1); };
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+  });
+
+  // Init
+  updateUI(0);
+})();
+
+/* ═══════ Quiz System ═══════ */
+function gradeQuiz(prefix, answers, userAnswers, diagnostics) {
+  var total = answers.length;
+  var correct = 0;
+  var details = [];
+  for (var i = 0; i < total; i++) {
+    var sel = document.querySelector('input[name="' + prefix + (i+1) + '"]:checked');
+    var val = sel ? parseInt(sel.value) : -1;
+    userAnswers[i] = val;
+    if (val === answers[i]) { correct++; }
+    else if (diagnostics && diagnostics[i] && val >= 0) {
+      details.push(diagnostics[i][val] || '再想想这个选项~');
+    }
+  }
+  // Highlight correct/wrong
+  for (var j = 0; j < total; j++) {
+    var all = document.querySelectorAll('input[name="' + prefix + (j+1) + '"]');
+    for (var k = 0; k < all.length; k++) {
+      var label = all[k].parentElement;
+      if (parseInt(all[k].value) === answers[j]) label.classList.add('fb-correct');
+      if (parseInt(all[k].value) === userAnswers[j] && userAnswers[j] !== answers[j]) label.classList.add('fb-wrong');
+      all[k].disabled = true;
+    }
+  }
+  return { correct: correct, total: total, details: details };
+}
+
+var pretestAnswers = [0, 0, 0];  // 3/5, 1/3 (bonus: also 2/6=1/3), 5/6
+var ctAnswers = [0, 0, 0, 0, 0]; // 5/8, 7/12, 6/20=3/10, 9/5, 分母不同先通分
+var ptAnswers = [0, 1, 0];        // 2/4=1/2(but 2/4 is also correct as value), 4/10=2/5, 5/4
+
+// Actually fix answers based on radio values:
+// pretest: q1: 0=3/5, 1=3/10, 2=1/5 → correct=0
+// q2: 0=1/3, 1=2/6, 2=4/6 → 0 and 1 are both correct (1/3=2/6)
+// q3: 0=5/6, 1=2/5, 2=2/6 → correct=0
+// Adjust q2 to accept both 0 and 1
+var pretestQ2Answers = [0, 1]; // both 1/3 and 2/6 are correct (2/6=1/3)
+var ctAnswers = [0, 0, 0, 0, 0]; // all option 0 is correct
+var ptAnswers = [0, 1, 0]; // 2/4(=1/2), 4/10=2/5, 5/4
+
+var pretestUser = [-1,-1,-1];
+var ctUser = [-1,-1,-1,-1,-1];
+var ptUser = [-1,-1,-1];
+
+var pretestDiag = [
+  {1:'分母不变，分子相加：2+1=3，答案是3/5。3/10是错误——不能把分母也加起来！',2:'2/5+1/5=3/5，不是1/5。分母不变，分子相加。'},
+  {}, // q2 accepts both 0 and 1
+  {1:'分母不同先通分！1/2=3/6，1/3=2/6，3/6+2/6=5/6。2/5是错误：不要把分母相加！',2:'1/2+1/3，通分后得到的是5/6，不是2/6。'}
+];
+var ctDiag = [
+  {1:'同分母加法：分母不变，分子相加。3/8+2/8=5/8，不是5/16。'},
+  {1:'分母不同先通分。1/3=4/12，1/4=3/12，4/12+3/12=7/12。',2:'通分是变成同分母，不是把分母相减。'},
+  {1:'分数乘法：分子×分子=2×3=6，分母×分母=5×4=20，结果是6/20=3/10。',2:'乘法不是加法，不能分子分母交叉运算。'},
+  {1:'除以1/3 = 乘3/1。3/5×3/1=9/5。不是3/15——那个是乘法。',2:'除法口诀：÷一个分数=×它的倒数！'}
+];
+var ptDiag = [
+  {1:'3/4-1/4=2/4=1/2。不是1/4。分子3-1=2。',2:'2/4化简后是1/2，两者等价。但1/2是最简形式。'},
+  {0:'4/10=2/5，但2/5是最简结果。分子分母同时除以2。记住结果要约分！',2:'分数乘法：分子×分子=1×4=4，分母×分母=2×5=10。答案是4/10=2/5。'},
+  {1:'÷2/3 → ×3/2。5/6×3/2=15/12=5/4。10/18=5/9，不对。',2:'除法变成乘法后，别忘了倒数：2/3的倒数是3/2，不是3/4。'}
+];
+
+document.getElementById('pretest-check').onclick = function() {
+  // Special handling for q2 which has 2 correct answers
+  var correct = 0, total = 3, details = [];
+  for (var i = 0; i < 3; i++) {
+    var sel = document.querySelector('input[name="p'+(i+1)+'"]:checked');
+    var val = sel ? parseInt(sel.value) : -1;
+    pretestUser[i] = val;
+    if (i === 1) { if (val === 0 || val === 1) correct++; else if (val >= 0 && pretestDiag[1] && pretestDiag[1][val]) details.push(pretestDiag[1][val]); }
+    else if (val === pretestAnswers[i]) correct++;
+    else if (val >= 0 && pretestDiag[i] && pretestDiag[i][val]) details.push(pretestDiag[i][val]);
+  }
+  // Highlight
+  for (var j = 0; j < 3; j++) {
+    var all = document.querySelectorAll('input[name="p'+(j+1)+'"]');
+    for (var k = 0; k < all.length; k++) {
+      var label = all[k].parentElement;
+      var v = parseInt(all[k].value);
+      if (j === 1 && (v === 0 || v === 1)) label.classList.add('fb-correct');
+      else if (v === pretestAnswers[j]) label.classList.add('fb-correct');
+      if (v === pretestUser[j] && !(j===1 && (v===0||v===1)) && v !== pretestAnswers[j]) label.classList.add('fb-wrong');
+      all[k].disabled = true;
+    }
+  }
+  var div = document.getElementById('pretest-result');
+  div.style.display = 'block';
+  var pct = correct / total;
+  var diagHtml = details.length > 0 ? '<div style="margin-top:8px;font-size:14px;color:var(--text-secondary);line-height:1.6">'+details.map(function(d,i){return '💡 第'+(i+1)+'题：'+d}).join('<br>')+'</div>' : '';
+  if (pct===1) div.innerHTML = '<div class="result ok">🎉 全对！你对分数运算已经有很好的感觉了！</div>';
+  else if (pct>=0.5) div.innerHTML = '<div class="result warn">👍 答对了'+correct+'/'+total+'题。让我们通过下面的学习加深理解。</div>'+diagHtml;
+  else div.innerHTML = '<div class="result error">💪 答对了'+correct+'/'+total+'题。没关系，跟着今天的课走就行了！</div>'+diagHtml;
+};
+
+document.getElementById('ct-check').onclick = function() {
+  var r = gradeQuiz('c', ctAnswers, ctUser, ctDiag);
+  var div = document.getElementById('ct-result');
+  div.style.display = 'block';
+  var pct = r.correct/r.total;
+  var diagHtml = '';
+  if (r.details && r.details.length > 0) {
+    var parts = [];
+    r.details.forEach(function(d,i) { parts.push('💡 第'+(i+1)+'题：'+d); });
+    diagHtml = '<div style="margin-top:8px;font-size:14px;color:var(--text-secondary);line-height:1.6">'+parts.join('<br>')+'</div>';
+  }
+  if (pct===1) div.innerHTML = '🎉 太厉害了！5道题全部答对！';
+  else if (pct>=0.6) div.innerHTML = '👍 答对了'+r.correct+'/'+r.total+'题，不错！'+diagHtml;
+  else div.innerHTML = '💪 答对了'+r.correct+'/'+r.total+'题。再看看错题分析~'+diagHtml;
+};
+
+document.getElementById('pt-check').onclick = function() {
+  var r = gradeQuiz('t', ptAnswers, ptUser, ptDiag);
+  var div = document.getElementById('pt-result');
+  div.style.display = 'block';
+  var pct = r.correct/r.total;
+  var diagHtml = '';
+  if (r.details && r.details.length > 0) {
+    var parts = [];
+    r.details.forEach(function(d,i) { parts.push('💡 第'+(i+1)+'题：'+d); });
+    diagHtml = '<div style="margin-top:8px;font-size:14px;color:var(--text-secondary);line-height:1.6">'+parts.join('<br>')+'</div>';
+  }
+  if (pct===1) div.innerHTML = '<div class="result ok">🎉 满分通过！</div>';
+  else if (pct>=0.5) div.innerHTML = '<div class="result warn">👍 答对了'+r.correct+'/'+r.total+'题！</div>'+diagHtml;
+  else div.innerHTML = '<div class="result error">💪 答对了'+r.correct+'/'+r.total+'题。建议回顾模块内容~</div>'+diagHtml;
+};
+
+/* ═══════ Canvas Add Demo ═══════ */
+(function() {
+  var c = document.getElementById('canvas-add');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = 700, H = 200, barY = 60, barH = 60, gap = 4, totalSlices = 8;
+  var sliceW = (W - 80) / totalSlices;
+  var mouseX = -1;
+
+  function draw(a, b) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#3d3226'; ctx.font = '14px -apple-system,sans-serif';
+    ctx.fillText('拖动橙色块查看 ' + a + '/8 + ' + b + '/8 = ' + (a+b) + '/8', 40, 30);
+    for (var i = 0; i < totalSlices; i++) {
+      var x = 40 + i * sliceW;
+      ctx.fillStyle = i < a ? 'rgba(255,107,107,0.5)' : (i < a+b ? 'rgba(78,205,196,0.6)' : '#f0f0f0');
+      ctx.fillRect(x + gap, barY, sliceW - gap*2, barH);
+      ctx.strokeStyle = '#ddd'; ctx.strokeRect(x, barY, sliceW, barH);
+    }
+    // Fraction display
+    ctx.fillStyle = '#3d3226'; ctx.font = 'bold 24px -apple-system,sans-serif';
+    ctx.fillText(a+'/8', 40, barY + barH + 40);
+    ctx.fillStyle = '#ff6b6b'; ctx.fillText('+', 120, barY + barH + 40);
+    ctx.fillText(b+'/8', 148, barY + barH + 40);
+    ctx.fillStyle = '#4ecdc4'; ctx.fillText('=', 216, barY + barH + 40);
+    ctx.fillText((a+b)+'/8', 244, barY + barH + 40);
+    if (a+b >= 8) { ctx.fillStyle = '#999'; ctx.fillText('= ' + Math.floor((a+b)/8) + ' ' + ((a+b)%8) + '/8', 340, barY + barH + 40); }
+  }
+  var aVal = 2, bVal = 3, dragging = null;
+  draw(aVal, bVal);
+  c.addEventListener('mousedown', function(e) {
+    var rect = c.getBoundingClientRect();
+    var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    if (my >= barY && my <= barY + barH) { dragging = 'a'; updateDrag(mx); }
+  });
+  c.addEventListener('mousemove', function(e) {
+    if (!dragging) return;
+    updateDrag(e.clientX - c.getBoundingClientRect().left);
+  });
+  c.addEventListener('mouseup', function() { dragging = null; });
+  c.addEventListener('mouseleave', function() { dragging = null; });
+  // Touch support
+  c.addEventListener('touchstart', function(e) {
+    var rect = c.getBoundingClientRect();
+    var ty = e.touches[0].clientY - rect.top;
+    if (ty >= barY && ty <= barY + barH) { dragging = 'a'; e.preventDefault(); updateDrag(e.touches[0].clientX - rect.left); }
+  });
+  c.addEventListener('touchmove', function(e) {
+    if (!dragging) return; e.preventDefault();
+    updateDrag(e.touches[0].clientX - c.getBoundingClientRect().left);
+  });
+  c.addEventListener('touchend', function() { dragging = null; });
+  function updateDrag(mx) {
+    var idx = Math.floor((mx - 40) / sliceW);
+    aVal = Math.max(0, Math.min(totalSlices - 1, idx));
+    bVal = totalSlices - aVal;
+    if (aVal < 1) aVal = 1;
+    if (bVal < 1) bVal = 1;
+    draw(aVal, bVal);
+  }
+})();
+
+/* ═══════ Canvas LCM Demo ═══════ */
+(function() {
+  var c = document.getElementById('canvas-lcm');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = 700, H = 220;
+  function gcd(a, b) { return b ? gcd(b, a%b) : a; }
+  function lcm(a, b) { return a * b / gcd(a, b); }
+  var d1 = 2, d2 = 3;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    var l = lcm(d1, d2);
+    ctx.fillStyle = '#3d3226'; ctx.font = '14px -apple-system,sans-serif';
+    ctx.fillText('分母 ' + d1 + ' 和 ' + d2 + ' 的最小公倍数 = ' + l, 40, 30);
+    var bw = (W - 100) / 2;
+    // Bar 1
+    ctx.fillStyle = 'rgba(255,107,107,0.15)'; ctx.fillRect(40, 50, bw, 40);
+    var segW1 = bw / d1;
+    for (var i = 0; i < d1; i++) {
+      ctx.strokeStyle = '#ff6b6b'; ctx.lineWidth = 2;
+      ctx.strokeRect(40 + i*segW1, 50, segW1, 40);
+      ctx.fillStyle = '#ff6b6b'; ctx.font = '12px sans-serif';
+      ctx.fillText('1/'+d1, 40+i*segW1+4, 76);
+    }
+    // Bar 2
+    ctx.fillStyle = 'rgba(78,205,196,0.15)'; ctx.fillRect(40, 105, bw, 40);
+    var segW2 = bw / d2;
+    for (var j = 0; j < d2; j++) {
+      ctx.strokeStyle = '#4ecdc4'; ctx.lineWidth = 2;
+      ctx.strokeRect(40 + j*segW2, 105, segW2, 40);
+      ctx.fillStyle = '#4ecdc4'; ctx.font = '12px sans-serif';
+      ctx.fillText('1/'+d2, 40+j*segW2+4, 131);
+    }
+    // LCM bar
+    ctx.fillStyle = 'rgba(204,93,232,0.15)'; ctx.fillRect(40, 160, bw, 40);
+    var segWL = bw / l;
+    for (var k = 0; k < l; k++) {
+      ctx.strokeStyle = '#cc5de8'; ctx.lineWidth = 2;
+      ctx.strokeRect(40 + k*segWL, 160, segWL, 40);
+      ctx.fillStyle = '#cc5de8'; ctx.font = '12px sans-serif';
+      ctx.fillText('1/'+l, 40+k*segWL+2, 186);
+    }
+    ctx.fillStyle = '#3d3226'; ctx.font = 'bold 16px sans-serif';
+    ctx.fillText(l+' 等份 → 通分后分母都是 '+l, 40+bw+10, 120);
+    // Sliders
+    ctx.fillStyle = '#ff6b6b'; ctx.beginPath(); ctx.arc(40+bw+40, 70, 12, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 12px sans-serif'; ctx.fillText(d1, 40+bw+35, 75);
+    ctx.fillStyle = '#4ecdc4'; ctx.beginPath(); ctx.arc(40+bw+40, 125, 12, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 12px sans-serif'; ctx.fillText(d2, 40+bw+35, 130);
+  }
+  draw();
+  c.addEventListener('click', function(e) {
+    var rect = c.getBoundingClientRect();
+    var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    var bw = (700-100)/2;
+    if (Math.abs(mx-(40+bw+40)) < 15 && Math.abs(my-70) < 15) { d1 = (d1%6)+1; }
+    if (Math.abs(mx-(40+bw+40)) < 15 && Math.abs(my-125) < 15) { d2 = (d2%6)+1; }
+    if (d1 === d2) d2 = (d2%6)+1;
+    draw();
+  });
+})();
+
+/* ═══════ Canvas Multiply Demo ═══════ */
+(function() {
+  var c = document.getElementById('canvas-mul');
+  if (!c) return;
+  var ctx = c.getContext('2d'), W = 700, H = 220;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#3d3226'; ctx.font = '15px -apple-system,sans-serif';
+    ctx.fillText('2/3 × 1/2 = 2/6 = 1/3', 40, 30);
+    // Rectangle representing 1
+    ctx.strokeStyle = '#333'; ctx.lineWidth = 2; ctx.strokeRect(40, 45, 200, 155);
+    // 2/3 vertical
+    ctx.fillStyle = 'rgba(255,107,107,0.2)'; ctx.fillRect(40, 45, 200, 103);
+    // 1/2 horizontal
+    ctx.fillStyle = 'rgba(78,205,196,0.3)'; ctx.fillRect(40, 45, 100, 155);
+    // Overlap (2/3 × 1/2 = 2/6 = 1/3)
+    ctx.fillStyle = 'rgba(204,93,232,0.7)'; ctx.fillRect(40, 45, 100, 103);
+    // Labels
+    ctx.fillStyle = '#ff6b6b'; ctx.font = '14px sans-serif'; ctx.fillText('2/3', 250, 100);
+    ctx.fillStyle = '#4ecdc4'; ctx.font = '14px sans-serif'; ctx.fillText('1/2', 95, 215);
+    ctx.fillStyle = '#cc5de8'; ctx.font = 'bold 16px sans-serif'; ctx.fillText('重叠区 = 2/6 = 1/3', 260, 150);
+  }
+  draw();
+})();
+
+/* ═══════ Canvas Division Demo ═══════ */
+(function() {
+  var c = document.getElementById('canvas-div');
+  if (!c) return;
+  var ctx = c.getContext('2d'), W = 700, H = 220;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#3d3226'; ctx.font = '15px -apple-system,sans-serif';
+    ctx.fillText('1/2 ÷ 2/3 = 1/2 × 3/2 = 3/4', 40, 30);
+    // 1/2 block
+    ctx.fillStyle = 'rgba(255,107,107,0.3)'; ctx.fillRect(40, 50, 300, 50);
+    ctx.fillStyle = '#ff6b6b'; ctx.font = '14px sans-serif'; ctx.fillText('1/2 (被除数)', 350, 82);
+    // 2/3 block
+    ctx.fillStyle = 'rgba(78,205,196,0.3)'; ctx.fillRect(40, 110, 200, 50);
+    ctx.fillStyle = '#4ecdc4'; ctx.font = '14px sans-serif'; ctx.fillText('2/3 (除数) → 问：1/2 里有几个 2/3？', 250, 142);
+    // Result: 1/2 has 3/4 of 2/3
+    ctx.fillStyle = 'rgba(204,93,232,0.5)'; ctx.fillRect(40, 50, 150, 50);
+    ctx.fillStyle = '#cc5de8'; ctx.font = 'bold 16px sans-serif'; ctx.fillText('答案：3/4 个', 360, 180);
+    ctx.fillStyle = '#3d3226'; ctx.font = '14px sans-serif';
+    ctx.fillText('因为 3/4 × 2/3 = 6/12 = 1/2 ✓', 40, 195);
+  }
+  draw();
+})();
+
+/* ═══════ Interactive Game ═══════ */
+(function() {
+  var c = document.getElementById('canvas-game'), ctx = c.getContext('2d');
+  if (!c) return;
+  var W = 700, H = 260;
+  var gameLevel = 0, score = 0, currentQ = null, userAnswer = '', correctCount = 0, wrongCount = 0;
+
+  var questions = [
+    // Level 0: same-denom
+    [
+      { q: '2/7 + 3/7 = ?', a: '5/7', hint: '分母不变，分子相加：2+3=5' },
+      { q: '5/9 - 2/9 = ?', a: '3/9', hint: '分母不变，分子相减：5-2=3' },
+      { q: '4/6 + 1/6 = ?', a: '5/6', hint: '4+1=5，6不变' }
+    ],
+    // Level 1: diff-denom
+    [
+      { q: '1/2 + 1/3 = ?', a: '5/6', hint: '通分：3/6+2/6=5/6' },
+      { q: '3/4 - 1/2 = ?', a: '1/4', hint: '1/2=2/4，3/4-2/4=1/4' },
+      { q: '2/5 + 1/3 = ?', a: '11/15', hint: '通分母15：6/15+5/15=11/15' }
+    ],
+    // Level 2: mixed
+    [
+      { q: '2/3 × 3/4 = ?', a: '1/2', hint: '2×3/3×4=6/12=1/2' },
+      { q: '1/3 ÷ 1/2 = ?', a: '2/3', hint: '÷1/2=×2/1，1/3×2=2/3' },
+      { q: '3/4 + 2/3 = ?', a: '17/12', hint: '通分母12：9/12+8/12=17/12' }
+    ]
+  ];
+
+  var qIdx = 0, inputBuffer = '', inputFocus = false;
+  var inputBox = { x: 260, y: 180, w: 180, h: 40 };
+
+  function newQuestion() {
+    var pool = questions[gameLevel];
+    if (qIdx >= pool.length) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#3d3226'; ctx.font = 'bold 20px sans-serif';
+      ctx.fillText('🏆 本关完成！正确 ' + correctCount + ' / ' + (correctCount + wrongCount), 180, 130);
+      document.getElementById('game-status').textContent = '🥳 通关！换一关继续挑战吧~';
+      return;
+    }
+    currentQ = pool[qIdx];
+    userAnswer = '';
+    inputBuffer = '';
+    document.getElementById('game-status').textContent = '第'+(qIdx+1)+'题：' + currentQ.q;
+    drawGame();
+  }
+
+  function drawGame() {
+    ctx.clearRect(0, 0, W, H);
+    var levels = ['🥄 同分母加减', '🥣 异分母通分', '🍰 综合运算'];
+    ctx.fillStyle = '#3d3226'; ctx.font = 'bold 22px -apple-system,sans-serif';
+    ctx.fillText(levels[gameLevel] + '  |  得分: ' + score + '  |  ' + (correctCount+wrongCount) + '题', 40, 35);
+
+    if (!currentQ) return;
+
+    ctx.fillStyle = '#fff'; ctx.fillRect(40, 55, W-80, 60);
+    ctx.strokeStyle = '#ff6b6b'; ctx.lineWidth = 2; ctx.strokeRect(40, 55, W-80, 60);
+    ctx.fillStyle = '#3d3226'; ctx.font = 'bold 20px -apple-system,sans-serif';
+    ctx.fillText(currentQ.q, 60, 92);
+
+    // Input box
+    ctx.fillStyle = inputFocus ? '#fff' : '#fafafa';
+    ctx.fillRect(inputBox.x, inputBox.y, inputBox.w, inputBox.h);
+    ctx.strokeStyle = inputFocus ? '#ff6b6b' : '#ccc'; ctx.lineWidth = 2;
+    ctx.strokeRect(inputBox.x, inputBox.y, inputBox.w, inputBox.h);
+    ctx.fillStyle = '#3d3226'; ctx.font = '18px -apple-system,sans-serif';
+    ctx.fillText(inputBuffer + (inputFocus && Math.floor(Date.now()/500)%2===0 ? '|' : ''), inputBox.x + 8, inputBox.y + 28);
+    ctx.fillStyle = '#999'; ctx.font = '12px sans-serif';
+    ctx.fillText('输入答案如 3/4，按回车提交', inputBox.x, inputBox.y - 8);
+
+    // Buttons
+    ctx.fillStyle = '#ff6b6b'; ctx.beginPath(); ctx.roundRect(inputBox.x+inputBox.w+16, inputBox.y, 80, 40, 8); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 14px sans-serif'; ctx.fillText('提交', inputBox.x+inputBox.w+34, inputBox.y+28);
+
+    ctx.fillStyle = '#4ecdc4'; ctx.beginPath(); ctx.roundRect(inputBox.x+inputBox.w+16, inputBox.y+50, 80, 32, 8); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = '12px sans-serif'; ctx.fillText('💡 提示', inputBox.x+inputBox.w+30, inputBox.y+73);
+  }
+
+  function checkAnswer() {
+    var norm = function(s) { return s.replace(/\s+/g,'').toLowerCase(); };
+    var aNorm = norm(currentQ.a);
+    var uNorm = norm(inputBuffer);
+    if (uNorm === aNorm || uNorm === aNorm.replace(/\/.*/,'') + '/' + aNorm.split('/')[1] || norm(currentQ.a) === norm(inputBuffer)) {
+      score += 10; correctCount++;
+      document.getElementById('game-status').textContent = '✅ 正确！答案就是 ' + currentQ.a;
+    } else {
+      wrongCount++;
+      document.getElementById('game-status').textContent = '❌ 答案是 ' + currentQ.a + '。提示：' + (currentQ.hint || '再试试');
+    }
+    qIdx++;
+    setTimeout(newQuestion, 1000);
+  }
+
+  c.addEventListener('click', function(e) {
+    var rect = c.getBoundingClientRect();
+    var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    if (mx >= inputBox.x && mx <= inputBox.x+inputBox.w && my >= inputBox.y && my <= inputBox.y+inputBox.h) {
+      inputFocus = true; drawGame();
+    } else if (mx >= inputBox.x+inputBox.w+16 && mx <= inputBox.x+inputBox.w+96 && my >= inputBox.y && my <= inputBox.y+40) {
+      if (inputBuffer.length > 0 && currentQ) checkAnswer();
+    } else if (mx >= inputBox.x+inputBox.w+16 && mx <= inputBox.x+inputBox.w+96 && my >= inputBox.y+50 && my <= inputBox.y+82) {
+      if (currentQ && currentQ.hint) {
+        document.getElementById('game-status').textContent = '💡 ' + currentQ.hint;
+      }
+    } else {
+      inputFocus = false; drawGame();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!inputFocus) return;
+    if (e.key === 'Enter') { if (inputBuffer.length > 0 && currentQ) checkAnswer(); }
+    else if (e.key === 'Backspace') { inputBuffer = inputBuffer.slice(0, -1); drawGame(); }
+    else if (e.key === '/') { inputBuffer += '/'; drawGame(); }
+    else if (/^[0-9]$/.test(e.key)) { inputBuffer += e.key; drawGame(); }
+  });
+
+  window.startGame = function(level) {
+    gameLevel = level; qIdx = 0; score = 0; correctCount = 0; wrongCount = 0; inputBuffer = ''; inputFocus = true;
+    newQuestion();
+  };
+
+  drawGame();
+})();
+</script>
+</body>
+</html>
