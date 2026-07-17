@@ -2,60 +2,113 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>分层题包·多边形面积（五上U2）· 4升5衔接</title>
 <style>
-:root{--bg:#fffbf0;--card:#fff;--line:#ffe0b2;--primary:#ff6b6b;--secondary:#4ecdc4;--text:#333;--muted:#888;--warn:#f59e0b}
+:root{--bg:#fffbf0;--card:#fff;--line:#ffe0b2;--primary:#ff6b6b;--secondary:#4ecdc4;--text:#333;--muted:#888;--ok:#22c55e;--warn:#f59e0b}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,"PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.9;padding:24px}
-.wrap{max-width:800px;margin:0 auto}
+body{font-family:-apple-system,"PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.85;padding:24px}
+.wrap{max-width:820px;margin:0 auto}
 h1{font-size:24px;text-align:center;margin-bottom:4px}
-.sub{text-align:center;color:var(--muted);margin-bottom:20px}
+.sub{text-align:center;color:var(--muted);margin-bottom:16px}
 .band{margin:18px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
 .band h2{font-size:17px;margin-bottom:10px}
 .band.A h2{color:var(--primary)} .band.B h2{color:var(--warn)} .band.C h2{color:#8b5cf6}
-ul{list-style:none} li{padding:6px 0;border-bottom:1px dashed var(--line)}
-li:last-child{border:none}
-.qn{font-weight:700;margin-right:8px}
-.ans{font-size:13px;color:var(--muted);margin-top:4px;padding-left:24px}
-@media print{body{padding:0}.band{break-inside:avoid}}
+.item{padding:10px 0;border-bottom:1px dashed var(--line)}
+.item:last-child{border:none}
+.body{margin-bottom:8px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{padding:6px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;font-size:14px;transition:.15s}
+.opt:hover{background:#fff7e6}
+.opt.sel{background:#e7f9f4;border-color:var(--secondary)}
+.opt.right{background:#ecfdf3;border-color:var(--ok)}
+.opt.wrong{background:#fef2f2;border-color:var(--primary)}
+.ans{font-size:13px;color:var(--muted);margin-top:6px;display:none}
+.ans b{color:var(--secondary)}
+.scorebar{position:sticky;top:0;background:#fff;z-index:5;border:1px solid var(--line);border-radius:12px;padding:10px 16px;text-align:center;font-weight:700;color:var(--primary);margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+@media print{body{padding:0}.ans{display:none!important}.opt{cursor:default}.scorebar{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <h1>分层题包 · 多边形面积（五上U2）</h1>
-<p class="sub">4升5暑假衔接 · 公式：平行四边=底×高｜三角=底×高÷2｜梯形=(上+下)×高÷2</p>
+<p class="sub">4升5暑假衔接 · 点选即时批改 · 公式：平行四边=底×高｜三角=底×高÷2｜梯形=(上+下)×高÷2</p>
+<div class="scorebar" id="scorebar">已答 0 题 · 正确 0 题 · 正确率 —</div>
 
 <div class="band A"><h2>A 基础层（保底，必须全会）</h2>
-<ul>
-<li><span class="qn">A1</span>平行四边形底12cm、高5cm，面积=？</li>
-<li><span class="qn">A2</span>三角形底8dm、高6dm，面积=？</li>
-<li><span class="qn">A3</span>梯形上底4cm、下底6cm、高5cm，面积=？</li>
-<li><span class="qn">A4</span>填空：两个完全一样的三角形可以拼成一个（　　），所以三角形面积=平行四边形面积÷（　）。</li>
-<li><span class="qn">A5</span>一块平行四边形玻璃底9dm、高4dm，面积是多少平方分米？</li>
-</ul>
-<div class="ans">答案：A1 60cm²｜A2 24dm²｜A3 25cm²｜A4 平行四边形、2｜A5 36dm²</div>
+<div class="item" data-ans="B"><div class="body"><b>A1</b> 平行四边形底12cm、高5cm，面积=？</div>
+<div class="opts"><div class="opt" data-k="A">17cm²</div><div class="opt" data-k="B">60cm²</div><div class="opt" data-k="C">34cm²</div></div>
+<div class="ans">答案：<b>B</b>　解析：12×5=60。</div></div>
+
+<div class="item" data-ans="A"><div class="body"><b>A2</b> 三角形底8dm、高6dm，面积=？</div>
+<div class="opts"><div class="opt" data-k="A">24dm²</div><div class="opt" data-k="B">48dm²</div><div class="opt" data-k="C">14dm²</div></div>
+<div class="ans">答案：<b>A</b>　解析：8×6÷2=24。</div></div>
+
+<div class="item" data-ans="B"><div class="body"><b>A3</b> 梯形上底4cm、下底6cm、高5cm，面积=？</div>
+<div class="opts"><div class="opt" data-k="A">50cm²</div><div class="opt" data-k="B">25cm²</div><div class="opt" data-k="C">20cm²</div></div>
+<div class="ans">答案：<b>B</b>　解析：(4+6)×5÷2=25。</div></div>
+
+<div class="item" data-ans="C"><div class="body"><b>A4</b> 两个完全一样的三角形可以拼成（　），所以三角形面积=平行四边形面积÷（　）。</div>
+<div class="opts"><div class="opt" data-k="A">长方形、1</div><div class="opt" data-k="B">梯形、2</div><div class="opt" data-k="C">平行四边形、2</div></div>
+<div class="ans">答案：<b>C</b></div></div>
+
+<div class="item" data-ans="A"><div class="body"><b>A5</b> 平行四边形玻璃底9dm、高4dm，面积=？</div>
+<div class="opts"><div class="opt" data-k="A">36dm²</div><div class="opt" data-k="B">26dm²</div><div class="opt" data-k="C">13dm²</div></div>
+<div class="ans">答案：<b>A</b>　解析：9×4=36。</div></div>
 </div>
 
 <div class="band B"><h2>B 进阶层（易错，提分关键）</h2>
-<ul>
-<li><span class="qn">B1</span>已知三角形面积24cm²、底8cm，高是多少？（提示：高=面积×2÷底）</li>
-<li><span class="qn">B2</span>判断：只要底相等，两个平行四边形面积就相等。（　）为什么？</li>
-<li><span class="qn">B3</span>一个平行四边形和一个三角形等底等高，平行四边形面积30cm²，三角形面积=？</li>
-<li><span class="qn">B4</span>组合图形：一个长方形(10×4)上面拼一个直角三角形(底10、高3)，总面积=？</li>
-<li><span class="qn">B5</span>底和高"对应"指什么？画一个平行四边形标出一组对应的底和高。</li>
-</ul>
-<div class="ans">答案：B1 6cm｜B2 错，还要高相等｜B3 15cm²｜B4 长方形40+三角15=55｜B5 互相垂直的线段</div>
+<div class="item" data-ans="B"><div class="body"><b>B1</b> 三角形面积24cm²、底8cm，高是多少？</div>
+<div class="opts"><div class="opt" data-k="A">3cm</div><div class="opt" data-k="B">6cm</div><div class="opt" data-k="C">4cm</div></div>
+<div class="ans">答案：<b>B</b>　解析：高=24×2÷8=6。</div></div>
+
+<div class="item" data-ans="C"><div class="body"><b>B2</b> 判断：只要底相等，两个平行四边形面积就相等。</div>
+<div class="opts"><div class="opt" data-k="A">对</div><div class="opt" data-k="B">不一定（还看高）</div><div class="opt" data-k="C">错（还要高相等）</div></div>
+<div class="ans">答案：<b>C</b>　解析：面积=底×高，底和高都要相等。</div></div>
+
+<div class="item" data-ans="A"><div class="body"><b>B3</b> 一个平行四边形和一个三角形等底等高，平行四边面积30cm²，三角形面积=？</div>
+<div class="opts"><div class="opt" data-k="A">15cm²</div><div class="opt" data-k="B">60cm²</div><div class="opt" data-k="C">30cm²</div></div>
+<div class="ans">答案：<b>A</b>　解析：三角形是等底等高平行四边形的一半。</div></div>
+
+<div class="item" data-ans="B"><div class="body"><b>B4</b> 组合图形：长方形(10×4)上面拼直角三角形(底10、高3)，总面积=？</div>
+<div class="opts"><div class="opt" data-k="A">40</div><div class="opt" data-k="B">55</div><div class="opt" data-k="C">70</div></div>
+<div class="ans">答案：<b>B</b>　解析：40+15=55。</div></div>
 </div>
 
 <div class="band C"><h2>C 拓展层（拔高，挑战思维）</h2>
-<ul>
-<li><span class="qn">C1</span>一个梯形上底增加3cm、下底减少3cm、高不变，面积变不变？为什么？</li>
-<li><span class="qn">C2</span>靠墙围一块直角梯形菜地（不靠墙的三边总长18米，高6米），最大面积=？</li>
-<li><span class="qn">C3</span>一个平行四边形被分成一个三角形和一个梯形，三角形面积是平行四边形的1/4，若平行四边形底12cm、高5cm，梯形面积=？</li>
-<li><span class="qn">C4</span>用一根16cm铁丝围出面积最大的长方形，长宽各多少？面积最大是多少？</li>
-</ul>
-<div class="ans">答案：C1 不变，(上底+下底)和不变｜C2 设上底+下底=18−6=12，面积=12×6÷2=36｜C3 平行四边60，三角15，梯形45｜C4 正方形4×4=16cm²最大</div>
+<div class="item" data-ans="A"><div class="body"><b>C1</b> 梯形上底+3、下底−3、高不变，面积变不变？</div>
+<div class="opts"><div class="opt" data-k="A">不变（和不变）</div><div class="opt" data-k="B">变大</div><div class="opt" data-k="C">变小</div></div>
+<div class="ans">答案：<b>A</b>　解析：(上底+下底)和不变。</div></div>
+
+<div class="item" data-ans="B"><div class="body"><b>C2</b> 靠墙围直角梯形（不靠墙三边共18米，高6米），最大面积=？</div>
+<div class="opts"><div class="opt" data-k="A">24</div><div class="opt" data-k="B">36</div><div class="opt" data-k="C">48</div></div>
+<div class="ans">答案：<b>B</b>　解析：上底+下底=18−6=12，面积=12×6÷2=36。</div></div>
+
+<div class="item" data-ans="A"><div class="body"><b>C3</b> 平行四边形底12cm、高5cm，被分成三角和梯形，三角占1/4，梯形面积=？</div>
+<div class="opts"><div class="opt" data-k="A">45cm²</div><div class="opt" data-k="B">15cm²</div><div class="opt" data-k="C">30cm²</div></div>
+<div class="ans">答案：<b>A</b>　解析：总60，三角15，梯形45。</div></div>
 </div>
+
 </div>
+<script>
+let answered=0, correct=0;
+document.querySelectorAll('.item').forEach(item=>{
+  const opts=item.querySelectorAll('.opt');
+  const ans=item.querySelector('.ans');
+  opts.forEach(o=>o.addEventListener('click',()=>{
+    if(item.dataset.done)return;
+    item.dataset.done=1; answered++;
+    opts.forEach(x=>x.classList.remove('sel'));
+    o.classList.add('sel');
+    ans.style.display='block';
+    const correctOpt=[...opts].find(x=>x.dataset.k===item.dataset.ans);
+    if(correctOpt)correctOpt.classList.add('right');
+    if(o.dataset.k===item.dataset.ans)correct++;
+    else o.classList.add('wrong');
+    const rate=Math.round(correct/answered*100);
+    document.getElementById('scorebar').textContent='已答 '+answered+' 题 · 正确 '+correct+' 题 · 正确率 '+rate+'%';
+  }));
+});
+</script>
 </body>
 </html>

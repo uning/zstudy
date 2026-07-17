@@ -1,0 +1,31 @@
+{
+  "courseId": "sugao-bridge-lesson4-decimal-add",
+  "title": "小数加法和减法",
+  "subtitle": "苏教版五年级上册第四单元 · 4升5暑假衔接",
+  "subject": "math",
+  "grade": "五年级",
+  "stage": "elementary",
+  "domain": "decimal-arithmetic",
+  "lessonType": "新授+自学",
+  "version": "1.0.0",
+  "teachanyVersion": "7.20.0",
+  "totalPages": 16,
+  "pages": [
+    {"index": 0, "type": "cover", "label": "封面"},
+    {"index": 1, "type": "problem-anchor", "label": "问题锚点"},
+    {"index": 2, "type": "objectives", "label": "学习目标"},
+    {"index": 3, "type": "pretest", "label": "前测"},
+    {"index": 4, "type": "concept", "label": "概念1 - 小数加法竖式"},
+    {"index": 5, "type": "concept", "label": "概念2 - 小数减法竖式"},
+    {"index": 6, "type": "concept", "label": "概念3 - 得数化简"},
+    {"index": 7, "type": "concept", "label": "概念4 - 连加连减与简便"},
+    {"index": 8, "type": "scaffold", "label": "脚手架练习"},
+    {"index": 9, "type": "conceptest", "label": "ConcepTest"},
+    {"index": 10, "type": "scaffold", "label": "脚手架练习2"},
+    {"index": 11, "type": "interactive", "label": "拖拽分类游戏"},
+    {"index": 12, "type": "posttest", "label": "后测"},
+    {"index": 13, "type": "summary", "label": "课堂小结"},
+    {"index": 14, "type": "knowledge-graph", "label": "知识图谱"},
+    {"index": 15, "type": "ai-tutor", "label": "AI学伴"}
+  ]
+}

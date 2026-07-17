@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FF6B6B"/><stop offset="100%" stop-color="#4ECDC4"/></linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF6B6B" stop-opacity="0.15"/><stop offset="100%" stop-color="#4ECDC4" stop-opacity="0.08"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#FF6B6B" flood-opacity="0.2"/></filter>
+  </defs>
+  <rect width="720" height="360" rx="24" fill="url(#g2)"/>
+  <!-- Center: Main topic -->
+  <rect x="240" y="130" width="240" height="60" rx="16" fill="url(#g1)" filter="url(#shadow)"/>
+  <text x="360" y="168" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" font-family="system-ui,sans-serif">小数加法和减法</text>
+  <!-- Top left: Vertical alignment -->
+  <rect x="60" y="40" width="160" height="55" rx="12" fill="#fff" stroke="#FF6B6B" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="140" y="62" text-anchor="middle" fill="#FF6B6B" font-size="12" font-weight="700" font-family="system-ui,sans-serif">竖式对齐法则</text>
+  <text x="140" y="82" text-anchor="middle" fill="#666" font-size="11" font-family="system-ui,sans-serif">小数点对齐＝相同数位对齐</text>
+  <line x1="180" y1="95" x2="250" y2="140" stroke="#FF6B6B" stroke-width="1.5"/>
+  <!-- Top right: Borrowing -->
+  <rect x="500" y="40" width="160" height="55" rx="12" fill="#fff" stroke="#4ECDC4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="580" y="62" text-anchor="middle" fill="#4ECDC4" font-size="12" font-weight="700" font-family="system-ui,sans-serif">退位借1法</text>
+  <text x="580" y="82" text-anchor="middle" fill="#666" font-size="11" font-family="system-ui,sans-serif">不够减，向前借1当10</text>
+  <line x1="540" y1="95" x2="390" y2="140" stroke="#4ECDC4" stroke-width="1.5"/>
+  <!-- Bottom left: Simplify trailing zeros -->
+  <rect x="60" y="240" width="160" height="55" rx="12" fill="#fff" stroke="#FF6B6B" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="140" y="262" text-anchor="middle" fill="#FF6B6B" font-size="12" font-weight="700" font-family="system-ui,sans-serif">化简规则</text>
+  <text x="140" y="282" text-anchor="middle" fill="#666" font-size="11" font-family="system-ui,sans-serif">得数末尾的0要去掉</text>
+  <line x1="180" y1="265" x2="250" y2="180" stroke="#FF6B6B" stroke-width="1.5"/>
+  <!-- Bottom right: Convenient operations -->
+  <rect x="500" y="240" width="160" height="55" rx="12" fill="#fff" stroke="#4ECDC4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="580" y="262" text-anchor="middle" fill="#4ECDC4" font-size="12" font-weight="700" font-family="system-ui,sans-serif">简便运算</text>
+  <text x="580" y="282" text-anchor="middle" fill="#666" font-size="11" font-family="system-ui,sans-serif">加法交换律/结合律→小数</text>
+  <line x1="540" y1="265" x2="390" y2="180" stroke="#4ECDC4" stroke-width="1.5"/>
+  <!-- Bottom center: Real-world context -->
+  <rect x="250" y="270" width="220" height="55" rx="12" fill="#fff" stroke="#e0e0e0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="360" y="292" text-anchor="middle" fill="#888" font-size="12" font-weight="700" font-family="system-ui,sans-serif">📐 生活情境</text>
+  <text x="360" y="312" text-anchor="middle" fill="#999" font-size="11" font-family="system-ui,sans-serif">购物小票 · 身高测量 · 人民币计算</text>
+  <line x1="320" y1="190" x2="320" y2="270" stroke="#ccc" stroke-width="1.5" stroke-dasharray="4"/>
+  <line x1="400" y1="190" x2="400" y2="270" stroke="#ccc" stroke-width="1.5" stroke-dasharray="4"/>
+  <!-- Additional context -->
+  <rect x="180" y="310" width="110" height="28" rx="8" fill="rgba(255,107,107,0.08)"/>
+  <text x="235" y="329" text-anchor="middle" fill="#FF6B6B" font-size="10" font-weight="600" font-family="system-ui,sans-serif">5年级上册 U4</text>
+  <rect x="430" y="310" width="110" height="28" rx="8" fill="rgba(78,205,196,0.08)"/>
+  <text x="485" y="329" text-anchor="middle" fill="#4ECDC4" font-size="10" font-weight="600" font-family="system-ui,sans-serif">4升5暑假衔接</text>
+</svg>

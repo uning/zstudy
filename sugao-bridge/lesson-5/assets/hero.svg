@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5EE"/>
+      <stop offset="50%" stop-color="#E8F8F5"/>
+      <stop offset="100%" stop-color="#FFF5EE"/>
+    </linearGradient>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="100%" stop-color="#FF8A65"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4ECDC4"/>
+      <stop offset="100%" stop-color="#45B7AA"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#FF6B6B" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="720" height="320" rx="20" fill="url(#bg)"/>
+
+  <!-- 中心节点 -->
+  <rect x="260" y="20" width="200" height="52" rx="26" fill="url(#g1)" filter="url(#shadow)"/>
+  <text x="360" y="52" text-anchor="middle" fill="white" font-size="16" font-weight="bold" font-family="sans-serif">📋 列举策略</text>
+
+  <!-- 连接线 -->
+  <line x1="360" y1="72" x2="360" y2="100" stroke="#FF6B6B" stroke-width="2" stroke-opacity="0.4"/>
+
+  <!-- 核心思想 -->
+  <rect x="260" y="100" width="200" height="36" rx="18" fill="url(#g2)" filter="url(#shadow)"/>
+  <text x="360" y="123" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">有序思考 · 不重复不遗漏</text>
+
+  <!-- 分支 -->
+  <line x1="250" y1="118" x2="140" y2="165" stroke="#4ECDC4" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="360" y1="136" x2="360" y2="165" stroke="#4ECDC4" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="470" y1="118" x2="580" y2="165" stroke="#4ECDC4" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- 子节点 -->
+  <rect x="50" y="163" width="180" height="40" rx="12" fill="white" stroke="#FF6B6B" stroke-width="1.5" stroke-opacity="0.3"/>
+  <text x="140" y="188" text-anchor="middle" fill="#2D3436" font-size="13" font-weight="bold" font-family="sans-serif">🔢 一一列举</text>
+
+  <rect x="270" y="163" width="180" height="40" rx="12" fill="white" stroke="#FF6B6B" stroke-width="1.5" stroke-opacity="0.3"/>
+  <text x="360" y="188" text-anchor="middle" fill="#2D3436" font-size="13" font-weight="bold" font-family="sans-serif">📊 列表/画图辅助</text>
+
+  <rect x="490" y="163" width="180" height="40" rx="12" fill="white" stroke="#FF6B6B" stroke-width="1.5" stroke-opacity="0.3"/>
+  <text x="580" y="188" text-anchor="middle" fill="#2D3436" font-size="13" font-weight="bold" font-family="sans-serif">🎯 找最值/最优解</text>
+
+  <!-- 经典例题 -->
+  <line x1="140" y1="203" x2="140" y2="230" stroke="#FF6B6B" stroke-width="1" stroke-opacity="0.2"/>
+  <rect x="40" y="228" width="200" height="32" rx="10" fill="#FFF0E5" stroke="#FFD4C0" stroke-width="1"/>
+  <text x="140" y="249" text-anchor="middle" fill="#5A6268" font-size="11" font-family="sans-serif">22根木条围长方形问题</text>
+
+  <line x1="360" y1="203" x2="360" y2="230" stroke="#FF6B6B" stroke-width="1" stroke-opacity="0.2"/>
+  <rect x="270" y="228" width="180" height="32" rx="10" fill="#FFF0E5" stroke="#FFD4C0" stroke-width="1"/>
+  <text x="360" y="249" text-anchor="middle" fill="#5A6268" font-size="11" font-family="sans-serif">从大到小/从小到大排列</text>
+
+  <line x1="580" y1="203" x2="580" y2="230" stroke="#FF6B6B" stroke-width="1" stroke-opacity="0.2"/>
+  <rect x="480" y="228" width="200" height="32" rx="10" fill="#FFF0E5" stroke="#FFD4C0" stroke-width="1"/>
+  <text x="580" y="249" text-anchor="middle" fill="#5A6268" font-size="11" font-family="sans-serif">面积最大：6×5=30</text>
+
+  <!-- 底部章节信息 -->
+  <text x="360" y="300" text-anchor="middle" fill="#8A9298" font-size="11" font-family="sans-serif">苏教版 · 五年级数学上册 · 第五单元 · 解决问题的策略</text>
+  <text x="360" y="316" text-anchor="middle" fill="#CCC" font-size="10" font-family="sans-serif">五上 U5 · 4升5暑假衔接</text>
+</svg>

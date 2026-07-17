@@ -2,60 +2,118 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>分层题包·负数（五上U1）· 4升5衔接</title>
 <style>
-:root{--bg:#fffbf0;--card:#fff;--line:#ffe0b2;--primary:#ff6b6b;--secondary:#4ecdc4;--text:#333;--muted:#888}
+:root{--bg:#fffbf0;--card:#fff;--line:#ffe0b2;--primary:#ff6b6b;--secondary:#4ecdc4;--text:#333;--muted:#888;--ok:#22c55e;--warn:#f59e0b}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,"PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.9;padding:24px}
-.wrap{max-width:800px;margin:0 auto}
+body{font-family:-apple-system,"PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.85;padding:24px}
+.wrap{max-width:820px;margin:0 auto}
 h1{font-size:24px;text-align:center;margin-bottom:4px}
-.sub{text-align:center;color:var(--muted);margin-bottom:20px}
+.sub{text-align:center;color:var(--muted);margin-bottom:16px}
 .band{margin:18px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
 .band h2{font-size:17px;margin-bottom:10px}
 .band.A h2{color:var(--primary)} .band.B h2{color:var(--warn)} .band.C h2{color:#8b5cf6}
-ul{list-style:none} li{padding:6px 0;border-bottom:1px dashed var(--line)}
-li:last-child{border:none}
+.item{padding:10px 0;border-bottom:1px dashed var(--line)}
+.item:last-child{border:none}
 .qn{font-weight:700;margin-right:8px}
-.ans{font-size:13px;color:var(--muted);margin-top:4px;padding-left:24px}
-@media print{body{padding:0}.band{break-inside:avoid}}
+.body{margin-bottom:8px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{padding:6px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;font-size:14px;transition:.15s}
+.opt:hover{background:#fff7e6}
+.opt.sel{background:#e7f9f4;border-color:var(--secondary)}
+.opt.right{background:#ecfdf3;border-color:var(--ok)}
+.opt.wrong{background:#fef2f2;border-color:var(--primary)}
+.ans{font-size:13px;color:var(--muted);margin-top:6px;display:none}
+.ans b{color:var(--secondary)}
+.scorebar{position:sticky;top:0;background:#fff;z-index:5;border:1px solid var(--line);border-radius:12px;padding:10px 16px;text-align:center;font-weight:700;color:var(--primary);margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.fillin input{width:120px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;margin-right:8px}
+@media print{body{padding:0}.ans{display:none!important}.opt{cursor:default}.scorebar{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <h1>分层题包 · 负数（五上U1）</h1>
-<p class="sub">4升5暑假衔接 · A基础保底 / B进阶提分 / C拓展拔高</p>
+<p class="sub">4升5暑假衔接 · 点选答案即时批改 · A基础 / B进阶 / C拓展</p>
+<div class="scorebar" id="scorebar">已答 0 题 · 正确 0 题 · 正确率 —</div>
 
 <div class="band A"><h2>A 基础层（保底，必须全会）</h2>
-<ul>
-<li><span class="qn">A1</span>读出下列各数：+5、−3、0、+12、−0.8</li>
-<li><span class="qn">A2</span>填空：零上8℃记作（　），零下5℃记作（　）。</li>
-<li><span class="qn">A3</span>判断：0是正数还是负数？（既不是…）</li>
-<li><span class="qn">A4</span>把下列各数分类：+2、−7、0、+0.5、−3.1、10 → 正数（　）负数（　）0（　）</li>
-<li><span class="qn">A5</span>比较大小：−2 ○ 0，+3 ○ −5，−1 ○ −4</li>
-</ul>
-<div class="ans">答案：A1读"正五、负三、零、正十二、负零点八"｜A2 +8℃、−5℃｜A3 既不是正数也不是负数｜A4 正:+2,+0.5,10；负:−7,−3.1；0单独｜A5 <、>、></div>
+
+<div class="item" data-ans="B"><div class="qn" style="display:inline">A1</div><div class="body">零上8℃记作（　），零下5℃记作（　）。</div>
+<div class="opts"><div class="opt" data-k="A">+8℃、+5℃</div><div class="opt" data-k="B">+8℃、−5℃</div><div class="opt" data-k="C">−8℃、+5℃</div></div>
+<div class="ans">答案：<b>B</b>　解析：零上用正，零下用负。</div></div>
+
+<div class="item" data-ans="B"><div class="qn" style="display:inline">A2</div><div class="body">0 是？</div>
+<div class="opts"><div class="opt" data-k="A">正数</div><div class="opt" data-k="B">既不是正数也不是负数</div><div class="opt" data-k="C">负数</div></div>
+<div class="ans">答案：<b>B</b>　解析：0是正负数的分界。</div></div>
+
+<div class="item" data-ans="B"><div class="qn" style="display:inline">A3</div><div class="body">比较大小：−2 ○ 0</div>
+<div class="opts"><div class="opt" data-k="A">&gt;</div><div class="opt" data-k="B">&lt;</div><div class="opt" data-k="C">=</div></div>
+<div class="ans">答案：<b>B（&lt;）</b></div></div>
+
+<div class="item" data-ans="A"><div class="qn" style="display:inline">A4</div><div class="body">下列各数中，负数有几个？ +2、−7、0、+0.5、−3.1、10</div>
+<div class="opts"><div class="opt" data-k="A">2个</div><div class="opt" data-k="B">3个</div><div class="opt" data-k="C">4个</div></div>
+<div class="ans">答案：<b>A</b>　解析：−7、−3.1 两个负数。</div></div>
+
+<div class="item" data-ans="C"><div class="qn" style="display:inline">A5</div><div class="body">把 −1、+3、−4 按从小到大排列，正确的是？</div>
+<div class="opts"><div class="opt" data-k="A">+3 &lt; −1 &lt; −4</div><div class="opt" data-k="B">−1 &lt; +3 &lt; −4</div><div class="opt" data-k="C">−4 &lt; −1 &lt; +3</div></div>
+<div class="ans">答案：<b>C</b>　解析：数轴上左小右大。</div></div>
 </div>
 
 <div class="band B"><h2>B 进阶层（易错，提分关键）</h2>
-<ul>
-<li><span class="qn">B1</span>海拔：珠峰约+8849米，吐鲁番盆地约−154米，两数相差多少米？</li>
-<li><span class="qn">B2</span>温度计上从−3℃上升到+4℃，升了几度？</li>
-<li><span class="qn">B3</span>数轴题：在下面数轴上标出 −2、+1、−0.5、+3 的位置，并按从小到大排列。</li>
-<li><span class="qn">B4</span>相反意义的量：爸爸本月盈利2000元记作+2000，亏损800元记作（　）；向东走记为+，向西走60米记作（　）。</li>
-<li><span class="qn">B5</span>选择：下列说法错误的是（　）A.0不是正数 B.负数都比0小 C.−1比−2小 D.+5读作正五</li>
-</ul>
-<div class="ans">答案：B1 8849+154=9003米｜B2 7度｜B3 −2<−0.5<+1<+3｜B4 −800、−60米｜B5 C（−1比−2大）</div>
+
+<div class="item" data-ans="B"><div class="qn" style="display:inline">B1</div><div class="body">珠峰约+8849米，吐鲁番盆地约−154米，两数相差多少？</div>
+<div class="opts"><div class="opt" data-k="A">8695米</div><div class="opt" data-k="B">9003米</div><div class="opt" data-k="C">8849米</div></div>
+<div class="ans">答案：<b>B</b>　解析：8849+154=9003。</div></div>
+
+<div class="item" data-ans="A"><div class="qn" style="display:inline">B2</div><div class="body">温度计从−3℃上升到+4℃，升了几度？</div>
+<div class="opts"><div class="opt" data-k="A">7度</div><div class="opt" data-k="B">1度</div><div class="opt" data-k="C">4度</div></div>
+<div class="ans">答案：<b>A</b>　解析：4−(−3)=7。</div></div>
+
+<div class="item" data-ans="C"><div class="qn" style="display:inline">B3</div><div class="body">下列说法正确的是？</div>
+<div class="opts"><div class="opt" data-k="A">−1比−2小</div><div class="opt" data-k="B">0是正数</div><div class="opt" data-k="C">−1比−2大</div></div>
+<div class="ans">答案：<b>C</b>　解析：负数绝对值越大反而越小。</div></div>
+
+<div class="item" data-ans="B"><div class="qn" style="display:inline">B4</div><div class="body">爸爸盈利2000元记作+2000，亏损800元记作（　）；向西走60米记作（　）。</div>
+<div class="opts"><div class="opt" data-k="A">+800、+60</div><div class="opt" data-k="B">−800、−60</div><div class="opt" data-k="C">−800、+60</div></div>
+<div class="ans">答案：<b>B</b>　解析：相反意义的量用相反数。</div></div>
 </div>
 
 <div class="band C"><h2>C 拓展层（拔高，挑战思维）</h2>
-<ul>
-<li><span class="qn">C1</span>找规律：−1, +2, −3, +4, −5, +6 … 第20个数是（　），第n个数的规律是（　）。</li>
-<li><span class="qn">C2</span>三个连续整数，中间一个是0，这三个数分别是（　）、（　）、（　）；它们的和是（　）。</li>
-<li><span class="qn">C3</span>如果 a 是负数，−a 是（　）数；如果 a 是0，−a 是（　）。</li>
-<li><span class="qn">C4</span>应用：某天早上是−2℃，中午比早上高9℃，晚上比中午低12℃，晚上是几℃？</li>
-</ul>
-<div class="ans">答案：C1 +20、规律(−1)ⁿ×n｜C2 −1、0、+1、和0｜C3 正、0｜C4 早上−2→中午+7→晚上−5℃</div>
+
+<div class="item" data-ans="B"><div class="qn" style="display:inline">C1</div><div class="body">数列：−1, +2, −3, +4, −5, +6 … 第20个数是？</div>
+<div class="opts"><div class="opt" data-k="A">−20</div><div class="opt" data-k="B">+20</div><div class="opt" data-k="C">20</div></div>
+<div class="ans">答案：<b>B</b>　解析：偶数位为正，第20个=+20。</div></div>
+
+<div class="item" data-ans="A"><div class="qn" style="display:inline">C2</div><div class="body">三个连续整数中间一个是0，它们的和是？</div>
+<div class="opts"><div class="opt" data-k="A">0</div><div class="opt" data-k="B">1</div><div class="opt" data-k="C">−1</div></div>
+<div class="ans">答案：<b>A</b>　解析：−1+0+1=0。</div></div>
+
+<div class="item" data-ans="B"><div class="qn" style="display:inline">C3</div><div class="body">早上是−2℃，中午比早上高9℃，晚上比中午低12℃，晚上是？</div>
+<div class="opts"><div class="opt" data-k="A">+7℃</div><div class="opt" data-k="B">−5℃</div><div class="opt" data-k="C">+5℃</div></div>
+<div class="ans">答案：<b>B</b>　解析：−2+9=7，7−12=−5。</div></div>
 </div>
+
 </div>
+<script>
+let answered=0, correct=0;
+document.querySelectorAll('.item').forEach(item=>{
+  const opts=item.querySelectorAll('.opt');
+  const ans=item.querySelector('.ans');
+  opts.forEach(o=>o.addEventListener('click',()=>{
+    if(item.dataset.done)return;
+    item.dataset.done=1; answered++;
+    opts.forEach(x=>x.classList.remove('sel'));
+    o.classList.add('sel');
+    ans.style.display='block';
+    const correctOpt=[...opts].find(x=>x.dataset.k===item.dataset.ans);
+    if(correctOpt)correctOpt.classList.add('right');
+    if(o.dataset.k===item.dataset.ans)correct++;
+    else o.classList.add('wrong');
+    const rate=Math.round(correct/answered*100);
+    document.getElementById('scorebar').textContent='已答 '+answered+' 题 · 正确 '+correct+' 题 · 正确率 '+rate+'%';
+  }));
+});
+</script>
 </body>
 </html>
