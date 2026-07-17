@@ -390,13 +390,7 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
 .play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* kg placeholder */
-.tkg-placeholder { text-align: center; padding: 20px; color: var(--muted); }
-.tkg-placeholder svg { width: 60px; height: 60px; margin-bottom: 8px; opacity: 0.3; }
-
 /* AI tutor placeholder */
-.ttc-placeholder { text-align: center; padding: 30px; }
-.ttc-placeholder .ttc-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
-
 /* Knowledge graph interactive */
 .kg-svg-wrap { background: var(--bg-subtle); border: 1px solid var(--line-subtle); border-radius: 16px; padding: 16px; text-align: center; }
 .kg-node { cursor: pointer; transition: all 0.2s; }
@@ -426,6 +420,27 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
   .slide-page[data-page-type="cover"] h1 { font-size: 28px; }
   .toolbar-progress { max-width: 120px; }
 }
+</style>
+
+<style>
+.tutor-app{display:flex;flex-direction:column;gap:12px}
+.tutor-chat{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:10px;background:#fff8f0;border-radius:14px}
+.tutor-bubble{max-width:88%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap}
+.tutor-bubble.user{align-self:flex-end;background:#FF6B6B;color:#fff;border-bottom-right-radius:4px}
+.tutor-bubble.bot{align-self:flex-start;background:#fff;color:#333;border:1px solid #ffe0d0;border-bottom-left-radius:4px}
+.tutor-chips{display:flex;flex-wrap:wrap;gap:8px}
+.tutor-chip{background:#fff;border:1px solid #ffd0c0;color:#FF6B6B;padding:8px 12px;border-radius:20px;font-size:13px;cursor:pointer;transition:.15s}
+.tutor-chip:hover{background:#fff0ea}
+.tutor-input{display:flex;gap:8px;flex-wrap:wrap}
+.tutor-input input{flex:1;min-width:150px;padding:10px 14px;border:1px solid #ffd0c0;border-radius:12px;font-size:14px}
+.tutor-input button{padding:10px 16px;border:none;border-radius:12px;background:#FF6B6B;color:#fff;font-size:14px;cursor:pointer}
+.tutor-input button#tutorQuiz{background:#4ECDC4}
+.kg-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;margin-top:8px}
+.kg-svg{flex:1;min-width:300px}
+.kg-canvas{width:100%;height:auto;background:#fffdfb;border-radius:14px}
+.kg-node rect{transition:.15s}
+.kg-node:hover rect{filter:brightness(.97)}
+.kg-info{flex:1;min-width:240px;background:#fff8f0;border-radius:14px;padding:16px;min-height:120px}
 </style>
 </head>
 <body>
@@ -971,52 +986,13 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
     <div class="card card-glow">
       <div class="section-header">
         <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
-        <h2>知识图谱（点一点 ✨）</h2>
+        <h2>知识图谱 🗺️</h2>
       </div>
-      <p style="color:var(--muted);margin:0 0 16px">小数乘除在知识树中的位置，点击节点查看说明：</p>
-      <div data-teachany-kg="math-e-decimal-mult-div">
-        <div class="kg-svg-wrap">
-          <svg id="kg-svg" viewBox="0 0 640 300" width="100%" style="max-width:600px">
-            <!-- edges -->
-            <line x1="120" y1="150" x2="280" y2="80" stroke="#FFB3A0" stroke-width="3"/>
-            <line x1="120" y1="150" x2="280" y2="220" stroke="#9FE3DD" stroke-width="3"/>
-            <line x1="360" y1="80" x2="500" y2="80" stroke="#FFB3A0" stroke-width="3"/>
-            <line x1="360" y1="220" x2="500" y2="220" stroke="#9FE3DD" stroke-width="3"/>
-            <!-- root -->
-            <g class="kg-node" data-info="小数乘除：核心思路都是先把小数按整数算，再处理小数点位置。">
-              <circle cx="120" cy="150" r="42" fill="#FF6B6B"/>
-              <text x="120" y="146" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">小数</text>
-              <text x="120" y="164" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">乘除</text>
-            </g>
-            <!-- mult -->
-            <g class="kg-node" data-info="小数乘法：先按整数乘法算出积，看因数共有几位小数，从积右边起数出几位点上小数点（位数不够用0补足）。">
-              <circle cx="280" cy="80" r="42" fill="#FF8A65"/>
-              <text x="280" y="76" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">小数</text>
-              <text x="280" y="94" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">乘法</text>
-            </g>
-            <!-- div -->
-            <g class="kg-node" data-info="小数除法：分两类——除数是整数（商点对齐被除点）和除数是小数（移位变整数再除）。">
-              <circle cx="280" cy="220" r="42" fill="#4ECDC4"/>
-              <text x="280" y="216" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">小数</text>
-              <text x="280" y="234" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">除法</text>
-            </g>
-            <!-- judge -->
-            <g class="kg-node" data-info="判断与验算：积的小数位=两因数位之和（末尾0除外）；用估算和逆运算验证结果。">
-              <circle cx="500" cy="80" r="42" fill="#FF6B6B"/>
-              <text x="500" y="76" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">位数</text>
-              <text x="500" y="94" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">判断</text>
-            </g>
-            <!-- estimate -->
-            <g class="kg-node" data-info="估算与验算：算完先用估算看大小是否合理，再用乘除互为逆运算验算。">
-              <circle cx="500" cy="220" r="42" fill="#4ECDC4"/>
-              <text x="500" y="216" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">估算</text>
-              <text x="500" y="234" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">验算</text>
-            </g>
-          </svg>
-        </div>
-        <div class="kg-info" id="kg-info">👆 点击上面的任意节点，查看这块知识的要点说明。</div>
+      <p style="color:var(--muted);margin:0 0 4px">点击任意节点查看讲解，关联节点会自动高亮：</p>
+      <div class="kg-wrap">
+        <div class="kg-svg" id="kgSvg"></div>
+        <div class="kg-info" id="kgInfo"><p style="color:var(--muted);margin:0">👆 选择一个节点查看详情</p></div>
       </div>
-      <p style="font-size:13px;color:var(--muted);margin-top:12px;text-align:center">后续学习：小数四则混合运算、循环小数（五年级）</p>
     </div>
   </div>
 </section>
@@ -1029,13 +1005,13 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
         <span class="phase-tag" data-variant="purple">AI Tutor</span>
         <h2>AI 学伴 🤖</h2>
       </div>
-      <div data-teachany-tutor-card>
-        <div class="ttc-placeholder">
-          <div class="ttc-avatar">🤖</div>
-          <h3 style="color:var(--text);margin:0 0 8px;font-size:18px">小数乘除小帮手</h3>
-          <p style="color:var(--muted)">在练习小数乘除时遇到困难了？</p>
-          <p style="color:var(--muted)">AI 学伴会一步步帮你理清算理～</p>
-          <p style="font-size:12px;color:var(--muted);margin-top:12px">AI 学伴功能需要 TeachAny 平台支持</p>
+      <div class="tutor-app">
+        <div class="tutor-chat" id="tutorChat"></div>
+        <div class="tutor-chips" id="tutorChips"></div>
+        <div class="tutor-input">
+          <input id="tutorInput" placeholder="问我任何关于本课的问题…" />
+          <button id="tutorAsk">问</button>
+          <button id="tutorQuiz">🎲 随机考我</button>
         </div>
       </div>
     </div>
@@ -1335,6 +1311,90 @@ function resetDragGame() {
   document.querySelectorAll('.drag-item').forEach(item => item.classList.remove('placed'));
   document.getElementById('drag-score').textContent = '';
 }
+</script>
+
+<script>
+const COURSE_DATA = {"faq": [{"q": "小数乘法怎么点小数点？", "keys": ["乘法", "乘", "小数点", "位数", "点"], "a": "先当整数相乘，再看两个因数一共有几位小数，就从积的右边起数出几位点上小数点。"}, {"q": "小数除法怎么算？", "keys": ["除法", "除", "移动", "转化"], "a": "除数是小数时，先把除数变成整数（小数点右移几位，被除数也右移几位），再按整数除法算。"}, {"q": "积的小数位数不够怎么办？", "keys": ["不够", "补零", "前面", "0"], "a": "用0补足。例如0.2×0.3=0.06，积应有2位小数，前面补0占位。"}, {"q": "被除数位数不够怎么办？", "keys": ["被除数", "补零", "末尾", "商"], "a": "在被除数的末尾用0补足，继续除。商的小数点要和被除数的新小数点对齐。"}, {"q": "怎么判断积比原数大还是小？", "keys": ["比较", "大于", "小于", "判断", "大小"], "a": "乘大于1的数，积比原数大；乘小于1的数，积比原数小。除以同理反过来。"}], "quiz": [{"q": "0.3 × 0.2 = ?", "options": ["0.6", "0.06", "0.006"], "answer": 1, "exp": "先算3×2=6，两个因数共2位小数，得0.06。"}, {"q": "把 1.2 ÷ 0.3 转化为整数除法，被除数小数点移几位？", "options": ["1位", "2位", "不动"], "answer": 0, "exp": "除数0.3右移1位变3，被除数1.2也右移1位变12，算12÷3。"}, {"q": "一个非零数乘0.5，结果？", "options": ["比原数大", "比原数小", "不变"], "answer": 1, "exp": "0.5<1，乘小于1的数，积比原数小。"}], "graph": {"w": 720, "h": 360, "nodes": [{"id": "n_dec", "label": "小数乘除", "x": 290, "y": 150, "w": 140, "h": 54, "color": "#FF6B6B", "desc": "先按整数算，再处理小数点位置，是本单元核心。", "links": ["n_mul", "n_div", "n_int", "n_point"]}, {"id": "n_mul", "label": "小数乘法", "x": 40, "y": 80, "w": 130, "h": 44, "color": "#4ECDC4", "desc": "先当整数乘，再数总小数位数点小数点。", "links": ["n_dec"]}, {"id": "n_div", "label": "小数除法", "x": 40, "y": 240, "w": 130, "h": 44, "color": "#f59e0b", "desc": "除数化整数（同移小数点），再除。", "links": ["n_dec"]}, {"id": "n_int", "label": "整数乘除", "x": 550, "y": 80, "w": 130, "h": 44, "color": "#a78bfa", "desc": "小数乘除建立在整数乘除法则之上。", "links": ["n_dec"]}, {"id": "n_point", "label": "小数点位置", "x": 550, "y": 240, "w": 140, "h": 44, "color": "#06b6d4", "desc": "积的位数、商的对齐都取决于小数点处理。", "links": ["n_dec"]}]}};
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+  function findAnswer(text){
+    text=(text||'').trim(); if(!text) return null;
+    let best=null,bs=0;
+    const low=text.toLowerCase();
+    for(const f of COURSE_DATA.faq){
+      let s=0; const hay=(f.q+' '+(f.keys||[]).join(' ')).toLowerCase();
+      if(f.q && low.includes(f.q.toLowerCase().slice(0,3))) s+=3;
+      for(const k of (f.keys||[])){ if(text.includes(k)) s+=2; }
+      for(const ch of new Set(text.split(''))){ if(ch.trim() && f.q.includes(ch)) s+=0.15; }
+      if(s>bs){bs=s;best=f;}
+    }
+    return bs>=1?best:null;
+  }
+  function bubble(role,text){
+    const c=document.getElementById('tutorChat'); if(!c)return;
+    const d=document.createElement('div'); d.className='tutor-bubble '+(role==='bot'?'bot':'user');
+    d.textContent=text; c.appendChild(d); c.scrollTop=c.scrollHeight;
+  }
+  function showFaq(f){ bubble('user',f.q); bubble('bot',f.a); }
+  function ask(){
+    const inp=document.getElementById('tutorInput'); const v=inp.value.trim(); if(!v)return; inp.value='';
+    const f=findAnswer(v);
+    bubble('user',v);
+    if(f) bubble('bot',f.a);
+    else bubble('bot','这个问题我还在学习～你可以先点下面的常见问题，或换个说法问我 😊');
+  }
+  function renderChips(){
+    const c=document.getElementById('tutorChips'); if(!c)return; c.innerHTML='';
+    COURSE_DATA.faq.forEach(f=>{ const b=document.createElement('button'); b.className='tutor-chip'; b.textContent=f.q; b.onclick=()=>showFaq(f); c.appendChild(b); });
+  }
+  function quiz(){
+    const c=document.getElementById('tutorChips'); if(!c||!COURSE_DATA.quiz)return;
+    const q=COURSE_DATA.quiz[Math.floor(Math.random()*COURSE_DATA.quiz.length)];
+    bubble('bot','🎲 考考你：'+q.q);
+    q.options.forEach((opt,i)=>{
+      const b=document.createElement('button'); b.className='tutor-chip'; b.textContent=opt;
+      b.onclick=()=>{ if(i===q.answer){ bubble('user',opt); bubble('bot','✅ 答对啦！'+q.exp); }
+        else { bubble('user',opt); bubble('bot','❌ 再想想～正确答案：'+q.options[q.answer]+'。'+q.exp); } };
+      c.appendChild(b);
+    });
+  }
+  function renderGraph(){
+    const wrap=document.getElementById('kgSvg'); if(!wrap||!COURSE_DATA.graph)return;
+    const g=COURSE_DATA.graph, W=g.w||720, H=g.h||360;
+    const svg=el('svg',{viewBox:'0 0 '+W+' '+H,class:'kg-canvas',width:'100%'});
+    g.nodes.forEach(n=>{(n.links||[]).forEach(t=>{ const m=g.nodes.find(x=>x.id===t); if(!m)return;
+      const ln=el('line',{x1:n.x+n.w/2,y1:n.y+n.h/2,x2:m.x+m.w/2,y2:m.y+m.h/2,stroke:'#e2d5cf','stroke-width':2,class:'kg-edge'});
+      ln.dataset.a=n.id; ln.dataset.b=t; svg.appendChild(ln); });});
+    g.nodes.forEach(n=>{
+      const grp=el('g',{class:'kg-node',style:'cursor:pointer'}); grp.dataset.id=n.id;
+      const r=el('rect',{x:n.x,y:n.y,width:n.w,height:n.h,rx:10,fill:'#fff',stroke:n.color||'#FF6B6B','stroke-width':2});
+      r.dataset.id=n.id;
+      const t=el('text',{x:n.x+n.w/2,y:n.y+n.h/2+5,'text-anchor':'middle','font-size':13,fill:'#333','font-family':'system-ui,sans-serif'});
+      t.textContent=n.label; grp.appendChild(r); grp.appendChild(t);
+      grp.addEventListener('click',()=>selectNode(n.id));
+      svg.appendChild(grp);
+    });
+    wrap.innerHTML=''; wrap.appendChild(svg);
+  }
+  function selectNode(id){
+    const g=COURSE_DATA.graph; const n=g.nodes.find(x=>x.id===id); if(!n)return;
+    document.querySelectorAll('.kg-edge').forEach(e=>{ const on=(e.dataset.a===id||e.dataset.b===id); e.setAttribute('stroke',on?'#FF6B6B':'#eee'); e.setAttribute('stroke-width',on?3:2); });
+    document.querySelectorAll('.kg-node').forEach(grp=>{ const on=(grp.dataset.id===id)||(n.links||[]).includes(grp.dataset.id);
+      const r=grp.querySelector('rect'); r.setAttribute('stroke',on?'#FF6B6B':'#ccc'); r.setAttribute('opacity',on?1:0.45); });
+    const info=document.getElementById('kgInfo'); if(!info)return;
+    let html='<h3 style="color:#FF6B6B;margin:0 0 6px">'+n.label+'</h3><p style="margin:0 0 8px;color:#444;line-height:1.6">'+n.desc+'</p>';
+    if(n.links&&n.links.length){ html+='<p style="font-size:13px;color:#888">关联：'+n.links.map(l=>{const m=g.nodes.find(x=>x.id===l);return m?m.label:l;}).join('、')+'</p>'; }
+    info.innerHTML=html;
+  }
+  // init
+  renderChips();
+  const askBtn=document.getElementById('tutorAsk'); if(askBtn) askBtn.onclick=ask;
+  const inp=document.getElementById('tutorInput'); if(inp) inp.addEventListener('keydown',e=>{ if(e.key==='Enter') ask(); });
+  const qz=document.getElementById('tutorQuiz'); if(qz) qz.onclick=quiz;
+  renderGraph();
+  const c0=document.getElementById('tutorChat'); if(c0) bubble('bot','我是本课 AI 学伴 🤖 点下面的常见问题，或输入你的问题，也可以点「🎲随机考我」！');
+})();
 </script>
 </body>
 </html>

@@ -300,13 +300,7 @@ body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
 .summary-item .num { font-weight: 700; flex-shrink: 0; color: var(--brand); min-width: 24px; }
 
 /* kg placeholder */
-.tkg-placeholder { text-align: center; padding: 20px; color: var(--muted); }
-.tkg-placeholder svg { width: 60px; height: 60px; margin-bottom: 8px; opacity: 0.3; }
-
 /* AI tutor placeholder */
-.ttc-placeholder { text-align: center; padding: 30px; }
-.ttc-placeholder .ttc-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
-
 /* Progress Bar */
 .slide-progress-bar {
   position: fixed; top: 0; left: 0; height: 3px;
@@ -417,6 +411,27 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
   .slide-page[data-page-type="cover"] h1 { font-size: 28px; }
   .toolbar-progress { max-width: 120px; }
 }
+</style>
+
+<style>
+.tutor-app{display:flex;flex-direction:column;gap:12px}
+.tutor-chat{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:10px;background:#fff8f0;border-radius:14px}
+.tutor-bubble{max-width:88%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap}
+.tutor-bubble.user{align-self:flex-end;background:#FF6B6B;color:#fff;border-bottom-right-radius:4px}
+.tutor-bubble.bot{align-self:flex-start;background:#fff;color:#333;border:1px solid #ffe0d0;border-bottom-left-radius:4px}
+.tutor-chips{display:flex;flex-wrap:wrap;gap:8px}
+.tutor-chip{background:#fff;border:1px solid #ffd0c0;color:#FF6B6B;padding:8px 12px;border-radius:20px;font-size:13px;cursor:pointer;transition:.15s}
+.tutor-chip:hover{background:#fff0ea}
+.tutor-input{display:flex;gap:8px;flex-wrap:wrap}
+.tutor-input input{flex:1;min-width:150px;padding:10px 14px;border:1px solid #ffd0c0;border-radius:12px;font-size:14px}
+.tutor-input button{padding:10px 16px;border:none;border-radius:12px;background:#FF6B6B;color:#fff;font-size:14px;cursor:pointer}
+.tutor-input button#tutorQuiz{background:#4ECDC4}
+.kg-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;margin-top:8px}
+.kg-svg{flex:1;min-width:300px}
+.kg-canvas{width:100%;height:auto;background:#fffdfb;border-radius:14px}
+.kg-node rect{transition:.15s}
+.kg-node:hover rect{filter:brightness(.97)}
+.kg-info{flex:1;min-width:240px;background:#fff8f0;border-radius:14px;padding:16px;min-height:120px}
 </style>
 </head>
 <body>
@@ -958,40 +973,11 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
         <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
         <h2>知识图谱 🗺️</h2>
       </div>
-      <p style="color:var(--muted);margin:0 0 16px">小数加法和减法在知识树中的位置：</p>
-      <div data-teachany-kg="math-e-decimal-arithmetic">
-        <div class="tkg-placeholder">
-          <svg viewBox="0 0 280 180" fill="none">
-            <!-- Center -->
-            <rect x="95" y="65" width="90" height="50" rx="10" fill="url(#kgGrad)" filter="url(#kgShadow)"/>
-            <text x="140" y="95" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui,sans-serif">小数加减法</text>
-            <!-- Top -->
-            <rect x="95" y="8" width="90" height="36" rx="8" fill="#fff" stroke="#FF6B6B" stroke-width="1"/>
-            <text x="140" y="22" text-anchor="middle" fill="#FF6B6B" font-size="10" font-weight="600" font-family="system-ui,sans-serif">整数加减</text>
-            <text x="140" y="36" text-anchor="middle" fill="#999" font-size="9" font-family="system-ui,sans-serif">四上基础</text>
-            <line x1="140" y1="44" x2="140" y2="65" stroke="#FF6B6B" stroke-width="1.2"/>
-            <!-- Bottom -->
-            <rect x="95" y="142" width="90" height="30" rx="8" fill="#fff" stroke="#4ECDC4" stroke-width="1"/>
-            <text x="140" y="161" text-anchor="middle" fill="#4ECDC4" font-size="10" font-weight="600" font-family="system-ui,sans-serif">小数乘除法</text>
-            <line x1="140" y1="115" x2="140" y2="142" stroke="#4ECDC4" stroke-width="1.2"/>
-            <!-- Left -->
-            <rect x="8" y="75" width="72" height="30" rx="8" fill="#fff" stroke="#a78bfa" stroke-width="1"/>
-            <text x="44" y="94" text-anchor="middle" fill="#a78bfa" font-size="9" font-weight="600" font-family="system-ui,sans-serif">小数的意义</text>
-            <line x1="80" y1="90" x2="95" y2="90" stroke="#a78bfa" stroke-width="1.2"/>
-            <!-- Right -->
-            <rect x="200" y="75" width="72" height="30" rx="8" fill="#fff" stroke="#f59e0b" stroke-width="1"/>
-            <text x="236" y="94" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="600" font-family="system-ui,sans-serif">混合运算</text>
-            <line x1="185" y1="90" x2="200" y2="90" stroke="#f59e0b" stroke-width="1.2"/>
-            <defs>
-              <linearGradient id="kgGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FF6B6B"/><stop offset="100%" stop-color="#4ECDC4"/></linearGradient>
-              <filter id="kgShadow"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#FF6B6B" flood-opacity="0.2"/></filter>
-            </defs>
-          </svg>
-          <p style="font-size:13px;color:var(--muted)">⬅ 小数的意义 → <b style="color:var(--brand)">小数加减法</b> → 小数混合运算 ➡</p>
-          <p style="font-size:12px;color:var(--muted)">完整知识图谱需要 TeachAny 平台支持</p>
-        </div>
+      <p style="color:var(--muted);margin:0 0 4px">点击任意节点查看讲解，关联节点会自动高亮：</p>
+      <div class="kg-wrap">
+        <div class="kg-svg" id="kgSvg"></div>
+        <div class="kg-info" id="kgInfo"><p style="color:var(--muted);margin:0">👆 选择一个节点查看详情</p></div>
       </div>
-      <p style="font-size:13px;color:var(--muted);margin-top:12px;text-align:center">后续学习：小数乘除法（五上U3）→ 分数加减法（五下）</p>
     </div>
   </div>
 </section>
@@ -1004,19 +990,13 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
         <span class="phase-tag" data-variant="purple">AI Tutor</span>
         <h2>AI 学伴 🤖</h2>
       </div>
-      <div data-teachany-tutor-card>
-        <div class="ttc-placeholder">
-          <div class="ttc-avatar">🧮</div>
-          <h3 style="color:var(--text);margin:0 0 8px;font-size:18px">小数计算小帮手</h3>
-          <p style="color:var(--muted)">在学习小数加减法时遇到问题了？</p>
-          <p style="color:var(--muted)">我可以帮你：</p>
-          <ul style="text-align:left;max-width:320px;margin:8px auto;color:var(--text-secondary);font-size:14px">
-            <li>一步步列竖式计算</li>
-            <li>解释退位借1的过程</li>
-            <li>教你快速简便运算</li>
-            <li>检查你的作业答案</li>
-          </ul>
-          <p style="font-size:12px;color:var(--muted);margin-top:12px">AI 学伴功能需要 TeachAny 平台支持</p>
+      <div class="tutor-app">
+        <div class="tutor-chat" id="tutorChat"></div>
+        <div class="tutor-chips" id="tutorChips"></div>
+        <div class="tutor-input">
+          <input id="tutorInput" placeholder="问我任何关于本课的问题…" />
+          <button id="tutorAsk">问</button>
+          <button id="tutorQuiz">🎲 随机考我</button>
         </div>
       </div>
     </div>
@@ -1314,6 +1294,90 @@ function resetDragGame() {
   document.querySelectorAll('#drag-items .drag-item').forEach(item => item.classList.remove('placed'));
   document.getElementById('drag-score').textContent = '';
 }
+</script>
+
+<script>
+const COURSE_DATA = {"faq": [{"q": "小数加减法怎么对齐？", "keys": ["对齐", "小数点", "数位", "竖式"], "a": "小数点对齐，也就是相同数位对齐。缺位用0补齐，再按整数加减法计算。"}, {"q": "小数减法不够减怎么办？", "keys": ["减法", "退位", "借", "不够"], "a": "从前一位借1当10（十分位借1当10个千分位等），和整数退位一样。"}, {"q": "得数末尾的0要去掉吗？", "keys": ["末尾", "化简", "0", "去掉", "约分"], "a": "通常把末尾的0去掉化简，如 3.20 写成 3.2；但表示精度时可保留。"}, {"q": "连加连减有简便方法吗？", "keys": ["简便", "连加", "连减", "运算律", "结合律"], "a": "有！加法可用交换律/结合律凑整；连减可用 a-b-c=a-(b+c)。"}, {"q": "小数加减和整数加减一样吗？", "keys": ["一样", "区别", "整数", "关系"], "a": "算理相同，关键都是相同数位对齐——整数靠末位对齐，小数靠小数点对齐。"}], "quiz": [{"q": "计算 3.2 + 4.58，小数点对齐后哪位要补0？", "options": ["3.2补0成3.20", "4.58补0", "都不补"], "answer": 0, "exp": "3.2写成3.20，与4.58同为两位小数再相加。"}, {"q": "5.1 - 2.35 = ?", "options": ["2.75", "3.25", "2.85"], "answer": 0, "exp": "5.10-2.35，退位后得2.75。"}, {"q": "简便计算 8.4 - 3.2 - 1.8 可用？", "options": ["8.4-(3.2+1.8)", "8.4-3.2+1.8", "直接减"], "answer": 0, "exp": "连减性质：a-b-c=a-(b+c)=8.4-5=3.4。"}], "graph": {"w": 720, "h": 360, "nodes": [{"id": "n_add", "label": "小数加减法", "x": 290, "y": 150, "w": 150, "h": 54, "color": "#FF6B6B", "desc": "小数点对齐=相同数位对齐，是本单元核心。", "links": ["n_align", "n_borrow", "n_simp", "n_int"]}, {"id": "n_align", "label": "小数点对齐", "x": 40, "y": 80, "w": 140, "h": 44, "color": "#4ECDC4", "desc": "竖式中小数点对齐，缺位补0。", "links": ["n_add"]}, {"id": "n_borrow", "label": "退位借1", "x": 40, "y": 240, "w": 130, "h": 44, "color": "#f59e0b", "desc": "不够减时向前一位借1当10。", "links": ["n_add"]}, {"id": "n_simp", "label": "末尾化简", "x": 550, "y": 80, "w": 130, "h": 44, "color": "#a78bfa", "desc": "去掉得数末尾无用的0。", "links": ["n_add"]}, {"id": "n_int", "label": "整数加减", "x": 550, "y": 240, "w": 130, "h": 44, "color": "#06b6d4", "desc": "算理相同，只是对齐方式不同。", "links": ["n_add"]}]}};
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+  function findAnswer(text){
+    text=(text||'').trim(); if(!text) return null;
+    let best=null,bs=0;
+    const low=text.toLowerCase();
+    for(const f of COURSE_DATA.faq){
+      let s=0; const hay=(f.q+' '+(f.keys||[]).join(' ')).toLowerCase();
+      if(f.q && low.includes(f.q.toLowerCase().slice(0,3))) s+=3;
+      for(const k of (f.keys||[])){ if(text.includes(k)) s+=2; }
+      for(const ch of new Set(text.split(''))){ if(ch.trim() && f.q.includes(ch)) s+=0.15; }
+      if(s>bs){bs=s;best=f;}
+    }
+    return bs>=1?best:null;
+  }
+  function bubble(role,text){
+    const c=document.getElementById('tutorChat'); if(!c)return;
+    const d=document.createElement('div'); d.className='tutor-bubble '+(role==='bot'?'bot':'user');
+    d.textContent=text; c.appendChild(d); c.scrollTop=c.scrollHeight;
+  }
+  function showFaq(f){ bubble('user',f.q); bubble('bot',f.a); }
+  function ask(){
+    const inp=document.getElementById('tutorInput'); const v=inp.value.trim(); if(!v)return; inp.value='';
+    const f=findAnswer(v);
+    bubble('user',v);
+    if(f) bubble('bot',f.a);
+    else bubble('bot','这个问题我还在学习～你可以先点下面的常见问题，或换个说法问我 😊');
+  }
+  function renderChips(){
+    const c=document.getElementById('tutorChips'); if(!c)return; c.innerHTML='';
+    COURSE_DATA.faq.forEach(f=>{ const b=document.createElement('button'); b.className='tutor-chip'; b.textContent=f.q; b.onclick=()=>showFaq(f); c.appendChild(b); });
+  }
+  function quiz(){
+    const c=document.getElementById('tutorChips'); if(!c||!COURSE_DATA.quiz)return;
+    const q=COURSE_DATA.quiz[Math.floor(Math.random()*COURSE_DATA.quiz.length)];
+    bubble('bot','🎲 考考你：'+q.q);
+    q.options.forEach((opt,i)=>{
+      const b=document.createElement('button'); b.className='tutor-chip'; b.textContent=opt;
+      b.onclick=()=>{ if(i===q.answer){ bubble('user',opt); bubble('bot','✅ 答对啦！'+q.exp); }
+        else { bubble('user',opt); bubble('bot','❌ 再想想～正确答案：'+q.options[q.answer]+'。'+q.exp); } };
+      c.appendChild(b);
+    });
+  }
+  function renderGraph(){
+    const wrap=document.getElementById('kgSvg'); if(!wrap||!COURSE_DATA.graph)return;
+    const g=COURSE_DATA.graph, W=g.w||720, H=g.h||360;
+    const svg=el('svg',{viewBox:'0 0 '+W+' '+H,class:'kg-canvas',width:'100%'});
+    g.nodes.forEach(n=>{(n.links||[]).forEach(t=>{ const m=g.nodes.find(x=>x.id===t); if(!m)return;
+      const ln=el('line',{x1:n.x+n.w/2,y1:n.y+n.h/2,x2:m.x+m.w/2,y2:m.y+m.h/2,stroke:'#e2d5cf','stroke-width':2,class:'kg-edge'});
+      ln.dataset.a=n.id; ln.dataset.b=t; svg.appendChild(ln); });});
+    g.nodes.forEach(n=>{
+      const grp=el('g',{class:'kg-node',style:'cursor:pointer'}); grp.dataset.id=n.id;
+      const r=el('rect',{x:n.x,y:n.y,width:n.w,height:n.h,rx:10,fill:'#fff',stroke:n.color||'#FF6B6B','stroke-width':2});
+      r.dataset.id=n.id;
+      const t=el('text',{x:n.x+n.w/2,y:n.y+n.h/2+5,'text-anchor':'middle','font-size':13,fill:'#333','font-family':'system-ui,sans-serif'});
+      t.textContent=n.label; grp.appendChild(r); grp.appendChild(t);
+      grp.addEventListener('click',()=>selectNode(n.id));
+      svg.appendChild(grp);
+    });
+    wrap.innerHTML=''; wrap.appendChild(svg);
+  }
+  function selectNode(id){
+    const g=COURSE_DATA.graph; const n=g.nodes.find(x=>x.id===id); if(!n)return;
+    document.querySelectorAll('.kg-edge').forEach(e=>{ const on=(e.dataset.a===id||e.dataset.b===id); e.setAttribute('stroke',on?'#FF6B6B':'#eee'); e.setAttribute('stroke-width',on?3:2); });
+    document.querySelectorAll('.kg-node').forEach(grp=>{ const on=(grp.dataset.id===id)||(n.links||[]).includes(grp.dataset.id);
+      const r=grp.querySelector('rect'); r.setAttribute('stroke',on?'#FF6B6B':'#ccc'); r.setAttribute('opacity',on?1:0.45); });
+    const info=document.getElementById('kgInfo'); if(!info)return;
+    let html='<h3 style="color:#FF6B6B;margin:0 0 6px">'+n.label+'</h3><p style="margin:0 0 8px;color:#444;line-height:1.6">'+n.desc+'</p>';
+    if(n.links&&n.links.length){ html+='<p style="font-size:13px;color:#888">关联：'+n.links.map(l=>{const m=g.nodes.find(x=>x.id===l);return m?m.label:l;}).join('、')+'</p>'; }
+    info.innerHTML=html;
+  }
+  // init
+  renderChips();
+  const askBtn=document.getElementById('tutorAsk'); if(askBtn) askBtn.onclick=ask;
+  const inp=document.getElementById('tutorInput'); if(inp) inp.addEventListener('keydown',e=>{ if(e.key==='Enter') ask(); });
+  const qz=document.getElementById('tutorQuiz'); if(qz) qz.onclick=quiz;
+  renderGraph();
+  const c0=document.getElementById('tutorChat'); if(c0) bubble('bot','我是本课 AI 学伴 🤖 点下面的常见问题，或输入你的问题，也可以点「🎲随机考我」！');
+})();
 </script>
 </body>
 </html>

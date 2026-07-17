@@ -421,13 +421,7 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
 .play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* kg placeholder */
-.tkg-placeholder { text-align: center; padding: 20px; color: var(--muted); }
-.tkg-placeholder svg { width: 60px; height: 60px; margin-bottom: 8px; opacity: 0.3; }
-
 /* AI tutor placeholder */
-.ttc-placeholder { text-align: center; padding: 30px; }
-.ttc-placeholder .ttc-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #fff; }
-
 @media (max-width: 768px) {
   :root { --page-padding: 16px; --card-radius: 16px; }
   .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
@@ -445,6 +439,27 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
   .slide-page[data-page-type="cover"] h1 { font-size: 28px; }
   .toolbar-progress { max-width: 120px; }
 }
+</style>
+
+<style>
+.tutor-app{display:flex;flex-direction:column;gap:12px}
+.tutor-chat{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:10px;background:#fff8f0;border-radius:14px}
+.tutor-bubble{max-width:88%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap}
+.tutor-bubble.user{align-self:flex-end;background:#FF6B6B;color:#fff;border-bottom-right-radius:4px}
+.tutor-bubble.bot{align-self:flex-start;background:#fff;color:#333;border:1px solid #ffe0d0;border-bottom-left-radius:4px}
+.tutor-chips{display:flex;flex-wrap:wrap;gap:8px}
+.tutor-chip{background:#fff;border:1px solid #ffd0c0;color:#FF6B6B;padding:8px 12px;border-radius:20px;font-size:13px;cursor:pointer;transition:.15s}
+.tutor-chip:hover{background:#fff0ea}
+.tutor-input{display:flex;gap:8px;flex-wrap:wrap}
+.tutor-input input{flex:1;min-width:150px;padding:10px 14px;border:1px solid #ffd0c0;border-radius:12px;font-size:14px}
+.tutor-input button{padding:10px 16px;border:none;border-radius:12px;background:#FF6B6B;color:#fff;font-size:14px;cursor:pointer}
+.tutor-input button#tutorQuiz{background:#4ECDC4}
+.kg-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;margin-top:8px}
+.kg-svg{flex:1;min-width:300px}
+.kg-canvas{width:100%;height:auto;background:#fffdfb;border-radius:14px}
+.kg-node rect{transition:.15s}
+.kg-node:hover rect{filter:brightness(.97)}
+.kg-info{flex:1;min-width:240px;background:#fff8f0;border-radius:14px;padding:16px;min-height:120px}
 </style>
 </head>
 <body>
@@ -1006,43 +1021,13 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
     <div class="card card-glow">
       <div class="section-header">
         <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
-        <h2>知识图谱</h2>
+        <h2>知识图谱 🗺️</h2>
       </div>
-      <p style="color:var(--muted);margin:0 0 16px">负数在知识树中的位置与关系：</p>
-      <div data-teachany-kg="math-e-negative-numbers">
-        <div class="canvas-wrap">
-          <svg viewBox="0 0 640 320" width="640" height="320" role="img" aria-label="负数知识图谱：整数包含正整数、0、负整数">
-            <defs>
-              <marker id="kg-arr" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#cbb"/></marker>
-            </defs>
-            <!-- root: 数 -->
-            <rect x="270" y="14" width="100" height="40" rx="12" fill="#FF6B6B" />
-            <text x="320" y="39" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">数</text>
-            <!-- 整数 -->
-            <rect x="265" y="84" width="110" height="40" rx="12" fill="#4ECDC4"/>
-            <text x="320" y="109" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">整数</text>
-            <line x1="320" y1="54" x2="320" y2="84" stroke="#cbb" stroke-width="2" marker-end="url(#kg-arr)"/>
-            <!-- three children -->
-            <rect x="60" y="170" width="130" height="44" rx="12" fill="#4ECDC4" opacity="0.9"/>
-            <text x="125" y="197" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">正整数(正数)</text>
-            <rect x="255" y="170" width="130" height="44" rx="12" fill="#FF6B6B" opacity="0.9"/>
-            <text x="320" y="197" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">0（分界）</text>
-            <rect x="450" y="170" width="130" height="44" rx="12" fill="#4A90D9" opacity="0.9"/>
-            <text x="515" y="197" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">负整数(负数)</text>
-            <line x1="290" y1="124" x2="155" y2="170" stroke="#cbb" stroke-width="2" marker-end="url(#kg-arr)"/>
-            <line x1="320" y1="124" x2="320" y2="170" stroke="#cbb" stroke-width="2" marker-end="url(#kg-arr)"/>
-            <line x1="350" y1="124" x2="485" y2="170" stroke="#cbb" stroke-width="2" marker-end="url(#kg-arr)"/>
-            <!-- examples -->
-            <text x="125" y="240" text-anchor="middle" fill="#5A6268" font-size="13">+1, +3, 100…</text>
-            <text x="320" y="240" text-anchor="middle" fill="#5A6268" font-size="13">中立点</text>
-            <text x="515" y="240" text-anchor="middle" fill="#5A6268" font-size="13">−1, −5, −1.2…</text>
-            <!-- 数轴 link -->
-            <rect x="230" y="270" width="180" height="36" rx="12" fill="#FFF0E5" stroke="#FFD4C0"/>
-            <text x="320" y="293" text-anchor="middle" fill="#FF6B6B" font-size="13" font-weight="700">用数轴比较大小 → 右大左小</text>
-          </svg>
-        </div>
+      <p style="color:var(--muted);margin:0 0 4px">点击任意节点查看讲解，关联节点会自动高亮：</p>
+      <div class="kg-wrap">
+        <div class="kg-svg" id="kgSvg"></div>
+        <div class="kg-info" id="kgInfo"><p style="color:var(--muted);margin:0">👆 选择一个节点查看详情</p></div>
       </div>
-      <p style="font-size:13px;color:var(--muted);margin-top:12px;text-align:center">后续学习：小数的负数、负数的四则运算（五上·五下）</p>
     </div>
   </div>
 </section>
@@ -1055,14 +1040,13 @@ body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(
         <span class="phase-tag" data-variant="purple">AI Tutor</span>
         <h2>AI 学伴 🤖</h2>
       </div>
-      <div data-teachany-tutor-card>
-        <div class="ttc-placeholder">
-          <div class="ttc-avatar">🤖</div>
-          <h3 style="color:var(--text);margin:0 0 8px;font-size:18px">学习小帮手</h3>
-          <p style="color:var(--muted)">在学负数时遇到困难了？</p>
-          <p style="color:var(--muted)">AI 学伴可以帮你：</p>
-          <p style="color:var(--muted);font-size:14px">· 一步步讲清"为什么 0 不是正数"<br>· 出更多数轴比较的练习题<br>· 用你喜欢的例子（游戏分数、零花钱）举例</p>
-          <p style="font-size:12px;color:var(--muted);margin-top:12px">AI 学伴功能需要 TeachAny 平台支持（联网与模型服务）</p>
+      <div class="tutor-app">
+        <div class="tutor-chat" id="tutorChat"></div>
+        <div class="tutor-chips" id="tutorChips"></div>
+        <div class="tutor-input">
+          <input id="tutorInput" placeholder="问我任何关于本课的问题…" />
+          <button id="tutorAsk">问</button>
+          <button id="tutorQuiz">🎲 随机考我</button>
         </div>
       </div>
     </div>
@@ -1404,6 +1388,90 @@ document.querySelectorAll('.cls-btn').forEach(btn => {
     if (selectedItem) btn.classList.add('active');
   });
 });
+</script>
+
+<script>
+const COURSE_DATA = {"faq": [{"q": "什么是负数？", "keys": ["负数", "什么叫", "是什么", "定义", "意思"], "a": "负数是比0小的数，用来表示相反意义的量。比如零下5℃记作-5℃、亏了200元记作-200元。前面带'-'号的数就是负数。"}, {"q": "0是正数还是负数？", "keys": ["0", "零", "分界", "既不是", "正负"], "a": "0既不是正数也不是负数，它是正数和负数的分界点。"}, {"q": "负数怎么比较大小？", "keys": ["比较", "大小", "比大小", "谁大", "排序"], "a": "在数轴上，右边的数总比左边大。负数离0越远数值越小，比如 -5 < -2，-1 > -3。"}, {"q": "负数能加减吗？", "keys": ["加减", "运算", "加法", "减法", "算"], "a": "可以。同号相加取共同符号：(-3)+(-5)=-8；异号相加看绝对值大的定符号：(-3)+5=2。"}, {"q": "生活里哪里用负数？", "keys": ["生活", "应用", "例子", "实际", "温度", "海拔", "例子"], "a": "温度计（零下）、海拔（海平面以下）、账本（亏损/欠债）、电梯（B1地下层）、比赛净胜球。"}], "quiz": [{"q": "-3 和 -7 哪个大？", "options": ["-3 更大", "-7 更大", "一样大"], "answer": 0, "exp": "数轴上-3在-7的右边，所以-3 > -7。"}, {"q": "0 是？", "options": ["正数", "负数", "既不是正数也不是负数"], "answer": 2, "exp": "0是正负数的分界，两者都不是。"}, {"q": "零下5℃记作？", "options": ["5℃", "-5℃", "0℃"], "answer": 1, "exp": "零下用负号表示，记作-5℃。"}], "graph": {"w": 720, "h": 360, "nodes": [{"id": "n_neg", "label": "负数", "x": 295, "y": 155, "w": 130, "h": 54, "color": "#FF6B6B", "desc": "比0小的数，表示相反意义的量，是本单元核心。", "links": ["n_int", "n_zero", "n_opp", "n_axis", "n_app"]}, {"id": "n_int", "label": "整数", "x": 300, "y": 22, "w": 110, "h": 44, "color": "#a78bfa", "desc": "像…-2,-1,0,1,2…这样的数，包含正整数、0、负整数。", "links": ["n_neg"]}, {"id": "n_zero", "label": "0（分界）", "x": 55, "y": 157, "w": 120, "h": 44, "color": "#4ECDC4", "desc": "正数和负数的分界点，既不是正也不是负。", "links": ["n_neg"]}, {"id": "n_opp", "label": "相反意义的量", "x": 290, "y": 290, "w": 140, "h": 44, "color": "#f59e0b", "desc": "用正负数表示一对相反的量，如收入/支出、上升/下降。", "links": ["n_neg"]}, {"id": "n_axis", "label": "数轴", "x": 555, "y": 90, "w": 120, "h": 44, "color": "#FF8A65", "desc": "直观比较正负数大小的工具，右边总比左边大。", "links": ["n_neg"]}, {"id": "n_app", "label": "温度·海拔应用", "x": 545, "y": 250, "w": 150, "h": 44, "color": "#06b6d4", "desc": "负数在生活中的典型应用：零下温度、海平面以下。", "links": ["n_neg"]}]}};
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+  function findAnswer(text){
+    text=(text||'').trim(); if(!text) return null;
+    let best=null,bs=0;
+    const low=text.toLowerCase();
+    for(const f of COURSE_DATA.faq){
+      let s=0; const hay=(f.q+' '+(f.keys||[]).join(' ')).toLowerCase();
+      if(f.q && low.includes(f.q.toLowerCase().slice(0,3))) s+=3;
+      for(const k of (f.keys||[])){ if(text.includes(k)) s+=2; }
+      for(const ch of new Set(text.split(''))){ if(ch.trim() && f.q.includes(ch)) s+=0.15; }
+      if(s>bs){bs=s;best=f;}
+    }
+    return bs>=1?best:null;
+  }
+  function bubble(role,text){
+    const c=document.getElementById('tutorChat'); if(!c)return;
+    const d=document.createElement('div'); d.className='tutor-bubble '+(role==='bot'?'bot':'user');
+    d.textContent=text; c.appendChild(d); c.scrollTop=c.scrollHeight;
+  }
+  function showFaq(f){ bubble('user',f.q); bubble('bot',f.a); }
+  function ask(){
+    const inp=document.getElementById('tutorInput'); const v=inp.value.trim(); if(!v)return; inp.value='';
+    const f=findAnswer(v);
+    bubble('user',v);
+    if(f) bubble('bot',f.a);
+    else bubble('bot','这个问题我还在学习～你可以先点下面的常见问题，或换个说法问我 😊');
+  }
+  function renderChips(){
+    const c=document.getElementById('tutorChips'); if(!c)return; c.innerHTML='';
+    COURSE_DATA.faq.forEach(f=>{ const b=document.createElement('button'); b.className='tutor-chip'; b.textContent=f.q; b.onclick=()=>showFaq(f); c.appendChild(b); });
+  }
+  function quiz(){
+    const c=document.getElementById('tutorChips'); if(!c||!COURSE_DATA.quiz)return;
+    const q=COURSE_DATA.quiz[Math.floor(Math.random()*COURSE_DATA.quiz.length)];
+    bubble('bot','🎲 考考你：'+q.q);
+    q.options.forEach((opt,i)=>{
+      const b=document.createElement('button'); b.className='tutor-chip'; b.textContent=opt;
+      b.onclick=()=>{ if(i===q.answer){ bubble('user',opt); bubble('bot','✅ 答对啦！'+q.exp); }
+        else { bubble('user',opt); bubble('bot','❌ 再想想～正确答案：'+q.options[q.answer]+'。'+q.exp); } };
+      c.appendChild(b);
+    });
+  }
+  function renderGraph(){
+    const wrap=document.getElementById('kgSvg'); if(!wrap||!COURSE_DATA.graph)return;
+    const g=COURSE_DATA.graph, W=g.w||720, H=g.h||360;
+    const svg=el('svg',{viewBox:'0 0 '+W+' '+H,class:'kg-canvas',width:'100%'});
+    g.nodes.forEach(n=>{(n.links||[]).forEach(t=>{ const m=g.nodes.find(x=>x.id===t); if(!m)return;
+      const ln=el('line',{x1:n.x+n.w/2,y1:n.y+n.h/2,x2:m.x+m.w/2,y2:m.y+m.h/2,stroke:'#e2d5cf','stroke-width':2,class:'kg-edge'});
+      ln.dataset.a=n.id; ln.dataset.b=t; svg.appendChild(ln); });});
+    g.nodes.forEach(n=>{
+      const grp=el('g',{class:'kg-node',style:'cursor:pointer'}); grp.dataset.id=n.id;
+      const r=el('rect',{x:n.x,y:n.y,width:n.w,height:n.h,rx:10,fill:'#fff',stroke:n.color||'#FF6B6B','stroke-width':2});
+      r.dataset.id=n.id;
+      const t=el('text',{x:n.x+n.w/2,y:n.y+n.h/2+5,'text-anchor':'middle','font-size':13,fill:'#333','font-family':'system-ui,sans-serif'});
+      t.textContent=n.label; grp.appendChild(r); grp.appendChild(t);
+      grp.addEventListener('click',()=>selectNode(n.id));
+      svg.appendChild(grp);
+    });
+    wrap.innerHTML=''; wrap.appendChild(svg);
+  }
+  function selectNode(id){
+    const g=COURSE_DATA.graph; const n=g.nodes.find(x=>x.id===id); if(!n)return;
+    document.querySelectorAll('.kg-edge').forEach(e=>{ const on=(e.dataset.a===id||e.dataset.b===id); e.setAttribute('stroke',on?'#FF6B6B':'#eee'); e.setAttribute('stroke-width',on?3:2); });
+    document.querySelectorAll('.kg-node').forEach(grp=>{ const on=(grp.dataset.id===id)||(n.links||[]).includes(grp.dataset.id);
+      const r=grp.querySelector('rect'); r.setAttribute('stroke',on?'#FF6B6B':'#ccc'); r.setAttribute('opacity',on?1:0.45); });
+    const info=document.getElementById('kgInfo'); if(!info)return;
+    let html='<h3 style="color:#FF6B6B;margin:0 0 6px">'+n.label+'</h3><p style="margin:0 0 8px;color:#444;line-height:1.6">'+n.desc+'</p>';
+    if(n.links&&n.links.length){ html+='<p style="font-size:13px;color:#888">关联：'+n.links.map(l=>{const m=g.nodes.find(x=>x.id===l);return m?m.label:l;}).join('、')+'</p>'; }
+    info.innerHTML=html;
+  }
+  // init
+  renderChips();
+  const askBtn=document.getElementById('tutorAsk'); if(askBtn) askBtn.onclick=ask;
+  const inp=document.getElementById('tutorInput'); if(inp) inp.addEventListener('keydown',e=>{ if(e.key==='Enter') ask(); });
+  const qz=document.getElementById('tutorQuiz'); if(qz) qz.onclick=quiz;
+  renderGraph();
+  const c0=document.getElementById('tutorChat'); if(c0) bubble('bot','我是本课 AI 学伴 🤖 点下面的常见问题，或输入你的问题，也可以点「🎲随机考我」！');
+})();
 </script>
 </body>
 </html>
