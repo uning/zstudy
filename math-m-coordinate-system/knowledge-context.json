@@ -1,0 +1,71 @@
+{
+  "course_id": "math-m-coordinate-system",
+  "node_id": "math-m-coordinate-system",
+  "subject": "math",
+  "stage": "middle",
+  "grade": "7",
+  "domain": "number-algebra",
+  "curriculum_excerpts": [
+    {
+      "source": "义务教育数学课程标准（2022年版）",
+      "stage": "第四学段（7-9年级）",
+      "text": "理解平面直角坐标系的有关概念，能在给定的直角坐标系中根据坐标描出点的位置、由点的位置写出它的坐标。能在方格纸上建立适当的直角坐标系描述物体的位置。",
+      "competency": "几何直观、空间观念"
+    },
+    {
+      "source": "人教版初中数学七年级下册",
+      "stage": "七年级",
+      "text": "了解有序数对的意义，理解平面直角坐标系的相关概念。掌握各象限内和坐标轴上点的坐标特征。能建立适当的平面直角坐标系，描述物体的位置。",
+      "competency": "数与代数"
+    }
+  ],
+  "exercises": [
+    {
+      "title": "例1：判断象限",
+      "question": "点P(-4, 5)在哪个象限？",
+      "solution": "x=-4<0, y=5>0，即(-,+)，属于第二象限。",
+      "key_point": "根据x和y的正负判断象限",
+      "common_mistake": "把(-,+)误判为第三象限"
+    },
+    {
+      "title": "例2：描点",
+      "question": "在坐标系中描出点A(3,4)、B(-2,5)、C(-3,-1)、D(1,-4)。",
+      "solution": "先在x轴上找横坐标→作竖直线，再在y轴上找纵坐标→作水平线，交点即所求。",
+      "key_point": "描点步骤：先横后纵",
+      "common_mistake": "把横纵坐标顺序搞反"
+    },
+    {
+      "title": "例3：计算距离",
+      "question": "A(2,3)和B(2,-1)的距离是多少？",
+      "solution": "x坐标相同(均为2)，说明在一条竖直线上。距离=|(-1)-3|=|-4|=4。",
+      "key_point": "x相同→竖直线距离=|y₂-y₁|",
+      "common_mistake": "忘记取绝对值，得到负数距离"
+    }
+  ],
+  "common_errors": [
+    {
+      "error": "有序数对顺序弄反",
+      "description": "(2,5)和(5,2)当同一个点，或描点时光找y再找x",
+      "remediation": "牢记(x,y)中x在前、y在后。口诀：先横后纵。"
+    },
+    {
+      "error": "象限判断错误",
+      "description": "把第二象限(-,+)说成第三象限，或忘记象限编号方向",
+      "remediation": "象限编号是逆时针：Ⅰ右上→Ⅱ左上→Ⅲ左下→Ⅳ右下。"
+    },
+    {
+      "error": "坐标轴上的点误判为象限内",
+      "description": "(0,3)说成第一象限，(5,0)说成第四象限",
+      "remediation": "x=0或在y轴上，y=0或在x轴上，坐标轴上的点不属于任何象限。"
+    },
+    {
+      "error": "描点时比例尺混淆",
+      "description": "x=2和y=3，但画在了x=3、y=2的位置",
+      "remediation": "先确定x坐标在x轴上的位置，垂直延伸；再确定y坐标在y轴上的位置，水平延伸。"
+    }
+  ],
+  "prerequisites": ["math-m-rational-numbers"],
+  "leads_to": ["math-m-linear-function"],
+  "keywords": ["平面直角坐标系", "坐标", "有序数对", "象限", "原点", "x轴", "y轴", "描点", "距离"],
+  "generated_at": "2026-07-17"
+}

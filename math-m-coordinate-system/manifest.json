@@ -1,0 +1,49 @@
+{
+  "id": "math-m-coordinate-system",
+  "course_id": "math-m-coordinate-system",
+  "node_id": "math-m-coordinate-system",
+  "name": "平面直角坐标系 — 坐标定位大冒险",
+  "name_en": "Plane Rectangular Coordinate System",
+  "subject": "math",
+  "grade": "7",
+  "stage": "middle",
+  "domain": "number-algebra",
+  "lesson_type": "new-concept",
+  "status": "community",
+  "author": "TeachAny",
+  "version": "1.0.0",
+  "teachany_version": "7.20.0",
+  "template_version": "2.0",
+  "curriculum": "cn",
+  "description": "以电影票定位、地图导航、象棋坐标等情境驱动，通过Canvas交互描点、象限闯关游戏和距离计算可视化，系统掌握平面直角坐标系。",
+  "tags": ["平面直角坐标系", "象限", "坐标", "有序数对", "距离", "初中七年级"],
+  "prerequisites": ["math-m-rational-numbers"],
+  "leads_to": ["math-m-linear-function"],
+  "learning_objectives": [
+    "理解有序数对的意义，能在坐标系中根据坐标描点",
+    "认识x轴、y轴、原点、四个象限及坐标符号规律",
+    "掌握象限内点的坐标符号特征",
+    "能计算平面直角坐标系中两点间的距离",
+    "会用坐标解决实际问题"
+  ],
+  "assets": {
+    "hero": "assets/math-m-coordinate-system-hero.png",
+    "tts_manifest": "tts/manifest.json",
+    "videos": ["assets/video/math-m-coordinate-system-main.mp4"],
+    "images": ["assets/math-m-coordinate-system-hero.png"]
+  },
+  "has_tts": true,
+  "has_video": true,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "free_mode": false,
+  "feedback": {
+    "require_password": true,
+    "password_sha256": "1c0a40e7cb322fa27a3ef2b53f9f7a9a10bb520cf1d2c32c9e3a1e3a1f4d5e6b",
+    "password_hint": "node_id 就是密码"
+  },
+  "created_at": "2026-07-17",
+  "updated_at": "2026-07-17"
+}

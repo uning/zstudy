@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="teachany-node" content="math-m-coordinate-system">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="7">
+<meta name="teachany-stage" content="middle">
+<meta name="teachany-domain" content="number-algebra">
+<meta name="teachany-lesson-type" content="new-concept">
+<meta name="teachany-version" content="7.20.0">
+<title>平面直角坐标系 — 坐标定位大冒险 · 数学 初中 G7 · TeachAny</title>
+<link rel="stylesheet" href="./assets/teachany-tts-narrator.css">
+<link rel="stylesheet" href="./assets/teachany-audio-player.css">
+<link rel="stylesheet" href="./assets/teachany-floating-dock.css">
+<link rel="stylesheet" href="./assets/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="./assets/teachany-section-hints.css">
+<link rel="stylesheet" href="./assets/ai-tutor.css">
+<style>
+:root {
+  --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --text-secondary: #475569;
+  --brand: #3b82f6; --brand-2: #06b6d4; --accent: #f59e0b;
+  --ok: #10b981; --warn: #f59e0b; --error: #ef4444;
+  --purple: #8b5cf6; --pink: #ec4899;
+  --muted: #94a3b8; --line-subtle: #e2e8f0;
+  --radius: 14px; --shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; }
+.brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 4px; background: linear-gradient(90deg,var(--brand),var(--brand-2),var(--purple)); }
+.progress-bar { position: fixed; top: 4px; left: 0; height: 3px; background: var(--brand); z-index: 100; transition: width 0.3s; border-radius: 0 2px 2px 0; }
+.slide-container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide-page { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 40px 20px 100px; }
+.slide-inner { width: 100%; max-width: 780px; }
+.card { background: var(--card); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
+.card-accent { border-left: 5px solid var(--brand); }
+.card-glow { box-shadow: 0 4px 24px rgba(59,130,246,0.08); }
+.card-gradient-bar { position: relative; }
+.card-gradient-bar::before { content: ''; position: absolute; left: 0; top: 24px; bottom: 24px; width: 4px; border-radius: 2px; background: linear-gradient(180deg,var(--brand),var(--brand-2),var(--purple)); }
+.grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.section-header { margin-bottom: 20px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.section-header h2 { font-size: 1.45rem; }
+.phase-tag { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; background: rgba(59,130,246,0.1); color: var(--brand); }
+.phase-tag[data-variant="success"] { background: rgba(16,185,129,0.1); color: var(--ok); }
+.phase-tag[data-variant="warn"] { background: rgba(245,158,11,0.1); color: var(--warn); }
+.phase-tag[data-variant="purple"] { background: rgba(139,92,246,0.1); color: var(--purple); }
+.phase-tag[data-variant="pink"] { background: rgba(236,72,153,0.1); color: var(--pink); }
+
+/* Cover */
+.hero-cover { text-align: center; padding: 40px 0; }
+.hero-cover-img { max-width: 520px; width: 100%; border-radius: 16px; margin-bottom: 20px; }
+.hero-title { font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, var(--brand), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-subtitle { font-size: 1.1rem; color: var(--muted); margin-top: 8px; }
+
+/* Buttons */
+.btn { display: inline-block; padding: 12px 28px; border-radius: 30px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.btn-primary { background: var(--brand); color: white; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
+.btn-outline { background: transparent; border: 2px solid var(--brand); color: var(--brand); }
+.btn-small { padding: 6px 16px; font-size: 13px; }
+.btn:hover { transform: translateX(2px); }
+
+/* Quiz */
+.quiz-item { margin-bottom: 14px; padding: 14px; border-radius: 10px; background: rgba(248,250,252,0.6); }
+.quiz-item .q { font-weight: 600; margin-bottom: 8px; }
+.quiz-item label { display: inline-block; margin-right: 16px; cursor: pointer; padding: 4px 0; }
+.quiz-item input[type="radio"] { margin-right: 4px; accent-color: var(--brand); }
+.result { margin-top: 12px; padding: 12px 16px; border-radius: 10px; font-weight: 600; }
+.result.ok { background: rgba(16,185,129,0.08); color: var(--ok); }
+.result.warn { background: rgba(245,158,11,0.08); color: var(--warn); }
+.result.error { background: rgba(239,68,68,0.08); color: var(--error); }
+
+/* Canvas */
+.canvas-area { width: 100%; border-radius: 12px; border: 2px solid var(--line-subtle); background: #fff; display: block; }
+
+/* Hover card effect (middle school) */
+.hover-card { padding: 14px 18px; border-radius: 12px; transition: transform 0.2s, box-shadow 0.2s; cursor: default; }
+.hover-card:hover { transform: translateX(4px); box-shadow: var(--shadow); }
+
+/* Nav bar */
+.nav-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-top: 1px solid var(--line-subtle); padding: 10px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+.nav-btn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--line-subtle); background: white; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.nav-btn:hover { border-color: var(--brand); color: var(--brand); }
+.nav-btn:disabled { opacity: 0.3; cursor: default; }
+.nav-info { font-size: 14px; color: var(--muted); min-width: 80px; text-align: center; }
+.nav-dots { display: flex; gap: 6px; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line-subtle); cursor: pointer; transition: all 0.2s; }
+.nav-dot.active { background: var(--brand); transform: scale(1.3); }
+
+.fb-correct { color: var(--ok) !important; font-weight: 700; }
+.fb-wrong { color: var(--error) !important; text-decoration: line-through; }
+
+/* Coordinate pair style */
+.pt { display: inline; font-weight: 700; }
+.pt b { color: var(--brand); }
+
+@media (max-width: 600px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero-title { font-size: 1.5rem; }
+  .card { padding: 20px; }
+  .slide-page { padding: 20px 12px 80px; }
+}
+</style>
+</head>
+<body>
+<div class="brand-bar"></div>
+<div class="progress-bar" id="progress-bar"></div>
+<div class="slide-container" id="slide-container">
+
+<!-- ═══ Page 0: Cover ═══ -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero">
+  <div class="slide-inner"><div class="hero-cover">
+    <img class="hero-cover-img" src="./assets/math-m-coordinate-system-hero.png" alt="平面直角坐标系">
+    <h1 class="hero-title">坐标定位大冒险</h1>
+    <p class="hero-subtitle">平面直角坐标系 · 初中七年级数学</p>
+    <p style="color:var(--muted);margin-top:6px">📍 从数轴到平面，用一对数字锁定世界上的任何一个点</p>
+  </div></div>
+</section>
+
+<!-- ═══ Page 1: ABT ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="1" data-tts="abt">
+  <div class="slide-inner"><div class="card card-glow card-gradient-bar" style="padding-left:44px">
+    <div class="section-header"><span class="phase-tag">🎬 情境引入</span><h2>从一条线到一张网</h2></div>
+    <div class="grid" style="gap:12px">
+      <div class="hover-card" style="background:rgba(59,130,246,0.03);border-left:4px solid var(--brand)">
+        <strong style="color:var(--brand)">📏 AND：</strong>你已经会画数轴，知道用<strong>一个数</strong>就能确定直线上任意点的位置。
+      </div>
+      <div class="hover-card" style="background:rgba(6,182,212,0.03);border-left:4px solid var(--brand-2)">
+        <strong style="color:var(--brand-2)">🎯 BUT：</strong>但电影票是"5排8座"、棋盘是"(3,5)位"——世界是二维的，一个数远远不够，需要两个数才能精准锁定！
+      </div>
+      <div class="hover-card" style="background:rgba(139,92,246,0.03);border-left:4px solid var(--purple)">
+        <strong style="color:var(--purple)">🔧 THEREFORE：</strong>今天我们就来建立<strong>平面直角坐标系</strong>——用横轴x和纵轴y组成坐标网格，任何平面上的点都能用一对有序数(x, y)唯一确定！
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 2: Problem Anchor ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="2" data-tts="problem-anchor">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">❓ 问题锚点</span><h2>选出你最想破译的定位谜题</h2></div>
+    <div class="grid" style="gap:10px">
+      <div class="hover-card" style="background:rgba(59,130,246,0.03);cursor:pointer" onclick="alert('🎬 答案：(5,8)——第5排第8座。平面中两个数才能唯一锁定位置，第5排有几十个座位，加上第8座就精确到唯一的你！这就是 (x,y) 坐标的意义。')"><strong>🎬 第一问：</strong>电影票写着"5排8座"——为什么需要<strong>两个数</strong>？一个数不行吗？</div>
+      <div class="hover-card" style="background:rgba(6,182,212,0.03);cursor:pointer" onclick="alert('🗺️ 答案：经纬度就是地球上的坐标系！(31°N,121°E)=(纬度,经度)→上海。给你两个数，你就能在全球地图上找到任何一个城市。')"><strong>🗺️ 第二问：</strong>导游说"北纬31度，东经121度"——这是哪个城市？经纬度是不是一种坐标？</div>
+      <div class="hover-card" style="background:rgba(139,92,246,0.03);cursor:pointer" onclick="alert('♟️ 答案：象棋坐标：x轴(列)从左到右1-9，y轴(行)从下到上1-10。"马三进四"表示马从(3,?)跳到(4,?)。坐标让你精准描述棋子的移动！')"><strong>♟️ 第三问：</strong>象棋中说"马三进四"——棋盘上的位置怎么用坐标描述？</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 3: Learning Objectives ═══ -->
+<section class="slide-page" data-page-type="objectives" data-page-index="3" data-tts="objectives">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">🎯 学习目标</span><h2>这节课你要做到</h2></div>
+    <div class="grid" style="gap:10px">
+      <div class="hover-card" style="background:rgba(59,130,246,0.04);border-left:4px solid var(--brand)">✅ 理解有序数对的意义，能在坐标系中根据坐标描点</div>
+      <div class="hover-card" style="background:rgba(6,182,212,0.04);border-left:4px solid var(--brand-2)">✅ 认识x轴、y轴、原点、四个象限及坐标符号规律</div>
+      <div class="hover-card" style="background:rgba(16,185,129,0.04);border-left:4px solid var(--ok)">✅ 掌握象限内点的坐标符号特征（+,+ / -,+/ -,-/ +,-）</div>
+      <div class="hover-card" style="background:rgba(139,92,246,0.04);border-left:4px solid var(--purple)">✅ 能计算平面直角坐标系中两点间的距离（水平/竖直）</div>
+      <div class="hover-card" style="background:rgba(245,158,11,0.04);border-left:4px solid var(--accent)">✅ 会用坐标解决实际问题（定位、测距、描图形）</div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 4: Pretest ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="4" data-tts="pretest">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">📋 课前小测</span><h2>看看你的起点</h2></div>
+    <div class="quiz-item"><div class="q">1. 数轴上点A表示3，表示什么意思？</div><label><input type="radio" name="p1" value="0"> A在原点右边3个单位</label><label><input type="radio" name="p1" value="1"> A在原点上</label><label><input type="radio" name="p1" value="2"> A在原点左边3个单位</label></div>
+    <div class="quiz-item"><div class="q">2. 点(2, 5)中的2表示什么？</div><label><input type="radio" name="p2" value="0"> x坐标，向右2个单位</label><label><input type="radio" name="p2" value="1"> y坐标，向上2个单位</label><label><input type="radio" name="p2" value="2"> 第二个数字</label></div>
+    <div class="quiz-item"><div class="q">3. (-3, 4)在哪个象限？</div><label><input type="radio" name="p3" value="0"> 第四象限</label><label><input type="radio" name="p3" value="1"> 第二象限</label><label><input type="radio" name="p3" value="2"> 第三象限</label></div>
+    <button class="btn btn-primary btn-small" id="pretest-check">检查答案</button>
+    <div id="pretest-result" style="display:none"></div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 5: Video ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="video">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">🎬 动画讲解</span><h2>坐标系入门</h2></div>
+    <div style="border-radius:12px;overflow:hidden">
+      <video controls playsinline style="width:100%" poster="./assets/math-m-coordinate-system-hero.png">
+        <source src="./assets/video/math-m-coordinate-system-main.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 6: Module 1 - Coordinate System Structure ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="module-1">
+  <div class="slide-inner"><div class="card card-gradient-bar" style="padding-left:44px">
+    <div class="section-header"><span class="phase-tag">📖 模块一</span><h2>认识平面直角坐标系</h2></div>
+    <p style="font-size:16px;line-height:1.9">
+      📐 <strong>平面直角坐标系</strong>由两条互相垂直的数轴组成：<br>
+      <span style="color:var(--brand);font-weight:700">➡️ x轴（横轴）</span>：水平方向，向右为正<br>
+      <span style="color:var(--brand-2);font-weight:700">⬆️ y轴（纵轴）</span>：垂直方向，向上为正<br>
+      <span style="color:var(--purple);font-weight:700">⭕ 原点O</span>：两轴交点，坐标为<strong>(0, 0)</strong><br>
+      两轴把平面分成<strong>四个象限</strong>，有了这个网格，平面上任何一点都能用 <strong>(x, y)</strong> 唯一表示！
+    </p>
+    <canvas class="canvas-area" id="canvas-coord" width="700" height="420" style="margin-top:12px"></canvas>
+  </div></div>
+</section>
+
+<!-- ═══ Page 7: Module 2 - Quadrant Signs ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="module-2">
+  <div class="slide-inner"><div class="card card-gradient-bar" style="padding-left:44px">
+    <div class="section-header"><span class="phase-tag" data-variant="purple">📖 模块二</span><h2>四个象限的坐标符号</h2></div>
+    <div class="grid grid-4" style="gap:12px;text-align:center;font-size:15px">
+      <div class="hover-card" style="background:rgba(59,130,246,0.05)"><strong style="font-size:24px;color:var(--brand)">Ⅱ</strong><br><span style="color:var(--brand)">(-,+)</span><br>第二象限<br><span style="font-size:12px;color:var(--muted)">x负 y正</span></div>
+      <div class="hover-card" style="background:rgba(16,185,129,0.05)"><strong style="font-size:24px;color:var(--ok)">Ⅰ</strong><br><span style="color:var(--ok)">(+,+)</span><br>第一象限<br><span style="font-size:12px;color:var(--muted)">x正 y正</span></div>
+      <div class="hover-card" style="background:rgba(245,158,11,0.05)"><strong style="font-size:24px;color:var(--warn)">Ⅲ</strong><br><span style="color:var(--warn)">(-,-)</span><br>第三象限<br><span style="font-size:12px;color:var(--muted)">x负 y负</span></div>
+      <div class="hover-card" style="background:rgba(236,72,153,0.05)"><strong style="font-size:24px;color:var(--pink)">Ⅳ</strong><br><span style="color:var(--pink)">(+,-)</span><br>第四象限<br><span style="font-size:12px;color:var(--muted)">x正 y负</span></div>
+    </div>
+    <p style="margin-top:14px;text-align:center;font-size:14px;color:var(--muted)">口诀：<strong style="color:var(--brand)">逆时针</strong>从右上开始，象限编号Ⅰ→Ⅱ→Ⅲ→Ⅳ</p>
+  </div></div>
+</section>
+
+<!-- ═══ Page 8: Module 3 - Plotting Points ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="8" data-tts="module-3">
+  <div class="slide-inner"><div class="card card-gradient-bar" style="padding-left:44px">
+    <div class="section-header"><span class="phase-tag" data-variant="success">📖 模块三</span><h2>描点与读点</h2></div>
+    <p style="font-size:16px;line-height:1.9">
+      🎯 <strong>描点步骤</strong>：<br>
+      ① 看<strong>横坐标x</strong>→在x轴上找到位置→作竖直线<br>
+      ② 看<strong>纵坐标y</strong>→在y轴上找到位置→作水平线<br>
+      ③ 两条线的<strong>交点</strong>就是点(x,y)的位置！<br>
+      📖 <strong>读点步骤</strong>（反过来）：<br>
+      ① 从点向x轴作<strong>垂线</strong>→读出x坐标<br>
+      ② 从点向y轴作<strong>垂线</strong>→读出y坐标<br>
+      ③ 写成<strong>(x, y)</strong>，x在前y在后，有序数对！
+    </p>
+    <canvas class="canvas-area" id="canvas-plot" width="700" height="420" style="margin-top:12px"></canvas>
+    <p style="font-size:13px;color:var(--muted);text-align:center">👆 点击坐标系中任意位置，观察坐标变化</p>
+  </div></div>
+</section>
+
+<!-- ═══ Page 9: Module 4 - Distance ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="9" data-tts="module-4">
+  <div class="slide-inner"><div class="card card-gradient-bar" style="padding-left:44px">
+    <div class="section-header"><span class="phase-tag" data-variant="warn">📖 模块四</span><h2>坐标系中的距离</h2></div>
+    <p style="font-size:16px;line-height:1.9">
+      📏 <strong>两点间距离</strong>：<br>
+      <span style="color:var(--brand)">同一条水平线上</span>(y相同)：距离 = |x₂ − x₁|<br>
+      <span style="color:var(--brand-2)">同一条竖直线上</span>(x相同)：距离 = |y₂ − y₁|<br>
+      <span style="color:var(--purple)">不在同一条线上</span>：先找水平差和竖直差，再用勾股定理！<br>
+      例：A(2,3)到B(5,7)：水平差=3，竖直差=4，AB=√(3²+4²)=5
+    </p>
+    <canvas class="canvas-area" id="canvas-dist" width="700" height="360" style="margin-top:12px"></canvas>
+  </div></div>
+</section>
+
+<!-- ═══ Page 10: Interactive Game - Quadrant Challenge ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="10" data-tts="games">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">🎮 闯关挑战</span><h2>象限坐标大作战</h2></div>
+    <p style="text-align:center;color:var(--muted);margin-bottom:12px" id="game-status">🎯 根据坐标判断象限，或根据象限说出符号！</p>
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;justify-content:center">
+      <button class="btn btn-outline btn-small" onclick="startCoordGame(0)">📍 第一关：坐标→象限</button>
+      <button class="btn btn-outline btn-small" onclick="startCoordGame(1)">🔄 第二关：象限→符号</button>
+      <button class="btn btn-outline btn-small" onclick="startCoordGame(2)">🎯 第三关：两点距离</button>
+    </div>
+    <canvas class="canvas-area" id="canvas-game" width="700" height="280"></canvas>
+  </div></div>
+</section>
+
+<!-- ═══ Page 11: ConcepTest ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="11" data-tts="conceptest">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag" data-variant="purple">🔍 概念辨析</span><h2>你能分辨这些吗？</h2></div>
+    <div class="quiz-item"><div class="q">1. 点(3, -2)在哪个象限？</div><label><input type="radio" name="c1" value="0"> 第四象限</label><label><input type="radio" name="c1" value="1"> 第二象限</label><label><input type="radio" name="c1" value="2"> 第三象限</label></div>
+    <div class="quiz-item"><div class="q">2. 第二象限的坐标符号是什么？</div><label><input type="radio" name="c2" value="0"> (-,+)</label><label><input type="radio" name="c2" value="1"> (+,-)</label><label><input type="radio" name="c2" value="2"> (-,-)</label></div>
+    <div class="quiz-item"><div class="q">3. 点(0, 5)在什么位置？</div><label><input type="radio" name="c3" value="0"> y轴正半轴上</label><label><input type="radio" name="c3" value="1"> 第一象限</label><label><input type="radio" name="c3" value="2"> x轴上</label></div>
+    <div class="quiz-item"><div class="q">4. A(1,4)和B(1, -2)的距离是？</div><label><input type="radio" name="c4" value="0"> 6</label><label><input type="radio" name="c4" value="1"> 3</label><label><input type="radio" name="c4" value="2"> 2</label></div>
+    <div class="quiz-item"><div class="q">5. 关于坐标系，以下哪个说法<strong>正确</strong>？</div><label><input type="radio" name="c5" value="0"> 有序数对(x,y)中，x在前y在后不可交换</label><label><input type="radio" name="c5" value="1"> (2,3)和(3,2)表示同一个点</label><label><input type="radio" name="c5" value="2"> x轴上的点y坐标不一定是0</label></div>
+    <button class="btn btn-primary btn-small" id="ct-check">检查答案</button>
+    <div id="ct-result" style="display:none"></div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 12: Posttest ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="12" data-tts="posttest">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag" data-variant="warn">✏️ 课后挑战</span><h2>检验学习成果</h2></div>
+    <div class="quiz-item"><div class="q">1. 点(-5, 6)在哪个象限？</div><label><input type="radio" name="t1" value="0"> 第二象限</label><label><input type="radio" name="t1" value="1"> 第三象限</label><label><input type="radio" name="t1" value="2"> 第一象限</label></div>
+    <div class="quiz-item"><div class="q">2. 点(4, -3)和(4, 2)的距离是？</div><label><input type="radio" name="t2" value="0"> 5</label><label><input type="radio" name="t2" value="1"> 1</label><label><input type="radio" name="t2" value="2"> 7</label></div>
+    <div class="quiz-item"><div class="q">3. 原点O的坐标是？</div><label><input type="radio" name="t3" value="0"> (0, 0)</label><label><input type="radio" name="t3" value="1"> (1, 1)</label><label><input type="radio" name="t3" value="2"> (0, 1)</label></div>
+    <button class="btn btn-primary btn-small" id="pt-check">检查答案</button>
+    <div id="pt-result" style="display:none"></div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 13: 核心概念 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="13" data-tts="core-concept">
+  <div class="slide-inner"><div class="card card-accent">
+    <div class="section-header"><span class="phase-tag" data-variant="success">📌 核心概念</span><h2>四句话掌握坐标系</h2></div>
+    <div class="grid" style="gap:12px">
+      <div class="hover-card" style="background:rgba(59,130,246,0.04);border-left:4px solid var(--brand);padding:14px 18px"><strong style="font-size:17px;color:var(--brand)">📐 两轴四分：</strong><span style="font-size:15px">x轴横、y轴纵，交于原点O(0,0)。两轴把平面分成四个象限，逆时针编号Ⅰ→Ⅱ→Ⅲ→Ⅳ。</span></div>
+      <div class="hover-card" style="background:rgba(6,182,212,0.04);border-left:4px solid var(--brand-2);padding:14px 18px"><strong style="font-size:17px;color:var(--brand-2)">📝 有序数对：</strong><span style="font-size:15px">(x,y)有顺序！(2,3)和(3,2)是不同点。x在前y在后，不可交换。</span></div>
+      <div class="hover-card" style="background:rgba(139,92,246,0.04);border-left:4px solid var(--purple);padding:14px 18px"><strong style="font-size:17px;color:var(--purple)">🔢 象限符号：</strong><span style="font-size:15px">Ⅰ(+,+) Ⅱ(-,+) Ⅲ(-,-) Ⅳ(+,-)。x轴上y=0，y轴上x=0，坐标轴上不属于任何象限。</span></div>
+      <div class="hover-card" style="background:rgba(245,158,11,0.04);border-left:4px solid var(--accent);padding:14px 18px"><strong style="font-size:17px;color:var(--accent)">📏 距离计算：</strong><span style="font-size:15px">水平线：|x₂−x₁|；竖直线：|y₂−y₁|；斜线：用勾股定理→√(Δx²+Δy²)。</span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 14: 例题 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="14" data-tts="example">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">📝 例题</span><h2>一步一步看例题</h2></div>
+    <div class="grid" style="gap:12px">
+      <div class="hover-card" style="background:rgba(59,130,246,0.03);border-left:4px solid var(--brand);padding:14px 18px"><strong style="color:var(--brand)">例1 · 判断象限：</strong><p style="margin:6px 0">点P(-4, 5)在哪个象限？</p><p style="color:var(--ok)">✅ x=-4<0, y=5>0 → (-,+) → 第二象限</p></div>
+      <div class="hover-card" style="background:rgba(6,182,212,0.03);border-left:4px solid var(--brand-2);padding:14px 18px"><strong style="color:var(--brand-2)">例2 · 描点：</strong><p style="margin:6px 0">在坐标系中描出A(3,4)、B(-2,5)、C(-3,-1)、D(1,-4)。</p><p style="color:var(--ok)">✅ 从x轴找到横坐标→作竖直线；从y轴找纵坐标→作水平线；交点即所求点。</p></div>
+      <div class="hover-card" style="background:rgba(139,92,246,0.03);border-left:4px solid var(--purple);padding:14px 18px"><strong style="color:var(--purple)">例3 · 距离：</strong><p style="margin:6px 0">A(2,3)和B(2,9)的距离是多少？</p><p style="color:var(--ok)">✅ x相同→竖直线→|9-3|=6。✓</p></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 15: 习题讲解 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="15" data-tts="practice">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag" data-variant="warn">✏️ 习题讲解</span><h2>常见考题思路拆解</h2></div>
+    <div class="grid" style="gap:10px">
+      <div class="hover-card" style="border:1px solid var(--line-subtle);border-radius:10px;padding:12px 16px"><strong>🔢 第1类："已知坐标判断象限"</strong><p style="margin:3px 0;font-size:14px;color:var(--text-secondary)">→ 分别看x和y的正负：(正,正)=Ⅰ，(负,正)=Ⅱ，(负,负)=Ⅲ，(正,负)=Ⅳ。坐标轴上不属于任何象限。</p></div>
+      <div class="hover-card" style="border:1px solid var(--line-subtle);border-radius:10px;padding:12px 16px"><strong>🔢 第2类："给点描坐标"</strong><p style="margin:3px 0;font-size:14px;color:var(--text-secondary)">→ 先横后纵口诀。x轴找横坐标→画竖线，y轴找纵坐标→画横线，交点即所求。务必先x后y！</p></div>
+      <div class="hover-card" style="border:1px solid var(--line-subtle);border-radius:10px;padding:12px 16px"><strong>🔢 第3类："坐标系距离问题"</strong><p style="margin:3px 0;font-size:14px;color:var(--text-secondary)">→ 先判断是否同行/同列：x同→竖直距离|y差|；y同→水平距离|x差|。否则用两点距离公式。</p></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 16: 易错点 ═══ -->
+<section class="slide-page" data-page-type="quiz" data-page-index="16" data-tts="pitfalls">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag" data-variant="warn">⚠️ 注意避坑</span><h2>最容易搞混的几件事</h2></div>
+    <div class="grid" style="gap:10px">
+      <div class="hover-card" style="border-left:4px solid var(--error);padding:12px 16px"><strong style="color:var(--error)">🚫 别把(2,3)和(3,2)当同一个点！</strong><p style="margin:4px 0 0;font-size:14px;color:var(--muted)">有序数对中顺序不能换。先写x再写y，(2,3)在Ⅰ象限，(3,2)在Ⅰ象限但位置不同。</p></div>
+      <div class="hover-card" style="border-left:4px solid var(--warn);padding:12px 16px"><strong style="color:var(--warn)">🚫 坐标轴上的点不属于任何象限！</strong><p style="margin:4px 0 0;font-size:14px;color:var(--muted)">(0,5)在y轴上，(3,0)在x轴上。象限判断只针对xy都不为0的点。</p></div>
+      <div class="hover-card" style="border-left:4px solid var(--brand);padding:12px 16px"><strong style="color:var(--brand)">🚫 描点时先x后y不能颠倒！</strong><p style="margin:4px 0 0;font-size:14px;color:var(--muted)">描点(4,1)：先在x轴上找4→再在y轴上找1→交点。如果先找1再找4，可能搞混两个数。</p></div>
+      <div class="hover-card" style="border-left:4px solid var(--purple);padding:12px 16px"><strong style="color:var(--purple)">🚫 象限编号方向记住：逆时针！</strong><p style="margin:4px 0 0;font-size:14px;color:var(--muted)">Ⅰ右上(+,+)→Ⅱ左上(-,+)→Ⅲ左下(-,-)→Ⅳ右下(+,-)。逆时针转一圈。</p></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 17: 五镜头 ═══ -->
+<section class="slide-page" data-page-type="concept" data-page-index="17" data-tts="five-lens">
+  <div class="slide-inner"><div class="card card-glow">
+    <div class="section-header"><span class="phase-tag" data-variant="purple">🔍 五个角度</span><h2>换个角度看坐标系</h2></div>
+    <div class="grid" style="gap:10px">
+      <div class="hover-card" style="display:flex;align-items:flex-start;gap:10px;background:rgba(59,130,246,0.03);border-left:3px solid var(--brand);padding:10px 14px"><span style="font-size:24px;flex-shrink:0">📖</span><div><strong style="color:var(--brand)">定义镜：</strong>两条互相垂直的数轴(x轴和y轴)交于原点，组成了描述平面上任意点位置的"坐标网"。</div></div>
+      <div class="hover-card" style="display:flex;align-items:flex-start;gap:10px;background:rgba(6,182,212,0.03);border-left:3px solid var(--brand-2);padding:10px 14px"><span style="font-size:24px;flex-shrink:0">⚖️</span><div><strong style="color:var(--brand-2)">辨析镜：</strong>有序数对 vs 无序集合——(2,5)和(5,2)差很远！坐标系中x在前是横轴坐标，y在后是纵轴坐标。</div></div>
+      <div class="hover-card" style="display:flex;align-items:flex-start;gap:10px;background:rgba(245,158,11,0.03);border-left:3px solid var(--accent);padding:10px 14px"><span style="font-size:24px;flex-shrink:0">🏙️</span><div><strong style="color:var(--accent)">生活镜：</strong>地图导航、飞机座位号、电影票、经纬度——生活中的"坐标系"无处不在，只是换了个名字。</div></div>
+      <div class="hover-card" style="display:flex;align-items:flex-start;gap:10px;background:rgba(139,92,246,0.03);border-left:3px solid var(--purple);padding:10px 14px"><span style="font-size:24px;flex-shrink:0">🔄</span><div><strong style="color:var(--purple)">变化镜：</strong>改变x→点水平移动；改变y→点竖直移动。同时改变→斜向移动。坐标系让点的移动变得可计算。</div></div>
+      <div class="hover-card" style="display:flex;align-items:flex-start;gap:10px;background:rgba(16,185,129,0.03);border-left:3px solid var(--ok);padding:10px 14px"><span style="font-size:24px;flex-shrink:0">🎨</span><div><strong style="color:var(--ok)">创造镜：</strong>用坐标系可以画出任何图形：给出顶点坐标→连线→形成三角形、正方形、多边形。坐标是几何的"数字密码"。</div></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 18: Summary ═══ -->
+<section class="slide-page" data-page-type="summary" data-page-index="18" data-tts="summary">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">📊 本课总结</span><h2>平面直角坐标系速查表</h2></div>
+    <div class="grid grid-4" style="gap:10px;font-size:14px;text-align:center">
+      <div style="padding:12px;background:rgba(59,130,246,0.05);border-radius:10px"><strong style="color:var(--brand)">Ⅱ (-,+)</strong><br>第二象限<br>x负 y正</div>
+      <div style="padding:12px;background:rgba(16,185,129,0.05);border-radius:10px"><strong style="color:var(--ok)">Ⅰ (+,+)</strong><br>第一象限<br>x正 y正</div>
+      <div style="padding:12px;background:rgba(245,158,11,0.05);border-radius:10px"><strong style="color:var(--warn)">Ⅲ (-,-)</strong><br>第三象限<br>x负 y负</div>
+      <div style="padding:12px;background:rgba(236,72,153,0.05);border-radius:10px"><strong style="color:var(--pink)">Ⅳ (+,-)</strong><br>第四象限<br>x正 y负</div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:16px;font-weight:700;color:var(--text-secondary)">🎓 口诀：<span style="color:var(--brand)">x横y纵原点O</span> · <span style="color:var(--brand-2)">逆时ⅠⅡⅢⅣ</span> · <span style="color:var(--purple)">有序数对不可换</span> · <span style="color:var(--ok)">先横后纵描点准</span></p>
+  </div></div>
+</section>
+
+<!-- ═══ Page 19: Knowledge Graph ═══ -->
+<section class="slide-page" data-page-type="summary" data-page-index="19" data-tts="knowledge-graph">
+  <div class="slide-inner"><div class="card">
+    <div class="section-header"><span class="phase-tag">🗺️ 知识图谱</span><h2>你的学习路径</h2></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:20px">
+      <div style="padding:12px 18px;background:rgba(6,182,212,0.08);border-radius:10px;text-align:center">⬅️ <strong>前置</strong><br>有理数与数轴<br><span style="font-size:12px;color:var(--muted)">G7 数与代数</span></div>
+      <span style="font-size:22px">→</span>
+      <div style="padding:16px 24px;background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(139,92,246,0.12));border-radius:12px;text-align:center;border:2px solid var(--brand)"><strong>⭐ 你现在的位置</strong><br>平面直角坐标系<br><span style="font-size:12px;color:var(--muted)">G7 数与代数</span></div>
+      <span style="font-size:22px">→</span>
+      <div style="padding:12px 18px;background:rgba(245,158,11,0.08);border-radius:10px;text-align:center">➡️ <strong>后续</strong><br>一次函数<br><span style="font-size:12px;color:var(--muted)">G8</span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═══ Page 20: AI Tutor ═══ -->
+<section class="slide-page" data-page-type="interactive" data-page-index="20" data-tts="ai-tutor">
+  <div class="slide-inner"><div data-teachany-tutor-card></div></div>
+</section>
+
+</div>
+
+<!-- Nav bar -->
+<div class="nav-bar" id="nav-bar">
+  <button class="nav-btn" id="nav-prev" title="上一页">◀</button>
+  <div class="nav-dots" id="nav-dots"></div>
+  <span class="nav-info" id="nav-info">1 / 21</span>
+  <button class="nav-btn" id="nav-next" title="下一页">▶</button>
+</div>
+
+<div id="audio-player-container" style="display:none">
+  <audio id="teachany-audio" controls style="display:none"></audio>
+</div>
+<div id="audio-playlist" data-playlist='[{"section":"hero","src":"./tts/hero.mp3","label":"开场"},{"section":"abt","src":"./tts/hero.mp3","label":"情境"},{"section":"problem-anchor","src":"./tts/hero.mp3","label":"问题"},{"section":"objectives","src":"./tts/hero.mp3","label":"目标"},{"section":"pretest","src":"./tts/hero.mp3","label":"前测"},{"section":"video","src":"./tts/hero.mp3","label":"视频"},{"section":"module-1","src":"./tts/hero.mp3","label":"模块1"},{"section":"module-2","src":"./tts/hero.mp3","label":"模块2"},{"section":"module-3","src":"./tts/hero.mp3","label":"模块3"},{"section":"module-4","src":"./tts/hero.mp3","label":"模块4"},{"section":"games","src":"./tts/hero.mp3","label":"闯关"},{"section":"conceptest","src":"./tts/hero.mp3","label":"概念"},{"section":"posttest","src":"./tts/hero.mp3","label":"后测"},{"section":"core-concept","src":"./tts/hero.mp3","label":"核心"},{"section":"example","src":"./tts/hero.mp3","label":"例题"},{"section":"practice","src":"./tts/hero.mp3","label":"习题"},{"section":"pitfalls","src":"./tts/hero.mp3","label":"易错"},{"section":"five-lens","src":"./tts/hero.mp3","label":"五镜头"},{"section":"summary","src":"./tts/hero.mp3","label":"总结"},{"section":"knowledge-graph","src":"./tts/hero.mp3","label":"图谱"},{"section":"ai-tutor","src":"./tts/hero.mp3","label":"AI学伴"}]'></div>
+
+<script src="./assets/teachany-tts-narrator.js" data-tts-disabled="true" defer></script>
+<script src="./assets/teachany-audio-player.js" defer></script>
+<script src="./assets/teachany-floating-dock.js" defer></script>
+<script src="./assets/teachany-knowledge-graph.js" defer></script>
+<script src="./assets/teachany-section-hints.js" defer></script>
+<script src="./assets/ai-tutor.js" defer></script>
+<script src="./assets/scripts/teachany-tutor-card.js" defer></script>
+
+<script>
+/* ═══════ Slide Controller ═══════ */
+(function() {
+  var container = document.getElementById('slide-container');
+  var pages = document.querySelectorAll('.slide-page');
+  var total = pages.length;
+  var current = 0;
+  var navDots = document.getElementById('nav-dots');
+  var navInfo = document.getElementById('nav-info');
+  var progressBar = document.getElementById('progress-bar');
+
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('span');
+    dot.className = 'nav-dot';
+    dot.title = '第' + (i+1) + '页';
+    dot.onclick = (function(idx) { return function() { goTo(idx); }; })(i);
+    navDots.appendChild(dot);
+  }
+
+  function updateUI(idx) {
+    current = idx;
+    var dots = navDots.querySelectorAll('.nav-dot');
+    for (var i = 0; i < dots.length; i++) dots[i].classList.toggle('active', i === idx);
+    navInfo.textContent = (idx + 1) + ' / ' + total;
+    progressBar.style.width = ((idx + 1) / total * 100) + '%';
+    document.getElementById('nav-prev').disabled = (idx === 0);
+    document.getElementById('nav-next').disabled = (idx === total - 1);
+  }
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= total) return;
+    pages[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  var ticking = false;
+  container.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        var st = container.scrollTop;
+        var best = 0, bestDist = Infinity;
+        for (var i = 0; i < total; i++) {
+          var dist = Math.abs(st - (pages[i].offsetTop - container.offsetTop));
+          if (dist < bestDist) { bestDist = dist; best = i; }
+        }
+        updateUI(best);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  document.getElementById('nav-prev').onclick = function() { goTo(current - 1); };
+  document.getElementById('nav-next').onclick = function() { goTo(current + 1); };
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+  });
+
+  updateUI(0);
+})();
+
+/* ═══════ Quiz System ═══════ */
+function gradeQuiz(prefix, answers, userAnswers, diagnostics) {
+  var total = answers.length, correct = 0, details = [];
+  for (var i = 0; i < total; i++) {
+    var sel = document.querySelector('input[name="' + prefix + (i+1) + '"]:checked');
+    var val = sel ? parseInt(sel.value) : -1;
+    userAnswers[i] = val;
+    if (val === answers[i]) correct++;
+    else if (diagnostics && diagnostics[i] && val >= 0) details.push(diagnostics[i][val] || '再想想这个选项~');
+  }
+  for (var j = 0; j < total; j++) {
+    var all = document.querySelectorAll('input[name="' + prefix + (j+1) + '"]');
+    for (var k = 0; k < all.length; k++) {
+      var label = all[k].parentElement;
+      if (parseInt(all[k].value) === answers[j]) label.classList.add('fb-correct');
+      if (parseInt(all[k].value) === userAnswers[j] && userAnswers[j] !== answers[j]) label.classList.add('fb-wrong');
+      all[k].disabled = true;
+    }
+  }
+  return { correct: correct, total: total, details: details };
+}
+
+var ptAnswers = [0, 0, 1];  // pretest: Q1=0(右边3单位), Q2=0(x坐标), Q3=1(第二象限)
+var ctAnswers = [0, 0, 0, 0, 0]; // conceptest: Q1=0(第四象限), Q2=0(-,+), Q3=0(y轴), Q4=0(6), Q5=0(有序不可交换)
+var postAnswers = [0, 0, 0]; // posttest: Q1=0(第二象限), Q2=0(5), Q3=0(0,0)
+
+var pretestU = [-1,-1,-1], ctU = [-1,-1,-1,-1,-1], postU = [-1,-1,-1];
+
+var pretestDiag = [
+  {1:'数轴上点A表示3，意思是A在原点右边3个单位。不是"在原点上"或"在左边"。',2:'负数才在原点左边。正数在右边！'},
+  {1:'(2,5)中的2是x坐标——在x轴上向右2个单位的位置。y坐标才是5。',2:'注意：(x,y)中x总是第一个数。'},
+  {0:'(-,+)是第二象限。检查：x=-3(<0), y=4(>0)→第二象限。第四象限是(+,-)。',2:'(-,-)是第三象限。(-,+)是第二象限。'}
+];
+var ctDiag = [
+  {1:'x=3(+), y=-2(-)，符合(+,-)→第四象限。不是第二象限。',2:'(-,-)是第三象限。(+,-)是第四象限。'},
+  {1:'(+,-)是第四象限的符号。第二象限是(-,+)。',2:'(-,-)是第三象限。'},
+  {1:'(0,5)中x=0说明在y轴上（纵轴）。y>0所以是y轴正半轴。x=0的点不属于任何象限。',2:'x轴上的点y=0。这里x=0所以在y轴上。'},
+  {1:'A(1,4)和B(1,-2)：x都是1，竖直线。距离=|4-(-2)|=|6|=6。不是3。',2:'距离=|4-(-2)|=6，不是2。'},
+  null
+];
+var postDiag = [
+  {1:'(-5,6)：x=-5<0, y=6>0→(-,+)→第二象限。不是第三象限。',2:'(-5,6)不是第一象限（第一象限是正正）。'},
+  {1:'(4,-3)和(4,2)：x都=4，竖直线距离=|2-(-3)|=|5|=5。',2:'两者x相同都是4，不是水平距离。'},
+  {1:'原点O是两个坐标轴的交点，坐标永远为(0,0)。',2:'原点永远是(0,0)。'}
+];
+
+function showResult(div, r, label) {
+  div.style.display = 'block';
+  var pct = r.correct/r.total, diagHtml = '';
+  if (r.details && r.details.length > 0) {
+    diagHtml = '<div style="margin-top:8px;font-size:14px;color:var(--text-secondary);line-height:1.6">'+r.details.map(function(d,i){return '💡 '+d;}).join('<br>')+'</div>';
+  }
+  if (pct===1) div.innerHTML = '<div class="result ok">🎉 全对！</div>';
+  else if (pct>=0.5) div.innerHTML = '<div class="result warn">👍 '+r.correct+'/'+r.total+' 题</div>'+diagHtml;
+  else div.innerHTML = '<div class="result error">💪 '+r.correct+'/'+r.total+' 题。加油！</div>'+diagHtml;
+}
+
+document.getElementById('pretest-check').onclick = function() {
+  var r = gradeQuiz('p', ptAnswers, pretestU, pretestDiag);
+  showResult(document.getElementById('pretest-result'), r, '前测');
+};
+document.getElementById('ct-check').onclick = function() {
+  var r = gradeQuiz('c', ctAnswers, ctU, ctDiag);
+  showResult(document.getElementById('ct-result'), r, '概念辨析');
+};
+document.getElementById('pt-check').onclick = function() {
+  var r = gradeQuiz('t', postAnswers, postU, postDiag);
+  showResult(document.getElementById('pt-result'), r, '后测');
+};
+
+/* ═══════ Canvas: Coordinate System with Axes ═══════ */
+(function() {
+  var c = document.getElementById('canvas-coord');
+  if (!c) return;
+  var ctx = c.getContext('2d'), W = 700, H = 420;
+  var ox = W/2, oy = H/2, step = 40, range = 8;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+    // Grid
+    ctx.strokeStyle = '#e8e8e8'; ctx.lineWidth = 0.5;
+    for (var i = -range; i <= range; i++) {
+      var x = ox + i*step, y = oy + i*step;
+      ctx.beginPath(); ctx.moveTo(x, 20); ctx.lineTo(x, H-20); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(20, y); ctx.lineTo(W-20, y); ctx.stroke();
+    }
+
+    // Axes
+    ctx.strokeStyle = '#333'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(20, oy); ctx.lineTo(W-20, oy); ctx.stroke(); // x-axis
+    ctx.beginPath(); ctx.moveTo(ox, 20); ctx.lineTo(ox, H-20); ctx.stroke(); // y-axis
+
+    // Arrows
+    ctx.fillStyle = '#333';
+    // x-axis arrow
+    ctx.beginPath(); ctx.moveTo(W-20, oy); ctx.lineTo(W-32, oy-6); ctx.lineTo(W-32, oy+6); ctx.fill();
+    // y-axis arrow
+    ctx.beginPath(); ctx.moveTo(ox, 20); ctx.lineTo(ox-6, 32); ctx.lineTo(ox+6, 32); ctx.fill();
+
+    // Labels
+    ctx.fillStyle = '#333'; ctx.font = 'bold 16px sans-serif';
+    ctx.fillText('x', W-10, oy-10);
+    ctx.fillText('y', ox+10, 30);
+    ctx.fillText('O', ox-18, oy+18);
+
+    // Ticks & numbers
+    ctx.fillStyle = '#666'; ctx.font = '12px sans-serif';
+    for (var i = -range; i <= range; i++) {
+      if (i === 0) continue;
+      var tx = ox + i*step, ty = oy + i*step;
+      ctx.fillText(i, tx-6, oy+16);
+      ctx.fillText(i, ox+6, ty+4);
+    }
+
+    // Quadrant labels
+    ctx.font = 'bold 22px sans-serif';
+    ctx.fillStyle = 'rgba(59,130,246,0.15)'; ctx.fillText('Ⅱ', ox-80, oy-40);
+    ctx.fillStyle = 'rgba(16,185,129,0.15)'; ctx.fillText('Ⅰ', ox+50, oy-40);
+    ctx.fillStyle = 'rgba(245,158,11,0.15)'; ctx.fillText('Ⅲ', ox-80, oy+80);
+    ctx.fillStyle = 'rgba(236,72,153,0.15)'; ctx.fillText('Ⅳ', ox+50, oy+80);
+
+    // Point markers
+    var points = [{x:3,y:4,c:'#10b981'},{x:-4,y:3,c:'#3b82f6'},{x:-3,y:-2,c:'#f59e0b'},{x:2,y:-3,c:'#ec4899'}];
+    ctx.font = 'bold 14px sans-serif';
+    for (var p = 0; p < points.length; p++) {
+      var pt = points[p];
+      var x = ox + pt.x*step, y = oy - pt.y*step;
+      ctx.fillStyle = pt.c; ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI*2); ctx.fill();
+      ctx.fillText('('+pt.x+','+pt.y+')', x+10, y-8);
+    }
+  }
+  draw();
+})();
+
+/* ═══════ Canvas: Plot Points Interactive ═══════ */
+(function() {
+  var c = document.getElementById('canvas-plot');
+  if (!c) return;
+  var ctx = c.getContext('2d'), W = 700, H = 420;
+  var ox = W/2, oy = H/2, step = 36, range = 8;
+  var snapX = 0, snapY = 0;
+
+  function drawPlot() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+    ctx.strokeStyle = '#e8e8e8'; ctx.lineWidth = 0.5;
+    for (var i = -range; i <= range; i++) {
+      var x = ox + i*step, y = oy + i*step;
+      ctx.beginPath(); ctx.moveTo(x, 20); ctx.lineTo(x, H-20); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(20, y); ctx.lineTo(W-20, y); ctx.stroke();
+    }
+
+    ctx.strokeStyle = '#333'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(20, oy); ctx.lineTo(W-20, oy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ox, 20); ctx.lineTo(ox, H-20); ctx.stroke();
+
+    ctx.fillStyle = '#333'; ctx.font = '12px sans-serif';
+    for (var i = -range; i <= range; i++) {
+      if (i === 0) continue;
+      ctx.fillText(i, ox + i*step - 6, oy + 16);
+      ctx.fillText(i, ox + 6, oy - i*step + 4);
+    }
+    ctx.fillText('O', ox-18, oy+18);
+
+    // Snap crosshair
+    if (snapX !== 0 || snapY !== 0) {
+      var sx = ox + snapX*step, sy = oy - snapY*step;
+      ctx.strokeStyle = 'rgba(59,130,246,0.3)'; ctx.lineWidth = 1;
+      ctx.setLineDash([4,4]);
+      ctx.beginPath(); ctx.moveTo(sx, 20); ctx.lineTo(sx, H-20); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(20, sy); ctx.lineTo(W-20, sy); ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(sx, sy, 7, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(sx, sy, 3, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = '#1e293b'; ctx.font = 'bold 16px sans-serif';
+      ctx.fillText('('+snapX+', '+snapY+')', sx+14, sy-10);
+    }
+
+    // Instructions
+    ctx.fillStyle = '#94a3b8'; ctx.font = '13px sans-serif';
+    ctx.fillText('👆 点击坐标系中任意位置描点（吸附到整数格点）', ox-160, H-10);
+  }
+
+  drawPlot();
+  c.addEventListener('click', function(e) {
+    var rect = c.getBoundingClientRect();
+    var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    var gx = Math.round((mx - ox) / step), gy = Math.round((oy - my) / step);
+    gx = Math.max(-range, Math.min(range, gx));
+    gy = Math.max(-range, Math.min(range, gy));
+    snapX = gx; snapY = gy;
+    drawPlot();
+  });
+})();
+
+/* ═══════ Canvas: Distance ═══════ */
+(function() {
+  var c = document.getElementById('canvas-dist');
+  if (!c) return;
+  var ctx = c.getContext('2d'), W = 700, H = 360;
+  var ox = W/2, oy = H/2 - 20, step = 30, range = 9;
+  var a = {x:-4,y:2}, b = {x:5,y:-3};
+
+  function drawDist() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = '#e8e8e8'; ctx.lineWidth = 0.5;
+    for (var i = -range; i <= range; i++) {
+      var x = ox + i*step, y = oy + i*step;
+      ctx.beginPath(); ctx.moveTo(x, 20); ctx.lineTo(x, H-20); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(20, y); ctx.lineTo(W-20, y); ctx.stroke();
+    }
+    ctx.strokeStyle = '#333'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(20, oy); ctx.lineTo(W-20, oy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ox, 20); ctx.lineTo(ox, H-20); ctx.stroke();
+
+    var ax = ox + a.x*step, ay = oy - a.y*step;
+    var bx = ox + b.x*step, by = oy - b.y*step;
+
+    // Line between points
+    ctx.strokeStyle = 'rgba(139,92,246,0.6)'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
+
+    // Right triangle (horizontal + vertical components)
+    ctx.strokeStyle = 'rgba(59,130,246,0.4)'; ctx.lineWidth = 2;
+    ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, ay); ctx.stroke(); // horiz
+    ctx.strokeStyle = 'rgba(6,182,212,0.4)';
+    ctx.beginPath(); ctx.moveTo(bx, ay); ctx.lineTo(bx, by); ctx.stroke(); // vert
+    ctx.setLineDash([]);
+
+    // Points
+    ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(ax, ay, 6, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#ec4899'; ctx.beginPath(); ctx.arc(bx, by, 6, 0, Math.PI*2); ctx.fill();
+
+    // Labels
+    ctx.fillStyle = '#1e293b'; ctx.font = 'bold 14px sans-serif';
+    ctx.fillText('A('+a.x+','+a.y+')', ax+12, ay-10);
+    ctx.fillText('B('+b.x+','+b.y+')', bx+12, by-10);
+
+    var dx = Math.abs(b.x-a.x), dy = Math.abs(b.y-a.y);
+    ctx.fillText('Δx='+dx, (ax+bx)/2-20, ay-8);
+    ctx.fillText('Δy='+dy, bx+8, (ay+by)/2+4);
+
+    var dist = Math.sqrt(dx*dx+dy*dy);
+    if (Number.isInteger(dist)) {
+      ctx.fillStyle = '#8b5cf6'; ctx.font = 'bold 15px sans-serif';
+      ctx.fillText('AB = √('+dx+'²+'+dy+'²) = '+dist, (ax+bx)/2-40, (ay+by)/2);
+    } else {
+      ctx.fillText('AB = √('+dx+'²+'+dy+'²) ≈ '+dist.toFixed(1), (ax+bx)/2-40, (ay+by)/2);
+    }
+  }
+  drawDist();
+})();
+
+/* ═══════ Game: Coordinate Challenge ═══════ */
+(function() {
+  var c = document.getElementById('canvas-game'), ctx = c.getContext('2d');
+  if (!c) return;
+  var W = 700, H = 280;
+  var level = 0, score = 0, qIdx = 0, correctC = 0, wrongC = 0;
+  var currentA = '', inputBuf = '', focus = false;
+  var ib = {x:250, y:210, w:200, h:38};
+
+  var qs = [
+    // Level 0: coords → quadrant
+    [{q:'点(4, -2)在哪个象限？', a:'第四象限', hint:'x正y负→(+,−)→第四象限'},
+     {q:'点(-5, 3)在哪个象限？', a:'第二象限', hint:'x负y正→(−,+)→第二象限'},
+     {q:'点(-1, -6)在哪个象限？', a:'第三象限', hint:'x负y负→(−,−)→第三象限'},
+     {q:'点(0, 7)在哪个位置？', a:'y轴', hint:'x=0的点在y轴上，不属于任何象限！'}],
+    // Level 1: quadrant → sign
+    [{q:'第一象限的坐标符号？', a:'(+,+)', hint:'右上→x正y正→(+,+)'},
+     {q:'第三象限的坐标符号？', a:'(-,-)', hint:'左下→x负y负→(−,−)'},
+     {q:'第四象限的坐标符号？', a:'(+,-)', hint:'右下→x正y负→(+,-)'}],
+    // Level 2: distance
+    [{q:'A(2,5)和B(8,5)的距离？', a:'6', hint:'y相同→水平线→|8-2|=6'},
+     {q:'A(-3,4)和A(-3,-1)的距离？', a:'5', hint:'x相同→竖直线→|4-(-1)|=5'},
+     {q:'坐标原点O的坐标是？', a:'(0,0)', hint:'原点永远是(0,0)'}]
+  ];
+
+  function newQ() {
+    var pool = qs[level];
+    if (qIdx >= pool.length) {
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle = '#1e293b'; ctx.font = 'bold 18px sans-serif';
+      ctx.fillText('🏆 本关完成！正确 '+correctC+'/'+(correctC+wrongC), 220, 140);
+      document.getElementById('game-status').textContent = '通关！换一关挑战~';
+      return;
+    }
+    currentA = pool[qIdx].a;
+    inputBuf = '';
+    document.getElementById('game-status').textContent = '第'+(qIdx+1)+'题：'+pool[qIdx].q;
+    drawG();
+  }
+
+  function drawG() {
+    ctx.clearRect(0,0,W,H);
+    var lv = ['📍 坐标→象限', '🔄 象限→符号', '🎯 距离计算'];
+    ctx.fillStyle = '#1e293b'; ctx.font = 'bold 20px sans-serif';
+    ctx.fillText(lv[level]+'  |  分: '+score+'  |  题数: '+(correctC+wrongC), 30, 35);
+
+    if (qIdx >= qs[level].length) return;
+    var cur = qs[level][qIdx];
+
+    ctx.fillStyle = '#fff'; ctx.fillRect(30, 50, W-60, 52);
+    ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2; ctx.strokeRect(30, 50, W-60, 52);
+    ctx.fillStyle = '#1e293b'; ctx.font = 'bold 19px sans-serif';
+    ctx.fillText(cur.q, 50, 84);
+
+    // Input
+    ctx.fillStyle = focus ? '#fff' : '#f8fafc';
+    ctx.fillRect(ib.x, ib.y, ib.w, ib.h);
+    ctx.strokeStyle = focus ? '#3b82f6' : '#ccc'; ctx.lineWidth = 2;
+    ctx.strokeRect(ib.x, ib.y, ib.w, ib.h);
+    ctx.fillStyle = '#1e293b'; ctx.font = '17px sans-serif';
+    ctx.fillText(inputBuf + (focus && Math.floor(Date.now()/500)%2===0 ? '|' : ''), ib.x+8, ib.y+28);
+    ctx.fillStyle = '#94a3b8'; ctx.font = '11px sans-serif';
+    ctx.fillText('输入答案，按回车提交', ib.x, ib.y-8);
+
+    ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.roundRect(ib.x+ib.w+12, ib.y, 72, 38, 8); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 13px sans-serif'; ctx.fillText('提交', ib.x+ib.w+28, ib.y+28);
+
+    ctx.fillStyle = '#06b6d4'; ctx.beginPath(); ctx.roundRect(ib.x+ib.w+12, ib.y+46, 72, 32, 8); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = '12px sans-serif'; ctx.fillText('💡提示', ib.x+ib.w+26, ib.y+70);
+  }
+
+  function check() {
+    var cur = qs[level][qIdx];
+    var aNorm = cur.a.replace(/\s+/g,'').toLowerCase();
+    var uNorm = inputBuf.replace(/\s+/g,'').toLowerCase();
+    if (uNorm === aNorm) {
+      score += 10; correctC++;
+      document.getElementById('game-status').textContent = '✅ 正确！' + cur.a;
+    } else {
+      wrongC++;
+      document.getElementById('game-status').textContent = '❌ 答案是 ' + cur.a + '。' + (cur.hint||'');
+    }
+    qIdx++;
+    setTimeout(newQ, 1000);
+  }
+
+  c.addEventListener('click', function(e) {
+    var rect = c.getBoundingClientRect();
+    var mx = e.clientX-rect.left, my = e.clientY-rect.top;
+    if (mx>=ib.x && mx<=ib.x+ib.w && my>=ib.y && my<=ib.y+ib.h) { focus = true; drawG(); }
+    else if (mx>=ib.x+ib.w+12 && mx<=ib.x+ib.w+84 && my>=ib.y && my<=ib.y+38) { if (inputBuf.length>0) check(); }
+    else if (mx>=ib.x+ib.w+12 && mx<=ib.x+ib.w+84 && my>=ib.y+46 && my<=ib.y+78) {
+      if (qIdx < qs[level].length) document.getElementById('game-status').textContent = '💡 '+qs[level][qIdx].hint;
+    } else { focus = false; drawG(); }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!focus) return;
+    if (e.key === 'Enter') { if (inputBuf.length>0) check(); }
+    else if (e.key === 'Backspace') { inputBuf = inputBuf.slice(0,-1); drawG(); }
+    else if (e.key.length === 1 && /^[a-zA-Z0-9\u4e00-\u9fa5（）(),+\-\. ]$/.test(e.key)) { inputBuf += e.key; drawG(); }
+  });
+
+  window.startCoordGame = function(lv) {
+    level = lv; qIdx = 0; score = 0; correctC = 0; wrongC = 0; inputBuf = ''; focus = true;
+    newQ();
+  };
+
+  drawG();
+})();
+</script>
+</body>
+</html>
