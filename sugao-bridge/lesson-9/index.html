@@ -1,0 +1,1251 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>解决问题的策略——列举 — 苏教版五年级数学上册</title>
+<meta name="description" content="苏教版五年级数学上册第五单元：解决问题的策略——列举，4升5暑假衔接互动课件">
+<meta name="course-id" content="sugao-bridge-lesson5-listing">
+<meta name="course-title" content="解决问题的策略——列举">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-version" content="1.0">
+<meta name="teachany-version" content="7.20.0">
+<meta name="teachany-node" content="math-p5-listing-strategy">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="problem-solving">
+<meta name="teachany-lesson-type" content="新授+自学">
+<meta name="teachany-template-version" content="2.0">
+
+<style>
+/* ======================================================
+   TeachAny v2 — Elementary Warm Mode
+   苏教版五年级数学上册 · 列举策略
+   ====================================================== */
+:root {
+  --bg: #FFF8F0;
+  --bg-subtle: #FFF0E5;
+  --panel: #FFFFFF;
+  --card: #FFFFFF;
+  --card-elevated: #FFFBF7;
+  --line: #FFD4C0;
+  --line-subtle: rgba(255, 107, 107, 0.10);
+  --text: #2D3436;
+  --text-secondary: #5A6268;
+  --muted: #8A9298;
+  --brand: #FF6B6B;
+  --brand-soft: rgba(255, 107, 107, 0.10);
+  --brand-2: #4ECDC4;
+  --brand-2-soft: rgba(78, 205, 196, 0.10);
+  --accent: #4ECDC4;
+  --accent-soft: rgba(78, 205, 196, 0.08);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+  --slide-height: 100vh;
+  --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+  --sidenav-width: 48px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container {
+  scroll-snap-type: y proximity;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+body.play-mode .slide-container {
+  scroll-snap-type: y mandatory;
+  overflow: hidden;
+}
+
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative;
+  overflow: hidden;
+}
+.slide-page .slide-inner {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+
+/* Page backgrounds — warm elementary */
+.slide-page[data-page-type="cover"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #FFE8D6 30%, #E8F8F5 70%, #FFF5EE 100%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(30px, 6vw, 52px);
+  line-height: 1.2;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF8A65 50%, #4ECDC4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(16px, 3vw, 22px);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.slide-page[data-page-type="objectives"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 100%);
+}
+.slide-page[data-page-type="concept"] {
+  background: linear-gradient(135deg, #FFFBF7 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="interactive"] {
+  background: linear-gradient(135deg, #E8F8F5 0%, #FFF5EE 100%);
+}
+.slide-page[data-page-type="quiz"] {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
+}
+.slide-page[data-page-type="summary"] {
+  background: linear-gradient(135deg, #FFF5EE 0%, #E8F8F5 50%, #FFF5EE 100%);
+}
+
+/* Brand Bar */
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 10px 20px;
+  background: rgba(255, 248, 240, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle);
+  transition: transform 0.3s ease;
+}
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 15px; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: var(--muted); font-family: ui-monospace, monospace; background: rgba(0,0,0,.04); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 1px 0 rgba(0,0,0,0.02);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.card-accent { border-top: 3px solid; border-image: linear-gradient(90deg, var(--brand), var(--brand-2)) 1; }
+.card-glow { box-shadow: 0 2px 16px rgba(0,0,0,0.04), 0 0 40px rgba(255,107,107,0.08); }
+
+/* Section Header */
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; line-height: 1.3; }
+
+/* Phase Tag */
+.phase-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand); background: var(--brand-soft);
+  border: 1px solid rgba(255,107,107,0.2); border-radius: 999px;
+  padding: 5px 12px; font-size: 12px; font-weight: 600;
+}
+.phase-tag[data-variant="success"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(78,205,196,0.2); }
+.phase-tag[data-variant="purple"] { color: #a78bfa; background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.flex-row { display: flex; gap: 12px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.flex-row .choice { flex: 1; min-width: 120px; text-align: center; }
+
+/* Objectives */
+.objectives { display: grid; grid-template-columns: 1fr; gap: 10px; list-style: none; padding: 0; margin: 0; }
+.objectives li {
+  display: flex; align-items: flex-start; gap: 10px; padding: 14px 18px;
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  border: 1px solid var(--line-subtle); transition: background 0.2s;
+}
+.objectives li:hover { background: rgba(255,107,107,0.06); }
+.objectives li::before { content: "✦"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+/* Choice Buttons */
+.choice {
+  width: 100%; text-align: left; border: 1px solid rgba(255,107,107,0.15);
+  border-radius: var(--card-radius-sm); background: rgba(255,107,107,0.03);
+  color: var(--text); padding: 16px 20px; cursor: pointer;
+  font-size: 15px; line-height: 1.5; transition: all 0.2s;
+  display: block; margin-top: 6px;
+}
+.choice:first-of-type { margin-top: 0; }
+.choice:hover { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.3); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(255,107,107,0.10); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.choice.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.choice.wrong { border-color: var(--danger); background: rgba(239,68,68,0.06); }
+
+/* Result / Feedback */
+.result {
+  padding: 16px 20px; border-radius: var(--card-radius-sm);
+  background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15);
+  font-size: 15px; line-height: 1.6;
+}
+.result.warn { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.15); }
+.result.error { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.15); }
+
+/* Canvas */
+.canvas-wrap { overflow: auto; background: var(--bg-subtle); border: 1px solid var(--line-subtle); border-radius: 16px; padding: 16px; display: flex; justify-content: center; }
+
+/* Concept card */
+.concept-box {
+  padding: 20px; border-radius: var(--card-radius-sm);
+  background: linear-gradient(135deg, rgba(255,107,107,0.04), rgba(78,205,196,0.04));
+  border: 1px solid var(--line-subtle);
+}
+.concept-box h3 { font-size: 20px; color: var(--brand); margin-bottom: 10px; }
+.concept-box .highlight { display: inline-block; background: linear-gradient(120deg, rgba(255,107,107,0.15), rgba(255,107,107,0.05)); padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+
+/* Step grid */
+.step-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+.step-item { display: flex; gap: 12px; padding: 12px 16px; border-radius: var(--card-radius-sm); background: var(--bg-subtle); border: 1px solid var(--line-subtle); align-items: flex-start; }
+.step-item .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+
+/* Visual examples */
+.visual-example { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin: 20px 0; }
+.visual-example .ve-item { text-align: center; min-width: 100px; }
+.visual-example .ve-icon { font-size: 48px; display: block; margin-bottom: 8px; }
+.visual-example .ve-label { font-size: 13px; color: var(--text-secondary); }
+
+/* Concept table */
+.concept-table { width: 100%; border-collapse: collapse; margin-top: 12px; border-radius: var(--card-radius-sm); overflow: hidden; font-size: 14px; }
+.concept-table th, .concept-table td { padding: 10px 14px; text-align: center; border: 1px solid var(--line-subtle); }
+.concept-table th { background: rgba(255,107,107,0.08); font-weight: 700; color: var(--brand); }
+.concept-table tr:nth-child(even) td { background: rgba(0,0,0,0.01); }
+.concept-table .best-row td { background: rgba(78,205,196,0.12); font-weight: 700; color: #2D3436; }
+
+/* Summary items */
+.summary-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); margin-bottom: 8px; }
+.summary-item .num { font-weight: 700; flex-shrink: 0; color: var(--brand); min-width: 24px; }
+
+/* Self-check */
+.self-check-input { margin: 12px 0; }
+.self-check-input label { display: block; color: var(--text-secondary); font-size: 14px; margin-bottom: 6px; }
+.self-check-input input {
+  width: 100%; max-width: 240px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--bg-subtle);
+  color: var(--text); padding: 12px 16px; font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.self-check-input input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(255,107,107,0.10); }
+.check-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: 999px; border: none;
+  background: var(--brand); color: #fff; cursor: pointer;
+  font-size: 14px; font-weight: 600; margin-top: 8px;
+  transition: all 0.2s;
+}
+.check-btn:hover { background: #ff5252; transform: scale(1.03); }
+
+/* Drag-drop zone */
+.drop-zones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+.drop-zone {
+  width: 180px; min-height: 90px; border: 2px dashed var(--brand);
+  border-radius: var(--card-radius-sm); padding: 12px;
+  text-align: center; background: var(--brand-soft);
+  transition: all 0.2s;
+}
+.drop-zone.drag-over { border-color: var(--accent); background: var(--accent-soft); transform: scale(1.05); }
+.drop-zone h4 { font-size: 14px; color: var(--brand); margin-bottom: 8px; }
+.drop-items { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 12px 0; }
+.drag-item {
+  padding: 10px 18px; border-radius: 999px;
+  background: var(--card); border: 2px solid var(--line);
+  cursor: grab; user-select: none; font-size: 14px; font-weight: 600;
+  transition: all 0.2s; touch-action: none;
+}
+.drag-item:hover { border-color: var(--brand); background: var(--brand-soft); }
+.drag-item:active { cursor: grabbing; transform: scale(1.05); }
+.drag-item.placed { opacity: 0.35; pointer-events: none; transform: scale(0.95); }
+
+/* TTS narrator */
+.tts-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--bg-subtle); color: var(--text-secondary);
+  cursor: pointer; font-size: 13px; transition: all 0.2s;
+}
+.tts-btn:hover { border-color: var(--brand); color: var(--brand); }
+
+/* Badge */
+.ta-badge {
+  position: fixed; bottom: 80px; left: 20px; z-index: 80;
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; background: rgba(255,255,255,0.9);
+  border-radius: 50px; backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,107,107,0.12);
+  font-size: 12px; color: var(--text-secondary);
+}
+
+/* Slide Progress */
+.slide-progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  z-index: 200; transition: width 0.3s ease;
+}
+
+/* Toolbar */
+.slide-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 10px 20px;
+  padding-bottom: calc(10px + var(--safe-bottom));
+  background: rgba(255,248,240,0.94); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+  transform: translateY(100%); transition: transform 0.3s ease;
+}
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+.toolbar-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: none; border-radius: 10px;
+  background: rgba(0,0,0,0.04); color: var(--text); cursor: pointer;
+  transition: all 0.2s; font-size: 18px;
+}
+.toolbar-btn:hover { background: rgba(0,0,0,0.08); }
+.toolbar-btn.active { background: var(--brand-soft); color: var(--brand); }
+.toolbar-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(0,0,0,0.06); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width 0.3s ease; }
+
+/* Side Nav */
+.slide-sidenav {
+  position: fixed; right: 12px; top: 50%; transform: translateY(-50%);
+  z-index: 90; display: flex; flex-direction: column; align-items: flex-end;
+  gap: 3px; opacity: 0; transition: opacity 0.3s ease;
+  max-height: 70vh; overflow-y: auto; scrollbar-width: none;
+  padding: 8px 4px; border-radius: 12px;
+  background: rgba(255,255,255,0.6); backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+.sidenav-dot {
+  width: 28px; height: 4px; border-radius: 2px;
+  background: rgba(0,0,0,0.08); border: none; cursor: pointer;
+  transition: all 0.3s; flex-shrink: 0; padding: 0; position: relative;
+}
+.sidenav-dot:hover { background: rgba(255,107,107,0.3); width: 36px; }
+.sidenav-dot.active { background: var(--brand); width: 36px; height: 5px; box-shadow: 0 0 10px rgba(255,107,107,0.4); }
+.sidenav-dot[data-tooltip]:hover::after {
+  content: attr(data-tooltip); position: absolute; right: calc(100% + 10px);
+  top: 50%; transform: translateY(-50%); padding: 5px 10px;
+  background: rgba(255,255,255,0.95); border: 1px solid var(--line);
+  border-radius: 6px; color: var(--text); font-size: 11px;
+  white-space: nowrap; pointer-events: none; z-index: 10;
+}
+.sidenav-counter { font-size: 10px; color: rgba(0,0,0,0.35); text-align: center; padding: 4px 0 2px; width: 100%; }
+
+/* Play FAB */
+.play-mode-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%; border: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(255,107,107,0.3); transition: all 0.3s;
+}
+.play-mode-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(255,107,107,0.4); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+.play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* kg placeholder */
+/* AI tutor placeholder */
+/* Mnemonic box */
+.mnemonic-box {
+  background: linear-gradient(135deg, rgba(78,205,196,0.08), rgba(78,205,196,0.02));
+  border: 1px solid rgba(78,205,196,0.2);
+  border-radius: var(--card-radius-sm);
+  padding: 14px 18px; margin-top: 12px;
+}
+
+/* Match table */
+.match-grid { display: flex; gap: 12px; align-items: flex-start; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+.match-col { text-align: center; }
+.match-item { padding: 8px 16px; background: var(--card); border: 1px solid var(--line-subtle); border-radius: 10px; margin-bottom: 6px; font-size: 14px; font-weight: 600; }
+.match-arrow { font-size: 24px; color: var(--brand); display: flex; align-items: center; }
+
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; --card-radius: 16px; }
+  .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .grid, .grid-2, .objectives, .grid-2col { grid-template-columns: 1fr !important; }
+  .flex-row { flex-direction: column; }
+  .flex-row .choice { min-width: 100%; }
+  .card { padding: 18px; }
+  .teachany-brand-bar { padding: 8px 12px; }
+  .brand-name { display: none; }
+  .drop-zones { flex-direction: column; align-items: center; }
+  .drop-zone { width: 100%; max-width: 260px; }
+}
+
+@media (max-width: 480px) {
+  .slide-page[data-page-type="cover"] h1 { font-size: 28px; }
+  .toolbar-progress { max-width: 120px; }
+}
+</style>
+
+<style>
+.tutor-app{display:flex;flex-direction:column;gap:12px}
+.tutor-chat{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:10px;background:#fff8f0;border-radius:14px}
+.tutor-bubble{max-width:88%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap}
+.tutor-bubble.user{align-self:flex-end;background:#FF6B6B;color:#fff;border-bottom-right-radius:4px}
+.tutor-bubble.bot{align-self:flex-start;background:#fff;color:#333;border:1px solid #ffe0d0;border-bottom-left-radius:4px}
+.tutor-chips{display:flex;flex-wrap:wrap;gap:8px}
+.tutor-chip{background:#fff;border:1px solid #ffd0c0;color:#FF6B6B;padding:8px 12px;border-radius:20px;font-size:13px;cursor:pointer;transition:.15s}
+.tutor-chip:hover{background:#fff0ea}
+.tutor-input{display:flex;gap:8px;flex-wrap:wrap}
+.tutor-input input{flex:1;min-width:150px;padding:10px 14px;border:1px solid #ffd0c0;border-radius:12px;font-size:14px}
+.tutor-input button{padding:10px 16px;border:none;border-radius:12px;background:#FF6B6B;color:#fff;font-size:14px;cursor:pointer}
+.tutor-input button#tutorQuiz{background:#4ECDC4}
+.kg-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;margin-top:8px}
+.kg-svg{flex:1;min-width:300px}
+.kg-canvas{width:100%;height:auto;background:#fffdfb;border-radius:14px}
+.kg-node rect{transition:.15s}
+.kg-node:hover rect{filter:brightness(.97)}
+.kg-info{flex:1;min-width:240px;background:#fff8f0;border-radius:14px;padding:16px;min-height:120px}
+</style>
+
+<style>
+.tutor-app{display:flex;flex-direction:column;gap:12px}
+.tutor-chat{max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:10px;background:#fff8f0;border-radius:14px}
+.tutor-bubble{max-width:88%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap}
+.tutor-bubble.user{align-self:flex-end;background:#FF6B6B;color:#fff;border-bottom-right-radius:4px}
+.tutor-bubble.bot{align-self:flex-start;background:#fff;color:#333;border:1px solid #ffe0d0;border-bottom-left-radius:4px}
+.tutor-chips{display:flex;flex-wrap:wrap;gap:8px}
+.tutor-chip{background:#fff;border:1px solid #ffd0c0;color:#FF6B6B;padding:8px 12px;border-radius:20px;font-size:13px;cursor:pointer;transition:.15s}
+.tutor-chip:hover{background:#fff0ea}
+.tutor-input{display:flex;gap:8px;flex-wrap:wrap}
+.tutor-input input{flex:1;min-width:150px;padding:10px 14px;border:1px solid #ffd0c0;border-radius:12px;font-size:14px}
+.tutor-input button{padding:10px 16px;border:none;border-radius:12px;background:#FF6B6B;color:#fff;font-size:14px;cursor:pointer}
+.tutor-input button#tutorQuiz{background:#4ECDC4}
+.kg-wrap{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;margin-top:8px}
+.kg-svg{flex:1;min-width:300px}
+.kg-canvas{width:100%;height:auto;background:#fffdfb;border-radius:14px}
+.kg-node rect{transition:.15s}
+.kg-node:hover rect{filter:brightness(.97)}
+.kg-info{flex:1;min-width:240px;background:#fff8f0;border-radius:14px;padding:16px;min-height:120px}
+</style>
+</head>
+<body>
+
+<div class="slide-progress-bar" id="slide-progress-bar" style="width:0%"></div>
+
+<!-- Brand Bar -->
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="https://weponusa.github.io/teachany/">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <span class="brand-version">v1.0 · skill v7.20</span>
+  </div>
+</div>
+
+<!-- Slide Container -->
+<div class="slide-container" id="slide-container">
+
+<!-- Page 0: Cover -->
+<section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="封面">
+
+  <div class="slide-inner">
+    <h1>奇偶性综合应用</h1>
+    <p class="subtitle">不用算，也能判断结果是奇数还是偶数——奇偶性的巧妙推理</p>
+    <figure class="ta-standard-figure" style="margin-top:20px">
+      <svg style="max-width:680px;width:100%;height:auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" fill="none">
+        <defs>
+          <linearGradient id="bg9" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFF5EE"/><stop offset="50%" stop-color="#E8F8F5"/><stop offset="100%" stop-color="#FFF5EE"/>
+          </linearGradient>
+          <linearGradient id="g9" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#FF6B6B"/><stop offset="100%" stop-color="#4ECDC4"/>
+          </linearGradient>
+        </defs>
+        <rect width="720" height="300" rx="20" fill="url(#bg9)"/>
+        <rect x="250" y="120" width="220" height="64" rx="14" fill="url(#g9)"/>
+        <text x="360" y="160" text-anchor="middle" fill="#fff" font-size="22" font-weight="700" font-family="system-ui,sans-serif">加 × 减 ÷ 奇偶</text>
+        <rect x="40" y="50" width="180" height="48" rx="12" fill="#fff" stroke="#FF6B6B" stroke-width="2"/>
+        <text x="130" y="80" text-anchor="middle" fill="#FF6B6B" font-size="15" font-family="system-ui,sans-serif">加减：同偶异奇</text>
+        <line x1="220" y1="74" x2="250" y2="150" stroke="#FF6B6B" stroke-width="2"/>
+        <rect x="500" y="50" width="180" height="48" rx="12" fill="#fff" stroke="#4ECDC4" stroke-width="2"/>
+        <text x="590" y="80" text-anchor="middle" fill="#4ECDC4" font-size="15" font-family="system-ui,sans-serif">乘法：有偶则偶</text>
+        <line x1="500" y1="74" x2="470" y2="150" stroke="#4ECDC4" stroke-width="2"/>
+        <text x="360" y="225" text-anchor="middle" fill="#888" font-size="14" font-family="system-ui,sans-serif">翻杯子/开关灯：奇变偶不变</text>
+        <text x="360" y="255" text-anchor="middle" fill="#FF6B6B" font-size="15" font-weight="600" font-family="system-ui,sans-serif">🔁 规律 · 💡 推理 · 🎯 巧解</text>
+      </svg>
+    </figure>
+  </div>
+
+  </section>
+
+<!-- Page 1: Problem Anchor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="problem-anchor" data-tsh="问题锚点">
+
+  <div class="card">
+    <div class="section-header">
+      <span class="phase-tag" data-variant="warn">Problem Anchor</span>
+      <h2>今天想解决什么问题？</h2>
+    </div>
+    <p style="color:var(--text-secondary);line-height:1.7">下面这些烧脑问题，用奇偶性轻松破解：</p>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
+      <div class="anchor-card">🔢 不计算出结果，能判断 1+2+3+…+100 是奇数还是偶数吗？</div>
+      <div class="anchor-card">🔁 10 个杯子全扣着，每次翻 2 个，能全部翻正吗？</div>
+      <div class="anchor-card">💡 两个质数之和是奇数，说明什么？</div>
+      <div class="anchor-card">🎯 奇数个奇数相加，和是奇是偶？</div>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 2: Learning Objectives -->
+<section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标">
+
+  <div class="card">
+    <div class="section-header">
+      <span class="phase-tag" data-variant="success">Objectives</span>
+      <h2>学习目标</h2>
+    </div>
+    <ul class="obj-list">
+      <li>掌握 <b>加法 / 减法</b> 的奇偶性规律（同加为偶、异加为奇）</li>
+      <li>掌握 <b>乘法</b> 的奇偶性规律（有偶数则积为偶）</li>
+      <li>会用奇偶性分析 <b>翻杯子 / 开关灯</b> 类问题（奇变偶不变）</li>
+      <li>能利用奇偶性做简单 <b>推理</b>（如"两质数和为奇数→必含2"）</li>
+    </ul>
+  </div>
+
+  </section>
+
+<!-- Page 3: Pre-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="3" data-tts="pretest" data-tsh="前测">
+
+  <div class="card">
+    <div class="section-header">
+      <span class="phase-tag" data-variant="warn">Pre-Test</span>
+      <h2>先来试试看 👀</h2>
+    </div>
+    <p style="color:var(--muted);margin:0 0 12px">别担心，答错了也没关系，试试看！</p>
+    <div style="margin-bottom:16px">
+      <p style="font-weight:600;margin-bottom:6px">Q1: 奇数 + 奇数 + 奇数 = ？</p>
+      <button class="choice" data-quiz="pretest-q1" data-answer="correct" onclick="checkQuizBtn(this)">A. 奇数</button>
+      <button class="choice" data-quiz="pretest-q1" data-answer="wrong" onclick="checkQuizBtn(this)">B. 偶数</button>
+      <button class="choice" data-quiz="pretest-q1" data-answer="wrong" onclick="checkQuizBtn(this)">C. 质数</button>
+      <p class="quiz-feedback" data-for="pretest-q1"></p>
+    </div>
+    <div style="margin-bottom:16px">
+      <p style="font-weight:600;margin-bottom:6px">Q2: 偶数 × 任何整数 = ？</p>
+      <button class="choice" data-quiz="pretest-q2" data-answer="correct" onclick="checkQuizBtn(this)">A. 偶数</button>
+      <button class="choice" data-quiz="pretest-q2" data-answer="wrong" onclick="checkQuizBtn(this)">B. 奇数</button>
+      <button class="choice" data-quiz="pretest-q2" data-answer="wrong" onclick="checkQuizBtn(this)">C. 不一定</button>
+      <p class="quiz-feedback" data-for="pretest-q2"></p>
+    </div>
+    <div style="margin-bottom:8px">
+      <p style="font-weight:600;margin-bottom:6px">Q3: 每次翻 2 个杯子（共10个），最终能全翻正吗？</p>
+      <button class="choice" data-quiz="pretest-q3" data-answer="wrong" onclick="checkQuizBtn(this)">A. 能</button>
+      <button class="choice" data-quiz="pretest-q3" data-answer="correct" onclick="checkQuizBtn(this)">B. 不能</button>
+      <button class="choice" data-quiz="pretest-q3" data-answer="wrong" onclick="checkQuizBtn(this)">C. 不一定</button>
+      <p class="quiz-feedback" data-for="pretest-q3"></p>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 4: Concept 1 — 什么情况用列举 -->
+<section class="slide-page" data-page-type="concept" data-page-index="4" data-tts="concept-when" data-tsh="概念1 - 什么情况用列举">
+
+  <div class="card card-glow">
+    <div class="section-header"><span class="phase-tag" data-variant="blue">Concept 1</span><h2>加减法的奇偶性 ➕</h2></div>
+    <p style="line-height:1.7;color:var(--text-secondary)">看参与运算的数的"奇偶个数"：</p>
+    <div class="example-box">
+      <p>🔹 奇 + 奇 = 偶 ｜ 偶 + 偶 = 偶（<b>同类相加为偶</b>）</p>
+      <p>🔹 奇 + 偶 = 奇（<b>异类相加为奇</b>）</p>
+      <p>🔹 减法同理：奇 - 奇 = 偶，偶 - 偶 = 偶，奇 - 偶 = 奇</p>
+    </div>
+    <p style="margin-top:10px">📌 <b>奇数个奇数相加 = 奇数；偶数个奇数相加 = 偶数</b>。</p>
+  </div>
+
+  </section>
+
+<!-- Page 5: Concept 2 — 有序列举不重复不遗漏 -->
+<section class="slide-page" data-page-type="concept" data-page-index="5" data-tts="concept-order" data-tsh="概念2 - 有序列举">
+
+  <div class="card card-glow">
+    <div class="section-header"><span class="phase-tag" data-variant="blue">Concept 2</span><h2>乘法的奇偶性 ✖️</h2></div>
+    <p style="line-height:1.7;color:var(--text-secondary)">只要因数里<b>有一个偶数</b>，积就是偶数：</p>
+    <div class="example-box">
+      <p>🔹 偶 × 偶 = 偶 ｜ 偶 × 奇 = 偶 ｜ 奇 × 奇 = <b>奇</b></p>
+      <p>🔹 推论：连续自然数相乘（含2）→ 一定是偶数</p>
+    </div>
+    <p style="margin-top:10px">💡 例子：1×2×3×4×5 含 2 和 4 → 偶数。</p>
+  </div>
+
+  </section>
+
+<!-- Page 6: Concept 3 — 用表格或画图帮助列举 -->
+<section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="concept-table" data-tsh="概念3 - 表格画图辅助">
+
+  <div class="card card-glow">
+    <div class="section-header"><span class="phase-tag" data-variant="blue">Concept 3</span><h2>翻杯子 / 开关灯问题 🔁</h2></div>
+    <p style="line-height:1.7;color:var(--text-secondary)">核心规律：<b>奇数次操作会变状态，偶数次操作回到原状</b>。</p>
+    <div class="example-box">
+      <p>🔹 10 个杯子全扣着，每次翻 2 个（翻动总数是偶数次）</p>
+      <p>🔹 要全翻正需每个翻奇数次 → 总翻动次数必为<b>奇数</b>×10 = 偶数…但每次翻2个只能产生偶数总次数</p>
+      <p>🔹 结论：<b>无法从全扣变成全正</b>（奇偶性矛盾）</p>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 7: Concept 4 — 从列举中找最值 -->
+<section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="concept-best" data-tsh="概念4 - 从列举中找最值">
+
+  <div class="card card-glow">
+    <div class="section-header"><span class="phase-tag" data-variant="blue">Concept 4</span><h2>奇偶性推理 💡</h2></div>
+    <div class="example-box">
+      <p><b>① 两质数之和为奇数</b> → 必有一个是 <b>2</b>（唯一偶质数）</p>
+      <p>· 例：a+b=21（奇），则 {2, 19}</p>
+      <p><b>② 1+2+…+100</b>：1~100 有 50 个奇数，<b>偶数个奇数相加=偶数</b> → 总和是偶数</p>
+      <p><b>③ 判断和奇偶</b>：只看计数对象里奇数的个数</p>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 8: Scaffold Practice -->
+<section class="slide-page" data-page-type="quiz" data-page-index="8" data-tts="scaffold" data-tsh="脚手架练习">
+
+  <div class="card">
+    <div class="section-header"><span class="phase-tag" data-variant="success">Scaffold</span><h2>三步练习 ✍️</h2></div>
+    <div style="margin-bottom:14px">
+      <p style="font-weight:600">1 判断：1+3+5+7+9（5个奇数）的和是？</p>
+      <p style="color:var(--muted);font-size:14px">奇数个奇数相加=奇数 → 奇数</p>
+    </div>
+    <div style="margin-bottom:14px">
+      <p style="font-weight:600">2 判断：13 × 24 × 5 的积是？</p>
+      <p style="color:var(--muted);font-size:14px">含偶数24 → 积为偶数</p>
+    </div>
+    <div style="margin-bottom:8px">
+      <p style="font-weight:600">3 推理：两个质数之和为 30，可能是哪两个？</p>
+      <p style="color:var(--muted);font-size:14px">和为偶→两奇质数或含2；含2则另一为28(非质数)不行→两奇质数：7+23、11+19、13+17</p>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 9: ConcepTest -->
+<section class="slide-page" data-page-type="quiz" data-page-index="9" data-tts="conceptest" data-tsh="概念诊断">
+
+  <div class="card">
+    <div class="section-header"><span class="phase-tag" data-variant="warn">ConceptTest</span><h2>概念过关测试 🎯</h2></div>
+    <div style="margin-bottom:14px">
+      <p style="font-weight:600">第1题：偶数个奇数相加，和是？</p>
+      <button class="choice" data-quiz="ct-q1" data-answer="wrong" onclick="checkQuizBtn(this)">A. 奇数</button>
+      <button class="choice" data-quiz="ct-q1" data-answer="correct" onclick="checkQuizBtn(this)">B. 偶数</button>
+      <button class="choice" data-quiz="ct-q1" data-answer="wrong" onclick="checkQuizBtn(this)">C. 质数</button>
+      <p class="quiz-feedback" data-for="ct-q1"></p>
+    </div>
+    <div style="margin-bottom:14px">
+      <p style="font-weight:600">第2题：奇 × 奇 × 偶 = ？</p>
+      <button class="choice" data-quiz="ct-q2" data-answer="correct" onclick="checkQuizBtn(this)">A. 偶数</button>
+      <button class="choice" data-quiz="ct-q2" data-answer="wrong" onclick="checkQuizBtn(this)">B. 奇数</button>
+      <button class="choice" data-quiz="ct-q2" data-answer="wrong" onclick="checkQuizBtn(this)">C. 质数</button>
+      <p class="quiz-feedback" data-for="ct-q2"></p>
+    </div>
+    <div style="margin-bottom:8px">
+      <p style="font-weight:600">第3题：两质数之和为奇数，其中必有一个是？</p>
+      <button class="choice" data-quiz="ct-q3" data-answer="correct" onclick="checkQuizBtn(this)">A. 2</button>
+      <button class="choice" data-quiz="ct-q3" data-answer="wrong" onclick="checkQuizBtn(this)">B. 3</button>
+      <button class="choice" data-quiz="ct-q3" data-answer="wrong" onclick="checkQuizBtn(this)">C. 5</button>
+      <p class="quiz-feedback" data-for="ct-q3"></p>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 10: Interactive — 列举分类拖拽游戏 -->
+<section class="slide-page" data-page-type="interactive" data-page-index="10" data-tts="interactive" data-tsh="互动 - 列举分类">
+
+  <div class="slide-inner">
+    <div class="card card-glow">
+      <div class="section-header"><span class="phase-tag" data-variant="success">Interactive</span><h2>结果奇偶分类 🎮</h2></div>
+      <p style="color:var(--muted);margin:0 0 8px">下面这些算式，结果分别是<b>奇数</b>还是<b>偶数</b>？</p>
+      <p style="color:var(--muted);margin:0 0 16px;font-size:13px">把它们拖到正确的分类里！（提示：奇数=3+5、7×9、13-2；偶数=2+4、11×2、8÷2）</p>
+      <div class="drop-zones">
+        <div class="drop-zone" id="zone-match" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>✅ 奇数结果</h4>
+          <div id="zone-match-items" style="min-height:20px"></div>
+        </div>
+        <div class="drop-zone" id="zone-nomatch" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+          <h4>❌ 偶数结果</h4>
+          <div id="zone-nomatch-items" style="min-height:20px"></div>
+        </div>
+      </div>
+      <div class="drop-items" id="drag-items">
+        <div class="drag-item" draggable="true" data-correct="match" data-id="d1">3 + 5</div>
+        <div class="drag-item" draggable="true" data-correct="match" data-id="d2">7 × 9</div>
+        <div class="drag-item" draggable="true" data-correct="match" data-id="d3">13 - 2</div>
+        <div class="drag-item" draggable="true" data-correct="nomatch" data-id="d4">2 + 4</div>
+        <div class="drag-item" draggable="true" data-correct="nomatch" data-id="d5">11 × 2</div>
+        <div class="drag-item" draggable="true" data-correct="nomatch" data-id="d6">8 ÷ 2</div>
+      </div>
+      <div id="drag-score" style="text-align:center;margin-top:12px;font-weight:700;font-size:16px;color:var(--brand)"></div>
+      <button class="check-btn" onclick="resetDragGame()">🔄 重置游戏</button>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 11: Post-test -->
+<section class="slide-page" data-page-type="quiz" data-page-index="11" data-tts="posttest" data-tsh="后测">
+
+  <div class="card">
+    <div class="section-header"><span class="phase-tag" data-variant="success">Post-Test</span><h2>学后检测 ✅</h2></div>
+    <div style="margin-bottom:14px">
+      <p style="font-weight:600">Q1: 1+2+3+…+99（50个奇数）的和是？</p>
+      <button class="choice" data-quiz="post-q1" data-answer="wrong" onclick="checkQuizBtn(this)">A. 奇数</button>
+      <button class="choice" data-quiz="post-q1" data-answer="correct" onclick="checkQuizBtn(this)">B. 偶数</button>
+      <button class="choice" data-quiz="post-q1" data-answer="wrong" onclick="checkQuizBtn(this)">C. 质数</button>
+      <p class="quiz-feedback" data-for="post-q1"></p>
+    </div>
+    <div style="margin-bottom:14px">
+      <p style="font-weight:600">Q2: 每次翻 3 个杯子（共9个，全扣），能全翻正吗？</p>
+      <button class="choice" data-quiz="post-q2" data-answer="correct" onclick="checkQuizBtn(this)">A. 能</button>
+      <button class="choice" data-quiz="post-q2" data-answer="wrong" onclick="checkQuizBtn(this)">B. 不能</button>
+      <button class="choice" data-quiz="post-q2" data-answer="wrong" onclick="checkQuizBtn(this)">C. 不确定</button>
+      <p class="quiz-feedback" data-for="post-q2"></p>
+    </div>
+    <div style="margin-bottom:8px">
+      <p style="font-weight:600">Q3: 两个质数之和为 12，这两个质数可能是？</p>
+      <button class="choice" data-quiz="post-q3" data-answer="wrong" onclick="checkQuizBtn(this)">A. 2 和 10</button>
+      <button class="choice" data-quiz="post-q3" data-answer="correct" onclick="checkQuizBtn(this)">B. 5 和 7</button>
+      <button class="choice" data-quiz="post-q3" data-answer="wrong" onclick="checkQuizBtn(this)">C. 3 和 9</button>
+      <p class="quiz-feedback" data-for="post-q3"></p>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 12: Summary -->
+<section class="slide-page" data-page-type="summary" data-page-index="12" data-tts="summary" data-tsh="课堂小结">
+
+  <div class="card">
+    <div class="section-header"><span class="phase-tag" data-variant="success">Summary</span><h2>课堂小结 📝</h2></div>
+    <div class="summary-list">
+      <div class="summary-item"><b>1 加减</b>：同类(奇+奇/偶+偶)为偶，异类为奇；奇数个奇数相加为奇。</div>
+      <div class="summary-item"><b>2 乘法</b>：有偶数因数则积为偶；奇×奇=奇。</div>
+      <div class="summary-item"><b>3 翻动问题</b>：奇次变状态，偶次复原；用奇偶性判能否达成。</div>
+      <div class="summary-item"><b>4 推理</b>：两质数和为奇数→必含2；看奇数个数判和之奇偶。</div>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 13: Knowledge Graph -->
+<section class="slide-page" data-page-type="summary" data-page-index="13" data-tts="knowledge-graph" data-tsh="知识图谱">
+
+  <div class="card card-glow">
+    <div class="section-header">
+      <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
+      <h2>知识图谱 🗺️</h2>
+    </div>
+    <p style="color:var(--muted);margin:0 0 4px">点击任意节点查看讲解，关联节点会自动高亮：</p>
+    <div class="kg-wrap">
+      <div class="kg-svg" id="kgSvg"></div>
+      <div class="kg-info" id="kgInfo"><p style="color:var(--muted)">点击左侧节点查看详情 ↑</p></div>
+    </div>
+  </div>
+
+  </section>
+
+<!-- Page 14: AI Tutor -->
+<section class="slide-page" data-page-type="interactive" data-page-index="14" data-tts="ai-tutor" data-tsh="AI学伴">
+
+  <div class="card card-glow">
+    <div class="section-header">
+      <span class="phase-tag" data-variant="purple">AI Tutor</span>
+      <h2>AI 学伴 🤖</h2>
+    </div>
+    <div class="tutor-app">
+      <div class="tutor-chat" id="tutorChat"></div>
+      <div class="tutor-chips" id="tutorChips"></div>
+      <div class="tutor-input">
+        <input id="tutorInput" placeholder="问我任何关于奇偶性的问题（加减乘除、翻杯子、推理）…" />
+        <button onclick="ask()">发送</button>
+      </div>
+    </div>
+  </div>
+
+  </section>
+
+</div><!-- .slide-container -->
+
+<!-- Side Navigation -->
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<!-- Play Mode FAB -->
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式" title="切换播放模式">
+  <svg id="fab-icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+  <svg id="fab-icon-browse" viewBox="0 0 24 24" style="display:none"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+
+<!-- Bottom Toolbar -->
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页" title="上一页">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <div class="toolbar-progress" id="tb-progress" title="进度">
+    <div class="toolbar-progress-fill" id="tb-progress-fill"></div>
+  </div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 15</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页" title="下一页">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-autoplay" aria-label="自动播放" title="自动播放">
+    <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏" title="全屏">
+    <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+  </button>
+</div>
+
+<div class="ta-badge">
+  <span>🧑‍🏫</span><span>苏教版五上 · 列举策略</span>
+</div>
+
+<script>
+/* ============================================================
+   TeachAny v2 — Slide Controller + Interactive Quizzes
+   苏教版五上 · 列举策略
+   ============================================================ */
+(function() {
+  'use strict';
+
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0, isPlayMode = false, isAutoPlay = false, autoPlayTimer = null;
+
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const fab = document.getElementById('play-mode-fab');
+  const fabIconPlay = document.getElementById('fab-icon-play');
+  const fabIconBrowse = document.getElementById('fab-icon-browse');
+  const toolbar = document.getElementById('slide-toolbar');
+  const tbPrev = document.getElementById('tb-prev');
+  const tbNext = document.getElementById('tb-next');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+  const tbProgress = document.getElementById('tb-progress');
+  const tbAutoplay = document.getElementById('tb-autoplay');
+  const tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const counter = document.createElement('div');
+    counter.className = 'sidenav-counter'; counter.id = 'sidenav-counter';
+    counter.textContent = '1/' + totalPages; sidenav.appendChild(counter);
+    pages.forEach((page, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-tooltip', page.dataset.tsh || ('第' + (i + 1) + '页'));
+      dot.setAttribute('aria-label', '跳转到第' + (i + 1) + '页');
+      dot.addEventListener('click', () => goToPage(i));
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    const progress = totalPages > 1 ? (currentPage / (totalPages - 1)) * 100 : 100;
+    progressBar.style.width = progress + '%';
+    tbProgressFill.style.width = progress + '%';
+    tbPageInfo.textContent = (currentPage + 1) + ' / ' + totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
+    const ce = document.getElementById('sidenav-counter'); if (ce) ce.textContent = (currentPage + 1) + '/' + totalPages;
+    tbPrev.style.opacity = currentPage === 0 ? '0.3' : '1';
+    tbNext.style.opacity = currentPage === totalPages - 1 ? '0.3' : '1';
+  }
+
+  function goToPage(index) {
+    if (index < 0 || index >= totalPages) return;
+    currentPage = index;
+    if (isPlayMode) pages[currentPage].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else container.scrollTo({ top: pages[currentPage].offsetTop, behavior: 'smooth' });
+    updateUI();
+  }
+
+  function nextPage() { if (currentPage < totalPages - 1) goToPage(currentPage + 1); }
+  function prevPage() { if (currentPage > 0) goToPage(currentPage - 1); }
+
+  let scrollTimeout;
+  container.addEventListener('scroll', () => {
+    if (isPlayMode) return;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      let closest = 0, minDist = Infinity;
+      pages.forEach((page, i) => {
+        const dist = Math.abs(page.offsetTop - container.scrollTop);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      if (closest !== currentPage) { currentPage = closest; updateUI(); }
+    }, 100);
+  }, { passive: true });
+
+  function togglePlayMode() {
+    isPlayMode = !isPlayMode;
+    document.body.classList.toggle('play-mode', isPlayMode);
+    document.body.classList.toggle('toolbar-visible', isPlayMode);
+    fabIconPlay.style.display = isPlayMode ? 'none' : 'block';
+    fabIconBrowse.style.display = isPlayMode ? 'block' : 'none';
+    if (isPlayMode) goToPage(currentPage);
+  }
+
+  fab.addEventListener('click', togglePlayMode);
+  tbPrev.addEventListener('click', prevPage);
+  tbNext.addEventListener('click', nextPage);
+
+  tbProgress.addEventListener('click', (e) => {
+    const rect = tbProgress.getBoundingClientRect();
+    goToPage(Math.round((e.clientX - rect.left) / rect.width * (totalPages - 1)));
+  });
+
+  tbAutoplay.addEventListener('click', () => {
+    isAutoPlay = !isAutoPlay; tbAutoplay.classList.toggle('active', isAutoPlay);
+    if (isAutoPlay) { stopAutoPlay(); autoPlayTimer = setInterval(() => { if (currentPage < totalPages - 1) nextPage(); else { stopAutoPlay(); isAutoPlay = false; tbAutoplay.classList.remove('active'); } }, 8000); }
+    else stopAutoPlay();
+  });
+  function stopAutoPlay() { if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; } }
+
+  tbFullscreen.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch(e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ': e.preventDefault(); nextPage(); break;
+      case 'ArrowLeft': case 'ArrowUp': e.preventDefault(); prevPage(); break;
+      case 'f': case 'F': if (!e.ctrlKey && !e.metaKey) togglePlayMode(); break;
+      case 'Escape': if (isPlayMode) togglePlayMode(); break;
+    }
+  });
+
+  /* ─── Problem Anchor ─── */
+  document.querySelectorAll('[data-anchor-choice]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-anchor-choice]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const fb = document.getElementById('anchor-feedback');
+      if (fb) fb.textContent = '✅ 好的！"' + (btn.getAttribute('data-anchor-choice') || btn.textContent.trim()) + '" — 课程内容会围绕这个问题展开。';
+    });
+  });
+
+  document.getElementById('learner-question-input')?.addEventListener('input', (e) => {
+    const fb = document.getElementById('anchor-feedback');
+    if (fb) fb.textContent = e.target.value.trim() ? '✅ 你的问题：' + e.target.value.trim() : '👆 选择一个问题，或者写下你的疑问～';
+  });
+
+  buildSidenav(); updateUI();
+  document.body.classList.add('toolbar-visible');
+  setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
+})();
+
+/* ─── Quiz Logic ─── */
+const quizExplanations = {
+  'pretest-q1': { correct: '✅ 正确！周长22米，长+宽=22÷2=11米。', wrong: '❌ 不对哦~ 周长=(长+宽)×2=22，所以长+宽=22÷2=11米。' },
+  'pretest-q2': { correct: '✅ 正确！2件上衣×3条裤子=6种搭配。', wrong: '❌ 不对哦~ 每件上衣可以搭配每条裤子，所以是2×3=6种。' },
+  'pretest-q3': { correct: '✅ 正确！有序思考是列举的核心，按顺序来才不会乱。', wrong: '❌ 不对哦~ 随便写容易漏，按顺序从大到小或从小到大才完整。' },
+  'ct-q1': { correct: '✅ 正确！5种完整列举：10×1,9×2,8×3,7×4,6×5。', wrong: '❌ 不对哦~ 完整列举应该有5种，注意不要遗漏也不要重复（长宽互换不算新组合）。' },
+  'ct-q2': { correct: '✅ 正确！有序思考就是按规律排列，从大到小或从小到大依次来。', wrong: '❌ 不对哦~ "有序"就是有规律地排列，不是随便写。' },
+  'ct-q3': { correct: '✅ 正确！6×5=30㎡是面积最大的，周长固定时长宽越接近面积越大。', wrong: '❌ 不对哦~ 比较所有列举结果，30㎡最大，因为6和5最接近。' },
+  'ct-q4': { correct: '✅ 正确！搭配数=上衣数×裤子数，4×3=12种。', wrong: '❌ 不对哦~ 搭配用乘法不是加法，每件上衣都能配每条裤子。' },
+  'post-q1': { correct: '✅ 正确！列举策略的核心就是有序思考，不重复不遗漏。', wrong: '❌ 不对哦~ 核心是有序思考，随便写或只写几个都不行。' },
+  'post-q2': { correct: '✅ 正确！长+宽=10，长从9到5共5种：9×1,8×2,7×3,6×4,5×5。', wrong: '❌ 不对哦~ 长≥宽，长从9逐一减到5共5种（长宽相等算一种）。' },
+  'post-q3': { correct: '✅ 正确！周长固定时，长宽越接近（差距越小），面积越大。', wrong: '❌ 不对哦~ 从列举结果可以看出，6和5最接近，面积30㎡最大。' },
+};
+
+function checkQuizBtn(btn) {
+  const qId = btn.dataset.quiz;
+  const isCorrect = btn.dataset.answer === 'correct';
+  document.querySelectorAll('[data-quiz="' + qId + '"]').forEach(b => {
+    b.classList.remove('correct', 'wrong', 'selected');
+  });
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  const fb = document.getElementById(qId + '-fb');
+  if (fb) {
+    fb.style.display = 'block';
+    fb.className = 'result' + (isCorrect ? '' : ' error');
+    const exp = quizExplanations[qId];
+    if (exp) { fb.innerHTML = isCorrect ? exp.correct : exp.wrong; }
+    else { fb.textContent = isCorrect ? '✅ 正确！很棒！' : '❌ 不对哦，再想想～'; }
+  }
+}
+
+/* ─── Self-check Logic ─── */
+function checkSelf(input, expected, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.style.display = 'none'; return; }
+  fb.style.display = 'block';
+  const normalized = val.replace(/\s+/g, '').toLowerCase().replace(/[m㎡²]/g, '');
+  const expNorm = expected.replace(/\s+/g, '').toLowerCase().replace(/[m㎡²]/g, '');
+  if (normalized === expNorm) {
+    fb.className = 'result'; fb.textContent = '✅ 正确！';
+  } else {
+    fb.className = 'result error'; fb.textContent = '❌ 不对哦，答案应该是 ' + expected + '，再试试看～';
+  }
+}
+
+/* ─── Step Check Logic ─── */
+function checkStep(input, expected, fbId) {
+  const fb = document.getElementById(fbId);
+  if (!fb) return;
+  const val = input.value.trim();
+  if (!val) { fb.textContent = ''; return; }
+  if (val === expected || val.toLowerCase() === expected.toLowerCase()) {
+    fb.textContent = '✅'; fb.style.color = '#22c55e';
+  } else {
+    fb.textContent = '❌'; fb.style.color = '#ef4444';
+  }
+}
+
+/* ─── Drag & Drop Game ─── */
+let dragScore = 0, dragTotal = 0, dragPlaced = new Set();
+
+document.querySelectorAll('.drag-item').forEach(item => {
+  item.addEventListener('dragstart', (e) => {
+    if (item.classList.contains('placed')) { e.preventDefault(); return; }
+    e.dataTransfer.setData('text/plain', item.textContent.trim());
+    e.dataTransfer.setData('correct', item.dataset.correct);
+    e.dataTransfer.setData('itemId', item.dataset.id);
+    e.dataTransfer.setData('source', item.outerHTML);
+  });
+  /* Touch support */
+  item.addEventListener('touchstart', touchStartHandler, {passive: false});
+});
+
+let touchDragItem = null, touchClone = null, touchStartX, touchStartY, touchOffsetX, touchOffsetY;
+
+function touchStartHandler(e) {
+  if (this.classList.contains('placed')) return;
+  touchDragItem = this;
+  const touch = e.touches[0];
+  touchStartX = touch.clientX; touchStartY = touch.clientY;
+  touchOffsetX = touch.clientX - this.getBoundingClientRect().left;
+  touchOffsetY = touch.clientY - this.getBoundingClientRect().top;
+}
+
+document.addEventListener('touchmove', function(e) {
+  if (!touchDragItem) return;
+  e.preventDefault();
+  if (!touchClone) {
+    touchClone = touchDragItem.cloneNode(true);
+    touchClone.style.position = 'fixed'; touchClone.style.zIndex = '9999';
+    touchClone.style.opacity = '0.85'; touchClone.style.pointerEvents = 'none';
+    document.body.appendChild(touchClone);
+  }
+  touchClone.style.left = (e.touches[0].clientX - touchOffsetX) + 'px';
+  touchClone.style.top = (e.touches[0].clientY - touchOffsetY) + 'px';
+  /* Highlight drop zones */
+  document.querySelectorAll('.drop-zone').forEach(z => {
+    const rect = z.getBoundingClientRect();
+    const x = e.touches[0].clientX, y = e.touches[0].clientY;
+    if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+      z.classList.add('drag-over');
+    } else { z.classList.remove('drag-over'); }
+  });
+}, {passive: false});
+
+document.addEventListener('touchend', function(e) {
+  if (!touchDragItem) return;
+  document.querySelectorAll('.drop-zone').forEach(z => z.classList.remove('drag-over'));
+  if (touchClone) { touchClone.remove(); touchClone = null; }
+  const touch = e.changedTouches[0];
+  const zones = document.querySelectorAll('.drop-zone');
+  let droppedZone = null;
+  zones.forEach(z => {
+    const rect = z.getBoundingClientRect();
+    if (touch.clientX >= rect.left && touch.clientX <= rect.right &&
+        touch.clientY >= rect.top && touch.clientY <= rect.bottom) {
+      droppedZone = z;
+    }
+  });
+  if (droppedZone) {
+    processDrop(droppedZone, touchDragItem.dataset.correct, touchDragItem.textContent.trim(), touchDragItem.dataset.id);
+  }
+  touchDragItem = null;
+}, {passive: false});
+
+function handleDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+function handleDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+
+function handleDrop(e) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  const correct = e.dataTransfer.getData('correct');
+  const itemText = e.dataTransfer.getData('text/plain');
+  const itemId = e.dataTransfer.getData('itemId');
+  processDrop(e.currentTarget, correct, itemText, itemId);
+}
+
+function processDrop(zone, correct, itemText, itemId) {
+  if (!itemId || dragPlaced.has(itemId)) return;
+  dragPlaced.add(itemId);
+  const zoneId = zone.id;
+  const zoneType = zoneId === 'zone-match' ? 'match' : 'nomatch';
+  dragTotal++;
+  const isCorrect = correct === zoneType;
+
+  const itemsDiv = document.getElementById(zoneId + '-items');
+  const tag = document.createElement('span');
+  tag.style.cssText = 'display:inline-block;padding:6px 12px;margin:3px;border-radius:999px;font-size:13px;font-weight:600;' +
+    (isCorrect ? 'background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#166534' :
+                'background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);color:#991b1b');
+  tag.textContent = (isCorrect ? '✅ ' : '❌ ') + itemText;
+  itemsDiv.appendChild(tag);
+
+  if (isCorrect) dragScore++;
+  /* Disable source item */
+  document.querySelectorAll('.drag-item').forEach(item => {
+    if (item.dataset.id === itemId) item.classList.add('placed');
+  });
+
+  const scoreEl = document.getElementById('drag-score');
+  if (scoreEl) {
+    scoreEl.textContent = '得分：' + dragScore + ' / ' + dragTotal +
+      (dragTotal === 8 ? (dragScore === 8 ? ' 🎉 全部正确！太厉害了！' : ' 再试一次吧～') : '');
+  }
+}
+
+function resetDragGame() {
+  dragScore = 0; dragTotal = 0; dragPlaced.clear();
+  document.getElementById('zone-match-items').innerHTML = '';
+  document.getElementById('zone-nomatch-items').innerHTML = '';
+  document.querySelectorAll('.drag-item').forEach(item => item.classList.remove('placed'));
+  document.getElementById('drag-score').textContent = '';
+}
+</script>
+
+
+
+<script>
+const COURSE_DATA = {"faq": [{"q": "加减法的奇偶性怎么判断？", "keys": ["加减", "加法", "减法", "规律", "奇偶"], "a": "同类相加为偶（奇+奇=偶，偶+偶=偶），异类相加为奇（奇+偶=奇）。减法同理。关键看参与的数里奇数的个数：奇数个奇数相加=奇数，偶数个奇数相加=偶数。"}, {"q": "乘法的奇偶性怎么判断？", "keys": ["乘法", "乘", "偶数", "积", "规律"], "a": "只要因数里有一个偶数，积就是偶数（偶×奇=偶，偶×偶=偶）；只有奇×奇才等于奇数。所以连续自然数相乘一定含2，结果必为偶数。"}, {"q": "翻杯子/开关灯问题怎么用奇偶性？", "keys": ["翻杯子", "开关灯", "奇偶", "次数", "变"], "a": "奇数次操作改变状态，偶数次操作回到原状。例如10个杯子全扣，每次翻2个，总翻动次数只能是偶数，而全翻正需要每个杯子翻奇数次（总次数=10个奇数之和=偶数）看似可行，但每次翻2个无法让单个杯子单独翻奇数次——实际不可行，需用奇偶性矛盾分析。"}, {"q": "两个质数之和是奇数说明什么？", "keys": ["质数", "和为奇数", "2", "推理"], "a": "唯一的偶质数是2。两质数之和为奇数，说明其中一个必是2（另一个是奇数质数）。比如和为21→{2,19}；和为30(偶)→两个都是奇质数如{7,23}。"}, {"q": "怎么判断1+2+…+n的奇偶性？", "keys": ["求和", "连续", "奇偶", "判断", "1加到n"], "a": "只看1~n里奇数的个数：奇数个奇数相加得奇数，偶数个奇数相加得偶数。例如1~100有50个奇数→和为偶数；1~99也有50个奇数→和为偶数。"}], "quiz": [{"q": "偶数个奇数相加，和是？", "options": ["奇数", "偶数", "质数"], "answer": 1, "exp": "偶数个奇数相加=偶数。"}, {"q": "奇×奇×偶=？", "options": ["奇数", "偶数", "质数"], "answer": 1, "exp": "有偶数因数，积为偶数。"}, {"q": "两质数和为奇数，必含哪个质数？", "options": ["2", "3", "5"], "answer": 0, "exp": "唯一偶质数是2，和为奇数必有一个是2。"}], "graph": {"w": 720, "h": 360, "nodes": [{"id": "n_add", "label": "加减法奇偶", "x": 285, "y": 150, "w": 150, "h": 54, "color": "#FF6B6B", "desc": "同类(奇+奇/偶+偶)为偶，异类为奇；奇数个奇数相加为奇，偶数个为偶。", "links": ["n_mul", "n_flip", "n_infer"]}, {"id": "n_mul", "label": "乘法奇偶", "x": 40, "y": 80, "w": 140, "h": 44, "color": "#4ECDC4", "desc": "有偶数因数则积为偶；仅奇×奇=奇。连续自然数乘积必为偶。", "links": ["n_add"]}, {"id": "n_flip", "label": "翻动问题", "x": 40, "y": 240, "w": 140, "h": 44, "color": "#a78bfa", "desc": "奇次操作变状态，偶次复原；用奇偶性矛盾判断是否可达。", "links": ["n_add"]}, {"id": "n_infer", "label": "奇偶推理", "x": 550, "y": 80, "w": 140, "h": 44, "color": "#f59e0b", "desc": "两质数和为奇数→必含2；看奇数个数判和之奇偶。", "links": ["n_add"]}, {"id": "n_sum", "label": "连加求和奇偶", "x": 550, "y": 240, "w": 150, "h": 44, "color": "#06b6d4", "desc": "1~n 中若奇数个数为偶→和为偶；为奇→和为奇。", "links": ["n_add"]}]}};
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+  function findAnswer(text){
+    text=(text||'').trim(); if(!text) return null;
+    let best=null,bs=0; const low=text.toLowerCase();
+    for(const f of COURSE_DATA.faq){
+      let s=0; const hay=(f.q+' '+(f.keys||[]).join(' ')).toLowerCase();
+      if(f.q && low.includes(f.q.toLowerCase().slice(0,3))) s+=3;
+      for(const k of (f.keys||[])){ if(text.includes(k)) s+=2; }
+      for(const ch of new Set(text.split(''))){ if(ch.trim() && f.q.includes(ch)) s+=0.15; }
+      if(s>bs){bs=s;best=f;}
+    }
+    return bs>=1?best:null;
+  }
+  function bubble(role,text){
+    const c=document.getElementById('tutorChat'); if(!c)return;
+    const d=document.createElement('div'); d.className='tutor-bubble '+(role==='bot'?'bot':'user');
+    d.textContent=text; c.appendChild(d); c.scrollTop=c.scrollHeight;
+  }
+  function showFaq(f){ bubble('user',f.q); bubble('bot',f.a); }
+  function ask(){
+    const inp=document.getElementById('tutorInput'); const v=inp.value.trim(); if(!v)return; inp.value='';
+    const f=findAnswer(v); bubble('user',v);
+    if(f) bubble('bot',f.a);
+    else bubble('bot','这个问题我还在学习～你可以先点下面的常见问题，或换个说法问我 😊');
+  }
+  function quiz(){
+    const c=document.getElementById('tutorChips'); if(!c||!COURSE_DATA.quiz)return;
+    const q=COURSE_DATA.quiz[Math.floor(Math.random()*COURSE_DATA.quiz.length)];
+    bubble('bot','🎲 考考你：'+q.q);
+    q.options.forEach((opt,i)=>{
+      const b=document.createElement('button'); b.className='tutor-chip'; b.textContent=opt;
+      b.onclick=()=>{ if(i===q.answer){ bubble('user',opt); bubble('bot','✅ 答对啦！'+q.exp); }
+        else { bubble('user',opt); bubble('bot','❌ 再想想～正确答案：'+q.options[q.answer]+'。'+q.exp); } };
+      c.appendChild(b);
+    });
+  }
+  function renderChips(){
+    const c=document.getElementById('tutorChips'); if(!c)return; c.innerHTML='';
+    COURSE_DATA.faq.forEach(f=>{ const b=document.createElement('button'); b.className='tutor-chip'; b.textContent=f.q; b.onclick=()=>showFaq(f); c.appendChild(b); });
+  }
+  function renderGraph(){
+    const wrap=document.getElementById('kgSvg'); if(!wrap||!COURSE_DATA.graph)return;
+    const g=COURSE_DATA.graph, W=g.w||720, H=g.h||360;
+    const svg=el('svg',{viewBox:'0 0 '+W+' '+H,class:'kg-canvas',width:'100%'});
+    g.nodes.forEach(n=>{(n.links||[]).forEach(t=>{ const m=g.nodes.find(x=>x.id===t); if(!m)return;
+      const ln=el('line',{x1:n.x+n.w/2,y1:n.y+n.h/2,x2:m.x+m.w/2,y2:m.y+m.h/2,stroke:'#e2d5cf','stroke-width':2,class:'kg-edge'});
+      ln.dataset.a=n.id; ln.dataset.b=t; svg.appendChild(ln); });});
+    g.nodes.forEach(n=>{
+      const grp=el('g',{class:'kg-node',style:'cursor:pointer'}); grp.dataset.id=n.id;
+      const r=el('rect',{x:n.x,y:n.y,width:n.w,height:n.h,rx:10,fill:'#fff',stroke:n.color||'#FF6B6B','stroke-width':2});
+      r.dataset.id=n.id;
+      const t=el('text',{x:n.x+n.w/2,y:n.y+n.h/2+5,'text-anchor':'middle','font-size':13,fill:'#333','font-family':'system-ui,sans-serif'});
+      t.textContent=n.label; grp.appendChild(r); grp.appendChild(t);
+      grp.addEventListener('click',()=>selectNode(n.id)); svg.appendChild(grp);
+    });
+    wrap.innerHTML=''; wrap.appendChild(svg);
+  }
+  function selectNode(id){
+    const g=COURSE_DATA.graph; const n=g.nodes.find(x=>x.id===id); if(!n)return;
+    document.querySelectorAll('.kg-edge').forEach(e=>{ const on=(e.dataset.a===id||e.dataset.b===id); e.setAttribute('stroke',on?'#FF6B6B':'#eee'); e.setAttribute('stroke-width',on?3:2); });
+    document.querySelectorAll('.kg-node').forEach(grp=>{ const on=(grp.dataset.id===id)||(n.links||[]).includes(grp.dataset.id);
+      const r=grp.querySelector('rect'); r.setAttribute('stroke',on?'#FF6B6B':'#ccc'); r.setAttribute('opacity',on?1:0.45); });
+    const info=document.getElementById('kgInfo'); if(!info)return;
+    let html='<h3 style="color:#FF6B6B;margin:0 0 6px">'+n.label+'</h3><p style="margin:0 0 8px;color:#444;line-height:1.6">'+n.desc+'</p>';
+    if(n.links&&n.links.length){ html+='<p style="font-size:13px;color:#888">关联：'+n.links.map(l=>{const m=g.nodes.find(x=>x.id===l);return m?m.label:l;}).join('、')+'</p>'; }
+    info.innerHTML=html;
+  }
+  renderChips();
+  const askBtn=document.getElementById('tutorAsk'); if(askBtn) askBtn.onclick=ask;
+  const inp=document.getElementById('tutorInput'); if(inp) inp.addEventListener('keydown',e=>{ if(e.key==='Enter') ask(); });
+  const qz=document.getElementById('tutorQuiz'); if(qz) qz.onclick=quiz;
+  renderGraph();
+  const c0=document.getElementById('tutorChat'); if(c0) bubble('bot','我是本课 AI 学伴 🤖 点下面的常见问题，或输入你的问题，也可以点「🎲随机考我」！');
+})();
+</script>
+</body>
+</html>
