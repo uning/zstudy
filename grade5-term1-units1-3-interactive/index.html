@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五年级上册1-3单元 · 互动练习卷（自动评分+讲解）</title>
+<style>
+:root {
+  --bg: #fffbf0; --card: #ffffff; --text: #3d3d3d;
+  --brand: #ff6b6b; --brand-2: #4ecdc4; --accent: #ffd93d; --purple: #9b59b6;
+  --ok: #2ecc71; --no: #e74c3c; --muted: #999;
+  --shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.container { max-width: 760px; margin: 0 auto; padding: 24px 16px 120px; }
+.cover { text-align: center; padding: 60px 20px; }
+.cover h1 { font-size: 2rem; color: var(--brand); margin-bottom: 10px; }
+.cover p { color: var(--muted); margin: 6px 0; }
+.btn { display: inline-block; padding: 14px 36px; border-radius: 50px; border: none; font-size: 17px; font-weight: 700; cursor: pointer; transition: transform .2s; }
+.btn-primary { background: linear-gradient(135deg,var(--brand),#ff8787); color: #fff; box-shadow: 0 6px 16px rgba(255,107,107,.35); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-small { padding: 8px 20px; font-size: 14px; }
+.card { background: var(--card); border-radius: 18px; padding: 22px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.section-title { font-size: 1.25rem; color: var(--brand); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px dashed #ffe0d6; }
+.q-item { margin-bottom: 20px; padding: 16px; border-radius: 14px; background: rgba(255,255,255,0.7); border: 1px solid #f0e6d8; }
+.q-num { display: inline-block; width: 30px; height: 30px; line-height: 30px; text-align: center; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 700; margin-right: 8px; font-size: 14px; }
+.q-stem { font-weight: 600; font-size: 16px; }
+.q-hint { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.fill-input { border: 2px solid #e8ded0; border-radius: 8px; padding: 6px 10px; font-size: 15px; min-width: 80px; margin: 0 4px; outline: none; }
+.fill-input:focus { border-color: var(--brand); }
+.opts label { display: block; padding: 8px 12px; margin: 6px 0; border-radius: 10px; background: #fffbf5; border: 1px solid #f0e6d8; cursor: pointer; transition: all .15s; }
+.opts label:hover { border-color: var(--brand); background: #fff5f0; }
+.opts input { margin-right: 8px; accent-color: var(--brand); }
+.tf-btns { display: flex; gap: 10px; margin-top: 8px; }
+.tf-btn { flex: 1; padding: 10px; border: 2px solid #e8ded0; border-radius: 10px; background: #fff; cursor: pointer; font-weight: 700; }
+.tf-btn.selected { background: var(--brand); color: #fff; border-color: var(--brand); }
+.calc-row { display: flex; align-items: center; gap: 8px; margin: 8px 0; flex-wrap: wrap; }
+.calc-ans { border: 2px solid #e8ded0; border-radius: 8px; padding: 6px 12px; font-size: 15px; width: 120px; }
+.result-card { display: none; position: sticky; top: 10px; z-index: 50; }
+.score-ring { width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--brand) var(--score-deg), #f0e6d8 0); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+.score-ring::after { content: ''; width: 96px; height: 96px; background: #fff; border-radius: 50%; position: absolute; }
+.score-text { position: relative; z-index: 1; font-size: 1.6rem; font-weight: 800; color: var(--brand); }
+.feedback { margin-top: 12px; padding: 12px; border-radius: 10px; font-size: 14px; display: none; }
+.feedback.ok { background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.3); color: #27ae60; }
+.feedback.no { background: rgba(231,76,60,0.08); border: 1px solid rgba(231,76,60,0.3); color: #c0392b; }
+.explain { margin-top: 10px; padding: 12px; background: #fff8e6; border-left: 4px solid var(--accent); border-radius: 8px; font-size: 14px; display: none; }
+.explain-title { font-weight: 700; color: #d4a017; margin-bottom: 4px; }
+.float-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #f0e6d8; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -4px 16px rgba(0,0,0,0.05); z-index: 100; }
+.progress { position: fixed; top: 0; left: 0; height: 4px; background: var(--brand); z-index: 101; transition: width .3s; }
+@media (max-width: 600px) { .container { padding: 16px 12px 100px; } .cover h1 { font-size: 1.5rem; } }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<div class="container">
+  <div class="cover" id="cover">
+    <div style="font-size:64px;margin-bottom:10px">📝</div>
+    <h1>五年级上册1-3单元</h1>
+    <h2 style="color:#666;font-size:1.3rem">互动练习卷 · 自动评分 · 逐题讲解</h2>
+    <p>范围：负数、多边形的面积、小数的意义和性质</p>
+    <p>满分：100分 · 建议用时：60分钟</p>
+    <button class="btn btn-primary" onclick="startTest()" style="margin-top:20px">开始答题</button>
+  </div>
+
+  <div id="test-area" style="display:none">
+    <div class="card result-card" id="result-card">
+      <div style="text-align:center">
+        <div class="score-ring" id="score-ring"><div class="score-text" id="score-text">0</div></div>
+        <div style="font-size:1.2rem;font-weight:700" id="score-title">得分统计</div>
+        <div style="color:var(--muted);font-size:14px;margin-top:4px" id="score-detail">0 / 100</div>
+        <div id="level-badge" style="margin-top:10px"></div>
+      </div>
+      <div id="wrong-list" style="margin-top:14px"></div>
+    </div>
+
+    <!-- 一、填空题 -->
+    <div class="card" id="sec-fill">
+      <div class="section-title">一、填空题（每题2分，共20分）</div>
+      <div id="fill-list"></div>
+    </div>
+
+    <!-- 二、选择题 -->
+    <div class="card" id="sec-choice">
+      <div class="section-title">二、选择题（每题3分，共15分）</div>
+      <div id="choice-list"></div>
+    </div>
+
+    <!-- 三、判断题 -->
+    <div class="card" id="sec-judge">
+      <div class="section-title">三、判断题（每题2分，共10分）</div>
+      <div id="judge-list"></div>
+    </div>
+
+    <!-- 四、计算与操作题 -->
+    <div class="card" id="sec-calc">
+      <div class="section-title">四、计算与操作题（共25分）</div>
+      <div id="calc-list"></div>
+    </div>
+
+    <!-- 五、解决问题 -->
+    <div class="card" id="sec-app">
+      <div class="section-title">五、解决问题（每题6分，共30分）</div>
+      <div id="app-list"></div>
+    </div>
+  </div>
+</div>
+
+<div class="float-bar" id="float-bar" style="display:none">
+  <div style="font-size:14px;color:var(--muted)" id="answer-progress">已答 0 / 25 题</div>
+  <button class="btn btn-primary btn-small" onclick="submitTest()">提交试卷</button>
+</div>
+
+<script>
+// 题目数据
+var fillQs = [
+  {id:'f1',score:2,answers:['-8','+12','低于海平面155米'],keywords:['-8','+12','低于海平面155米'],parts:["零下8℃记作（　）℃，零上12℃记作（　）℃；海拔-155米表示（　　　　）。"],explain:'负号"-"表示零下或低于基准；正号"+"可表示零上。海拔以海平面为0，-155米即低于海平面155米。'},
+  {id:'f2',score:2,answers:['右','-1'],keywords:['右','-1'],parts:["在数轴上，-3在-5的（　）边；-1和-4比较，（　）更接近0。"],explain:'数轴上，右边的数总比左边大。负数离0越近绝对值越小，|-1|=1 小于 |-4|=4，所以 -1 更接近0。'},
+  {id:'f3',score:2,answers:['30','60'],keywords:['30','60'],parts:["一个三角形底12厘米、高5厘米，面积是（　）平方厘米；跟它等底等高的平行四边形面积是（　）平方厘米。"],explain:'三角形面积=底×高÷2=12×5÷2=30；等底等高平行四边形面积=底×高=12×5=60（是三角形的2倍）。'},
+  {id:'f4',score:2,answers:['32'],keywords:['32'],parts:["一个梯形上底6厘米、下底10厘米、高4厘米，面积是（　）平方厘米。"],explain:'梯形面积=(上底+下底)×高÷2=(6+10)×4÷2=32。'},
+  {id:'f5',score:2,answers:['6'],keywords:['6'],parts:["一个平行四边形面积是48平方厘米，底是8厘米，它的高是（　）厘米。"],explain:'平行四边形面积=底×高，所以高=面积÷底=48÷8=6。'},
+  {id:'f6',score:2,answers:['7','36','十分','2个0.1'],keywords:['7','36','十分','2个0.1'],parts:['0.7里面有（　）个0.1；0.36里面有（　）个0.01；1.205中“2”在（　）位上，表示（　　　　）。'],explain:'0.7=7×0.1；0.36=36×0.01；1.205中“2”在十分位，表示2个0.1。'},
+  {id:'f7',score:2,answers:['0.08','2.300'],keywords:['0.08','2.300'],parts:["把0.0800化简后是（　）；把2.3改写成三位小数是（　）。"],explain:'小数的末尾去掉0，大小不变：0.0800=0.08。小数的末尾添0，大小不变：2.3=2.300。'},
+  {id:'f8',score:2,answers:['＜','＞','＝','＝'],keywords:['<','>','=','='],parts:["在○里填“＞”“＜”或“＝”：0.99 ○ 1.01；-3 ○ -5；0.6 ○ 0.60；1.2万 ○ 12000。"],explain:'0.99<1.01；负数比较，绝对值小的反而大，所以 -3>-5；0.6=0.60；1.2万=12000。'},
+  {id:'f9',score:2,answers:['45.67','45.7'],keywords:['45.67','45.7'],parts:["把456700改写成用“万”作单位的数是（　）万，保留一位小数约是（　）万。"],explain:'456700÷10000=45.67万；保留一位小数看第二位小数7，四舍五入得45.7万。'},
+  {id:'f10',score:2,answers:['2.504','2.495'],keywords:['2.504','2.495'],parts:["一个三位小数四舍五入后是2.50，这个三位小数最大是（　），最小是（　）。"],explain:'“四舍”得2.50的最大数是2.504；“五入”得2.50的最小数是2.495。'}
+];
+
+var choiceQs = [
+  {id:'c1',score:3,answer:'A',opts:['A. -6','B. -1','C. 0','D. 2'],explain:'负数<0<正数；负数比较绝对值大的反而小，-6最小。'},
+  {id:'c2',score:3,answer:'B',opts:['A. 不变','B. 变大','C. 变小','D. 无法确定'],explain:'平行四边形拉成长方形后，底不变，高变大了（斜边变垂直），所以面积变大。'},
+  {id:'c3',score:3,answer:'C',opts:['A. 0.8','B. 0.008','C. 0.0800','D. 0.08'],explain:'0.080=0.0800=0.08。题目中最能体现“小数末尾添上0大小不变”的是0.0800。'},
+  {id:'c4',score:3,answer:'C',opts:['A. 3','B. 6','C. 12','D. 18'],explain:'面积相等、底相等时，三角形的高是平行四边形的2倍：6×2=12厘米。'},
+  {id:'c5',score:3,answer:'B',opts:['A. 高5℃','B. 低5℃','C. 低11℃','D. 温度相同'],explain:'-8在-3的左边，更低。差值=|-8-(-3)|=|-5|=5℃，所以低5℃。'}
+];
+
+var judgeQs = [
+  {id:'j1',score:2,answer:true,explain:'0是正数和负数的分界点，既不是正数也不是负数。✓'},
+  {id:'j2',score:2,answer:false,explain:'面积相等的三角形形状不一定相同，只有两个完全一样的三角形才能拼成平行四边形。✗'},
+  {id:'j3',score:2,answer:true,explain:'0.5=0.50，但0.5的计数单位是0.1，0.50的计数单位是0.01，计数单位不同。✓'},
+  {id:'j4',score:2,answer:false,explain:'梯形面积与平行四边形面积没有必然的倍数关系，必须等底等高时才是一半。✗'},
+  {id:'j5',score:2,answer:false,explain:'必须是在小数的末尾添上0或去掉0，大小才不变；小数点后面中间添0会改变大小。✗'}
+];
+
+var calcQs = [
+  {id:'ca1',score:4,answers:['3','-3','-5','-4'],parts:['-2+5=（　）','4-7=（　）','-3-2=（　）','0-4=（　）'],explain:'异号相加取绝对值大的符号：-2+5=3；4-7=-3；-3-2=-5；0-4=-4。'},
+  {id:'ca2',score:6,answers:['40','30','25'],parts:['① 平行四边形：底8、高5 → 面积=（　）','② 三角形：底10、高6 → 面积=（　）','③ 梯形：上底4、下底6、高5 → 面积=（　）'],explain:'① 8×5=40；② 10×6÷2=30；③ (4+6)×5÷2=25。'},
+  {id:'ca3',score:6,answers:[],parts:["在数轴上标出-2.5、0、+3"],explain:'数轴上，-2.5在-3和-2正中间；0在原点；+3在1、2、3中的3处。',type:'draw'},
+  {id:'ca4',score:9,answers:[],parts:["画出下面图形指定底边上的高（平行四边形、三角形、梯形各一个）"],explain:'高是从底边所在直线向对边顶点或对边作的垂线段。',type:'draw'}
+];
+
+var appQs = [
+  {id:'a1',score:6,answers:['4'],parts:["某地早晨气温是-4℃，到中午上升了8℃。中午的气温是多少℃？"],explain:'-4+8=4（℃）。上升了8℃，从-4向右数8格到4。'},
+  {id:'a2',score:6,answers:['14.4'],parts:["一块平行四边形钢板，底1.5米，高0.8米。如果每平方米钢板重12千克，这块钢板重多少千克？"],explain:'面积=1.5×0.8=1.2平方米；重量=1.2×12=14.4千克。'},
+  {id:'a3',score:6,answers:['0.36'],parts:["一块三角形广告牌，底12分米，高5分米。正反两面都要刷油漆，每平方米需油漆0.6千克，一共需要油漆多少千克？"],explain:'12分米=1.2米，5分米=0.5米。单面面积=1.2×0.5÷2=0.3平方米；正反两面=0.6平方米；油漆=0.6×0.6=0.36千克。'},
+  {id:'a4',score:6,answers:['西边200米'],parts:["小明从家出发，向东走300米记作+300米，向西走200米记作-200米。如果他先向东走300米，再向西走500米，这时他在家的哪边多少米处？"],explain:'+300-500=-200。负号表示西边，所以他在家西边200米处。'},
+  {id:'a5',score:6,answers:['0.5','4000'],parts:["一块梯形麦田，上底80米、下底120米、高50米。这块麦田有多少公顷？如果每公顷产小麦8000千克，一共可产小麦多少千克？"],explain:'面积=(80+120)×50÷2=5000平方米=0.5公顷；产量=0.5×8000=4000千克。'}
+];
+
+function render() {
+  // 填空题
+  var fl=document.getElementById('fill-list');
+  fillQs.forEach(function(q,i){
+    var html='<div class="q-item" id="wrap-'+q.id+'"><span class="q-num">'+(i+1)+'</span><span class="q-stem">'+q.parts[0]+'</span>';
+    html+='<div style="margin-top:8px">';
+    q.answers.forEach(function(a,idx){
+      html+='<input type="text" class="fill-input" id="'+q.id+'-'+idx+'" placeholder="空'+(idx+1)+'">';
+    });
+    html+='</div><div class="feedback" id="fb-'+q.id+'"></div><div class="explain" id="ex-'+q.id+'"></div></div>';
+    fl.innerHTML+=html;
+  });
+
+  // 选择题
+  var cl=document.getElementById('choice-list');
+  choiceQs.forEach(function(q,i){
+    var html='<div class="q-item" id="wrap-'+q.id+'"><span class="q-num">'+(i+1)+'</span><span class="q-stem">'+q.opts.join('　　')+'</span><div class="opts">';
+    q.opts.forEach(function(o){
+      var v=o.charAt(0);
+      html+='<label><input type="radio" name="'+q.id+'" value="'+v+'"> '+o+'</label>';
+    });
+    html+='</div><div class="feedback" id="fb-'+q.id+'"></div><div class="explain" id="ex-'+q.id+'"></div></div>';
+    cl.innerHTML+=html;
+  });
+
+  // 判断题
+  var jl=document.getElementById('judge-list');
+  judgeQs.forEach(function(q,i){
+    var html='<div class="q-item" id="wrap-'+q.id+'"><span class="q-num">'+(i+1)+'</span><span class="q-stem">判断对错</span><div class="tf-btns"><button class="tf-btn" onclick="selectTF(\''+q.id+'\',true)">✓ 对</button><button class="tf-btn" onclick="selectTF(\''+q.id+'\',false)">✗ 错</button></div><input type="hidden" id="'+q.id+'"><div class="feedback" id="fb-'+q.id+'"></div><div class="explain" id="ex-'+q.id+'"></div></div>';
+    jl.innerHTML+=html;
+  });
+
+  // 计算题
+  var cal=document.getElementById('calc-list');
+  calcQs.forEach(function(q,i){
+    var html='<div class="q-item" id="wrap-'+q.id+'"><span class="q-num">'+(i+1)+'</span><span class="q-stem">'+(q.parts[0])+'</span>';
+    if(q.type!=='draw'){
+      html+='<div style="margin-top:8px">';
+      q.answers.forEach(function(a,idx){
+        html+='<div class="calc-row">'+(q.parts[idx])+' <input type="text" class="calc-ans" id="'+q.id+'-'+idx+'"></div>';
+      });
+      html+='</div>';
+    } else {
+      html+='<div style="margin-top:8px;color:var(--muted);font-size:13px">（此题请在纸上作图后核对讲解）</div>';
+    }
+    html+='<div class="feedback" id="fb-'+q.id+'"></div><div class="explain" id="ex-'+q.id+'"></div></div>';
+    cal.innerHTML+=html;
+  });
+
+  // 应用题
+  var al=document.getElementById('app-list');
+  appQs.forEach(function(q,i){
+    var html='<div class="q-item" id="wrap-'+q.id+'"><span class="q-num">'+(i+1)+'</span><span class="q-stem">'+q.parts[0]+'</span><div style="margin-top:8px">';
+    q.answers.forEach(function(a,idx){
+      html+='<input type="text" class="fill-input" id="'+q.id+'-'+idx+'" placeholder="答案'+(idx+1)+'" style="min-width:120px">';
+    });
+    html+='</div><div class="feedback" id="fb-'+q.id+'"></div><div class="explain" id="ex-'+q.id+'"></div></div>';
+    al.innerHTML+=html;
+  });
+}
+
+function selectTF(id,val){ document.getElementById(id).value=val; var wrap=document.getElementById('wrap-'+id); var btns=wrap.querySelectorAll('.tf-btn'); btns[0].classList.toggle('selected',val===true); btns[1].classList.toggle('selected',val===false); }
+
+function normalize(s){ return (s||'').toString().replace(/\s+/g,'').replace(/[＋]/g,'+').replace(/[－]/g,'-').replace(/[＝]/g,'=').replace(/[（]/g,'(').replace(/[）]/g,')').replace(/万/g,'').toLowerCase(); }
+
+function match(ans,input){
+  var a=normalize(ans), u=normalize(input);
+  if(a===u) return true;
+  // 允许数字等价
+  if(!isNaN(parseFloat(a)) && !isNaN(parseFloat(u))) return Math.abs(parseFloat(a)-parseFloat(u))<0.001;
+  // 允许包含关键词
+  if(a.length>0 && u.indexOf(a)>=0) return true;
+  return false;
+}
+
+function startTest(){ document.getElementById('cover').style.display='none'; document.getElementById('test-area').style.display='block'; document.getElementById('float-bar').style.display='flex'; window.scrollTo(0,0); }
+
+function submitTest(){
+  var total=0, got=0, wrongs=[];
+
+  function show(id,ok,msg,explain){
+    var fb=document.getElementById('fb-'+id), ex=document.getElementById('ex-'+id);
+    fb.style.display='block'; fb.className='feedback '+(ok?'ok':'no'); fb.textContent=msg;
+    ex.style.display='block'; ex.innerHTML='<div class="explain-title">💡 讲解</div>'+explain;
+    document.getElementById('wrap-'+id).scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+
+  // 填空
+  fillQs.forEach(function(q){
+    total+=q.score;
+    var allOK=true, detail=[];
+    for(var i=0;i<q.answers.length;i++){
+      var v=document.getElementById(q.id+'-'+i).value;
+      if(!match(q.keywords[i],v)){ allOK=false; detail.push('空'+(i+1)+'：应为 '+q.answers[i]); }
+    }
+    if(allOK){ got+=q.score; show(q.id,true,'✓ 正确',q.explain); }
+    else { wrongs.push({id:q.id,title:'填空'+(fillQs.indexOf(q)+1),score:q.score}); show(q.id,false,'✗ '+detail.join('；'),q.explain); }
+  });
+
+  // 选择
+  choiceQs.forEach(function(q){
+    total+=q.score;
+    var sel=document.querySelector('input[name="'+q.id+'"]:checked');
+    if(sel && sel.value===q.answer){ got+=q.score; show(q.id,true,'✓ 正确',q.explain); }
+    else { wrongs.push({id:q.id,title:'选择'+(choiceQs.indexOf(q)+1),score:q.score}); show(q.id,false,'✗ 正确答案：'+q.answer,q.explain); }
+  });
+
+  // 判断
+  judgeQs.forEach(function(q){
+    total+=q.score;
+    var v=document.getElementById(q.id).value;
+    if(v!=='' && (v==='true')===q.answer){ got+=q.score; show(q.id,true,'✓ 正确',q.explain); }
+    else { wrongs.push({id:q.id,title:'判断'+(judgeQs.indexOf(q)+1),score:q.score}); show(q.id,false,'✗ 正确答案：'+(q.answer?'对':'错'),q.explain); }
+  });
+
+  // 计算
+  calcQs.forEach(function(q){
+    if(q.type==='draw'){ total+=q.score; got+=q.score; show(q.id,true,'✓ 请对照讲解核对作图',q.explain); return; }
+    total+=q.score;
+    var allOK=true, detail=[];
+    for(var i=0;i<q.answers.length;i++){
+      var v=document.getElementById(q.id+'-'+i).value;
+      if(!match(q.answers[i],v)){ allOK=false; detail.push('第'+(i+1)+'空：应为 '+q.answers[i]); }
+    }
+    if(allOK){ got+=q.score; show(q.id,true,'✓ 正确',q.explain); }
+    else { wrongs.push({id:q.id,title:'计算'+(calcQs.indexOf(q)+1),score:q.score}); show(q.id,false,'✗ '+detail.join('；'),q.explain); }
+  });
+
+  // 应用
+  appQs.forEach(function(q){
+    total+=q.score;
+    var allOK=true, detail=[];
+    for(var i=0;i<q.answers.length;i++){
+      var v=document.getElementById(q.id+'-'+i).value;
+      if(!match(q.answers[i],v)){ allOK=false; detail.push('第'+(i+1)+'问：应为 '+q.answers[i]); }
+    }
+    if(allOK){ got+=q.score; show(q.id,true,'✓ 正确',q.explain); }
+    else { wrongs.push({id:q.id,title:'解决'+(appQs.indexOf(q)+1),score:q.score}); show(q.id,false,'✗ '+detail.join('；'),q.explain); }
+  });
+
+  // 结果
+  document.getElementById('result-card').style.display='block';
+  var deg=(got/total)*360;
+  document.getElementById('score-ring').style.setProperty('--score-deg',deg+'deg');
+  document.getElementById('score-text').textContent=got;
+  document.getElementById('score-detail').textContent=got+' / '+total;
+  var badge='';
+  if(got>=90) badge='<span style="display:inline-block;padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#2ecc71,#27ae60);color:#fff;font-weight:700">🏆 优秀</span>';
+  else if(got>=75) badge='<span style="display:inline-block;padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#f1c40f,#f39c12);color:#fff;font-weight:700">🌟 良好</span>';
+  else if(got>=60) badge='<span style="display:inline-block;padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#e67e22,#d35400);color:#fff;font-weight:700">👍 及格</span>';
+  else badge='<span style="display:inline-block;padding:8px 18px;border-radius:20px;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;font-weight:700">📚 需努力</span>';
+  document.getElementById('level-badge').innerHTML=badge;
+
+  var wl=document.getElementById('wrong-list');
+  if(wrongs.length===0) wl.innerHTML='<div style="text-align:center;color:var(--ok);font-weight:700">🎉 全对！太棒了！</div>';
+  else {
+    var h='<div style="font-weight:700;margin-bottom:8px">错题清单（共 '+wrongs.length+' 题）：</div>';
+    h+='<div style="display:flex;flex-wrap:wrap;gap:6px">';
+    wrongs.forEach(function(w){ h+='<span style="padding:4px 10px;background:#fff0f0;border-radius:12px;font-size:13px;color:#c0392b">'+w.title+' (-'+w.score+'分)</span>'; });
+    h+='</div>';
+    wl.innerHTML=h;
+  }
+
+  document.getElementById('result-card').scrollIntoView({behavior:'smooth',block:'start'});
+  document.getElementById('float-bar').innerHTML='<div style="font-size:14px;color:var(--muted)">已完成评分</div><button class="btn btn-primary btn-small" onclick="location.reload()">再做一次</button>';
+}
+
+// 进度监听
+function updateProgress(){
+  var ids={};
+  document.querySelectorAll('input[type="text"]').forEach(function(i){ if(i.value.trim()) ids[i.id]=1; });
+  document.querySelectorAll('input[type="radio"]:checked').forEach(function(i){ ids[i.name]=1; });
+  document.querySelectorAll('input[type="hidden"]').forEach(function(i){ if(i.value) ids[i.id]=1; });
+  var answered=Object.keys(ids).length;
+  document.getElementById('answer-progress').textContent='已答 '+answered+' / 25 题';
+  var pct=Math.min(answered/25,1);
+  document.getElementById('progress').style.width=(pct*100)+'%';
+}
+
+render();
+setInterval(updateProgress,1000);
+</script>
+</body>
+</html>
