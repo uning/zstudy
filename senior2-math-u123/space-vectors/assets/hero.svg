@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E3F2FD"/>
+      <stop offset="100%" stop-color="#BBDEFB"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="320" fill="url(#bg)" rx="14"/>
+  <rect x="18" y="18" width="444" height="284" fill="white" rx="10" stroke="#1565C0" stroke-width="1.5" opacity="0.8"/>
+  <rect x="38" y="36" width="404" height="1.5" fill="#1565C0" opacity="0.5"/>
+  <circle cx="240" cy="52" r="20" fill="#1565C0" opacity="0.1"/>
+  <text x="240" y="58" text-anchor="middle" font-size="18" fill="#1565C0">📐</text>
+  <text x="240" y="72" text-anchor="middle" font-size="22" fill="#0D47A1" font-weight="bold" font-family="system-ui,sans-serif">空间向量与立体几何</text>
+  <text x="240" y="98" text-anchor="middle" font-size="13" fill="#78909C" font-family="system-ui,sans-serif">空间直角坐标系、向量运算与立体几何证明</text>
+  <text x="240" y="130" text-anchor="middle" font-size="13" fill="#455A64" font-family="system-ui,sans-serif">✦ 空间直角坐标系</text>
+  <text x="240" y="164" text-anchor="middle" font-size="13" fill="#455A64" font-family="system-ui,sans-serif">✦ 空间向量的概念与运算</text>
+  <text x="240" y="198" text-anchor="middle" font-size="13" fill="#455A64" font-family="system-ui,sans-serif">✦ 空间向量的坐标表示</text>
+  <text x="240" y="232" text-anchor="middle" font-size="13" fill="#455A64" font-family="system-ui,sans-serif">✦ 向量法证明平行与垂直</text>
+  <text x="240" y="266" text-anchor="middle" font-size="13" fill="#455A64" font-family="system-ui,sans-serif">✦ 异面直线与空间角</text>
+  
+</svg>

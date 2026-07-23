@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>空间向量与立体几何 · 高二数学自学课件</title>
+<meta name="course-id" content="senior2-math-space-vectors">
+<meta name="teachany-node" content="math-h-space-vectors">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="11">
+<meta name="teachany-course" content="senior2-self-study">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --primary: #1565C0; --primary-light: #42A5F5; --primary-dark: #0D47A1;
+  --accent: #FF6D00; --accent-light: #FF9100;
+  --bg: #f5f7fa; --card: #ffffff; --text: #263238; --text-secondary: #607D8B;
+  --border: #e0e4e8; --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --radius: 12px; --radius-sm: 8px;
+  --font: "PingFang SC","Microsoft YaHei","Noto Sans SC",-apple-system,sans-serif;
+}
+body { font-family:var(--font); background:var(--bg); color:var(--text); line-height:1.7; -webkit-font-smoothing:antialiased; }
+
+/* Hero */
+.hero { background:linear-gradient(135deg,#0D47A1 0%,#1565C0 50%,#1E88E5 100%); color:white; padding:44px 20px 32px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 20%, rgba(255,255,255,0.08) 0%, transparent 60%); }
+.hero h1 { font-size:28px; font-weight:700; margin-bottom:6px; position:relative; letter-spacing:1px; }
+.hero .subtitle { font-size:14px; opacity:0.85; margin-bottom:14px; position:relative; }
+.hero .badge { display:inline-block; background:rgba(255,255,255,0.18); padding:5px 14px; border-radius:20px; font-size:12px; margin:3px; backdrop-filter:blur(8px); position:relative; }
+.hero-cover { display:block; margin:14px auto 0; max-width:360px; width:90%; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,0.2); position:relative; }
+
+/* Nav */
+.nav-bar { display:flex; justify-content:space-between; align-items:center; padding:14px 20px; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+.back-link { color:var(--primary); text-decoration:none; font-size:14px; font-weight:500; display:flex; align-items:center; gap:6px; transition:color 0.2s; }
+.back-link:hover { color:var(--primary-dark); }
+.unit-label { font-size:12px; color:var(--text-secondary); }
+
+/* Sections */
+.container { max-width:820px; margin:0 auto; padding:14px 16px 48px; }
+.section { background:var(--card); border-radius:var(--radius); margin-bottom:12px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--border); transition:box-shadow 0.3s, border-color 0.3s; }
+.section:hover { box-shadow:0 4px 20px rgba(0,0,0,0.1); }
+.section.active { border-color:var(--primary-light); box-shadow:0 4px 20px rgba(21,101,192,0.1); }
+.section-header { display:flex; align-items:center; padding:18px 20px; cursor:pointer; user-select:none; background:#fafcff; transition:background 0.2s; gap:14px; }
+.section-header:hover { background:#eef4ff; }
+.section.active .section-header { background:#e8f0fe; }
+.section-number { width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:white; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0; box-shadow:0 2px 8px rgba(21,101,192,0.25); }
+.section-title { flex:1; font-size:16px; font-weight:600; color:var(--primary-dark); }
+.section-tag { font-size:11px; color:var(--primary); background:#e3f0fd; padding:3px 10px; border-radius:12px; white-space:nowrap; }
+.toggle-icon { transition:transform 0.3s ease; color:var(--text-secondary); display:flex; }
+.section.active .toggle-icon { transform:rotate(180deg); }
+.section-content { display:none; padding:0 20px 20px; animation:fadeIn 0.3s ease; }
+.section.active .section-content { display:block; }
+@keyframes fadeIn { from{opacity:0; transform:translateY(-8px);} to{opacity:1; transform:translateY(0);} }
+
+/* Content card */
+.content-card { background:#f8faff; border-radius:var(--radius-sm); padding:20px; border:1px solid #e8eef8; white-space:pre-line; }
+.content-text { font-size:15px; line-height:1.9; color:#37474F; }
+.content-text .formula { display:inline-block; background:#e8eaf6; padding:2px 8px; border-radius:4px; font-family:"SF Mono","Menlo",monospace; font-size:13px; color:var(--primary-dark); margin:2px 0; }
+
+.interaction-area { display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; }
+.ai-btn,.practice-btn { padding:10px 18px; border:none; border-radius:var(--radius-sm); cursor:pointer; font-size:13px; font-weight:500; transition:all 0.2s; display:flex; align-items:center; gap:6px; }
+.ai-btn { background:#E3F2FD; color:var(--primary); }
+.ai-btn:hover { background:#BBDEFB; transform:translateY(-2px); box-shadow:0 2px 8px rgba(21,101,192,0.15); }
+.practice-btn { background:#FFF3E0; color:var(--accent); }
+.practice-btn:hover { background:#FFE0B2; transform:translateY(-2px); box-shadow:0 2px 8px rgba(255,109,0,0.2); }
+
+/* Practice Modal */
+.practice-modal { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.45); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(4px); }
+.practice-modal.show { display:flex; }
+.practice-box { background:white; border-radius:18px; padding:28px 24px; max-width:460px; width:92%; box-shadow:0 12px 40px rgba(0,0,0,0.2); position:relative; }
+.practice-box h3 { font-size:18px; color:var(--primary-dark); margin-bottom:16px; }
+.practice-box .question { font-size:15px; color:var(--text); margin-bottom:16px; line-height:1.7; font-family:var(--font); }
+.options { display:flex; flex-direction:column; gap:8px; }
+.options label { display:block; padding:13px 16px; border:2px solid var(--border); border-radius:var(--radius-sm); cursor:pointer; transition:all 0.2s; font-size:14px; }
+.options label:hover { border-color:var(--primary-light); background:#E3F2FD; }
+.options label.correct { background:#C8E6C9; border-color:#4CAF50; color:#2E7D32; font-weight:600; pointer-events:none; }
+.options label.wrong { background:#FFCDD2; border-color:#F44336; color:#C62828; pointer-events:none; }
+.feedback { margin-top:18px; padding:12px 16px; border-radius:var(--radius-sm); display:none; font-size:14px; animation:fadeIn 0.3s ease; }
+.feedback.show { display:block; }
+.feedback.success { background:#E8F5E9; color:#2E7D32; border:1px solid #A5D6A7; }
+.feedback.error { background:#FFEBEE; color:#C62828; border:1px solid #EF9A9A; }
+.close-btn { position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; cursor:pointer; color:var(--text-secondary); line-height:1; transition:color 0.2s; }
+.close-btn:hover { color:var(--text); }
+
+/* MathJax rendering */
+.MathJax { font-size:1.05em !important; }
+
+/* Tutor bubble */
+.tutor-bubble { display:none; position:fixed; bottom:24px; right:24px; max-width:360px; background:white; border-radius:16px; padding:22px; box-shadow:0 8px 32px rgba(0,0,0,0.15); z-index:900; border:1px solid var(--border); }
+.tutor-bubble.show { display:block; animation:fadeIn 0.3s ease; }
+.tutor-bubble h4 { font-size:16px; color:var(--primary-dark); margin-bottom:10px; }
+.tutor-bubble p { font-size:14px; color:var(--text-secondary); line-height:1.7; white-space:pre-line; }
+.tutor-bubble .tutor-close { position:absolute; top:12px; right:16px; background:none; border:none; cursor:pointer; font-size:18px; color:var(--text-secondary); }
+
+/* Formula card */
+.formula-card { background:linear-gradient(135deg,#f5f7fa,#e8eaf6); border-radius:var(--radius-sm); padding:16px; margin-top:14px; border-left:4px solid var(--primary); }
+.formula-card .formula-title { font-size:13px; font-weight:600; color:var(--primary); margin-bottom:6px; }
+.formula-card .formula-body { font-family:"SF Mono","Menlo","Consolas",monospace; font-size:14px; color:var(--primary-dark); }
+
+@media (max-width:600px) {
+  .hero h1 { font-size:22px; }
+  .section-header { padding:16px; gap:10px; }
+  .section-number { width:32px; height:32px; font-size:12px; }
+  .section-title { font-size:15px; }
+  .container { padding:10px 12px 40px; }
+}
+</style>
+</head>
+<body class="teachany-high">
+
+<div class="nav-bar">
+  <a class="back-link" href="../index.html">
+    <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="13,7 1,7 6,2 5,1 0,7 5,13 6,12 1,8 13,8" fill="currentColor"/></svg>
+    返回目录
+  </a>
+  <span class="unit-label">人教版 · 高二数学 · 选择性必修一</span>
+</div>
+
+<div class="hero">
+  <h1>空间向量与立体几何</h1>
+  <p class="subtitle">空间直角坐标系、向量运算与立体几何证明</p>
+  <span class="badge">📐 数学</span><span class="badge">高二·G11</span><span class="badge">人教版</span><span class="badge">自主学习</span>
+  <img class="hero-cover" src="./assets/hero.svg" alt="空间向量与立体几何" onerror="this.style.opacity='0'" loading="lazy">
+</div>
+
+<div class="container">
+
+<section class="section" id="section-1">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">01</span>
+    <span class="section-title">空间直角坐标系</span>
+    
+    <span class="toggle-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,11 3,5 13,5" fill="currentColor"/></svg></span>
+  </div>
+  <div class="section-content">
+    <div class="content-card" data-section="0">
+      <div class="content-text">在空间中任取一点O为原点，作三条两两垂直的数轴：x轴、y轴、z轴。空间中任意一点P对应唯一的有序数组(x,y,z)，称为点P的坐标。<br><br>两点距离公式：|AB| = \sqrt[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²]</div>
+      <div class="interaction-area">
+        <button class="ai-btn" onclick="showAITutor('空间直角坐标系',0)">🤖 问答学伴</button>
+        <button class="practice-btn" onclick="if(0<PRACTICE_DATA.length) showPractice(0); else alert('本节暂无练习')">📝 练习检测</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="section-2">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">02</span>
+    <span class="section-title">空间向量的概念与运算</span>
+    <span class="section-tag">概念</span>
+    <span class="toggle-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,11 3,5 13,5" fill="currentColor"/></svg></span>
+  </div>
+  <div class="section-content">
+    <div class="content-card" data-section="1">
+      <div class="content-text">空间向量与平面向量类似，具有大小和方向。<br><br>加法：a\vec + b\vec = (x₁+x₂, y₁+y₂, z₁+z₂)<br>数乘：λa\vec = (λx, λy, λz)<br>数量积：a\vec·b\vec = x₁x₂ + y₁y₂ + z₁z₂ = |a\vec||b\vec|cosθ<br><br>向量垂直 \iff a\vec·b\vec = 0</div>
+      <div class="interaction-area">
+        <button class="ai-btn" onclick="showAITutor('空间向量的概念与运算',1)">🤖 问答学伴</button>
+        <button class="practice-btn" onclick="if(1<PRACTICE_DATA.length) showPractice(1); else alert('本节暂无练习')">📝 练习检测</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="section-3">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">03</span>
+    <span class="section-title">空间向量的坐标表示</span>
+    
+    <span class="toggle-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,11 3,5 13,5" fill="currentColor"/></svg></span>
+  </div>
+  <div class="section-content">
+    <div class="content-card" data-section="2">
+      <div class="content-text">若A(x₁,y₁,z₁)，B(x₂,y₂,z₂)，则 AB\vec = (x₂-x₁, y₂-y₁, z₂-z₁)。<br><br>中点公式：M = ((x₁+x₂)/2, (y₁+y₂)/2, (z₁+z₂)/2)<br><br>向量的模：|a\vec| = \sqrt(x²+y²+z²)</div>
+      <div class="interaction-area">
+        <button class="ai-btn" onclick="showAITutor('空间向量的坐标表示',2)">🤖 问答学伴</button>
+        <button class="practice-btn" onclick="if(2<PRACTICE_DATA.length) showPractice(2); else alert('本节暂无练习')">📝 练习检测</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="section-4">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">04</span>
+    <span class="section-title">向量法证明平行与垂直</span>
+    <span class="section-tag">证明</span>
+    <span class="toggle-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,11 3,5 13,5" fill="currentColor"/></svg></span>
+  </div>
+  <div class="section-content">
+    <div class="content-card" data-section="3">
+      <div class="content-text">线面平行判定：平面的法向量n\vec与直线的方向向量v\vec满足 n\vec·v\vec = 0<br>线面垂直判定：直线的方向向量v\vec与平面的法向量n\vec满足 v\vec = λn\vec<br>面面平行：两个平面的法向量平行<br>面面垂直：两个平面的法向量垂直，即 n\vec₁·n\vec₂ = 0</div>
+      <div class="interaction-area">
+        <button class="ai-btn" onclick="showAITutor('向量法证明平行与垂直',3)">🤖 问答学伴</button>
+        <button class="practice-btn" onclick="if(3<PRACTICE_DATA.length) showPractice(3); else alert('本节暂无练习')">📝 练习检测</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="section-5">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span class="section-number">05</span>
+    <span class="section-title">异面直线与空间角</span>
+    
+    <span class="toggle-icon"><svg width="16" height="16" viewBox="0 0 16 16"><polygon points="8,11 3,5 13,5" fill="currentColor"/></svg></span>
+  </div>
+  <div class="section-content">
+    <div class="content-card" data-section="4">
+      <div class="content-text">异面直线所成角：cosθ = |a\vec·b\vec| / (|a\vec||b\vec|)，θ∈[0,π/2]<br>线面角：sinθ = |v\vec·n\vec| / (|v\vec||n\vec|)，θ∈[0,π/2]<br>二面角：cosθ = |n\vec₁·n\vec₂| / (|n\vec₁||n\vec₂|)</div>
+      <div class="interaction-area">
+        <button class="ai-btn" onclick="showAITutor('异面直线与空间角',4)">🤖 问答学伴</button>
+        <button class="practice-btn" onclick="if(4<PRACTICE_DATA.length) showPractice(4); else alert('本节暂无练习')">📝 练习检测</button>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Practice Modal -->
+<div id="practiceModal" class="practice-modal">
+  <div class="practice-box">
+    <button class="close-btn" onclick="closePractice()">&times;</button>
+    <h3 id="practiceTitle">练习检测</h3>
+    <p class="question" id="practiceQuestion"></p>
+    <div class="options" id="practiceOptions"></div>
+    <div class="feedback" id="practiceFeedback"></div>
+  </div>
+</div>
+
+<!-- AI Tutor Bubble -->
+<div id="tutorBubble" class="tutor-bubble">
+  <button class="tutor-close" onclick="closeTutor()">&times;</button>
+  <h4 id="tutorTopic"></h4>
+  <p id="tutorContent"></p>
+</div>
+
+<script>
+// Section toggle
+function toggleSection(el) {
+  el.parentElement.classList.toggle("active");
+}
+
+// Practice data
+const PRACTICE_DATA = [["点A(1,2,3)与点B(4,6,9)的距离是？", ["A. √29", "B. √61", "C. 7", "D. √77"], 1], ["向量a⃗=(2,-1,3)，b⃗=(1,2,-1)，则a⃗·b⃗ = ？", ["A. 3", "B. -3", "C. 7", "D. -7"], 1], ["平面的法向量n⃗=(1,2,-1)，直线方向向量v⃗=(2,-1,0)，线面关系是？", ["A. 垂直", "B. 平行", "C. 相交不垂直", "D. 直线在平面内"], 1], ["向量a⃗=(1,0,-1)，b⃗=(1,1,0)，a⃗与b⃗的夹角余弦为？", ["A. 1/2", "B. 1/3", "C. 2/3", "D. √2/2"], 0]];
+
+const TUTOR_TIPS = {
+  "空间直角坐标系": "关于「空间直角坐标系」——在空间中任取一点O为原点，作三条两两垂直的数轴：x轴、y轴、z轴。空间中任意一点P对应唯一的有序数组(x,y,z)，称为点P的坐标。  两点距离公式：|AB| = √[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²]...\n\n你可以问我：\n• 这个知识点有哪些常考题型？\n• 如何快速记忆核心公式？\n• 常见的易错点有哪些？",
+  "空间向量的概念与运算": "关于「空间向量的概念与运算」——空间向量与平面向量类似，具有大小和方向。  加法：a⃗ + b⃗ = (x₁+x₂, y₁+y₂, z₁+z₂) 数乘：λa⃗ = (λx, λy, λz) 数量积：a⃗·b⃗ = x₁x₂ + y₁y₂ + z₁z₂ = |a⃗||b⃗|...\n\n你可以问我：\n• 这个知识点有哪些常考题型？\n• 如何快速记忆核心公式？\n• 常见的易错点有哪些？",
+  "空间向量的坐标表示": "关于「空间向量的坐标表示」——若A(x₁,y₁,z₁)，B(x₂,y₂,z₂)，则 AB⃗ = (x₂-x₁, y₂-y₁, z₂-z₁)。  中点公式：M = ((x₁+x₂)/2, (y₁+y₂)/2, (z₁+z₂)/2)  向量的模：|a⃗| = √(x²+y²...\n\n你可以问我：\n• 这个知识点有哪些常考题型？\n• 如何快速记忆核心公式？\n• 常见的易错点有哪些？",
+  "向量法证明平行与垂直": "关于「向量法证明平行与垂直」——线面平行判定：平面的法向量n⃗与直线的方向向量v⃗满足 n⃗·v⃗ = 0 线面垂直判定：直线的方向向量v⃗与平面的法向量n⃗满足 v⃗ = λn⃗ 面面平行：两个平面的法向量平行 面面垂直：两个平面的法向量垂直，即 n⃗₁·n⃗₂ = 0...\n\n你可以问我：\n• 这个知识点有哪些常考题型？\n• 如何快速记忆核心公式？\n• 常见的易错点有哪些？",
+  "异面直线与空间角": "关于「异面直线与空间角」——异面直线所成角：cosθ = |a⃗·b⃗| / (|a⃗||b⃗|)，θ∈[0,π/2] 线面角：sinθ = |v⃗·n⃗| / (|v⃗||n⃗|)，θ∈[0,π/2] 二面角：cosθ = |n⃗₁·n⃗₂| / (|n⃗₁||n⃗...\n\n你可以问我：\n• 这个知识点有哪些常考题型？\n• 如何快速记忆核心公式？\n• 常见的易错点有哪些？",
+};
+
+function showPractice(idx) {
+  if(idx < 0 || idx >= PRACTICE_DATA.length) return;
+  const data = PRACTICE_DATA[idx];
+  const modal = document.getElementById("practiceModal");
+  document.getElementById("practiceTitle").textContent = "📝 练习 " + (idx+1) + "/" + PRACTICE_DATA.length;
+  document.getElementById("practiceQuestion").textContent = data[0];
+  const opts = document.getElementById("practiceOptions");
+  opts.innerHTML = "";
+  const fb = document.getElementById("practiceFeedback");
+  fb.classList.remove("show", "success", "error");
+
+  data[1].forEach(function(opt, oi) {
+    const label = document.createElement("label");
+    label.textContent = opt;
+    label.onclick = function() {
+      Array.from(opts.querySelectorAll("label")).forEach(function(l) { l.style.pointerEvents = "none"; });
+      if(oi === data[2]) {
+        label.classList.add("correct");
+        fb.classList.add("success");
+        fb.textContent = "✅ 回答正确！";
+      } else {
+        label.classList.add("wrong");
+        fb.classList.add("error");
+        fb.textContent = "❌ 再想想～ 正确答案是: " + data[1][data[2]];
+      }
+      fb.classList.add("show");
+    };
+    opts.appendChild(label);
+  });
+  modal.classList.add("show");
+}
+
+function closePractice() {
+  document.getElementById("practiceModal").classList.remove("show");
+}
+
+function showAITutor(topic, idx) {
+  document.getElementById("tutorTopic").textContent = "🤖 " + topic;
+  document.getElementById("tutorContent").textContent = TUTOR_TIPS[topic] || 
+    "这是高二数学的核心知识点，建议你：\n\n" +
+    "1. 先理解定义和公式推导过程\n" +
+    "2. 做2-3道课本例题巩固\n" +
+    "3. 注意常考的变式题型\n" +
+    "4. 如有疑问可以标记后问老师\n\n" +
+    "📌 自学小技巧：把公式抄在小卡片上，随时复习！";
+  document.getElementById("tutorBubble").classList.add("show");
+}
+
+function closeTutor() {
+  document.getElementById("tutorBubble").classList.remove("show");
+}
+
+// Close modals on Escape or click outside
+document.addEventListener("keydown", function(e) {
+  if(e.key === "Escape") { closePractice(); closeTutor(); }
+});
+document.addEventListener("click", function(e) {
+  if(e.target.classList.contains("practice-modal")) closePractice();
+});
+
+// Init: open first section
+(function() {
+  var s1 = document.getElementById("section-1");
+  if(s1) s1.classList.add("active");
+})();
+</script>
+
+<script>
+  window.__TEACHANY_CONFIG__ = { courseId: "senior2-math-space-vectors", subject: "math", grade: "11", nodeId: "math-h-space-vectors" };
+</script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/ai-tutor.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+</body></html>

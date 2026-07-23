@@ -1,0 +1,15 @@
+{
+  "course_id": "senior2-math-line-circle",
+  "version": "1.0.0",
+  "title": "直线和圆的方程",
+  "subtitle": "直线的方程、两直线位置关系与圆的方程",
+  "subject": "math",
+  "grade": "11",
+  "stage": "high",
+  "node_id": "math-h-line-equation",
+  "teachany_version": "7.18.0",
+  "sections": 5,
+  "curriculum": "人教版选择性必修第一册",
+  "description": "高二数学自学课件 — 直线和圆的方程",
+  "learning_type": "self-study"
+}

@@ -1,0 +1,15 @@
+{
+  "course_id": "senior2-math-conic-sections",
+  "version": "1.0.0",
+  "title": "圆锥曲线的方程",
+  "subtitle": "椭圆、双曲线、抛物线的标准方程与几何性质",
+  "subject": "math",
+  "grade": "11",
+  "stage": "high",
+  "node_id": "math-h-conic-comprehensive",
+  "teachany_version": "7.18.0",
+  "sections": 5,
+  "curriculum": "人教版选择性必修第一册",
+  "description": "高二数学自学课件 — 圆锥曲线的方程",
+  "learning_type": "self-study"
+}

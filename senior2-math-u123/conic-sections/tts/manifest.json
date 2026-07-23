@@ -1,0 +1,34 @@
+{
+  "playlist": [
+    {
+      "file": "s01.mp3",
+      "text": "圆锥曲线的方程——椭圆的定义与标准方程",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 0
+    },
+    {
+      "file": "s02.mp3",
+      "text": "圆锥曲线的方程——椭圆的几何性质",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 1
+    },
+    {
+      "file": "s03.mp3",
+      "text": "圆锥曲线的方程——双曲线的定义与标准方程",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 2
+    },
+    {
+      "file": "s04.mp3",
+      "text": "圆锥曲线的方程——双曲线的几何性质",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 3
+    },
+    {
+      "file": "s05.mp3",
+      "text": "圆锥曲线的方程——抛物线的定义与标准方程",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 4
+    }
+  ]
+}

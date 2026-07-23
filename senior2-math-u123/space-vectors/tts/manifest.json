@@ -1,0 +1,34 @@
+{
+  "playlist": [
+    {
+      "file": "s01.mp3",
+      "text": "空间向量与立体几何——空间直角坐标系",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 0
+    },
+    {
+      "file": "s02.mp3",
+      "text": "空间向量与立体几何——空间向量的概念与运算",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 1
+    },
+    {
+      "file": "s03.mp3",
+      "text": "空间向量与立体几何——空间向量的坐标表示",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 2
+    },
+    {
+      "file": "s04.mp3",
+      "text": "空间向量与立体几何——向量法证明平行与垂直",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 3
+    },
+    {
+      "file": "s05.mp3",
+      "text": "空间向量与立体几何——异面直线与空间角",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 4
+    }
+  ]
+}

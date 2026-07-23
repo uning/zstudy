@@ -1,0 +1,34 @@
+{
+  "playlist": [
+    {
+      "file": "s01.mp3",
+      "text": "直线和圆的方程——直线的倾斜角与斜率",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 0
+    },
+    {
+      "file": "s02.mp3",
+      "text": "直线和圆的方程——直线的五种方程",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 1
+    },
+    {
+      "file": "s03.mp3",
+      "text": "直线和圆的方程——两直线的位置关系",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 2
+    },
+    {
+      "file": "s04.mp3",
+      "text": "直线和圆的方程——圆的方程",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 3
+    },
+    {
+      "file": "s05.mp3",
+      "text": "直线和圆的方程——直线与圆的位置关系",
+      "voice": "zh-CN-YunxiNeural",
+      "section": 4
+    }
+  ]
+}
