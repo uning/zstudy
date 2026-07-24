@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《第三单元 · 复习合集》 小数的意义和性质 · 数学 小学 G5 · TeachAny v7.18</title>
+<meta name="description" content="苏教版五年级数学上册第三单元复习合集：5课时知识点脉络、易错点清单、单元测评">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-node" content="math-e-decimals-meaning">
+<style>
+:root {
+  --bg: #fffbf0; --card: #ffffff;
+  --line: #e0d4f5; --line-subtle: rgba(139,92,246,0.10);
+  --text: #333; --text-secondary: #555; --muted: #888;
+  --brand: #8b5cf6; --brand-soft: rgba(139,92,246,0.10);
+  --brand-2: #06b6d4; --brand-2-soft: rgba(6,182,212,0.10);
+  --accent: #f59e0b; --accent-soft: rgba(245,158,11,0.10);
+  --ok: #22c55e; --danger: #ef4444;
+  --card-radius: 20px; --card-radius-sm: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: radial-gradient(ellipse at 20% 0%, rgba(139,92,246,0.06), transparent 50%),
+              radial-gradient(ellipse at 80% 100%, rgba(6,182,212,0.06), transparent 50%), var(--bg);
+  color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75; font-size: 16px; min-height: 100vh;
+}
+.header { max-width: 900px; margin: 0 auto; padding: 40px 24px 20px; text-align: center; }
+.header .badge { display: inline-block; background: var(--brand-soft); border: 1px solid rgba(139,92,246,0.15); border-radius: 999px; padding: 6px 16px; font-size: 13px; color: var(--brand); font-weight: 600; margin-bottom: 16px; }
+.header h1 { font-size: clamp(24px,5vw,36px); font-weight: 800; line-height: 1.3; background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; }
+.header .subtitle { color: var(--text-secondary); font-size: 16px; }
+
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 24px 40px; }
+section { margin-bottom: 36px; }
+h2.sec { font-size: 20px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+h2.sec::before { content: ""; width: 4px; height: 20px; background: var(--brand); border-radius: 2px; }
+h2.sec.c2::before { background: var(--brand-2); }
+h2.sec.c3::before { background: var(--accent); }
+
+/* lesson links */
+.lesson-list a { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--text); background: var(--card); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 18px 20px; box-shadow: 0 4px 24px rgba(255,167,38,0.06); transition: transform .2s, box-shadow .2s; margin-bottom: 12px; }
+.lesson-list a:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(255,167,38,0.12); border-color: rgba(139,92,246,0.25); }
+.lesson-list .num { width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 16px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+.lesson-list .t { font-size: 17px; font-weight: 700; }
+.lesson-list .d { color: var(--text-secondary); font-size: 13px; }
+.lesson-list .go { margin-left: auto; color: var(--muted); font-size: 20px; }
+
+/* knowledge map / flow */
+.flow { display: flex; flex-direction: column; gap: 0; }
+.flow-node { background: var(--card); border: 1px solid var(--line-subtle); border-radius: var(--card-radius-sm); padding: 16px 18px; box-shadow: 0 3px 14px rgba(0,0,0,0.04); position: relative; }
+.flow-node h3 { font-size: 16px; color: var(--brand); margin-bottom: 6px; }
+.flow-node:nth-child(even) h3 { color: var(--brand-2); }
+.flow-node p { font-size: 14px; color: var(--text-secondary); }
+.flow-node .kp { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.flow-node .kp span { font-size: 12px; background: var(--brand-soft); color: var(--brand); padding: 3px 10px; border-radius: 999px; }
+.flow-node:nth-child(even) .kp span { background: var(--brand-2-soft); color: var(--brand-2); }
+.flow-arrow { text-align: center; color: var(--muted); font-size: 20px; padding: 4px 0; }
+
+/* pitfalls */
+.pitfalls { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; }
+.pit { background: var(--card); border-left: 4px solid var(--accent); border-radius: var(--card-radius-sm); padding: 14px 16px; box-shadow: 0 3px 14px rgba(0,0,0,0.04); }
+.pit .q { font-weight: 700; color: #b45309; font-size: 14px; margin-bottom: 4px; }
+.pit .a { font-size: 14px; color: var(--text-secondary); }
+.pit .a strong { color: var(--ok); }
+
+/* footer */
+.footer { max-width: 900px; margin: 0 auto; padding: 24px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line-subtle); }
+a.btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; padding: 12px 24px; border-radius: 999px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 14px rgba(139,92,246,0.25); }
+@media (max-width: 640px){ .lesson-list .d{ display:none; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="badge">📚 苏教版 · 五年级数学上册 · 第三单元</span>
+  <h1>小数的意义和性质 · 复习合集</h1>
+  <p class="subtitle">5 个课时一网打尽：知识脉络 · 易错点 · 课时入口 · 配套练习</p>
+</div>
+
+<div class="wrap">
+
+  <!-- 课时入口 -->
+  <section class="lesson-list">
+    <h2 class="sec">📖 五课时课件入口</h2>
+    <a href="../lesson-1/index.html"><span class="num">1</span><span><span class="t">小数的意义和读写</span><br><span class="d">小数与分数的关系、计数单位、数位顺序表</span></span><span class="go">→</span></a>
+    <a href="../lesson-2/index.html"><span class="num">2</span><span><span class="t">小数的性质和大小比较</span><br><span class="d">末尾添0去0、化简/改写、大小比较</span></span><span class="go">→</span></a>
+    <a href="../lesson-3/index.html"><span class="num">3</span><span><span class="t">小数点移动引起大小变化</span><br><span class="d">右移×10ⁿ、左移÷10ⁿ、位值原理</span></span><span class="go">→</span></a>
+    <a href="../lesson-4/index.html"><span class="num">4</span><span><span class="t">小数与单位换算</span><br><span class="d">长度/质量/面积/人民币、复名数互化</span></span><span class="go">→</span></a>
+    <a href="../lesson-5/index.html"><span class="num">5</span><span><span class="t">求小数的近似数</span><br><span class="d">四舍五入法、保留位数、万/亿改写</span></span><span class="go">→</span></a>
+  </section>
+
+  <!-- 知识脉络 -->
+  <section>
+    <h2 class="sec c2">🧭 单元知识脉络（由浅入深）</h2>
+    <div class="flow">
+      <div class="flow-node">
+        <h3>① 认识小数</h3>
+        <p>分母是 10、100、1000… 的分数可以用小数表示。计数单位是 0.1、0.01、0.001…</p>
+        <div class="kp"><span>十分之一=0.1</span><span>百分之一=0.01</span><span>数位顺序表</span></div>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node">
+        <h3>② 性质与比较</h3>
+        <p>小数末尾添 0 或去 0，大小不变；比较大小先比整数部分，再逐位比小数部分。</p>
+        <div class="kp"><span>0.3=0.30</span><span>化简改写</span><span>大小比较</span></div>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node">
+        <h3>③ 小数点移动</h3>
+        <p>小数点右移一位 ×10、左移一位 ÷10，本质是十进制位值变化。</p>
+        <div class="kp"><span>×10 右移</span><span>÷10 左移</span><span>位值原理</span></div>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node">
+        <h3>④ 单位换算</h3>
+        <p>高级→低级 ×进率，低级→高级 ÷进率，正是小数点移动的应用。</p>
+        <div class="kp"><span>高化低×进率</span><span>低化高÷进率</span><span>复名数互化</span></div>
+      </div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node">
+        <h3>⑤ 求近似数</h3>
+        <p>用四舍五入法保留指定位数；大数先改写成万/亿单位再求近似。</p>
+        <div class="kp"><span>四舍五入</span><span>保留位数</span><span>万/亿改写</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 易错点 -->
+  <section>
+    <h2 class="sec c3">⚠️ 单元高频易错点</h2>
+    <div class="pitfalls">
+      <div class="pit"><p class="q">易错 1 · 数位与计数单位混淆</p><p class="a">0.1、0.01 是<strong>计数单位</strong>；十分位、百分位是<strong>数位</strong>。相邻两个计数单位进率是 10。</p></div>
+      <div class="pit"><p class="q">易错 2 · 小数读法</p><p class="a">小数部分要<strong>依次读出每个数字</strong>：0.34 读"零点三四"，不是"零点三十四"。</p></div>
+      <div class="pit"><p class="q">易错 3 · 性质误用</p><p class="a">只能在小数<strong>末尾</strong>添 0 去 0；0.03 ≠ 0.3，中间的 0 不能去。</p></div>
+      <div class="pit"><p class="q">易错 4 · 大小比较跳步</p><p class="a">先比<strong>整数部分</strong>，再比十分位、百分位……不能只看小数位数多少（0.3 &gt; 0.25）。</p></div>
+      <div class="pit"><p class="q">易错 5 · 小数点移动方向</p><p class="a">×10 向<strong>右</strong>移、÷10 向<strong>左</strong>移；位数不够要<strong>补 0</strong>（0.5×100=50）。</p></div>
+      <div class="pit"><p class="q">易错 6 · 单位换算进率</p><p class="a">面积进率是长度的<strong>平方</strong>（1m²=100dm²）；时间单位不是十进制。</p></div>
+      <div class="pit"><p class="q">易错 7 · 近似数末尾的 0</p><p class="a">保留一位小数得 1.0，<strong>不能写成 1</strong>——1.0 比 1 更精确。</p></div>
+      <div class="pit"><p class="q">易错 8 · 改写与求近似符号</p><p class="a">改写成万/亿用<strong>"="</strong>（值不变），求近似用<strong>"≈"</strong>（值变），别混用。</p></div>
+    </div>
+  </section>
+
+  <!-- 练习入口 -->
+  <section style="text-align:center;">
+    <h2 class="sec" style="justify-content:center;">📝 配套课后练习卷</h2>
+    <p style="color:var(--text-secondary);margin-bottom:16px;">覆盖 5 课时全部知识点 · 分层训练 · 附答案解析</p>
+    <a class="btn" href="../exercises/index.html">进入练习卷 →</a>
+  </section>
+
+</div>
+
+<div class="footer">
+  <p>TeachAny 互动课件 · 苏教版五年级数学上册第三单元 · 复习合集</p>
+  <p style="margin-top:4px">知识节点：math-e-decimals-meaning · 更新日期：2026-07-23</p>
+</div>
+
+</body>
+</html>

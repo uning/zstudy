@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《求小数的近似数》 · 数学 小学 G5 · TeachAny v7.18</title>
+<meta name="description" content="苏教版五年级数学上册第三单元第5课时：用四舍五入法求小数的近似数，掌握保留整数、一位小数、两位小数的方法，并学会把大数改写成用万或亿作单位的数">
+
+<meta name="course-id" content="sujiao-math-g5u3-l5-decimal-approx">
+<meta name="course-title" content="求小数的近似数">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="五年级">
+<meta name="course-prereqs" content="sujiao-math-g5u3-l4-decimal-unit-conversion">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.18.0">
+<meta name="teachany-node" content="math-e-decimals-meaning">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="number-algebra">
+<meta name="teachany-prerequisites" content="小数意义,四舍五入,万/亿改写">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff;
+  --card: #ffffff; --card-elevated: #fffbf5;
+  --line: #e0d4f5; --line-subtle: rgba(139, 92, 246, 0.10);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --brand: #8b5cf6; --brand-soft: rgba(139, 92, 246, 0.10);
+  --brand-2: #06b6d4; --brand-2-soft: rgba(6, 182, 212, 0.10);
+  --accent: #f59e0b; --accent-soft: rgba(245, 158, 11, 0.10);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body { padding-top: var(--safe-top); background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif; line-height: 1.75; font-size: 16px; }
+a { color: var(--brand); text-decoration: none; } a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container { scroll-snap-type: y mandatory; overflow-y: auto; height: var(--slide-height-fallback,var(--slide-height)); scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+.slide-page { min-height: var(--slide-height-fallback,var(--slide-height)); scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--page-padding); padding-bottom: calc(var(--page-padding) + var(--toolbar-height)); position: relative; overflow: hidden; }
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+
+.slide-page[data-page-type="cover"] { background: radial-gradient(ellipse at 20% 20%, rgba(139,92,246,0.15), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(6,182,212,0.12), transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(245,158,11,0.08), transparent 60%); text-align: center; }
+.slide-page[data-page-type="cover"] h1 { font-size: clamp(26px, 5.5vw, 44px); line-height: 1.15; background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 100% 0%, rgba(139,92,246,0.08), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(139,92,246,0.08), transparent 35%), radial-gradient(circle at 70% 80%, rgba(6,182,212,0.06), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 80% 100%, rgba(139,92,246,0.06), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(245,158,11,0.14), transparent 35%), radial-gradient(circle at 80% 20%, rgba(6,182,212,0.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(139,92,246,0.10), transparent 45%), radial-gradient(circle at 20% 20%, rgba(6,182,212,0.08), transparent 30%); }
+
+.teachany-brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; background: rgba(255,251,240,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-subtle); transition: transform 0.3s ease; }
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; } .brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(0,0,0,.05); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+.card { background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(255,251,245,0.98)); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-bottom: 20px; }
+.card h2 { font-size: 1.5rem; color: var(--text); margin-bottom: 12px; }
+.card h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 10px; }
+.card p { color: var(--text-secondary); margin: 0 0 10px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 22px; } .card li { margin-bottom: 6px; color: var(--text-secondary); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; cursor: pointer; font-weight: 600; font-size: 1rem; transition: transform 0.15s, box-shadow 0.15s; }
+.btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; box-shadow: 0 4px 14px rgba(139,92,246,0.25); }
+.btn-secondary { background: var(--accent); color: #fff; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--brand-soft); color: var(--brand); }
+.interactive-box { background: #fff; border: 2px dashed var(--line); border-radius: 16px; padding: 18px; text-align: center; }
+.formula-box { background: linear-gradient(135deg, #fff, #f5f0ff); border: 2px solid var(--brand); border-radius: 16px; padding: 18px; text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 14px 0; }
+
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+.choice-item { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px; cursor: pointer; transition: all 0.2s; text-align: left; }
+.choice-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.choice-item.selected { border-color: var(--brand); background: var(--brand-soft); }
+
+.quiz-option { background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; }
+.quiz-option:hover { border-color: var(--brand); }
+.quiz-option.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.quiz-option.wrong { border-color: var(--danger); background: rgba(239,68,68,0.08); }
+
+.figure-wrap { background: #fff; border-radius: 16px; padding: 16px; margin: 14px 0; box-shadow: inset 0 0 0 1px var(--line-subtle); }
+.figure-caption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 8px; }
+.tutor-card { display: flex; gap: 14px; align-items: flex-start; background: #fff; border-radius: 16px; padding: 16px; border: 1px solid var(--line); }
+.tutor-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-weight: 800; flex-shrink: 0; }
+.tutor-bubble { flex: 1; } .tutor-bubble p { margin: 0; color: var(--text-secondary); } .tutor-bubble strong { color: var(--text); }
+
+.play-toolbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 20px calc(10px + var(--safe-bottom)); background: rgba(255,251,240,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--line-subtle); transition: transform 0.3s ease; }
+body:not(.play-mode) .play-toolbar { transform: translateY(100%); }
+.toolbar-btn { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; cursor: pointer; font-size: 14px; }
+.toolbar-btn.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+.sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 98; display: flex; flex-direction: column; gap: 8px; }
+.sidenav a { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; transition: all 0.2s; }
+.sidenav a.active { background: var(--brand); transform: scale(1.3); }
+
+.text-center { text-align: center; }
+.hint { background: rgba(6,182,212,0.1); border-left: 4px solid var(--brand-2); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+.warn-box { background: rgba(245,158,11,0.1); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+.mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.digit-flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+.digit { display: inline-grid; place-items: center; min-width: 52px; height: 56px; border-radius: 12px; font-size: 1.5rem; font-weight: 800; background: #fff; border: 2px solid var(--line); }
+.digit.look { border-color: var(--accent); background: var(--accent-soft); color: #b45309; }
+.digit.keep { border-color: var(--brand); color: var(--brand); }
+.digit.drop { opacity: 0.4; border-style: dashed; }
+.digit.carry { border-color: var(--ok); background: rgba(34,197,94,0.1); color: #15803d; }
+
+@media (max-width: 640px) {
+  .card { padding: 18px; }
+  .slide-page { padding: 16px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .choice-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body class="teachany-elementary">
+
+<header class="teachany-brand-bar">
+  <a class="brand-logo" href="https://www.teachany.cn" target="_blank"><span class="brand-mark">T</span><span>TeachAny</span></a>
+  <div class="brand-right"><a class="brand-link" href="../index.html">目录</a><span class="brand-version">v7.18 · 小学数学 G5</span></div>
+</header>
+
+<nav class="sidenav">
+  <a href="#slide-1" class="active"></a><a href="#slide-2"></a><a href="#slide-3"></a><a href="#slide-4"></a><a href="#slide-5"></a><a href="#slide-6"></a><a href="#slide-7"></a><a href="#slide-8"></a><a href="#slide-9"></a><a href="#slide-10"></a><a href="#slide-11"></a><a href="#slide-12"></a><a href="#slide-13"></a>
+</nav>
+
+<main class="slide-container" id="slides">
+
+  <!-- Slide 1 -->
+  <section class="slide-page" data-page-type="cover" id="slide-1" data-tts="s01">
+    <div class="slide-inner">
+      <div class="badge mb-2">🔢 苏教版 · 五年级上册 · 第三单元</div>
+      <h1>求小数的近似数</h1>
+      <p class="subtitle">用四舍五入法，把小数变得"恰到好处"——既简洁，又够用</p>
+      <div class="figure-wrap mt-3" style="max-width:520px;margin:0 auto;">
+        <svg viewBox="0 0 480 110" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="30" width="120" height="50" rx="10" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="2"/>
+          <text x="80" y="62" text-anchor="middle" font-size="18" fill="#8b5cf6" font-weight="700">0.984 米</text>
+          <text x="158" y="62" font-size="26" fill="#333">→</text>
+          <text x="178" y="50" font-size="13" fill="#888">四舍五入</text>
+          <rect x="200" y="30" width="90" height="50" rx="10" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="2"/>
+          <text x="245" y="62" text-anchor="middle" font-size="18" fill="#06b6d4" font-weight="700">1.0 米</text>
+          <text x="312" y="62" font-size="26" fill="#333">·</text>
+          <rect x="330" y="30" width="90" height="50" rx="10" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2"/>
+          <text x="375" y="62" text-anchor="middle" font-size="18" fill="#f59e0b" font-weight="700">0.98 米</text>
+          <text x="300" y="62" font-size="26" fill="#333">·</text>
+        </svg>
+        <div class="figure-caption">看要保留数位的"下一位"，决定舍还是入</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide-page" data-page-type="concept" id="slide-2" data-tts="s02">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤔 问题锚点</h2>
+        <p>豆豆量出自己的身高是 <strong>0.984 米</strong>。他在班会上向同学介绍时，需要说一个"大约多少米"的数。</p>
+        <p>你会怎样说呢？选一个你最想说的：</p>
+        <div class="choice-grid">
+          <div class="choice-item" onclick="selectChoice(this)">A. 大约 1 米</div>
+          <div class="choice-item" onclick="selectChoice(this)">B. 大约 0.98 米</div>
+          <div class="choice-item" onclick="selectChoice(this)">C. 大约 1.0 米</div>
+          <div class="choice-item" onclick="selectChoice(this)">D. 还是说 0.984 米</div>
+        </div>
+        <div class="hint mt-2">其实 A、B、C 都对，只是<strong>保留的位数不同</strong>——这正是"求小数的近似数"要研究的。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide-page" data-page-type="objectives" id="slide-3" data-tts="s03">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🎯 本课学习目标</h2>
+        <ol>
+          <li>理解<strong>精确数</strong>与<strong>近似数</strong>的区别，知道生活中为何要用近似数。</li>
+          <li>掌握<strong>四舍五入法</strong>，能求小数保留整数、一位小数、两位小数的近似数。</li>
+          <li>明白保留不同位数时<strong>精确程度不同</strong>，知道近似数末尾的 0 不能去掉。</li>
+          <li>能先把大数<strong>改写成用"万"或"亿"作单位</strong>，再按要求求近似数。</li>
+        </ol>
+        <div class="hint mt-2">💡 核心方法：看要保留数位的<strong>下一位</strong>，小于 5 舍去，大于或等于 5 进一。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="slide-page" data-page-type="concept" id="slide-4" data-tts="s04">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📐 什么是近似数</h2>
+        <p>有些数能精确得到（如"班里有 42 人"），叫<strong>精确数</strong>；有些数无法或没必要绝对精确（如身高 0.984 米、体重 31.6 千克），用一个相近的数来表示，叫<strong>近似数</strong>。</p>
+        <div class="formula-box">求近似数的金钥匙：<strong>四舍五入法</strong></div>
+        <div class="grid-2 mt-2">
+          <div class="interactive-box" style="border-color:var(--ok);background:rgba(34,197,94,0.05);">
+            <p style="font-size:1.3rem;font-weight:700;color:var(--ok);">舍去（四舍）</p>
+            <p>要看的那一位数字 <strong>&lt; 5</strong></p>
+            <p style="font-size:14px;color:var(--text-secondary);">直接舍去后面的数</p>
+          </div>
+          <div class="interactive-box" style="border-color:var(--accent);background:rgba(245,158,11,0.05);">
+            <p style="font-size:1.3rem;font-weight:700;color:#b45309;">进一（五入）</p>
+            <p>要看的那一位数字 <strong>≥ 5</strong></p>
+            <p style="font-size:14px;color:var(--text-secondary);">向前一位进 1，再舍去</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5 -->
+  <section class="slide-page" data-page-type="concept" id="slide-5" data-tts="s05">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>① 保留整数：0.984 ≈ ?</h2>
+        <p>保留整数，就看<strong>十分位</strong>（小数点后第 1 位）。</p>
+        <div class="digit-flow">
+          <span class="digit keep">0</span>
+          <span class="digit">.</span>
+          <span class="digit look">9</span>
+          <span class="digit drop">8</span>
+          <span class="digit drop">4</span>
+          <span style="font-size:1.6rem;font-weight:800;color:var(--accent);">← 看这一位</span>
+        </div>
+        <p>十分位是 <strong>9</strong>，9 ≥ 5，向个位进 1：0 + 1 = <strong style="color:var(--ok);">1</strong>。</p>
+        <div class="formula-box">0.984 ≈ <strong>1</strong>（保留整数）&nbsp; 用"≈"表示</div>
+        <div class="hint mt-1">注意：保留整数，结果写成整数 1，不要写小数点。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="slide-page" data-page-type="concept" id="slide-6" data-tts="s06">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>② 保留一位小数：0.984 ≈ ?</h2>
+        <p>保留一位小数，就看<strong>百分位</strong>（小数点后第 2 位）。</p>
+        <div class="digit-flow">
+          <span class="digit keep">0</span>
+          <span class="digit">.</span>
+          <span class="digit keep">9</span>
+          <span class="digit look">8</span>
+          <span class="digit drop">4</span>
+          <span style="font-size:1.6rem;font-weight:800;color:var(--accent);">← 看这一位</span>
+        </div>
+        <p>百分位是 <strong>8</strong>，8 ≥ 5，向十分位进 1：9 + 1 = <strong style="color:var(--ok);">10</strong>，满十再向个位进 1。</p>
+        <div class="formula-box">0.984 ≈ <strong>1.0</strong>（保留一位小数）</div>
+        <div class="hint mt-1">⚠️ 结果是 <strong>1.0</strong>，不是 1！保留一位小数，十分位上的 0 要保留。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7 -->
+  <section class="slide-page" data-page-type="concept" id="slide-7" data-tts="s07">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>③ 保留两位小数：0.984 ≈ ?</h2>
+        <p>保留两位小数，就看<strong>千分位</strong>（小数点后第 3 位）。</p>
+        <div class="digit-flow">
+          <span class="digit keep">0</span>
+          <span class="digit">.</span>
+          <span class="digit keep">9</span>
+          <span class="digit keep">8</span>
+          <span class="digit look">4</span>
+          <span style="font-size:1.6rem;font-weight:800;color:var(--accent);">← 看这一位</span>
+        </div>
+        <p>千分位是 <strong>4</strong>，4 &lt; 5，直接舍去后面的数。</p>
+        <div class="formula-box">0.984 ≈ <strong>0.98</strong>（保留两位小数）</div>
+        <div class="hint mt-1">💡 口诀：保留几位，就看它的<strong>下一位</strong>——这是判断"舍"还是"入"的唯一标准。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8 -->
+  <section class="slide-page" data-page-type="concept" id="slide-8" data-tts="s08">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>⚠️ 关键易错点：1.0 和 1 不一样！</h2>
+        <div class="grid-2">
+          <div class="interactive-box" style="border-color:var(--brand);">
+            <p style="font-size:1.6rem;font-weight:800;color:var(--brand);">1.0</p>
+            <p>表示精确到<strong>十分位</strong></p>
+            <p style="font-size:14px;color:var(--text-secondary);">真实值在 0.95 ~ 1.04 之间</p>
+          </div>
+          <div class="interactive-box" style="border-color:var(--brand-2);">
+            <p style="font-size:1.6rem;font-weight:800;color:var(--brand-2);">1</p>
+            <p>表示精确到<strong>个位</strong></p>
+            <p style="font-size:14px;color:var(--text-secondary);">真实值在 0.5 ~ 1.4 之间</p>
+          </div>
+        </div>
+        <div class="warn-box mt-2">⚠️ 在表示近似数时，小数<strong>末尾的 0 不能去掉</strong>！1.0 比 1 更精确，不能化简成 1。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9 -->
+  <section class="slide-page" data-page-type="concept" id="slide-9" data-tts="s09">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔁 改写成"万"或"亿"作单位</h2>
+        <p>遇到很大的数（如 384400 人），直接读写很麻烦。可以先把它改写成用<strong>万</strong>或<strong>亿</strong>作单位的小数：</p>
+        <ol>
+          <li>在<strong>万位</strong>（或亿位）的<strong>右边点上小数点</strong>；</li>
+          <li>在数的后面写上<strong>"万"字</strong>或<strong>"亿字"</strong>；</li>
+          <li>根据需要，再按四舍五入法求近似数。</li>
+        </ol>
+        <div class="formula-box">例：384400 = <strong>38.44 万</strong>（在万位右点小数点）</div>
+        <div class="hint mt-1">💡 改写不改变数的大小（用"="），求近似才用"≈"。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10 -->
+  <section class="slide-page" data-page-type="interactive" id="slide-10" data-tts="s10">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🧩 综合应用：先改写，再求近似</h2>
+        <p>把 <strong>253740</strong> 改写成用"万"作单位的数，并保留一位小数。</p>
+        <div class="digit-flow" style="justify-content:flex-start;">
+          <span style="font-weight:700;">253740</span>
+          <span style="font-size:1.4rem;">→ 在万位右点小数点 →</span>
+          <span class="digit keep">2</span><span class="digit keep">5</span><span class="digit">.</span><span class="digit look">3</span><span class="digit drop">7</span><span class="digit drop">4</span><span style="font-weight:700;color:var(--brand);">万</span>
+        </div>
+        <p>① 改写：253740 = <strong>25.374 万</strong></p>
+        <p>② 保留一位小数，看百分位 <strong>7</strong>（≥ 5），向十分位进 1：</p>
+        <div class="formula-box">25.374 万 ≈ <strong>25.4 万</strong></div>
+        <div class="hint mt-1">先"="改写，再"≈"求近似，两步别混！</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11 -->
+  <section class="slide-page" data-page-type="quiz" id="slide-11" data-tts="s11">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📝 练一练</h2>
+        <p><strong>第 1 题：</strong>3.782 保留一位小数约等于（ &nbsp; ）</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">A. 3.7</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 3.8</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">C. 4.0</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 看百分位 8（≥5）向十分位进 1：3.7→3.8</p>
+
+        <p class="mt-2"><strong>第 2 题：</strong>9608 改写成用"万"作单位的数并保留两位小数 ≈（ &nbsp; ）</p>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">A. 0.96 万</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">B. 0.9608 万</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false)">C. 1.00 万</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 9608 = 0.9608 万，看千分位 0（&lt;5）舍去 → 0.96 万</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12 -->
+  <section class="slide-page" data-page-type="concept" id="slide-12" data-tts="s12">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤖 AI 学伴</h2>
+        <div class="tutor-card">
+          <div class="tutor-avatar">AI</div>
+          <div class="tutor-bubble">
+            <p><strong>AI 学伴：</strong>关于求小数的近似数，你可以这样问我：</p>
+            <ul style="margin-top:8px;">
+              <li>"0.984 保留两位小数为什么是 0.98？"</li>
+              <li>"保留一位小数时，末尾的 0 能去掉吗？"</li>
+              <li>"帮我把 149600000 改写成用亿作单位并保留两位"</li>
+              <li>"四舍和五入，到底看哪一位？"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13 -->
+  <section class="slide-page" data-page-type="summary" id="slide-13" data-tts="s13">
+    <div class="slide-inner">
+      <div class="card text-center">
+        <h2>🎉 课堂总结</h2>
+        <ol style="text-align:left;max-width:560px;margin:0 auto;">
+          <li>方法：保留到哪一位，就看它的<strong>下一位</strong>，<strong>&lt;5 舍去，≥5 进一</strong>。</li>
+          <li>0.984 分别 ≈ <strong>1（整数）、1.0（一位）、0.98（两位）</strong>。</li>
+          <li>近似数末尾的 <strong>0 不能去掉</strong>——1.0 比 1 更精确。</li>
+          <li>大数先<strong>改写</strong>（用 =）成万/亿单位，再<strong>求近似</strong>（用 ≈）。</li>
+          <li>多练几道，看清"看哪一位"，你一定能拿稳这一分！</li>
+        </ol>
+        <div class="mt-3">
+          <a class="btn btn-primary" href="../index.html">返回目录</a>
+          <a class="btn btn-primary" href="../lesson-4/index.html">上一课时：小数与单位换算</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="play-toolbar">
+  <button class="toolbar-btn" onclick="prevSlide()">⏮ 上一页</button>
+  <button class="toolbar-btn active" id="mode-btn" onclick="toggleMode()">📖 浏览模式</button>
+  <button class="toolbar-btn" onclick="toggleTTS()">🔊 播放讲解</button>
+  <button class="toolbar-btn" onclick="nextSlide()">下一页 ⏭</button>
+</footer>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" data-teachany-course-id="sujiao-math-g5u3-l5-decimal-approx"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"}]'></script>
+
+<script>
+let playMode = false;
+const slides = document.querySelectorAll('.slide-page');
+let current = 0;
+function updateSidenav() { document.querySelectorAll('.sidenav a').forEach((a,i)=>{a.classList.toggle('active',i===current);}); }
+function scrollToSlide(i) { if(i<0||i>=slides.length)return; current=i; slides[i].scrollIntoView({behavior:'smooth'}); updateSidenav(); }
+function nextSlide() { scrollToSlide(current+1); }
+function prevSlide() { scrollToSlide(current-1); }
+function toggleMode() { playMode=!playMode; document.body.classList.toggle('play-mode',playMode); document.getElementById('mode-btn').textContent=playMode?'▶️ 播放模式':'📖 浏览模式'; }
+function selectChoice(el) { el.parentElement.querySelectorAll('.choice-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); }
+function checkQuiz(el,isCorrect) { const card=el.closest('.card'); card.querySelectorAll('.quiz-option').forEach(o=>{o.style.pointerEvents='none'; if(o===el)o.classList.add(isCorrect?'correct':'wrong');}); card.querySelectorAll('p[style*="display:none"]').forEach(p=>p.style.display='block'); }
+function revealHints(card){ card.querySelectorAll('p[style*="display:none"]').forEach(p=>p.style.display='block'); }
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){current=Array.from(slides).indexOf(e.target);updateSidenav();}});},{root:document.getElementById('slides'),threshold:0.5});
+slides.forEach(s=>observer.observe(s));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' ')nextSlide(); if(e.key==='ArrowUp'||e.key==='ArrowLeft')prevSlide();});
+function toggleTTS(){if(window.teachanyTTS)window.teachanyTTS.playCurrent();}
+</script>
+</body>
+</html>
