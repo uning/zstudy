@@ -1,0 +1,21 @@
+{
+  "course_id": "sujiao-g5-u5-fraction-calc",
+  "version": "1.0.0",
+  "title": "分数加法和减法",
+  "subtitle": "同分母与异分母分数的加减法",
+  "subject": "math",
+  "grade": "5",
+  "stage": "elementary",
+  "node_id": "math-e-fraction-operations",
+  "teachany_version": "7.18.0",
+  "sections": 5,
+  "curriculum": "苏教版五年级下册",
+  "unit_number": 5,
+  "learning_type": "new-concept",
+  "features": [
+    "ai-tutor",
+    "tts-speech",
+    "practice-quiz",
+    "knowledge-graph"
+  ]
+}

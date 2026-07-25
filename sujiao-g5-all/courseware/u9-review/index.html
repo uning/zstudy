@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>期末总复习 · 苏教版五年级下册</title>
+<meta name="course-id" content="sujiao-g5-u9-review">
+<meta name="teachany-node" content="math-e-fractions-meaning">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--coral:#FF6B6B;--mint:#4ECDC4;--sun:#FFE66D;--sky:#4FC3F7;--bg:#FFF8F0;--card:white;--text:#37474F;--mu:#78909C;--radius:16px;--rs:12px;--font:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+/* Hero */
+.hero{background:linear-gradient(135deg,#FF6B6B 0%,#FF8A80 40%,#4ECDC4 100%);color:white;padding:36px 20px 30px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.1)}
+.hero::before{content:"";position:absolute;bottom:-40px;left:-40px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.08)}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:4px;position:relative;z-index:1}
+.hero .subtitle{font-size:14px;opacity:0.9;margin-bottom:12px;position:relative;z-index:1}
+.hero .badge{display:inline-block;background:rgba(255,255,255,0.22);padding:4px 12px;border-radius:16px;font-size:11px;margin:3px;position:relative;z-index:1}
+.hero-cover{display:block;margin:10px auto 0;max-width:380px;width:90%;border-radius:12px;position:relative;z-index:1}
+/* Nav */
+.nav-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(255,255,255,0.95);border-bottom:2px solid #FFE0B2;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.back-link{color:var(--coral);text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:5px}
+.back-link:hover{color:#E55A5A}
+.unit-label{font-size:11px;color:var(--mu);background:#FFF3E0;padding:4px 10px;border-radius:12px}
+/* Sections */
+.container{max-width:780px;margin:0 auto;padding:12px 14px 60px}
+.section{background:var(--card);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.05);border:2px solid transparent;transition:all 0.3s}
+.section.active{border-color:var(--mint);box-shadow:0 4px 20px rgba(78,205,196,0.15)}
+.section-header{display:flex;align-items:center;padding:16px 18px;cursor:pointer;user-select:none;background:#FAFFFE;transition:background 0.2s;gap:12px}
+.section-header:hover{background:#E8FFF9}
+.section.active .section-header{background:#E0FCF7}
+.section-num{min-width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--coral),var(--mint));color:white;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;text-shadow:0 1px 2px rgba(0,0,0,0.15)}
+.section-title{flex:1;font-size:16px;font-weight:700;color:#2E7D32}
+.section-tag{font-size:10px;color:var(--mint);background:#E0FCF7;padding:2px 10px;border-radius:10px;white-space:nowrap;font-weight:600}
+.toggle-icon{transition:transform 0.3s;color:var(--mu);display:flex}
+.section.active .toggle-icon{transform:rotate(180deg);color:var(--mint)}
+.section-content{display:none;padding:0 18px 18px;animation:fadeIn 0.3s ease}
+.section.active .section-content{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+/* Content */
+.content-card{background:#FFFBF5;border-radius:var(--rs);padding:18px;border:1px solid #FFECB3;white-space:pre-line}
+.content-text{font-size:15px;line-height:2;color:#4E342E}
+/* Buttons */
+.btns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.ai-btn,.tts-btn,.quiz-btn{padding:10px 16px;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.25s;display:flex;align-items:center;gap:6px}
+.ai-btn{background:#E8F5E9;color:#2E7D32}
+.ai-btn:hover{background:#C8E6C9;transform:translateY(-2px);box-shadow:0 2px 10px rgba(46,125,50,0.2)}
+.tts-btn{background:#E3F2FD;color:#1565C0}
+.tts-btn:hover{background:#BBDEFB;transform:translateY(-2px);box-shadow:0 2px 10px rgba(21,101,192,0.2)}
+.tts-btn.playing{background:#1565C0;color:white;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(21,101,192,0.4)}50%{box-shadow:0 0 0 12px rgba(21,101,192,0)}}
+.quiz-btn{background:#FFF3E0;color:#E65100}
+.quiz-btn:hover{background:#FFE0B2;transform:translateY(-2px);box-shadow:0 2px 10px rgba(230,81,0,0.2)}
+/* Modal */
+.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.modal.show{display:flex}
+.modal-box{background:white;border-radius:20px;padding:26px 22px;max-width:440px;width:92%;box-shadow:0 12px 40px rgba(0,0,0,0.18);position:relative;max-height:90vh;overflow-y:auto}
+.modal-box h3{font-size:18px;color:#E65100;margin-bottom:14px}
+.modal-box .q{font-size:15px;color:var(--text);margin-bottom:14px;line-height:1.8}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts label{display:block;padding:12px 16px;border:2px solid #FFE0B2;border-radius:var(--rs);cursor:pointer;transition:all 0.2s;font-size:14px;background:#FFFBF5}
+.opts label:hover{border-color:var(--coral);background:#FFF0F0}
+.opts label.ok{background:#C8E6C9;border-color:#4CAF50;color:#2E7D32;font-weight:700;pointer-events:none}
+.opts label.no{background:#FFCDD2;border-color:#F44336;color:#C62828;pointer-events:none}
+.fb{margin-top:16px;padding:12px 16px;border-radius:var(--rs);display:none;font-size:14px;animation:fadeIn 0.3s}
+.fb.show{display:block}
+.fb.good{background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7}
+.fb.bad{background:#FFEBEE;color:#C62828;border:1px solid #EF9A9A}
+.quiz-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--mu)}
+.quiz-close:hover{color:var(--text)}
+/* Tutor */
+.tutor-bubble{display:none;position:fixed;bottom:20px;right:20px;max-width:340px;background:white;border-radius:18px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.14);z-index:900;border:2px solid var(--mint)}
+.tutor-bubble.show{display:block;animation:slideUp 0.3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.tutor-bubble h4{font-size:15px;color:#2E7D32;margin-bottom:8px}
+.tutor-bubble p{font-size:13px;color:var(--mu);line-height:1.8;white-space:pre-line}
+.tutor-close{position:absolute;top:10px;right:14px;background:none;border:none;cursor:pointer;font-size:18px;color:var(--mu)}
+/* Audio bar */
+.audio-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:white;padding:10px 20px;box-shadow:0 -2px 12px rgba(0,0,0,0.1);z-index:950;align-items:center;gap:12px}
+.audio-bar.show{display:flex}
+.audio-bar .info{flex:1;font-size:13px;color:var(--mu)}
+.audio-bar button{background:none;border:none;font-size:20px;cursor:pointer;padding:4px 8px;border-radius:8px;transition:background 0.2s}
+.audio-bar button:hover{background:#f0f0f0}
+@media(max-width:600px){.hero h1{font-size:21px}.section-header{padding:14px;gap:8px}.section-num{min-width:34px;height:34px;font-size:13px}.section-title{font-size:14px}.container{padding:8px 10px 50px}}
+</style>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/ai-tutor.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+</head>
+<body>
+<div class="nav-bar">
+  <a class="back-link" href="../index.html">← 返回目录</a>
+  <span class="unit-label">苏教版 · 五下 · 第9单元</span>
+</div>
+<div class="hero">
+  <h1>期末总复习</h1>
+  <p class="subtitle">五年级下册全册知识梳理与综合练习</p>
+  <span class="badge">📐 数学</span><span class="badge">五年级</span><span class="badge">苏教版</span>
+  <span class="badge">🤖AI + 🔊TTS</span>
+  <img class="hero-cover" src="./assets/hero.svg" alt="期末总复习" onerror="this.style.opacity='0'" loading="lazy">
+</div>
+<div class="container">
+
+<section class="section" id="sec0">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">01</span>
+    <span class="section-title">数与代数复习</span>
+    <span class="section-tag">梳理</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">📊 五年级下册数与代数知识树：<br><br>1️⃣ 简易方程<br>· 用字母表示数 · 等式性质 · 解方程<br>· 列方程解应用题<br><br>2️⃣ 因数与倍数<br>· 因数倍数概念 · 2/5/3倍数特征<br>· 质数与合数 · 最大公因数 · 最小公倍数<br><br>3️⃣ 分数的意义和性质<br>· 分数意义 · 真分/假分/带分 · 分数基本性质<br>· 约分 · 通分<br><br>4️⃣ 分数加减法<br>· 同分母加减 · 异分母加减（通分） · 混合运算<br><br>🔑 易错点：<br>· 解方程忘记验算<br>· 约分不到位<br>· 通分时分母找错<br>· 分数小数互化出错</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(8,0)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn0" onclick="playTTS(0,'u9-review')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(0)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec1">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">02</span>
+    <span class="section-title">图形与几何复习</span>
+    <span class="section-tag">梳理</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">📐 五年级下册几何知识总结：<br><br>🔵 圆的认识<br>· 圆心O、半径r、直径d（d=2r）<br>· 半径决定大小，圆心决定位置<br><br>🔵 圆的周长<br>· C=πd=2πr  π≈3.14<br>· 半圆周长=πr+2r<br><br>🔵 圆的面积<br>· S=πr²<br>· 圆环面积=π(R²-r²)<br>· 扇形面积=πr²×n/360<br><br>🔵 组合图形<br>· 外方内圆：利用率≈78.5%<br>· 外圆内方：正方形对角线=2r<br><br>📌 常考题型：<br>· 已知半径/直径求周长和面积<br>· 环形跑道面积<br>· 正方形中剪最大圆</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(8,1)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn1" onclick="playTTS(1,'u9-review')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(1)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec2">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">03</span>
+    <span class="section-title">统计与概率复习</span>
+    <span class="section-tag">梳理</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">📈 折线统计图知识清单：<br><br>· 组成部分：标题、横轴、纵轴、数据点、折线<br>· 作用：反映数量增减变化趋势<br>· 绘制：描点→连线→标注<br>· 分析：趋势、极值、变化量<br><br>复式折线统计图：<br>· 多条折线比较<br>· 必须有图例<br><br>📊 数据解读技巧：<br>① 先看标题了解内容<br>② 看横纵轴确定量纲<br>③ 观察折线变化方向<br>④ 比较不同阶段的变化幅度<br><br>💡 统计思维：<br>数据不是冷冰冰的数字，每一条折线背后都有故事！<br>学统计，就是学用数据说话。</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(8,2)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn2" onclick="playTTS(2,'u9-review')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(2)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec3">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">04</span>
+    <span class="section-title">综合应用题训练</span>
+    <span class="section-tag">实战</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">🎯 综合练习——试试你的实力！<br><br>题1：一个圆的周长是31.4cm，它的面积是多少？<br>→ r=5cm，S=78.5cm²<br><br>题2：3/4 + 2/5 - 1/2 = ？<br>→ 通分20：15/20+8/20-10/20=13/20<br><br>题3：两个数的最大公因数是6，最小公倍数是36，这两个数可能是？<br>→ 6和36，或12和18<br><br>题4：一桶油，第一次用去1/5，第二次用去剩下的1/4，<br>桶里还剩12千克，原来有多少？<br>→ 设原来x千克，x×(1-1/5)×(1-1/4)=12<br>  x×4/5×3/4=12 → 3x/5=12 → x=20</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(8,3)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn3" onclick="playTTS(3,'u9-review')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(3)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec4">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">05</span>
+    <span class="section-title">考试技巧与易错点</span>
+    <span class="section-tag">技巧</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">📝 期末考试的提分锦囊：<br><br>🔑 解方程三步必做：<br>① 写完解：x=……<br>② 检验：代入原方程<br>③ 写出答句<br><br>🔑 分数计算三不忘记：<br>① 不遗忘约分（结果必须最简！）<br>② 不遗忘通分（分母不同先通分！）<br>③ 不忘转化（带分数↔假分数）<br><br>🔑 圆的计算注意：<br>① 看清给的是半径还是直径<br>② 周长和面积公式别搞混<br>③ π取3.14，结果保留两位小数<br><br>📋 各单元分数占比（大致）：<br>方程25% 因数倍数15% 分数40% 圆和统计20%<br><br>💪 重点复习：分数的意义与运算、圆的面积！</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(8,4)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn4" onclick="playTTS(4,'u9-review')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(4)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<div class="modal" id="quizModal">
+  <div class="modal-box">
+    <button class="quiz-close" onclick="closeQuiz()">&times;</button>
+    <h3 id="quizTitle"></h3>
+    <div class="q" id="quizQ"></div>
+    <div class="opts" id="quizOpts"></div>
+    <div class="fb" id="quizFb"></div>
+  </div>
+</div>
+<div class="tutor-bubble" id="tutor">
+  <button class="tutor-close" onclick="closeTutor()">&times;</button>
+  <h4 id="tutorHead"></h4>
+  <p id="tutorBody"></p>
+</div>
+<div class="audio-bar" id="audioBar">
+  <div class="info"><strong>🔊 正在播放：</strong><span id="audioLabel"></span></div>
+  <button onclick="stopTTS()" title="停止">⏹</button>
+</div>
+<audio id="ttsAudio" style="display:none" preload="none"></audio>
+<script>
+const QUIZZES=[["一个圆的半径4cm，面积是多少？(π≈3.14)", ["A. 25.12cm²", "B. 50.24cm²", "C. 12.56cm²", "D. 200.96cm²"], 1], ["24和36的最大公因数是？", ["A. 6", "B. 8", "C. 12", "D. 24"], 2], ["3/8 + 1/4 = ？", ["A. 4/12", "B. 1/2", "C. 5/8", "D. 1/4"], 2], ["解方程：4x-8=20，x=？", ["A. 3", "B. 5", "C. 7", "D. 12"], 2]];
+const TTS_DATA={"u9-review_0": "期末总复习——数与代数复习：📊 五年级下册数与代数知识树：  1️⃣ 简易方程 · 用字母表示数 · 等式性质 · 解方程 · 列方程解应用题  2️⃣ 因数与倍数 · 因数倍数概念 · ", "u9-review_1": "期末总复习——图形与几何复习：📐 五年级下册几何知识总结：  🔵 圆的认识 · 圆心O、半径r、直径d（d=2r） · 半径决定大小，圆心决定位置  🔵 圆的周长 · C=πd=2πr  π", "u9-review_2": "期末总复习——统计与概率复习：📈 折线统计图知识清单：  · 组成部分：标题、横轴、纵轴、数据点、折线 · 作用：反映数量增减变化趋势 · 绘制：描点→连线→标注 · 分析：趋势、极值、变化", "u9-review_3": "期末总复习——综合应用题训练：🎯 综合练习——试试你的实力！  题1：一个圆的周长是31.4cm，它的面积是多少？ → r=5cm，S=78.5cm²  题2：3/4 + 2/5 - 1/2", "u9-review_4": "期末总复习——考试技巧与易错点：📝 期末考试的提分锦囊：  🔑 解方程三步必做： ① 写完解：x=…… ② 检验：代入原方程 ③ 写出答句  🔑 分数计算三不忘记： ① 不遗忘约分（结果必须最"};
+const TIPS=[];
+const UNIT_ID="u9-review";
+let quizIdx=-1,audioIdx=-1;
+
+function toggle(hdr){hdr.parentElement.classList.toggle("active")}
+function startQuiz(idx){if(idx<0||idx>=QUIZZES.length)return;quizIdx=idx;const d=QUIZZES[idx];document.getElementById("quizTitle").textContent="📝 练习 "+(idx+1)+"/"+QUIZZES.length;document.getElementById("quizQ").textContent=d[0];const o=document.getElementById("quizOpts");o.innerHTML="";const f=document.getElementById("quizFb");f.classList.remove("show","good","bad");d[1].forEach(function(opt,oi){const l=document.createElement("label");l.textContent=opt;l.onclick=function(){Array.from(o.querySelectorAll("label")).forEach(function(x){x.style.pointerEvents="none"});if(oi===d[2]){l.classList.add("ok");f.classList.add("good");f.textContent="✅ 太棒了，回答正确！"}else{l.classList.add("no");f.classList.add("bad");f.textContent="❌ 再想想~ 正确答案是: "+d[1][d[2]]}f.classList.add("show")};o.appendChild(l)});document.getElementById("quizModal").classList.add("show")}
+function closeQuiz(){document.getElementById("quizModal").classList.remove("show");quizIdx=-1}
+function showTutor(un,idx){document.getElementById("tutorHead").textContent="🤖 "+QUIZZES[Math.min(idx,QUIZZES.length-1)][1][0].split(".")[0];document.getElementById("tutorBody").textContent=TIPS[idx]||"多读几遍上面的内容，然后做练习来检验理解~";document.getElementById("tutor").classList.add("show")}
+function closeTutor(){document.getElementById("tutor").classList.remove("show")}
+function playTTS(idx,uid){const k=uid+"_"+idx;const t=TTS_DATA[k];if(!t){alert("语音数据暂未就绪");return}const b=document.getElementById("ttsbtn"+idx);if(audioIdx===idx&&window.speechSynthesis&&window.speechSynthesis.speaking){stopTTS();return}audioIdx=idx;b.classList.add("playing");document.getElementById("audioLabel").textContent="第"+(idx+1)+"节解说";document.getElementById("audioBar").classList.add("show");if(window.speechSynthesis){window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.substring(0,200));u.lang="zh-CN";u.rate=0.9;u.onend=stopTTS;u.onerror=stopTTS;window.speechSynthesis.speak(u)}else{alert("请用Chrome/Edge浏览器打开以启用语音")}}
+function stopTTS(){if(window.speechSynthesis)window.speechSynthesis.cancel();document.getElementById("audioBar").classList.remove("show");document.querySelectorAll(".tts-btn.playing").forEach(function(b){b.classList.remove("playing")});audioIdx=-1}
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeQuiz();closeTutor();stopTTS()}});
+document.addEventListener("click",function(e){if(e.target.classList.contains("modal"))closeQuiz()});
+(function(){var s=document.getElementById("sec0");if(s)s.classList.add("active")})();
+</script>
+<script>window.__TEACHANY_CONFIG__={courseId:"sujiao-g5-u9-review",subject:"math",grade:"5",nodeId:"math-e-fractions-meaning"};</script>
+</body></html>

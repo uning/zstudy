@@ -1,0 +1,29 @@
+{
+  "playlist": [
+    {
+      "file": "u9-review-s01.mp3",
+      "text": "期末总复习——数与代数复习",
+      "section": 0
+    },
+    {
+      "file": "u9-review-s02.mp3",
+      "text": "期末总复习——图形与几何复习",
+      "section": 1
+    },
+    {
+      "file": "u9-review-s03.mp3",
+      "text": "期末总复习——统计与概率复习",
+      "section": 2
+    },
+    {
+      "file": "u9-review-s04.mp3",
+      "text": "期末总复习——综合应用题训练",
+      "section": 3
+    },
+    {
+      "file": "u9-review-s05.mp3",
+      "text": "期末总复习——考试技巧与易错点",
+      "section": 4
+    }
+  ]
+}

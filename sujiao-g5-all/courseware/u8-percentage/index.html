@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>百分数 · 苏教版五年级下册</title>
+<meta name="course-id" content="sujiao-g5-u8-percentage">
+<meta name="teachany-node" content="math-e-percentage">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-course" content="sujiao-g5-u789">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --coral:#FF6B6B;--mint:#4ECDC4;--sun:#FFE66D;--sky:#4FC3F7;
+  --bg:#FFF8F0;--card:white;--text:#37474F;--mu:#78909C;
+  --radius:16px;--rs:12px;
+  --font:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.hero{background:linear-gradient(135deg,#FF6B6B 0%,#FF8A80 40%,#4ECDC4 100%);color:white;padding:36px 20px 30px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.1)}
+.hero::before{content:"";position:absolute;bottom:-40px;left:-40px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.08)}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:4px;position:relative;z-index:1}
+.hero .subtitle{font-size:14px;opacity:0.9;margin-bottom:12px;position:relative;z-index:1}
+.hero .badge{display:inline-block;background:rgba(255,255,255,0.22);padding:4px 12px;border-radius:16px;font-size:11px;margin:3px;position:relative;z-index:1}
+
+.nav-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(255,255,255,0.95);border-bottom:2px solid #FFE0B2;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.back-link{color:var(--coral);text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:5px}
+.back-link:hover{color:#E55A5A}
+.unit-label{font-size:11px;color:var(--mu);background:#FFF3E0;padding:4px 10px;border-radius:12px}
+
+.container{max-width:780px;margin:0 auto;padding:12px 14px 60px}
+.section{background:var(--card);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.05);border:2px solid transparent;transition:all 0.3s}
+.section.active{border-color:var(--mint);box-shadow:0 4px 20px rgba(78,205,196,0.15)}
+.section-header{display:flex;align-items:center;padding:16px 18px;cursor:pointer;user-select:none;background:#FAFFFE;transition:background 0.2s;gap:12px}
+.section-header:hover{background:#E8FFF9}
+.section.active .section-header{background:#E0FCF7}
+.section-num{min-width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--coral),var(--mint));color:white;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;text-shadow:0 1px 2px rgba(0,0,0,0.15)}
+.section-title{flex:1;font-size:16px;font-weight:700;color:#2E7D32}
+.section-tag{font-size:10px;color:var(--mint);background:#E0FCF7;padding:2px 10px;border-radius:10px;white-space:nowrap;font-weight:600}
+.toggle-icon{transition:transform 0.3s;color:var(--mu);display:flex}
+.section.active .toggle-icon{transform:rotate(180deg);color:var(--mint)}
+.section-content{display:none;padding:0 18px 18px;animation:fadeIn 0.3s ease}
+.section.active .section-content{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+.content-card{background:#FFFBF5;border-radius:var(--rs);padding:18px;border:1px solid #FFECB3;white-space:pre-line}
+.content-text{font-size:15px;line-height:2;color:#4E342E}
+.content-text .k{display:inline-block;background:#FFF8E1;padding:2px 8px;border-radius:4px;font-weight:600;color:#E65100;margin:2px 0}
+
+.btns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.ai-btn,.tts-btn,.quiz-btn{padding:10px 16px;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.25s;display:flex;align-items:center;gap:6px}
+.ai-btn{background:#E8F5E9;color:#2E7D32}
+.ai-btn:hover{background:#C8E6C9;transform:translateY(-2px);box-shadow:0 2px 10px rgba(46,125,50,0.2)}
+.tts-btn{background:#E3F2FD;color:#1565C0}
+.tts-btn:hover{background:#BBDEFB;transform:translateY(-2px);box-shadow:0 2px 10px rgba(21,101,192,0.2)}
+.tts-btn.playing{background:#1565C0;color:white;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(21,101,192,0.4)}50%{box-shadow:0 0 0 12px rgba(21,101,192,0)}}
+.quiz-btn{background:#FFF3E0;color:#E65100}
+.quiz-btn:hover{background:#FFE0B2;transform:translateY(-2px);box-shadow:0 2px 10px rgba(230,81,0,0.2)}
+
+.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.modal.show{display:flex}
+.modal-box{background:white;border-radius:20px;padding:26px 22px;max-width:440px;width:92%;box-shadow:0 12px 40px rgba(0,0,0,0.18);position:relative;max-height:90vh;overflow-y:auto}
+.modal-box h3{font-size:18px;color:#E65100;margin-bottom:14px}
+.modal-box .q{font-size:15px;color:var(--text);margin-bottom:14px;line-height:1.8}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts label{display:block;padding:12px 16px;border:2px solid #FFE0B2;border-radius:var(--rs);cursor:pointer;transition:all 0.2s;font-size:14px;background:#FFFBF5}
+.opts label:hover{border-color:var(--coral);background:#FFF0F0}
+.opts label.ok{background:#C8E6C9;border-color:#4CAF50;color:#2E7D32;font-weight:700;pointer-events:none}
+.opts label.no{background:#FFCDD2;border-color:#F44336;color:#C62828;pointer-events:none}
+.fb{margin-top:16px;padding:12px 16px;border-radius:var(--rs);display:none;font-size:14px;animation:fadeIn 0.3s}
+.fb.show{display:block}
+.fb.good{background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7}
+.fb.bad{background:#FFEBEE;color:#C62828;border:1px solid #EF9A9A}
+.quiz-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--mu);transition:color 0.2s}
+.quiz-close:hover{color:var(--text)}
+
+.tutor-bubble{display:none;position:fixed;bottom:20px;right:20px;max-width:340px;background:white;border-radius:18px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.14);z-index:900;border:2px solid var(--mint)}
+.tutor-bubble.show{display:block;animation:slideUp 0.3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.tutor-bubble h4{font-size:15px;color:#2E7D32;margin-bottom:8px}
+.tutor-bubble p{font-size:13px;color:var(--mu);line-height:1.8;white-space:pre-line}
+.tutor-close{position:absolute;top:10px;right:14px;background:none;border:none;cursor:pointer;font-size:18px;color:var(--mu)}
+
+.audio-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:white;padding:10px 20px;box-shadow:0 -2px 12px rgba(0,0,0,0.1);z-index:950;align-items:center;gap:12px}
+.audio-bar.show{display:flex}
+.audio-bar .info{flex:1;font-size:13px;color:var(--mu)}
+.audio-bar .info strong{color:var(--coral)}
+.audio-bar button{background:none;border:none;font-size:20px;cursor:pointer;padding:4px 8px;border-radius:8px;transition:background 0.2s}
+.audio-bar button:hover{background:#f0f0f0}
+
+@media(max-width:600px){
+  .hero h1{font-size:21px}
+  .section-header{padding:14px;gap:8px}
+  .section-num{min-width:34px;height:34px;font-size:13px}
+  .section-title{font-size:14px}
+  .container{padding:8px 10px 50px}
+}
+</style>
+
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/ai-tutor.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-knowledge-graph.js" defer></script>
+
+</head>
+<body>
+
+<div class="nav-bar">
+  <a class="back-link" href="../index.html">← 返回目录</a>
+  <span class="unit-label">苏教版 · 五年级下册</span>
+</div>
+
+<div class="hero">
+  <h1>百分数</h1>
+  <p class="subtitle">百分数的意义、读写与生活中的应用</p>
+  <span class="badge">📐 数学</span><span class="badge">五年级</span><span class="badge">苏教版</span>
+</div>
+
+<div class="container">
+
+<section class="section" id="sec0">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">01</span>
+    <span class="section-title">百分数的意义</span>
+    <span class="section-tag">知识</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">什么是百分数？<br><br>表示一个数是另一个数的百分之几的数，叫做百分数。<br>百分数也叫百分率或百分比，用符号 % 表示。<br><br>🌰 例子：<br>• 及格率98% → 100人中有98人及格<br>• 含棉量100% → 全部是棉<br>• 浓度75% → 100份中有75份的溶质<br><br>📌 关键：百分数不写成分数形式，而是用%表示。<br>比如 37/100 写成 37%，读作「百分之三十七」。<br><br>百分数表示两个数的比率关系，不表示具体数量！<br>所以不能说「一根绳子长50%米」❌</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('百分数的意义',0)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn0" onclick="playTTS(0,'u8-percentage')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(0)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec1">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">02</span>
+    <span class="section-title">百分数与分数、小数的互化</span>
+    <span class="section-tag">知识</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">三种形式之间的转化是小考必考！<br><br>🔹 小数→百分数：小数点向右移两位，添%<br>   0.35 = 35%   1.2 = 120%   0.075 = 7.5%<br><br>🔹 百分数→小数：去掉%，小数点向左移两位<br>   45% = 0.45   8% = 0.08   230% = 2.3<br><br>🔹 分数→百分数：先化成小数（分子÷分母），再化成百分数<br>   3/4 = 0.75 = 75%   1/8 = 0.125 = 12.5%<br><br>🔹 百分数→分数：写成 分母是100 的分数再化简<br>   25% = 25/100 = 1/4   60% = 60/100 = 3/5<br><br>🎯 小口诀：小数百分互化，移动小数点就对了！</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('百分数与分数、小数的互化',1)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn1" onclick="playTTS(1,'u8-percentage')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(1)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec2">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">03</span>
+    <span class="section-title">求百分率</span>
+    <span class="section-tag">知识</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">百分率（百分比）= 比较量 ÷ 标准量 × 100%<br><br>常见百分率：<br>• 及格率 = 及格人数÷总人数×100%<br>• 出勤率 = 出勤人数÷总人数×100%<br>• 成活率 = 成活棵数÷总棵数×100%<br>• 命中率 = 命中次数÷总次数×100%<br>• 出油率 = 油的质量÷原料质量×100%<br><br>🌰 例题：六(1)班50人，数学测验48人及格，及格率是多少？<br>48÷50×100% = 0.96×100% = 96%<br><br>⚠️ 注意：百分率不能超过100%吗？<br>一般情况不超过100%，但增长率、完成率可以超过100%！</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('求百分率',2)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn2" onclick="playTTS(2,'u8-percentage')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(2)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec3">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">04</span>
+    <span class="section-title">求一个数的百分之几</span>
+    <span class="section-tag">知识</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">求一个数的百分之几是多少？用乘法！<br><br>公式：标准量 × 百分率 = 比较量<br><br>🌰 例题：<br>① 一本书200页，看了40%，看了多少页？<br>   200 × 40% = 200 × 0.4 = 80（页）<br><br>② 商品打八五折，原价600元，现价多少？<br>   600 × 85% = 600 × 0.85 = 510（元）<br><br>③ 一桶油倒出30%后还剩14千克，原来多少千克？<br>   14 ÷ (1-30%) = 14 ÷ 0.7 = 20（千克）<br><br>🔑 已知部分和百分率求整体 → 用除法！<br>   比较量 ÷ 百分率 = 标准量</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('求一个数的百分之几',3)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn3" onclick="playTTS(3,'u8-percentage')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(3)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec4">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">05</span>
+    <span class="section-title">生活中的百分数</span>
+    <span class="section-tag">生活</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">百分数在我们身边无处不在！<br><br>🛒 折扣：八折=80%  九五折=95%  对折=50%<br>    原价×折扣=现价<br><br>💰 税率：营业税=营业额×税率<br>    个人所得税收起征点为5000元/月<br><br>💵 利率：利息=本金×利率×时间<br>    银行存款年利率约1.5%-3%<br><br>📊 增长率：增长率=(现在-原来)÷原来×100%<br>    本月销量比上月增长15%<br><br>🌱 浓度：浓度=溶质质量÷溶液质量×100%<br>    一杯糖水含糖20克，水180克，浓度=20/(20+180)=10%</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('生活中的百分数',4)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn4" onclick="playTTS(4,'u8-percentage')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(4)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Quiz Modal -->
+<div class="modal" id="quizModal">
+  <div class="modal-box">
+    <button class="quiz-close" onclick="closeQuiz()">&times;</button>
+    <h3 id="quizTitle"></h3>
+    <div class="q" id="quizQ"></div>
+    <div class="opts" id="quizOpts"></div>
+    <div class="fb" id="quizFb"></div>
+  </div>
+</div>
+
+<!-- Tutor Bubble -->
+<div class="tutor-bubble" id="tutor">
+  <button class="tutor-close" onclick="closeTutor()">&times;</button>
+  <h4 id="tutorHead"></h4>
+  <p id="tutorBody"></p>
+</div>
+
+<!-- Audio bar -->
+<div class="audio-bar" id="audioBar">
+  <div class="info"><strong>🔊 正在播放：</strong><span id="audioLabel"></span></div>
+  <button onclick="stopTTS()" title="停止">⏹</button>
+</div>
+
+<audio id="ttsAudio" style="display:none" preload="none"></audio>
+
+<script>
+const QUIZZES = [["0.45改写成百分数是？", ["A. 4.5%", "B. 45%", "C. 450%", "D. 0.45%"], 1], ["六(1)班有50人，某天2人请假，出勤率是？", ["A. 98%", "B. 4%", "C. 96%", "D. 48%"], 2], ["一件衣服打七折后售价140元，原价是？", ["A. 98元", "B. 200元", "C. 180元", "D. 210元"], 1], ["下列哪个不能用百分数表示？", ["A. 出勤率", "B. 一根绳子长50%米", "C. 含棉量", "D. 及格率"], 1]];
+const TTS_DATA = {"u8-percentage_s0": "转化的策略是一种重要的数学思想方法。遇到复杂问题时，想办法把它变成简单的问题来解决，就像曹冲称象一样！", "u8-percentage_s1": "面积问题中的转化有补形法、割补法和旋转法，关键是找到转化的路径，用已知公式计算。", "u8-percentage_s2": "巧算中的转化包括凑整法、拆数法、等差数列求和和分数巧算，让计算变得简单有趣。", "u8-percentage_s3": "应用题三步转化法：先画图，再找关系，最后列式。用转化的眼光看问题，复杂应用题也变简单。", "u8-percentage_s4": "转化策略无处不在！体育、购物、装修、行程问题中都能用到转化思想，学会用数学的眼光看生活。", "u8-percentage_s5": "百分数表示一个数是另一个数的百分之几，用百分号表示。比如及格率百分之九十八，表示每100人中有98人及格。", "u8-percentage_s6": "小数化成百分数小数点向右移两位添百分号，百分数化小数去掉百分号小数点向左移两位，记住了吗？", "u8-percentage_s7": "求百分率的公式是：比较量除以标准量再乘以百分之一百。常见的有及格率、出勤率、成活率等。", "u8-percentage_s8": "求一个数的百分之几用乘法，已知部分和百分率求整体用除法，这是百分数应用题的两种基本类型。", "u8-percentage_s9": "生活中的百分数：折扣、税率、利率、增长率、浓度，处处都有百分数的身影！", "u8-percentage_s10": "圆是平面内到定点距离等于定长的所有点组成的图形。圆心决定位置，半径决定大小。", "u8-percentage_s11": "圆的周长等于拍乘以直径。拍约等于三点一四，是一个无限不循环小数。", "u8-percentage_s12": "圆的面积推导：把圆切成很多等份，拼成近似的长方形，得出面积公式S等于拍r的平方。", "u8-percentage_s13": "圆环面积等于大圆面积减小圆面积，也就是拍乘以括号R平方减r平方。扇形是圆的一部分。", "u8-percentage_s14": "在生活中，自行车轮子、操场跑道、树干直径都用到了圆的知识。你知道吗？周长相等的图形中圆的面积最大！"};
+const UNIT_ID = "u8-percentage";
+let quizIdx = -1, audioIdx = -1;
+
+function toggle(hdr){ hdr.parentElement.classList.toggle("active"); }
+
+function startQuiz(idx){
+  if(idx<0||idx>=QUIZZES.length) return;
+  quizIdx=idx;
+  const d=QUIZZES[idx];
+  document.getElementById("quizTitle").textContent="📝 练习题 "+(idx+1)+"/"+QUIZZES.length;
+  document.getElementById("quizQ").textContent=d[0];
+  const o=document.getElementById("quizOpts");o.innerHTML="";
+  const f=document.getElementById("quizFb");f.classList.remove("show","good","bad");
+  d[1].forEach(function(opt,oi){
+    const l=document.createElement("label");
+    l.textContent=opt;
+    l.onclick=function(){
+      Array.from(o.querySelectorAll("label")).forEach(function(x){x.style.pointerEvents="none"});
+      if(oi===d[2]){ l.classList.add("ok");f.classList.add("good");f.textContent="✅ 太棒了，回答正确！"; }
+      else{ l.classList.add("no");f.classList.add("bad");f.textContent="❌ 再想想～ 正确答案是: "+d[1][d[2]]; }
+      f.classList.add("show");
+    };
+    o.appendChild(l);
+  });
+  document.getElementById("quizModal").classList.add("show");
+}
+
+function closeQuiz(){ document.getElementById("quizModal").classList.remove("show");quizIdx=-1; }
+
+function showTutor(topic,idx){
+  const tips=["转化是把复杂问题变简单的魔法！试着画图、列表或列算式来转化。",
+    "遇到不规则图形时，想想能不能补一块或切一刀，让它变成学过的基本图形。",
+    "计算也可以转化！凑整、拆数、找规律都是好办法。",
+    "应用题先画图再列式，把文字转化成数学语言。",
+    "数学就在生活中！用转化的眼光看问题，你会越来越聪明。",
+    "百分数是分母为100的分数，理解了这个就掌握了核心！",
+    "小数和百分数互化就看小数点——向右移两位加百分号！",
+    "求百分率先找「标准量」和「比较量」，然后用除法。",
+    "求一个数的百分之几→乘法。已知部分求整体→除法。",
+    "打折、利息、税率都是百分数的应用，生活处处有数学！",
+    "圆的半径决定大小，圆心决定位置。同圆半径都相等哦！",
+    "圆周率π约等于3.14，是圆的周长除以直径的商。",
+    "圆的面积公式S=πr²，把圆切成很多小块拼成长方形推出来的！",
+    "圆环面积=大圆面积-小圆面积，公式是π(R²-r²)。",
+    "周长相等的图形中圆的面积最大！所以水滴是球形的~"];
+  document.getElementById("tutorHead").textContent="🤖 "+topic;
+  document.getElementById("tutorBody").textContent=tips[idx]||"这个知识点很重要，建议你：\n\n1. 先仔细阅读上面的内容\n2. 做一下练习题检验理解\n3. 不懂的地方可以问老师或同学\n\n📌 加油，你可以掌握的！";
+  document.getElementById("tutor").classList.add("show");
+}
+
+function closeTutor(){ document.getElementById("tutor").classList.remove("show"); }
+
+function playTTS(idx,uid){
+  const key=uid+"_s"+idx;
+  const text=TTS_DATA[key];
+  if(!text){ alert("语音数据暂未就绪"); return; }
+  const btn=document.getElementById("ttsbtn"+idx);
+  if(audioIdx===idx && !document.getElementById("ttsAudio").paused){
+    stopTTS();return;
+  }
+  audioIdx=idx;
+  btn.classList.add("playing");
+  document.getElementById("audioLabel").textContent="第"+(idx+1)+"节语音解说";
+  document.getElementById("audioBar").classList.add("show");
+  // Use Web Speech API as fallback since edge-tts may not be available
+  if(window.speechSynthesis){
+    window.speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang="zh-CN";u.rate=0.9;
+    u.onend=function(){ stopTTS(); };
+    u.onerror=function(){ stopTTS(); };
+    window.speechSynthesis.speak(u);
+  }else{
+    alert("浏览器不支持语音合成，请使用Chrome或Edge浏览器");
+  }
+}
+
+function stopTTS(){
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+  document.getElementById("audioBar").classList.remove("show");
+  document.querySelectorAll(".tts-btn.playing").forEach(function(b){ b.classList.remove("playing"); });
+  audioIdx=-1;
+}
+
+document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ closeQuiz();closeTutor();stopTTS();} });
+document.addEventListener("click",function(e){ if(e.target.classList.contains("modal")) closeQuiz(); });
+
+// Open first section
+(function(){ var s=document.getElementById("sec0");if(s)s.classList.add("active"); })();
+</script>
+
+<script>
+window.__TEACHANY_CONFIG__={courseId:"sujiao-g5-u8-percentage",subject:"math",grade:"5",nodeId:"math-e-percentage"};
+</script>
+
+</body></html>

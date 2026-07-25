@@ -1,0 +1,21 @@
+{
+  "course_id": "sujiao-g5-u9-review",
+  "version": "1.0.0",
+  "title": "期末总复习",
+  "subtitle": "五年级下册全册知识梳理与综合练习",
+  "subject": "math",
+  "grade": "5",
+  "stage": "elementary",
+  "node_id": "math-e-fractions-meaning",
+  "teachany_version": "7.18.0",
+  "sections": 5,
+  "curriculum": "苏教版五年级下册",
+  "unit_number": 9,
+  "learning_type": "new-concept",
+  "features": [
+    "ai-tutor",
+    "tts-speech",
+    "practice-quiz",
+    "knowledge-graph"
+  ]
+}

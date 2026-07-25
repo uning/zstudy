@@ -1,0 +1,21 @@
+{
+  "course_id": "sujiao-g5-u2-line-graph",
+  "version": "1.0.0",
+  "title": "折线统计图",
+  "subtitle": "认识折线统计图并分析数据趋势",
+  "subject": "math",
+  "grade": "5",
+  "stage": "elementary",
+  "node_id": "math-e-line-graph",
+  "teachany_version": "7.18.0",
+  "sections": 5,
+  "curriculum": "苏教版五年级下册",
+  "unit_number": 2,
+  "learning_type": "new-concept",
+  "features": [
+    "ai-tutor",
+    "tts-speech",
+    "practice-quiz",
+    "knowledge-graph"
+  ]
+}

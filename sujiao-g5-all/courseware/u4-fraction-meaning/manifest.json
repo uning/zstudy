@@ -1,0 +1,21 @@
+{
+  "course_id": "sujiao-g5-u4-fraction-meaning",
+  "version": "1.0.0",
+  "title": "分数的意义和性质",
+  "subtitle": "分数的意义、真分数假分数、约分通分",
+  "subject": "math",
+  "grade": "5",
+  "stage": "elementary",
+  "node_id": "math-e-fractions-meaning",
+  "teachany_version": "7.18.0",
+  "sections": 5,
+  "curriculum": "苏教版五年级下册",
+  "unit_number": 4,
+  "learning_type": "new-concept",
+  "features": [
+    "ai-tutor",
+    "tts-speech",
+    "practice-quiz",
+    "knowledge-graph"
+  ]
+}

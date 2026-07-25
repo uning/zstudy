@@ -1,0 +1,29 @@
+{
+  "playlist": [
+    {
+      "file": "u3-factor-multiple-s01.mp3",
+      "text": "因数与倍数——因数和倍数",
+      "section": 0
+    },
+    {
+      "file": "u3-factor-multiple-s02.mp3",
+      "text": "因数与倍数——2、5、3的倍数的特征",
+      "section": 1
+    },
+    {
+      "file": "u3-factor-multiple-s03.mp3",
+      "text": "因数与倍数——质数与合数",
+      "section": 2
+    },
+    {
+      "file": "u3-factor-multiple-s04.mp3",
+      "text": "因数与倍数——公因数和最大公因数",
+      "section": 3
+    },
+    {
+      "file": "u3-factor-multiple-s05.mp3",
+      "text": "因数与倍数——公倍数和最小公倍数",
+      "section": 4
+    }
+  ]
+}

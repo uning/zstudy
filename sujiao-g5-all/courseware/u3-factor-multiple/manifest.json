@@ -1,0 +1,21 @@
+{
+  "course_id": "sujiao-g5-u3-factor-multiple",
+  "version": "1.0.0",
+  "title": "因数与倍数",
+  "subtitle": "因数、倍数、质数与合数的认识",
+  "subject": "math",
+  "grade": "5",
+  "stage": "elementary",
+  "node_id": "math-e-fractions-meaning",
+  "teachany_version": "7.18.0",
+  "sections": 5,
+  "curriculum": "苏教版五年级下册",
+  "unit_number": 3,
+  "learning_type": "new-concept",
+  "features": [
+    "ai-tutor",
+    "tts-speech",
+    "practice-quiz",
+    "knowledge-graph"
+  ]
+}

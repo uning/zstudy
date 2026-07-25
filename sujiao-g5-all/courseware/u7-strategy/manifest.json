@@ -1,0 +1,20 @@
+{
+  "course_id": "sujiao-g5-u7-strategy",
+  "version": "1.0.0",
+  "title": "解决问题的策略",
+  "subtitle": "用转化的策略巧解数学问题",
+  "subject": "math",
+  "grade": "5",
+  "stage": "elementary",
+  "node_id": "math-e-fraction-operations",
+  "teachany_version": "7.18.0",
+  "sections": 5,
+  "curriculum": "苏教版五年级下册",
+  "learning_type": "new-concept",
+  "features": [
+    "ai-tutor",
+    "tts-speech",
+    "practice-quiz",
+    "knowledge-graph"
+  ]
+}

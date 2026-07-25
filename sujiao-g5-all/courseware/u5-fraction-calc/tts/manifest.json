@@ -1,0 +1,29 @@
+{
+  "playlist": [
+    {
+      "file": "u5-fraction-calc-s01.mp3",
+      "text": "分数加法和减法——同分母分数加减法",
+      "section": 0
+    },
+    {
+      "file": "u5-fraction-calc-s02.mp3",
+      "text": "分数加法和减法——异分母分数加减法",
+      "section": 1
+    },
+    {
+      "file": "u5-fraction-calc-s03.mp3",
+      "text": "分数加法和减法——分数加减混合运算",
+      "section": 2
+    },
+    {
+      "file": "u5-fraction-calc-s04.mp3",
+      "text": "分数加法和减法——分数加减法的应用",
+      "section": 3
+    },
+    {
+      "file": "u5-fraction-calc-s05.mp3",
+      "text": "分数加法和减法——分数与小数的互化",
+      "section": 4
+    }
+  ]
+}

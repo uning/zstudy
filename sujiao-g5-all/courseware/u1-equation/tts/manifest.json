@@ -1,0 +1,29 @@
+{
+  "playlist": [
+    {
+      "file": "u1-equation-s01.mp3",
+      "text": "简易方程——用字母表示数",
+      "section": 0
+    },
+    {
+      "file": "u1-equation-s02.mp3",
+      "text": "简易方程——等式的性质",
+      "section": 1
+    },
+    {
+      "file": "u1-equation-s03.mp3",
+      "text": "简易方程——解方程（一）",
+      "section": 2
+    },
+    {
+      "file": "u1-equation-s04.mp3",
+      "text": "简易方程——解方程（二）",
+      "section": 3
+    },
+    {
+      "file": "u1-equation-s05.mp3",
+      "text": "简易方程——列方程解决实际问题",
+      "section": 4
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "playlist": [
+    {
+      "file": "u2-line-graph-s01.mp3",
+      "text": "折线统计图——认识折线统计图",
+      "section": 0
+    },
+    {
+      "file": "u2-line-graph-s02.mp3",
+      "text": "折线统计图——绘制折线统计图",
+      "section": 1
+    },
+    {
+      "file": "u2-line-graph-s03.mp3",
+      "text": "折线统计图——分析折线统计图",
+      "section": 2
+    },
+    {
+      "file": "u2-line-graph-s04.mp3",
+      "text": "折线统计图——复式折线统计图",
+      "section": 3
+    },
+    {
+      "file": "u2-line-graph-s05.mp3",
+      "text": "折线统计图——生活中的折线统计图",
+      "section": 4
+    }
+  ]
+}
