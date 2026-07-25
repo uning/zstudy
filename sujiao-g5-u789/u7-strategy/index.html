@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>解决问题的策略 · 苏教版五年级下册</title>
+<meta name="course-id" content="sujiao-g5-u7-strategy">
+<meta name="teachany-node" content="math-e-fraction-operations">
+<meta name="teachany-subject" content="math">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-course" content="sujiao-g5-u789">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --coral:#FF6B6B;--mint:#4ECDC4;--sun:#FFE66D;--sky:#4FC3F7;
+  --bg:#FFF8F0;--card:white;--text:#37474F;--mu:#78909C;
+  --radius:16px;--rs:12px;
+  --font:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.hero{background:linear-gradient(135deg,#FF6B6B 0%,#FF8A80 40%,#4ECDC4 100%);color:white;padding:36px 20px 30px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.1)}
+.hero::before{content:"";position:absolute;bottom:-40px;left:-40px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.08)}
+.hero h1{font-size:26px;font-weight:800;margin-bottom:4px;position:relative;z-index:1}
+.hero .subtitle{font-size:14px;opacity:0.9;margin-bottom:12px;position:relative;z-index:1}
+.hero .badge{display:inline-block;background:rgba(255,255,255,0.22);padding:4px 12px;border-radius:16px;font-size:11px;margin:3px;position:relative;z-index:1}
+
+.nav-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(255,255,255,0.95);border-bottom:2px solid #FFE0B2;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.back-link{color:var(--coral);text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:5px}
+.back-link:hover{color:#E55A5A}
+.unit-label{font-size:11px;color:var(--mu);background:#FFF3E0;padding:4px 10px;border-radius:12px}
+
+.container{max-width:780px;margin:0 auto;padding:12px 14px 60px}
+.section{background:var(--card);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.05);border:2px solid transparent;transition:all 0.3s}
+.section.active{border-color:var(--mint);box-shadow:0 4px 20px rgba(78,205,196,0.15)}
+.section-header{display:flex;align-items:center;padding:16px 18px;cursor:pointer;user-select:none;background:#FAFFFE;transition:background 0.2s;gap:12px}
+.section-header:hover{background:#E8FFF9}
+.section.active .section-header{background:#E0FCF7}
+.section-num{min-width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--coral),var(--mint));color:white;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;text-shadow:0 1px 2px rgba(0,0,0,0.15)}
+.section-title{flex:1;font-size:16px;font-weight:700;color:#2E7D32}
+.section-tag{font-size:10px;color:var(--mint);background:#E0FCF7;padding:2px 10px;border-radius:10px;white-space:nowrap;font-weight:600}
+.toggle-icon{transition:transform 0.3s;color:var(--mu);display:flex}
+.section.active .toggle-icon{transform:rotate(180deg);color:var(--mint)}
+.section-content{display:none;padding:0 18px 18px;animation:fadeIn 0.3s ease}
+.section.active .section-content{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+.content-card{background:#FFFBF5;border-radius:var(--rs);padding:18px;border:1px solid #FFECB3;white-space:pre-line}
+.content-text{font-size:15px;line-height:2;color:#4E342E}
+.content-text .k{display:inline-block;background:#FFF8E1;padding:2px 8px;border-radius:4px;font-weight:600;color:#E65100;margin:2px 0}
+
+.btns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.ai-btn,.tts-btn,.quiz-btn{padding:10px 16px;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.25s;display:flex;align-items:center;gap:6px}
+.ai-btn{background:#E8F5E9;color:#2E7D32}
+.ai-btn:hover{background:#C8E6C9;transform:translateY(-2px);box-shadow:0 2px 10px rgba(46,125,50,0.2)}
+.tts-btn{background:#E3F2FD;color:#1565C0}
+.tts-btn:hover{background:#BBDEFB;transform:translateY(-2px);box-shadow:0 2px 10px rgba(21,101,192,0.2)}
+.tts-btn.playing{background:#1565C0;color:white;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(21,101,192,0.4)}50%{box-shadow:0 0 0 12px rgba(21,101,192,0)}}
+.quiz-btn{background:#FFF3E0;color:#E65100}
+.quiz-btn:hover{background:#FFE0B2;transform:translateY(-2px);box-shadow:0 2px 10px rgba(230,81,0,0.2)}
+
+.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.modal.show{display:flex}
+.modal-box{background:white;border-radius:20px;padding:26px 22px;max-width:440px;width:92%;box-shadow:0 12px 40px rgba(0,0,0,0.18);position:relative;max-height:90vh;overflow-y:auto}
+.modal-box h3{font-size:18px;color:#E65100;margin-bottom:14px}
+.modal-box .q{font-size:15px;color:var(--text);margin-bottom:14px;line-height:1.8}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts label{display:block;padding:12px 16px;border:2px solid #FFE0B2;border-radius:var(--rs);cursor:pointer;transition:all 0.2s;font-size:14px;background:#FFFBF5}
+.opts label:hover{border-color:var(--coral);background:#FFF0F0}
+.opts label.ok{background:#C8E6C9;border-color:#4CAF50;color:#2E7D32;font-weight:700;pointer-events:none}
+.opts label.no{background:#FFCDD2;border-color:#F44336;color:#C62828;pointer-events:none}
+.fb{margin-top:16px;padding:12px 16px;border-radius:var(--rs);display:none;font-size:14px;animation:fadeIn 0.3s}
+.fb.show{display:block}
+.fb.good{background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7}
+.fb.bad{background:#FFEBEE;color:#C62828;border:1px solid #EF9A9A}
+.quiz-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--mu);transition:color 0.2s}
+.quiz-close:hover{color:var(--text)}
+
+.tutor-bubble{display:none;position:fixed;bottom:20px;right:20px;max-width:340px;background:white;border-radius:18px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.14);z-index:900;border:2px solid var(--mint)}
+.tutor-bubble.show{display:block;animation:slideUp 0.3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.tutor-bubble h4{font-size:15px;color:#2E7D32;margin-bottom:8px}
+.tutor-bubble p{font-size:13px;color:var(--mu);line-height:1.8;white-space:pre-line}
+.tutor-close{position:absolute;top:10px;right:14px;background:none;border:none;cursor:pointer;font-size:18px;color:var(--mu)}
+
+.audio-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:white;padding:10px 20px;box-shadow:0 -2px 12px rgba(0,0,0,0.1);z-index:950;align-items:center;gap:12px}
+.audio-bar.show{display:flex}
+.audio-bar .info{flex:1;font-size:13px;color:var(--mu)}
+.audio-bar .info strong{color:var(--coral)}
+.audio-bar button{background:none;border:none;font-size:20px;cursor:pointer;padding:4px 8px;border-radius:8px;transition:background 0.2s}
+.audio-bar button:hover{background:#f0f0f0}
+
+@media(max-width:600px){
+  .hero h1{font-size:21px}
+  .section-header{padding:14px;gap:8px}
+  .section-num{min-width:34px;height:34px;font-size:13px}
+  .section-title{font-size:14px}
+  .container{padding:8px 10px 50px}
+}
+</style>
+
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/ai-tutor.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-knowledge-graph.js" defer></script>
+
+</head>
+<body>
+
+<div class="nav-bar">
+  <a class="back-link" href="../index.html">← 返回目录</a>
+  <span class="unit-label">苏教版 · 五年级下册</span>
+</div>
+
+<div class="hero">
+  <h1>解决问题的策略</h1>
+  <p class="subtitle">用转化的策略巧解数学问题</p>
+  <span class="badge">📐 数学</span><span class="badge">五年级</span><span class="badge">苏教版</span>
+</div>
+
+<div class="container">
+
+<section class="section" id="sec0">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">01</span>
+    <span class="section-title">转化的策略是什么？</span>
+    <span class="section-tag">策略</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">转化是一种重要的数学思想方法。遇到复杂的、陌生的数学问题时，想办法把它变成简单的、熟悉的问题来解决。<br><br>就像曹冲称象——把称大象的重量转化成称石头的重量！<br><br>常见的转化方法：<br>① 化不规则为规则（如不规则图形→规则图形）<br>② 化未知为已知（如新问题→已学过的方法）<br>③ 化繁为简（如复杂计算→简单计算）<br>④ 化数为形（如数量关系→线段图）</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('转化的策略是什么？',0)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn0" onclick="playTTS(0,'u7-strategy')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(0)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec1">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">02</span>
+    <span class="section-title">面积问题中的转化</span>
+    <span class="section-tag">公式</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">不规则图形的面积怎么求？用转化！<br><br>🔹 补形法：在图形上补一块，变成规则图形<br>   例：L形面积 = 大长方形面积 - 小长方形面积<br><br>🔹 割补法：把图形切割后重新拼成规则图形<br>   例：平行四边形→割补→长方形<br><br>🔹 旋转法：旋转图形的一部分，组成规则图形<br>   例：梯形两腰中点连线，旋转后拼成平行四边形<br><br>📌 关键：找到转化的路径，用已知公式计算！</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('面积问题中的转化',1)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn1" onclick="playTTS(1,'u7-strategy')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(1)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec2">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">03</span>
+    <span class="section-title">巧算中的转化</span>
+    <span class="section-tag">知识</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">计算题也可以用转化策略！<br><br>🔹 凑整法：99+256 = 100+256-1 = 355<br>   把接近整十整百的数先凑整再修正<br><br>🔹 拆数法：25×44 = 25×4×11 = 100×11 = 1100<br>   把其中一个数拆成方便计算的因数<br><br>🔹 等差数列求和：1+2+3+...+100 = (1+100)×100÷2 = 5050<br>   首尾配对，化成乘法<br><br>🔹 分数巧算：1/2+1/4+1/8+1/16 = 1-1/16 = 15/16<br>   画图转化，一目了然！</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('巧算中的转化',2)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn2" onclick="playTTS(2,'u7-strategy')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(2)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec3">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">04</span>
+    <span class="section-title">应用题的转化策略</span>
+    <span class="section-tag">实践</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">应用题三步转化法：<br><br>① 画图转化：把文字变成线段图或示意图<br>② 关系转化：找出数量之间的等量关系<br>③ 列式转化：把关系写成算式<br><br>🌰 例题：买了3支钢笔和2本笔记本共花28元，钢笔比笔记本贵4元。钢笔和笔记本各多少元？<br><br>转化思路：把2本笔记本换成2支钢笔，要多花2×4=8元<br>28+8=36 → 5支钢笔 → 钢笔36÷5=7.2元<br>笔记本=7.2-4=3.2元<br><br>✅ 检验：3×7.2+2×3.2=21.6+6.4=28 ✓</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('应用题的转化策略',3)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn3" onclick="playTTS(3,'u7-strategy')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(3)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec4">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-num">05</span>
+    <span class="section-title">生活应用与思维拓展</span>
+    <span class="section-tag">生活</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="section-content">
+    <div class="content-card">
+      <div class="content-text">转化策略无处不在！<br><br>🏀 体育：投球命中率 → 转化成中了几球和总共几球<br>💰 购物：满100减20 → 转化成打折计算<br>🏠 装修：铺地砖需要多少块 → 转化成面积÷单块面积<br>⏰ 行程：相遇问题 → 转化成速度和×时间<br><br>思维拓展题：<br>正方形边长为10cm，四个角各剪去边长为2cm的小正方形，求剩余面积。<br><br>转化：大正方形面积 10×10=100cm²<br>      四个小正方形 4×2×2=16cm²<br>      剩余：100-16=84cm²</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor('生活应用与思维拓展',4)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="ttsbtn4" onclick="playTTS(4,'u7-strategy')">🔊 听语音解说</button>
+        <button class="quiz-btn" onclick="startQuiz(4)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Quiz Modal -->
+<div class="modal" id="quizModal">
+  <div class="modal-box">
+    <button class="quiz-close" onclick="closeQuiz()">&times;</button>
+    <h3 id="quizTitle"></h3>
+    <div class="q" id="quizQ"></div>
+    <div class="opts" id="quizOpts"></div>
+    <div class="fb" id="quizFb"></div>
+  </div>
+</div>
+
+<!-- Tutor Bubble -->
+<div class="tutor-bubble" id="tutor">
+  <button class="tutor-close" onclick="closeTutor()">&times;</button>
+  <h4 id="tutorHead"></h4>
+  <p id="tutorBody"></p>
+</div>
+
+<!-- Audio bar -->
+<div class="audio-bar" id="audioBar">
+  <div class="info"><strong>🔊 正在播放：</strong><span id="audioLabel"></span></div>
+  <button onclick="stopTTS()" title="停止">⏹</button>
+</div>
+
+<audio id="ttsAudio" style="display:none" preload="none"></audio>
+
+<script>
+const QUIZZES = [["用转化策略计算：99+198+297", ["A. 600", "B. 594", "C. 588", "D. 603"], 1], ["求阴影面积：正方形边长8cm，内有一个最大的圆，阴影是正方形减圆", ["A. 13.76cm²", "B. 50.24cm²", "C. 25.12cm²", "D. 64cm²"], 0], ["一根绳子对折3次后每段长5cm，绳子原长？", ["A. 15cm", "B. 20cm", "C. 30cm", "D. 40cm"], 3], ["转化策略的核心思想是什么？", ["A. 死记硬背", "B. 把复杂问题变成简单问题", "C. 只做简单的题", "D. 猜答案"], 1]];
+const TTS_DATA = {"u7-strategy_s0": "转化的策略是一种重要的数学思想方法。遇到复杂问题时，想办法把它变成简单的问题来解决，就像曹冲称象一样！", "u7-strategy_s1": "面积问题中的转化有补形法、割补法和旋转法，关键是找到转化的路径，用已知公式计算。", "u7-strategy_s2": "巧算中的转化包括凑整法、拆数法、等差数列求和和分数巧算，让计算变得简单有趣。", "u7-strategy_s3": "应用题三步转化法：先画图，再找关系，最后列式。用转化的眼光看问题，复杂应用题也变简单。", "u7-strategy_s4": "转化策略无处不在！体育、购物、装修、行程问题中都能用到转化思想，学会用数学的眼光看生活。", "u7-strategy_s5": "百分数表示一个数是另一个数的百分之几，用百分号表示。比如及格率百分之九十八，表示每100人中有98人及格。", "u7-strategy_s6": "小数化成百分数小数点向右移两位添百分号，百分数化小数去掉百分号小数点向左移两位，记住了吗？", "u7-strategy_s7": "求百分率的公式是：比较量除以标准量再乘以百分之一百。常见的有及格率、出勤率、成活率等。", "u7-strategy_s8": "求一个数的百分之几用乘法，已知部分和百分率求整体用除法，这是百分数应用题的两种基本类型。", "u7-strategy_s9": "生活中的百分数：折扣、税率、利率、增长率、浓度，处处都有百分数的身影！", "u7-strategy_s10": "圆是平面内到定点距离等于定长的所有点组成的图形。圆心决定位置，半径决定大小。", "u7-strategy_s11": "圆的周长等于拍乘以直径。拍约等于三点一四，是一个无限不循环小数。", "u7-strategy_s12": "圆的面积推导：把圆切成很多等份，拼成近似的长方形，得出面积公式S等于拍r的平方。", "u7-strategy_s13": "圆环面积等于大圆面积减小圆面积，也就是拍乘以括号R平方减r平方。扇形是圆的一部分。", "u7-strategy_s14": "在生活中，自行车轮子、操场跑道、树干直径都用到了圆的知识。你知道吗？周长相等的图形中圆的面积最大！"};
+const UNIT_ID = "u7-strategy";
+let quizIdx = -1, audioIdx = -1;
+
+function toggle(hdr){ hdr.parentElement.classList.toggle("active"); }
+
+function startQuiz(idx){
+  if(idx<0||idx>=QUIZZES.length) return;
+  quizIdx=idx;
+  const d=QUIZZES[idx];
+  document.getElementById("quizTitle").textContent="📝 练习题 "+(idx+1)+"/"+QUIZZES.length;
+  document.getElementById("quizQ").textContent=d[0];
+  const o=document.getElementById("quizOpts");o.innerHTML="";
+  const f=document.getElementById("quizFb");f.classList.remove("show","good","bad");
+  d[1].forEach(function(opt,oi){
+    const l=document.createElement("label");
+    l.textContent=opt;
+    l.onclick=function(){
+      Array.from(o.querySelectorAll("label")).forEach(function(x){x.style.pointerEvents="none"});
+      if(oi===d[2]){ l.classList.add("ok");f.classList.add("good");f.textContent="✅ 太棒了，回答正确！"; }
+      else{ l.classList.add("no");f.classList.add("bad");f.textContent="❌ 再想想～ 正确答案是: "+d[1][d[2]]; }
+      f.classList.add("show");
+    };
+    o.appendChild(l);
+  });
+  document.getElementById("quizModal").classList.add("show");
+}
+
+function closeQuiz(){ document.getElementById("quizModal").classList.remove("show");quizIdx=-1; }
+
+function showTutor(topic,idx){
+  const tips=["转化是把复杂问题变简单的魔法！试着画图、列表或列算式来转化。",
+    "遇到不规则图形时，想想能不能补一块或切一刀，让它变成学过的基本图形。",
+    "计算也可以转化！凑整、拆数、找规律都是好办法。",
+    "应用题先画图再列式，把文字转化成数学语言。",
+    "数学就在生活中！用转化的眼光看问题，你会越来越聪明。",
+    "百分数是分母为100的分数，理解了这个就掌握了核心！",
+    "小数和百分数互化就看小数点——向右移两位加百分号！",
+    "求百分率先找「标准量」和「比较量」，然后用除法。",
+    "求一个数的百分之几→乘法。已知部分求整体→除法。",
+    "打折、利息、税率都是百分数的应用，生活处处有数学！",
+    "圆的半径决定大小，圆心决定位置。同圆半径都相等哦！",
+    "圆周率π约等于3.14，是圆的周长除以直径的商。",
+    "圆的面积公式S=πr²，把圆切成很多小块拼成长方形推出来的！",
+    "圆环面积=大圆面积-小圆面积，公式是π(R²-r²)。",
+    "周长相等的图形中圆的面积最大！所以水滴是球形的~"];
+  document.getElementById("tutorHead").textContent="🤖 "+topic;
+  document.getElementById("tutorBody").textContent=tips[idx]||"这个知识点很重要，建议你：\n\n1. 先仔细阅读上面的内容\n2. 做一下练习题检验理解\n3. 不懂的地方可以问老师或同学\n\n📌 加油，你可以掌握的！";
+  document.getElementById("tutor").classList.add("show");
+}
+
+function closeTutor(){ document.getElementById("tutor").classList.remove("show"); }
+
+function playTTS(idx,uid){
+  const key=uid+"_s"+idx;
+  const text=TTS_DATA[key];
+  if(!text){ alert("语音数据暂未就绪"); return; }
+  const btn=document.getElementById("ttsbtn"+idx);
+  if(audioIdx===idx && !document.getElementById("ttsAudio").paused){
+    stopTTS();return;
+  }
+  audioIdx=idx;
+  btn.classList.add("playing");
+  document.getElementById("audioLabel").textContent="第"+(idx+1)+"节语音解说";
+  document.getElementById("audioBar").classList.add("show");
+  // Use Web Speech API as fallback since edge-tts may not be available
+  if(window.speechSynthesis){
+    window.speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang="zh-CN";u.rate=0.9;
+    u.onend=function(){ stopTTS(); };
+    u.onerror=function(){ stopTTS(); };
+    window.speechSynthesis.speak(u);
+  }else{
+    alert("浏览器不支持语音合成，请使用Chrome或Edge浏览器");
+  }
+}
+
+function stopTTS(){
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+  document.getElementById("audioBar").classList.remove("show");
+  document.querySelectorAll(".tts-btn.playing").forEach(function(b){ b.classList.remove("playing"); });
+  audioIdx=-1;
+}
+
+document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ closeQuiz();closeTutor();stopTTS();} });
+document.addEventListener("click",function(e){ if(e.target.classList.contains("modal")) closeQuiz(); });
+
+// Open first section
+(function(){ var s=document.getElementById("sec0");if(s)s.classList.add("active"); })();
+</script>
+
+<script>
+window.__TEACHANY_CONFIG__={courseId:"sujiao-g5-u7-strategy",subject:"math",grade:"5",nodeId:"math-e-fraction-operations"};
+</script>
+
+</body></html>
