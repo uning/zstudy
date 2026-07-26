@@ -84,6 +84,30 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
 .audio-bar button{background:none;border:none;font-size:20px;cursor:pointer;padding:4px 8px;border-radius:8px;transition:background 0.2s}
 .audio-bar button:hover{background:#f0f0f0}
 @media(max-width:600px){.hero h1{font-size:21px}.section-header{padding:14px;gap:8px}.section-num{min-width:34px;height:34px;font-size:13px}.section-title{font-size:14px}.container{padding:8px 10px 50px}}
+
+/* === 对话式AI === */
+.ai-chat-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.45);z-index:2000;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.ai-chat-modal.show{display:flex}
+.ai-chat-box{background:white;border-radius:18px;width:92%;max-width:420px;height:520px;max-height:80vh;box-shadow:0 12px 40px rgba(0,0,0,0.2);display:flex;flex-direction:column;overflow:hidden;position:relative}
+.ai-chat-head{background:linear-gradient(135deg,#FF6B6B,#4ECDC4);color:white;padding:14px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.ai-chat-head h4{font-size:16px;flex:1}
+.ai-chat-close{background:none;border:none;color:white;font-size:22px;cursor:pointer}
+.ai-chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#f8fafb}
+.ai-msg{display:flex;gap:8px;animation:fadeIn 0.3s ease;max-width:95%}
+.ai-msg.ai-bot{align-self:flex-start}
+.ai-msg.ai-user{align-self:flex-end;flex-direction:row-reverse}
+.ai-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:white;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
+.ai-text{background:white;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.7;color:#37474F;box-shadow:0 1px 4px rgba(0,0,0,0.06);white-space:pre-line}
+.ai-user .ai-text{background:#E8F5E9;color:#2E7D32}
+.ai-chat-foot{display:flex;gap:8px;padding:10px 14px;border-top:1px solid #eee;background:white;flex-shrink:0}
+.ai-chat-foot input{flex:1;border:2px solid #E0E4E8;border-radius:20px;padding:10px 16px;font-size:13px;outline:none;transition:border 0.2s;font-family:inherit}
+.ai-chat-foot input:focus{border-color:#4ECDC4}
+.ai-chat-foot button{background:linear-gradient(135deg,#FF6B6B,#4ECDC4);color:white;border:none;border-radius:20px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:opacity 0.2s}
+.ai-chat-foot button:hover{opacity:0.9}
+.ai-suggest{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 8px;flex-shrink:0}
+.ai-suggest span{font-size:11px;background:#E3F2FD;color:#1565C0;padding:5px 10px;border-radius:12px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+.ai-suggest span:hover{background:#BBDEFB}
+
 </style>
 <script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
 <script src="https://weponusa.github.io/teachany-courseware/assets/scripts/ai-tutor.js" defer></script>
@@ -234,5 +258,86 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeQuiz()
 document.addEventListener("click",function(e){if(e.target.classList.contains("modal"))closeQuiz()});
 (function(){var s=document.getElementById("sec0");if(s)s.classList.add("active")})();
 </script>
-<script>window.__TEACHANY_CONFIG__={courseId:"sujiao-g5-u3-factor-multiple",subject:"math",grade:"5",nodeId:"math-e-fractions-meaning"};</script>
+<script>window.__TEACHANY_CONFIG__={courseId:"sujiao-g5-u3-factor-multiple",subject:"math",grade:"5",nodeId:"math-e-fractions-meaning"};
+// === 对话式AI ===
+const KB = {
+  "general": {"keywords":["公式","总结","重点","易错","复习","怎么","什么","帮","难","不会","方法","技巧"],"answers":{"default":"这个单元确实很重要！建议你：\n\n1. 先仔细阅读每一节的内容\n2. 做练习题检验理解\n3. 关注内容中的⚠️和📌标记\n4. 不会的地方可以反复看\n\n📐 多问多练，你一定能掌握！"}}
+};
+
+function findAnswerAI(q) {
+  const kw = q.toLowerCase().replace(/[？！!，。、\s]+/g,' ').trim();
+  let best = '', bestScore = 0;
+  const sectionTexts = [];
+  document.querySelectorAll('.section').forEach(function(s, i) {
+    const title = (s.querySelector('.section-title')||{}).textContent || '';
+    const body = (s.querySelector('.content-text')||{}).textContent || '';
+    const short = body.substring(0,200);
+    if (title) sectionTexts.push({title: title, text: short, idx: i});
+  });
+  // 匹配问题关键词到内容
+  for (const item of sectionTexts) {
+    let score = 0;
+    const words = kw.split(' ');
+    for (const w of words) {
+      if (w.length < 2) continue;
+      if (item.title.includes(w)) score += 5;
+      if (item.text.includes(w)) score += 1;
+    }
+    if (score > bestScore) { bestScore = score; best = item; }
+  }
+  if (best && bestScore >= 3) {
+    const excerpt = best.text.substring(0, 120);
+    return '根据「' + best.title + '」的内容：\n\n' + excerpt + '...\n\n📖 建议打开第' + (best.idx+1) + '节仔细阅读全文。';
+  }
+  const tips = ["试着把关键公式抄写几遍加深记忆","画出知识结构图帮助理解","做几道练习题检验自己是否真的懂了","和小伙伴讨论讨论，教别人是最好的学习"];
+  return '🤔 这个问题你可以：\n\n· ' + tips[Math.floor(Math.random()*tips.length)] + '\n· ' + tips[(Math.floor(Math.random()*3)+1)%4] + '\n\n💡 或者换个方式问问看？';
+}
+
+let chHistory = [];
+function showAIChat() {
+  const m = document.getElementById('aiChatModal');
+  if (!m) return;
+  m.classList.add('show');
+  document.getElementById('aiInput').focus();
+  if (chHistory.length === 0) {
+    const titles = [];
+    document.querySelectorAll('.section-title').forEach(function(t) { titles.push(t.textContent); });
+    const sample = titles.slice(0, 3).join('、');
+    addMsg('ai', '你好！我是AI学伴🤖\n\n我已经帮你预习了这个单元的内容，包括：' + sample + '等。\n\n你可以问我任何问题，比如:\n• "这个单元最重要的公式是什么？"\n• "有哪些容易出错的地方？"\n• "帮我总结一下知识点"');
+  }
+}
+function closeAIChat() { document.getElementById('aiChatModal').classList.remove('show'); }
+function sendMsg() {
+  const inp = document.getElementById('aiInput');
+  const q = inp.value.trim(); if (!q) return;
+  addMsg('user', q); inp.value = '';
+  setTimeout(function() { addMsg('ai', findAnswerAI(q)); }, 400 + Math.random()*700);
+}
+function addMsg(role, text) {
+  const msgs = document.getElementById('aiMessages'); if (!msgs) return;
+  const d = document.createElement('div');
+  d.className = 'ai-msg ' + (role==='user'?'ai-user':'ai-bot');
+  d.innerHTML = '<div class="ai-avatar">'+(role==='user'?'👦':'🤖')+'</div><div class="ai-text">'+text.replace(/\n/g,'<br>')+'</div>';
+  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
+  chHistory.push({role,text});
+}
+function quickAsk(q) { document.getElementById('aiInput').value = q; sendMsg(); }
+(function() {
+  var bs = document.querySelectorAll('.ai-btn');
+  bs.forEach(function(b){ b.onclick = showAIChat; });
+  document.addEventListener('keydown', function(e) { if (e.key==='Enter' && document.activeElement===document.getElementById('aiInput')) sendMsg(); });
+})();
+
+</script>
+
+<!-- AI对话模态 -->
+<div class="ai-chat-modal" id="aiChatModal">
+  <div class="ai-chat-box">
+    <div class="ai-chat-head"><h4>🤖 AI学伴 · 对话中</h4><button class="ai-chat-close" onclick="closeAIChat()">&times;</button></div>
+    <div class="ai-chat-msgs" id="aiMessages"></div>
+    <div class="ai-suggest"><span onclick="quickAsk('这个单元最重要的公式是什么')">📐 核心公式</span><span onclick="quickAsk('有哪些常见的易错点')">⚠️ 易错提醒</span><span onclick="quickAsk('帮我总结一下这个单元')">📋 单元总结</span></div>
+    <div class="ai-chat-foot"><input type="text" id="aiInput" placeholder="输入问题…"><button onclick="sendMsg()">发送</button></div>
+  </div>
+</div>
+
 </body></html>
