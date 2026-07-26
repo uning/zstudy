@@ -10,6 +10,23 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--coral:#FF6B6B;--mint:#4ECDC4;--sun:#FFE66D;--sky:#4FC3F7;--bg:#FFF8F0;--card:white;--text:#37474F;--mu:#78909C;--radius:16px;--rs:12px;--font:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif}
+
+/* Tutor主题适配：统一切换到暖色系 */
+:root,:host {
+  --primary: #FF6B6B;
+  --primary-light: #FF8A80;
+  --accent: #4ECDC4;
+  --card-bg: #ffffff;
+  --border: #FFE0B2;
+  --text: #37474F;
+  --text-secondary: #78909C;
+  --bg: #FFF8F0;
+  --bg-secondary: #FFFBF5;
+}
+.ttc-icon { background: linear-gradient(135deg, #FF6B6B, #4ECDC4) !important;
+  box-shadow: 0 8px 24px -6px rgba(255,107,107,0.4) !important; }
+.ttc-card { background: linear-gradient(135deg, rgba(255,107,107,0.06) 0%, rgba(78,205,196,0.05) 100%) !important; }
+
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
 /* Hero */
 .hero{background:linear-gradient(135deg,#FF6B6B 0%,#FF8A80 40%,#4ECDC4 100%);color:white;padding:36px 20px 30px;text-align:center;position:relative;overflow:hidden}
@@ -100,6 +117,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:
 <script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-knowledge-graph.js" defer></script>
 <script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
 
+<link rel="stylesheet" href="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-tutor-card.css">
 </head>
 <body>
 <div class="nav-bar">
