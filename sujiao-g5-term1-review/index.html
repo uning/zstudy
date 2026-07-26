@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>苏教版五年级数学上册 · 总复习</title>
+<meta name="course-id" content="sujiao-g5-term1-review">
+<meta name="teachany-node" content="math-e-negative-numbers">
+<meta name="teachany-subject" content="math"><meta name="teachany-grade" content="5">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--coral:#FF6B6B;--mint:#4ECDC4;--sun:#FFE66D;--sky:#4FC3F7;--bg:#FFF8F0;--card:white;--text:#37474F;--mu:#78909C;--r:16px;--rs:12px}
+body{font-family:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.hero{background:linear-gradient(135deg,#FF6B6B,#FF8A80,#FF9800,#4ECDC4);color:white;padding:40px 20px 32px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-80px;right:-80px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.08)}
+.hero h1{font-size:28px;font-weight:800;position:relative;z-index:1}
+.hero p{font-size:14px;opacity:0.9;margin:8px 0 14px;position:relative;z-index:1}
+.hero .badge{display:inline-block;background:rgba(255,255,255,0.22);padding:5px 14px;border-radius:16px;font-size:11px;margin:3px;position:relative;z-index:1}
+.nav-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:rgba(255,255,255,0.95);border-bottom:2px solid #FFE0B2;position:sticky;top:0;z-index:100}
+.back-link{color:var(--coral);text-decoration:none;font-size:14px;font-weight:600}
+.overview{max-width:820px;margin:16px auto 0;padding:0 14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.ov-card{background:var(--card);border-radius:var(--rs);padding:12px 14px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all 0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.ov-card:hover{border-color:var(--mint);transform:translateY(-2px);box-shadow:0 4px 16px rgba(78,205,196,0.2)}
+.ov-card .num{font-size:22px;font-weight:800;color:var(--coral)}
+.ov-card .title{font-size:13px;font-weight:700;color:var(--text);margin:4px 0}
+.ov-card .sub{font-size:11px;color:var(--mu)}
+.container{max-width:820px;margin:0 auto;padding:12px 14px 60px}
+.section{background:var(--card);border-radius:var(--r);margin-bottom:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.05);border:2px solid transparent;transition:all 0.3s}
+.section.active{border-color:var(--mint);box-shadow:0 4px 20px rgba(78,205,196,0.15)}
+.s-header{display:flex;align-items:center;padding:18px;cursor:pointer;user-select:none;background:#FAFFFE;gap:12px}
+.s-header:hover{background:#E8FFF9}
+.section.active .s-header{background:#E0FCF7}
+.s-num{min-width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--coral),var(--mint));color:white;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;flex-shrink:0}
+.s-title{flex:1;font-size:16px;font-weight:700;color:#2E7D32}
+.s-tag{font-size:10px;color:var(--mint);background:#E0FCF7;padding:3px 10px;border-radius:10px;font-weight:600}
+.toggle-icon{transition:transform 0.3s;color:var(--mu)}
+.section.active .toggle-icon{transform:rotate(180deg);color:var(--mint)}
+.s-body{display:none;padding:0 18px 18px;animation:fadeIn 0.3s}
+.section.active .s-body{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.content{background:#FFFBF5;border-radius:var(--rs);padding:18px;border:1px solid #FFECB3;white-space:pre-line;font-size:14.5px;line-height:2;color:#4E342E}
+.btns{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.ai-btn,.tts-btn,.quiz-btn{padding:10px 16px;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:600;transition:all 0.25s;display:flex;align-items:center;gap:6px}
+.ai-btn{background:#E8F5E9;color:#2E7D32}
+.ai-btn:hover{background:#C8E6C9;transform:translateY(-2px)}
+.tts-btn{background:#E3F2FD;color:#1565C0}
+.tts-btn:hover{background:#BBDEFB;transform:translateY(-2px)}
+.tts-btn.playing{background:#1565C0;color:white;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(21,101,192,0.4)}50%{box-shadow:0 0 0 12px rgba(21,101,192,0)}}
+.quiz-btn{background:#FFF3E0;color:#E65100}
+.quiz-btn:hover{background:#FFE0B2;transform:translateY(-2px)}
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:14px}
+.f-card{background:#E8F5E9;border-radius:var(--rs);padding:14px;border-left:4px solid var(--mint)}
+.f-card .f-title{font-size:12px;font-weight:700;color:#2E7D32;margin-bottom:4px}
+.f-card .f-body{font-size:14px;font-family:"SF Mono","Menlo",monospace;color:var(--text)}
+.alert-box{background:#FFF3E0;border-radius:var(--rs);padding:14px;margin-top:12px;border-left:4px solid var(--coral)}
+.alert-box b{color:var(--coral)}
+.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.modal.show{display:flex}
+.modal-box{background:white;border-radius:20px;padding:26px 22px;max-width:440px;width:92%;box-shadow:0 12px 40px rgba(0,0,0,0.18);position:relative}
+.modal-box h3{font-size:18px;color:#E65100;margin-bottom:14px}
+.q{font-size:15px;color:var(--text);margin-bottom:14px;line-height:1.8}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts label{display:block;padding:12px 16px;border:2px solid #FFE0B2;border-radius:var(--rs);cursor:pointer;transition:all 0.2s;font-size:14px;background:#FFFBF5}
+.opts label:hover{border-color:var(--coral);background:#FFF0F0}
+.opts label.ok{background:#C8E6C9;border-color:#4CAF50;color:#2E7D32;font-weight:700;pointer-events:none}
+.opts label.no{background:#FFCDD2;border-color:#F44336;color:#C62828;pointer-events:none}
+.fb{margin-top:16px;padding:12px 16px;border-radius:var(--rs);display:none;font-size:14px;animation:fadeIn 0.3s}
+.fb.show{display:block}
+.fb.good{background:#E8F5E9;color:#2E7D32;border:1px solid #A5D6A7}
+.fb.bad{background:#FFEBEE;color:#C62828;border:1px solid #EF9A9A}
+.close-btn{position:absolute;top:12px;right:14px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--mu)}
+.tutor{display:none;position:fixed;bottom:20px;right:20px;max-width:340px;background:white;border-radius:18px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.14);z-index:900;border:2px solid var(--mint)}
+.tutor.show{display:block;animation:slideUp 0.3s}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.tutor h4{font-size:15px;color:#2E7D32;margin-bottom:8px}
+.tutor p{font-size:13px;color:var(--mu);line-height:1.8;white-space:pre-line}
+.tutor-close{position:absolute;top:10px;right:14px;background:none;border:none;cursor:pointer;font-size:18px;color:var(--mu)}
+.audio-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:white;padding:10px 20px;box-shadow:0 -2px 12px rgba(0,0,0,0.1);z-index:950;align-items:center;gap:12px}
+.audio-bar.show{display:flex}
+.audio-bar .info{flex:1;font-size:13px;color:var(--mu)}
+.audio-bar button{background:none;border:none;font-size:20px;cursor:pointer;padding:4px 8px;border-radius:8px}
+@media(max-width:600px){.hero h1{font-size:22px}.overview{grid-template-columns:repeat(4,1fr)}.s-header{padding:14px;gap:8px}.s-num{min-width:34px;height:34px;font-size:13px}.s-title{font-size:14px}}
+</style>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+</head>
+<body>
+<div class="nav-bar">
+  <a class="back-link" href="../index.html">← 返回课件库</a>
+  <span style="font-size:11px;color:var(--mu);background:#FFF3E0;padding:4px 10px;border-radius:12px">苏教版 · 五上总复习</span>
+</div>
+<div class="hero">
+  <h1>📚 五年级数学上册 · 总复习</h1>
+  <p>8个单元知识点梳理 · 公式卡片 · 易错提醒 · 综合练习</p>
+  <span class="badge">📐 数学</span><span class="badge">五年级上</span><span class="badge">苏教版</span>
+  <span class="badge">🤖AI+🔊TTS</span><span class="badge">总复习</span>
+</div>
+
+<div class="overview">
+<div class="ov-card" onclick="document.getElementById('sec0').classList.add('active');document.getElementById('sec0').scrollIntoView({behavior:'smooth',block:'center'})"><div class="num">01</div><div class="title">负数的初步认识</div><div class="sub">正负数表示相反意义的量，</div></div><div class="ov-card" onclick="document.getElementById('sec1').classList.add('active');document.getElementById('sec1').scrollIntoView({behavior:'smooth',block:'center'})"><div class="num">02</div><div class="title">多边形的面积</div><div class="sub">平行四边形、三角形、梯形</div></div><div class="ov-card" onclick="document.getElementById('sec2').classList.add('active');document.getElementById('sec2').scrollIntoView({behavior:'smooth',block:'center'})"><div class="num">03</div><div class="title">小数的意义和性质</div><div class="sub">小数读写、数位、性质与大</div></div><div class="ov-card" onclick="document.getElementById('sec3').classList.add('active');document.getElementById('sec3').scrollIntoView({behavior:'smooth',block:'center'})"><div class="num">04</div><div class="title">小数加法和减法</div><div class="sub">小数点对齐=数位对齐</div></div><div class="ov-card" onclick="document.getElementById('sec4').classList.add('active');document.getElementById('sec4').scrollIntoView({behavior:'smooth',block:'center'})"><div class="num">05</div><div class="title">小数乘法和除法</div><div class="sub">先按整数算，再点小数点</div></div><div class="ov-card" onclick="document.getElementById('sec5').classList.add('active');document.getElementById('sec5').scrollIntoView({behavior:'smooth',block:'center'})"><div class="num">06</div><div class="title">统计表和条形统计图</div><div class="sub">复式统计表与复式条形统计</div></div><div class="ov-card" onclick="document.getElementById('sec6').classList.add('active');document.getElementById('sec6').scrollIntoView({behavior:'smooth',block:'center'})"><div class="num">07</div><div class="title">解决问题的策略</div><div class="sub">一一列举法解决实际问题</div></div><div class="ov-card" onclick="document.getElementById('sec7').classList.add('active');document.getElementById('sec7').scrollIntoView({behavior:'smooth',block:'center'})"><div class="num">08</div><div class="title">用字母表示数</div><div class="sub">字母式的简化、求值与规律</div></div>
+</div>
+
+<div class="container">
+
+<section class="section" id="sec0">
+  <div class="s-header" onclick="tg(this)">
+    <span class="s-num">01</span>
+    <span class="s-title">负数的初步认识</span>
+    <span class="s-tag">正负数表示相</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="s-body">
+    <div class="content">
+      <h3>📋 负数的初步认识 —— 核心知识</h3>
+      <ul style="list-style:disc;padding-left:20px;margin:8px 0"><li>正数>0>负数 · 0既不是正数也不是负数</li><li>温度计：0℃以上是正，以下是负</li><li>海拔：海平面为0，以上为正以下为负</li><li>收支：收入为正(+)，支出为负(-)</li></ul>
+      <div class="formula-grid"><div class="f-card"><div class="f-title">温度差</div><div class="f-body">最高温度 - 最低温度</div></div><div class="f-card"><div class="f-title">数轴</div><div class="f-body">负数←0→正数</div></div></div>
+      <div class="alert-box"><b>⚠️ 易错提醒：</b><br>负数比较大小：-5<-3（负得越多越小！）<br>0既不是正数也不是负数，总复习常考填空！</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(0)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="tts0" onclick="playTTS(0)">🔊 听复习要点</button>
+        <button class="quiz-btn" onclick="startQuiz(0)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec1">
+  <div class="s-header" onclick="tg(this)">
+    <span class="s-num">02</span>
+    <span class="s-title">多边形的面积</span>
+    <span class="s-tag">平行四边形、</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="s-body">
+    <div class="content">
+      <h3>📋 多边形的面积 —— 核心知识</h3>
+      <ul style="list-style:disc;padding-left:20px;margin:8px 0"><li>平行四边形面积 = 底 × 高  S = ah</li><li>三角形面积 = 底×高÷2  S = ah÷2</li><li>梯形面积 = (上底+下底)×高÷2  S = (a+b)h÷2</li><li>组合图形：分割或补形成基本图形再算</li></ul>
+      <div class="formula-grid"><div class="f-card"><div class="f-title">S平行四边形</div><div class="f-body">ah</div></div><div class="f-card"><div class="f-title">S三角形</div><div class="f-body">ah÷2</div></div><div class="f-card"><div class="f-title">S梯形</div><div class="f-body">(a+b)h÷2</div></div></div>
+      <div class="alert-box"><b>⚠️ 易错提醒：</b><br>三角形和梯形面积别忘了除以2！<br>高必须是对应底边的垂直距离(高⊥底)</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(1)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="tts1" onclick="playTTS(1)">🔊 听复习要点</button>
+        <button class="quiz-btn" onclick="startQuiz(1)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec2">
+  <div class="s-header" onclick="tg(this)">
+    <span class="s-num">03</span>
+    <span class="s-title">小数的意义和性质</span>
+    <span class="s-tag">小数读写、数</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="s-body">
+    <div class="content">
+      <h3>📋 小数的意义和性质 —— 核心知识</h3>
+      <ul style="list-style:disc;padding-left:20px;margin:8px 0"><li>小数是分母为10、100、1000…的分数</li><li>小数的末尾添0或去0，大小不变</li><li>比较大小：先比整数部分，再逐位比小数部分</li><li>小数点移动：×10→右移1位，÷10→左移1位</li></ul>
+      <div class="formula-grid"><div class="f-card"><div class="f-title">小数点右移n位</div><div class="f-body">×10ⁿ</div></div><div class="f-card"><div class="f-title">小数点左移n位</div><div class="f-body">÷10ⁿ</div></div></div>
+      <div class="alert-box"><b>⚠️ 易错提醒：</b><br>0.5和0.50大小相等但意义不同（精确度不同）<br>小数的性质只能加/去末尾的0，中间的0不能随便去！</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(2)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="tts2" onclick="playTTS(2)">🔊 听复习要点</button>
+        <button class="quiz-btn" onclick="startQuiz(2)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec3">
+  <div class="s-header" onclick="tg(this)">
+    <span class="s-num">04</span>
+    <span class="s-title">小数加法和减法</span>
+    <span class="s-tag">小数点对齐=</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="s-body">
+    <div class="content">
+      <h3>📋 小数加法和减法 —— 核心知识</h3>
+      <ul style="list-style:disc;padding-left:20px;margin:8px 0"><li>列竖式时小数点对齐（也就是相同数位对齐）</li><li>结果末尾的0可以去掉（化简）</li><li>减法不够减时向前借1，退位计算</li><li>估算：四舍五入到整数再算，检验结果合理性</li></ul>
+      <div class="formula-grid"><div class="f-card"><div class="f-title">加法</div><div class="f-body">a + b = c</div></div><div class="f-card"><div class="f-title">减法</div><div class="f-body">a - b = c</div></div><div class="f-card"><div class="f-title">验算</div><div class="f-body">和-加数=另一个加数</div></div></div>
+      <div class="alert-box"><b>⚠️ 易错提醒：</b><br>小数点对齐 ≠ 末位对齐！<br>整数减小数时整数后面补小数点再减</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(3)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="tts3" onclick="playTTS(3)">🔊 听复习要点</button>
+        <button class="quiz-btn" onclick="startQuiz(3)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec4">
+  <div class="s-header" onclick="tg(this)">
+    <span class="s-num">05</span>
+    <span class="s-title">小数乘法和除法</span>
+    <span class="s-tag">先按整数算，</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="s-body">
+    <div class="content">
+      <h3>📋 小数乘法和除法 —— 核心知识</h3>
+      <ul style="list-style:disc;padding-left:20px;margin:8px 0"><li>小数乘法：先整数乘，再看因数共有几位小数</li><li>小数除法：除数变整数，被除数同步移动小数点</li><li>一个数(0除外)乘小于1的数，积比原数小</li><li>一个数(0除外)除以小于1的数，商比原数大</li></ul>
+      <div class="formula-grid"><div class="f-card"><div class="f-title">小数乘法</div><div class="f-body">先整数乘→点小数点</div></div><div class="f-card"><div class="f-title">小数除法</div><div class="f-body">除数变整数→同步移点→除</div></div></div>
+      <div class="alert-box"><b>⚠️ 易错提醒：</b><br>乘法积的小数点位置容易错，数清楚因数共有几位小数！<br>除法商的小数点要和被除数移动后的新小数点对齐</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(4)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="tts4" onclick="playTTS(4)">🔊 听复习要点</button>
+        <button class="quiz-btn" onclick="startQuiz(4)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec5">
+  <div class="s-header" onclick="tg(this)">
+    <span class="s-num">06</span>
+    <span class="s-title">统计表和条形统计图</span>
+    <span class="s-tag">复式统计表与</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="s-body">
+    <div class="content">
+      <h3>📋 统计表和条形统计图 —— 核心知识</h3>
+      <ul style="list-style:disc;padding-left:20px;margin:8px 0"><li>复式统计表：同时展示两组或多组数据</li><li>复式条形图：用不同颜色区分，有图例</li><li>能根据图表提取信息、比较数据、提出建议</li><li>绘制时注意标题、图例、单位三要素</li></ul>
+      
+      <div class="alert-box"><b>⚠️ 易错提醒：</b><br>复式统计图必须有图例说明！<br>看图时注意纵轴起点——有时不是从0开始</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(5)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="tts5" onclick="playTTS(5)">🔊 听复习要点</button>
+        <button class="quiz-btn" onclick="startQuiz(5)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec6">
+  <div class="s-header" onclick="tg(this)">
+    <span class="s-num">07</span>
+    <span class="s-title">解决问题的策略</span>
+    <span class="s-tag">一一列举法解</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="s-body">
+    <div class="content">
+      <h3>📋 解决问题的策略 —— 核心知识</h3>
+      <ul style="list-style:disc;padding-left:20px;margin:8px 0"><li>一一列举（枚举法）：把所有可能情况列出来</li><li>列表法：有序地列出所有方案</li><li>画图法：用线段图或示意图辅助分析</li><li>列举要有序，做到不重复不遗漏</li></ul>
+      <div class="formula-grid"><div class="f-card"><div class="f-title">周长固定时</div><div class="f-body">长+宽=周长÷2</div></div><div class="f-card"><div class="f-title">方案数</div><div class="f-body">逐一验证所有可能</div></div></div>
+      <div class="alert-box"><b>⚠️ 易错提醒：</b><br>列举时要按顺序来，不要跳，否则容易漏！<br>注意题目中的限制条件（如不能超过、至少等）</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(6)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="tts6" onclick="playTTS(6)">🔊 听复习要点</button>
+        <button class="quiz-btn" onclick="startQuiz(6)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="sec7">
+  <div class="s-header" onclick="tg(this)">
+    <span class="s-num">08</span>
+    <span class="s-title">用字母表示数</span>
+    <span class="s-tag">字母式的简化</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="s-body">
+    <div class="content">
+      <h3>📋 用字母表示数 —— 核心知识</h3>
+      <ul style="list-style:disc;padding-left:20px;margin:8px 0"><li>数字×字母：数字在前，乘号省略 (3×a=3a)</li><li>1×字母省略1 (1×a=a)，相同字母相乘用平方 (a×a=a²)</li><li>代入求值：把数代入字母计算</li><li>用字母表示公式和规律，简洁通用</li></ul>
+      <div class="formula-grid"><div class="f-card"><div class="f-title">S=ab</div><div class="f-body">长方形面积</div></div><div class="f-card"><div class="f-title">C=2(a+b)</div><div class="f-body">长方形周长</div></div><div class="f-card"><div class="f-title">a²</div><div class="f-body">a×a</div></div></div>
+      <div class="alert-box"><b>⚠️ 易错提醒：</b><br>a² ≠ a×2 (a²=a×a，别搞混！)<br>化简时注意运算顺序，有括号先算括号</div>
+      <div class="btns">
+        <button class="ai-btn" onclick="showTutor(7)">🤖 问AI学伴</button>
+        <button class="tts-btn" id="tts7" onclick="playTTS(7)">🔊 听复习要点</button>
+        <button class="quiz-btn" onclick="startQuiz(7)">📝 做练习题</button>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="modal" id="quizModal">
+  <div class="modal-box">
+    <button class="close-btn" onclick="closeQuiz()">&times;</button>
+    <h3 id="qt"></h3><div class="q" id="qq"></div>
+    <div class="opts" id="qo"></div><div class="fb" id="qf"></div>
+  </div>
+</div>
+
+<div class="tutor" id="tutor">
+  <button class="tutor-close" onclick="closeTutor()">&times;</button>
+  <h4 id="th"></h4><p id="tb"></p>
+</div>
+
+<div class="audio-bar" id="audioBar">
+  <div class="info"><strong>🔊</strong><span id="al"></span></div>
+  <button onclick="stopTTS()">⏹</button>
+</div>
+
+<script>
+const Q = [["比-3大的负数是？", ["A. -5", "B. -10", "C. -1", "D. -3.5"], 2], ["三角形底8cm高5cm，面积？", ["A. 40cm²", "B. 20cm²", "C. 13cm²", "D. 80cm²"], 1], ["0.5和0.50比较？", ["A. 0.5大", "B. 0.50大", "C. 相等", "D. 无法比较"], 2], ["3.25 + 1.7 = ？", ["A. 4.95", "B. 3.42", "C. 4.32", "D. 5.95"], 0], ["2.4 × 0.5 = ？", ["A. 12", "B. 1.2", "C. 0.12", "D. 120"], 1], ["复式统计图的必要元素是？", ["A. 颜色", "B. 图例", "C. 网格", "D. 所有选项"], 1], ["周长20cm的长方形，长宽整数，有几种？", ["A. 3种", "B. 4种", "C. 5种", "D. 6种"], 2], ["当a=3时，2a² = ？", ["A. 12", "B. 18", "C. 6", "D. 36"], 1], ["梯形上底4下底6高5，面积？", ["A. 50", "B. 25", "C. 30", "D. 15"], 1], ["-2°C比-8°C高几度？", ["A. 10°C", "B. 6°C", "C. -6°C", "D. -10°C"], 1]];
+const TTS_DATA = {"0": "负数的初步认识：正数大于零大于负数，零既不是正数也不是负数。注意，负数比较大小，负得越多反而越小。", "1": "多边形的面积公式：平行四边形面积等于底乘高，三角形面积等于底乘高除以二，梯形面积等于上底加下底的和乘高除以二。", "2": "小数的意义和性质：小数末尾添零或去零大小不变，小数点移动引起小数大小变化。", "3": "小数加减法：列竖式时小数点对齐，也就是相同数位对齐。结果末尾的零可以去掉。", "4": "小数乘除法：乘法先按整数算再点小数点，除法除数变整数被除数同步移动小数点。", "5": "统计表和条形统计图：复式图表需要图例说明，能根据图表提取信息和比较数据。", "6": "解决问题的策略：一一列举所有可能情况，做到不重复不遗漏，有序思考是关键。", "7": "用字母表示数：数字乘字母省略乘号数字在前，一乘字母省略一，记住a平方是a乘a不是2a。"};
+const TIPS = ["负数比大小记住：在数轴上越往右越大。−2比−5大，因为−2更靠近0！", "三角形和梯形面积别忘了除以2！高一定要和底垂直。", "小数的末尾添0或去0大小不变——但中间的0不能动！0.50=0.5，但0.05≠0.5。", "小数加减法最重要的是小数点对齐！不是末位对齐哦。", "小数乘法结果的小数位数=两个因数小数位数之和。2.5×0.3=0.75（1+1=2位小数）", "复式统计图看图例！不同颜色代表不同类别，别搞混了。", "一一列举要按顺序来！比如长宽都是整数且周长=20，就按长从1到…逐一列出。", "字母表示数时注意：a²=a×a，而2a=a+a，这是最容易搞混的地方！"];
+const TITLES = ["负数的初步认识", "多边形的面积", "小数的意义和性质", "小数加法和减法", "小数乘法和除法", "统计表和条形统计图", "解决问题的策略", "用字母表示数"];
+let qi=-1,ai=-1;
+
+function tg(h){h.parentElement.classList.toggle("active")}
+
+function startQuiz(idx){
+  qi=idx;const d=Q[idx%Q.length];
+  document.getElementById("qt").textContent="📝 综合练习 "+(idx+1)+"/"+Q.length;
+  document.getElementById("qq").textContent=d[0];
+  const o=document.getElementById("qo");o.innerHTML="";
+  const f=document.getElementById("qf");f.classList.remove("show","good","bad");
+  d[1].forEach(function(opt,oi){
+    const l=document.createElement("label");l.textContent=opt;
+    l.onclick=function(){
+      Array.from(o.querySelectorAll("label")).forEach(function(x){x.style.pointerEvents="none"});
+      if(oi===d[2]){l.classList.add("ok");f.classList.add("good");f.textContent="✅ 太棒了！"}
+      else{l.classList.add("no");f.classList.add("bad");f.textContent="❌ 正确答案是: "+d[1][d[2]]}
+      f.classList.add("show")
+    };o.appendChild(l)
+  });
+  document.getElementById("quizModal").classList.add("show")
+}
+
+function closeQuiz(){document.getElementById("quizModal").classList.remove("show");qi=-1}
+
+function showTutor(idx){
+  document.getElementById("th").textContent="🤖 "+TITLES[idx];
+  document.getElementById("tb").textContent=TIPS[idx];
+  document.getElementById("tutor").classList.add("show")
+}
+
+function closeTutor(){document.getElementById("tutor").classList.remove("show")}
+
+function playTTS(idx){
+  const t=TTS_DATA[idx];if(!t)return;
+  const b=document.getElementById("tts"+idx);
+  if(ai===idx&&window.speechSynthesis&&window.speechSynthesis.speaking){stopTTS();return}
+  ai=idx;b.classList.add("playing");
+  document.getElementById("al").textContent=TITLES[idx]+"复习要点";
+  document.getElementById("audioBar").classList.add("show");
+  if(window.speechSynthesis){
+    window.speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(t);u.lang="zh-CN";u.rate=0.9;
+    u.onend=stopTTS;u.onerror=stopTTS;window.speechSynthesis.speak(u)
+  }
+}
+
+function stopTTS(){
+  if(window.speechSynthesis)window.speechSynthesis.cancel();
+  document.getElementById("audioBar").classList.remove("show");
+  document.querySelectorAll(".tts-btn.playing").forEach(function(b){b.classList.remove("playing")});
+  ai=-1
+}
+
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeQuiz();closeTutor();stopTTS()}});
+document.addEventListener("click",function(e){if(e.target.classList.contains("modal"))closeQuiz()});
+(function(){var s=document.getElementById("sec0");if(s)s.classList.add("active")})();
+</script>
+<script>window.__TEACHANY_CONFIG__={courseId:"sujiao-g5-term1-review",subject:"math",grade:"5",nodeId:"math-e-negative-numbers"};</script>
+</body></html>

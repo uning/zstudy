@@ -1,0 +1,22 @@
+{
+  "course_id": "sujiao-g5-term1-review",
+  "version": "1.0.0",
+  "title": "五年级数学上册 · 总复习",
+  "subject": "math",
+  "grade": "5",
+  "stage": "elementary",
+  "node_id": "math-e-negative-numbers",
+  "teachany_version": "7.18.0",
+  "curriculum": "苏教版五年级上册",
+  "learning_type": "review",
+  "features": [
+    "ai-tutor",
+    "tts-speech",
+    "practice-quiz",
+    "formula-cards",
+    "error-tips",
+    "unit-overview"
+  ],
+  "units_covered": 8,
+  "practice_count": 10
+}
