@@ -79,8 +79,121 @@ body{font-family:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;backgr
 .audio-bar .info{flex:1;font-size:13px;color:var(--mu)}
 .audio-bar button{background:none;border:none;font-size:20px;cursor:pointer;padding:4px 8px;border-radius:8px}
 @media(max-width:600px){.hero h1{font-size:22px}.overview{grid-template-columns:repeat(4,1fr)}.s-header{padding:14px;gap:8px}.s-num{min-width:34px;height:34px;font-size:13px}.s-title{font-size:14px}}
+
+/* === 对话式AI模态框 === */
+.ai-chat-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.45);z-index:2000;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.ai-chat-modal.show{display:flex}
+.ai-chat-box{background:white;border-radius:18px;width:92%;max-width:420px;height:520px;max-height:80vh;box-shadow:0 12px 40px rgba(0,0,0,0.2);display:flex;flex-direction:column;overflow:hidden;position:relative}
+.ai-chat-head{background:linear-gradient(135deg,#FF6B6B,#4ECDC4);color:white;padding:14px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.ai-chat-head h4{font-size:16px;flex:1}
+.ai-chat-close{background:none;border:none;color:white;font-size:22px;cursor:pointer;line-height:1}
+.ai-chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#f8fafb}
+.ai-msg{display:flex;gap:8px;animation:fadeIn 0.3s ease;max-width:95%}
+.ai-msg.ai-bot{align-self:flex-start}
+.ai-msg.ai-user{align-self:flex-end;flex-direction:row-reverse}
+.ai-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:white;box-shadow:0 1px 4px rgba(0,0,0,0.1)}
+.ai-text{background:white;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.7;color:#37474F;box-shadow:0 1px 4px rgba(0,0,0,0.06);white-space:pre-line}
+.ai-user .ai-text{background:#E8F5E9;color:#2E7D32}
+.ai-chat-foot{display:flex;gap:8px;padding:10px 14px;border-top:1px solid #eee;background:white;flex-shrink:0}
+.ai-chat-foot input{flex:1;border:2px solid #E0E4E8;border-radius:20px;padding:10px 16px;font-size:13px;outline:none;transition:border 0.2s;font-family:inherit}
+.ai-chat-foot input:focus{border-color:#4ECDC4}
+.ai-chat-foot button{background:linear-gradient(135deg,#FF6B6B,#4ECDC4);color:white;border:none;border-radius:20px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:opacity 0.2s}
+.ai-chat-foot button:hover{opacity:0.9}
+.ai-suggest{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 8px;flex-shrink:0}
+.ai-suggest span{font-size:11px;background:#E3F2FD;color:#1565C0;padding:5px 10px;border-radius:12px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+.ai-suggest span:hover{background:#BBDEFB}
+
 </style>
-<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+<script src="https://weponusa.github.io/teachany-courseware/assets/scripts/teachany-audio-player.js?v=paged-20260521" defer>// === 对话式AI学伴 ===
+const KB = {"负数": {"keywords": ["负数", "负", "零下", "零上", "温度", "零", "正数", "分界", "比较", "大小"], "answers": {"什么是负数": "负数就是比0小的数，前面带「-」号。比如-3表示零下3度，-100表示欠了100元。0是正数和负数的分界点，它既不是正数也不是负数！", "怎么比较": "记住口诀：在数轴上越往右越大。所以-2 > -5（负得越少越大），0 > 所有负数，正数 > 0 > 所有负数。", "生活例子": "🌡️ 温度：零上5°C记作+5，零下3°C记作-3\n🏔️ 海拔：海平面为0，珠峰+8848m，死海-430m\n💰 收支：赚钱+100元，花钱-50元", "default": "负数表示和正数相反意义的量。比如温度零下用负数、海拔低于海平面用负数、花出去的钱用负数。关键是找到「0」在哪里！"}}, "多边形面积": {"keywords": ["面积", "平行四边形", "三角形", "梯形", "公式", "底", "高", "组合", "平方"], "answers": {"公式": "📐 三个核心公式：\n① 平行四边形 S = 底×高\n② 三角形 S = 底×高÷2\n③ 梯形 S = (上底+下底)×高÷2\n\n⚠️ 三角形和梯形别忘了除以2！", "高怎么找": "高必须和底边垂直！画一条从顶点到底边的垂线段才是高。平行四边形的高是两条平行边之间的垂直距离。", "组合图形": "遇到组合图形，用「割补法」：\n1. 把不规则图形分割成几个基本图形\n2. 分别算每个基本图形的面积\n3. 加起来（或减去）得到总面积", "default": "面积计算的秘诀：记住三个基本公式，找准底和对应的高，三角形和梯形别忘除以2。组合图形要学会拆解！"}}, "小数": {"keywords": ["小数", "小数点", "性质", "比较", "数位", "十分", "百分", "千分"], "answers": {"性质": "小数的末尾添上0或去掉0，小数的大小不变。比如0.5=0.50=0.500。但注意：只能动末尾的0，中间的0不能随便去！", "比较大小": "先比整数部分，整数部分大的就大。整数部分相同，再从小数点后第一位开始逐位比较。比如3.21 > 3.19，因为十分位上2>1。", "小数点移动": "×10 → 小数点右移1位（数变大10倍）\n÷10 → 小数点左移1位（数变小10倍）\n×100 → 右移2位\n÷100 → 左移2位", "default": "小数是分母为10、100、1000的分数。列竖式计算时关键是小數点对齐！末位添0或去0大小不变，但只能在末尾操作。"}}, "小数加减": {"keywords": ["加减", "加法", "减法", "对齐", "竖式", "借位", "进位", "估算"], "answers": {"列竖式": "小数加减列竖式的关键是小数点对齐！也就是相同数位对齐。不是末位对齐哦！比如3.2+1.45，要对齐小数点：\n  3.2\n+1.45\n────\n  4.65", "减法借位": "小数减法不够减时，向前一位借1当10。和整数减法一样，只是多了小数点。整数减小数时，整数后面先补上小数点和0再减。", "估算方法": "估算时用「四舍五入」法：\n① 把每个数四舍五入到整数\n② 用整数加减快速估算\n③ 用估算结果检验精确计算是否合理", "default": "小数加减记住：小数点对齐=数位对齐。结果末尾的0可以去掉化简。整数减小数时别忘了补小数点！"}}, "小数乘除": {"keywords": ["乘法", "除法", "乘", "除", "积", "商", "移动", "因数"], "answers": {"乘法规则": "先按整数乘法算出积，再看两个因数一共有几位小数，就从积的右边起数出几位，点上小数点。\n\n例：2.5×0.3 → 25×3=75 → 因数共2位小数 → 0.75", "除法规则": "先把除数变成整数（移动小数点），被除数的小数点也要同步移动相同位数。然后按整数除法计算，商的小数点要和被除数移动后的新小数点对齐。", "乘除规律": "一个数(0除外)乘以小于1的数，积比原数小。比如10×0.5=5。\n一个数(0除外)除以小于1的数，商比原数大。比如10÷0.5=20。", "default": "小数乘除的秘诀：乘法先当整数算再点小数点，除法把除数变整数被除数同步移点。结果要检查小数位数对不对！"}}, "统计": {"keywords": ["统计", "图表", "条形", "复式", "图例", "数据", "比较", "信息"], "answers": {"复式统计表": "复式统计表可以同时展示两组或多组相关数据，方便对比分析。制表三要素：标题、表头、数据。", "复式条形图": "用不同颜色（或条纹）的条形代表不同类别，必须有图例说明！读图时先看图例，再看坐标轴，最后比较条形长短（或高低）。", "读图技巧": "① 先看标题了解统计内容\n② 看横轴纵轴确定含义和单位\n③ 看图例区分不同数据组\n④ 比较条形长短得出结论\n⚠️ 注意纵轴起点，有时不是从0开始！", "default": "统计图表的核心是「用数据说话」。复式图表能同时比较多组数据，但一定要有图例！学会从图表中提取信息、发现规律、提出建议。"}}, "策略": {"keywords": ["策略", "一一", "列举", "枚举", "方案", "列表", "画图", "不重复", "不遗漏"], "answers": {"一一列举": "一一列举就是把所有可能的情况一个一个列出来。关键是「有序」——按顺序一个一个列，做到不重复、不遗漏！\n\n比如：用20cm铁丝围长方形（长宽为整数），长和宽可能是：\n(9,1)(8,2)(7,3)(6,4)(5,5) — 5种", "列表法": "列表法是一一列举的好帮手！画个表格，把条件写在表头，然后一行一行按顺序填可能的值。这样一目了然，不容易漏。", "画图法": "遇到复杂问题先画图！线段图、示意图能帮你理清思路。画出来往往就能找到解题的突破口。", "default": "解决问题策略的核心是「有序思考」。不管是一一列举、列表还是画图，关键是按顺序来，做到不重复不遗漏！"}}, "字母": {"keywords": ["字母", "a", "b", "x", "平方", "代入", "省略", "公式", "化简"], "answers": {"书写规则": "数字×字母：数字在前，字母在后，乘号省略。\n3×a = 3a  1×a = a   a×b = ab\n\n相同字母相乘用平方：a×a = a²\n不同字母不能合并：3a+2b 不能简化", "a平方": "a² = a × a（a和自己乘）\n2a = a + a（a加自己）\n\n这两个最容易搞混！比如a=3时：\na²=3×3=9\n2a=3+3=6", "代入求值": "把字母换成数来计算就叫代入求值。\n例：a=4时，3a²+2a = 3×16+2×4 = 48+8 = 56\n注意运算顺序：先算平方，再乘除，最后加减！", "default": "用字母表示数让数学表达更简洁！记住：数字在前字母在后，乘号省略。a²是a×a不是2a，这是最容易出错的地方！"}}, "综合": {"keywords": ["复习", "考试", "重点", "怎么", "方法", "技巧", "不会", "难", "帮"], "answers": {"default": "学习数学最重要的是理解概念和方法，而不是死记硬背。建议：\n\n1. 先把课本上的例题搞懂\n2. 每个单元做3-5道练习题\n3. 考试前重点看易错点\n4. 不会的及时问老师\n\n💪 你已经很努力了，继续加油！"}}};
+
+function findAnswer(question) {
+  const q = question.toLowerCase().replace(/[？?！!，,。.、\s]+/g, ' ').trim();
+  
+  // 1. 精确匹配：遍历所有分类的关键词
+  let bestCat = null, bestScore = 0;
+  for (const [cat, data] of Object.entries(KB)) {
+    let score = 0;
+    for (const kw of data.keywords) {
+      if (q.includes(kw)) { score += kw.length * 2; }
+    }
+    if (score > bestScore) { bestScore = score; bestCat = cat; }
+  }
+  
+  // 2. 次级：在最佳分类中找最匹配的回答
+  if (bestCat && bestScore > 0) {
+    const answers = KB[bestCat].answers;
+    // 尝试匹配子问题
+    for (const [sub, text] of Object.entries(answers)) {
+      if (sub === 'default') continue;
+      if (q.includes(sub.replace(/[怎么是什么]/g, ''))) return text;
+    }
+    return (answers.default || answers[Object.keys(answers)[0]]) + '\n\n💡 还有其他问题吗？';
+  }
+  
+  // 3. 兜底
+  return '🤔 这个问题我需要再想想~\n\n你可以试试问：\n• "三角形的面积公式是什么？"\n• "负数怎么比较大小？"\n• "小数乘法的规则是什么？"\n• "a²和2a有什么区别？"\n\n或者你可以浏览课件内容找到答案！';
+}
+
+let chatHistory = [];
+
+function showAIChat() {
+  const modal = document.getElementById('aiChatModal');
+  modal.classList.add('show');
+  document.getElementById('aiInput').focus();
+  if (chatHistory.length === 0) {
+    addMsg('ai', '你好！我是你的AI学伴小Q 🎓\n\n五年级上册的内容我都很熟悉，关于负数、面积公式、小数计算、统计图、解题策略……你随便问！\n\n比如："三角形面积怎么算？""小数乘法要注意什么？"');
+  }
+}
+
+function closeAIChat() {
+  document.getElementById('aiChatModal').classList.remove('show');
+}
+
+function sendMsg() {
+  const input = document.getElementById('aiInput');
+  const q = input.value.trim();
+  if (!q) return;
+  
+  addMsg('user', q);
+  input.value = '';
+  
+  // 模拟思考延迟
+  setTimeout(() => {
+    const answer = findAnswer(q);
+    addMsg('ai', answer);
+  }, 500 + Math.random() * 800);
+}
+
+function addMsg(role, text) {
+  const msgs = document.getElementById('aiMessages');
+  const div = document.createElement('div');
+  div.className = 'ai-msg ' + (role === 'user' ? 'ai-user' : 'ai-bot');
+  div.innerHTML = '<div class="ai-avatar">' + (role === 'user' ? '👦' : '🤖') + '</div><div class="ai-text">' + text.replace(/\n/g, '<br>') + '</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  chatHistory.push({role, text});
+}
+
+// 键盘回车发送
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && document.activeElement === document.getElementById('aiInput')) {
+    sendMsg();
+  }
+});
+
+
+function quickAsk(q) {
+  document.getElementById('aiInput').value = q;
+  sendMsg();
+}
+// 修改原来的AI按钮行为，也打开对话
+(function(){
+  var btns = document.querySelectorAll('.ai-btn');
+  btns.forEach(function(b){ b.onclick = showAIChat; });
+})();
+
+</script>
 </head>
 <body>
 <div class="nav-bar">
@@ -318,6 +431,8 @@ function startQuiz(idx){
 function closeQuiz(){document.getElementById("quizModal").classList.remove("show");qi=-1}
 
 function showTutor(idx){
+  showAIChat(); return; // 新版对话式AI
+  (function(){
   document.getElementById("th").textContent="🤖 "+TITLES[idx];
   document.getElementById("tb").textContent=TIPS[idx];
   document.getElementById("tutor").classList.add("show")
@@ -349,6 +464,206 @@ function stopTTS(){
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeQuiz();closeTutor();stopTTS()}});
 document.addEventListener("click",function(e){if(e.target.classList.contains("modal"))closeQuiz()});
 (function(){var s=document.getElementById("sec0");if(s)s.classList.add("active")})();
+// === 对话式AI学伴 ===
+const KB = {"负数": {"keywords": ["负数", "负", "零下", "零上", "温度", "零", "正数", "分界", "比较", "大小"], "answers": {"什么是负数": "负数就是比0小的数，前面带「-」号。比如-3表示零下3度，-100表示欠了100元。0是正数和负数的分界点，它既不是正数也不是负数！", "怎么比较": "记住口诀：在数轴上越往右越大。所以-2 > -5（负得越少越大），0 > 所有负数，正数 > 0 > 所有负数。", "生活例子": "🌡️ 温度：零上5°C记作+5，零下3°C记作-3\n🏔️ 海拔：海平面为0，珠峰+8848m，死海-430m\n💰 收支：赚钱+100元，花钱-50元", "default": "负数表示和正数相反意义的量。比如温度零下用负数、海拔低于海平面用负数、花出去的钱用负数。关键是找到「0」在哪里！"}}, "多边形面积": {"keywords": ["面积", "平行四边形", "三角形", "梯形", "公式", "底", "高", "组合", "平方"], "answers": {"公式": "📐 三个核心公式：\n① 平行四边形 S = 底×高\n② 三角形 S = 底×高÷2\n③ 梯形 S = (上底+下底)×高÷2\n\n⚠️ 三角形和梯形别忘了除以2！", "高怎么找": "高必须和底边垂直！画一条从顶点到底边的垂线段才是高。平行四边形的高是两条平行边之间的垂直距离。", "组合图形": "遇到组合图形，用「割补法」：\n1. 把不规则图形分割成几个基本图形\n2. 分别算每个基本图形的面积\n3. 加起来（或减去）得到总面积", "default": "面积计算的秘诀：记住三个基本公式，找准底和对应的高，三角形和梯形别忘除以2。组合图形要学会拆解！"}}, "小数": {"keywords": ["小数", "小数点", "性质", "比较", "数位", "十分", "百分", "千分"], "answers": {"性质": "小数的末尾添上0或去掉0，小数的大小不变。比如0.5=0.50=0.500。但注意：只能动末尾的0，中间的0不能随便去！", "比较大小": "先比整数部分，整数部分大的就大。整数部分相同，再从小数点后第一位开始逐位比较。比如3.21 > 3.19，因为十分位上2>1。", "小数点移动": "×10 → 小数点右移1位（数变大10倍）\n÷10 → 小数点左移1位（数变小10倍）\n×100 → 右移2位\n÷100 → 左移2位", "default": "小数是分母为10、100、1000的分数。列竖式计算时关键是小數点对齐！末位添0或去0大小不变，但只能在末尾操作。"}}, "小数加减": {"keywords": ["加减", "加法", "减法", "对齐", "竖式", "借位", "进位", "估算"], "answers": {"列竖式": "小数加减列竖式的关键是小数点对齐！也就是相同数位对齐。不是末位对齐哦！比如3.2+1.45，要对齐小数点：\n  3.2\n+1.45\n────\n  4.65", "减法借位": "小数减法不够减时，向前一位借1当10。和整数减法一样，只是多了小数点。整数减小数时，整数后面先补上小数点和0再减。", "估算方法": "估算时用「四舍五入」法：\n① 把每个数四舍五入到整数\n② 用整数加减快速估算\n③ 用估算结果检验精确计算是否合理", "default": "小数加减记住：小数点对齐=数位对齐。结果末尾的0可以去掉化简。整数减小数时别忘了补小数点！"}}, "小数乘除": {"keywords": ["乘法", "除法", "乘", "除", "积", "商", "移动", "因数"], "answers": {"乘法规则": "先按整数乘法算出积，再看两个因数一共有几位小数，就从积的右边起数出几位，点上小数点。\n\n例：2.5×0.3 → 25×3=75 → 因数共2位小数 → 0.75", "除法规则": "先把除数变成整数（移动小数点），被除数的小数点也要同步移动相同位数。然后按整数除法计算，商的小数点要和被除数移动后的新小数点对齐。", "乘除规律": "一个数(0除外)乘以小于1的数，积比原数小。比如10×0.5=5。\n一个数(0除外)除以小于1的数，商比原数大。比如10÷0.5=20。", "default": "小数乘除的秘诀：乘法先当整数算再点小数点，除法把除数变整数被除数同步移点。结果要检查小数位数对不对！"}}, "统计": {"keywords": ["统计", "图表", "条形", "复式", "图例", "数据", "比较", "信息"], "answers": {"复式统计表": "复式统计表可以同时展示两组或多组相关数据，方便对比分析。制表三要素：标题、表头、数据。", "复式条形图": "用不同颜色（或条纹）的条形代表不同类别，必须有图例说明！读图时先看图例，再看坐标轴，最后比较条形长短（或高低）。", "读图技巧": "① 先看标题了解统计内容\n② 看横轴纵轴确定含义和单位\n③ 看图例区分不同数据组\n④ 比较条形长短得出结论\n⚠️ 注意纵轴起点，有时不是从0开始！", "default": "统计图表的核心是「用数据说话」。复式图表能同时比较多组数据，但一定要有图例！学会从图表中提取信息、发现规律、提出建议。"}}, "策略": {"keywords": ["策略", "一一", "列举", "枚举", "方案", "列表", "画图", "不重复", "不遗漏"], "answers": {"一一列举": "一一列举就是把所有可能的情况一个一个列出来。关键是「有序」——按顺序一个一个列，做到不重复、不遗漏！\n\n比如：用20cm铁丝围长方形（长宽为整数），长和宽可能是：\n(9,1)(8,2)(7,3)(6,4)(5,5) — 5种", "列表法": "列表法是一一列举的好帮手！画个表格，把条件写在表头，然后一行一行按顺序填可能的值。这样一目了然，不容易漏。", "画图法": "遇到复杂问题先画图！线段图、示意图能帮你理清思路。画出来往往就能找到解题的突破口。", "default": "解决问题策略的核心是「有序思考」。不管是一一列举、列表还是画图，关键是按顺序来，做到不重复不遗漏！"}}, "字母": {"keywords": ["字母", "a", "b", "x", "平方", "代入", "省略", "公式", "化简"], "answers": {"书写规则": "数字×字母：数字在前，字母在后，乘号省略。\n3×a = 3a  1×a = a   a×b = ab\n\n相同字母相乘用平方：a×a = a²\n不同字母不能合并：3a+2b 不能简化", "a平方": "a² = a × a（a和自己乘）\n2a = a + a（a加自己）\n\n这两个最容易搞混！比如a=3时：\na²=3×3=9\n2a=3+3=6", "代入求值": "把字母换成数来计算就叫代入求值。\n例：a=4时，3a²+2a = 3×16+2×4 = 48+8 = 56\n注意运算顺序：先算平方，再乘除，最后加减！", "default": "用字母表示数让数学表达更简洁！记住：数字在前字母在后，乘号省略。a²是a×a不是2a，这是最容易出错的地方！"}}, "综合": {"keywords": ["复习", "考试", "重点", "怎么", "方法", "技巧", "不会", "难", "帮"], "answers": {"default": "学习数学最重要的是理解概念和方法，而不是死记硬背。建议：\n\n1. 先把课本上的例题搞懂\n2. 每个单元做3-5道练习题\n3. 考试前重点看易错点\n4. 不会的及时问老师\n\n💪 你已经很努力了，继续加油！"}}};
+
+function findAnswer(question) {
+  const q = question.toLowerCase().replace(/[？?！!，,。.、\s]+/g, ' ').trim();
+  
+  // 1. 精确匹配：遍历所有分类的关键词
+  let bestCat = null, bestScore = 0;
+  for (const [cat, data] of Object.entries(KB)) {
+    let score = 0;
+    for (const kw of data.keywords) {
+      if (q.includes(kw)) { score += kw.length * 2; }
+    }
+    if (score > bestScore) { bestScore = score; bestCat = cat; }
+  }
+  
+  // 2. 次级：在最佳分类中找最匹配的回答
+  if (bestCat && bestScore > 0) {
+    const answers = KB[bestCat].answers;
+    // 尝试匹配子问题
+    for (const [sub, text] of Object.entries(answers)) {
+      if (sub === 'default') continue;
+      if (q.includes(sub.replace(/[怎么是什么]/g, ''))) return text;
+    }
+    return (answers.default || answers[Object.keys(answers)[0]]) + '\n\n💡 还有其他问题吗？';
+  }
+  
+  // 3. 兜底
+  return '🤔 这个问题我需要再想想~\n\n你可以试试问：\n• "三角形的面积公式是什么？"\n• "负数怎么比较大小？"\n• "小数乘法的规则是什么？"\n• "a²和2a有什么区别？"\n\n或者你可以浏览课件内容找到答案！';
+}
+
+let chatHistory = [];
+
+function showAIChat() {
+  const modal = document.getElementById('aiChatModal');
+  modal.classList.add('show');
+  document.getElementById('aiInput').focus();
+  if (chatHistory.length === 0) {
+    addMsg('ai', '你好！我是你的AI学伴小Q 🎓\n\n五年级上册的内容我都很熟悉，关于负数、面积公式、小数计算、统计图、解题策略……你随便问！\n\n比如："三角形面积怎么算？""小数乘法要注意什么？"');
+  }
+}
+
+function closeAIChat() {
+  document.getElementById('aiChatModal').classList.remove('show');
+}
+
+function sendMsg() {
+  const input = document.getElementById('aiInput');
+  const q = input.value.trim();
+  if (!q) return;
+  
+  addMsg('user', q);
+  input.value = '';
+  
+  // 模拟思考延迟
+  setTimeout(() => {
+    const answer = findAnswer(q);
+    addMsg('ai', answer);
+  }, 500 + Math.random() * 800);
+}
+
+function addMsg(role, text) {
+  const msgs = document.getElementById('aiMessages');
+  const div = document.createElement('div');
+  div.className = 'ai-msg ' + (role === 'user' ? 'ai-user' : 'ai-bot');
+  div.innerHTML = '<div class="ai-avatar">' + (role === 'user' ? '👦' : '🤖') + '</div><div class="ai-text">' + text.replace(/\n/g, '<br>') + '</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  chatHistory.push({role, text});
+}
+
+// 键盘回车发送
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && document.activeElement === document.getElementById('aiInput')) {
+    sendMsg();
+  }
+});
+
+
+function quickAsk(q) {
+  document.getElementById('aiInput').value = q;
+  sendMsg();
+}
+// 修改原来的AI按钮行为，也打开对话
+(function(){
+  var btns = document.querySelectorAll('.ai-btn');
+  btns.forEach(function(b){ b.onclick = showAIChat; });
+})();
+
 </script>
-<script>window.__TEACHANY_CONFIG__={courseId:"sujiao-g5-term1-review",subject:"math",grade:"5",nodeId:"math-e-negative-numbers"};</script>
+<script>window.__TEACHANY_CONFIG__={courseId:"sujiao-g5-term1-review",subject:"math",grade:"5",nodeId:"math-e-negative-numbers"};// === 对话式AI学伴 ===
+const KB = {"负数": {"keywords": ["负数", "负", "零下", "零上", "温度", "零", "正数", "分界", "比较", "大小"], "answers": {"什么是负数": "负数就是比0小的数，前面带「-」号。比如-3表示零下3度，-100表示欠了100元。0是正数和负数的分界点，它既不是正数也不是负数！", "怎么比较": "记住口诀：在数轴上越往右越大。所以-2 > -5（负得越少越大），0 > 所有负数，正数 > 0 > 所有负数。", "生活例子": "🌡️ 温度：零上5°C记作+5，零下3°C记作-3\n🏔️ 海拔：海平面为0，珠峰+8848m，死海-430m\n💰 收支：赚钱+100元，花钱-50元", "default": "负数表示和正数相反意义的量。比如温度零下用负数、海拔低于海平面用负数、花出去的钱用负数。关键是找到「0」在哪里！"}}, "多边形面积": {"keywords": ["面积", "平行四边形", "三角形", "梯形", "公式", "底", "高", "组合", "平方"], "answers": {"公式": "📐 三个核心公式：\n① 平行四边形 S = 底×高\n② 三角形 S = 底×高÷2\n③ 梯形 S = (上底+下底)×高÷2\n\n⚠️ 三角形和梯形别忘了除以2！", "高怎么找": "高必须和底边垂直！画一条从顶点到底边的垂线段才是高。平行四边形的高是两条平行边之间的垂直距离。", "组合图形": "遇到组合图形，用「割补法」：\n1. 把不规则图形分割成几个基本图形\n2. 分别算每个基本图形的面积\n3. 加起来（或减去）得到总面积", "default": "面积计算的秘诀：记住三个基本公式，找准底和对应的高，三角形和梯形别忘除以2。组合图形要学会拆解！"}}, "小数": {"keywords": ["小数", "小数点", "性质", "比较", "数位", "十分", "百分", "千分"], "answers": {"性质": "小数的末尾添上0或去掉0，小数的大小不变。比如0.5=0.50=0.500。但注意：只能动末尾的0，中间的0不能随便去！", "比较大小": "先比整数部分，整数部分大的就大。整数部分相同，再从小数点后第一位开始逐位比较。比如3.21 > 3.19，因为十分位上2>1。", "小数点移动": "×10 → 小数点右移1位（数变大10倍）\n÷10 → 小数点左移1位（数变小10倍）\n×100 → 右移2位\n÷100 → 左移2位", "default": "小数是分母为10、100、1000的分数。列竖式计算时关键是小數点对齐！末位添0或去0大小不变，但只能在末尾操作。"}}, "小数加减": {"keywords": ["加减", "加法", "减法", "对齐", "竖式", "借位", "进位", "估算"], "answers": {"列竖式": "小数加减列竖式的关键是小数点对齐！也就是相同数位对齐。不是末位对齐哦！比如3.2+1.45，要对齐小数点：\n  3.2\n+1.45\n────\n  4.65", "减法借位": "小数减法不够减时，向前一位借1当10。和整数减法一样，只是多了小数点。整数减小数时，整数后面先补上小数点和0再减。", "估算方法": "估算时用「四舍五入」法：\n① 把每个数四舍五入到整数\n② 用整数加减快速估算\n③ 用估算结果检验精确计算是否合理", "default": "小数加减记住：小数点对齐=数位对齐。结果末尾的0可以去掉化简。整数减小数时别忘了补小数点！"}}, "小数乘除": {"keywords": ["乘法", "除法", "乘", "除", "积", "商", "移动", "因数"], "answers": {"乘法规则": "先按整数乘法算出积，再看两个因数一共有几位小数，就从积的右边起数出几位，点上小数点。\n\n例：2.5×0.3 → 25×3=75 → 因数共2位小数 → 0.75", "除法规则": "先把除数变成整数（移动小数点），被除数的小数点也要同步移动相同位数。然后按整数除法计算，商的小数点要和被除数移动后的新小数点对齐。", "乘除规律": "一个数(0除外)乘以小于1的数，积比原数小。比如10×0.5=5。\n一个数(0除外)除以小于1的数，商比原数大。比如10÷0.5=20。", "default": "小数乘除的秘诀：乘法先当整数算再点小数点，除法把除数变整数被除数同步移点。结果要检查小数位数对不对！"}}, "统计": {"keywords": ["统计", "图表", "条形", "复式", "图例", "数据", "比较", "信息"], "answers": {"复式统计表": "复式统计表可以同时展示两组或多组相关数据，方便对比分析。制表三要素：标题、表头、数据。", "复式条形图": "用不同颜色（或条纹）的条形代表不同类别，必须有图例说明！读图时先看图例，再看坐标轴，最后比较条形长短（或高低）。", "读图技巧": "① 先看标题了解统计内容\n② 看横轴纵轴确定含义和单位\n③ 看图例区分不同数据组\n④ 比较条形长短得出结论\n⚠️ 注意纵轴起点，有时不是从0开始！", "default": "统计图表的核心是「用数据说话」。复式图表能同时比较多组数据，但一定要有图例！学会从图表中提取信息、发现规律、提出建议。"}}, "策略": {"keywords": ["策略", "一一", "列举", "枚举", "方案", "列表", "画图", "不重复", "不遗漏"], "answers": {"一一列举": "一一列举就是把所有可能的情况一个一个列出来。关键是「有序」——按顺序一个一个列，做到不重复、不遗漏！\n\n比如：用20cm铁丝围长方形（长宽为整数），长和宽可能是：\n(9,1)(8,2)(7,3)(6,4)(5,5) — 5种", "列表法": "列表法是一一列举的好帮手！画个表格，把条件写在表头，然后一行一行按顺序填可能的值。这样一目了然，不容易漏。", "画图法": "遇到复杂问题先画图！线段图、示意图能帮你理清思路。画出来往往就能找到解题的突破口。", "default": "解决问题策略的核心是「有序思考」。不管是一一列举、列表还是画图，关键是按顺序来，做到不重复不遗漏！"}}, "字母": {"keywords": ["字母", "a", "b", "x", "平方", "代入", "省略", "公式", "化简"], "answers": {"书写规则": "数字×字母：数字在前，字母在后，乘号省略。\n3×a = 3a  1×a = a   a×b = ab\n\n相同字母相乘用平方：a×a = a²\n不同字母不能合并：3a+2b 不能简化", "a平方": "a² = a × a（a和自己乘）\n2a = a + a（a加自己）\n\n这两个最容易搞混！比如a=3时：\na²=3×3=9\n2a=3+3=6", "代入求值": "把字母换成数来计算就叫代入求值。\n例：a=4时，3a²+2a = 3×16+2×4 = 48+8 = 56\n注意运算顺序：先算平方，再乘除，最后加减！", "default": "用字母表示数让数学表达更简洁！记住：数字在前字母在后，乘号省略。a²是a×a不是2a，这是最容易出错的地方！"}}, "综合": {"keywords": ["复习", "考试", "重点", "怎么", "方法", "技巧", "不会", "难", "帮"], "answers": {"default": "学习数学最重要的是理解概念和方法，而不是死记硬背。建议：\n\n1. 先把课本上的例题搞懂\n2. 每个单元做3-5道练习题\n3. 考试前重点看易错点\n4. 不会的及时问老师\n\n💪 你已经很努力了，继续加油！"}}};
+
+function findAnswer(question) {
+  const q = question.toLowerCase().replace(/[？?！!，,。.、\s]+/g, ' ').trim();
+  
+  // 1. 精确匹配：遍历所有分类的关键词
+  let bestCat = null, bestScore = 0;
+  for (const [cat, data] of Object.entries(KB)) {
+    let score = 0;
+    for (const kw of data.keywords) {
+      if (q.includes(kw)) { score += kw.length * 2; }
+    }
+    if (score > bestScore) { bestScore = score; bestCat = cat; }
+  }
+  
+  // 2. 次级：在最佳分类中找最匹配的回答
+  if (bestCat && bestScore > 0) {
+    const answers = KB[bestCat].answers;
+    // 尝试匹配子问题
+    for (const [sub, text] of Object.entries(answers)) {
+      if (sub === 'default') continue;
+      if (q.includes(sub.replace(/[怎么是什么]/g, ''))) return text;
+    }
+    return (answers.default || answers[Object.keys(answers)[0]]) + '\n\n💡 还有其他问题吗？';
+  }
+  
+  // 3. 兜底
+  return '🤔 这个问题我需要再想想~\n\n你可以试试问：\n• "三角形的面积公式是什么？"\n• "负数怎么比较大小？"\n• "小数乘法的规则是什么？"\n• "a²和2a有什么区别？"\n\n或者你可以浏览课件内容找到答案！';
+}
+
+let chatHistory = [];
+
+function showAIChat() {
+  const modal = document.getElementById('aiChatModal');
+  modal.classList.add('show');
+  document.getElementById('aiInput').focus();
+  if (chatHistory.length === 0) {
+    addMsg('ai', '你好！我是你的AI学伴小Q 🎓\n\n五年级上册的内容我都很熟悉，关于负数、面积公式、小数计算、统计图、解题策略……你随便问！\n\n比如："三角形面积怎么算？""小数乘法要注意什么？"');
+  }
+}
+
+function closeAIChat() {
+  document.getElementById('aiChatModal').classList.remove('show');
+}
+
+function sendMsg() {
+  const input = document.getElementById('aiInput');
+  const q = input.value.trim();
+  if (!q) return;
+  
+  addMsg('user', q);
+  input.value = '';
+  
+  // 模拟思考延迟
+  setTimeout(() => {
+    const answer = findAnswer(q);
+    addMsg('ai', answer);
+  }, 500 + Math.random() * 800);
+}
+
+function addMsg(role, text) {
+  const msgs = document.getElementById('aiMessages');
+  const div = document.createElement('div');
+  div.className = 'ai-msg ' + (role === 'user' ? 'ai-user' : 'ai-bot');
+  div.innerHTML = '<div class="ai-avatar">' + (role === 'user' ? '👦' : '🤖') + '</div><div class="ai-text">' + text.replace(/\n/g, '<br>') + '</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  chatHistory.push({role, text});
+}
+
+// 键盘回车发送
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && document.activeElement === document.getElementById('aiInput')) {
+    sendMsg();
+  }
+});
+
+
+function quickAsk(q) {
+  document.getElementById('aiInput').value = q;
+  sendMsg();
+}
+// 修改原来的AI按钮行为，也打开对话
+(function(){
+  var btns = document.querySelectorAll('.ai-btn');
+  btns.forEach(function(b){ b.onclick = showAIChat; });
+})();
+
+</script>
+
+<!-- === AI对话模态框 === -->
+<div class="ai-chat-modal" id="aiChatModal">
+  <div class="ai-chat-box">
+    <div class="ai-chat-head">
+      <h4>🤖 AI学伴小Q · 对话中</h4>
+      <button class="ai-chat-close" onclick="closeAIChat()">&times;</button>
+    </div>
+    <div class="ai-chat-msgs" id="aiMessages"></div>
+    <div class="ai-suggest" id="aiSuggest">
+      <span onclick="quickAsk('三角形面积公式')">三角形面积公式</span>
+      <span onclick="quickAsk('负数怎么比较')">负数怎么比较</span>
+      <span onclick="quickAsk('小数乘法规则')">小数乘法规则</span>
+      <span onclick="quickAsk('a²和2a区别')">a²和2a区别</span>
+    </div>
+    <div class="ai-chat-foot">
+      <input type="text" id="aiInput" placeholder="输入你的问题…" onfocus="this.placeholder=''">
+      <button onclick="sendMsg()">发送</button>
+    </div>
+  </div>
+</div>
+
 </body></html>
