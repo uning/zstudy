@@ -1,0 +1,66 @@
+{
+  "id": "info-e-online-basics",
+  "course_id": "info-e-online-basics",
+  "node_id": "it-e-online-experience",
+  "name": "走进信息世界",
+  "name_en": "Introduction to the Information World",
+  "subject": "info-tech",
+  "grade": "3",
+  "stage": "elementary",
+  "domain": "online-society",
+  "lesson_type": "新授课",
+  "status": "community",
+  "author": "TeachAny",
+  "version": "1.0.0",
+  "teachany_version": "7.21.0",
+  "template_version": "2.0",
+  "curriculum": "义务教育信息科技课程标准",
+  "description": "小学信息科技第一单元新学课件：认识什么是信息，了解信息的获取与传递方式，体验在线工具查找信息，初步建立信息安全意识。配套中文讲解音频与互动分类、排序活动，覆盖问题锚点—概念—互动—练习—总结的完整学习闭环。",
+  "tags": [
+    "信息",
+    "信息科技",
+    "在线体验",
+    "信息安全",
+    "小学三年级"
+  ],
+  "keywords": [
+    "信息",
+    "信息获取",
+    "信息传递",
+    "在线工具",
+    "信息安全",
+    "小学信息科技"
+  ],
+  "prerequisites": [],
+  "leads_to": [
+    "it-e-digital-tools-basic"
+  ],
+  "learning_objectives": [
+    "能用自己的话说出什么是信息，并举出生活中的例子",
+    "了解信息常见的获取方式和传递工具",
+    "体验使用在线工具查找信息，感受网络的便捷",
+    "初步建立信息安全意识，不随意透露个人信息"
+  ],
+  "assets": {
+    "hero": "assets/info-e-online-basics-hero.webp",
+    "tts_manifest": "tts/manifest.json",
+    "videos": [],
+    "images": [
+      "assets/info-e-online-basics-hero.webp"
+    ]
+  },
+  "has_tts": true,
+  "has_video": false,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "free_mode": false,
+  "feedback": {
+    "require_password": false,
+    "teacher_declined": true,
+    "note": "授课教师选择不启用反馈密码"
+  },
+  "created_at": "2026-08-01",
+  "updated_at": "2026-08-01"
+}

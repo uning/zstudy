@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《走进信息世界》 · 信息科技 小学 G3 · TeachAny v7.21</title>
+<meta name="description" content="小学信息科技第一单元新学课件：认识什么是信息、信息的获取与传递方式，体验在线工具，初步建立信息安全意识。">
+
+<meta name="course-id" content="info-e-online-basics">
+<meta name="course-title" content="走进信息世界">
+<meta name="course-subject" content="info-tech">
+<meta name="course-grade" content="三年级">
+<meta name="course-prereqs" content="">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-node" content="it-e-online-experience">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-grade" content="3">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-domain" content="online-society">
+<meta name="teachany-prerequisites" content="无">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-free-mode" content="false">
+<meta name="teachany-template-version" content="2.0">
+
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+
+<style>
+:root {
+  --bg: #fffbf0; --bg-subtle: #fff5e6; --panel: #ffffff;
+  --card: #ffffff; --card-elevated: #fffbf5;
+  --line: #e0d4f5; --line-subtle: rgba(139, 92, 246, 0.10);
+  --text: #333333; --text-secondary: #555555; --muted: #888888;
+  --brand: #8b5cf6; --brand-soft: rgba(139, 92, 246, 0.10);
+  --brand-2: #06b6d4; --brand-2-soft: rgba(6, 182, 212, 0.10);
+  --accent: #f59e0b; --accent-soft: rgba(245, 158, 11, 0.10);
+  --ok: #22c55e; --warn: #f59e0b; --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px; --card-radius: 20px; --card-radius-sm: 14px;
+  --slide-height: 100vh; --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body { padding-top: var(--safe-top); background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif; line-height: 1.75; font-size: 16px; }
+a { color: var(--brand); text-decoration: none; } a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+.slide-container { scroll-snap-type: y mandatory; overflow-y: auto; height: var(--slide-height-fallback,var(--slide-height)); scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+body:not(.play-mode) .slide-container { scroll-snap-type: y proximity; }
+body.play-mode .slide-container { scroll-snap-type: y mandatory; overflow: hidden; }
+.slide-page { min-height: var(--slide-height-fallback,var(--slide-height)); scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: var(--page-padding); padding-bottom: calc(var(--page-padding) + var(--toolbar-height)); position: relative; overflow: hidden; }
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+
+.slide-page[data-page-type="cover"] { background: radial-gradient(ellipse at 20% 20%, rgba(139,92,246,0.15), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(6,182,212,0.12), transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(245,158,11,0.08), transparent 60%); text-align: center; }
+.slide-page[data-page-type="cover"] h1 { font-size: clamp(26px, 5.5vw, 44px); line-height: 1.15; background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.slide-page[data-page-type="cover"] .subtitle { color: var(--text-secondary); font-size: clamp(16px, 3vw, 22px); max-width: 680px; margin: 0 auto; }
+.slide-page[data-page-type="objectives"] { background: radial-gradient(circle at 0% 100%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 100% 0%, rgba(139,92,246,0.08), transparent 40%); }
+.slide-page[data-page-type="concept"] { background: radial-gradient(circle at 30% 20%, rgba(139,92,246,0.08), transparent 35%), radial-gradient(circle at 70% 80%, rgba(6,182,212,0.06), transparent 35%); }
+.slide-page[data-page-type="interactive"] { background: radial-gradient(circle at 50% 0%, rgba(6,182,212,0.12), transparent 40%), radial-gradient(circle at 80% 100%, rgba(139,92,246,0.06), transparent 35%); }
+.slide-page[data-page-type="quiz"] { background: radial-gradient(circle at 20% 80%, rgba(245,158,11,0.14), transparent 35%), radial-gradient(circle at 80% 20%, rgba(6,182,212,0.08), transparent 35%); }
+.slide-page[data-page-type="summary"] { background: radial-gradient(circle at 50% 50%, rgba(139,92,246,0.10), transparent 45%), radial-gradient(circle at 20% 20%, rgba(6,182,212,0.08), transparent 30%); }
+
+.teachany-brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px; background: rgba(255,251,240,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-subtle); transition: transform 0.3s ease; }
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+.brand-logo { display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; } .brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(0,0,0,.05); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+.card { background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(255,251,245,0.98)); border: 1px solid var(--line-subtle); border-radius: var(--card-radius); padding: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); margin-bottom: 20px; }
+.card h2 { font-size: 1.5rem; color: var(--text); margin-bottom: 12px; }
+.card h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 10px; }
+.card p { color: var(--text-secondary); margin: 0 0 10px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 22px; } .card li { margin-bottom: 6px; color: var(--text-secondary); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: none; cursor: pointer; font-weight: 600; font-size: 1rem; transition: transform 0.15s, box-shadow 0.15s; }
+.btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; box-shadow: 0 4px 14px rgba(139,92,246,0.25); }
+.btn-secondary { background: var(--accent); color: #fff; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: var(--brand-soft); color: var(--brand); }
+.interactive-box { background: #fff; border: 2px dashed var(--line); border-radius: 16px; padding: 18px; text-align: center; }
+.formula-box { background: linear-gradient(135deg, #fff, #f5f0ff); border: 2px solid var(--brand); border-radius: 16px; padding: 18px; text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--text); margin: 14px 0; }
+
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 16px; }
+.choice-item { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 16px; cursor: pointer; transition: all 0.2s; text-align: left; }
+.choice-item:hover { border-color: var(--brand); transform: translateY(-2px); }
+.choice-item.selected { border-color: var(--brand); background: var(--brand-soft); }
+
+.quiz-option { background: #fff; border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; }
+.quiz-option:hover { border-color: var(--brand); }
+.quiz-option.correct { border-color: var(--ok); background: rgba(34,197,94,0.08); }
+.quiz-option.wrong { border-color: var(--danger); background: rgba(239,68,68,0.08); }
+
+.figure-wrap { background: #fff; border-radius: 16px; padding: 16px; margin: 14px 0; box-shadow: inset 0 0 0 1px var(--line-subtle); }
+.figure-caption { font-size: 13px; color: var(--muted); text-align: center; margin-top: 8px; }
+.tutor-card { display: flex; gap: 14px; align-items: flex-start; background: #fff; border-radius: 16px; padding: 16px; border: 1px solid var(--line); }
+.tutor-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-weight: 800; flex-shrink: 0; }
+.tutor-bubble { flex: 1; } .tutor-bubble p { margin: 0; color: var(--text-secondary); } .tutor-bubble strong { color: var(--text); }
+
+.play-toolbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 20px calc(10px + var(--safe-bottom)); background: rgba(255,251,240,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--line-subtle); transition: transform 0.3s ease; }
+body:not(.play-mode) .play-toolbar { transform: translateY(100%); }
+.toolbar-btn { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; cursor: pointer; font-size: 14px; }
+.toolbar-btn.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+.sidenav { position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 98; display: flex; flex-direction: column; gap: 8px; }
+.sidenav a { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: block; transition: all 0.2s; }
+.sidenav a.active { background: var(--brand); transform: scale(1.3); }
+
+.text-center { text-align: center; }
+.hint { background: rgba(6,182,212,0.1); border-left: 4px solid var(--brand-2); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+.warn-box { background: rgba(245,158,11,0.1); border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 8px; color: var(--text-secondary); font-size: 14px; }
+.mt-1 { margin-top: 8px; } .mt-2 { margin-top: 16px; } .mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; } .mb-2 { margin-bottom: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+
+.drag-zone { min-height: 120px; border: 2px dashed var(--line); border-radius: 12px; padding: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; justify-content: center; background: rgba(255,255,255,0.5); }
+.drag-item { padding: 8px 14px; background: #fff; border: 2px solid var(--brand); border-radius: 999px; cursor: grab; font-size: 14px; user-select: none; }
+.drag-item.dragging { opacity: 0.5; }
+.drag-target { min-height: 100px; border: 2px solid var(--line); border-radius: 12px; padding: 10px; background: #fff; }
+.drag-target.correct { border-color: var(--ok); background: rgba(34,197,94,0.05); }
+.drag-target.wrong { border-color: var(--danger); background: rgba(239,68,68,0.05); }
+
+@media (max-width: 640px) {
+  .card { padding: 18px; }
+  .slide-page { padding: 16px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .choice-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body class="teachany-elementary">
+
+<header class="teachany-brand-bar">
+  <a class="brand-logo" href="https://www.teachany.cn" target="_blank"><span class="brand-mark">T</span><span>TeachAny</span></a>
+  <div class="brand-right"><a class="brand-link" href="https://www.teachany.cn" target="_blank">目录</a><span class="brand-version">v7.21 · 小学信息科技 G3</span></div>
+</header>
+
+<nav class="sidenav">
+  <a href="#slide-1" class="active"></a><a href="#slide-2"></a><a href="#slide-3"></a><a href="#slide-4"></a><a href="#slide-5"></a><a href="#slide-6"></a><a href="#slide-7"></a><a href="#slide-8"></a><a href="#slide-9"></a><a href="#slide-10"></a><a href="#slide-11"></a><a href="#slide-12"></a><a href="#slide-13"></a><a href="#slide-14"></a><a href="#slide-15"></a>
+</nav>
+
+<main class="slide-container" id="slides">
+
+  <!-- Slide 1 -->
+  <section class="slide-page" data-page-type="cover" id="slide-1" data-tts="s01">
+    <div class="slide-inner">
+      <div class="badge mb-2">💻 信息科技 · 小学三年级 · 第一单元</div>
+      <h1>走进信息世界</h1>
+      <p class="subtitle">什么是信息？它怎样来到我们身边？让我们一起开启信息世界的探索之旅</p>
+      <div class="hint" style="max-width:640px;margin:0 auto 16px;text-align:left;">
+        <p style="margin:0;font-size:14px;"><strong>ABT 情境</strong>：你每天都在用手机、看电视、听广播（And），但信息到底是什么、它怎么跑到设备上的、网上哪些话不能告诉别人，你可能还不太清楚（But）。今天这节课，我们就来揭开信息世界的秘密，学会既享受网络便利，又保护个人信息安全（Therefore）。</p>
+      </div>
+      <figure class="ta-standard-figure" style="margin-top:16px;max-width:640px;margin-left:auto;margin-right:auto;">
+        <img class="hero-cover-img" src="./assets/info-e-online-basics-hero.webp" alt="信息世界知识结构图：信息从手机、电脑、书本、卫星、书信流向儿童" style="display:block;width:100%;border-radius:16px;border:1px solid var(--line-subtle);">
+        <figcaption style="margin-top:10px;color:var(--muted);font-size:14px;text-align:center;">信息世界知识结构图：信息从各种设备流向我们</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide-page" data-page-type="interactive" id="slide-2" data-tts="s02">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">Problem Anchor</span>
+          <h2>🤔 问题锚点：今天想解决什么问题？</h2>
+        </div>
+        <p style="color:var(--muted);">选一个你最感兴趣的问题，本课会围绕它展开。</p>
+        <div class="choice-grid">
+          <div class="choice-item" onclick="selectChoice(this)">🔍 信息到底是什么？</div>
+          <div class="choice-item" onclick="selectChoice(this)">📡 信息是怎么"跑"到手机上的？</div>
+          <div class="choice-item" onclick="selectChoice(this)">🔒 我的信息会被别人看到吗？</div>
+        </div>
+        <label style="display:block;margin-top:16px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+          <input id="learner-question-input" placeholder="把你好奇的问题写在这里" style="margin-top:8px;width:100%;padding:12px;border:2px solid var(--line);border-radius:10px;font-size:15px;">
+        </label>
+        <p id="anchor-feedback" class="hint mt-2">选择或输入后，AI 学伴会记住你的问题。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide-page" data-page-type="objectives" id="slide-3" data-tts="s03">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">Objectives</span>
+          <h2>🎯 学习目标</h2>
+        </div>
+        <ol>
+          <li>能用自己的话说出什么是<strong>信息</strong>，并举出 3 个生活中的例子。</li>
+          <li>了解信息常见的<strong>获取方式</strong>（看、听、问、查）和<strong>传递工具</strong>（手机、电脑、书信、广播）。</li>
+          <li>体验使用<strong>在线工具</strong>查找信息，感受网络的便捷。</li>
+          <li>初步建立<strong>信息安全意识</strong>：不随意透露姓名、地址、电话等个人信息。</li>
+        </ol>
+        <div class="hint mt-2">💡 核心概念：信息就是能告诉我们"是什么、怎么样"的消息。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="slide-page" data-page-type="concept" id="slide-4" data-bloom="understand" data-tts="s04">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📖 什么是信息？</h2>
+        <p>信息就是<strong>能告诉我们"是什么、怎么样"的消息</strong>。</p>
+        <div class="grid-3 mt-2">
+          <div class="interactive-box" style="border-color:var(--brand);">
+            <p style="font-size:2rem;">🌦️</p>
+            <p style="font-weight:700;">天气预报</p>
+            <p style="font-size:14px;color:var(--text-secondary);">告诉我们明天会不会下雨</p>
+          </div>
+          <div class="interactive-box" style="border-color:var(--brand-2);">
+            <p style="font-size:2rem;">🗺️</p>
+            <p style="font-weight:700;">地图导航</p>
+            <p style="font-size:14px;color:var(--text-secondary);">告诉我们去公园怎么走</p>
+          </div>
+          <div class="interactive-box" style="border-color:var(--accent);">
+            <p style="font-size:2rem;">📚</p>
+            <p style="font-weight:700;">课本知识</p>
+            <p style="font-size:14px;color:var(--text-secondary);">告诉我们恐龙生活在什么年代</p>
+          </div>
+        </div>
+        <div class="formula-box mt-2">信息 = 有用的消息</div>
+        <div class="hint mt-1">💡 信息可以是文字、声音、图片、视频……只要它能回答你的问题，它就是信息。</div>
+        <div class="mt-2" style="background:rgba(6,182,212,0.08);border-left:4px solid var(--brand-2);padding:12px 16px;border-radius:8px;">
+          <p style="margin:0;font-size:14px;"><strong>🔍 深层理解（比较它）：</strong>为什么"一支铅笔"不是信息，而"铅笔 2 元一支"是信息？因为前者只是物品名称，后者告诉了我们"怎么样"——价格。信息必须能回答你的疑问，帮你做出判断或行动。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5 -->
+  <section class="slide-page" data-page-type="concept" id="slide-5" data-bloom="understand" data-tts="s05">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔍 信息从哪里来？</h2>
+        <p>获取信息的方式有很多，古代和现代可大不一样！</p>
+        <div class="grid-2 mt-2">
+          <div class="interactive-box" style="border-color:var(--accent);background:rgba(245,158,11,0.05);">
+            <p style="font-size:1.3rem;font-weight:700;color:#b45309;">古代</p>
+            <p>📜 竹简、书信</p>
+            <p>🐎 快马传信</p>
+            <p>🔥 烽火台报警</p>
+          </div>
+          <div class="interactive-box" style="border-color:var(--ok);background:rgba(34,197,94,0.05);">
+            <p style="font-size:1.3rem;font-weight:700;color:var(--ok);">现代</p>
+            <p>📱 手机、平板</p>
+            <p>💻 电脑上网</p>
+            <p>📡 电视、广播</p>
+          </div>
+        </div>
+        <div class="hint mt-2">💡 想一想：如果没有手机和网络，我们还能怎样知道远方的消息？</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="slide-page" data-page-type="interactive" id="slide-6" data-bloom="apply" data-tts="s06">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🧩 互动：信息工具分分类</h2>
+        <p>把下面的工具拖到正确的类别里吧！</p>
+        <div class="drag-zone mt-2" id="drag-source">
+          <div class="drag-item" draggable="true" data-cat="old">📜 书信</div>
+          <div class="drag-item" draggable="true" data-cat="new">📱 智能手机</div>
+          <div class="drag-item" draggable="true" data-cat="old">🐎 驿站快马</div>
+          <div class="drag-item" draggable="true" data-cat="new">💻 笔记本电脑</div>
+          <div class="drag-item" draggable="true" data-cat="old">🔥 烽火台</div>
+          <div class="drag-item" draggable="true" data-cat="new">📡 卫星电视</div>
+        </div>
+        <div class="grid-2 mt-2">
+          <div class="drag-target" data-cat="old" ondrop="dropItem(event)" ondragover="allowDrop(event)">
+            <p style="text-align:center;font-weight:700;color:var(--accent);">🏺 古代工具</p>
+          </div>
+          <div class="drag-target" data-cat="new" ondrop="dropItem(event)" ondragover="allowDrop(event)">
+            <p style="text-align:center;font-weight:700;color:var(--ok);">🚀 现代工具</p>
+          </div>
+        </div>
+        <p id="drag-feedback" class="hint mt-2" style="display:none;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7 -->
+  <section class="slide-page" data-page-type="concept" id="slide-7" data-bloom="understand" data-tts="s07">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>📡 信息怎样"跑"到我们身边？</h2>
+        <p>信息不会自己走路，它需要"交通工具"和"道路"。</p>
+        <div class="figure-wrap mt-2">
+          <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="60" width="80" height="50" rx="8" fill="rgba(139,92,246,0.15)" stroke="#8b5cf6" stroke-width="2"/>
+            <text x="60" y="90" text-anchor="middle" font-size="13">说话人</text>
+
+            <rect x="140" y="60" width="80" height="50" rx="8" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="2"/>
+            <text x="180" y="90" text-anchor="middle" font-size="13">手机/网络</text>
+
+            <rect x="260" y="60" width="80" height="50" rx="8" fill="rgba(6,182,212,0.15)" stroke="#06b6d4" stroke-width="2"/>
+            <text x="300" y="90" text-anchor="middle" font-size="13">基站/光纤</text>
+
+            <rect x="380" y="60" width="80" height="50" rx="8" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="2"/>
+            <text x="420" y="90" text-anchor="middle" font-size="13">听的人</text>
+
+            <path d="M 100 85 L 140 85" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+            <path d="M 220 85 L 260 85" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+            <path d="M 340 85 L 380 85" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#666"/>
+              </marker>
+            </defs>
+
+            <text x="240" y="145" text-anchor="middle" font-size="14" fill="#555">信息传递 = 发送者 → 工具/网络 → 接收者</text>
+          </svg>
+        </div>
+        <div class="formula-box mt-2">信息传递三要素：<strong>发送者 → 通道 → 接收者</strong></div>
+        <div class="mt-2" style="background:rgba(6,182,212,0.08);border-left:4px solid var(--brand-2);padding:12px 16px;border-radius:8px;">
+          <p style="margin:0;font-size:14px;"><strong>🔍 深层理解（迁移它）：</strong>想一想，古人"烽火戏诸侯"为什么能报警？烽火台是"通道"，诸侯看到烽火就是"接收者"，点燃烽火的人是"发送者"。今天的手机基站和光纤，就像当年的烽火台，只是速度更快、距离更远。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8 -->
+  <section class="slide-page" data-page-type="concept" id="slide-8" data-bloom="understand" data-tts="s08">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🌐 在线体验：网络真方便</h2>
+        <p>有了网络，查找信息变得又快又简单！</p>
+        <div class="grid-2 mt-2">
+          <div class="interactive-box">
+            <p style="font-size:1.5rem;">🔍</p>
+            <p style="font-weight:700;">搜索引擎</p>
+            <p style="font-size:14px;">输入问题，马上找到答案</p>
+          </div>
+          <div class="interactive-box">
+            <p style="font-size:1.5rem;">🗺️</p>
+            <p style="font-weight:700;">在线地图</p>
+            <p style="font-size:14px;">输入目的地，自动规划路线</p>
+          </div>
+          <div class="interactive-box">
+            <p style="font-size:1.5rem;">📖</p>
+            <p style="font-weight:700;">电子图书</p>
+            <p style="font-size:14px;">成千上万本书随时阅读</p>
+          </div>
+          <div class="interactive-box">
+            <p style="font-size:1.5rem;">🎓</p>
+            <p style="font-weight:700;">在线课程</p>
+            <p style="font-size:14px;">跟着视频学习新知识</p>
+          </div>
+        </div>
+        <div class="hint mt-2">💡 网络就像一个巨大的图书馆+邮局+学校，随时为我们服务。</div>
+        <div class="mt-2" style="background:rgba(6,182,212,0.08);border-left:4px solid var(--brand-2);padding:12px 16px;border-radius:8px;">
+          <p style="margin:0;font-size:14px;"><strong>🔍 深层理解（看见它）：</strong>观察一下你的家里——爸爸妈妈用手机看新闻、用电脑工作、用平板看视频，这些设备都在不停地获取和传递信息。网络让信息的"图书馆"搬到了每个人的口袋里。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9 -->
+  <section class="slide-page" data-page-type="interactive" id="slide-9" data-bloom="apply" data-tts="s09">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🖱️ 动手试一试：模拟搜索</h2>
+        <p>假设你想知道"恐龙生活在什么年代"，请按正确的步骤排序：</p>
+        <div class="drag-zone mt-2" id="sort-source">
+          <div class="drag-item" draggable="true" data-order="2">🔍 在搜索框输入问题</div>
+          <div class="drag-item" draggable="true" data-order="1">📱 打开手机或电脑</div>
+          <div class="drag-item" draggable="true" data-order="4">✅ 选择可靠的答案阅读</div>
+          <div class="drag-item" draggable="true" data-order="3">👀 查看搜索结果</div>
+        </div>
+        <div class="drag-target mt-2" id="sort-target" ondrop="dropSort(event)" ondragover="allowDrop(event)" style="min-height:140px;">
+          <p style="text-align:center;color:var(--muted);font-size:14px;">把步骤按顺序拖到这里</p>
+        </div>
+        <p id="sort-feedback" class="hint mt-2" style="display:none;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10 -->
+  <section class="slide-page" data-page-type="concept" id="slide-10" data-bloom="analyze" data-tts="s10">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🔒 信息安全小卫士</h2>
+        <p>网络很方便，但也要注意保护自己的信息！</p>
+        <div class="grid-2 mt-2">
+          <div class="interactive-box" style="border-color:var(--ok);background:rgba(34,197,94,0.05);">
+            <p style="font-size:1.3rem;font-weight:700;color:var(--ok);">✅ 可以做的事</p>
+            <p>和老师、家长一起上网</p>
+            <p>使用正规的儿童网站</p>
+            <p>遇到问题告诉大人</p>
+          </div>
+          <div class="interactive-box" style="border-color:var(--danger);background:rgba(239,68,68,0.05);">
+            <p style="font-size:1.3rem;font-weight:700;color:var(--danger);">❌ 不能做的事</p>
+            <p>随意告诉陌生人姓名、学校</p>
+            <p>点击不明链接或弹窗</p>
+            <p>独自约见网上认识的人</p>
+          </div>
+        </div>
+        <div class="warn-box mt-2">⚠️ 个人信息包括：姓名、年龄、学校、家庭地址、电话号码、照片……这些都不能随便告诉网上的陌生人！</div>
+        <div class="mt-2" style="background:rgba(139,92,246,0.06);border-left:4px solid var(--brand);padding:12px 16px;border-radius:8px;">
+          <p style="font-weight:700;color:var(--brand);margin:0 0 6px;">⚠️ 三大易错点</p>
+          <ol style="margin:0;padding-left:20px;font-size:14px;color:var(--text-secondary);">
+            <li><strong>把物品当信息</strong>：铅笔、橡皮不是信息，"铅笔 2 元一支"才是信息。</li>
+            <li><strong>认为网络信息都可信</strong>：网上消息有真有假，要选择正规网站、和家长一起辨别。</li>
+            <li><strong>把个人信息当普通消息</strong>：姓名、地址、电话一旦泄露，可能被坏人利用，必须保护。</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11: Pretest -->
+  <section class="slide-page" data-page-type="quiz" id="slide-11" data-bloom="remember" data-tts="s11">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">🎯 前测</span>
+          <h2>信息直觉小诊断</h2>
+        </div>
+        <p>先看看你对信息世界的直觉如何，答错也没关系！</p>
+        <p><strong>第 1 题：</strong>下面哪个是信息？</p>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">A. "明天最高气温 28 摄氏度"</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false, '你把物品当成了信息。铅笔是物品，不是消息；关于铅笔的描述（如价格、颜色）才是信息。')">B. 一支铅笔</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false, '你把物品当成了信息。橡皮是物品，不是消息；关于橡皮的描述才是信息。')">C. 一块橡皮</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 信息是能告诉我们"是什么、怎么样"的消息。</p>
+
+        <p class="mt-2"><strong>第 2 题：</strong>古代人想告诉远方朋友"我平安到达了"，最可能用什么方式？</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false, '你混淆了古今通信工具。微信是现代工具，古代没有手机和互联网。')">A. 发微信</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 写信让驿站快马送去</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false, '你混淆了古今通信工具。电话是 19 世纪末才发明的，古代没有。')">C. 打电话</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 古代没有手机和电话，书信是主要的远程通信方式。</p>
+        <p class="quiz-diagnosis" style="display:none;color:var(--accent);margin-top:8px;font-size:14px;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12: Posttest -->
+  <section class="slide-page" data-page-type="quiz" id="slide-12" data-bloom="evaluate" data-tts="s12">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">📝 后测</span>
+          <h2>新情境检验</h2>
+        </div>
+        <p>用今天学到的知识，解决两个新问题！</p>
+        <p><strong>第 1 题：</strong>小明想知道"北京到上海有多远"，他应该怎么做？</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false, '你忽略了在线工具的作用。猜测不可靠，搜索引擎和地图能给出准确答案。')">A. 随便猜一个数字</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 用搜索引擎或在线地图查询</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false, '你忽视了信息来源的可靠性。网友回答可能有误，应选择正规网站。')">C. 问网友，网友说什么就信什么</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 在线工具是查找信息的好方法，但也要注意选择可靠来源。</p>
+
+        <p class="mt-2"><strong>第 2 题：</strong>在网上遇到陌生人问你的家庭地址，你应该怎么做？</p>
+        <div class="quiz-option" onclick="checkQuiz(this, false, '你忽视了个人信息保护。家庭地址是敏感信息，告诉陌生人可能带来危险。')">A. 告诉他，因为要有礼貌</div>
+        <div class="quiz-option" onclick="checkQuiz(this, true)">B. 不告诉他，并告诉家长或老师</div>
+        <div class="quiz-option" onclick="checkQuiz(this, false, '你回避了问题但没有采取保护措施。应该明确拒绝并告诉家长或老师。')">C. 让他猜一猜</div>
+        <p style="display:none;color:var(--ok);margin-top:4px;" class="hint">✅ 家庭地址是个人信息，不能随便告诉网上的陌生人。</p>
+        <p class="quiz-diagnosis" style="display:none;color:var(--accent);margin-top:8px;font-size:14px;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13 -->
+  <section class="slide-page" data-page-type="concept" id="slide-13" data-bloom="understand" data-tts="s13">
+    <div class="slide-inner">
+      <div class="card">
+        <h2>🤖 AI 学伴</h2>
+        <div class="tutor-card">
+          <div class="tutor-avatar">AI</div>
+          <div class="tutor-bubble">
+            <p><strong>AI 学伴：</strong>关于信息世界，你可以这样问我：</p>
+            <ul style="margin-top:8px;">
+              <li>"信息和消息有什么区别？"</li>
+              <li>"古代人没有手机，怎么传递信息？"</li>
+              <li>"搜索引擎是怎么找到答案的？"</li>
+              <li>"为什么不能在网络上随便告诉别人我的名字？"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 14 -->
+  <section class="slide-page" data-page-type="summary" id="slide-14" data-tts="s14">
+    <div class="slide-inner">
+      <div class="card text-center">
+        <h2>🎉 课堂总结</h2>
+        <ol style="text-align:left;max-width:560px;margin:0 auto;">
+          <li><strong>信息</strong>是能告诉我们"是什么、怎么样"的有用消息。</li>
+          <li>获取信息的方式：古代用<strong>书信、烽火</strong>，现代用<strong>手机、网络</strong>。</li>
+          <li>信息传递三要素：<strong>发送者 → 通道 → 接收者</strong>。</li>
+          <li>网络让查找信息变得<strong>又快又方便</strong>，但也要学会保护个人信息。</li>
+          <li>记住：<strong>姓名、地址、电话、照片</strong>不能随便告诉网上的陌生人！</li>
+        </ol>
+        <div class="mt-3" style="text-align:left;max-width:560px;margin:0 auto;">
+          <h3 style="color:var(--text);margin-bottom:10px;">📋 分层作业</h3>
+          <div class="interactive-box" style="border-color:var(--ok);margin-bottom:10px;text-align:left;">
+            <p style="font-weight:700;color:var(--ok);">🌱 基础</p>
+            <p style="font-size:14px;">向家人说一说：什么是信息？举出 2 个生活中的例子。</p>
+          </div>
+          <div class="interactive-box" style="border-color:var(--accent);margin-bottom:10px;text-align:left;">
+            <p style="font-weight:700;color:#b45309;">🌿 提高</p>
+            <p style="font-size:14px;">和家长一起用搜索引擎查一个你感兴趣的问题，记录查找步骤。</p>
+          </div>
+          <div class="interactive-box" style="border-color:var(--brand);text-align:left;">
+            <p style="font-weight:700;color:var(--brand);">🌳 拓展</p>
+            <p style="font-size:14px;">画一幅"信息传递图"：画出信息从发送者到接收者经过的工具和通道。</p>
+          </div>
+        </div>
+        <div class="mt-3">
+          <a class="btn btn-primary" href="https://www.teachany.cn" target="_blank">返回目录</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 15 -->
+  <section class="slide-page" data-page-type="summary" id="slide-15" data-tts="s15">
+    <div class="slide-inner">
+      <div class="card card-glow">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
+          <h2>🌐 知识图谱</h2>
+        </div>
+        <p style="color:var(--muted);">本课在信息科技知识体系中的位置。</p>
+        <div data-teachany-kg="it-e-online-experience">
+          <canvas id="kg-canvas" class="tkg-fallback-canvas" width="720" height="120" aria-label="知识图谱互动画布" style="display:block;width:100%;max-height:140px;border-radius:12px;"></canvas>
+        </div>
+        <div class="grid-2 mt-2">
+          <div class="interactive-box">
+            <p style="font-weight:700;color:var(--brand);">📥 前置知识</p>
+            <p style="font-size:14px;">无（本课为起点）</p>
+          </div>
+          <div class="interactive-box">
+            <p style="font-weight:700;color:var(--brand-2);">📤 后续学习</p>
+            <p style="font-size:14px;">常用数字工具与安全使用</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="play-toolbar">
+  <button class="toolbar-btn" onclick="prevSlide()">⏮ 上一页</button>
+  <button class="toolbar-btn active" id="mode-btn" onclick="toggleMode()">📖 浏览模式</button>
+  <button class="toolbar-btn" onclick="toggleTTS()">🔊 播放讲解</button>
+  <button class="toolbar-btn" onclick="nextSlide()">下一页 ⏭</button>
+</footer>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" data-teachany-course-id="info-e-online-basics"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+
+<script>
+let playMode = false;
+const slides = document.querySelectorAll('.slide-page');
+let current = 0;
+function updateSidenav() { document.querySelectorAll('.sidenav a').forEach((a,i)=>{a.classList.toggle('active',i===current);}); }
+function scrollToSlide(i) { if(i<0||i>=slides.length)return; current=i; slides[i].scrollIntoView({behavior:'smooth'}); updateSidenav(); }
+function nextSlide() { scrollToSlide(current+1); }
+function prevSlide() { scrollToSlide(current-1); }
+function toggleMode() { playMode=!playMode; document.body.classList.toggle('play-mode',playMode); document.getElementById('mode-btn').textContent=playMode?'▶️ 播放模式':'📖 浏览模式'; }
+function selectChoice(el) { el.parentElement.querySelectorAll('.choice-item').forEach(i=>i.classList.remove('selected')); el.classList.add('selected'); }
+function checkQuiz(el,isCorrect,diag) { const card=el.closest('.card'); card.querySelectorAll('.quiz-option').forEach(o=>{o.style.pointerEvents='none'; if(o===el)o.classList.add(isCorrect?'correct':'wrong');}); card.querySelectorAll('p[style*="display:none"]').forEach(p=>p.style.display='block'); const diagEl=card.querySelector('.quiz-diagnosis'); if(diagEl){diagEl.textContent=diag||'';diagEl.style.display='block';} }
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){current=Array.from(slides).indexOf(e.target);updateSidenav();}});},{root:document.getElementById('slides'),threshold:0.5});
+slides.forEach(s=>observer.observe(s));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' ')nextSlide(); if(e.key==='ArrowUp'||e.key==='ArrowLeft')prevSlide();});
+function toggleTTS(){if(window.teachanyTTS)window.teachanyTTS.playCurrent();}
+
+// Drag & Drop for classification
+let draggedItem = null;
+document.querySelectorAll('.drag-item').forEach(item => {
+  item.addEventListener('dragstart', (e) => { draggedItem = item; item.classList.add('dragging'); });
+  item.addEventListener('dragend', () => { item.classList.remove('dragging'); });
+});
+function allowDrop(e) { e.preventDefault(); }
+function dropItem(e) {
+  e.preventDefault();
+  const target = e.currentTarget;
+  if (!draggedItem) return;
+  const cat = draggedItem.dataset.cat;
+  const targetCat = target.dataset.cat;
+  target.appendChild(draggedItem);
+  const fb = document.getElementById('drag-feedback');
+  if (cat === targetCat) {
+    target.classList.add('correct'); target.classList.remove('wrong');
+    fb.textContent = '✅ 分类正确！'; fb.style.display = 'block';
+  } else {
+    target.classList.add('wrong'); target.classList.remove('correct');
+    fb.textContent = '❌ 再想一想，这个工具属于哪一类？'; fb.style.display = 'block';
+  }
+}
+// Sort activity
+function dropSort(e) {
+  e.preventDefault();
+  const target = document.getElementById('sort-target');
+  if (!draggedItem) return;
+  target.appendChild(draggedItem);
+  const items = Array.from(target.querySelectorAll('.drag-item'));
+  const orders = items.map(i => parseInt(i.dataset.order));
+  const sorted = [...orders].sort((a,b)=>a-b);
+  const fb = document.getElementById('sort-feedback');
+  if (JSON.stringify(orders) === JSON.stringify(sorted)) {
+    fb.textContent = '✅ 步骤完全正确！你掌握了在线查找信息的方法。'; fb.style.display = 'block';
+  } else {
+    fb.textContent = '💡 顺序还不对，再调整一下。正确的顺序是：开机 → 输入问题 → 查看结果 → 选择可靠答案。'; fb.style.display = 'block';
+  }
+}
+</script>
+
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js" defer></script>
+
+<!-- v7.7 标准 AI 学伴入口卡片 -->
+<section class="ta-standard-section" id="teachany-ai-tutor-card">
+  <div data-teachany-tutor-card></div>
+</section>
+
+<script>
+/* v7.20 标准 AI 学伴配置（apply-standard-modules 自动补齐） */
+window.__TEACHANY_TUTOR_CONFIG__ = window.__TEACHANY_TUTOR_CONFIG__ || {
+  courseId: "info-e-online-basics",
+  courseTitle: "走进信息世界",
+  subject: "info-tech",
+  grade: "3",
+  nodeId: "it-e-online-experience",
+  lessonType: "新授课",
+  getLearnerQuestion: function () { return window.__TEACHANY_LEARNER_QUESTION__ || ''; },
+  getContext: function () { return (document.body && document.body.innerText || '').slice(0, 3000); }
+};
+</script>
+
+<script>
+// 知识图谱画布：绘制简易知识关联图
+(function() {
+  const canvas = document.getElementById('kg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  function drawKG() {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    // Background
+    ctx.fillStyle = 'rgba(139,92,246,0.04)';
+    ctx.fillRect(0, 0, w, h);
+
+    // Nodes
+    const nodes = [
+      { x: 100, y: 60, r: 28, color: '#8b5cf6', label: '信息', sub: '本课' },
+      { x: 280, y: 40, r: 22, color: '#06b6d4', label: '获取', sub: '' },
+      { x: 280, y: 90, r: 22, color: '#06b6d4', label: '传递', sub: '' },
+      { x: 460, y: 40, r: 22, color: '#f59e0b', label: '安全', sub: '' },
+      { x: 620, y: 60, r: 24, color: '#22c55e', label: '数字工具', sub: '下节课' }
+    ];
+
+    // Edges
+    ctx.strokeStyle = 'rgba(100,100,100,0.4)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 3]);
+    // 信息 -> 获取
+    ctx.beginPath(); ctx.moveTo(128, 55); ctx.lineTo(258, 42); ctx.stroke();
+    // 信息 -> 传递
+    ctx.beginPath(); ctx.moveTo(128, 65); ctx.lineTo(258, 88); ctx.stroke();
+    // 传递 -> 安全
+    ctx.beginPath(); ctx.moveTo(302, 88); ctx.lineTo(438, 45); ctx.stroke();
+    // 获取 -> 数字工具
+    ctx.beginPath(); ctx.moveTo(302, 42); ctx.lineTo(596, 55); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Draw nodes
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color + '20';
+      ctx.fill();
+      ctx.strokeStyle = n.color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.fillStyle = n.color;
+      ctx.font = 'bold 13px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(n.label, n.x, n.y - (n.sub ? 4 : 0));
+      if (n.sub) {
+        ctx.font = '10px sans-serif';
+        ctx.fillStyle = '#888';
+        ctx.fillText(n.sub, n.x, n.y + 12);
+      }
+    });
+
+    // Click interaction
+    canvas.addEventListener('click', function(e) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const x = (e.clientX - rect.left) * scaleX;
+      const y = (e.clientY - rect.top) * scaleY;
+      nodes.forEach(n => {
+        const dist = Math.hypot(x - n.x, y - n.y);
+        if (dist <= n.r) {
+          const tips = {
+            '信息': '信息是能告诉我们"是什么、怎么样"的有用消息。',
+            '获取': '获取信息的方式：看、听、问、查。',
+            '传递': '信息传递三要素：发送者 → 通道 → 接收者。',
+            '安全': '保护个人信息：姓名、地址、电话、照片不随便告诉陌生人。',
+            '数字工具': '下节课将学习常用数字工具与安全使用。'
+          };
+          alert(n.label + '：' + (tips[n.label] || '知识点'));
+        }
+      });
+    });
+    canvas.style.cursor = 'pointer';
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', drawKG);
+  } else {
+    drawKG();
+  }
+})();
+</script>
+</body>
+</html>
