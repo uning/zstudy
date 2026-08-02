@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《算法与流程图》 · 信息科技 小学 G3 · TeachAny v7.21</title>
+<meta name="teachany-course" content="info-e-algorithm-steps">
+<meta name="teachany-node" content="it-e-algorithm-steps">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-grade" content="3">
+<meta name="teachany-domain" content="algorithm-programming">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-digital-tools-basic">
+<meta name="teachany-difficulty" content="基础">
+<meta name="teachany-author" content="TeachAny">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+<style>
+:root { --mint:#7fdbb6; --sun:#ffd166; --coral:#ff8fa3; --sky:#8ecae6; --ink:#3d405b; --mu:#6c757d; }
+body.teachany-elementary { background:#fffbf0; }
+.hero-img { width:100%; max-width:520px; border-radius:20px; box-shadow:0 8px 30px rgba(61,64,91,.15); }
+.abt-box { background:#fff; border-left:6px solid var(--coral); border-radius:14px; padding:16px 20px; margin:18px 0; box-shadow:0 3px 12px rgba(0,0,0,.06); font-size:15px; line-height:1.9; }
+.abt-box b { color:var(--coral); }
+.anchor-q { font-size:1.35rem; font-weight:800; color:var(--ink); background:linear-gradient(120deg,#fff3d6,#ffe9ee); border-radius:18px; padding:26px 30px; }
+.insight { background:#eefaf4; border:2px dashed var(--mint); border-radius:16px; padding:18px 22px; margin:16px 0; }
+.insight h4 { color:#2E7D32; margin-bottom:8px; }
+.obj-list li { margin:10px 0; font-size:1.05rem; }
+.flow-demo { display:flex; flex-direction:column; align-items:center; gap:0; margin:14px 0; }
+.flow-node { border-radius:12px; padding:10px 22px; font-weight:700; color:var(--ink); box-shadow:0 2px 8px rgba(0,0,0,.08); }
+.fn-start { background:#ffe9ee; border-radius:999px; }
+.fn-step { background:#e3f2fd; }
+.fn-judge { background:#fff3d6; transform:rotate(0deg); border:2px dashed #b58900; }
+.fn-end { background:#e8fff3; border-radius:999px; }
+.flow-arrow { color:var(--mu); font-size:1.3rem; line-height:1.4; }
+.seq-pool { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:14px 0; }
+.seq-chip { background:#fff; border:2px solid var(--sky); border-radius:12px; padding:10px 16px; cursor:pointer; font-size:1rem; box-shadow:0 2px 6px rgba(0,0,0,.08); user-select:none; }
+.seq-chip.picked { border-color:var(--coral); background:#fff0f3; }
+.seq-chip.placed { opacity:.3; pointer-events:none; }
+.seq-slots { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:12px 0; }
+.seq-slot { width:120px; min-height:56px; border:3px dashed var(--sun); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:.9rem; color:var(--mu); background:#fffdf5; text-align:center; padding:6px; }
+.seq-slot.filled { border-style:solid; border-color:var(--mint); background:#e8fff3; color:var(--ink); font-weight:700; }
+.recipe-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:12px; }
+.recipe-card { background:#fff; border-radius:14px; padding:16px 18px; box-shadow:0 3px 10px rgba(0,0,0,.06); border-top:6px solid var(--sky); line-height:1.8; font-size:.98rem; }
+.quiz-opt { display:block; width:100%; text-align:left; margin:8px 0; padding:13px 16px; border-radius:12px; border:2px solid #e0e0e0; background:#fff; font-size:1rem; cursor:pointer; }
+.quiz-opt.right { border-color:var(--mint); background:#e8fff3; }
+.quiz-opt.wrong { border-color:var(--coral); background:#fff0f3; }
+.quiz-diagnosis { font-size:.88rem; color:var(--mu); margin:2px 0 8px 6px; line-height:1.6; }
+.hw-tag { display:inline-block; border-radius:8px; padding:2px 10px; font-size:.8rem; font-weight:700; margin-right:8px; }
+.hw-base { background:#e3f2fd; color:#1565c0; } .hw-mid { background:#fff3d6; color:#b58900; } .hw-ext { background:#ffe9ee; color:#c2185b; }
+.mistake li { margin:10px 0; line-height:1.7; }
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page cover" id="slide-1" data-tts="s01" data-bloom="remember">
+  <div class="page-inner center">
+    <img class="hero-img" src="assets/info-e-algorithm-steps-hero.webp" alt="算法与流程图：把解决问题的步骤画出来">
+    <h1>算法与流程图</h1>
+    <p class="subtitle">小学信息科技 · 第一学期 第三单元 · 算法步骤与流程图</p>
+    <div class="abt-box">
+      <b>情境导入：</b>妈妈做番茄炒蛋，先打蛋、再炒蛋、后放番茄，每一步都有顺序。<b>可是</b>，如果让机器人来做，它听不懂"随便炒炒"这样的话，必须告诉它清清楚楚的每一步。<b>所以</b>，这节课我们学习把解决问题的步骤写明白、画出来——这就是<b>算法和流程图</b>。
+    </div>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-tts="s02" data-bloom="understand">
+  <div class="page-inner center">
+    <span class="page-tag">问题锚点</span>
+    <div class="anchor-q">🤖 你对机器人说："帮我把桌子收拾好。"<br>机器人却站着一动不动。<br><br>它坏了吗？还是你说的话它"听不懂"？</div>
+    <p style="margin-top:22px;color:var(--mu);font-size:1.05rem;">学完这节课，你就能让机器人乖乖听话。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-tts="s03" data-bloom="remember">
+  <div class="page-inner">
+    <span class="page-tag">学习目标</span>
+    <h2>今天你将学会</h2>
+    <ul class="obj-list">
+      <li>🎯 <b>说出</b>什么是算法，举出生活中的算法例子（记忆）</li>
+      <li>🧩 <b>认识</b>流程图的四种基本图形（理解）</li>
+      <li>🛠️ 把一件小事<b>拆成</b>有顺序的步骤并排对顺序（应用）</li>
+      <li>🔍 <b>分析</b>步骤排错顺序会带来什么后果（分析）</li>
+    </ul>
+  </div>
+</section>
+
+<!-- s04 什么是算法 -->
+<section class="slide-page" id="slide-4" data-tts="s04" data-bloom="understand">
+  <div class="page-inner">
+    <span class="page-tag">新知 1</span>
+    <h2>什么是算法？</h2>
+    <p style="font-size:1.1rem;line-height:1.9;"><b>算法</b>就是解决问题的一组<b>清清楚楚、有先后顺序</b>的步骤。它一点不神秘——你每天都在用：</p>
+    <div class="recipe-grid">
+      <div class="recipe-card">🍳 <b>番茄炒蛋算法</b><br>① 打蛋 ② 热锅倒油 ③ 炒蛋盛出 ④ 炒番茄 ⑤ 混合翻炒 ⑥ 出锅</div>
+      <div class="recipe-card">🎒 <b>上学准备算法</b><br>① 起床 ② 刷牙洗脸 ③ 吃早饭 ④ 检查书包 ⑤ 出门</div>
+    </div>
+    <div class="insight">
+      <h4>🔍 深层理解 · 比较它</h4>
+      <p><b>菜谱 vs 算法：</b>菜谱是给人看的，"适量""少许"人能懂；算法是给计算机看的，每一步必须<b>明确、不含糊</b>。"放一点盐"不算算法，"放 2 克盐"才算。这就是算法和日常说明最大的区别。</p>
+    </div>
+  </div>
+</section>
+
+<!-- s05 流程图四兄弟 -->
+<section class="slide-page" id="slide-5" data-tts="s05" data-bloom="understand">
+  <div class="page-inner">
+    <span class="page-tag">新知 2</span>
+    <h2>流程图的四兄弟</h2>
+    <p>把算法画成图，就是<b>流程图</b>。它有四个基本图形：</p>
+    <div class="flow-demo">
+      <div class="flow-node fn-start">🟢 圆角框：开始 / 结束</div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node fn-step">🟦 方框：做一件事（处理步骤）</div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node fn-judge">🔶 菱形：做一个判断（是/否）</div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node fn-end">🏁 圆角框：结束</div>
+    </div>
+  </div>
+</section>
+
+<!-- s06 排序互动 -->
+<section class="slide-page" id="slide-6" data-tts="s06" data-bloom="apply">
+  <div class="page-inner">
+    <span class="page-tag">互动 1 · 步骤排序</span>
+    <h2>帮小明排出"刷牙算法" 🪥</h2>
+    <p>点击下面的步骤卡片，按正确顺序放进 1→5 号位置：</p>
+    <div class="seq-pool" id="seq-pool">
+      <span class="seq-chip" data-order="4">漱口</span>
+      <span class="seq-chip" data-order="1">挤牙膏</span>
+      <span class="seq-chip" data-order="5">清洗牙刷</span>
+      <span class="seq-chip" data-order="3">刷牙 2 分钟</span>
+      <span class="seq-chip" data-order="2">拿起牙刷</span>
+    </div>
+    <div class="seq-slots" id="seq-slots">
+      <div class="seq-slot" data-slot="1">第 1 步</div>
+      <div class="seq-slot" data-slot="2">第 2 步</div>
+      <div class="seq-slot" data-slot="3">第 3 步</div>
+      <div class="seq-slot" data-slot="4">第 4 步</div>
+      <div class="seq-slot" data-slot="5">第 5 步</div>
+    </div>
+    <div style="text-align:center;"><button id="seq-check" style="padding:10px 26px;border-radius:999px;border:none;background:var(--sun);font-weight:700;cursor:pointer;font-size:1rem;">✔ 检查顺序</button></div>
+    <p id="seq-feedback" style="text-align:center;font-weight:700;margin-top:10px;"></p>
+  </div>
+</section>
+
+<!-- s07 画流程图 -->
+<section class="slide-page" id="slide-7" data-tts="s07" data-bloom="apply">
+  <div class="page-inner">
+    <span class="page-tag">新知 3</span>
+    <h2>把"上学准备"画成流程图</h2>
+    <div class="flow-demo">
+      <div class="flow-node fn-start">开始</div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node fn-step">起床、洗漱</div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node fn-step">吃早饭</div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node fn-judge">书包检查好了吗？</div>
+      <div class="flow-arrow">是 ⬇ &nbsp;&nbsp;（否 ↩ 回去检查）</div>
+      <div class="flow-node fn-step">出门上学</div>
+      <div class="flow-arrow">⬇</div>
+      <div class="flow-node fn-end">结束</div>
+    </div>
+    <div class="insight">
+      <h4>🔍 深层理解 · 迁移它</h4>
+      <p>菱形判断让算法"会拐弯"：书包<b>没</b>检查好，就回去检查；检查好了，才往下走。这个"判断→分支"的想法，以后在编程里会反复用到——红绿灯、自动门、游戏得分，全都是这个结构。</p>
+    </div>
+  </div>
+</section>
+
+<!-- s08 找错互动 -->
+<section class="slide-page" id="slide-8" data-tts="s08" data-bloom="analyze">
+  <div class="page-inner">
+    <span class="page-tag">互动 2 · 找出坏顺序</span>
+    <h2>这个算法哪里出错了？🔍</h2>
+    <p>小机器人按下面的步骤"泡牛奶"，结果一团糟。点击<b>顺序出错</b>的两步：</p>
+    <div class="seq-pool" id="bug-pool">
+      <span class="seq-chip bug" data-bug="0">① 拿出杯子</span>
+      <span class="seq-chip bug" data-bug="1">② 搅拌牛奶</span>
+      <span class="seq-chip bug" data-bug="0">③ 倒入温水</span>
+      <span class="seq-chip bug" data-bug="0">④ 加入奶粉</span>
+    </div>
+    <p style="color:var(--mu);text-align:center;">提示：正确顺序应该是 ①③④②。有两步交换了位置！</p>
+    <p id="bug-feedback" style="text-align:center;font-weight:700;margin-top:8px;"></p>
+    <div class="insight">
+      <h4>🔍 深层理解 · 看见它</h4>
+      <p>步骤<b>顺序</b>和步骤本身一样重要。先搅拌再倒奶粉，奶粉会结块沉底——算法错了，结果就错了。计算机不会"将错就错"，它只会严格执行，所以写算法时必须检查顺序。</p>
+    </div>
+  </div>
+</section>
+
+<!-- s09 自然语言与流程图 -->
+<section class="slide-page" id="slide-9" data-tts="s09" data-bloom="understand">
+  <div class="page-inner">
+    <span class="page-tag">新知 4</span>
+    <h2>两种说法，一个算法</h2>
+    <div class="recipe-grid">
+      <div class="recipe-card">🗣️ <b>自然语言版</b><br>先拿出杯子，倒入温水，再加入奶粉，最后搅拌均匀。</div>
+      <div class="recipe-card">📊 <b>流程图版</b><br>开始 → 拿杯子 → 倒温水 → 加奶粉 → 搅拌 → 结束</div>
+    </div>
+    <p style="margin-top:12px;font-size:1.02rem;line-height:1.8;">用<b>自然语言</b>说清楚，用<b>流程图</b>画明白——它们描述的是同一个算法。会说又会画，你就能把任何算法讲给别人（和计算机）听。</p>
+  </div>
+</section>
+
+<!-- s10 实战：设计算法 -->
+<section class="slide-page" id="slide-10" data-tts="s10" data-bloom="create">
+  <div class="page-inner">
+    <span class="page-tag">互动 3 · 设计算法</span>
+    <h2>设计"洗手算法" 🧼</h2>
+    <p>点击步骤卡片，按你设计的顺序放入位置（答案不唯一，合理即可）：</p>
+    <div class="seq-pool" id="wash-pool">
+      <span class="seq-chip wash">关水龙头</span>
+      <span class="seq-chip wash">打开水龙头冲湿手</span>
+      <span class="seq-chip wash">擦干手</span>
+      <span class="seq-chip wash">涂洗手液搓 20 秒</span>
+      <span class="seq-chip wash">冲洗干净</span>
+    </div>
+    <div class="seq-slots" id="wash-slots">
+      <div class="seq-slot wslot">?</div><div class="seq-slot wslot">?</div><div class="seq-slot wslot">?</div><div class="seq-slot wslot">?</div><div class="seq-slot wslot">?</div>
+    </div>
+    <p id="wash-feedback" style="text-align:center;font-weight:700;margin-top:8px;"></p>
+  </div>
+</section>
+
+<!-- s11 易错点 -->
+<section class="slide-page" id="slide-11" data-tts="s11" data-bloom="analyze">
+  <div class="page-inner">
+    <span class="page-tag">易错点与口诀</span>
+    <h2>三大易错点 ⚠️</h2>
+    <ul class="mistake" style="font-size:1.02rem;">
+      <li><b>易错点 1：</b>以为"步骤越多越好"。好算法要<b>简洁</b>，多余的步骤反而添乱。</li>
+      <li><b>易错点 2：</b>把菱形当成普通步骤。菱形是<b>判断</b>，必须有"是/否"两个出口。</li>
+      <li><b>易错点 3：</b>忘记"结束"。流程图必须有开始<b>和</b>结束，有头有尾才完整。</li>
+    </ul>
+    <div class="abt-box"><b>口诀：</b>算法就是排步骤，一步一句说清楚；开始结束圆角框，方框做事菱形判；顺序错了全乱套，检查一遍再执行。</div>
+  </div>
+</section>
+
+<!-- s12 前测 -->
+<section class="slide-page" id="slide-12" data-tts="s12" data-bloom="remember">
+  <div class="page-inner">
+    <span class="page-tag">小测验 · 基础关</span>
+    <h2>测一测（基础题）</h2>
+    <p><b>Q1.</b> 算法是什么？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'电脑游戏是算法做出来的成果，不是算法本身。想想算法的定义：解决问题的什么？')">A. 一种电脑游戏</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 解决问题的一组清楚、有顺序的步骤</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'机器人用算法工作，但算法不是机器人。做菜谱、整理书包的步骤也是算法。')">C. 一个会走路的机器人</button>
+    <p class="quiz-diagnosis"></p>
+    <p style="margin-top:12px;"><b>Q2.</b> 流程图中，菱形表示什么？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'开始和结束用圆角框，菱形另有任务——它有两个出口：是和否。')">A. 开始或结束</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'做一件具体的事用方框（处理框）。菱形里写的是一个问题。')">B. 做一件事</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">C. 做一个判断（是/否）</button>
+    <p class="quiz-diagnosis"></p>
+  </div>
+</section>
+
+<!-- s13 后测 -->
+<section class="slide-page" id="slide-13" data-tts="s13" data-bloom="analyze">
+  <div class="page-inner">
+    <span class="page-tag">小测验 · 提高关</span>
+    <h2>测一测（应用与分析）</h2>
+    <p><b>Q1.</b> "先穿鞋、再穿袜子"这个顺序对吗？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'想一想生活经验：袜子套在鞋外面会怎么样？算法顺序错了，结果就错了。')">A. 对，先穿哪个都行</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 不对，应该先穿袜子再穿鞋，顺序错了结果就错了</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'顺序当然重要！先穿袜子再穿鞋是先例。算法中步骤顺序和步骤本身同样重要。')">C. 对，顺序不重要</button>
+    <p class="quiz-diagnosis"></p>
+    <p style="margin-top:12px;"><b>Q2.</b> 一个完整的流程图必须有什么？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">A. 有开始也有结束，步骤用箭头连起来</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'这是易错点 3！忘记"结束"的流程图不完整，计算机不知道何时停止。')">B. 只有开始就够了</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'颜色好看不是必须的！流程图的关键是图形用对、顺序正确、有头有尾。')">C. 必须画得很漂亮、涂上颜色</button>
+    <p class="quiz-diagnosis"></p>
+  </div>
+</section>
+
+<!-- s14 总结+作业 -->
+<section class="slide-page" id="slide-14" data-tts="s14" data-bloom="create">
+  <div class="page-inner">
+    <span class="page-tag">总结与作业</span>
+    <h2>今天我学会了 ✅</h2>
+    <ul class="obj-list">
+      <li>算法 = 解决问题的清楚、有顺序的步骤</li>
+      <li>流程图四兄弟：圆角框（开始/结束）、方框（做事）、菱形（判断）、箭头（连接）</li>
+      <li>步骤顺序和步骤本身一样重要</li>
+      <li>会用自然语言和流程图两种方式描述算法</li>
+    </ul>
+    <h3 style="margin-top:16px;">分层作业</h3>
+    <p><span class="hw-tag hw-base">基础</span>用自然语言写出"洗苹果"的算法（至少 4 步）。</p>
+    <p><span class="hw-tag hw-mid">提高</span>把"洗苹果算法"画成流程图，用上开始、结束和方框。</p>
+    <p><span class="hw-tag hw-ext">拓展</span>设计一个"下雨天出门"算法，要求包含一个菱形判断（带伞了吗？）。</p>
+  </div>
+</section>
+
+<!-- s15 知识图谱 -->
+<section class="slide-page" id="slide-15" data-tts="s15" data-bloom="analyze">
+  <div class="page-inner center">
+    <span class="page-tag">知识图谱</span>
+    <h2>本课知识地图 🗺️</h2>
+    <canvas id="kg-canvas" width="640" height="380" style="max-width:100%;background:#fff;border-radius:16px;box-shadow:0 3px 12px rgba(0,0,0,.07);"></canvas>
+    <p style="color:var(--mu);margin-top:10px;">点击节点查看要点</p>
+  </div>
+</section>
+
+<div data-teachany-tutor-card></div>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js"></script>
+<script>
+function checkQuiz(btn, right, diag) {
+  btn.classList.add(right ? 'right' : 'wrong');
+  let diagEl = btn.nextElementSibling;
+  while (diagEl && !diagEl.classList.contains('quiz-diagnosis')) diagEl = diagEl.nextElementSibling;
+  if (diagEl) diagEl.textContent = right ? '✅ 回答正确！' : '💡 ' + diag;
+}
+// 排序互动（通用）
+function makeSorter(poolId, slotsId, fbId, checkId) {
+  const pool = document.getElementById(poolId), slots = document.getElementById(slotsId), fb = document.getElementById(fbId);
+  let picked = null;
+  pool.querySelectorAll('.seq-chip').forEach(chip => chip.addEventListener('click', () => {
+    pool.querySelectorAll('.seq-chip').forEach(c => c.classList.remove('picked'));
+    chip.classList.add('picked'); picked = chip;
+  }));
+  slots.querySelectorAll('.seq-slot').forEach(slot => slot.addEventListener('click', () => {
+    if (!picked) { fb.textContent = '先点一个步骤卡片'; fb.style.color = '#c2185b'; return; }
+    if (slot.classList.contains('filled')) return;
+    slot.textContent = picked.textContent;
+    slot.dataset.order = picked.dataset.order || '';
+    slot.classList.add('filled'); picked.classList.add('placed'); picked.classList.remove('picked'); picked = null;
+    fb.textContent = '';
+  }));
+  if (checkId) document.getElementById(checkId).addEventListener('click', () => {
+    const filled = [...slots.querySelectorAll('.seq-slot.filled')];
+    if (filled.length < 5) { fb.textContent = '先把 5 个位置都放满'; fb.style.color = '#c2185b'; return; }
+    const ok = filled.every(s => s.dataset.order === s.dataset.slot);
+    fb.textContent = ok ? '🎉 顺序完全正确！你排出了一个真正的算法！' : '🤔 还有步骤位置不对，想一想：先做什么才能做下一步？';
+    fb.style.color = ok ? '#2E7D32' : '#c2185b';
+  });
+}
+makeSorter('seq-pool','seq-slots','seq-feedback','seq-check');
+// 找错互动
+(function(){
+  const fb = document.getElementById('bug-feedback');
+  let found = 0;
+  document.querySelectorAll('#bug-pool .seq-chip').forEach(c => c.addEventListener('click', () => {
+    if (c.classList.contains('picked')) return;
+    if (c.dataset.bug === '1') { c.classList.add('picked'); c.style.borderColor='#2E7D32'; c.style.background='#e8fff3'; found++;
+      fb.textContent = found === 1 ? '✅ 找对一步！"搅拌"放在了加水加奶粉之前。还有一步呢？' : '🎉 全部找到！②搅拌 应该在最后，顺序错了结果就错了。';
+      fb.style.color = '#2E7D32';
+    } else { c.style.borderColor='#ff8fa3'; c.style.background='#fff0f3'; setTimeout(()=>{c.style.borderColor='';c.style.background='';},700);
+      fb.textContent = '🤔 这一步的位置是合理的，再找找哪一步"抢跑"了？'; fb.style.color = '#c2185b'; }
+  }));
+})();
+// 洗手算法设计
+(function(){
+  const pool = document.getElementById('wash-pool'), slots = document.getElementById('wash-slots'), fb = document.getElementById('wash-feedback');
+  let picked = null, count = 0;
+  pool.querySelectorAll('.seq-chip').forEach(chip => chip.addEventListener('click', () => {
+    pool.querySelectorAll('.seq-chip').forEach(c => c.classList.remove('picked')); chip.classList.add('picked'); picked = chip;
+  }));
+  slots.querySelectorAll('.seq-slot').forEach(slot => slot.addEventListener('click', () => {
+    if (!picked || slot.classList.contains('filled')) return;
+    slot.textContent = picked.textContent; slot.classList.add('filled');
+    picked.classList.add('placed'); picked.classList.remove('picked'); picked = null; count++;
+    if (count === 5) { fb.textContent = '🎉 你的洗手算法设计完成！和同桌比一比，谁的顺序更合理？'; fb.style.color = '#2E7D32'; }
+  }));
+})();
+// 知识图谱
+(function(){
+  const cv = document.getElementById('kg-canvas'), ctx = cv.getContext('2d');
+  const nodes = [
+    {x:320,y:60, r:46, label:'算法', tip:'解决问题的清楚、有顺序的步骤'},
+    {x:120,y:190,r:38, label:'自然语言', tip:'用话说清楚每一步'},
+    {x:320,y:190,r:38, label:'流程图', tip:'把算法画成图：更直观'},
+    {x:520,y:190,r:38, label:'顺序', tip:'顺序和步骤同样重要'},
+    {x:200,y:315,r:38, label:'四种图形', tip:'圆角框=开始结束，方框=做事，菱形=判断，箭头=连接'},
+    {x:440,y:315,r:38, label:'判断分支', tip:'菱形有是/否两个出口，算法会拐弯'},
+  ];
+  const edges = [[0,1],[0,2],[0,3],[2,4],[2,5]];
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.strokeStyle='#b08968'; ctx.setLineDash([6,5]); ctx.lineWidth=2;
+    edges.forEach(([a,b])=>{ ctx.beginPath(); ctx.moveTo(nodes[a].x,nodes[a].y); ctx.lineTo(nodes[b].x,nodes[b].y); ctx.stroke(); });
+    ctx.setLineDash([]);
+    nodes.forEach((n,i)=>{
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = i===0 ? '#ffd166' : '#8ecae6'; ctx.fill();
+      ctx.strokeStyle='#3d405b'; ctx.lineWidth=2; ctx.stroke();
+      ctx.fillStyle='#3d405b'; ctx.font='bold 14px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(n.label,n.x,n.y);
+    });
+  }
+  draw();
+  cv.addEventListener('click', e => {
+    const rect = cv.getBoundingClientRect();
+    const x = (e.clientX-rect.left)*cv.width/rect.width, y = (e.clientY-rect.top)*cv.height/rect.height;
+    const hit = nodes.find(n => Math.hypot(n.x-x,n.y-y) < n.r);
+    if (hit) alert('💡 ' + hit.label + '：' + hit.tip);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《数字工具小能手》 · 信息科技 小学 G2 · TeachAny v7.21</title>
+<meta name="teachany-course" content="info-e-digital-tools-basic">
+<meta name="teachany-node" content="it-e-digital-tools-basic">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-grade" content="2">
+<meta name="teachany-domain" content="online-society">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-online-experience">
+<meta name="teachany-difficulty" content="基础">
+<meta name="teachany-author" content="TeachAny">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+<style>
+:root { --mint:#7fdbb6; --sun:#ffd166; --coral:#ff8fa3; --sky:#8ecae6; --ink:#3d405b; --mu:#6c757d; }
+body.teachany-elementary { background:#fffbf0; }
+.hero-img { width:100%; max-width:520px; border-radius:20px; box-shadow:0 8px 30px rgba(61,64,91,.15); }
+.abt-box { background:#fff; border-left:6px solid var(--coral); border-radius:14px; padding:16px 20px; margin:18px 0; box-shadow:0 3px 12px rgba(0,0,0,.06); font-size:15px; line-height:1.9; }
+.abt-box b { color:var(--coral); }
+.anchor-q { font-size:1.35rem; font-weight:800; color:var(--ink); background:linear-gradient(120deg,#fff3d6,#ffe9ee); border-radius:18px; padding:26px 30px; }
+.insight { background:#eefaf4; border:2px dashed var(--mint); border-radius:16px; padding:18px 22px; margin:16px 0; }
+.insight h4 { color:#2E7D32; margin-bottom:8px; }
+.obj-list li { margin:10px 0; font-size:1.05rem; }
+.family-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+.family-card { background:#fff; border-radius:16px; padding:16px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,.07); border-top:6px solid var(--sky); }
+.family-card:nth-child(2){ border-top-color:var(--sun);} .family-card:nth-child(3){ border-top-color:var(--coral);}
+.family-card .ic { font-size:2.2rem; }
+.family-card h4 { margin:8px 0 6px; color:var(--ink); }
+.family-card p { font-size:.85rem; color:var(--mu); line-height:1.6; }
+.dropzone-wrap { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:14px; }
+.dropzone { min-height:120px; border:3px dashed var(--sky); border-radius:16px; padding:10px; background:#f4fbff; }
+.dropzone h5 { text-align:center; color:var(--ink); margin-bottom:8px; }
+.dropzone.over { background:#d9f2ff; border-color:#219ebc; }
+.tool-pool { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:16px 0; }
+.tool-chip { background:#fff; border:2px solid var(--sun); border-radius:999px; padding:8px 16px; cursor:grab; font-size:.95rem; box-shadow:0 2px 6px rgba(0,0,0,.08); user-select:none; }
+.tool-chip.placed { opacity:.35; pointer-events:none; }
+.dz-item { background:#e8fff3; border-radius:8px; padding:4px 10px; margin:4px 0; font-size:.85rem; text-align:center; }
+.pair-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:14px; }
+.pair-col button { display:block; width:100%; margin:8px 0; padding:14px; border-radius:14px; border:2px solid var(--sky); background:#fff; font-size:1rem; cursor:pointer; transition:.15s; }
+.pair-col button.sel { border-color:var(--coral); background:#fff0f3; }
+.pair-col button.done { border-color:var(--mint); background:#e8fff3; pointer-events:none; }
+.rule-card { background:#fff; border-radius:16px; padding:18px 22px; margin:12px 0; box-shadow:0 3px 10px rgba(0,0,0,.06); border-left:8px solid var(--sun); }
+.judge-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
+.judge-card { background:#fff; border-radius:14px; padding:16px; cursor:pointer; border:3px solid transparent; box-shadow:0 3px 10px rgba(0,0,0,.07); transition:.15s; font-size:.95rem; line-height:1.6; }
+.judge-card.safe { border-color:var(--mint); background:#e8fff3; }
+.judge-card.danger { border-color:var(--coral); background:#fff0f3; }
+.quiz-opt { display:block; width:100%; text-align:left; margin:8px 0; padding:13px 16px; border-radius:12px; border:2px solid #e0e0e0; background:#fff; font-size:1rem; cursor:pointer; }
+.quiz-opt.right { border-color:var(--mint); background:#e8fff3; }
+.quiz-opt.wrong { border-color:var(--coral); background:#fff0f3; }
+.quiz-diagnosis { font-size:.88rem; color:var(--mu); margin:2px 0 8px 6px; line-height:1.6; }
+.hw-tag { display:inline-block; border-radius:8px; padding:2px 10px; font-size:.8rem; font-weight:700; margin-right:8px; }
+.hw-base { background:#e3f2fd; color:#1565c0; } .hw-mid { background:#fff3d6; color:#b58900; } .hw-ext { background:#ffe9ee; color:#c2185b; }
+.mistake li { margin:10px 0; line-height:1.7; }
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page cover" id="slide-1" data-tts="s01" data-bloom="remember">
+  <div class="page-inner center">
+    <img class="hero-img" src="assets/info-e-digital-tools-basic-hero.webp" alt="数字工具小能手：认识常用数字工具家族">
+    <h1>数字工具小能手</h1>
+    <p class="subtitle">小学信息科技 · 第一学期 第二单元 · 常用数字工具与安全使用</p>
+    <div class="abt-box">
+      <b>情境导入：</b>我们的生活里有好多数字工具——能拍照的平板、会打字的键盘、能查资料的电脑。<b>可是</b>，工具越多就越好用吗？选错工具、忘记安全规则，反而会帮倒忙！<b>所以</b>，这节课我们一起认识"工具家族"，学会<b>选对工具、安全使用</b>，成为真正的数字工具小能手！
+    </div>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-tts="s02" data-bloom="understand">
+  <div class="page-inner center">
+    <span class="page-tag">问题锚点</span>
+    <div class="anchor-q">🔍 老师让同学们查"恐龙生活在多少年前"。<br>小明 30 秒就找到了，小红翻了 10 分钟还没找到。<br><br>他们用的都是电脑，为什么差别这么大？</div>
+    <p style="margin-top:22px;color:var(--mu);font-size:1.05rem;">带着这个问题开始今天的学习，课后你就能回答它。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-tts="s03" data-bloom="remember">
+  <div class="page-inner">
+    <span class="page-tag">学习目标</span>
+    <h2>今天你将学会</h2>
+    <ul class="obj-list">
+      <li>🎯 <b>说出</b>什么是数字工具，举出 3 个以上例子（记忆）</li>
+      <li>🧩 <b>分辨</b>输入、处理、输出三类工具（理解）</li>
+      <li>🛠️ 遇到任务时<b>选出</b>合适的数字工具（应用）</li>
+      <li>🛡️ <b>判断</b>使用数字工具时哪些行为安全、哪些危险（评价）</li>
+    </ul>
+  </div>
+</section>
+
+<!-- s04 什么是数字工具 -->
+<section class="slide-page" id="slide-4" data-tts="s04" data-bloom="understand">
+  <div class="page-inner">
+    <span class="page-tag">新知 1</span>
+    <h2>什么是数字工具？</h2>
+    <p style="font-size:1.1rem;line-height:1.9;">用电子技术帮我们做事情的工具，叫<b>数字工具</b>。锤子帮我们钉钉子，而数字工具帮我们<b>获取信息、处理信息、表达信息</b>。</p>
+    <div class="insight">
+      <h4>🔍 深层理解 · 比较它</h4>
+      <p><b>传统工具 vs 数字工具：</b>算盘→计算器，纸笔→写字板，信件→电子邮件。数字工具的本质没有变——都是帮人做事，但它处理的是<b>信息</b>，速度更快、还能保存和分享。记住这个本质，见到新工具你就不会陌生。</p>
+    </div>
+  </div>
+</section>
+
+<!-- s05 工具家族 -->
+<section class="slide-page" id="slide-5" data-tts="s05" data-bloom="understand">
+  <div class="page-inner">
+    <span class="page-tag">新知 2</span>
+    <h2>数字工具三大家族</h2>
+    <div class="family-grid">
+      <div class="family-card"><div class="ic">📥</div><h4>输入家族</h4><p>把信息<b>送进</b>设备：键盘、鼠标、麦克风、摄像头、手写板</p></div>
+      <div class="family-card"><div class="ic">🧠</div><h4>处理家族</h4><p>在设备里<b>加工</b>信息：电脑、平板、计算器、绘图软件</p></div>
+      <div class="family-card"><div class="ic">📤</div><h4>输出家族</h4><p>把结果<b>呈现</b>出来：显示器、打印机、音箱、投影仪</p></div>
+    </div>
+    <p style="margin-top:14px;color:var(--mu);">想一想：触摸屏既能输入又能输出，它属于哪个家族？</p>
+  </div>
+</section>
+
+<!-- s06 拖拽互动 -->
+<section class="slide-page" id="slide-6" data-tts="s06" data-bloom="apply">
+  <div class="page-inner">
+    <span class="page-tag">互动 1 · 拖拽分类</span>
+    <h2>把工具送回家 🏠</h2>
+    <p>把下面的工具拖到正确的家族里（也可以点击工具，再点击家族）：</p>
+    <div class="tool-pool" id="tool-pool">
+      <span class="tool-chip" draggable="true" data-family="in">🎤 麦克风</span>
+      <span class="tool-chip" draggable="true" data-family="out">🖨️ 打印机</span>
+      <span class="tool-chip" draggable="true" data-family="proc">💻 电脑</span>
+      <span class="tool-chip" draggable="true" data-family="in">⌨️ 键盘</span>
+      <span class="tool-chip" draggable="true" data-family="out">🔊 音箱</span>
+      <span class="tool-chip" draggable="true" data-family="proc">🧮 计算器</span>
+    </div>
+    <div class="dropzone-wrap">
+      <div class="dropzone" data-family="in"><h5>📥 输入家族</h5></div>
+      <div class="dropzone" data-family="proc"><h5>🧠 处理家族</h5></div>
+      <div class="dropzone" data-family="out"><h5>📤 输出家族</h5></div>
+    </div>
+    <p id="drag-feedback" style="text-align:center;font-weight:700;margin-top:10px;"></p>
+  </div>
+</section>
+
+<!-- s07 选对工具 -->
+<section class="slide-page" id="slide-7" data-tts="s07" data-bloom="apply">
+  <div class="page-inner">
+    <span class="page-tag">新知 3</span>
+    <h2>做事之前，先选对工具</h2>
+    <p style="font-size:1.05rem;line-height:1.9;">钉钉子用锤子，拧螺丝用螺丝刀——<b>不同的任务需要不同的工具</b>。数字世界也一样：</p>
+    <ul class="obj-list">
+      <li>📝 写作文 → 用<b>文字处理软件</b>（方便修改）</li>
+      <li>🔢 算 100 个数 → 用<b>计算器或表格</b>（又快又准）</li>
+      <li>🦕 查恐龙资料 → 用<b>搜索引擎</b>（输入关键词直达）</li>
+    </ul>
+    <div class="insight">
+      <h4>🔍 深层理解 · 迁移它</h4>
+      <p>现在回到开头的问题：小明快、小红慢，差别不在电脑，而在<b>会不会选工具、会不会用工具</b>。小明用了搜索引擎直接搜"恐龙 距今 多少年"；小红却在图书馆网站里一页页翻。<b>先想清楚任务，再选工具</b>——这个方法可以迁移到任何新工具上。</p>
+    </div>
+  </div>
+</section>
+
+<!-- s08 配对互动 -->
+<section class="slide-page" id="slide-8" data-tts="s08" data-bloom="apply">
+  <div class="page-inner">
+    <span class="page-tag">互动 2 · 配对挑战</span>
+    <h2>任务 → 工具 连连看 🔗</h2>
+    <p>先点左边的任务，再点右边合适的工具，配成一对：</p>
+    <div class="pair-grid">
+      <div class="pair-col" id="task-col">
+        <button data-pair="a">📸 记录运动会精彩瞬间</button>
+        <button data-pair="b">🧮 算出全班捐款总数</button>
+        <button data-pair="c">🎨 设计班级海报</button>
+      </div>
+      <div class="pair-col" id="tool-col">
+        <button data-pair="b">计算器 / 表格软件</button>
+        <button data-pair="c">绘图软件</button>
+        <button data-pair="a">相机 / 平板拍照</button>
+      </div>
+    </div>
+    <p id="pair-feedback" style="text-align:center;font-weight:700;margin-top:10px;"></p>
+  </div>
+</section>
+
+<!-- s09 安全使用 -->
+<section class="slide-page" id="slide-9" data-tts="s09" data-bloom="evaluate">
+  <div class="page-inner">
+    <span class="page-tag">新知 4</span>
+    <h2>安全使用三规则 🛡️</h2>
+    <div class="rule-card"><b>规则一 · 保护个人信息：</b>不随便在网上告诉别人真实姓名、学校、家庭住址和电话。</div>
+    <div class="rule-card"><b>规则二 · 控制使用时间：</b>连续使用 20 分钟，休息眼睛，看看远处。</div>
+    <div class="rule-card"><b>规则三 · 文明规范使用：</b>不用工具做伤害别人的事，不随便点陌生链接和弹窗。</div>
+    <div class="insight">
+      <h4>🔍 深层理解 · 看见它</h4>
+      <p>这些规则背后是同一件事：<b>工具本身没有好坏，关键在使用的人</b>。网络是公共空间，你留下的每条信息都可能被保存很久。看不见的"数字脚印"，和安全规则息息相关——这就是为什么要从小养成好习惯。</p>
+    </div>
+  </div>
+</section>
+
+<!-- s10 判断互动 -->
+<section class="slide-page" id="slide-10" data-tts="s10" data-bloom="evaluate">
+  <div class="page-inner">
+    <span class="page-tag">互动 3 · 安全判断</span>
+    <h2>安全 or 危险？你来判断 ⚖️</h2>
+    <p>点击每张卡片，判断这个行为是否安全：</p>
+    <div class="judge-grid">
+      <div class="judge-card" data-safe="1">用平板查资料 20 分钟后，主动休息看窗外</div>
+      <div class="judge-card" data-safe="0">网友问我的学校和家庭住址，我马上告诉他</div>
+      <div class="judge-card" data-safe="0">弹出"点我领游戏皮肤"，我好奇地点开了</div>
+      <div class="judge-card" data-safe="1">遇到不认识的链接，先问家长或老师</div>
+    </div>
+    <p id="judge-feedback" style="text-align:center;font-weight:700;margin-top:10px;"></p>
+  </div>
+</section>
+
+<!-- s11 易错点 -->
+<section class="slide-page" id="slide-11" data-tts="s11" data-bloom="analyze">
+  <div class="page-inner">
+    <span class="page-tag">易错点与口诀</span>
+    <h2>三大易错点 ⚠️</h2>
+    <ul class="mistake" style="font-size:1.02rem;">
+      <li><b>易错点 1：</b>以为"屏幕=只能看"。触摸屏既能输出画面，也能输入操作，一身兼两职。</li>
+      <li><b>易错点 2：</b>以为"贵的工具=好用的工具"。选工具看的是<b>是否适合任务</b>，不是价格。</li>
+      <li><b>易错点 3：</b>以为"删掉了就没有了"。网上发布的内容可能被保存，发送前要三思。</li>
+    </ul>
+    <div class="abt-box"><b>口诀：</b>工具有三家，输入处理加输出；任务先想清，选对工具效率高；上网三规则，安全规范记心头。</div>
+  </div>
+</section>
+
+<!-- s12 前测 -->
+<section class="slide-page" id="slide-12" data-tts="s12" data-bloom="remember">
+  <div class="page-inner">
+    <span class="page-tag">小测验 · 基础关</span>
+    <h2>测一测（基础题）</h2>
+    <p><b>Q1.</b> 下列哪个工具属于"输入家族"？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'打印机是把结果打出来，属于输出家族。想想：谁是负责把信息『送进去』的？')">A. 打印机</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 麦克风</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'音箱把声音放出来，是输出家族。输入家族的任务是把信息送进设备。')">C. 音箱</button>
+    <p class="quiz-diagnosis"></p>
+    <p style="margin-top:12px;"><b>Q2.</b> 想把班级合照保存下来，最合适的工具是？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'计算器擅长算数，不能拍照。想想任务需要什么功能。')">A. 计算器</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'音箱只能播放声音，无法记录画面。')">B. 音箱</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">C. 相机或平板拍照</button>
+    <p class="quiz-diagnosis"></p>
+  </div>
+</section>
+
+<!-- s13 后测 -->
+<section class="slide-page" id="slide-13" data-tts="s13" data-bloom="evaluate">
+  <div class="page-inner">
+    <span class="page-tag">小测验 · 提高关</span>
+    <h2>测一测（应用与判断）</h2>
+    <p><b>Q1.</b> 网上有人自称"客服"，要你的家庭住址来"寄奖品"，你应该？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'危险！个人信息不能随便给陌生人，这违反安全规则一。')">A. 马上告诉他</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 不告诉他，并告诉家长或老师</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'只说学校同样泄露了个人信息，陌生人可能找到你。')">C. 只告诉学校不告诉住址</button>
+    <p class="quiz-diagnosis"></p>
+    <p style="margin-top:12px;"><b>Q2.</b> 关于触摸屏，正确的说法是？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'触摸屏既能显示画面（输出），又能接收点按（输入），这是本课易错点 1。')">A. 它只属于输出家族</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 它既能输入又能输出</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'触摸屏可以显示内容，说只能输入不全面。')">C. 它只属于输入家族</button>
+    <p class="quiz-diagnosis"></p>
+  </div>
+</section>
+
+<!-- s14 总结+作业 -->
+<section class="slide-page" id="slide-14" data-tts="s14" data-bloom="analyze">
+  <div class="page-inner">
+    <span class="page-tag">总结与作业</span>
+    <h2>今天我学会了 ✅</h2>
+    <ul class="obj-list">
+      <li>数字工具是帮我们获取、处理、表达信息的电子工具</li>
+      <li>三大家族：输入 📥、处理 🧠、输出 📤</li>
+      <li>先想任务，再选工具</li>
+      <li>安全三规则：护信息、控时间、讲文明</li>
+    </ul>
+    <h3 style="margin-top:16px;">分层作业</h3>
+    <p><span class="hw-tag hw-base">基础</span>在家里找出 3 个数字工具，说出它们各属于哪个家族。</p>
+    <p><span class="hw-tag hw-mid">提高</span>记录自己一天使用数字工具的时间，看看有没有超过 20 分钟不休息的时候。</p>
+    <p><span class="hw-tag hw-ext">拓展</span>采访家人：他们小时候用什么工具查资料？和现在比一比，写 3 句话。</p>
+  </div>
+</section>
+
+<!-- s15 知识图谱 -->
+<section class="slide-page" id="slide-15" data-tts="s15" data-bloom="analyze">
+  <div class="page-inner center">
+    <span class="page-tag">知识图谱</span>
+    <h2>本课知识地图 🗺️</h2>
+    <canvas id="kg-canvas" width="640" height="380" style="max-width:100%;background:#fff;border-radius:16px;box-shadow:0 3px 12px rgba(0,0,0,.07);"></canvas>
+    <p style="color:var(--mu);margin-top:10px;">点击节点查看要点</p>
+  </div>
+</section>
+
+<div data-teachany-tutor-card></div>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js"></script>
+<script>
+function checkQuiz(btn, right, diag) {
+  const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+  const box = btn.nextElementSibling && btn.nextElementSibling.classList.contains('quiz-diagnosis') ? btn.nextElementSibling : btn.parentElement.querySelectorAll('.quiz-diagnosis')[0];
+  opts.forEach(o => { if (o.closest('p') === btn.closest('p') || true) {} });
+  btn.classList.add(right ? 'right' : 'wrong');
+  const d = btn.parentElement.children;
+  // 诊断写到本题对应的 quiz-diagnosis
+  let diagEl = btn.nextElementSibling;
+  while (diagEl && !diagEl.classList.contains('quiz-diagnosis')) diagEl = diagEl.nextElementSibling;
+  if (diagEl) diagEl.textContent = right ? '✅ 回答正确！' : '💡 ' + diag;
+}
+// 拖拽分类
+(function(){
+  let picked = null, ok = 0;
+  const pool = document.getElementById('tool-pool');
+  const fb = document.getElementById('drag-feedback');
+  function place(chip, zone){
+    if (chip.dataset.family === zone.dataset.family) {
+      const item = document.createElement('div'); item.className='dz-item'; item.textContent = chip.textContent;
+      zone.appendChild(item); chip.classList.add('placed'); ok++;
+      fb.textContent = ok === 6 ? '🎉 全部送对家了！你是分类小能手！' : '✅ 放对了！' ;
+      fb.style.color = '#2E7D32';
+    } else { fb.textContent = '🤔 再想想：它是把信息送进去、加工信息、还是呈现结果？'; fb.style.color = '#c2185b'; }
+  }
+  pool.querySelectorAll('.tool-chip').forEach(chip => {
+    chip.addEventListener('dragstart', e => { picked = chip; });
+    chip.addEventListener('click', () => { picked = chip; pool.querySelectorAll('.tool-chip').forEach(c=>c.style.outline=''); chip.style.outline='3px solid #ff8fa3'; });
+  });
+  document.querySelectorAll('.dropzone').forEach(zone => {
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+    zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('over'); if (picked) place(picked, zone); });
+    zone.addEventListener('click', () => { if (picked) { place(picked, zone); picked.style.outline=''; picked = null; } });
+  });
+})();
+// 配对挑战
+(function(){
+  let selTask = null, done = 0;
+  const fb = document.getElementById('pair-feedback');
+  document.querySelectorAll('#task-col button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#task-col button').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); selTask = b;
+  }));
+  document.querySelectorAll('#tool-col button').forEach(b => b.addEventListener('click', () => {
+    if (!selTask) { fb.textContent='先点左边的任务哦'; fb.style.color='#c2185b'; return; }
+    if (selTask.dataset.pair === b.dataset.pair) {
+      selTask.classList.remove('sel'); selTask.classList.add('done'); b.classList.add('done'); selTask=null; done++;
+      fb.textContent = done===3 ? '🎉 三对全配成功！选工具你已经在行了！' : '✅ 配对成功！'; fb.style.color='#2E7D32';
+    } else { fb.textContent='🤔 不太合适。想想这个任务需要什么功能？'; fb.style.color='#c2185b'; }
+  }));
+})();
+// 安全判断
+(function(){
+  let done = 0;
+  const fb = document.getElementById('judge-feedback');
+  document.querySelectorAll('.judge-card').forEach(c => c.addEventListener('click', () => {
+    if (c.classList.contains('safe') || c.classList.contains('danger')) return;
+    const safe = c.dataset.safe === '1';
+    c.classList.add(safe ? 'safe' : 'danger');
+    c.innerHTML += safe ? '<br><b>✅ 安全！</b>' : '<br><b>⚠️ 危险！</b>个人信息/陌生链接要警惕';
+    done++;
+    if (done === 4) { fb.textContent = '🎉 全部判断完成，安全小卫士就是你！'; fb.style.color='#2E7D32'; }
+  }));
+})();
+// 知识图谱
+(function(){
+  const cv = document.getElementById('kg-canvas'), ctx = cv.getContext('2d');
+  const nodes = [
+    {x:320,y:60, r:46, label:'数字工具', tip:'用电子技术帮我们处理信息的工具'},
+    {x:120,y:200,r:38, label:'输入', tip:'键盘、麦克风、摄像头：把信息送进去'},
+    {x:320,y:200,r:38, label:'处理', tip:'电脑、计算器：在设备里加工信息'},
+    {x:520,y:200,r:38, label:'输出', tip:'显示器、打印机、音箱：把结果呈现出来'},
+    {x:200,y:320,r:38, label:'选对工具', tip:'先想清楚任务，再选合适的工具'},
+    {x:440,y:320,r:38, label:'安全使用', tip:'护信息、控时间、讲文明'},
+  ];
+  const edges = [[0,1],[0,2],[0,3],[0,4],[0,5]];
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.strokeStyle='#b08968'; ctx.setLineDash([6,5]); ctx.lineWidth=2;
+    edges.forEach(([a,b])=>{ ctx.beginPath(); ctx.moveTo(nodes[a].x,nodes[a].y); ctx.lineTo(nodes[b].x,nodes[b].y); ctx.stroke(); });
+    ctx.setLineDash([]);
+    nodes.forEach((n,i)=>{
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = i===0 ? '#ffd166' : '#8ecae6'; ctx.fill();
+      ctx.strokeStyle='#3d405b'; ctx.lineWidth=2; ctx.stroke();
+      ctx.fillStyle='#3d405b'; ctx.font='bold 15px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(n.label,n.x,n.y);
+    });
+  }
+  draw();
+  cv.addEventListener('click', e => {
+    const rect = cv.getBoundingClientRect();
+    const x = (e.clientX-rect.left)*cv.width/rect.width, y = (e.clientY-rect.top)*cv.height/rect.height;
+    const hit = nodes.find(n => Math.hypot(n.x-x,n.y-y) < n.r);
+    if (hit) alert('💡 ' + hit.label + '：' + hit.tip);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "voice": "zh-CN-XiaoyiNeural",
+  "rate": "-8%",
+  "engine": "edge-neural",
+  "files": ["s01.mp3","s02.mp3","s03.mp3","s04.mp3","s05.mp3","s06.mp3","s07.mp3","s08.mp3","s09.mp3","s10.mp3","s11.mp3","s12.mp3","s13.mp3","s14.mp3","s15.mp3"]
+}

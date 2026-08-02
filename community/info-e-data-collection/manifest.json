@@ -1,0 +1,27 @@
+{
+  "course_id": "info-e-data-collection",
+  "title": "数据收集小侦探",
+  "subject": "info-tech",
+  "stage": "elementary",
+  "grade": 3,
+  "node_id": "it-e-data-collection",
+  "domain": "data-encoding",
+  "lesson_type": "新授课",
+  "version": "1.0.0",
+  "teachany_version": "7.21.0",
+  "prerequisites": [
+    "it-e-algorithm-steps"
+  ],
+  "feedback_password": null,
+  "feedback_password_declined": true,
+  "created": "2026-08-02",
+  "assets": {
+    "hero": "assets/info-e-data-collection-hero.webp"
+  },
+  "tts": {
+    "engine": "edge-neural",
+    "voice": "zh-CN-XiaoyiNeural",
+    "rate": "-8%",
+    "segments": 15
+  }
+}

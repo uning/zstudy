@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《数据收集小侦探》 · 信息科技 小学 G3 · TeachAny v7.21</title>
+<meta name="teachany-course" content="info-e-data-collection">
+<meta name="teachany-node" content="it-e-data-collection">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-grade" content="3">
+<meta name="teachany-domain" content="data-encoding">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-algorithm-steps">
+<meta name="teachany-difficulty" content="基础">
+<meta name="teachany-author" content="TeachAny">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-floating-dock.css">
+<style>
+:root { --mint:#7fdbb6; --sun:#ffd166; --coral:#ff8fa3; --sky:#8ecae6; --ink:#3d405b; --mu:#6c757d; }
+body.teachany-elementary { background:#fffbf0; }
+.hero-img { width:100%; max-width:520px; border-radius:20px; box-shadow:0 8px 30px rgba(61,64,91,.15); }
+.abt-box { background:#fff; border-left:6px solid var(--coral); border-radius:14px; padding:16px 20px; margin:18px 0; box-shadow:0 3px 12px rgba(0,0,0,.06); font-size:15px; line-height:1.9; }
+.abt-box b { color:var(--coral); }
+.anchor-q { font-size:1.35rem; font-weight:800; color:var(--ink); background:linear-gradient(120deg,#fff3d6,#ffe9ee); border-radius:18px; padding:26px 30px; }
+.insight { background:#eefaf4; border:2px dashed var(--mint); border-radius:16px; padding:18px 22px; margin:16px 0; }
+.insight h4 { color:#2E7D32; margin-bottom:8px; }
+.obj-list li { margin:10px 0; font-size:1.05rem; }
+.data-table { width:100%; max-width:520px; margin:14px auto; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 3px 10px rgba(0,0,0,.07); }
+.data-table th { background:var(--sky); color:var(--ink); padding:10px; font-size:.95rem; }
+.data-table td { padding:9px 10px; text-align:center; border-top:1px solid #eee; font-size:.95rem; }
+.tally { font-family:monospace; letter-spacing:2px; color:#c2185b; font-weight:700; }
+.count-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:14px 0; }
+.count-card { background:#fff; border-radius:14px; padding:14px 10px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,.07); }
+.count-card .ic { font-size:2rem; }
+.count-card .num { font-size:1.6rem; font-weight:800; color:var(--ink); margin:4px 0; }
+.count-card button { margin:0 4px; padding:4px 12px; border-radius:8px; border:2px solid var(--mint); background:#e8fff3; cursor:pointer; font-weight:700; }
+.quiz-opt { display:block; width:100%; text-align:left; margin:8px 0; padding:13px 16px; border-radius:12px; border:2px solid #e0e0e0; background:#fff; font-size:1rem; cursor:pointer; }
+.quiz-opt.right { border-color:var(--mint); background:#e8fff3; }
+.quiz-opt.wrong { border-color:var(--coral); background:#fff0f3; }
+.quiz-diagnosis { font-size:.88rem; color:var(--mu); margin:2px 0 8px 6px; line-height:1.6; }
+.hw-tag { display:inline-block; border-radius:8px; padding:2px 10px; font-size:.8rem; font-weight:700; margin-right:8px; }
+.hw-base { background:#e3f2fd; color:#1565c0; } .hw-mid { background:#fff3d6; color:#b58900; } .hw-ext { background:#ffe9ee; color:#c2185b; }
+.mistake li { margin:10px 0; line-height:1.7; }
+.method-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px; }
+.method-card { background:#fff; border-radius:16px; padding:16px; text-align:center; box-shadow:0 3px 10px rgba(0,0,0,.07); border-top:6px solid var(--sun); }
+.method-card:nth-child(2){ border-top-color:var(--mint);} .method-card:nth-child(3){ border-top-color:var(--coral);}
+.method-card .ic { font-size:2.2rem; } .method-card h4 { margin:8px 0 6px; color:var(--ink); }
+.method-card p { font-size:.85rem; color:var(--mu); line-height:1.6; }
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page cover" id="slide-1" data-tts="s01" data-bloom="remember">
+  <div class="page-inner center">
+    <img class="hero-img" src="assets/info-e-data-collection-hero.webp" alt="数据收集小侦探：数一数、记一记、发现规律">
+    <h1>数据收集小侦探</h1>
+    <p class="subtitle">小学信息科技 · 第一学期 第四单元 · 数据收集与记录</p>
+    <div class="abt-box">
+      <b>情境导入：</b>班里要订运动会班服，老师想知道大家最喜欢什么颜色。<b>可是</b>，全班 40 个同学，你一言我一语，根本听不清，更记不住！<b>所以</b>，我们需要一个好办法：把大家的答案<b>收集起来、记录下来</b>——这就是数据收集。这节课，你就来当一回数据小侦探！
+    </div>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-tts="s02" data-bloom="understand">
+  <div class="page-inner center">
+    <span class="page-tag">问题锚点</span>
+    <div class="anchor-q">🎽 班里订班服，要选出"最受欢迎的颜色"。<br>老师一个一个问，问了半节课还没问完，<br>而且问到第 20 个同学时，前面谁的答案已经忘了……<br><br>有没有又快又不会忘的办法？</div>
+    <p style="margin-top:22px;color:var(--mu);font-size:1.05rem;">我们已经知道数字工具能帮忙做事，但光靠脑子记答案会出错——所以这一课要学"数据收集与记录"的新本领。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-tts="s03" data-bloom="remember">
+  <div class="page-inner">
+    <span class="page-tag">学习目标</span>
+    <h2>今天你将学会</h2>
+    <ul class="obj-list">
+      <li>🎯 <b>说出</b>什么是数据，举出生活中的数据例子（记忆）</li>
+      <li>🧩 <b>理解</b>数据和信息的关系：数据加工成信息（理解）</li>
+      <li>🛠️ 用画"正"字等方法<b>收集并记录</b>数据（应用）</li>
+      <li>🔍 从记录好的数据中<b>发现</b>规律、回答问题（分析）</li>
+    </ul>
+  </div>
+</section>
+
+<!-- s04 什么是数据 -->
+<section class="slide-page" id="slide-4" data-tts="s04" data-bloom="understand">
+  <div class="page-inner">
+    <span class="page-tag">新知 1</span>
+    <h2>什么是数据？</h2>
+    <p style="font-size:1.1rem;line-height:1.9;"><b>数据</b>就是记录下来的事实：数字、文字、符号、图片都可以是数据。你的身高 135 厘米、今天气温 28 度、小明投了 3 次篮——这些都是数据。</p>
+    <div class="insight">
+      <h4>🔍 深层理解 · 比较它</h4>
+      <p><b>数据 vs 信息：</b>一个个孤零零的数字是<b>数据</b>；把数据整理、比较之后得出的结论才是<b>信息</b>。"28、29、31、30"只是数据；"这周越来越热"才是信息。<b>数据是原料，信息是成品</b>——就像面粉和面包的关系。</p>
+    </div>
+  </div>
+</section>
+
+<!-- s05 收集方法 -->
+<section class="slide-page" id="slide-5" data-tts="s05" data-bloom="understand">
+  <div class="page-inner">
+    <span class="page-tag">新知 2</span>
+    <h2>数据收集三招</h2>
+    <div class="method-grid">
+      <div class="method-card"><div class="ic">👀</div><h4>观察法</h4><p>用眼睛看、用耳朵听，直接记录：数路口通过的汽车</p></div>
+      <div class="method-card"><div class="ic">🙋</div><h4>调查法</h4><p>问别人、做问卷：统计同学最喜欢的颜色</p></div>
+      <div class="method-card"><div class="ic">🧪</div><h4>实验法</h4><p>动手做一做再记录：测量橡皮筋能拉多长</p></div>
+    </div>
+    <p style="margin-top:14px;color:var(--mu);">订班服选颜色，用哪一招最合适？</p>
+  </div>
+</section>
+
+<!-- s06 计数互动 -->
+<section class="slide-page" id="slide-6" data-tts="s06" data-bloom="apply">
+  <div class="page-inner">
+    <span class="page-tag">互动 1 · 班级小调查</span>
+    <h2>最受欢迎的水果 🍎</h2>
+    <p>侦探训练营开动了！下面是 16 位同学的投票结果，点击 <b>+1</b> 帮小侦探计数：</p>
+    <p style="text-align:center;font-size:.9rem;color:var(--mu);">投票：🍎🍌🍎🍇🍌🍎🍇🍎 🍌🍎🍇🍌🍎🍎🍇🍌</p>
+    <div class="count-grid">
+      <div class="count-card"><div class="ic">🍎</div><div class="num" id="n-a">0</div><button onclick="bump('a',1)">+1</button><button onclick="bump('a',-1)">-1</button></div>
+      <div class="count-card"><div class="ic">🍌</div><div class="num" id="n-b">0</div><button onclick="bump('b',1)">+1</button><button onclick="bump('b',-1)">-1</button></div>
+      <div class="count-card"><div class="ic">🍇</div><div class="num" id="n-c">0</div><button onclick="bump('c',1)">+1</button><button onclick="bump('c',-1)">-1</button></div>
+      <div class="count-card"><div class="ic">📊</div><div class="num" id="n-t">0</div><div style="font-size:.8rem;color:var(--mu);">合计</div></div>
+    </div>
+    <p id="count-feedback" style="text-align:center;font-weight:700;"></p>
+  </div>
+</section>
+
+<!-- s07 画正字 -->
+<section class="slide-page" id="slide-7" data-tts="s07" data-bloom="apply">
+  <div class="page-inner">
+    <span class="page-tag">新知 3</span>
+    <h2>记录神器：画"正"字</h2>
+    <p style="font-size:1.05rem;line-height:1.9;">投票时一边问一边画，一个"正"字正好 <b>5 笔</b>，数起来特别快：</p>
+    <table class="data-table">
+      <tr><th>颜色</th><th>画"正"字记录</th><th>人数</th></tr>
+      <tr><td>🔴 红色</td><td class="tally">正 正 一</td><td>11</td></tr>
+      <tr><td>🔵 蓝色</td><td class="tally">正 正</td><td>10</td></tr>
+      <tr><td>🟡 黄色</td><td class="tally">正 丅</td><td>7</td></tr>
+      <tr><td>🟢 绿色</td><td class="tally">正 正 正</td><td>15</td></tr>
+    </table>
+    <div class="insight">
+      <h4>🔍 深层理解 · 迁移它</h4>
+      <p>一眼看出：绿色 15 票最多，班服选绿色！<b>记录让数据"站住脚"</b>——不用记在脑子里，也不怕忘。这个方法可以迁移到任何要数数的场合：图书角借书统计、跳绳比赛计数，都能用。</p>
+    </div>
+  </div>
+</section>
+
+<!-- s08 读表互动 -->
+<section class="slide-page" id="slide-8" data-tts="s08" data-bloom="analyze">
+  <div class="page-inner">
+    <span class="page-tag">互动 2 · 读表找答案</span>
+    <h2>从记录表里找答案 🔎</h2>
+    <p>看上一页的班服投票表，回答问题：</p>
+    <p><b>问题 1：</b>哪种颜色得票最多？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'红色是 11 票。数一数每种颜色的票数，比一比谁最大。')">A. 红色</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 绿色</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'蓝色是 10 票，不是最多的。再找一找。')">C. 蓝色</button>
+    <p class="quiz-diagnosis"></p>
+    <p style="margin-top:10px;"><b>问题 2：</b>红色比黄色多几票？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'红色 11 票，黄色 7 票，算一算 11 - 7 = ?')">A. 3 票</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 4 票</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'再算一遍：11 - 7。黄色不是 5 票哦，"正 丅"是 5+2=7 票。')">C. 6 票</button>
+    <p class="quiz-diagnosis"></p>
+  </div>
+</section>
+
+<!-- s09 数据变信息 -->
+<section class="slide-page" id="slide-9" data-tts="s09" data-bloom="analyze">
+  <div class="page-inner">
+    <span class="page-tag">新知 4</span>
+    <h2>数据加工三步曲</h2>
+    <p style="font-size:1.05rem;line-height:1.9;">数据小侦探的工作流程，其实就是一个"算法"：</p>
+    <div class="abt-box" style="border-left-color:var(--sky);">
+      <b>第一步 · 收集：</b>用观察、调查或实验，把数据拿到手 →
+      <b>第二步 · 记录：</b>画"正"字、填表格，让数据站住脚 →
+      <b>第三步 · 整理分析：</b>数一数、比一比，得出结论（信息）！
+    </div>
+    <div class="insight">
+      <h4>🔍 深层理解 · 看见它</h4>
+      <p>看回班服的例子：40 个同学的回答（数据）→ 画"正"字记录（整理）→ "绿色最受欢迎"（信息）→ 班服选绿色（决策）。<b>数据本身不会说话，整理之后才开口。</b>这就是"数据驱动决策"的雏形，科学家和工程师每天都在这样做。</p>
+    </div>
+  </div>
+</section>
+
+<!-- s10 天气记录实战 -->
+<section class="slide-page" id="slide-10" data-tts="s10" data-bloom="create">
+  <div class="page-inner">
+    <span class="page-tag">互动 3 · 天气记录员</span>
+    <h2>记录一周天气 🌦️</h2>
+    <p>这一周的天气是：☀️☀️🌧️☀️⛅🌧️☀️。点击按钮完成记录表：</p>
+    <table class="data-table">
+      <tr><th>天气</th><th>点击记录</th><th>天数</th></tr>
+      <tr><td>☀️ 晴天</td><td><button class="quiz-opt" style="width:auto;display:inline-block;padding:6px 18px;" onclick="bumpW('s')">画一笔</button></td><td id="w-s" class="tally"></td></tr>
+      <tr><td>⛅ 多云</td><td><button class="quiz-opt" style="width:auto;display:inline-block;padding:6px 18px;" onclick="bumpW('c')">画一笔</button></td><td id="w-c" class="tally"></td></tr>
+      <tr><td>🌧️ 雨天</td><td><button class="quiz-opt" style="width:auto;display:inline-block;padding:6px 18px;" onclick="bumpW('r')">画一笔</button></td><td id="w-r" class="tally"></td></tr>
+    </table>
+    <p id="weather-feedback" style="text-align:center;font-weight:700;"></p>
+  </div>
+</section>
+
+<!-- s11 易错点 -->
+<section class="slide-page" id="slide-11" data-tts="s11" data-bloom="analyze">
+  <div class="page-inner">
+    <span class="page-tag">易错点与口诀</span>
+    <h2>三大易错点 ⚠️</h2>
+    <ul class="mistake" style="font-size:1.02rem;">
+      <li><b>易错点 1：</b>边问边靠脑子记。人脑会忘、会混，<b>必须当场记录</b>，好记性不如烂笔头。</li>
+      <li><b>易错点 2：</b>数漏或数重。调查要有顺序：按座位、按学号，每人只数一次。</li>
+      <li><b>易错点 3：</b>把数据当结论。"绿色 15 票"是数据，"选绿色"还要加上分析和目的。</li>
+    </ul>
+    <div class="abt-box"><b>口诀：</b>小侦探，三件宝：收集、记录、整理好；画个正字快又清，数完再比找答案。</div>
+  </div>
+</section>
+
+<!-- s12 前测 -->
+<section class="slide-page" id="slide-12" data-tts="s12" data-bloom="remember">
+  <div class="page-inner">
+    <span class="page-tag">小测验 · 基础关</span>
+    <h2>测一测（基础题）</h2>
+    <p><b>Q1.</b> 下面哪个是"数据"？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">A. 今天气温 28 度</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'「今天好热」是感受/结论，不是记录下来的事实。数据是客观的记录。')">B. 我觉得今天好热</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'这是建议，不是数据。数据是记录下来的事实，比如温度数字。')">C. 大家应该多喝水</button>
+    <p class="quiz-diagnosis"></p>
+    <p style="margin-top:12px;"><b>Q2.</b> 一个"正"字代表几票？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'数一数"正"字的笔画：横、竖、横、竖、横……再想想。')">A. 3 票</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 5 票</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'写一写"正"字，数一数有几笔，就是几票。')">C. 10 票</button>
+    <p class="quiz-diagnosis"></p>
+  </div>
+</section>
+
+<!-- s13 后测 -->
+<section class="slide-page" id="slide-13" data-tts="s13" data-bloom="analyze">
+  <div class="page-inner">
+    <span class="page-tag">小测验 · 提高关</span>
+    <h2>测一测（应用与分析）</h2>
+    <p><b>Q1.</b> 想知道同学最喜欢的课外活动，最好的收集方法是？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'猜一猜不是收集数据！猜的结果不可靠，要真的去问。')">A. 自己猜一猜</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 用调查法：设计问题问同学并当场记录</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'只问好朋友样本太少，不能代表全班。调查要按顺序问、尽量问全。')">C. 只问自己的两个好朋友</button>
+    <p class="quiz-diagnosis"></p>
+    <p style="margin-top:12px;"><b>Q2.</b> "正 正 丅" 一共是多少票？</p>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'一个"正"是 5 票，两个"正"是 10 票，"丅"是 2 笔，加起来再算。')">A. 10 票</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,true,'')">B. 12 票</button>
+    <button class="quiz-opt" onclick="checkQuiz(this,false,'"丅"只有 2 笔，不是完整的"正"。5+5+2=？')">C. 15 票</button>
+    <p class="quiz-diagnosis"></p>
+  </div>
+</section>
+
+<!-- s14 总结+作业 -->
+<section class="slide-page" id="slide-14" data-tts="s14" data-bloom="create">
+  <div class="page-inner">
+    <span class="page-tag">总结与作业</span>
+    <h2>今天我学会了 ✅</h2>
+    <ul class="obj-list">
+      <li>数据是记录下来的事实；数据整理后变成信息</li>
+      <li>收集三招：观察法、调查法、实验法</li>
+      <li>画"正"字：一个"正"= 5，又快又清楚</li>
+      <li>三步曲：收集 → 记录 → 整理分析</li>
+    </ul>
+    <h3 style="margin-top:16px;">分层作业</h3>
+    <p><span class="hw-tag hw-base">基础</span>数一数家里一周吃的水果，用画"正"字记录。</p>
+    <p><span class="hw-tag hw-mid">提高</span>调查 5 位家人"最喜欢的运动"，记录并说出哪个最受欢迎。</p>
+    <p><span class="hw-tag hw-ext">拓展</span>记录一周的天气，周末回答：晴天多还是雨天多？你想根据数据做什么决定？</p>
+  </div>
+</section>
+
+<!-- s15 知识图谱 -->
+<section class="slide-page" id="slide-15" data-tts="s15" data-bloom="analyze">
+  <div class="page-inner center">
+    <span class="page-tag">知识图谱</span>
+    <h2>本课知识地图 🗺️</h2>
+    <canvas id="kg-canvas" width="640" height="380" style="max-width:100%;background:#fff;border-radius:16px;box-shadow:0 3px 12px rgba(0,0,0,.07);"></canvas>
+    <p style="color:var(--mu);margin-top:10px;">点击节点查看要点</p>
+  </div>
+</section>
+
+<div data-teachany-tutor-card></div>
+
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-knowledge-graph.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-audio-player.js"></script>
+<script>
+function checkQuiz(btn, right, diag) {
+  btn.classList.add(right ? 'right' : 'wrong');
+  let diagEl = btn.nextElementSibling;
+  while (diagEl && !diagEl.classList.contains('quiz-diagnosis')) diagEl = diagEl.nextElementSibling;
+  if (diagEl) diagEl.textContent = right ? '✅ 回答正确！' : '💡 ' + diag;
+}
+// 计数互动
+(function(){
+  const cnt = {a:0,b:0,c:0};
+  window.bump = function(k, d){
+    cnt[k] = Math.max(0, cnt[k]+d);
+    document.getElementById('n-'+k).textContent = cnt[k];
+    document.getElementById('n-t').textContent = cnt.a+cnt.b+cnt.c;
+    const fb = document.getElementById('count-feedback');
+    if (cnt.a+cnt.b+cnt.c === 16) {
+      fb.textContent = (cnt.a===8 && cnt.b===4 && cnt.c===4)
+        ? '🎉 完全正确！🍎8 🍌4 🍇4，苹果最受欢迎！'
+        : '合计 16 对了，但各水果数量再核对一下投票列表哦';
+      fb.style.color = (cnt.a===8 && cnt.b===4 && cnt.c===4) ? '#2E7D32' : '#c2185b';
+    } else fb.textContent = '';
+  };
+})();
+// 天气记录
+(function(){
+  const tally = {s:0,c:0,r:0};
+  const strokes = ['','一','丅','下','正','正一'];
+  window.bumpW = function(k){
+    tally[k] = Math.min(5, tally[k]+1);
+    document.getElementById('w-'+k).textContent = strokes[tally[k]] + '（' + tally[k] + '天）';
+    const fb = document.getElementById('weather-feedback');
+    if (tally.s+tally.c+tally.r === 7) {
+      fb.textContent = (tally.s===4 && tally.c===1 && tally.r===2)
+        ? '🎉 记录正确！晴天 4 天最多，这周适合户外运动！'
+        : '天数合计 7 天对了，再对照 ☀️☀️🌧️☀️⛅🌧️☀️ 核对每一项';
+      fb.style.color = (tally.s===4 && tally.c===1 && tally.r===2) ? '#2E7D32' : '#c2185b';
+    }
+  };
+})();
+// 知识图谱
+(function(){
+  const cv = document.getElementById('kg-canvas'), ctx = cv.getContext('2d');
+  const nodes = [
+    {x:320,y:60, r:46, label:'数据收集', tip:'收集→记录→整理分析三步曲'},
+    {x:110,y:190,r:38, label:'收集', tip:'观察法、调查法、实验法'},
+    {x:320,y:190,r:38, label:'记录', tip:'画"正"字：一个正=5'},
+    {x:530,y:190,r:38, label:'整理分析', tip:'数一数、比一比，得出结论'},
+    {x:200,y:315,r:38, label:'数据', tip:'记录下来的事实：数字、文字、符号'},
+    {x:440,y:315,r:38, label:'信息', tip:'数据加工后的结论，帮助做决定'},
+  ];
+  const edges = [[0,1],[0,2],[0,3],[1,4],[3,5]];
+  function draw(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.strokeStyle='#b08968'; ctx.setLineDash([6,5]); ctx.lineWidth=2;
+    edges.forEach(([a,b])=>{ ctx.beginPath(); ctx.moveTo(nodes[a].x,nodes[a].y); ctx.lineTo(nodes[b].x,nodes[b].y); ctx.stroke(); });
+    ctx.setLineDash([]);
+    nodes.forEach((n,i)=>{
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = i===0 ? '#ffd166' : '#8ecae6'; ctx.fill();
+      ctx.strokeStyle='#3d405b'; ctx.lineWidth=2; ctx.stroke();
+      ctx.fillStyle='#3d405b'; ctx.font='bold 13px sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(n.label,n.x,n.y);
+    });
+  }
+  draw();
+  cv.addEventListener('click', e => {
+    const rect = cv.getBoundingClientRect();
+    const x = (e.clientX-rect.left)*cv.width/rect.width, y = (e.clientY-rect.top)*cv.height/rect.height;
+    const hit = nodes.find(n => Math.hypot(n.x-x,n.y-y) < n.r);
+    if (hit) alert('💡 ' + hit.label + '：' + hit.tip);
+  });
+})();
+</script>
+</body>
+</html>

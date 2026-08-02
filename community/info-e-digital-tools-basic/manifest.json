@@ -1,0 +1,18 @@
+{
+  "course_id": "info-e-digital-tools-basic",
+  "title": "数字工具小能手",
+  "subject": "info-tech",
+  "stage": "elementary",
+  "grade": 2,
+  "node_id": "it-e-digital-tools-basic",
+  "domain": "online-society",
+  "lesson_type": "新授课",
+  "version": "1.0.0",
+  "teachany_version": "7.21.0",
+  "prerequisites": ["it-e-online-experience"],
+  "feedback_password": null,
+  "feedback_password_declined": true,
+  "created": "2026-08-02",
+  "assets": { "hero": "assets/info-e-digital-tools-basic-hero.webp" },
+  "tts": { "engine": "edge-neural", "voice": "zh-CN-XiaoyiNeural", "rate": "-8%", "segments": 15 }
+}
