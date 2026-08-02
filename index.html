@@ -4,6 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>zstudy · K12 课件库</title>
+<script>
+// CodeBuddy 沙箱静态服务器对目录路径会回退到本页面（SPA fallback）。
+// 若访问路径形如 /foo/ 或 /foo/bar，自动重定向到对应的 index.html。
+(function(){
+  var p = location.pathname;
+  if (p !== "/" && !/\.[a-zA-Z0-9]{2,5}$/.test(p)) {
+    location.replace(p.replace(/\/?$/, "/") + "index.html" + location.search + location.hash);
+  }
+})();
+</script>
 <style>
 :root { --bg:#f8f9fa; --card:#fff; --text:#333; --muted:#666; --primary:#4361ee; }
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -24,6 +34,10 @@ footer { margin-top:48px; text-align:center; color:var(--muted); font-size:0.85r
   <h1>zstudy 课件库</h1>
   <p class="sub">使用 TeachAny 生成的 K12 互动课件</p>
   <div class="course-list">
+    <a class="course-card" href="./community/info-e-online-basics/">
+      <div class="title">走进信息世界（小学信息科技·第一单元）</div>
+      <div class="meta">community/info-e-online-basics</div>
+    </a>
     <a class="course-card" href="./grade5-term1-units1-3-interactive/">
       <div class="title">grade5-term1-units1-3-interactive</div>
       <div class="meta">grade5-term1-units1-3-interactive</div>
