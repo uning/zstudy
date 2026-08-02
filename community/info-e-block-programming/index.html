@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>积木编程第一课 · 小学信息科技</title>
+<meta name="teachany-course" content="info-e-block-programming">
+<meta name="teachany-node" content="it-e-block-programming">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-grade" content="3">
+<meta name="teachany-domain" content="algorithm-programming">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-data-collection">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-core.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-elementary.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<style>
+body{background:#fffbf0;}
+:root{--ink:#3d3225;--mu:#8a7a60;--acc:#e07b39;--acc2:#4a90d9;--soft:#fdf3e3;--soft2:#e8f1fb;--ok:#3d9a5f;--bad:#d9544d;}
+.hero{border-radius:18px;width:100%;max-width:760px;display:block;margin:0 auto 18px;}
+.big-q{font-size:1.5rem;font-weight:800;color:var(--ink);text-align:center;line-height:1.7;}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto;}
+.obj-card{background:var(--soft);border-radius:14px;padding:16px 18px;font-size:1.05rem;color:var(--ink);border:2px solid #f0dfc2;}
+.obj-card b{color:var(--acc);}
+.def-box{background:var(--soft2);border-left:8px solid var(--acc2);border-radius:12px;padding:20px 24px;max-width:760px;margin:0 auto;font-size:1.15rem;line-height:1.9;color:var(--ink);}
+.cat-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:18px auto;max-width:820px;}
+.cat-card{background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:14px 18px;text-align:center;width:170px;box-shadow:0 3px 0 #ecd9b8;}
+.cat-card .ic{font-size:2rem;}
+.cat-card .nm{font-weight:800;color:var(--ink);margin:6px 0 2px;}
+.cat-card .ex{font-size:.9rem;color:var(--mu);}
+.blk-stage{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;max-width:860px;margin:14px auto;}
+.blk-pool,.blk-target{background:#fff;border:2px dashed var(--acc2);border-radius:14px;padding:14px;min-width:240px;min-height:150px;}
+.blk-pool h4,.blk-target h4{margin:0 0 10px;color:var(--acc2);font-size:1rem;}
+.block-chip{display:block;margin:8px auto;padding:10px 14px;border-radius:10px;font-weight:700;color:#fff;cursor:grab;user-select:none;text-align:center;font-size:1rem;max-width:200px;border:none;}
+.b-move{background:#4a90d9;}.b-look{background:#e07b39;}.b-sound{background:#8a5fd6;}.b-event{background:#f2b526;color:#5c4400;}
+.block-chip.placed{opacity:.55;cursor:default;}
+.interact-note{text-align:center;color:var(--mu);font-size:.95rem;margin-top:6px;}
+.fb{text-align:center;font-weight:800;font-size:1.1rem;min-height:1.6em;margin-top:8px;}
+.fb.good{color:var(--ok);}.fb.bad{color:var(--bad);}
+.seq-wrap{max-width:720px;margin:0 auto;}
+.seq-item{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #ecd9b8;border-radius:12px;padding:12px 16px;margin:10px 0;cursor:pointer;transition:.15s;font-size:1.1rem;color:var(--ink);}
+.seq-item.sel{border-color:var(--acc);background:#fff3e2;transform:scale(1.02);}
+.seq-item .no{display:inline-flex;width:30px;height:30px;border-radius:50%;background:#eee;color:#999;align-items:center;justify-content:center;font-weight:800;}
+.seq-item.done .no{background:var(--ok);color:#fff;}
+.run-demo{max-width:760px;margin:0 auto;text-align:center;}
+.stage-box{width:280px;height:190px;background:linear-gradient(#bfe3ff,#e8f5ff);border-radius:16px;margin:12px auto;position:relative;overflow:hidden;border:3px solid #9ecdf5;}
+.cat-sprite{position:absolute;bottom:14px;left:20px;font-size:3rem;transition:left .6s ease;}
+.bubble{position:absolute;background:#fff;border-radius:12px;padding:6px 12px;font-weight:700;color:var(--ink);opacity:0;transition:.3s;bottom:110px;left:60px;border:2px solid #ecd9b8;}
+.run-btn{background:var(--acc);color:#fff;border:none;border-radius:12px;padding:12px 26px;font-size:1.1rem;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #b35c24;}
+.run-btn:active{transform:translateY(3px);box-shadow:none;}
+.mis-list{max-width:760px;margin:0 auto;}
+.mis-item{background:#fff;border-left:8px solid var(--bad);border-radius:12px;padding:14px 18px;margin:12px 0;font-size:1.05rem;color:var(--ink);}
+.mis-item b{color:var(--bad);}
+.quiz-box{max-width:720px;margin:0 auto 26px;background:#fff;border:2px solid #ecd9b8;border-radius:16px;padding:20px 22px;}
+.quiz-box h4{margin:0 0 12px;color:var(--ink);}
+.opt{display:block;background:var(--soft);border:2px solid #f0dfc2;border-radius:12px;padding:12px 16px;margin:9px 0;cursor:pointer;font-size:1.05rem;color:var(--ink);transition:.15s;}
+.opt:hover{border-color:var(--acc);}
+.opt.right{background:#e6f6ec;border-color:var(--ok);}
+.opt.wrong{background:#fdeceb;border-color:var(--bad);}
+.quiz-diagnosis{font-size:.95rem;color:var(--mu);margin-top:8px;min-height:1.4em;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto;}
+.hw-card{border-radius:14px;padding:16px;color:#fff;font-size:1rem;line-height:1.7;}
+.hw-card h4{margin:0 0 8px;font-size:1.1rem;}
+.hw-a{background:#4a90d9;}.hw-b{background:#e07b39;}.hw-c{background:#8a5fd6;}
+.abt-tag{display:inline-block;background:var(--acc);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.insight{background:#fff8e6;border:2px dashed var(--acc);border-radius:14px;padding:16px 20px;max-width:760px;margin:18px auto;font-size:1.02rem;line-height:1.8;color:var(--ink);}
+.insight b{color:var(--acc);}
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page" id="slide-1" data-bloom="understand">
+  <div class="slide-inner" style="text-align:center;">
+    <img class="hero" src="assets/info-e-block-programming-hero.webp" alt="积木编程第一课 封面图">
+    <span class="abt-tag">为什么学 · ABT</span>
+    <h1 style="color:var(--ink);margin:8px 0 10px;">积木编程第一课</h1>
+    <p style="color:var(--mu);font-size:1.15rem;max-width:680px;margin:0 auto;line-height:1.9;">
+      你玩过积木吗？一块一块拼起来，就能搭出城堡。<b style="color:var(--ink);">编程也可以像搭积木一样</b>——把命令积木拼在一起，小猫就会听你的话动起来！
+    </p>
+    <p style="margin-top:20px;color:var(--mu);">小学信息科技 · 三年级 · 第 5 单元</p>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-bloom="understand">
+  <div class="slide-inner">
+    <p class="big-q">🐱 你想对小猫说"走两步，说声你好，再唱个歌"……<br>可是小猫听不懂中文，怎么办？</p>
+    <p style="text-align:center;color:var(--mu);font-size:1.1rem;margin-top:26px;line-height:2;">
+      计算机只听得懂<b style="color:var(--acc);">"指令"</b>。<br>
+      如果有一种<b style="color:var(--acc);">看得见、摸得着的指令积木</b>，拼一拼就能下命令，你想试试吗？
+    </p>
+    <p style="text-align:center;margin-top:22px;color:var(--mu);font-size:1.05rem;">带着这个问题，开始今天的编程之旅。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎯 今天的学习目标</h2>
+    <div class="obj-grid">
+      <div class="obj-card"><b>目标 1</b>：说出什么是程序，什么是编程</div>
+      <div class="obj-card"><b>目标 2</b>：认识运动、外观、声音、事件四类积木</div>
+      <div class="obj-card"><b>目标 3</b>：把积木按顺序拼接，让小猫完成任务</div>
+      <div class="obj-card"><b>目标 4</b>：运行程序，发现并修改积木顺序错误</div>
+    </div>
+  </div>
+</section>
+
+<!-- s04 什么是程序 -->
+<section class="slide-page" id="slide-4" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">📦 什么是程序？</h2>
+    <div class="def-box">
+      <b>程序</b> = 一组按顺序排列的<b>指令</b>，告诉计算机"先做什么、再做什么"。<br>
+      <b>编程</b> = 编写程序的过程，就像给计算机写一份"任务清单"。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 比较它</b>：上一单元的"算法"是解决问题的步骤；程序就是把算法<b>翻译成计算机能执行的语言</b>。算法在脑子里，程序在计算机里——积木编程让翻译变得像搭积木一样简单。</div>
+    <p style="text-align:center;color:var(--mu);margin-top:16px;">菜谱是"做菜的程序"，乐谱是"演奏的程序"——这些生活中的真实场景里，你早就见过程序了！</p>
+  </div>
+</section>
+
+<!-- s05 积木四大家族 -->
+<section class="slide-page" id="slide-5" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🧱 积木四大家族</h2>
+    <div class="cat-row">
+      <div class="cat-card"><div class="ic">🏃</div><div class="nm">运动积木</div><div class="ex">移动 10 步、左转、右转</div></div>
+      <div class="cat-card"><div class="ic">🎨</div><div class="nm">外观积木</div><div class="ex">说"你好"、变大变小</div></div>
+      <div class="cat-card"><div class="ic">🔊</div><div class="nm">声音积木</div><div class="ex">播放"喵"、打鼓</div></div>
+      <div class="cat-card"><div class="ic">⚡</div><div class="nm">事件积木</div><div class="ex">当绿旗被点击</div></div>
+    </div>
+    <p style="text-align:center;color:var(--mu);">每种颜色一个家族：蓝色管运动、橙色管外观、紫色管声音、黄色管开始。</p>
+  </div>
+</section>
+
+<!-- s06 互动1：积木分类 -->
+<section class="slide-page" id="slide-6" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：积木送回家</h2>
+    <p class="interact-note">点击积木，再点击它属于的家族盒子，把 4 块积木全部送回家！</p>
+    <div class="blk-stage">
+      <div class="blk-pool" id="pool6">
+        <h4>积木池</h4>
+        <button class="block-chip b-move" data-cat="move" onclick="pickChip(this)">移动 10 步</button>
+        <button class="block-chip b-sound" data-cat="sound" onclick="pickChip(this)">播放声音"喵"</button>
+        <button class="block-chip b-look" data-cat="look" onclick="pickChip(this)">说"你好"2 秒</button>
+        <button class="block-chip b-event" data-cat="event" onclick="pickChip(this)">当绿旗被点击</button>
+      </div>
+      <div class="blk-target" data-cat="move" onclick="dropChip(this)"><h4>🏃 运动家族</h4></div>
+      <div class="blk-target" data-cat="look" onclick="dropChip(this)"><h4>🎨 外观家族</h4></div>
+      <div class="blk-target" data-cat="sound" onclick="dropChip(this)"><h4>🔊 声音家族</h4></div>
+      <div class="blk-target" data-cat="event" onclick="dropChip(this)"><h4>⚡ 事件家族</h4></div>
+    </div>
+    <div class="fb" id="fb6"></div>
+  </div>
+</section>
+
+<!-- s07 拼接与顺序 -->
+<section class="slide-page" id="slide-7" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🔗 拼积木 = 排顺序</h2>
+    <div class="def-box">
+      积木要<b>从上往下</b>拼接，计算机会<b>从上到下</b>一条一条执行。<br>
+      第一块通常是 <b>⚡ 当绿旗被点击</b>——它是程序的"发令枪"。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 迁移它</b>：这和第三单元的流程图一模一样！流程图的箭头向下，积木的执行顺序也向下。会画流程图，就会想程序；会拼积木，就是把流程图变成真的。</div>
+  </div>
+</section>
+
+<!-- s08 互动2：排序挑战 -->
+<section class="slide-page" id="slide-8" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：帮小猫排程序</h2>
+    <p class="interact-note">任务：让小猫先走 10 步，再说"你好"，最后"喵"一声。按正确顺序点击积木卡片！</p>
+    <div class="seq-wrap" id="seq8">
+      <div class="seq-item" data-order="3" onclick="pickSeq(this,8)"><span class="no">?</span>🔊 播放声音"喵"</div>
+      <div class="seq-item" data-order="1" onclick="pickSeq(this,8)"><span class="no">?</span>⚡ 当绿旗被点击</div>
+      <div class="seq-item" data-order="4" onclick="pickSeq(this,8)"><span class="no">?</span>🎨 说"你好"2 秒</div>
+      <div class="seq-item" data-order="2" onclick="pickSeq(this,8)"><span class="no">?</span>🏃 移动 10 步</div>
+    </div>
+    <div class="fb" id="fb8"></div>
+    <p style="text-align:center;"><button class="run-btn" onclick="resetSeq(8)">🔄 重新排</button></p>
+  </div>
+</section>
+
+<!-- s09 运行演示 -->
+<section class="slide-page" id="slide-9" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">▶️ 运行一下看看！</h2>
+    <div class="run-demo">
+      <div class="stage-box" id="stage9">
+        <div class="bubble" id="bubble9">你好！</div>
+        <div class="cat-sprite" id="cat9">🐱</div>
+      </div>
+      <p style="color:var(--mu);">程序：⚡当绿旗被点击 → 🏃移动10步 → 🎨说"你好"2秒 → 🔊播放"喵"</p>
+      <button class="run-btn" onclick="runCat()">▶ 点击绿旗运行</button>
+      <div class="fb" id="fb9"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s10 调试 -->
+<section class="slide-page" id="slide-10" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🐞 程序出错了怎么办？</h2>
+    <div class="def-box">
+      程序里的错误叫 <b>Bug（虫子）</b>，找错误、改错误的过程叫 <b>调试（Debug）</b>。<br>
+      调试三步：① 运行看看 → ② 找到不对的地方 → ③ 调整积木再运行。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 看见它</b>：第一个计算机 Bug 真的是一只虫子！1947 年，一只飞蛾飞进计算机造成故障。从此程序员把找错误叫做"捉虫子"。出错不可怕，<b>每个程序员每天都在调试</b>。</div>
+  </div>
+</section>
+
+<!-- s11 互动3：找Bug -->
+<section class="slide-page" id="slide-11" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：捉虫行动</h2>
+    <p class="interact-note">这个程序想让小猫"先打招呼再走路"，但运行后小猫直接走了没说话。点击你认为放错位置的积木！</p>
+    <div class="seq-wrap">
+      <div class="seq-item" onclick="pickBug(this,false)"><span class="no">1</span>⚡ 当绿旗被点击</div>
+      <div class="seq-item" onclick="pickBug(this,true)"><span class="no">2</span>🏃 移动 10 步</div>
+      <div class="seq-item" onclick="pickBug(this,true)"><span class="no">3</span>🎨 说"你好"2 秒</div>
+    </div>
+    <div class="fb" id="fb11"></div>
+    <p style="text-align:center;color:var(--mu);font-size:.95rem;">提示：走路和说话的顺序，和任务要求一样吗？</p>
+  </div>
+</section>
+
+<!-- s12 三大易错点 -->
+<section class="slide-page" id="slide-12" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⚠️ 三大易错点</h2>
+    <div class="mis-list">
+      <div class="mis-item"><b>易错点 1</b>：忘记放"当绿旗被点击"——没有发令枪，程序永远不会开始。</div>
+      <div class="mis-item"><b>易错点 2</b>：积木顺序颠倒——先说话再走路，和先走路再说话，结果完全不同。</div>
+      <div class="mis-item"><b>易错点 3</b>：以为计算机会"猜"你的意思——它只会严格按积木执行，一步不多、一步不少。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s13 前测 -->
+<section class="slide-page" id="slide-13" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">✏️ 小测验 · 基础关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：下面哪个积木是程序的"发令枪"？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'移动积木管的是走几步，不是开始。程序的起点是事件积木。')">🏃 移动 10 步</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">⚡ 当绿旗被点击</button>
+      <button class="opt" onclick="checkQuiz(this,false,'声音积木负责播放声音，程序要从"当绿旗被点击"开始。')">🔊 播放声音"喵"</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：想让角色说"你好"，应该用哪个家族的积木？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'运动家族管位置移动，说话要用外观家族。')">🏃 运动家族</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">🎨 外观家族</button>
+      <button class="opt" onclick="checkQuiz(this,false,'事件家族负责"什么时候启动"，不负责"说话"这个动作。')">⚡ 事件家族</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s14 后测 -->
+<section class="slide-page" id="slide-14" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🚀 小测验 · 提高关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：程序"先走 10 步，再说你好"，运行后小猫没说话就走了，可能的原因是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'积木没坏，问题出在顺序或缺少触发，先检查积木排列。')">积木坏了，要换电脑</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">"说话"积木和"走路"积木的顺序放反了</button>
+      <button class="opt" onclick="checkQuiz(this,false,'声音不影响"说话"气泡，应检查积木顺序。')">小猫今天心情不好</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：关于"调试"，正确的说法是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'调试恰恰是编程的重要部分，能调试才是真正会编程。')">调试说明你不会编程</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">调试就是运行、找错、修改、再运行的过程</button>
+      <button class="opt" onclick="checkQuiz(this,false,'Bug 人人都会遇到，调试是每个程序员的日常。')">只有新手才需要调试</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s15 总结+作业+知识图谱 -->
+<section class="slide-page" id="slide-15" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🌟 总结与分层作业</h2>
+    <div class="def-box" style="margin-bottom:18px;">
+      今天学会了：程序 = 有序的指令；积木四大家族（运动/外观/声音/事件）；<br>
+      从上往下拼接执行；"当绿旗被点击"是发令枪；出错了就调试。
+    </div>
+    <div class="hw-grid">
+      <div class="hw-card hw-a"><h4>🌱 基础</h4>拼出"走 10 步 → 说你好 → 喵"程序，运行给家长看。</div>
+      <div class="hw-card hw-b"><h4>🌿 提高</h4>让小猫走一个正方形：走、右转、走、右转……需要几块积木？</div>
+      <div class="hw-card hw-c"><h4>🌳 拓展</h4>设计"小猫捉老鼠"小游戏：想一想需要哪些事件和动作。</div>
+    </div>
+    <h3 style="text-align:center;color:var(--ink);margin-top:26px;">🗺️ 本课知识图谱（点击节点复习）</h3>
+    <canvas id="kg-canvas" width="680" height="300" style="display:block;margin:0 auto;background:#fff;border-radius:14px;border:2px solid #ecd9b8;"></canvas>
+  </div>
+</section>
+
+<div data-teachany-tutor-card data-course="info-e-block-programming" data-node="it-e-block-programming"></div>
+
+<script src="https://www.teachany.cn/assets/scripts/teachany-paged.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js"></script>
+<script>
+/* 互动1：积木分类 */
+let picked=null;
+function pickChip(el){ if(el.classList.contains('placed'))return; document.querySelectorAll('.block-chip').forEach(c=>c.style.outline=''); el.style.outline='4px solid #3d3225'; picked=el; }
+function dropChip(box){
+  const fb=document.getElementById('fb6');
+  if(!picked){ fb.className='fb bad'; fb.textContent='先点击积木池里的一块积木哦！'; return; }
+  if(picked.dataset.cat===box.dataset.cat){
+    box.appendChild(picked); picked.classList.add('placed'); picked.style.outline=''; picked=null;
+    const left=document.querySelectorAll('#pool6 .block-chip:not(.placed)').length;
+    fb.className='fb good'; fb.textContent = left===0 ? '🎉 全部送回家！你是积木分类小达人！' : '✅ 放对了！还剩 '+left+' 块。';
+  } else { fb.className='fb bad'; fb.textContent='❌ 这个家族不对，想想这块积木是"做什么"的？'; }
+}
+/* 互动2：排序 */
+let seqCount={8:0};
+function pickSeq(el,id){
+  if(el.classList.contains('done'))return;
+  const fb=document.getElementById('fb'+id);
+  const need=seqCount[id]+1;
+  if(+el.dataset.order===need){
+    seqCount[id]++; el.classList.add('done'); el.querySelector('.no').textContent=need;
+    fb.className='fb good'; fb.textContent = seqCount[id]===4 ? '🎉 顺序完美！按下绿旗，小猫就会照做！' : '✅ 第 '+need+' 块放对了！';
+  } else { fb.className='fb bad'; fb.textContent='❌ 不是这块。想想：哪块是"发令枪"？接下来先做什么？'; }
+}
+function resetSeq(id){ seqCount[id]=0; document.querySelectorAll('#seq'+id+' .seq-item').forEach(e=>{e.classList.remove('done');e.querySelector('.no').textContent='?';}); document.getElementById('fb'+id).textContent=''; }
+/* 运行演示 */
+function runCat(){
+  const cat=document.getElementById('cat9'), b=document.getElementById('bubble9'), fb=document.getElementById('fb9');
+  cat.style.left='20px'; b.style.opacity=0; fb.textContent='';
+  setTimeout(()=>{ cat.style.left='150px'; },400);
+  setTimeout(()=>{ b.style.opacity=1; },1200);
+  setTimeout(()=>{ fb.className='fb good'; fb.textContent='🔊 喵～ 程序执行完毕！'; },2200);
+}
+/* 捉虫 */
+function pickBug(el,isBug){
+  const fb=document.getElementById('fb11');
+  if(isBug){ fb.className='fb good'; fb.textContent='🎉 找到虫子了！"走路"排在了"说话"前面，把两块积木对调就对了。'; el.style.borderColor='var(--ok)'; el.style.background='#e6f6ec'; }
+  else { fb.className='fb bad'; fb.textContent='❌ 这块没问题——它是发令枪，程序必须从它开始。再看看下面两块？'; }
+}
+/* 测验 */
+function checkQuiz(el,ok,diag){
+  const box=el.closest('.quiz-box');
+  box.querySelectorAll('.opt').forEach(o=>{o.classList.remove('right','wrong');o.disabled=false;});
+  el.classList.add(ok?'right':'wrong');
+  box.querySelector('.quiz-diagnosis').textContent = ok ? '✅ 回答正确！' : '💡 '+diag;
+}
+/* 知识图谱 */
+(function(){
+  const c=document.getElementById('kg-canvas'), ctx=c.getContext('2d');
+  const nodes=[
+    {x:340,y:150,r:42,t:'程序',tip:'程序 = 一组按顺序排列的指令'},
+    {x:120,y:70,r:34,t:'运动',tip:'蓝色积木：移动、转向'},
+    {x:120,y:230,r:34,t:'外观',tip:'橙色积木：说话、变化'},
+    {x:560,y:70,r:34,t:'声音',tip:'紫色积木：播放声音'},
+    {x:560,y:230,r:34,t:'事件',tip:'黄色积木：当绿旗被点击（发令枪）'},
+    {x:340,y:270,r:30,t:'调试',tip:'Bug 是错误，调试是找错改错'}
+  ];
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.strokeStyle='#d9c49a';ctx.lineWidth=2;ctx.setLineDash([6,5]);
+    nodes.slice(1).forEach(n=>{ctx.beginPath();ctx.moveTo(nodes[0].x,nodes[0].y);ctx.lineTo(n.x,n.y);ctx.stroke();});
+    ctx.setLineDash([]);
+    nodes.forEach((n,i)=>{
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,7);ctx.fillStyle=i===0?'#e07b39':'#4a90d9';ctx.fill();
+      ctx.fillStyle='#fff';ctx.font='bold 16px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(n.t,n.x,n.y);
+    });
+  }
+  draw();
+  c.addEventListener('click',e=>{
+    const r=c.getBoundingClientRect(),mx=(e.clientX-r.left)*(c.width/r.width),my=(e.clientY-r.top)*(c.height/r.height);
+    const hit=nodes.find(n=>(mx-n.x)**2+(my-n.y)**2<=n.r**2);
+    if(hit) alert('💡 '+hit.t+'：'+hit.tip);
+  });
+})();
+</script>
+</body>
+</html>

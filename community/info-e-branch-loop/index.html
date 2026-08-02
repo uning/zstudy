@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分支与循环 · 小学信息科技</title>
+<meta name="teachany-course" content="info-e-branch-loop">
+<meta name="teachany-node" content="it-e-branch-loop">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-grade" content="3">
+<meta name="teachany-domain" content="algorithm-programming">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-data-visualization">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-core.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-elementary.css">
+<link rel="stylesheet" href="https://www.teachany.cn/assets/scripts/teachany-tutor-card.css">
+<style>
+body{background:#fffbf0;}
+:root{--ink:#3d3225;--mu:#8a7a60;--acc:#e07b39;--acc2:#4a90d9;--soft:#fdf3e3;--soft2:#e8f1fb;--ok:#3d9a5f;--bad:#d9544d;}
+.hero{border-radius:18px;width:100%;max-width:760px;display:block;margin:0 auto 18px;}
+.big-q{font-size:1.5rem;font-weight:800;color:var(--ink);text-align:center;line-height:1.7;}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto;}
+.obj-card{background:var(--soft);border-radius:14px;padding:16px 18px;font-size:1.05rem;color:var(--ink);border:2px solid #f0dfc2;}
+.obj-card b{color:var(--acc);}
+.def-box{background:var(--soft2);border-left:8px solid var(--acc2);border-radius:12px;padding:20px 24px;max-width:760px;margin:0 auto;font-size:1.15rem;line-height:1.9;color:var(--ink);}
+.flow-wrap{max-width:560px;margin:0 auto;text-align:center;}
+.flow-node{display:inline-block;padding:12px 26px;border-radius:14px;font-weight:800;font-size:1.1rem;margin:6px;}
+.fn-start{background:#f2b526;color:#5c4400;}
+.fn-step{background:#4a90d9;color:#fff;}
+.fn-if{background:#fff;color:var(--acc);border:3px solid var(--acc);transform:rotate(0deg);padding:12px 30px;}
+.flow-arrow{font-size:1.6rem;color:var(--mu);line-height:1.2;}
+.branch-lbl{font-size:.9rem;font-weight:700;color:var(--mu);}
+.branch-row{display:flex;gap:40px;justify-content:center;}
+.branch-col{display:flex;flex-direction:column;align-items:center;}
+.diamond{display:inline-flex;align-items:center;justify-content:center;width:190px;height:90px;background:var(--acc);color:#fff;font-weight:800;font-size:1.05rem;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);text-align:center;padding:0 26px;}
+.choice-stage{max-width:640px;margin:0 auto;text-align:center;}
+.weather-btn{background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:18px 30px;font-size:1.3rem;font-weight:800;cursor:pointer;margin:0 10px;color:var(--ink);transition:.15s;}
+.weather-btn:hover{border-color:var(--acc);transform:scale(1.05);}
+.robot-out{background:#fff;border:2px solid #ecd9b8;border-radius:14px;min-height:90px;max-width:560px;margin:16px auto;padding:14px;font-size:1.1rem;color:var(--ink);text-align:left;line-height:1.9;}
+.fb{text-align:center;font-weight:800;font-size:1.1rem;min-height:1.6em;margin-top:8px;}
+.fb.good{color:var(--ok);}.fb.bad{color:var(--bad);}
+.interact-note{text-align:center;color:var(--mu);font-size:.95rem;margin-top:6px;}
+.loop-demo{max-width:640px;margin:0 auto;text-align:center;}
+.frog-track{position:relative;height:80px;background:linear-gradient(#cdeac0,#a8d895);border-radius:14px;border:3px solid #8bc47a;margin:14px auto;max-width:560px;overflow:hidden;}
+.frog{position:absolute;left:10px;top:12px;font-size:2.6rem;transition:left .5s ease;}
+.lotus{position:absolute;right:14px;top:16px;font-size:2.2rem;}
+.count-lbl{font-size:1.2rem;font-weight:800;color:var(--ink);}
+.mis-list{max-width:760px;margin:0 auto;}
+.mis-item{background:#fff;border-left:8px solid var(--bad);border-radius:12px;padding:14px 18px;margin:12px 0;font-size:1.05rem;color:var(--ink);}
+.mis-item b{color:var(--bad);}
+.quiz-box{max-width:720px;margin:0 auto 26px;background:#fff;border:2px solid #ecd9b8;border-radius:16px;padding:20px 22px;}
+.quiz-box h4{margin:0 0 12px;color:var(--ink);}
+.opt{display:block;background:var(--soft);border:2px solid #f0dfc2;border-radius:12px;padding:12px 16px;margin:9px 0;cursor:pointer;font-size:1.05rem;color:var(--ink);transition:.15s;}
+.opt:hover{border-color:var(--acc);}
+.opt.right{background:#e6f6ec;border-color:var(--ok);}
+.opt.wrong{background:#fdeceb;border-color:var(--bad);}
+.quiz-diagnosis{font-size:.95rem;color:var(--mu);margin-top:8px;min-height:1.4em;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto;}
+.hw-card{border-radius:14px;padding:16px;color:#fff;font-size:1rem;line-height:1.7;}
+.hw-card h4{margin:0 0 8px;font-size:1.1rem;}
+.hw-a{background:#4a90d9;}.hw-b{background:#e07b39;}.hw-c{background:#8a5fd6;}
+.abt-tag{display:inline-block;background:var(--acc);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.insight{background:#fff8e6;border:2px dashed var(--acc);border-radius:14px;padding:16px 20px;max-width:760px;margin:18px auto;font-size:1.02rem;line-height:1.8;color:var(--ink);}
+.insight b{color:var(--acc);}
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page" id="slide-1" data-bloom="understand">
+  <div class="slide-inner" style="text-align:center;">
+    <img class="hero" src="assets/info-e-branch-loop-hero.webp" alt="分支与循环 封面图">
+    <span class="abt-tag">为什么学 · ABT</span>
+    <h1 style="color:var(--ink);margin:8px 0 10px;">分支与循环</h1>
+    <p style="color:var(--mu);font-size:1.15rem;max-width:680px;margin:0 auto;line-height:1.9;">
+      "如果下雨，就带伞"<b style="color:var(--ink);">——会拐弯的程序，才是真聪明。</b><br>
+      "把跳绳动作重复 20 次"<b style="color:var(--ink);">——会偷懒的程序，才是高效。</b><br>
+      这节课，让你的程序学会这两样本领！
+    </p>
+    <p style="margin-top:20px;color:var(--mu);">小学信息科技 · 三年级 · 第 8 单元</p>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-bloom="understand">
+  <div class="slide-inner">
+    <p class="big-q">🤖 你命令机器人：走到路口。<br>它"砰"地撞上了红灯亮着的马路。<br>为什么它不知道停下来？</p>
+    <p style="text-align:center;color:var(--mu);font-size:1.1rem;margin-top:26px;line-height:2;">
+      因为之前的程序只会<b style="color:var(--acc);">"一条道走到黑"</b>。<br>
+      聪明的程序要会说：<b style="color:var(--acc);">"如果红灯，就停下；如果绿灯，就走。"</b>
+    </p>
+    <p style="text-align:center;margin-top:22px;color:var(--mu);font-size:1.05rem;">带着这个问题，开始本学期的最后一课。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎯 今天的学习目标</h2>
+    <div class="obj-grid">
+      <div class="obj-card"><b>目标 1</b>：说出顺序、分支、循环三种程序结构</div>
+      <div class="obj-card"><b>目标 2</b>：用"如果……就……"描述分支</div>
+      <div class="obj-card"><b>目标 3</b>：用"重复……次"描述循环</div>
+      <div class="obj-card"><b>目标 4</b>：判断生活中的事情适合哪种结构</div>
+    </div>
+  </div>
+</section>
+
+<!-- s04 顺序结构回顾 -->
+<section class="slide-page" id="slide-4" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">📏 老朋友：顺序结构</h2>
+    <div class="def-box">
+      之前学过的程序都是<b>顺序结构</b>：从上往下，一步一步执行，<b>不拐弯、不回头</b>。
+    </div>
+    <div class="flow-wrap" style="margin-top:16px;">
+      <span class="flow-node fn-start">开始</span><br>
+      <span class="flow-arrow">⬇</span><br>
+      <span class="flow-node fn-step">起床</span><br>
+      <span class="flow-arrow">⬇</span><br>
+      <span class="flow-node fn-step">刷牙</span><br>
+      <span class="flow-arrow">⬇</span><br>
+      <span class="flow-node fn-step">出门</span>
+    </div>
+    <p style="text-align:center;color:var(--mu);">顺序结构很可靠，但它不会"看情况办事"。</p>
+  </div>
+</section>
+
+<!-- s05 分支结构 -->
+<section class="slide-page" id="slide-5" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🔀 新本领一：分支结构</h2>
+    <div class="def-box">
+      <b>分支结构</b> = 先做一个<b>判断</b>，再根据结果走不同的路。<br>
+      口诀：<b>如果……就……，否则……</b>
+    </div>
+    <div class="flow-wrap" style="margin-top:16px;">
+      <span class="flow-node fn-start">出门上学</span><br>
+      <span class="flow-arrow">⬇</span><br>
+      <div class="diamond">下雨了吗？</div>
+      <div class="branch-row" style="margin-top:10px;">
+        <div class="branch-col"><span class="branch-lbl">☔ 是</span><span class="flow-arrow">⬇</span><span class="flow-node fn-step">带上雨伞</span></div>
+        <div class="branch-col"><span class="branch-lbl">☀️ 否</span><span class="flow-arrow">⬇</span><span class="flow-node fn-step">戴上遮阳帽</span></div>
+      </div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 迁移它</b>：还记得流程图里的<b>菱形</b>吗？菱形就是分支的"路口"，必须有两个出口：是 / 否。会画菱形流程图，就会写分支程序！</div>
+  </div>
+</section>
+
+<!-- s06 互动1：天气机器人 -->
+<section class="slide-page" id="slide-6" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：天气机器人</h2>
+    <p class="interact-note">机器人脑子里装着这条分支指令：<br><b>如果下雨 → 带雨伞；如果下雪 → 穿棉衣；否则 → 戴遮阳帽。</b><br>点击天气，看机器人执行哪条路！</p>
+    <div class="choice-stage">
+      <button class="weather-btn" onclick="runWeather('rain')">🌧️ 下雨</button>
+      <button class="weather-btn" onclick="runWeather('snow')">❄️ 下雪</button>
+      <button class="weather-btn" onclick="runWeather('sun')">☀️ 晴天</button>
+      <div class="robot-out" id="robot-out">🤖 等待天气指令……</div>
+      <div class="fb" id="fb6"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s07 循环结构 -->
+<section class="slide-page" id="slide-7" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🔁 新本领二：循环结构</h2>
+    <div class="def-box">
+      <b>循环结构</b> = 把同一件事<b>重复执行</b>指定的次数，或重复到满足条件为止。<br>
+      口诀：<b>重复 …… 次，做 ……</b>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 比较它</b>：体育老师说"绕操场跑 4 圈"，你不会问"第 2 圈怎么跑"——因为每圈都一样。<b>循环就是程序里的"跑圈"</b>：写一次动作，重复 N 次，程序员最会"偷懒"！</div>
+    <div class="flow-wrap" style="margin-top:8px;">
+      <span class="flow-node fn-start">重复 4 次</span>
+      <span class="flow-arrow">➡️</span>
+      <span class="flow-node fn-step">跳绳 10 下</span>
+      <span class="flow-arrow">➡️</span>
+      <span class="flow-node fn-start">结束（共 40 下）</span>
+    </div>
+  </div>
+</section>
+
+<!-- s08 互动2：青蛙跳荷叶 -->
+<section class="slide-page" id="slide-8" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：青蛙跳荷叶</h2>
+    <p class="interact-note">荷叶在 4 格之外。选择循环次数，点击"运行"，看小青蛙能不能刚好跳到荷叶上！</p>
+    <div class="loop-demo">
+      <div class="frog-track">
+        <div class="frog" id="frog">🐸</div>
+        <div class="lotus">🪷</div>
+      </div>
+      <p class="count-lbl">重复 <span id="loop-n">1</span> 次「向前跳 1 格」</p>
+      <p>
+        <button class="weather-btn" style="font-size:1.05rem;padding:10px 18px;" onclick="chgLoop(1)">➕ 加 1 次</button>
+        <button class="weather-btn" style="font-size:1.05rem;padding:10px 18px;" onclick="chgLoop(-1)">➖ 减 1 次</button>
+        <button class="weather-btn" style="font-size:1.05rem;padding:10px 18px;background:var(--acc);color:#fff;border-color:#b35c24;" onclick="runFrog()">▶ 运行</button>
+      </p>
+      <div class="fb" id="fb8"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s09 三种结构总结 -->
+<section class="slide-page" id="slide-9" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🏛️ 程序的三种基本结构</h2>
+    <div class="chart-like" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;max-width:860px;margin:16px auto;">
+      <div style="background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:16px;width:200px;text-align:center;">
+        <div style="font-size:2rem;">📏</div><div style="font-weight:800;color:var(--ink);">顺序结构</div>
+        <div style="font-size:.95rem;color:var(--mu);margin-top:6px;">从上往下<br>一步一步执行</div>
+      </div>
+      <div style="background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:16px;width:200px;text-align:center;">
+        <div style="font-size:2rem;">🔀</div><div style="font-weight:800;color:var(--ink);">分支结构</div>
+        <div style="font-size:.95rem;color:var(--mu);margin-top:6px;">如果……就……<br>看情况选路走</div>
+      </div>
+      <div style="background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:16px;width:200px;text-align:center;">
+        <div style="font-size:2rem;">🔁</div><div style="font-weight:800;color:var(--ink);">循环结构</div>
+        <div style="font-size:.95rem;color:var(--mu);margin-top:6px;">重复……次<br>同样的动作再来几遍</div>
+      </div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 看见它</b>：科学家证明了——<b>任何复杂的程序，都能用这三种结构拼出来</b>。手机游戏、导航软件、航天飞船的控制程序，拆开看都是顺序、分支、循环的组合。掌握了三块"积木"，你就掌握了编程的骨架！</div>
+  </div>
+</section>
+
+<!-- s10 互动3：结构辨辨辨 -->
+<section class="slide-page" id="slide-10" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：结构辨辨辨</h2>
+    <p class="interact-note">下面的事情分别属于哪种结构？点击正确答案！（共 3 题）</p>
+    <div class="quiz-box">
+      <h4>第 1 题：先洗手、再吃饭、然后擦嘴。</h4>
+      <button class="opt" onclick="checkQuiz(this,true,'')">📏 顺序结构</button>
+      <button class="opt" onclick="checkQuiz(this,false,'这里没有判断，也没有重复——三件事按顺序做一遍，是顺序结构。')">🔀 分支结构</button>
+      <button class="opt" onclick="checkQuiz(this,false,'没有重复做同一件事，是顺序结构。')">🔁 循环结构</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：如果作业写完了，就可以看动画片。</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'有"如果"，就要先判断再选路——这不是单纯的顺序。')">📏 顺序结构</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">🔀 分支结构</button>
+      <button class="opt" onclick="checkQuiz(this,false,'这件事只做一次判断，没有重复执行，是分支结构。')">🔁 循环结构</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 3 题：课间操把同一节动作做 8 遍。</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'同一动作做 8 遍，"重复"是关键——不是顺序结构。')">📏 顺序结构</button>
+      <button class="opt" onclick="checkQuiz(this,false,'这里没有"如果……就……"的判断，是重复执行。')">🔀 分支结构</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">🔁 循环结构</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s11 三大易错点 -->
+<section class="slide-page" id="slide-11" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⚠️ 三大易错点</h2>
+    <div class="mis-list">
+      <div class="mis-item"><b>易错点 1</b>：分支只有"是"的出口——菱形判断必须想好"否"的时候怎么办。</div>
+      <div class="mis-item"><b>易错点 2</b>：循环次数数不清——跳 4 格要重复 4 次，多数一次就会"冲过头"。</div>
+      <div class="mis-item"><b>易错点 3</b>：死循环——如果循环没有结束条件，程序会永远转圈，停不下来。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s12 前测 -->
+<section class="slide-page" id="slide-12" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">✏️ 小测验 · 基础关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题："如果红灯亮，就停下来"属于哪种结构？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'有"如果"就有判断和选择，这是分支结构的标志。')">顺序结构</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">分支结构</button>
+      <button class="opt" onclick="checkQuiz(this,false,'这里没有重复执行的动作，关键是"如果"——分支结构。')">循环结构</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：想让角色把"移动 10 步"做 5 次，最简便的办法是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'复制 5 块也能用，但太笨了。循环积木写一次就能重复 5 次，更聪明。')">复制 5 块"移动 10 步"积木</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">用"重复 5 次"循环积木包住它</button>
+      <button class="opt" onclick="checkQuiz(this,false,'分支积木负责"看情况选路"，不负责重复——重复要用循环积木。')">用"如果……就……"分支积木</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s13 后测 -->
+<section class="slide-page" id="slide-13" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🚀 小测验 · 提高关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：青蛙离荷叶 4 格，程序"重复 5 次：向前跳 1 格"，运行结果会怎样？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'5 次比 4 格多跳了 1 次——重复次数必须和目标距离正好相等。')">刚好跳到荷叶上</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">跳过头了：重复次数多了 1 次</button>
+      <button class="opt" onclick="checkQuiz(this,false,'循环一定会执行 5 次，不会自己停在 4 次——程序没有"智能"，只有"指令"。')">青蛙自己会停下来</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：关于三种基本结构，正确的说法是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'手机游戏、导航软件这些复杂程序，拆开看都是三种结构的组合。')">复杂程序用不到这三种结构</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">任何程序都可以用顺序、分支、循环组合出来</button>
+      <button class="opt" onclick="checkQuiz(this,false,'一个程序里可以同时有顺序、分支和循环——它们经常一起出现。')">一个程序只能用其中一种结构</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s14 总结+作业 -->
+<section class="slide-page" id="slide-14" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🌟 总结与分层作业</h2>
+    <div class="def-box" style="margin-bottom:18px;">
+      今天学会了：程序的三种基本结构——<br>
+      📏 顺序（一步步来）、🔀 分支（如果……就……）、🔁 循环（重复……次）；<br>
+      任何复杂程序都由它们组合而成。
+    </div>
+    <div class="hw-grid">
+      <div class="hw-card hw-a"><h4>🌱 基础</h4>用"如果……就……"写出 3 条家里的规矩。</div>
+      <div class="hw-card hw-b"><h4>🌿 提高</h4>在积木编程里做"小猫走正方形"：用循环 4 次，每次走+转弯。</div>
+      <div class="hw-card hw-c"><h4>🌳 拓展</h4>设计"红绿灯过马路"流程图：分支+循环都要用上。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s15 知识图谱 -->
+<section class="slide-page" id="slide-15" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🗺️ 本课知识图谱（点击节点复习）</h2>
+    <canvas id="kg-canvas" width="680" height="300" style="display:block;margin:0 auto;background:#fff;border-radius:14px;border:2px solid #ecd9b8;"></canvas>
+  </div>
+</section>
+
+<div data-teachany-tutor-card data-course="info-e-branch-loop" data-node="it-e-branch-loop"></div>
+
+<script src="https://www.teachany.cn/assets/scripts/teachany-paged.js"></script>
+<script src="https://www.teachany.cn/assets/scripts/ai-tutor.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="https://www.teachany.cn/assets/scripts/teachany-section-hints.js"></script>
+<script>
+/* 天气机器人 */
+function runWeather(w){
+  const out=document.getElementById('robot-out'), fb=document.getElementById('fb6');
+  let lines=[];
+  if(w==='rain'){ lines=['🤖 判断：下雨了吗？—— 是！','👉 走分支 1：带上雨伞 ☂️']; }
+  else if(w==='snow'){ lines=['🤖 判断：下雨了吗？—— 否。','🤖 判断：下雪了吗？—— 是！','👉 走分支 2：穿上棉衣 🧥']; }
+  else { lines=['🤖 判断：下雨了吗？—— 否。','🤖 判断：下雪了吗？—— 否。','👉 走"否则"分支：戴上遮阳帽 🧢']; }
+  out.innerHTML=lines.join('<br>');
+  fb.className='fb good'; fb.textContent='看到没？不同的天气，机器人走了不同的路——这就是分支！';
+}
+/* 青蛙跳荷叶 */
+let loopN=1;
+function chgLoop(d){
+  loopN=Math.min(6,Math.max(1,loopN+d));
+  document.getElementById('loop-n').textContent=loopN;
+}
+function runFrog(){
+  const frog=document.getElementById('frog'), fb=document.getElementById('fb8');
+  frog.style.transition='none'; frog.style.left='10px';
+  void frog.offsetWidth;
+  frog.style.transition='left .5s ease';
+  const step=115, target=10+step*loopN;
+  frog.style.left=target+'px';
+  setTimeout(()=>{
+    if(loopN===4){ fb.className='fb good'; fb.textContent='🎉 重复 4 次，刚好跳到荷叶上！次数算得真准！'; frog.style.left='10px'; setTimeout(()=>{frog.style.left='10px';},800); }
+    else if(loopN<4){ fb.className='fb bad'; fb.textContent='⚠️ 只跳了 '+loopN+' 格，还差 '+(4-loopN)+' 格——循环次数不够！'; }
+    else { fb.className='fb bad'; fb.textContent='💦 扑通！跳过头掉进水里了——循环次数多了 '+(loopN-4)+' 次！'; }
+  },650);
+}
+/* 测验 */
+function checkQuiz(el,ok,diag){
+  const box=el.closest('.quiz-box');
+  box.querySelectorAll('.opt').forEach(o=>o.classList.remove('right','wrong'));
+  el.classList.add(ok?'right':'wrong');
+  box.querySelector('.quiz-diagnosis').textContent = ok ? '✅ 回答正确！' : '💡 '+diag;
+}
+/* 知识图谱 */
+(function(){
+  const c=document.getElementById('kg-canvas'), ctx=c.getContext('2d');
+  const nodes=[
+    {x:340,y:150,r:44,t:'三种结构',tip:'任何程序 = 顺序+分支+循环的组合'},
+    {x:120,y:70,r:34,t:'顺序',tip:'从上往下，一步一步执行'},
+    {x:120,y:230,r:34,t:'分支',tip:'如果……就……，否则……（菱形判断）'},
+    {x:560,y:70,r:34,t:'循环',tip:'重复 N 次做同一件事'},
+    {x:560,y:230,r:34,t:'判断',tip:'分支的路口：是/否两个出口'},
+    {x:340,y:278,r:28,t:'死循环',tip:'没有结束条件的循环，永远停不下来'}
+  ];
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.strokeStyle='#d9c49a';ctx.lineWidth=2;ctx.setLineDash([6,5]);
+    nodes.slice(1).forEach(n=>{ctx.beginPath();ctx.moveTo(nodes[0].x,nodes[0].y);ctx.lineTo(n.x,n.y);ctx.stroke();});
+    ctx.setLineDash([]);
+    nodes.forEach((n,i)=>{
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,7);ctx.fillStyle=i===0?'#e07b39':'#4a90d9';ctx.fill();
+      ctx.fillStyle='#fff';ctx.font='bold 15px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(n.t,n.x,n.y);
+    });
+  }
+  draw();
+  c.addEventListener('click',e=>{
+    const r=c.getBoundingClientRect(),mx=(e.clientX-r.left)*(c.width/r.width),my=(e.clientY-r.top)*(c.height/r.height);
+    const hit=nodes.find(n=>(mx-n.x)**2+(my-n.y)**2<=n.r**2);
+    if(hit) alert('💡 '+hit.t+'：'+hit.tip);
+  });
+})();
+</script>
+</body>
+</html>
