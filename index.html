@@ -6,10 +6,12 @@
 <title>zstudy · K12 课件库</title>
 <script>
 // CodeBuddy 沙箱静态服务器对目录路径会回退到本页面（SPA fallback）。
-// 若访问路径形如 /foo/ 或 /foo/bar，自动重定向到对应的 index.html。
+// 仅当路径深度 ≤2 段（如 /foo 或 /foo/）时，才自动补 index.html 重定向；
+// 更深层级（如 /a/b/）不做处理，避免与子目录自身的恢复脚本叠加成无限重定向循环。
 (function(){
   var p = location.pathname;
-  if (p !== "/" && !/\.[a-zA-Z0-9]{2,5}$/.test(p)) {
+  var seg = p.split("/").filter(function(s){ return s.length > 0; });
+  if (seg.length >= 1 && seg.length <= 2 && !/\.[a-zA-Z0-9]{2,5}$/.test(p)) {
     location.replace(p.replace(/\/?$/, "/") + "index.html" + location.search + location.hash);
   }
 })();
@@ -34,107 +36,107 @@ footer { margin-top:48px; text-align:center; color:var(--muted); font-size:0.85r
   <h1>zstudy 课件库</h1>
   <p class="sub">使用 TeachAny 生成的 K12 互动课件</p>
   <div class="course-list">
-    <a class="course-card" href="./community/info-e-term1/" style="border-color:#e07b39;background:#fff8ec;">
+    <a class="course-card" href="./community/info-e-term1/index.html" style="border-color:#e07b39;background:#fff8ec;">
       <div class="title">📚 小学信息科技 · 第一学期总目录（8 单元合集）</div>
       <div class="meta">community/info-e-term1</div>
     </a>
-    <a class="course-card" href="./community/info-e-online-basics/">
+    <a class="course-card" href="./community/info-e-online-basics/index.html">
       <div class="title">走进信息世界（小学信息科技·第一单元）</div>
       <div class="meta">community/info-e-online-basics</div>
     </a>
-    <a class="course-card" href="./community/info-e-digital-tools-basic/">
+    <a class="course-card" href="./community/info-e-digital-tools-basic/index.html">
       <div class="title">数字工具小能手（小学信息科技·第二单元）</div>
       <div class="meta">community/info-e-digital-tools-basic</div>
     </a>
-    <a class="course-card" href="./community/info-e-algorithm-steps/">
+    <a class="course-card" href="./community/info-e-algorithm-steps/index.html">
       <div class="title">算法与流程图（小学信息科技·第三单元）</div>
       <div class="meta">community/info-e-algorithm-steps</div>
     </a>
-    <a class="course-card" href="./community/info-e-data-collection/">
+    <a class="course-card" href="./community/info-e-data-collection/index.html">
       <div class="title">数据收集小侦探（小学信息科技·第四单元）</div>
       <div class="meta">community/info-e-data-collection</div>
     </a>
-    <a class="course-card" href="./community/info-e-block-programming/">
+    <a class="course-card" href="./community/info-e-block-programming/index.html">
       <div class="title">积木编程第一课（小学信息科技·第五单元）</div>
       <div class="meta">community/info-e-block-programming</div>
     </a>
-    <a class="course-card" href="./community/info-e-encoding-basics/">
+    <a class="course-card" href="./community/info-e-encoding-basics/index.html">
       <div class="title">编码的奥秘（小学信息科技·第六单元）</div>
       <div class="meta">community/info-e-encoding-basics</div>
     </a>
-    <a class="course-card" href="./community/info-e-data-visualization/">
+    <a class="course-card" href="./community/info-e-data-visualization/index.html">
       <div class="title">让数据开口说话（小学信息科技·第七单元）</div>
       <div class="meta">community/info-e-data-visualization</div>
     </a>
-    <a class="course-card" href="./community/info-e-branch-loop/">
+    <a class="course-card" href="./community/info-e-branch-loop/index.html">
       <div class="title">分支与循环（小学信息科技·第八单元）</div>
       <div class="meta">community/info-e-branch-loop</div>
     </a>
-    <a class="course-card" href="./grade5-term1-units1-3-interactive/">
+    <a class="course-card" href="./grade5-term1-units1-3-interactive/index.html">
       <div class="title">grade5-term1-units1-3-interactive</div>
       <div class="meta">grade5-term1-units1-3-interactive</div>
     </a>
-    <a class="course-card" href="./math-e-fraction-operations/">
+    <a class="course-card" href="./math-e-fraction-operations/index.html">
       <div class="title">math-e-fraction-operations</div>
       <div class="meta">math-e-fraction-operations</div>
     </a>
-    <a class="course-card" href="./math-e-symmetry-translation-rotation/">
+    <a class="course-card" href="./math-e-symmetry-translation-rotation/index.html">
       <div class="title">math-e-symmetry-translation-rotation</div>
       <div class="meta">math-e-symmetry-translation-rotation</div>
     </a>
-    <a class="course-card" href="./math-m-coordinate-system/">
+    <a class="course-card" href="./math-m-coordinate-system/index.html">
       <div class="title">math-m-coordinate-system</div>
       <div class="meta">math-m-coordinate-system</div>
     </a>
-    <a class="course-card" href="./math-review-calculation-check-10days/">
+    <a class="course-card" href="./math-review-calculation-check-10days/index.html">
       <div class="title">math-review-calculation-check-10days</div>
       <div class="meta">math-review-calculation-check-10days</div>
     </a>
-    <a class="course-card" href="./senior2-math-u123/">
+    <a class="course-card" href="./senior2-math-u123/index.html">
       <div class="title">senior2-math-u123</div>
       <div class="meta">senior2-math-u123</div>
     </a>
-    <a class="course-card" href="./sugao-bridge/">
+    <a class="course-card" href="./sugao-bridge/index.html">
       <div class="title">sugao-bridge</div>
       <div class="meta">sugao-bridge</div>
     </a>
-    <a class="course-card" href="./sujiao-g5-all/">
+    <a class="course-card" href="./sujiao-g5-all/index.html">
       <div class="title">sujiao-g5-all</div>
       <div class="meta">sujiao-g5-all</div>
     </a>
-    <a class="course-card" href="./sujiao-g5-term1-review/">
+    <a class="course-card" href="./sujiao-g5-term1-review/index.html">
       <div class="title">sujiao-g5-term1-review</div>
       <div class="meta">sujiao-g5-term1-review</div>
     </a>
-    <a class="course-card" href="./sujiao-g5-u789/">
+    <a class="course-card" href="./sujiao-g5-u789/index.html">
       <div class="title">sujiao-g5-u789</div>
       <div class="meta">sujiao-g5-u789</div>
     </a>
-    <a class="course-card" href="./sujiao-math-g4-unit1/">
+    <a class="course-card" href="./sujiao-math-g4-unit1/index.html">
       <div class="title">sujiao-math-g4-unit1</div>
       <div class="meta">sujiao-math-g4-unit1</div>
     </a>
-    <a class="course-card" href="./sujiao-math-g5-unit1/">
+    <a class="course-card" href="./sujiao-math-g5-unit1/index.html">
       <div class="title">sujiao-math-g5-unit1</div>
       <div class="meta">sujiao-math-g5-unit1</div>
     </a>
-    <a class="course-card" href="./sujiao-math-g5-unit2/">
+    <a class="course-card" href="./sujiao-math-g5-unit2/index.html">
       <div class="title">sujiao-math-g5-unit2</div>
       <div class="meta">sujiao-math-g5-unit2</div>
     </a>
-    <a class="course-card" href="./sujiao-math-g5-unit3/">
+    <a class="course-card" href="./sujiao-math-g5-unit3/index.html">
       <div class="title">sujiao-math-g5-unit3</div>
       <div class="meta">sujiao-math-g5-unit3</div>
     </a>
-    <a class="course-card" href="./sujiao-math-g5-unit4/">
+    <a class="course-card" href="./sujiao-math-g5-unit4/index.html">
       <div class="title">sujiao-math-g5-unit4</div>
       <div class="meta">sujiao-math-g5-unit4</div>
     </a>
-    <a class="course-card" href="./sujiao-math-g5u4/">
+    <a class="course-card" href="./sujiao-math-g5u4/index.html">
       <div class="title">sujiao-math-g5u4</div>
       <div class="meta">sujiao-math-g5u4</div>
     </a>
-    <a class="course-card" href="./sujiao-science-g5-unit1/">
+    <a class="course-card" href="./sujiao-science-g5-unit1/index.html">
       <div class="title">sujiao-science-g5-unit1</div>
       <div class="meta">sujiao-science-g5-unit1</div>
     </a>
