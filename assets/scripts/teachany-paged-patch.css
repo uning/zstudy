@@ -1,0 +1,73 @@
+/*! TeachAny 基础布局补丁（elementary 分页课件）
+ * 用于替代已从 CDN 下架的 teachany-core.css / teachany-elementary.css。
+ * 提供：基础排版、.slide-page 满屏分页布局、底部导航条（playbar + dots）。
+ * 仅注入缺失基础样式，不覆盖课件自身的内联配色。
+ */
+:root {
+  --ta-bg: #fffbf0;
+  --ta-card: #ffffff;
+  --ta-line: #ffe0b2;
+  --ta-text: #333333;
+  --ta-text-secondary: #555555;
+  --ta-muted: #888888;
+  --ta-brand: #ff6b6b;
+  --ta-page-padding: 24px;
+  --ta-toolbar-height: 56px;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--ta-bg);
+  color: var(--ta-text);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+body.teachany-elementary { background: var(--ta-bg); }
+
+/* 满屏分页：每页一屏，垂直居中，滚动对齐 */
+.slide-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--ta-toolbar-height) + 16px) var(--ta-page-padding) calc(var(--ta-toolbar-height) + 24px);
+  scroll-snap-align: start;
+  position: relative;
+}
+.slide-inner { max-width: 880px; width: 100%; margin: 0 auto; }
+
+/* 底部分页导航条 */
+.ta-playbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: var(--ta-toolbar-height);
+  background: var(--ta-card);
+  border-top: 1px solid var(--ta-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 90;
+  box-shadow: 0 -2px 12px rgba(0,0,0,.04);
+}
+.ta-playbar button {
+  background: var(--ta-brand);
+  color: #fff; border: 0; border-radius: 999px;
+  padding: 8px 18px; font-weight: 600; font-size: 14px; cursor: pointer;
+}
+.ta-playbar button.ta-secondary { background: var(--ta-line); color: var(--ta-text); }
+.ta-playbar button:disabled { opacity: .4; cursor: not-allowed; }
+.ta-dots { display: flex; gap: 8px; align-items: center; }
+.ta-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--ta-line); cursor: pointer; transition: background .15s;
+}
+.ta-dot.active { background: var(--ta-brand); transform: scale(1.2); }
+.ta-page-num { font-size: 13px; color: var(--ta-muted); min-width: 52px; text-align: center; }
+
+@media (max-width: 640px) {
+  .slide-inner { max-width: 100%; }
+}
