@@ -1,0 +1,27 @@
+{
+  "course_id": "info-e-ai-ethics",
+  "title": "人工智能伦理与责任",
+  "subject": "info-tech",
+  "stage": "elementary",
+  "grade": 6,
+  "node_id": "it-e-ai-ethics",
+  "domain": "internet-ai",
+  "lesson_type": "新授课",
+  "version": "1.0.0",
+  "teachany_version": "7.21.0",
+  "prerequisites": [
+    "it-e-ai-awareness"
+  ],
+  "feedback_password": null,
+  "feedback_password_declined": true,
+  "created": "2026-08-09",
+  "assets": {
+    "hero": "assets/info-e-ai-ethics-hero.webp"
+  },
+  "tts": {
+    "engine": "edge-neural",
+    "voice": "zh-CN-XiaoyiNeural",
+    "rate": "-8%",
+    "segments": 15
+  }
+}

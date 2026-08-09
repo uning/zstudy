@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script id="spa-path-recovery">(function(){var p=location.pathname,pre='/community/info-e-network-security/';if(p.slice(-10)!=="index.html"&&p.indexOf(pre)===0){location.replace(pre+"index.html"+location.search+location.hash);}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网络安全与信息保护 · 小学信息科技</title>
+<meta name="teachany-course" content="info-e-network-security">
+<meta name="teachany-node" content="it-e-network-security-basic">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-domain" content="internet-ai">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-internet-services">
+<link rel="stylesheet" href="/assets/scripts/teachany-paged-patch.css">
+<link rel="stylesheet" href="/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="/assets/scripts/teachany-tutor-card.css">
+<style>
+body{background:#fffbf0;}
+:root{--ink:#3d3225;--mu:#8a7a60;--acc:#e07b39;--acc2:#4a90d9;--soft:#fdf3e3;--soft2:#e8f1fb;--ok:#3d9a5f;--bad:#d9544d;}
+.hero{border-radius:18px;width:100%;max-width:760px;display:block;margin:0 auto 18px;}
+.big-q{font-size:1.5rem;font-weight:800;color:var(--ink);text-align:center;line-height:1.7;}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto;}
+.obj-card{background:var(--soft);border-radius:14px;padding:16px 18px;font-size:1.05rem;color:var(--ink);border:2px solid #f0dfc2;}
+.obj-card b{color:var(--acc);}
+.def-box{background:var(--soft2);border-left:8px solid var(--acc2);border-radius:12px;padding:20px 24px;max-width:760px;margin:0 auto;font-size:1.15rem;line-height:1.9;color:var(--ink);}
+.trap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:760px;margin:14px auto;}
+.trap-card{background:#fff;border-left:6px solid var(--bad);border-radius:12px;padding:14px 16px;}
+.trap-card .ti{font-weight:800;color:var(--bad);margin-bottom:6px;font-size:1.05rem;}
+.trap-card .td{font-size:.98rem;color:var(--ink);line-height:1.7;}
+.scam-box{max-width:640px;margin:14px auto;background:#fff;border:3px solid var(--bad);border-radius:16px;padding:18px 22px;font-size:1.05rem;line-height:1.9;color:var(--ink);}
+.scam-tag{display:inline-block;background:var(--bad);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.pick-btn{background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:14px 22px;font-size:1.05rem;font-weight:800;cursor:pointer;margin:6px;color:var(--ink);transition:.15s;}
+.pick-btn:hover{border-color:var(--acc);transform:scale(1.03);}
+.pwd-meter{max-width:640px;margin:14px auto;}
+.pwd-track{background:#f0dfc2;border-radius:12px;height:32px;overflow:hidden;border:2px solid #ecd9b8;}
+.pwd-fill{height:100%;width:0%;transition:width .6s ease,background .6s ease;border-radius:10px;}
+.pwd-lbl{text-align:center;font-weight:800;margin-top:8px;font-size:1.1rem;color:var(--ink);}
+.fb{text-align:center;font-weight:800;font-size:1.1rem;min-height:1.6em;margin-top:8px;}
+.fb.good{color:var(--ok);}.fb.bad{color:var(--bad);}
+.interact-note{text-align:center;color:var(--mu);font-size:.95rem;margin-top:6px;}
+.priv-list{max-width:760px;margin:0 auto;}
+.priv-item{background:#fff;border-left:8px solid var(--acc2);border-radius:12px;padding:12px 18px;margin:10px 0;font-size:1.05rem;color:var(--ink);}
+.help-row{max-width:640px;margin:10px auto;background:#fff;border:2px solid #ecd9b8;border-radius:14px;padding:14px 18px;}
+.help-row h5{margin:0 0 10px;color:var(--ink);font-size:1.02rem;line-height:1.6;}
+.help-btn{background:var(--soft);border:2px solid #f0dfc2;border-radius:10px;padding:8px 18px;font-size:.98rem;font-weight:800;cursor:pointer;margin:4px;color:var(--ink);}
+.help-btn:hover{border-color:var(--acc);}
+.help-btn.right{background:#e6f6ec;border-color:var(--ok);}
+.help-btn.wrong{background:#fdeceb;border-color:var(--bad);}
+.help-fb{font-size:.92rem;color:var(--mu);margin-top:8px;min-height:1.4em;}
+.mis-list{max-width:760px;margin:0 auto;}
+.mis-item{background:#fff;border-left:8px solid var(--bad);border-radius:12px;padding:14px 18px;margin:12px 0;font-size:1.05rem;color:var(--ink);}
+.mis-item b{color:var(--bad);}
+.quiz-box{max-width:720px;margin:0 auto 26px;background:#fff;border:2px solid #ecd9b8;border-radius:16px;padding:20px 22px;}
+.quiz-box h4{margin:0 0 12px;color:var(--ink);}
+.opt{display:block;background:var(--soft);border:2px solid #f0dfc2;border-radius:12px;padding:12px 16px;margin:9px 0;cursor:pointer;font-size:1.05rem;color:var(--ink);transition:.15s;}
+.opt:hover{border-color:var(--acc);}
+.opt.right{background:#e6f6ec;border-color:var(--ok);}
+.opt.wrong{background:#fdeceb;border-color:var(--bad);}
+.quiz-diagnosis{font-size:.95rem;color:var(--mu);margin-top:8px;min-height:1.4em;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto;}
+.hw-card{border-radius:14px;padding:16px;color:#fff;font-size:1rem;line-height:1.7;}
+.hw-card h4{margin:0 0 8px;font-size:1.1rem;}
+.hw-a{background:#4a90d9;}.hw-b{background:#e07b39;}.hw-c{background:#8a5fd6;}
+.abt-tag{display:inline-block;background:var(--acc);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.insight{background:#fff8e6;border:2px dashed var(--acc);border-radius:14px;padding:16px 20px;max-width:760px;margin:18px auto;font-size:1.02rem;line-height:1.8;color:var(--ink);}
+.insight b{color:var(--acc);}
+.shield-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:860px;margin:14px auto;}
+.shield-card{background:#fff;border:3px solid #ecd9b8;border-radius:14px;padding:14px;width:200px;text-align:center;}
+.shield-card .si{font-size:2rem;}
+.shield-card .sn{font-weight:800;color:var(--ink);margin-top:6px;}
+.shield-card .sd{font-size:.92rem;color:var(--mu);margin-top:4px;line-height:1.6;}
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page" id="slide-1" data-bloom="understand">
+  <div class="slide-inner" style="text-align:center;">
+    <img class="hero" src="assets/info-e-network-security-hero.webp" alt="网络安全与信息保护 封面图">
+    <span class="abt-tag">为什么学 · ABT</span>
+    <h1 style="color:var(--ink);margin:8px 0 10px;">网络安全与信息保护</h1>
+    <p style="color:var(--mu);font-size:1.15rem;max-width:680px;margin:0 auto;line-height:1.9;">
+      "点击链接，免费领游戏皮肤！"<b style="color:var(--ink);">——真有这样的好事？</b><br>
+      小强点了一下，游戏账号第二天就被盗了<b style="color:var(--ink);">——网络世界也有"陷阱"。</b><br>
+      这节课，学会给自己穿"网络防护服"！
+    </p>
+    <p style="margin-top:20px;color:var(--mu);">小学信息科技 · 五年级 · 第 12 单元</p>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-bloom="understand">
+  <div class="slide-inner">
+    <p class="big-q">🎣 收到一条消息："恭喜中奖 iPhone！<br>点链接填姓名、地址、电话就能领。"<br>天上真会掉馅饼吗？</p>
+    <p style="text-align:center;color:var(--mu);font-size:1.1rem;margin-top:26px;line-height:2;">
+      当然不会！这是骗子在<b style="color:var(--acc);">钓你的个人信息</b>。<br>
+      一旦填了，你的隐私就落入了坏人手里。
+    </p>
+    <p style="text-align:center;margin-top:22px;color:var(--mu);font-size:1.05rem;">带着这份警惕，学习网络世界的自我保护。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎯 今天的学习目标</h2>
+    <div class="obj-grid">
+      <div class="obj-card"><b>目标 1</b>：识别常见网络陷阱</div>
+      <div class="obj-card"><b>目标 2</b>：会设计不容易被猜到的密码</div>
+      <div class="obj-card"><b>目标 3</b>：知道哪些个人信息不能随便给</div>
+      <div class="obj-card"><b>目标 4</b>：遇到可疑情况会正确处理</div>
+    </div>
+  </div>
+</section>
+
+<!-- s04 什么是网络安全 -->
+<section class="slide-page" id="slide-4" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🛡️ 什么是网络安全？</h2>
+    <div class="def-box">
+      <b>网络安全</b> = 保护我们在网络世界的<b>账号、信息、财产</b>不被坏人偷走或破坏。<br>
+      就像出门要锁门、过马路要看车，上网也要有"安全意识"。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 比较它</b>：现实中你不会把家门钥匙随便给陌生人；网络上也不能把密码、隐私随便给出去。网络世界和现实世界一样，需要"锁门"！</div>
+  </div>
+</section>
+
+<!-- s05 常见陷阱 -->
+<section class="slide-page" id="slide-5" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🕳️ 四大常见网络陷阱</h2>
+    <div class="trap-grid">
+      <div class="trap-card"><div class="ti">🎁 中奖诈骗</div><div class="td">"恭喜中奖！点链接填信息领奖"——目的是骗你的个人信息。</div></div>
+      <div class="trap-card"><div class="ti">🎮 免费皮肤</div><div class="td">"免费领游戏皮肤，输账号密码"——目的是偷你的账号。</div></div>
+      <div class="trap-card"><div class="ti">📞 假冒客服</div><div class="td">"我是客服，你的快递丢了，点链接退款"——目的是骗钱。</div></div>
+      <div class="trap-card"><div class="ti">🦠 病毒链接</div><div class="td">"看看这个搞笑视频！"点进去手机就中毒——目的是搞破坏。</div></div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 看见它</b>：骗子的套路千变万变，但有一个共同点——<b>都让你"点击链接"或"填写信息"</b>。记住这两招，大部分骗局都能识破！</div>
+  </div>
+</section>
+
+<!-- s06 互动1：识破骗局 -->
+<section class="slide-page" id="slide-6" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：火眼金睛识骗局</h2>
+    <p class="interact-note">你收到下面这条消息，应该怎么办？</p>
+    <div class="scam-box">
+      <span class="scam-tag">📩 陌生短信</span>
+      "【游戏中心】恭喜您获得限量版皮肤！点击 <u>freeskin-game.top</u> 领取，需输入游戏账号和密码验证身份。24 小时内有效！"
+    </div>
+    <div style="text-align:center;">
+      <button class="pick-btn" onclick="scam(this,false,'输入账号密码等于把钥匙交给骗子——账号立刻被盗！')">😍 赶紧点链接领皮肤</button>
+      <button class="pick-btn" onclick="scam(this,false,'转发会让更多同学上当——这是在帮骗子传谣！')">📤 转发给同学一起领</button>
+      <button class="pick-btn" onclick="scam(this,true,'')">🗑️ 删除并告诉家长老师</button>
+    </div>
+    <div class="fb" id="fb6"></div>
+  </div>
+</section>
+
+<!-- s07 强密码 -->
+<section class="slide-page" id="slide-7" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🔑 设计打不破的密码</h2>
+    <div class="def-box">
+      好密码三要素：<b>够长</b>（8 位以上）、<b>够杂</b>（大小写字母+数字+符号）、<b>不常见</b>（不用生日、123456、自己的名字）。
+    </div>
+    <div class="shield-row">
+      <div class="shield-card"><div class="si">❌</div><div class="sn">弱密码</div><div class="sd">123456<br>20150101<br>xiaoming</div></div>
+      <div class="shield-card"><div class="si">✅</div><div class="sn">强密码</div><div class="sd">IL0veR3ading!<br>Cat&Dog2026<br>M@m#School9</div></div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 迁移它</b>：弱密码像纸糊的锁，一捅就开；强密码像保险柜，坏人试一万年也猜不到。你的账号值得一把好锁！</div>
+  </div>
+</section>
+
+<!-- s08 互动2：设计强密码 -->
+<section class="slide-page" id="slide-8" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：密码强度测试</h2>
+    <p class="interact-note">点击下面的密码，看看它的"防护力"有多强！</p>
+    <div style="text-align:center;">
+      <button class="pick-btn" onclick="testPwd(10,'123456','❌ 太弱了！坏人 1 秒就能猜到。')">123456</button>
+      <button class="pick-btn" onclick="testPwd(30,'xiaoming','❌ 用自己的名字也很容易被猜到。')">xiaoming</button>
+      <button class="pick-btn" onclick="testPwd(60,'Xm202608','⚠️ 有字母和数字，但还不够杂。')">Xm202608</button>
+      <button class="pick-btn" onclick="testPwd(95,'Xm@2026#Read','✅ 又杂又长！坏人猜一万年也猜不到。')">Xm@2026#Read</button>
+    </div>
+    <div class="pwd-meter">
+      <div class="pwd-track"><div class="pwd-fill" id="pwd-fill"></div></div>
+      <div class="pwd-lbl" id="pwd-lbl">点击密码看强度</div>
+    </div>
+    <div class="fb" id="fb8"></div>
+  </div>
+</section>
+
+<!-- s09 个人信息保护 -->
+<section class="slide-page" id="slide-9" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🔒 这些信息是"宝贝"，不能随便给</h2>
+    <div class="priv-list">
+      <div class="priv-item">🏠 <b>家庭住址</b>：坏人知道了可能找上门</div>
+      <div class="priv-item">🏫 <b>学校班级</b>：会暴露你的日常行踪</div>
+      <div class="priv-item">📞 <b>电话号码</b>：会被骚扰电话轰炸</div>
+      <div class="priv-item">🆔 <b>身份证号</b>：可能被冒名办卡办业务</div>
+      <div class="priv-item">💳 <b>支付密码</b>：等于把钱交给别人</div>
+      <div class="priv-item">📸 <b>清晰正脸照</b>：可能被坏人冒用</div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 看见它</b>：这些信息就像你家的"钥匙串"。网上陌生人问你要，就等同于现实中有人拦路问"你家钥匙给我看看"——当然不行！</div>
+  </div>
+</section>
+
+<!-- s10 互动3：能帮TA吗 -->
+<section class="slide-page" id="slide-10" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：遇到这种情况怎么办</h2>
+    <p class="interact-note">下面三个场景，选出最正确的做法！</p>
+    <div class="help-row">
+      <h5>场景 1：陌生网友问"你叫什么名字？在哪个学校？"</h5>
+      <div style="text-align:center;">
+        <button class="help-btn" onclick="help(this,false,'陌生网友可能是坏人——真名和学校不能说！')">如实告诉他</button>
+        <button class="help-btn" onclick="help(this,true,'')">不回答，并告诉家长</button>
+        <button class="help-btn" onclick="help(this,false,'乱编也会被纠缠——最好根本不回答，还要告诉家长。')">随便编一个</button>
+      </div>
+      <div class="help-fb"></div>
+    </div>
+    <div class="help-row">
+      <h5>场景 2：同学发来消息"点这个链接，看看你的考试成绩"</h5>
+      <div style="text-align:center;">
+        <button class="help-btn" onclick="help(this,false,'同学账号可能被盗了——先电话或当面确认是不是他本人发的！')">同学发的，放心点</button>
+        <button class="help-btn" onclick="help(this,true,'')">先打电话问同学是否本人所发</button>
+        <button class="help-btn" onclick="help(this,false,'转发会让更多人中毒——这是帮病毒传播。')">转发给更多同学看</button>
+      </div>
+      <div class="help-fb"></div>
+    </div>
+    <div class="help-row">
+      <h5>场景 3：注册新游戏账号，要设置密码</h5>
+      <div style="text-align:center;">
+        <button class="help-btn" onclick="help(this,false,'123456 是最容易被猜到的密码——等于没设密码！')">用 123456，好记</button>
+        <button class="help-btn" onclick="help(this,false,'生日很容易被同学朋友猜到——不安全。')">用自己的生日</button>
+        <button class="help-btn" onclick="help(this,true,'')">用"字母+数字+符号"组合</button>
+      </div>
+      <div class="help-fb"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s11 三大易错点 -->
+<section class="slide-page" id="slide-11" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⚠️ 三大易错点</h2>
+    <div class="mis-list">
+      <div class="mis-item"><b>易错点 1</b>：以为"我不会那么倒霉"——骗子每天发上万条消息，总有人会中招，千万别侥幸。</div>
+      <div class="mis-item"><b>易错点 2</b>：所有账号用同一个密码——一个被盗，全部被盗。重要账号要单独设密码。</div>
+      <div class="mis-item"><b>易错点 3</b>：出事了不敢说——发现账号异常、点了可疑链接，要立刻告诉家长老师，越早处理越安全。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s12 前测 -->
+<section class="slide-page" id="slide-12" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">✏️ 小测验 · 基础关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：下面哪个密码最安全？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'纯数字太好猜了——坏人一试就开。')">888888</button>
+      <button class="opt" onclick="checkQuiz(this,false,'生日很容易被认识的人猜到——不安全。')">20150820</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">Read#Book@2026</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：陌生网友问你的学校和家庭住址，应该？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'学校住址是重要隐私——告诉陌生人可能被利用。')">如实告诉他</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">不告诉，并告诉家长</button>
+      <button class="opt" onclick="checkQuiz(this,false,'只告诉学校也很危险——坏人能顺藤摸瓜找到你。')">只告诉学校，不告诉住址</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s13 后测 -->
+<section class="slide-page" id="slide-13" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🚀 小测验 · 提高关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：收到"中奖 iPhone，点链接填信息领奖"，正确做法是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'天上不会掉馅饼——中奖填信息十有八九是骗局。')">赶紧填信息领奖</button>
+      <button class="opt" onclick="checkQuiz(this,false,'先填再说是冒险——骗子拿到信息立刻就会用。')">先填假的试试</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">删除并提醒家人别上当</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：为什么不能所有账号都用同一个密码？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'同一个密码不是难记的问题——是风险问题。')">因为会记不住</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">因为一个被盗，其他账号也跟着危险</button>
+      <button class="opt" onclick="checkQuiz(this,false,'不是因为不好看——是安全防护的常识。')">因为这样不酷</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s14 总结+作业 -->
+<section class="slide-page" id="slide-14" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🌟 总结与分层作业</h2>
+    <div class="def-box" style="margin-bottom:18px;">
+      今天学会了：网络世界有陷阱，要学会保护自己——<br>
+      🛡️ 不点可疑链接，🔑 设强密码，🔒 保护个人信息；<br>
+      遇到可疑情况，第一时间告诉家长老师。
+    </div>
+    <div class="hw-grid">
+      <div class="hw-card hw-a"><h4>🌱 基础</h4>说出 3 种网络陷阱和应对方法。</div>
+      <div class="hw-card hw-b"><h4>🌿 提高</h4>和家长一起检查家里重要账号的密码，把弱密码改成强密码。</div>
+      <div class="hw-card hw-c"><h4>🌳 拓展</h4>设计一张"网络安全小报"，提醒同学们注意网络陷阱。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s15 知识图谱 -->
+<section class="slide-page" id="slide-15" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🗺️ 本课知识图谱（点击节点复习）</h2>
+    <canvas id="kg-canvas" width="680" height="300" style="display:block;margin:0 auto;background:#fff;border-radius:14px;border:2px solid #ecd9b8;"></canvas>
+  </div>
+</section>
+
+<div data-teachany-tutor-card data-course="info-e-network-security" data-node="it-e-network-security-basic"></div>
+
+<script src="/assets/scripts/teachany-paged-patch.js"></script>
+<script src="/assets/scripts/ai-tutor.js" defer></script>
+<script src="/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="/assets/scripts/teachany-section-hints.js"></script>
+<script>
+/* 互动1：识骗局 */
+function scam(el,ok,diag){
+  const fb=document.getElementById('fb6');
+  if(ok){
+    el.style.borderColor='var(--ok)'; el.style.background='#e6f6ec';
+    fb.className='fb good'; fb.textContent='🎉 正确！遇到可疑链接：不点、不填、不转发，立刻删除并告诉家长！';
+  } else {
+    fb.className='fb bad'; fb.textContent='💡 '+diag;
+  }
+}
+/* 互动2：密码强度 */
+function testPwd(score,pwd,tip){
+  const fill=document.getElementById('pwd-fill'), lbl=document.getElementById('pwd-lbl'), fb=document.getElementById('fb8');
+  fill.style.width=score+'%';
+  if(score<40) fill.style.background='#d9544d';
+  else if(score<70) fill.style.background='#f2b526';
+  else fill.style.background='#3d9a5f';
+  lbl.textContent='密码 "'+pwd+'" 强度：'+score+' 分';
+  fb.className = score>=70 ? 'fb good' : 'fb bad';
+  fb.textContent=tip;
+}
+/* 互动3：帮助 */
+function help(el,ok,diag){
+  const row=el.closest('.help-row');
+  row.querySelectorAll('.help-btn').forEach(b=>b.classList.remove('right','wrong'));
+  el.classList.add(ok?'right':'wrong');
+  row.querySelector('.help-fb').textContent = ok ? '✅ 做法正确！' : '💡 '+diag;
+}
+/* 测验 */
+function checkQuiz(el,ok,diag){
+  const box=el.closest('.quiz-box');
+  box.querySelectorAll('.opt').forEach(o=>o.classList.remove('right','wrong'));
+  el.classList.add(ok?'right':'wrong');
+  box.querySelector('.quiz-diagnosis').textContent = ok ? '✅ 回答正确！' : '💡 '+diag;
+}
+/* 知识图谱 */
+(function(){
+  const c=document.getElementById('kg-canvas'), ctx=c.getContext('2d');
+  const nodes=[
+    {x:340,y:150,r:46,t:'网络安全',tip:'保护账号、信息、财产不被坏人偷走'},
+    {x:110,y:70,r:36,t:'识陷阱',tip:'中奖/免费皮肤/假冒客服都是骗局'},
+    {x:110,y:230,r:36,t:'强密码',tip:'够长够杂：字母+数字+符号'},
+    {x:570,y:70,r:36,t:'护隐私',tip:'住址/学校/电话/身份证不能随便给'},
+    {x:570,y:230,r:36,t:'会求助',tip:'遇可疑情况立刻告诉家长老师'},
+    {x:340,y:282,r:30,t:'不侥幸',tip:'骗子每天发上万条，人人可能成为目标'}
+  ];
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.strokeStyle='#d9c49a';ctx.lineWidth=2;ctx.setLineDash([6,5]);
+    nodes.slice(1).forEach(n=>{ctx.beginPath();ctx.moveTo(nodes[0].x,nodes[0].y);ctx.lineTo(n.x,n.y);ctx.stroke();});
+    ctx.setLineDash([]);
+    nodes.forEach((n,i)=>{
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,7);ctx.fillStyle=i===0?'#e07b39':'#4a90d9';ctx.fill();
+      ctx.fillStyle='#fff';ctx.font='bold 15px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(n.t,n.x,n.y);
+    });
+  }
+  draw();
+  c.addEventListener('click',e=>{
+    const r=c.getBoundingClientRect(),mx=(e.clientX-r.left)*(c.width/r.width),my=(e.clientY-r.top)*(c.height/r.height);
+    const hit=nodes.find(n=>(mx-n.x)**2+(my-n.y)**2<=n.r**2);
+    if(hit) alert('💡 '+hit.t+'：'+hit.tip);
+  });
+})();
+</script>
+</body>
+</html>

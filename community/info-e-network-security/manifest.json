@@ -1,0 +1,27 @@
+{
+  "course_id": "info-e-network-security",
+  "title": "网络安全与信息保护",
+  "subject": "info-tech",
+  "stage": "elementary",
+  "grade": 5,
+  "node_id": "it-e-network-security-basic",
+  "domain": "internet-ai",
+  "lesson_type": "新授课",
+  "version": "1.0.0",
+  "teachany_version": "7.21.0",
+  "prerequisites": [
+    "it-e-internet-services"
+  ],
+  "feedback_password": null,
+  "feedback_password_declined": true,
+  "created": "2026-08-09",
+  "assets": {
+    "hero": "assets/info-e-network-security-hero.webp"
+  },
+  "tts": {
+    "engine": "edge-neural",
+    "voice": "zh-CN-XiaoyiNeural",
+    "rate": "-8%",
+    "segments": 15
+  }
+}

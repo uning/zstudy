@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script id="spa-path-recovery">(function(){var p=location.pathname,pre='/community/info-e-debugging/';if(p.slice(-10)!=="index.html"&&p.indexOf(pre)===0){location.replace(pre+"index.html"+location.search+location.hash);}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>程序调试与迭代 · 小学信息科技</title>
+<meta name="teachany-course" content="info-e-debugging">
+<meta name="teachany-node" content="it-e-debugging">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="elementary">
+<meta name="teachany-grade" content="5">
+<meta name="teachany-domain" content="algorithm-programming">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-input-output">
+<link rel="stylesheet" href="/assets/scripts/teachany-paged-patch.css">
+<link rel="stylesheet" href="/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="/assets/scripts/teachany-tutor-card.css">
+<style>
+body{background:#fffbf0;}
+:root{--ink:#3d3225;--mu:#8a7a60;--acc:#e07b39;--acc2:#4a90d9;--soft:#fdf3e3;--soft2:#e8f1fb;--ok:#3d9a5f;--bad:#d9544d;}
+.hero{border-radius:18px;width:100%;max-width:760px;display:block;margin:0 auto 18px;}
+.big-q{font-size:1.5rem;font-weight:800;color:var(--ink);text-align:center;line-height:1.7;}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto;}
+.obj-card{background:var(--soft);border-radius:14px;padding:16px 18px;font-size:1.05rem;color:var(--ink);border:2px solid #f0dfc2;}
+.obj-card b{color:var(--acc);}
+.def-box{background:var(--soft2);border-left:8px solid var(--acc2);border-radius:12px;padding:20px 24px;max-width:760px;margin:0 auto;font-size:1.15rem;line-height:1.9;color:var(--ink);}
+.code-box{background:#2d2a26;color:#f5e6c8;border-radius:14px;padding:18px 22px;max-width:640px;margin:14px auto;font-family:'Menlo','Courier New',monospace;font-size:1.05rem;line-height:2;}
+.code-box .ln{display:block;padding:2px 8px;border-radius:6px;cursor:pointer;transition:.15s;}
+.code-box .ln:hover{background:#4a443c;}
+.code-box .ln.bug{background:#5a2c2a;box-shadow:inset 3px 0 0 var(--bad);}
+.code-box .ln.found{background:#2c5a3a;box-shadow:inset 3px 0 0 var(--ok);}
+.story-box{background:linear-gradient(135deg,#fff8e6,#ffe9d0);border-radius:14px;padding:18px 22px;max-width:700px;margin:14px auto;font-size:1.08rem;line-height:1.9;color:var(--ink);border:2px solid #f0dfc2;}
+.step-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:860px;margin:14px auto;}
+.step-card{background:#fff;border:3px solid #ecd9b8;border-radius:14px;padding:14px;width:200px;text-align:center;}
+.step-card .num{display:inline-block;background:var(--acc);color:#fff;border-radius:50%;width:32px;height:32px;line-height:32px;font-weight:800;margin-bottom:8px;}
+.step-card .st{font-weight:800;color:var(--ink);margin-bottom:6px;font-size:1.1rem;}
+.step-card .sd{font-size:.95rem;color:var(--mu);line-height:1.6;}
+.pick-btn{background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:14px 22px;font-size:1.05rem;font-weight:800;cursor:pointer;margin:6px;color:var(--ink);transition:.15s;}
+.pick-btn:hover{border-color:var(--acc);transform:scale(1.03);}
+.cat-stage{max-width:640px;margin:0 auto;text-align:center;}
+.cat-track{position:relative;height:100px;background:linear-gradient(#cdeac0,#a8d895);border-radius:14px;border:3px solid #8bc47a;margin:14px auto;max-width:560px;overflow:hidden;}
+.cat{position:absolute;left:10px;top:22px;font-size:2.8rem;transition:left .6s ease;}
+.flag{position:absolute;right:14px;top:26px;font-size:2.2rem;}
+.fb{text-align:center;font-weight:800;font-size:1.1rem;min-height:1.6em;margin-top:8px;}
+.fb.good{color:var(--ok);}.fb.bad{color:var(--bad);}
+.interact-note{text-align:center;color:var(--mu);font-size:.95rem;margin-top:6px;}
+.mis-list{max-width:760px;margin:0 auto;}
+.mis-item{background:#fff;border-left:8px solid var(--bad);border-radius:12px;padding:14px 18px;margin:12px 0;font-size:1.05rem;color:var(--ink);}
+.mis-item b{color:var(--bad);}
+.quiz-box{max-width:720px;margin:0 auto 26px;background:#fff;border:2px solid #ecd9b8;border-radius:16px;padding:20px 22px;}
+.quiz-box h4{margin:0 0 12px;color:var(--ink);}
+.opt{display:block;background:var(--soft);border:2px solid #f0dfc2;border-radius:12px;padding:12px 16px;margin:9px 0;cursor:pointer;font-size:1.05rem;color:var(--ink);transition:.15s;}
+.opt:hover{border-color:var(--acc);}
+.opt.right{background:#e6f6ec;border-color:var(--ok);}
+.opt.wrong{background:#fdeceb;border-color:var(--bad);}
+.quiz-diagnosis{font-size:.95rem;color:var(--mu);margin-top:8px;min-height:1.4em;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto;}
+.hw-card{border-radius:14px;padding:16px;color:#fff;font-size:1rem;line-height:1.7;}
+.hw-card h4{margin:0 0 8px;font-size:1.1rem;}
+.hw-a{background:#4a90d9;}.hw-b{background:#e07b39;}.hw-c{background:#8a5fd6;}
+.abt-tag{display:inline-block;background:var(--acc);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.insight{background:#fff8e6;border:2px dashed var(--acc);border-radius:14px;padding:16px 20px;max-width:760px;margin:18px auto;font-size:1.02rem;line-height:1.8;color:var(--ink);}
+.insight b{color:var(--acc);}
+.iter-bar{max-width:640px;margin:14px auto;}
+.iter-row{display:flex;align-items:center;gap:10px;margin:8px 0;}
+.iter-lbl{width:80px;font-weight:800;color:var(--ink);font-size:.95rem;}
+.iter-track{flex:1;background:#f0dfc2;border-radius:10px;height:22px;overflow:hidden;}
+.iter-fill{height:100%;background:linear-gradient(90deg,#4a90d9,#3d9a5f);width:0%;transition:width .8s ease;border-radius:10px;}
+.iter-pct{width:48px;text-align:right;font-weight:800;color:var(--ink);font-size:.95rem;}
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page" id="slide-1" data-bloom="understand">
+  <div class="slide-inner" style="text-align:center;">
+    <img class="hero" src="assets/info-e-debugging-hero.webp" alt="程序调试与迭代 封面图">
+    <span class="abt-tag">为什么学 · ABT</span>
+    <h1 style="color:var(--ink);margin:8px 0 10px;">程序调试与迭代</h1>
+    <p style="color:var(--mu);font-size:1.15rem;max-width:680px;margin:0 auto;line-height:1.9;">
+      小猫程序写好点"运行"——它一动不动！<b style="color:var(--ink);">哪儿出错了？</b><br>
+      别慌，全世界程序员每天都在做两件事：<b style="color:var(--ink);">找虫子（调试）、改更好（迭代）</b>。<br>
+      这节课，学会当"程序医生"！
+    </p>
+    <p style="margin-top:20px;color:var(--mu);">小学信息科技 · 五年级 · 第 10 单元</p>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-bloom="understand">
+  <div class="slide-inner">
+    <p class="big-q">🐱 小明的程序：让小猫走到终点。<br>点"运行"——小猫纹丝不动。<br>小明急得直跺脚："哪里错了？"</p>
+    <p style="text-align:center;color:var(--mu);font-size:1.1rem;margin-top:26px;line-height:2;">
+      程序出错太正常了！专业程序员写的程序也常常有"虫子"（Bug）。<br>
+      厉害的不是不犯错，而是<b style="color:var(--acc);">会找错、会改错</b>。
+    </p>
+    <p style="text-align:center;margin-top:22px;color:var(--mu);font-size:1.05rem;">带着这个问题，学习程序员的两大法宝。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎯 今天的学习目标</h2>
+    <div class="obj-grid">
+      <div class="obj-card"><b>目标 1</b>：知道什么是 Bug（程序错误）</div>
+      <div class="obj-card"><b>目标 2</b>：学会调试三步法找错误</div>
+      <div class="obj-card"><b>目标 3</b>：理解迭代就是"改了再改"</div>
+      <div class="obj-card"><b>目标 4</b>：遇到错误不慌张，耐心排查</div>
+    </div>
+  </div>
+</section>
+
+<!-- s04 Bug是什么 -->
+<section class="slide-page" id="slide-4" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🐛 什么是 Bug？</h2>
+    <div class="def-box">
+      <b>Bug（虫子）</b>= 程序里的错误。程序没按你的想法运行，就是"钻进虫子"了。<br>
+      找虫子的过程叫<b>调试（Debug）</b>。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 比较它</b>：写作文会写错别字，做数学会算错，写程序也会出错——这太正常了！区别只在于：会不会找出来改掉。</div>
+  </div>
+</section>
+
+<!-- s05 历史上第一只虫 -->
+<section class="slide-page" id="slide-5" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">📖 小故事：第一只真正的"虫"</h2>
+    <div class="story-box">
+      <b>1947 年</b>，美国科学家格蕾丝·霍普在 Harvard Mark II 计算机里发现程序总是出错。<br><br>
+      大家拆开机器一查——<b style="color:var(--acc);">一只真的飞蛾</b>卡在继电器里！<br><br>
+      他们把飞蛾贴在日记本上，写道："第一次真的找到了虫子（Bug）！"<br><br>
+      从此，程序错误就叫 <b>Bug</b>，找错误就叫 <b>Debug（捉虫）</b>。
+    </div>
+    <p style="text-align:center;color:var(--mu);">现在那只飞蛾还收藏在美国历史博物馆里！</p>
+  </div>
+</section>
+
+<!-- s06 互动1：找Bug -->
+<section class="slide-page" id="slide-6" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：火眼金睛找 Bug</h2>
+    <p class="interact-note">下面这段"起床后出门"程序有一只虫子，点击你认为是错误的那一行！</p>
+    <div class="code-box" id="bug-code">
+      <span class="ln" onclick="findBug(this,false,'这行没问题——睁眼确实是第一步。')">1️⃣ 睁开眼睛</span>
+      <span class="ln" onclick="findBug(this,false,'刷牙洗脸没问题，顺序对。')">2️⃣ 刷牙洗脸</span>
+      <span class="ln" onclick="findBug(this,true,'')">3️⃣ 先出门，再吃早饭</span>
+      <span class="ln" onclick="findBug(this,false,'背书包是对的最后一步。')">4️⃣ 背上书包去上学</span>
+    </div>
+    <div class="fb" id="fb6"></div>
+  </div>
+</section>
+
+<!-- s07 调试三步法 -->
+<section class="slide-page" id="slide-7" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🔧 调试三步法</h2>
+    <div class="step-row">
+      <div class="step-card"><span class="num">1</span><div class="st">🔍 观察</div><div class="sd">程序错在哪？<br>是不动、走错、还是走反？</div></div>
+      <div class="step-card"><span class="num">2</span><div class="st">🤔 猜想</div><div class="sd">可能是哪一步出问题？<br>顺序？次数？方向？</div></div>
+      <div class="step-card"><span class="num">3</span><div class="st">🔨 试改</div><div class="sd">改一步 → 再运行<br>还错就再猜再改</div></div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 迁移它</b>：医生看病也是这三步：观察症状 → 猜想病因 → 开药试治。调试程序 = 给程序看病！</div>
+  </div>
+</section>
+
+<!-- s08 互动2：帮小猫动起来 -->
+<section class="slide-page" id="slide-8" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：帮小猫到终点</h2>
+    <p class="interact-note">小猫要走到红旗处（4 格）。程序有 Bug：把"移动 4 步"写成了"移动 0 步"。<br>点击正确的步数修复 Bug，再点运行！</p>
+    <div class="cat-stage">
+      <div class="cat-track">
+        <div class="cat" id="cat">🐱</div>
+        <div class="flag">🚩</div>
+      </div>
+      <p style="font-weight:800;color:var(--ink);font-size:1.1rem;">程序：移动 <span id="step-n" style="color:var(--bad);">0</span> 步</p>
+      <p>
+        <button class="pick-btn" onclick="setStep(2)">改成 2 步</button>
+        <button class="pick-btn" onclick="setStep(4)">改成 4 步</button>
+        <button class="pick-btn" onclick="setStep(6)">改成 6 步</button>
+        <button class="pick-btn" style="background:var(--acc);color:#fff;border-color:#b35c24;" onclick="runCat()">▶ 运行</button>
+      </p>
+      <div class="fb" id="fb8"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s09 迭代是什么 -->
+<section class="slide-page" id="slide-9" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🔄 什么是迭代？</h2>
+    <div class="def-box">
+      <b>迭代</b> = 做完一版，发现问题就改，改完再试，<b>一遍又一遍，越来越好</b>。<br>
+      手机 App 总是提示"新版本更新"，就是程序员在不停迭代！
+    </div>
+    <div class="iter-bar" id="iter-demo">
+      <div class="iter-row"><span class="iter-lbl">第 1 版</span><div class="iter-track"><div class="iter-fill" data-w="30"></div></div><span class="iter-pct">30分</span></div>
+      <div class="iter-row"><span class="iter-lbl">第 2 版</span><div class="iter-track"><div class="iter-fill" data-w="60"></div></div><span class="iter-pct">60分</span></div>
+      <div class="iter-row"><span class="iter-lbl">第 3 版</span><div class="iter-track"><div class="iter-fill" data-w="85"></div></div><span class="iter-pct">85分</span></div>
+      <div class="iter-row"><span class="iter-lbl">第 N 版</span><div class="iter-track"><div class="iter-fill" data-w="98"></div></div><span class="iter-pct">98分</span></div>
+    </div>
+    <p style="text-align:center;"><button class="pick-btn" onclick="playIter()">▶ 看迭代过程</button></p>
+  </div>
+</section>
+
+<!-- s10 互动3：迭代大挑战 -->
+<section class="slide-page" id="slide-10" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：迭代大挑战</h2>
+    <p class="interact-note">小游戏第 1 版只有 1 关，玩家说"太少了"。该怎么迭代？选出最好的改法！（共 2 题）</p>
+    <div class="quiz-box">
+      <h4>第 1 题：玩家反馈"关卡太少，5 分钟就玩完了"。</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'光改颜色没解决玩家抱怨的"关卡少"问题——迭代要解决真实反馈。')">把背景从蓝色改成粉色</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">增加 10 个新关卡</button>
+      <button class="opt" onclick="checkQuiz(this,false,'删掉音乐反而让游戏更无聊——迭代要让产品更好，不是更差。')">把音乐全部删掉</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：为什么 App 经常提示"发现新版本"？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'迭代不只是修 Bug——还常常加新功能、让体验更好。')">程序员故意想让你多点几次</button>
+      <button class="opt" onclick="checkQuiz(this,false,'老版本也能用，不是"坏掉"——是新版本更好、更安全。')">老版本会突然坏掉不能用</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">程序员在不断迭代：修 Bug、加功能、改体验</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s11 三大易错点 -->
+<section class="slide-page" id="slide-11" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⚠️ 三大易错点</h2>
+    <div class="mis-list">
+      <div class="mis-item"><b>易错点 1</b>：一出错就全删重写——调试要先找错在哪一行，只改错的地方，别推倒重来。</div>
+      <div class="mis-item"><b>易错点 2</b>：改了不测试——改完必须再运行一次！说不定改对了 A，又弄错了 B。</div>
+      <div class="mis-item"><b>易错点 3</b>：以为"大程序没 Bug"——Windows、微信都有 Bug！所以它们才不停更新迭代。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s12 前测 -->
+<section class="slide-page" id="slide-12" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">✏️ 小测验 · 基础关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：程序里的"Bug"是什么意思？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'Bug 是程序里的错误，不是真虫子——虽然名字来自一只真飞蛾。')">真的虫子钻进电脑</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">程序里的错误</button>
+      <button class="opt" onclick="checkQuiz(this,false,'Bug 是错误的意思，跟电脑速度没关系。')">电脑跑得太慢</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：调试三步法的正确顺序是？</h4>
+      <button class="opt" onclick="checkQuiz(this,true,'')">观察 → 猜想 → 试改</button>
+      <button class="opt" onclick="checkQuiz(this,false,'要先观察错在哪，才能猜想原因——不能上来就乱改。')">试改 → 猜想 → 观察</button>
+      <button class="opt" onclick="checkQuiz(this,false,'不观察就猜想等于瞎猜——先看错在哪一步。')">猜想 → 试改 → 观察</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s13 后测 -->
+<section class="slide-page" id="slide-13" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🚀 小测验 · 提高关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：程序"移动 5 步"却只想走 3 步，应该怎么办？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'别全删！只要改"5"这一个数字就够了——调试要精准。')">把整个程序删掉重写</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">把"5 步"改成"3 步"，再运行测试</button>
+      <button class="opt" onclick="checkQuiz(this,false,'放着不改，下次还是会走错——Bug 不会自己消失。')">不管它，下次自己就好了</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：关于"迭代"，正确的说法是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'迭代不是重复犯错——是每次发现问题就改进，越来越好。')">迭代就是反复犯同一个错</button>
+      <button class="opt" onclick="checkQuiz(this,false,'改完一定要再测试！说不定引入了新问题。')">迭代改完不用测试</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">迭代是一遍遍改进，让程序越来越好</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s14 总结+作业 -->
+<section class="slide-page" id="slide-14" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🌟 总结与分层作业</h2>
+    <div class="def-box" style="margin-bottom:18px;">
+      今天学会了：程序会出错，出错很正常——<br>
+      🐛 Bug = 程序错误，🔧 调试 = 观察→猜想→试改；<br>
+      🔄 迭代 = 一遍遍改进，让程序越来越好。
+    </div>
+    <div class="hw-grid">
+      <div class="hw-card hw-a"><h4>🌱 基础</h4>说出调试三步法，并各举一个生活例子（如修玩具）。</div>
+      <div class="hw-card hw-b"><h4>🌿 提高</h4>在编程软件里故意写一个 Bug，再用三步法找出来改掉。</div>
+      <div class="hw-card hw-c"><h4>🌳 拓展</h4>找一个你常用的 App，看看"版本更新记录"，说说它迭代了什么。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s15 知识图谱 -->
+<section class="slide-page" id="slide-15" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🗺️ 本课知识图谱（点击节点复习）</h2>
+    <canvas id="kg-canvas" width="680" height="300" style="display:block;margin:0 auto;background:#fff;border-radius:14px;border:2px solid #ecd9b8;"></canvas>
+  </div>
+</section>
+
+<div data-teachany-tutor-card data-course="info-e-debugging" data-node="it-e-debugging"></div>
+
+<script src="/assets/scripts/teachany-paged-patch.js"></script>
+<script src="/assets/scripts/ai-tutor.js" defer></script>
+<script src="/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="/assets/scripts/teachany-section-hints.js"></script>
+<script>
+/* 互动1：找Bug */
+function findBug(el,isBug,diag){
+  const fb=document.getElementById('fb6');
+  document.querySelectorAll('#bug-code .ln').forEach(l=>l.classList.remove('bug','found'));
+  if(isBug){
+    el.classList.add('found');
+    fb.className='fb good';
+    fb.textContent='🎉 找到啦！不能"先出门再吃早饭"——顺序错了。应该改成"先吃早饭，再出门"！';
+  } else {
+    el.classList.add('bug');
+    fb.className='fb bad';
+    fb.textContent='💡 '+diag;
+  }
+}
+/* 互动2：帮小猫动起来 */
+let catStep=0;
+function setStep(n){
+  catStep=n;
+  document.getElementById('step-n').textContent=n;
+  document.getElementById('step-n').style.color='var(--ok)';
+}
+function runCat(){
+  const cat=document.getElementById('cat'), fb=document.getElementById('fb8');
+  if(catStep===0){
+    fb.className='fb bad'; fb.textContent='⚠️ 还没修 Bug 呢！先选一个步数。';
+    return;
+  }
+  cat.style.transition='none'; cat.style.left='10px';
+  void cat.offsetWidth;
+  cat.style.transition='left .6s ease';
+  cat.style.left=(10+catStep*115)+'px';
+  setTimeout(()=>{
+    if(catStep===4){ fb.className='fb good'; fb.textContent='🎉 修复成功！小猫正好走到红旗——Bug 捉住了！'; }
+    else if(catStep<4){ fb.className='fb bad'; fb.textContent='⚠️ 还差 '+(4-catStep)+' 格——步数不够，再试试！'; }
+    else { fb.className='fb bad'; fb.textContent='💦 走过头了！多走了 '+(catStep-4)+' 格——再调小一点！'; }
+  },700);
+}
+/* 互动3：迭代演示 */
+function playIter(){
+  document.querySelectorAll('.iter-fill').forEach((f,i)=>{
+    setTimeout(()=>{ f.style.width=f.dataset.w+'%'; }, i*400);
+  });
+}
+/* 测验 */
+function checkQuiz(el,ok,diag){
+  const box=el.closest('.quiz-box');
+  box.querySelectorAll('.opt').forEach(o=>o.classList.remove('right','wrong'));
+  el.classList.add(ok?'right':'wrong');
+  box.querySelector('.quiz-diagnosis').textContent = ok ? '✅ 回答正确！' : '💡 '+diag;
+}
+/* 知识图谱 */
+(function(){
+  const c=document.getElementById('kg-canvas'), ctx=c.getContext('2d');
+  const nodes=[
+    {x:340,y:150,r:46,t:'调试与迭代',tip:'程序会出错，调试找错，迭代改进'},
+    {x:110,y:70,r:36,t:'Bug',tip:'程序里的错误，名字来自1947年的真飞蛾'},
+    {x:110,y:230,r:36,t:'观察',tip:'调试第一步：看清错在哪'},
+    {x:570,y:70,r:36,t:'猜想',tip:'调试第二步：猜猜错因'},
+    {x:570,y:230,r:36,t:'试改',tip:'调试第三步：改一步再运行'},
+    {x:340,y:282,r:30,t:'迭代',tip:'一遍遍改进，让程序越来越好'}
+  ];
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.strokeStyle='#d9c49a';ctx.lineWidth=2;ctx.setLineDash([6,5]);
+    nodes.slice(1).forEach(n=>{ctx.beginPath();ctx.moveTo(nodes[0].x,nodes[0].y);ctx.lineTo(n.x,n.y);ctx.stroke();});
+    ctx.setLineDash([]);
+    nodes.forEach((n,i)=>{
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,7);ctx.fillStyle=i===0?'#e07b39':'#4a90d9';ctx.fill();
+      ctx.fillStyle='#fff';ctx.font='bold 15px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(n.t,n.x,n.y);
+    });
+  }
+  draw();
+  c.addEventListener('click',e=>{
+    const r=c.getBoundingClientRect(),mx=(e.clientX-r.left)*(c.width/r.width),my=(e.clientY-r.top)*(c.height/r.height);
+    const hit=nodes.find(n=>(mx-n.x)**2+(my-n.y)**2<=n.r**2);
+    if(hit) alert('💡 '+hit.t+'：'+hit.tip);
+  });
+})();
+</script>
+</body>
+</html>
