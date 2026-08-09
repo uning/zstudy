@@ -6,17 +6,35 @@
 <title>zstudy · K12 课件库</title>
 <script>
 // CodeBuddy 沙箱静态服务器对目录路径会回退到本页面（SPA fallback）。
-// 任何非文件路径都重定向到对应的 index.html；用 location.replace 避免产生历史记录。
-// 对最深层路径（如 /community/X/）也处理，因为服务器 fallback 始终返回本根页面，
-// 子目录自身的 recovery 脚本只有在直接访问 /community/X/index.html 时才有机会执行。
+// 策略：
+//   1. 非文件路径（无扩展名）→ 补 /index.html 重定向
+//   2. 以 .html 结尾但当前页面却是 fallback 根页 → 说明该 .html 不存在，
+//      去掉文件名，重定向到其所在目录的 index.html
+//      （如 /community/X/ndex.html → /community/X/index.html）
+//   3. 其他静态资源（.css/.js 等）→ 不处理
 (function(){
   var p = location.pathname;
-  // 已是 .html/.css/.js 等静态文件，不处理
-  if (/\.[a-zA-Z0-9]{2,5}$/.test(p)) return;
-  // 根路径不处理
   var seg = p.split("/").filter(function(s){ return s.length > 0; });
-  if (seg.length === 0) return;
-  // 其余一律补 index.html 重定向
+  if (seg.length === 0) return;  // 根路径
+
+  var isHtml = /\.html?$/i.test(p);
+  var isOtherFile = /\.[a-zA-Z0-9]{2,5}$/.test(p) && !isHtml;
+
+  if (isOtherFile) return;  // .css/.js/.png 等，不处理
+
+  if (isHtml) {
+    // 已是 index.html 结尾 → 不处理（避免无限循环）
+    if (/\/index\.html?$/i.test(p)) return;
+    // 路径以 .html 结尾，但本页是 fallback 根页 → 该文件不存在
+    // 去掉文件名，重定向到所在目录的 index.html
+    var dir = p.replace(/\/[^\/]*\.html?$/i, "");
+    if (dir && dir !== p) {
+      location.replace(dir + "/index.html" + location.search + location.hash);
+    }
+    return;
+  }
+
+  // 非文件路径 → 补 /index.html
   location.replace(p.replace(/\/?$/, "/") + "index.html" + location.search + location.hash);
 })();
 </script>
