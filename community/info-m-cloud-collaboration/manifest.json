@@ -1,0 +1,27 @@
+{
+  "course_id": "info-m-cloud-collaboration",
+  "title": "云存储与在线协作",
+  "subject": "info-tech",
+  "stage": "middle",
+  "grade": 7,
+  "node_id": "it-m-cloud-collaboration",
+  "domain": "internet-innovation",
+  "lesson_type": "新授课",
+  "version": "1.0.0",
+  "teachany_version": "7.21.0",
+  "prerequisites": [
+    "it-e-internet-services"
+  ],
+  "feedback_password": null,
+  "feedback_password_declined": true,
+  "created": "2026-08-15",
+  "assets": {
+    "hero": "assets/info-m-cloud-collaboration-hero.webp"
+  },
+  "tts": {
+    "engine": "edge-neural",
+    "voice": "zh-CN-XiaoyiNeural",
+    "rate": "-8%",
+    "segments": 15
+  }
+}

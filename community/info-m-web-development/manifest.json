@@ -1,0 +1,27 @@
+{
+  "course_id": "info-m-web-development",
+  "title": "网页与在线应用制作",
+  "subject": "info-tech",
+  "stage": "middle",
+  "grade": 7,
+  "node_id": "it-m-web-development",
+  "domain": "internet-innovation",
+  "lesson_type": "新授课",
+  "version": "1.0.0",
+  "teachany_version": "7.21.0",
+  "prerequisites": [
+    "it-m-internet-architecture"
+  ],
+  "feedback_password": null,
+  "feedback_password_declined": true,
+  "created": "2026-08-15",
+  "assets": {
+    "hero": "assets/info-m-web-development-hero.webp"
+  },
+  "tts": {
+    "engine": "edge-neural",
+    "voice": "zh-CN-XiaoyiNeural",
+    "rate": "-8%",
+    "segments": 15
+  }
+}

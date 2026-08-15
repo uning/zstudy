@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script id="spa-path-recovery">(function(){var p=location.pathname,pre='/community/info-m-cloud-collaboration/';if(p.slice(-10)!=="index.html"&&p.indexOf(pre)===0){location.replace(pre+"index.html"+location.search+location.hash);}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>云存储与在线协作 · 初中信息科技</title>
+<meta name="teachany-course" content="info-m-cloud-collaboration">
+<meta name="teachany-node" content="it-m-cloud-collaboration">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="middle">
+<meta name="teachany-grade" content="7">
+<meta name="teachany-domain" content="internet-innovation">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-internet-services">
+<link rel="stylesheet" href="/assets/scripts/teachany-paged-patch.css">
+<link rel="stylesheet" href="/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="/assets/scripts/teachany-tutor-card.css">
+<style>
+body{background:#fffbf0;}
+:root{--ink:#3d3225;--mu:#8a7a60;--acc:#e07b39;--acc2:#4a90d9;--soft:#fdf3e3;--soft2:#e8f1fb;--ok:#3d9a5f;--bad:#d9544d;--violet:#8a5fd6;}
+.hero{border-radius:18px;width:100%;max-width:760px;display:block;margin:0 auto 18px;}
+.big-q{font-size:1.5rem;font-weight:800;color:var(--ink);text-align:center;line-height:1.7;}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto;}
+.obj-card{background:var(--soft);border-radius:14px;padding:16px 18px;font-size:1.05rem;color:var(--ink);border:2px solid #f0dfc2;}
+.obj-card b{color:var(--acc);}
+.def-box{background:var(--soft2);border-left:8px solid var(--acc2);border-radius:12px;padding:20px 24px;max-width:760px;margin:0 auto;font-size:1.12rem;line-height:1.9;color:var(--ink);}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:14px auto;}
+.feature-card{background:#fff;border:3px solid #ecd9b8;border-radius:14px;padding:16px;text-align:center;}
+.feature-card .fi{font-size:1.8rem;display:block;margin-bottom:8px;}
+.feature-card .ft{font-weight:800;color:var(--acc);font-size:1.05rem;margin-bottom:6px;}
+.feature-card .fd{font-size:.92rem;color:var(--mu);line-height:1.6;}
+.pick-btn{background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:14px 22px;font-size:1.05rem;font-weight:800;cursor:pointer;margin:6px;color:var(--ink);transition:.15s;}
+.pick-btn:hover{border-color:var(--acc);transform:scale(1.03);}
+.pick-btn.primary{background:var(--acc);color:#fff;border-color:#b35c24;}
+.fb{text-align:center;font-weight:800;font-size:1.05rem;min-height:1.6em;margin-top:10px;}
+.fb.good{color:var(--ok);}.fb.bad{color:var(--bad);}
+.interact-note{text-align:center;color:var(--mu);font-size:.95rem;margin-top:6px;}
+.cmp-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;max-width:900px;margin:14px auto;}
+.cmp-card{background:#fff;border:3px solid #ecd9b8;border-radius:14px;padding:16px;width:340px;}
+.cmp-card h5{margin:0 0 10px;text-align:center;font-size:1.05rem;}
+.cmp-card ul{margin:0;padding-left:20px;color:var(--ink);font-size:.95rem;line-height:1.9;}
+.cmp-local{border-color:var(--bad);}
+.cmp-local h5{color:var(--bad);}
+.cmp-cloud{border-color:var(--ok);}
+.cmp-cloud h5{color:var(--ok);}
+.version-box{max-width:720px;margin:14px auto;background:#fff;border:2px solid #ecd9b8;border-radius:14px;padding:18px;}
+.version-item{background:var(--soft);border-left:6px solid var(--acc2);border-radius:10px;padding:10px 16px;margin:8px 0;font-size:.98rem;color:var(--ink);}
+.version-item b{color:var(--acc2);}
+.version-item.latest{border-left-color:var(--ok);background:#e6f6ec;}
+.perm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:760px;margin:14px auto;}
+.perm-card{background:#fff;border:3px solid #ecd9b8;border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:.15s;}
+.perm-card:hover{border-color:var(--acc);}
+.perm-card.selected{border-color:var(--acc);background:var(--soft);}
+.perm-card .pi{font-size:1.6rem;display:block;margin-bottom:6px;}
+.perm-card .pt{font-weight:800;color:var(--ink);font-size:1rem;margin-bottom:4px;}
+.perm-card .pd{font-size:.85rem;color:var(--mu);line-height:1.5;}
+.mis-list{max-width:760px;margin:0 auto;}
+.mis-item{background:#fff;border-left:8px solid var(--bad);border-radius:12px;padding:14px 18px;margin:12px 0;font-size:1.02rem;color:var(--ink);}
+.mis-item b{color:var(--bad);}
+.quiz-box{max-width:720px;margin:0 auto 22px;background:#fff;border:2px solid #ecd9b8;border-radius:16px;padding:18px 22px;}
+.quiz-box h4{margin:0 0 12px;color:var(--ink);font-size:1.02rem;}
+.opt{display:block;background:var(--soft);border:2px solid #f0dfc2;border-radius:12px;padding:11px 16px;margin:9px 0;cursor:pointer;font-size:1rem;color:var(--ink);transition:.15s;width:100%;text-align:left;}
+.opt:hover{border-color:var(--acc);}
+.opt.right{background:#e6f6ec;border-color:var(--ok);}
+.opt.wrong{background:#fdeceb;border-color:var(--bad);}
+.quiz-diagnosis{font-size:.92rem;color:var(--mu);margin-top:8px;min-height:1.4em;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto;}
+.hw-card{border-radius:14px;padding:16px;color:#fff;font-size:.98rem;line-height:1.7;}
+.hw-card h4{margin:0 0 8px;font-size:1.08rem;}
+.hw-a{background:#4a90d9;}.hw-b{background:#e07b39;}.hw-c{background:#8a5fd6;}
+.abt-tag{display:inline-block;background:var(--acc);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.insight{background:#fff8e6;border:2px dashed var(--acc);border-radius:14px;padding:16px 20px;max-width:760px;margin:18px auto;font-size:1rem;line-height:1.8;color:var(--ink);}
+.insight b{color:var(--acc);}
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page" id="slide-1" data-bloom="understand">
+  <div class="slide-inner" style="text-align:center;">
+    <img class="hero" src="assets/info-m-cloud-collaboration-hero.webp" alt="云存储与在线协作 封面图">
+    <span class="abt-tag">为什么学 · ABT</span>
+    <h1 style="color:var(--ink);margin:8px 0 10px;">云存储与在线协作</h1>
+    <p style="color:var(--mu);font-size:1.15rem;max-width:680px;margin:0 auto;line-height:1.9;">
+      U盘丢了，所有资料一夜消失<b style="color:var(--ink);">——这种事你遇到过吗？</b><br>
+      小组作业各改各的，最后版本对不上<b style="color:var(--ink);">——这种混乱你经历过吗？</b><br>
+      这节课，认识互联网时代的"文件管家"：云存储与在线协作。
+    </p>
+    <p style="margin-top:20px;color:var(--mu);">初中信息科技 · 七年级 · 互联网应用与创新</p>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-bloom="understand">
+  <div class="slide-inner">
+    <p class="big-q">💾 小明的 U 盘丢了，<br>里面有他做了 3 周的科创作品。<br>他能找回来吗？</p>
+    <p style="text-align:center;color:var(--mu);font-size:1.1rem;margin-top:26px;line-height:2;">
+      如果文件只存在 U 盘里——<b style="color:var(--bad);">找不回来了</b>。<br>
+      如果文件存在云端——<b style="color:var(--ok);">任何设备登录就能找回来</b>。<br>
+      这就是<b style="color:var(--acc);">云存储</b>的核心价值：文件不依赖某一个设备。
+    </p>
+    <p style="text-align:center;margin-top:22px;color:var(--mu);font-size:1.05rem;">带着这个发现，认识互联网时代的新型工作方式。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎯 今天的学习目标</h2>
+    <div class="obj-grid">
+      <div class="obj-card"><b>目标 1</b>：说出云存储的概念与三大特征</div>
+      <div class="obj-card"><b>目标 2</b>：理解在线协作"同一份文档"的核心思想</div>
+      <div class="obj-card"><b>目标 3</b>：掌握版本管理与权限设置的基本操作</div>
+      <div class="obj-card"><b>目标 4</b>：树立云端数据安全意识</div>
+    </div>
+  </div>
+</section>
+
+<!-- s04 什么是云存储 -->
+<section class="slide-page" id="slide-4" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">☁️ 什么是云存储？</h2>
+    <div class="def-box">
+      <b>云存储</b> = 把文件保存在互联网上的服务器（"云端"），而不是自己的电脑或 U 盘里。<br><br>
+      常见的云存储服务：百度网盘、阿里云盘、腾讯微云、iCloud、OneDrive。<br>
+      共同点：<b>文件在云端，账号在手，随时随地访问</b>。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 比较它</b>：本地存储像"把钱藏在家里保险柜"——安全但带不走；云存储像"把钱存进银行"——到处都能取，但要有密码。</div>
+  </div>
+</section>
+
+<!-- s05 云存储三大特征 -->
+<section class="slide-page" id="slide-5" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⭐ 云存储三大特征</h2>
+    <div class="feature-grid">
+      <div class="feature-card"><span class="fi">🌐</span><div class="ft">随时随地访问</div><div class="fd">任何设备、任何地点，登录账号就能取文件</div></div>
+      <div class="feature-card"><span class="fi">🔄</span><div class="ft">多设备同步</div><div class="fd">手机拍了照，电脑立刻能看到——自动同步</div></div>
+      <div class="feature-card"><span class="fi">📦</span><div class="ft">按需扩展</div><div class="fd">不够用了就扩容，不用买新硬盘</div></div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 迁移它</b>：云存储的本质是"数据与设备分离"。设备可以换、可以丢，数据始终在云端——这是互联网"服务化"思维的体现。</div>
+  </div>
+</section>
+
+<!-- s06 互动1：本地vs云 -->
+<section class="slide-page" id="slide-6" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：本地存储 vs 云存储</h2>
+    <p class="interact-note">对比两种存储方式，理解各自的适用场景。</p>
+    <div class="cmp-row">
+      <div class="cmp-card cmp-local"><h5>💾 本地存储（U盘/硬盘）</h5><ul><li>优点：不联网也能用、速度快</li><li>缺点：设备丢了文件就没了</li><li>缺点：换设备要手动拷贝</li><li>缺点：多人协作要来回传文件</li></ul></div>
+      <div class="cmp-card cmp-cloud"><h5>☁️ 云存储</h5><ul><li>优点：设备丢了文件还在</li><li>优点：多设备自动同步</li><li>优点：多人在线协作</li><li>缺点：需要网络、有隐私风险</li></ul></div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 权衡它</b>：没有"绝对好"的存储方式——重要文件"本地+云端"双备份，才是真正的安全。</div>
+  </div>
+</section>
+
+<!-- s07 在线协作核心 -->
+<section class="slide-page" id="slide-7" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">👥 在线协作的核心：同一份文档</h2>
+    <div class="def-box">
+      传统协作：A 改完发给 B，B 改完发给 C——<b>版本满天飞，最后对不上</b>。<br>
+      在线协作：所有人打开<b>同一个链接</b>，实时看到彼此的修改——<b>永远只有一份最新版本</b>。
+    </div>
+    <div style="text-align:center;margin:18px 0;">
+      <div style="display:inline-block;background:var(--soft);border-radius:12px;padding:14px 24px;margin:4px;">
+        <span style="font-weight:800;color:var(--bad);">❌ 传统方式</span><br>
+        <span style="font-size:.92rem;color:var(--mu);">文件_v1.docx → 文件_v2.docx → 文件_最终版.docx → 文件_最终版_确认.docx</span>
+      </div>
+      <div style="display:inline-block;background:#e6f6ec;border-radius:12px;padding:14px 24px;margin:4px;">
+        <span style="font-weight:800;color:var(--ok);">✅ 在线协作</span><br>
+        <span style="font-size:.92rem;color:var(--ink);">一个链接 → 多人同时编辑 → 永远是最新版</span>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--mu);">腾讯文档、金山文档、飞书文档、Google Docs——都是这个思路。</p>
+  </div>
+</section>
+
+<!-- s08 互动2：版本冲突 -->
+<section class="slide-page" id="slide-8" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：版本冲突怎么办？</h2>
+    <p class="interact-note">模拟小组协作：4 个人同时修改一份文档，看看会发生什么。</p>
+    <div class="version-box">
+      <div class="version-item"><b>v1.0</b> 小明创建了文档，写了开头</div>
+      <div class="version-item"><b>v1.1</b> 小红添加了图片</div>
+      <div class="version-item"><b>v1.2</b> 小刚修改了数据</div>
+      <div class="version-item latest"><b>v1.3</b> 小丽修正了格式（当前版本）</div>
+    </div>
+    <p style="text-align:center;color:var(--mu);font-size:.95rem;margin-top:10px;">
+      在线协作工具会自动保存<b>每一次修改的历史版本</b>——改错了可以"回滚"到任意版本。
+    </p>
+    <div class="insight">🔍 <b>深层理解 · 看见它</b>：版本管理就像"时间机器"——不怕改错，因为永远可以回到过去。这是在线协作相比传统方式的最大优势之一。</div>
+  </div>
+</section>
+
+<!-- s09 权限与安全 -->
+<section class="slide-page" id="slide-9" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🔐 权限与安全</h2>
+    <div class="def-box">
+      云端文件不是"谁都能看"——可以设置<b>分享权限</b>：<br>
+      <b>仅自己可见</b>：私人日记、密码本<br>
+      <b>指定人可见</b>：小组作业、家庭相册<br>
+      <b>任何人可查看</b>：公开分享的资料<br>
+      <b>任何人可编辑</b>：头脑风暴、投票收集
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 警惕它</b>：权限设置不当 = 把日记本放在广场长椅上。重要文件一定要确认"谁可以看、谁可以改"。</div>
+  </div>
+</section>
+
+<!-- s10 互动3：设置权限 -->
+<section class="slide-page" id="slide-10" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：该设什么权限？</h2>
+    <p class="interact-note">为下列场景选择合适的分享权限。</p>
+    <div style="max-width:640px;margin:14px auto;background:#fff;border:2px solid #ecd9b8;border-radius:14px;padding:18px;">
+      <p style="font-weight:800;color:var(--ink);margin:0 0 12px;font-size:1.05rem;">场景：小组 4 人合作完成一份调研报告</p>
+      <div class="perm-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="perm-card" data-correct="0"><span class="pi">🔒</span><div class="pt">仅自己可见</div><div class="pd">别人完全看不到</div></div>
+        <div class="perm-card" data-correct="1"><span class="pi">👥</span><div class="pt">指定人可编辑</div><div class="pd">只有小组成员能看能改</div></div>
+        <div class="perm-card" data-correct="0"><span class="pi">🌍</span><div class="pt">任何人可编辑</div><div class="pd">路人也能乱改</div></div>
+        <div class="perm-card" data-correct="0"><span class="pi">👁️</span><div class="pt">任何人可查看</div><div class="pd">谁都能看但不能改</div></div>
+      </div>
+      <div class="fb" id="fb10"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s11 易错点 -->
+<section class="slide-page" id="slide-11" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⚠️ 三大易错点</h2>
+    <div class="mis-list">
+      <div class="mis-item"><b>易错点 1</b>：以为"上传到云就万事大吉"——云端账号被盗、服务商倒闭都可能丢数据。重要文件要"本地+云端"双备份。</div>
+      <div class="mis-item"><b>易错点 2</b>：以为"分享链接=安全"——链接一旦泄露，任何人都能访问。重要文件要设密码、设有效期、指定人可见。</div>
+      <div class="mis-item"><b>易错点 3</b>：以为"云存储=在线协作"——云存储解决"存"的问题，在线协作解决"一起改"的问题。先有云存储，才可能有在线协作。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s12 前测 -->
+<section class="slide-page" id="slide-12" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">✏️ 小测验 · 基础关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：云存储的核心价值是什么？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'速度快不是云存储的核心——本地硬盘可能更快。')">速度比本地硬盘快</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">文件不依赖单一设备，随时随地可访问</button>
+      <button class="opt" onclick="checkQuiz(this,false,'云存储也需要网络——没网时反而不如本地。')">不需要网络也能用</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：在线协作相比传统方式的最大优势是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'在线协作也有版本管理——恰恰相反，这是它的优势。')">不需要版本管理</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">永远只有一份最新版本，实时同步</button>
+      <button class="opt" onclick="checkQuiz(this,false,'在线协作也需要网络——这不是优势。')">不需要网络</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s13 后测 -->
+<section class="slide-page" id="slide-13" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🚀 小测验 · 提高关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：关于云存储安全，正确的做法是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'云端不是绝对安全——账号被盗、服务商问题都可能丢数据。')">上传到云端就绝对安全了</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">重要文件本地+云端双备份</button>
+      <button class="opt" onclick="checkQuiz(this,false,'公开分享链接任何人都能访问——重要文件要设权限。')">所有文件都设为公开分享</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：小组 4 人合作写报告，最合适的权限设置是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'仅自己可见——组员完全看不到，没法协作。')">仅自己可见</button>
+      <button class="opt" onclick="checkQuiz(this,false,'任何人可编辑——路人也能乱改，不安全。')">任何人可编辑</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">指定人（小组成员）可编辑</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s14 总结+作业 -->
+<section class="slide-page" id="slide-14" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🌟 总结与分层作业</h2>
+    <div class="def-box" style="margin-bottom:18px;">
+      今天学会了：<br>
+      ✔ 云存储 = 文件保存在云端服务器，随时随地访问<br>
+      ✔ 三大特征：随时随地访问、多设备同步、按需扩展<br>
+      ✔ 在线协作核心：同一份文档，实时同步，版本可回滚<br>
+      ✔ 安全意识：权限设置、双备份、警惕链接泄露
+    </div>
+    <div class="hw-grid">
+      <div class="hw-card hw-a"><h4>🌱 基础</h4>注册一个云存储账号（如百度网盘），上传 3 个文件，并在另一台设备上登录查看。</div>
+      <div class="hw-card hw-b"><h4>🌿 提高</h4>用腾讯文档或金山文档创建一个在线文档，邀请 2 位同学同时编辑，体验"实时协作"。</div>
+      <div class="hw-card hw-c"><h4>🌳 拓展</h4>调查：你家的照片、视频存在哪里？设计一个"家庭数据备份方案"，说明哪些存本地、哪些存云端、为什么。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s15 知识图谱 -->
+<section class="slide-page" id="slide-15" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🗺️ 本课知识图谱（点击节点复习）</h2>
+    <canvas id="kg-canvas" width="680" height="300" style="display:block;margin:0 auto;background:#fff;border-radius:14px;border:2px solid #ecd9b8;"></canvas>
+  </div>
+</section>
+
+<div data-teachany-tutor-card data-course="info-m-cloud-collaboration" data-node="it-m-cloud-collaboration"></div>
+
+<script src="/assets/scripts/teachany-paged-patch.js"></script>
+<script src="/assets/scripts/ai-tutor.js" defer></script>
+<script src="/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="/assets/scripts/teachany-section-hints.js"></script>
+<script>
+/* 互动3：权限选择 */
+(function(){
+  const cards=document.querySelectorAll('.perm-card');
+  cards.forEach(c=>{
+    c.addEventListener('click',()=>{
+      cards.forEach(x=>x.classList.remove('selected'));
+      c.classList.add('selected');
+      const fb=document.getElementById('fb10');
+      if(c.dataset.correct==='1'){
+        fb.className='fb good';
+        fb.textContent='✅ 正确！小组协作要"指定人可编辑"——既能一起改，又防止外人乱入。';
+      }else{
+        fb.className='fb bad';
+        fb.textContent='💡 不合适——想想：既要组员能改，又不能让路人乱改，该选哪个？';
+      }
+    });
+  });
+})();
+
+/* 测验 */
+function checkQuiz(el,ok,diag){
+  const box=el.closest('.quiz-box');
+  box.querySelectorAll('.opt').forEach(o=>o.classList.remove('right','wrong'));
+  el.classList.add(ok?'right':'wrong');
+  box.querySelector('.quiz-diagnosis').textContent = ok ? '✅ 回答正确！' : '💡 '+diag;
+}
+
+/* 知识图谱 */
+(function(){
+  const c=document.getElementById('kg-canvas'), ctx=c.getContext('2d');
+  const nodes=[
+    {x:340,y:150,r:46,t:'云存储',tip:'文件保存在云端服务器，随时随地访问'},
+    {x:110,y:60,r:36,t:'随时访问',tip:'任何设备、任何地点，登录账号就能取文件'},
+    {x:110,y:240,r:36,t:'多设备同步',tip:'手机拍了照，电脑立刻能看到'},
+    {x:570,y:60,r:36,t:'在线协作',tip:'同一份文档，多人实时编辑'},
+    {x:570,y:240,r:36,t:'版本管理',tip:'每次修改自动保存，可回滚到任意版本'},
+    {x:340,y:282,r:30,t:'权限安全',tip:'仅自己/指定人/公开——按需设置'}
+  ];
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.strokeStyle='#d9c49a';ctx.lineWidth=2;ctx.setLineDash([6,5]);
+    nodes.slice(1).forEach(n=>{ctx.beginPath();ctx.moveTo(nodes[0].x,nodes[0].y);ctx.lineTo(n.x,n.y);ctx.stroke();});
+    ctx.setLineDash([]);
+    nodes.forEach((n,i)=>{
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,7);ctx.fillStyle=i===0?'#e07b39':'#4a90d9';ctx.fill();
+      ctx.fillStyle='#fff';ctx.font='bold 15px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(n.t,n.x,n.y);
+    });
+  }
+  draw();
+  c.addEventListener('click',e=>{
+    const r=c.getBoundingClientRect(),mx=(e.clientX-r.left)*(c.width/r.width),my=(e.clientY-r.top)*(c.height/r.height);
+    const hit=nodes.find(n=>(mx-n.x)**2+(my-n.y)**2<=n.r**2);
+    if(hit) alert('💡 '+hit.t+'：'+hit.tip);
+  });
+})();
+</script>
+</body>
+</html>

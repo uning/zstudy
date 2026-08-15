@@ -1,0 +1,28 @@
+{
+  "course_id": "info-m-algorithm-design",
+  "title": "算法设计与程序实现",
+  "subject": "info-tech",
+  "stage": "middle",
+  "grade": 7,
+  "node_id": "it-m-algorithm-design",
+  "domain": "data-algorithms",
+  "lesson_type": "新授课",
+  "version": "1.0.0",
+  "teachany_version": "7.21.0",
+  "prerequisites": [
+    "it-e-branch-loop",
+    "it-e-feedback-control"
+  ],
+  "feedback_password": null,
+  "feedback_password_declined": true,
+  "created": "2026-08-15",
+  "assets": {
+    "hero": "assets/info-m-algorithm-design-hero.webp"
+  },
+  "tts": {
+    "engine": "edge-neural",
+    "voice": "zh-CN-XiaoyiNeural",
+    "rate": "-8%",
+    "segments": 15
+  }
+}

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script id="spa-path-recovery">(function(){var p=location.pathname,pre='/community/info-m-web-development/';if(p.slice(-10)!=="index.html"&&p.indexOf(pre)===0){location.replace(pre+"index.html"+location.search+location.hash);}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网页与在线应用制作 · 初中信息科技</title>
+<meta name="teachany-course" content="info-m-web-development">
+<meta name="teachany-node" content="it-m-web-development">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="middle">
+<meta name="teachany-grade" content="7">
+<meta name="teachany-domain" content="internet-innovation">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-m-internet-architecture">
+<link rel="stylesheet" href="/assets/scripts/teachany-paged-patch.css">
+<link rel="stylesheet" href="/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="/assets/scripts/teachany-tutor-card.css">
+<style>
+body{background:#fffbf0;}
+:root{--ink:#3d3225;--mu:#8a7a60;--acc:#e07b39;--acc2:#4a90d9;--soft:#fdf3e3;--soft2:#e8f1fb;--ok:#3d9a5f;--bad:#d9544d;--violet:#8a5fd6;}
+.hero{border-radius:18px;width:100%;max-width:760px;display:block;margin:0 auto 18px;}
+.big-q{font-size:1.5rem;font-weight:800;color:var(--ink);text-align:center;line-height:1.7;}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto;}
+.obj-card{background:var(--soft);border-radius:14px;padding:16px 18px;font-size:1.05rem;color:var(--ink);border:2px solid #f0dfc2;}
+.obj-card b{color:var(--acc);}
+.def-box{background:var(--soft2);border-left:8px solid var(--acc2);border-radius:12px;padding:20px 24px;max-width:760px;margin:0 auto;font-size:1.12rem;line-height:1.9;color:var(--ink);}
+.code-box{background:#2b2622;color:#f8e9c8;border-radius:12px;padding:16px 20px;max-width:680px;margin:14px auto;font-family:Menlo,Consolas,monospace;font-size:.92rem;line-height:1.7;overflow-x:auto;}
+.code-box .cm{color:#9c8b73;}
+.code-box .kw{color:#e07b39;font-weight:800;}
+.code-box .fn{color:#4a90d9;font-weight:800;}
+.code-box .str{color:#3d9a5f;}
+.code-box .tag{color:#e07b39;font-weight:800;}
+.trio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:14px auto;}
+.trio-card{background:#fff;border:3px solid #ecd9b8;border-radius:14px;padding:16px;text-align:center;}
+.trio-card .ti{font-size:1.8rem;display:block;margin-bottom:8px;}
+.trio-card .tt{font-weight:800;font-size:1.05rem;margin-bottom:6px;}
+.trio-card .td{font-size:.88rem;color:var(--mu);line-height:1.6;}
+.trio-card.html{border-color:var(--acc);}
+.trio-card.html .tt{color:var(--acc);}
+.trio-card.css{border-color:var(--acc2);}
+.trio-card.css .tt{color:var(--acc2);}
+.trio-card.js{border-color:var(--violet);}
+.trio-card.js .tt{color:var(--violet);}
+.pick-btn{background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:14px 22px;font-size:1.05rem;font-weight:800;cursor:pointer;margin:6px;color:var(--ink);transition:.15s;}
+.pick-btn:hover{border-color:var(--acc);transform:scale(1.03);}
+.pick-btn.primary{background:var(--acc);color:#fff;border-color:#b35c24;}
+.fb{text-align:center;font-weight:800;font-size:1.05rem;min-height:1.6em;margin-top:10px;}
+.fb.good{color:var(--ok);}.fb.bad{color:var(--bad);}
+.interact-note{text-align:center;color:var(--mu);font-size:.95rem;margin-top:6px;}
+.match-wrap{max-width:760px;margin:14px auto;}
+.match-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:12px 0;}
+.match-item{background:#fff;border:3px solid #ecd9b8;border-radius:12px;padding:12px 20px;font-weight:800;cursor:pointer;transition:.15s;font-size:1rem;}
+.match-item:hover{border-color:var(--acc);}
+.match-item.selected{border-color:var(--acc);background:var(--soft);}
+.match-item.matched{border-color:var(--ok);background:#e6f6ec;cursor:default;}
+.match-item.wrong{border-color:var(--bad);background:#fdeceb;}
+.tag-pool{max-width:720px;margin:14px auto;background:#fff;border:2px solid #ecd9b8;border-radius:14px;padding:18px;}
+.tag-pool-title{text-align:center;font-weight:800;color:var(--ink);margin-bottom:12px;font-size:1.02rem;}
+.tag-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:12px 0;}
+.tag-btn{background:var(--soft2);border:2px solid var(--acc2);border-radius:10px;padding:10px 18px;font-family:Menlo,monospace;font-size:.92rem;font-weight:800;cursor:pointer;color:var(--acc2);transition:.15s;}
+.tag-btn:hover{transform:scale(1.05);}
+.tag-btn.used{opacity:.3;cursor:default;transform:none;}
+.editor-area{background:#2b2622;color:#f8e9c8;border-radius:12px;padding:16px 20px;font-family:Menlo,monospace;font-size:.92rem;line-height:1.7;min-height:80px;margin:12px 0;}
+.editor-area .slot{background:rgba(224,123,57,.2);border:2px dashed var(--acc);border-radius:6px;padding:2px 10px;margin:0 4px;display:inline-block;min-width:60px;color:var(--acc);}
+.preview-box{background:#fff;border:2px solid var(--ok);border-radius:12px;padding:16px;margin:12px 0;font-size:1rem;}
+.mis-list{max-width:760px;margin:0 auto;}
+.mis-item{background:#fff;border-left:8px solid var(--bad);border-radius:12px;padding:14px 18px;margin:12px 0;font-size:1.02rem;color:var(--ink);}
+.mis-item b{color:var(--bad);}
+.quiz-box{max-width:720px;margin:0 auto 22px;background:#fff;border:2px solid #ecd9b8;border-radius:16px;padding:18px 22px;}
+.quiz-box h4{margin:0 0 12px;color:var(--ink);font-size:1.02rem;}
+.opt{display:block;background:var(--soft);border:2px solid #f0dfc2;border-radius:12px;padding:11px 16px;margin:9px 0;cursor:pointer;font-size:1rem;color:var(--ink);transition:.15s;width:100%;text-align:left;}
+.opt:hover{border-color:var(--acc);}
+.opt.right{background:#e6f6ec;border-color:var(--ok);}
+.opt.wrong{background:#fdeceb;border-color:var(--bad);}
+.quiz-diagnosis{font-size:.92rem;color:var(--mu);margin-top:8px;min-height:1.4em;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto;}
+.hw-card{border-radius:14px;padding:16px;color:#fff;font-size:.98rem;line-height:1.7;}
+.hw-card h4{margin:0 0 8px;font-size:1.08rem;}
+.hw-a{background:#4a90d9;}.hw-b{background:#e07b39;}.hw-c{background:#8a5fd6;}
+.abt-tag{display:inline-block;background:var(--acc);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.insight{background:#fff8e6;border:2px dashed var(--acc);border-radius:14px;padding:16px 20px;max-width:760px;margin:18px auto;font-size:1rem;line-height:1.8;color:var(--ink);}
+.insight b{color:var(--acc);}
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page" id="slide-1" data-bloom="understand">
+  <div class="slide-inner" style="text-align:center;">
+    <img class="hero" src="assets/info-m-web-development-hero.webp" alt="网页与在线应用制作 封面图">
+    <span class="abt-tag">为什么学 · ABT</span>
+    <h1 style="color:var(--ink);margin:8px 0 10px;">网页与在线应用制作</h1>
+    <p style="color:var(--mu);font-size:1.15rem;max-width:680px;margin:0 auto;line-height:1.9;">
+      你每天刷的网页、用的在线工具<b style="color:var(--ink);">——它们是怎么"长"出来的？</b><br>
+      不是魔法，是三种技术的组合：HTML、CSS、JavaScript。<br>
+      这节课，学会用代码"搭建"一个属于自己的网页。
+    </p>
+    <p style="margin-top:20px;color:var(--mu);">初中信息科技 · 七年级 · 互联网应用与创新</p>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-bloom="understand">
+  <div class="slide-inner">
+    <p class="big-q">🎨 同一个网页，<br>为什么有的好看、有的难看？<br>为什么有的能点、有的不能点？<br>差别到底在哪？</p>
+    <p style="text-align:center;color:var(--mu);font-size:1.1rem;margin-top:26px;line-height:2;">
+      答案藏在网页的"三层结构"里：<br>
+      <b style="color:var(--acc);">HTML</b> 决定"有什么"，<b style="color:var(--acc2);">CSS</b> 决定"长什么样"，<b style="color:var(--violet);">JavaScript</b> 决定"能干什么"。<br>
+      三层配合，网页才能既好看又好用。
+    </p>
+    <p style="text-align:center;margin-top:22px;color:var(--mu);font-size:1.05rem;">带着这个发现，学习如何制作网页。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎯 今天的学习目标</h2>
+    <div class="obj-grid">
+      <div class="obj-card"><b>目标 1</b>：说出网页的三层结构（HTML/CSS/JS）</div>
+      <div class="obj-card"><b>目标 2</b>：认识常见 HTML 标签，能写简单网页</div>
+      <div class="obj-card"><b>目标 3</b>：理解 CSS 控制样式、JS 控制交互</div>
+      <div class="obj-card"><b>目标 4</b>：理解网页与在线应用的关系</div>
+    </div>
+  </div>
+</section>
+
+<!-- s04 网页是什么 -->
+<section class="slide-page" id="slide-4" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">📄 网页是什么？</h2>
+    <div class="def-box">
+      <b>网页</b> = 用 HTML 编写的、能在浏览器中显示的文档。<br><br>
+      网页不只"看"——现代网页还能"用"：<br>
+      在线文档、在线表格、在线地图、在线游戏……<br>
+      这些"能用的网页"，就叫<b>在线应用（Web App）</b>。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 比较它</b>：传统软件要"下载安装"，在线应用"打开浏览器就能用"。微信有网页版、Office 有网页版、PS 也有网页版——"软件网页化"是互联网的大趋势。</div>
+  </div>
+</section>
+
+<!-- s05 HTML：网页的骨架 -->
+<section class="slide-page" id="slide-5" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🦴 HTML：网页的骨架</h2>
+    <div class="def-box">
+      <b>HTML（超文本标记语言）</b>：用"标签"告诉浏览器"这里有什么"。<br>
+      标签 = 用尖括号括起来的关键词，如 <code style="background:#fff;padding:2px 8px;border-radius:6px;">&lt;h1&gt;</code>、<code style="background:#fff;padding:2px 8px;border-radius:6px;">&lt;p&gt;</code>
+    </div>
+    <div class="code-box">
+      <span class="cm">&lt;!-- 常见 HTML 标签 --&gt;</span><br>
+      <span class="tag">&lt;h1&gt;</span>这是一级标题<span class="tag">&lt;/h1&gt;</span><br>
+      <span class="tag">&lt;p&gt;</span>这是一个段落<span class="tag">&lt;/p&gt;</span><br>
+      <span class="tag">&lt;img</span> <span class="fn">src</span>=<span class="str">"photo.jpg"</span><span class="tag">&gt;</span>  <span class="cm">&lt;!-- 图片 --&gt;</span><br>
+      <span class="tag">&lt;a</span> <span class="fn">href</span>=<span class="str">"https://..."</span><span class="tag">&gt;</span>链接<span class="tag">&lt;/a&gt;</span><br>
+      <span class="tag">&lt;button&gt;</span>点击我<span class="tag">&lt;/button&gt;</span>
+    </div>
+    <p style="text-align:center;color:var(--mu);">HTML 像"建筑图纸"——告诉浏览器：这里要放标题、这里要放段落、这里要放图片。</p>
+  </div>
+</section>
+
+<!-- s06 CSS：网页的皮肤 -->
+<section class="slide-page" id="slide-6" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎨 CSS：网页的皮肤</h2>
+    <div class="def-box">
+      <b>CSS（层叠样式表）</b>：告诉浏览器"长什么样"——颜色、大小、位置、边框、阴影。<br>
+      没有 CSS，网页是"毛坯房"；有了 CSS，网页是"精装修"。
+    </div>
+    <div class="code-box">
+      <span class="cm">/* CSS 控制样式 */</span><br>
+      <span class="fn">h1</span> {<br>
+      &nbsp;&nbsp;<span class="kw">color</span>: <span class="str">#e07b39</span>;        <span class="cm">/* 橙色 */</span><br>
+      &nbsp;&nbsp;<span class="kw">font-size</span>: <span class="str">32px</span>;      <span class="cm">/* 字号 */</span><br>
+      &nbsp;&nbsp;<span class="kw">text-align</span>: <span class="str">center</span>;    <span class="cm">/* 居中 */</span><br>
+      }
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 比较它</b>：HTML 说"这里有个标题"，CSS 说"这个标题要橙色、32 像素、居中"。一个管"内容"，一个管"外观"——分工明确。</div>
+  </div>
+</section>
+
+<!-- s07 JS：网页的大脑 -->
+<section class="slide-page" id="slide-7" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🧠 JavaScript：网页的大脑</h2>
+    <div class="def-box">
+      <b>JavaScript</b>：让网页"动起来"——点击按钮、弹出提示、实时计算、加载数据。<br>
+      没有 JS，网页是"静态海报"；有了 JS，网页是"互动应用"。
+    </div>
+    <div class="code-box">
+      <span class="cm">// JS 控制交互</span><br>
+      <span class="fn">document</span>.<span class="fn">getElementById</span>(<span class="str">"btn"</span>).<span class="fn">onclick</span> = <span class="kw">function</span>() {<br>
+      &nbsp;&nbsp;<span class="fn">alert</span>(<span class="str">"你点击了按钮！"</span>);<br>
+      }
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 迁移它</b>：HTML 是"骨架"，CSS 是"皮肤"，JS 是"大脑"。骨架支撑结构，皮肤决定颜值，大脑负责思考——三者缺一不可。</div>
+  </div>
+</section>
+
+<!-- s08 互动1：标签配对 -->
+<section class="slide-page" id="slide-8" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：HTML 标签配对</h2>
+    <p class="interact-note">点击左侧标签和右侧功能，把它们配成一对。</p>
+    <div class="match-wrap">
+      <div class="match-row">
+        <div class="match-item" data-pair="h1" onclick="pickTag(this)">&lt;h1&gt;</div>
+        <div class="match-item" data-pair="p" onclick="pickTag(this)">&lt;p&gt;</div>
+        <div class="match-item" data-pair="img" onclick="pickTag(this)">&lt;img&gt;</div>
+        <div class="match-item" data-pair="a" onclick="pickTag(this)">&lt;a&gt;</div>
+      </div>
+      <div class="match-row">
+        <div class="match-item" data-pair="a" onclick="pickTag(this)">🔗 超链接</div>
+        <div class="match-item" data-pair="img" onclick="pickTag(this)">🖼️ 插入图片</div>
+        <div class="match-item" data-pair="h1" onclick="pickTag(this)">📌 一级标题</div>
+        <div class="match-item" data-pair="p" onclick="pickTag(this)">📝 段落文字</div>
+      </div>
+    </div>
+    <div class="fb" id="fb8"></div>
+  </div>
+</section>
+
+<!-- s09 互动2：写一个段落 -->
+<section class="slide-page" id="slide-9" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：用 HTML 写一个段落</h2>
+    <p class="interact-note">点击下方标签，把它们填入代码框，组成一个完整的 HTML 段落。</p>
+    <div class="tag-pool">
+      <div class="tag-pool-title">可用标签</div>
+      <div class="tag-btns" id="tag-btns">
+        <button class="tag-btn" onclick="addTag(this,'&lt;p&gt;')">&lt;p&gt;</button>
+        <button class="tag-btn" onclick="addTag(this,'&lt;/p&gt;')">&lt;/p&gt;</button>
+        <button class="tag-btn" onclick="addTag(this,'&lt;h1&gt;')">&lt;h1&gt;</button>
+        <button class="tag-btn" onclick="addTag(this,'&lt;/h1&gt;')">&lt;/h1&gt;</button>
+      </div>
+      <div class="editor-area" id="editor">
+        <span style="color:#9c8b73;">点击上方标签，组成一段 HTML 代码……</span>
+      </div>
+      <p style="text-align:center;">
+        <button class="pick-btn" onclick="clearEditor()">🔄 清空</button>
+        <button class="pick-btn primary" onclick="checkHTML()">✅ 检查</button>
+      </p>
+      <div class="preview-box" id="preview" style="display:none;">
+        <b style="color:var(--ok);">预览效果：</b>
+        <p id="preview-content" style="margin:8px 0 0;font-size:1.05rem;"></p>
+      </div>
+      <div class="fb" id="fb9"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s10 在线应用：从网页到 App -->
+<section class="slide-page" id="slide-10" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">📱 在线应用：从网页到 App</h2>
+    <div class="def-box">
+      简单网页 = HTML + CSS + JS，只能"看"<br>
+      在线应用 = HTML + CSS + JS + <b>服务器数据</b> + <b>用户交互</b>，能"用"<br><br>
+      例：在线文档 = 网页框架（HTML）+ 界面样式（CSS）+ 编辑功能（JS）+ 云端存储（服务器）
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 看见它</b>：你手机里的 App，很多本质上就是"打包好的网页"——微信读书、美团、知乎，都有对应的网页版。学会网页制作，就打开了"做自己的 App"的大门。</div>
+  </div>
+</section>
+
+<!-- s11 互动3：三层各管什么 -->
+<section class="slide-page" id="slide-11" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：HTML/CSS/JS 各管什么？</h2>
+    <p class="interact-note">判断下列功能属于哪一层。</p>
+    <div class="trio-grid" id="trio-quiz">
+      <div class="trio-card html" data-layer="html" onclick="pickLayer(this)"><span class="ti">🦴</span><div class="tt">HTML</div><div class="td">网页骨架</div></div>
+      <div class="trio-card css" data-layer="css" onclick="pickLayer(this)"><span class="ti">🎨</span><div class="tt">CSS</div><div class="td">网页皮肤</div></div>
+      <div class="trio-card js" data-layer="js" onclick="pickLayer(this)"><span class="ti">🧠</span><div class="tt">JavaScript</div><div class="td">网页大脑</div></div>
+    </div>
+    <div style="max-width:640px;margin:14px auto;background:#fff;border:2px solid #ecd9b8;border-radius:14px;padding:18px;">
+      <p style="text-align:center;font-weight:800;color:var(--ink);font-size:1.05rem;margin-bottom:12px;" id="quiz-q">问题：让标题变成橙色、居中显示，是哪一层的工作？</p>
+      <div class="fb" id="fb11"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s12 易错点 -->
+<section class="slide-page" id="slide-12" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⚠️ 三大易错点</h2>
+    <div class="mis-list">
+      <div class="mis-item"><b>易错点 1</b>：以为"HTML=编程"——HTML 是"标记语言"，不是编程语言。它只描述"有什么"，不处理"逻辑"。真正的编程是 JavaScript。</div>
+      <div class="mis-item"><b>易错点 2</b>：以为"CSS 只是美化"——CSS 不只管"好看"，还管"布局"（左右排列、上下排列、响应式适配手机）。没有 CSS，网页会乱成一团。</div>
+      <div class="mis-item"><b>易错点 3</b>：以为"网页=网站"——一个网站由很多网页组成，还可能包含数据库、服务器程序。网页是"前台"，网站是"前台+后台"的完整系统。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s13 前测 -->
+<section class="slide-page" id="slide-13" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">✏️ 小测验 · 基础关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：HTML 的作用是？</h4>
+      <button class="opt" onclick="checkQuiz(this,true,'')">告诉浏览器"这里有什么"（结构）</button>
+      <button class="opt" onclick="checkQuiz(this,false,'控制样式是 CSS 的工作。')">控制网页的颜色和大小</button>
+      <button class="opt" onclick="checkQuiz(this,false,'控制交互是 JavaScript 的工作。')">让网页能点击、能计算</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：CSS 的作用是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'结构是 HTML 的工作。')">定义网页的结构</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">控制网页的样式（颜色、大小、布局）</button>
+      <button class="opt" onclick="checkQuiz(this,false,'交互是 JavaScript 的工作。')">处理用户的点击事件</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s14 后测 -->
+<section class="slide-page" id="slide-14" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🚀 小测验 · 提高关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：关于网页与在线应用，正确的说法是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'在线应用是"能用的网页"——比简单网页多了交互和数据。')">网页和在线应用完全一样</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">在线应用 = 网页 + 用户交互 + 服务器数据</button>
+      <button class="opt" onclick="checkQuiz(this,false,'很多 App 本质上是"打包好的网页"。')">在线应用必须下载安装</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：一个按钮"点击后弹出提示"，这个功能由哪一层实现？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'HTML 只负责"这里有个按钮"，不负责"点了怎么办"。')">HTML</button>
+      <button class="opt" onclick="checkQuiz(this,false,'CSS 只负责按钮长什么样，不负责"点了怎么办"。')">CSS</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">JavaScript</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s15 总结+作业 -->
+<section class="slide-page" id="slide-15" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🌟 总结与分层作业</h2>
+    <div class="def-box" style="margin-bottom:18px;">
+      今天学会了：<br>
+      ✔ 网页 = 用 HTML 编写的、能在浏览器中显示的文档<br>
+      ✔ 三层结构：HTML 管结构、CSS 管样式、JS 管交互<br>
+      ✔ 在线应用 = 网页 + 用户交互 + 服务器数据<br>
+      ✔ 常见 HTML 标签：h1 标题、p 段落、img 图片、a 链接、button 按钮
+    </div>
+    <div class="hw-grid">
+      <div class="hw-card hw-a"><h4>🌱 基础</h4>用记事本写一个 HTML 文件，包含标题、段落、图片，用浏览器打开看效果。</div>
+      <div class="hw-card hw-b"><h4>🌿 提高</h4>给你的网页加 CSS：改背景色、改字体颜色、让标题居中。</div>
+      <div class="hw-card hw-c"><h4>🌳 拓展</h4>加一个按钮，用 JavaScript 实现"点击按钮弹出欢迎语"。</div>
+    </div>
+  </div>
+</section>
+
+<div data-teachany-tutor-card data-course="info-m-web-development" data-node="it-m-web-development"></div>
+
+<script src="/assets/scripts/teachany-paged-patch.js"></script>
+<script src="/assets/scripts/ai-tutor.js" defer></script>
+<script src="/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="/assets/scripts/teachany-section-hints.js"></script>
+<script>
+/* 互动1：标签配对 */
+(function(){
+  let first=null, matched=0;
+  const fb=document.getElementById('fb8');
+  window.pickTag=function(el){
+    if(el.classList.contains('matched')) return;
+    if(!first){
+      first=el;
+      el.classList.add('selected');
+      return;
+    }
+    if(first===el){
+      el.classList.remove('selected');
+      first=null;
+      return;
+    }
+    if(first.dataset.pair===el.dataset.pair){
+      first.classList.add('matched');
+      el.classList.add('matched');
+      first.classList.remove('selected');
+      first=null;
+      matched++;
+      if(matched===4){
+        fb.className='fb good';
+        fb.textContent='🎉 全部配对成功！h1 标题、p 段落、img 图片、a 链接——HTML 标签真简单！';
+      }
+    }else{
+      el.classList.add('wrong');
+      setTimeout(()=>{el.classList.remove('wrong');first.classList.remove('selected');first=null;},600);
+      fb.className='fb bad';
+      fb.textContent='💡 配对错误——再想想这个标签是干什么的。';
+    }
+  };
+})();
+
+/* 互动2：写段落 */
+(function(){
+  const editor=document.getElementById('editor');
+  const usedTags=[];
+  window.addTag=function(btn,tag){
+    if(btn.classList.contains('used')) return;
+    btn.classList.add('used');
+    usedTags.push(tag);
+    renderEditor();
+  };
+  window.clearEditor=function(){
+    usedTags.length=0;
+    document.querySelectorAll('.tag-btn').forEach(b=>b.classList.remove('used'));
+    document.getElementById('preview').style.display='none';
+    document.getElementById('fb9').textContent='';
+    renderEditor();
+  };
+  window.checkHTML=function(){
+    const fb=document.getElementById('fb9');
+    const code=usedTags.join(' ');
+    if(code==='<p> </p>'){
+      fb.className='fb good';
+      fb.textContent='✅ 正确！<p> 开始段落，</p> 结束段落——一个完整的 HTML 段落！';
+      document.getElementById('preview').style.display='block';
+      document.getElementById('preview-content').textContent='这是一个用 HTML 写的段落。';
+    }else if(code==='<h1> </h1>'){
+      fb.className='fb good';
+      fb.textContent='✅ 正确！<h1> 开始标题，</h1> 结束标题——标题比段落更大更粗！';
+      document.getElementById('preview').style.display='block';
+      document.getElementById('preview-content').innerHTML='<h1 style="margin:8px 0;color:var(--ink);">这是一个用 HTML 写的标题</h1>';
+    }else{
+      fb.className='fb bad';
+      fb.textContent='💡 不对——段落要用 <p> 和 </p> 配对，标题要用 <h1> 和 </h1> 配对。点击"清空"再试。';
+    }
+  };
+  function renderEditor(){
+    if(usedTags.length===0){
+      editor.innerHTML='<span style="color:#9c8b73;">点击上方标签，组成一段 HTML 代码……</span>';
+    }else{
+      editor.innerHTML=usedTags.map(t=>'<span class="slot">'+t+'</span>').join(' ');
+    }
+  }
+})();
+
+/* 互动3：三层判断 */
+(function(){
+  const questions=[
+    {q:'让标题变成橙色、居中显示，是哪一层的工作？',a:'css'},
+    {q:'在网页中插入一张图片，是哪一层的工作？',a:'html'},
+    {q:'点击按钮后弹出提示框，是哪一层的工作？',a:'js'}
+  ];
+  let cur=0;
+  const fb=document.getElementById('fb11');
+  window.pickLayer=function(el){
+    const layer=el.dataset.layer;
+    if(layer===questions[cur].a){
+      fb.className='fb good';
+      fb.textContent='✅ 正确！';
+      cur++;
+      if(cur>=questions.length){
+        setTimeout(()=>{
+          document.getElementById('quiz-q').textContent='🎉 全部答对！HTML 管结构、CSS 管样式、JS 管交互——记住了吗？';
+          fb.textContent='';
+        },800);
+      }else{
+        setTimeout(()=>{
+          document.getElementById('quiz-q').textContent='问题：'+questions[cur].q;
+          fb.textContent='';
+        },800);
+      }
+    }else{
+      fb.className='fb bad';
+      fb.textContent='💡 不对——想想：这一层是管"结构"、"样式"还是"交互"？';
+    }
+  };
+})();
+
+/* 测验 */
+function checkQuiz(el,ok,diag){
+  const box=el.closest('.quiz-box');
+  box.querySelectorAll('.opt').forEach(o=>o.classList.remove('right','wrong'));
+  el.classList.add(ok?'right':'wrong');
+  box.querySelector('.quiz-diagnosis').textContent = ok ? '✅ 回答正确！' : '💡 '+diag;
+}
+</script>
+</body>
+</html>

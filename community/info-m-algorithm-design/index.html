@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script id="spa-path-recovery">(function(){var p=location.pathname,pre='/community/info-m-algorithm-design/';if(p.slice(-10)!=="index.html"&&p.indexOf(pre)===0){location.replace(pre+"index.html"+location.search+location.hash);}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>算法设计与程序实现 · 初中信息科技</title>
+<meta name="teachany-course" content="info-m-algorithm-design">
+<meta name="teachany-node" content="it-m-algorithm-design">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="middle">
+<meta name="teachany-grade" content="7">
+<meta name="teachany-domain" content="data-algorithms">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-branch-loop,it-e-feedback-control">
+<link rel="stylesheet" href="/assets/scripts/teachany-paged-patch.css">
+<link rel="stylesheet" href="/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="/assets/scripts/teachany-tutor-card.css">
+<style>
+body{background:#fffbf0;}
+:root{--ink:#3d3225;--mu:#8a7a60;--acc:#e07b39;--acc2:#4a90d9;--soft:#fdf3e3;--soft2:#e8f1fb;--ok:#3d9a5f;--bad:#d9544d;--violet:#8a5fd6;}
+.hero{border-radius:18px;width:100%;max-width:760px;display:block;margin:0 auto 18px;}
+.big-q{font-size:1.5rem;font-weight:800;color:var(--ink);text-align:center;line-height:1.7;}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto;}
+.obj-card{background:var(--soft);border-radius:14px;padding:16px 18px;font-size:1.05rem;color:var(--ink);border:2px solid #f0dfc2;}
+.obj-card b{color:var(--acc);}
+.def-box{background:var(--soft2);border-left:8px solid var(--acc2);border-radius:12px;padding:20px 24px;max-width:760px;margin:0 auto;font-size:1.12rem;line-height:1.9;color:var(--ink);}
+.feature-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:900px;margin:14px auto;}
+.feature-card{background:#fff;border:3px solid #ecd9b8;border-radius:12px;padding:12px 8px;text-align:center;}
+.feature-card .fi{font-size:1.6rem;display:block;margin-bottom:6px;}
+.feature-card .ft{font-weight:800;color:var(--acc);font-size:.98rem;margin-bottom:4px;}
+.feature-card .fd{font-size:.82rem;color:var(--mu);line-height:1.5;}
+.pick-btn{background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:14px 22px;font-size:1.05rem;font-weight:800;cursor:pointer;margin:6px;color:var(--ink);transition:.15s;}
+.pick-btn:hover{border-color:var(--acc);transform:scale(1.03);}
+.flow-wrap{max-width:760px;margin:16px auto;text-align:center;}
+.flow-node{display:inline-block;padding:10px 22px;border-radius:12px;font-weight:800;font-size:1rem;margin:6px;background:var(--acc2);color:#fff;}
+.flow-node.start-end{background:var(--ok);border-radius:24px;}
+.flow-node.decide{background:var(--violet);transform:rotate(0deg);}
+.flow-arrow{font-size:1.4rem;color:var(--mu);display:block;line-height:1.1;}
+.step-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:860px;margin:14px auto;}
+.step-card{background:#fff;border:3px solid #ecd9b8;border-radius:14px;padding:14px;width:170px;text-align:center;cursor:pointer;transition:.15s;}
+.step-card:hover{border-color:var(--acc);}
+.step-card.selected{border-color:var(--acc);background:var(--soft);}
+.step-card .num{display:inline-block;background:var(--acc);color:#fff;border-radius:50%;width:32px;height:32px;line-height:32px;font-weight:800;margin-bottom:8px;}
+.step-card .st{font-weight:800;color:var(--ink);margin-bottom:6px;font-size:.98rem;}
+.step-card .sd{font-size:.88rem;color:var(--mu);line-height:1.6;}
+.fb{text-align:center;font-weight:800;font-size:1.05rem;min-height:1.6em;margin-top:10px;}
+.fb.good{color:var(--ok);}.fb.bad{color:var(--bad);}
+.interact-note{text-align:center;color:var(--mu);font-size:.95rem;margin-top:6px;}
+.cmp-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;max-width:900px;margin:14px auto;}
+.cmp-card{background:#fff;border:3px solid #ecd9b8;border-radius:14px;padding:16px;width:340px;}
+.cmp-card h5{margin:0 0 10px;text-align:center;font-size:1.05rem;}
+.cmp-card pre{background:#2b2622;color:#f8e9c8;border-radius:8px;padding:12px;font-size:.86rem;line-height:1.6;overflow-x:auto;margin:8px 0;font-family:Menlo,Consolas,monospace;}
+.cmp-card .cnt{text-align:center;font-weight:800;color:var(--acc);font-size:1.1rem;}
+.sort-demo{max-width:720px;margin:14px auto;background:#fff;border:2px solid #ecd9b8;border-radius:14px;padding:18px;}
+.sort-arr{display:flex;gap:8px;justify-content:center;margin:14px 0;flex-wrap:wrap;}
+.sort-cell{width:56px;height:56px;border-radius:10px;background:var(--soft2);border:2px solid var(--acc2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:var(--ink);transition:.2s;}
+.sort-cell.scan{background:#fdeceb;border-color:var(--bad);transform:scale(1.1);}
+.sort-cell.max{background:#e6f6ec;border-color:var(--ok);transform:scale(1.15);}
+.mis-list{max-width:760px;margin:0 auto;}
+.mis-item{background:#fff;border-left:8px solid var(--bad);border-radius:12px;padding:14px 18px;margin:12px 0;font-size:1.02rem;color:var(--ink);}
+.mis-item b{color:var(--bad);}
+.quiz-box{max-width:720px;margin:0 auto 22px;background:#fff;border:2px solid #ecd9b8;border-radius:16px;padding:18px 22px;}
+.quiz-box h4{margin:0 0 12px;color:var(--ink);font-size:1.02rem;}
+.opt{display:block;background:var(--soft);border:2px solid #f0dfc2;border-radius:12px;padding:11px 16px;margin:9px 0;cursor:pointer;font-size:1rem;color:var(--ink);transition:.15s;width:100%;text-align:left;}
+.opt:hover{border-color:var(--acc);}
+.opt.right{background:#e6f6ec;border-color:var(--ok);}
+.opt.wrong{background:#fdeceb;border-color:var(--bad);}
+.quiz-diagnosis{font-size:.92rem;color:var(--mu);margin-top:8px;min-height:1.4em;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto;}
+.hw-card{border-radius:14px;padding:16px;color:#fff;font-size:.98rem;line-height:1.7;}
+.hw-card h4{margin:0 0 8px;font-size:1.08rem;}
+.hw-a{background:#4a90d9;}.hw-b{background:#e07b39;}.hw-c{background:#8a5fd6;}
+.abt-tag{display:inline-block;background:var(--acc);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.insight{background:#fff8e6;border:2px dashed var(--acc);border-radius:14px;padding:16px 20px;max-width:760px;margin:18px auto;font-size:1rem;line-height:1.8;color:var(--ink);}
+.insight b{color:var(--acc);}
+.code-box{background:#2b2622;color:#f8e9c8;border-radius:12px;padding:16px 20px;max-width:680px;margin:14px auto;font-family:Menlo,Consolas,monospace;font-size:.92rem;line-height:1.7;overflow-x:auto;}
+.code-box .cm{color:#9c8b73;}
+.code-box .kw{color:#e07b39;font-weight:800;}
+.code-box .fn{color:#4a90d9;font-weight:800;}
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page" id="slide-1" data-bloom="understand">
+  <div class="slide-inner" style="text-align:center;">
+    <img class="hero" src="assets/info-m-algorithm-design-hero.webp" alt="算法设计与程序实现 封面图">
+    <span class="abt-tag">为什么学 · ABT</span>
+    <h1 style="color:var(--ink);margin:8px 0 10px;">算法设计与程序实现</h1>
+    <p style="color:var(--mu);font-size:1.15rem;max-width:680px;margin:0 auto;line-height:1.9;">
+      导航 App 一秒算出最快路线，外卖平台毫秒匹配最近骑手<b style="color:var(--ink);">——它们凭什么这么"聪明"？</b><br>
+      答案藏在一个词里：<b style="color:var(--ink);">算法</b>。<br>
+      这节课，从"解决问题的方法"出发，学会设计算法，并把它变成真正能跑的程序。
+    </p>
+    <p style="margin-top:20px;color:var(--mu);">初中信息科技 · 七年级 · 算法与程序设计入门</p>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-bloom="understand">
+  <div class="slide-inner">
+    <p class="big-q">🗺️ 从家到学校有 100 种走法，<br>导航 App 凭什么 1 秒钟告诉你<br>"这条最快"？<br>它会把 100 条路都走一遍吗？</p>
+    <p style="text-align:center;color:var(--mu);font-size:1.1rem;margin-top:26px;line-height:2;">
+      当然不会。它用的是一套<b style="color:var(--acc);">事先设计好的"计算方法"</b>——<br>
+      输入起点终点，按规则一步步算，输出最优路线。<br>
+      这套"计算方法"，就叫<b style="color:var(--acc);">算法（Algorithm）</b>。
+    </p>
+    <p style="text-align:center;margin-top:22px;color:var(--mu);font-size:1.05rem;">带着这个问题，开始初中信息科技的第一课。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎯 今天的学习目标</h2>
+    <div class="obj-grid">
+      <div class="obj-card"><b>目标 1</b>：说出算法的概念与五大特征</div>
+      <div class="obj-card"><b>目标 2</b>：用流程图描述一个简单算法</div>
+      <div class="obj-card"><b>目标 3</b>：理解"算法效率"的含义</div>
+      <div class="obj-card"><b>目标 4</b>：看懂算法对应的简单程序代码</div>
+    </div>
+  </div>
+</section>
+
+<!-- s04 什么是算法 -->
+<section class="slide-page" id="slide-4" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">📐 什么是算法？</h2>
+    <div class="def-box">
+      <b>算法</b> = 解决一个问题所需要的、<b>有限的、明确的、一步步可执行</b>的方法。<br><br>
+      做菜有菜谱（先放油→下菜→翻炒→放盐→出锅），<br>
+      洗衣有流程（放水→加洗衣粉→转 30 分钟→甩干），<br>
+      这些都是算法——只不过由人执行。<br>
+      把算法写成程序，就能让计算机帮我们执行。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 比较它</b>：小学学过的"顺序、分支、循环"三种结构，正是搭建任何算法的三种基本积木。今天的算法课，是把它们升级成"解决更复杂问题"的工具。</div>
+  </div>
+</section>
+
+<!-- s05 算法五大特征 -->
+<section class="slide-page" id="slide-5" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⭐ 算法的五大特征</h2>
+    <div class="feature-grid">
+      <div class="feature-card"><span class="fi">🛑</span><div class="ft">有穷性</div><div class="fd">有限步内必须结束</div></div>
+      <div class="feature-card"><span class="fi">🎯</span><div class="ft">确定性</div><div class="fd">每一步含义明确无歧义</div></div>
+      <div class="feature-card"><span class="fi">🛠️</span><div class="ft">可行性</div><div class="fd">每步都能实际做到</div></div>
+      <div class="feature-card"><span class="fi">📥</span><div class="ft">输入</div><div class="fd">零个或多个输入</div></div>
+      <div class="feature-card"><span class="fi">📤</span><div class="ft">输出</div><div class="fd">至少一个结果</div></div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 反例</b>："多做点饭"不是算法——"多点"不明确；"算出 x = 0/0"也不是算法——不可行。五大特征缺一个，都不能叫算法。</div>
+  </div>
+</section>
+
+<!-- s06 互动1：设计泡茶算法 -->
+<section class="slide-page" id="slide-6" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：为"泡茶"设计算法</h2>
+    <p class="interact-note">把下面 5 个步骤按正确顺序点击排列，组成一个完整算法。</p>
+    <div class="step-row" id="tea-steps">
+      <div class="step-card" data-order="3"><div class="st">🍵 放入茶叶</div><div class="sd">第三步</div></div>
+      <div class="step-card" data-order="1"><div class="st">🚰 烧开水</div><div class="sd">第一步</div></div>
+      <div class="step-card" data-order="5"><div class="st">🥄 出汤品饮</div><div class="sd">第五步</div></div>
+      <div class="step-card" data-order="2"><div class="st">🧼 洗茶具</div><div class="sd">第二步</div></div>
+      <div class="step-card" data-order="4"><div class="st">💧 注水冲泡</div><div class="sd">第四步</div></div>
+    </div>
+    <p style="text-align:center;color:var(--mu);font-size:.92rem;">已点击顺序：<span id="tea-seq" style="color:var(--acc);font-weight:800;">—</span></p>
+    <p style="text-align:center;">
+      <button class="pick-btn" onclick="resetTea()">🔄 重来</button>
+    </p>
+    <div class="fb" id="fb6"></div>
+  </div>
+</section>
+
+<!-- s07 流程图三要素 -->
+<section class="slide-page" id="slide-7" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">📊 用流程图描述算法</h2>
+    <div class="def-box">
+      文字描述算法容易歧义，工程师发明了<b>流程图</b>——用规定好的图形表达逻辑。<br>
+      记住三种最常用的图形：
+    </div>
+    <div class="flow-wrap">
+      <div style="margin:12px 0;">
+        <span class="flow-node start-end">🟢 圆角矩形 = 开始 / 结束</span>
+      </div>
+      <div style="margin:12px 0;">
+        <span class="flow-node">▭ 矩形 = 一个处理步骤</span>
+      </div>
+      <div style="margin:12px 0;">
+        <span class="flow-node decide">💎 菱形 = 判断（是/否分支）</span>
+      </div>
+      <div style="margin:12px 0;">
+        <span style="font-weight:800;color:var(--ink);">→ 箭头 = 执行方向</span>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--mu);">小学积木编程里的"如果…就…""重复执行"，对应到流程图就是菱形分支和回环箭头。</p>
+  </div>
+</section>
+
+<!-- s08 互动2：排流程图 -->
+<section class="slide-page" id="slide-8" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：排出"判断是否及格"的流程</h2>
+    <p class="interact-note">点击下列节点，按算法执行顺序排一排。</p>
+    <div class="step-row" id="flow-sort">
+      <div class="step-card" data-order="3"><div class="st">💎 score ≥ 60?</div><div class="sd">判断</div></div>
+      <div class="step-card" data-order="1"><div class="st">🟢 开始</div><div class="sd">起点</div></div>
+      <div class="step-card" data-order="5"><div class="st">🟢 结束</div><div class="sd">终点</div></div>
+      <div class="step-card" data-order="2"><div class="st">▭ 输入 score</div><div class="sd">处理</div></div>
+      <div class="step-card" data-order="4"><div class="st">▭ 输出及格/不及格</div><div class="sd">处理</div></div>
+    </div>
+    <p style="text-align:center;color:var(--mu);font-size:.92rem;">已点击顺序：<span id="flow-seq" style="color:var(--acc);font-weight:800;">—</span></p>
+    <p style="text-align:center;">
+      <button class="pick-btn" onclick="resetFlow()">🔄 重来</button>
+    </p>
+    <div class="fb" id="fb8"></div>
+  </div>
+</section>
+
+<!-- s09 算法效率 -->
+<section class="slide-page" id="slide-9" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⚡ 算法效率：快一点，差很多</h2>
+    <div class="def-box">
+      解决同一个问题，往往有多种算法。<b>好算法的标准</b>：① 正确；② 快；③ 省资源。<br><br>
+      例：从 1 加到 100。<br>
+      笨办法：1+2+3+…+100，要加 <b>99 次</b>。<br>
+      高斯办法：(1+100) × 100 ÷ 2 = 5050，只要 <b>3 步</b>。<br>
+      数字越大，差距越夸张——这就是算法效率。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 迁移它</b>：导航 App 不会真的"走完所有路再比"——它用图论算法（如 Dijkstra）只算最关键的几条。算法效率的提升，是计算机科学的核心追求。</div>
+  </div>
+</section>
+
+<!-- s10 互动3：找最大值 -->
+<section class="slide-page" id="slide-10" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：找出 8 个数中的最大值</h2>
+    <p class="interact-note">点击"扫描下一个"，看计算机怎么一步步找最大值——每扫一个，都要和"当前最大"比一次。</p>
+    <div class="sort-demo">
+      <div class="sort-arr" id="arr">
+        <div class="sort-cell">12</div>
+        <div class="sort-cell">45</div>
+        <div class="sort-cell">7</div>
+        <div class="sort-cell">89</div>
+        <div class="sort-cell">23</div>
+        <div class="sort-cell">61</div>
+        <div class="sort-cell">38</div>
+        <div class="sort-cell">54</div>
+      </div>
+      <p style="text-align:center;color:var(--ink);font-size:1.05rem;">
+        当前扫描位置：<b id="cur-idx" style="color:var(--acc);">—</b> ｜
+        当前最大值：<b id="cur-max" style="color:var(--ok);">—</b> ｜
+        比较次数：<b id="cmp-cnt" style="color:var(--violet);">0</b>
+      </p>
+      <p style="text-align:center;">
+        <button class="pick-btn" style="background:var(--acc);color:#fff;border-color:#b35c24;" onclick="scanNext()">▶ 扫描下一个</button>
+        <button class="pick-btn" onclick="resetScan()">🔄 重置</button>
+      </p>
+      <div class="fb" id="fb10"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s11 易错点 -->
+<section class="slide-page" id="slide-11" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⚠️ 三大易错点</h2>
+    <div class="mis-list">
+      <div class="mis-item"><b>易错点 1</b>：以为算法 = 程序。算法是"思路"，可以用文字、流程图、伪代码表示；程序是算法的"代码实现"，是给计算机看的语言。先有算法，后有程序。</div>
+      <div class="mis-item"><b>易错点 2</b>：忽略"有穷性"。死循环（如"重复执行：往前走一步"永远没有终点）违反有穷性，不是算法。设计算法必须确保它"一定会停"。</div>
+      <div class="mis-item"><b>易错点 3</b>：只看正确不看效率。能算出结果只是底线——好算法还要快、省资源。两个算法都能找最大值，但数据量从 8 涨到 8 亿，效率差距会被无限放大。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s12 前测 -->
+<section class="slide-page" id="slide-12" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">✏️ 小测验 · 基础关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：下面哪个不是算法的特征？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'有穷性是算法的基本特征——必须有限步内结束。')">有穷性</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">可以无限循环永不停止</button>
+      <button class="opt" onclick="checkQuiz(this,false,'确定性是算法的基本特征——每步含义明确。')">确定性</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：流程图中"菱形"代表什么？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'开始/结束用圆角矩形。')">开始或结束</button>
+      <button class="opt" onclick="checkQuiz(this,false,'处理步骤用矩形。')">处理步骤</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">判断（是/否分支）</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s13 后测 -->
+<section class="slide-page" id="slide-13" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🚀 小测验 · 提高关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：从 1 加到 100，下面说法正确的是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'逐个相加虽然能算对，但效率低。')">逐个相加是好算法，因为思路简单</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">(1+100)×100÷2 效率更高，步数远少于逐个相加</button>
+      <button class="opt" onclick="checkQuiz(this,false,'两种方法结果相同——5050，差别在步数。')">两种方法结果不同</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：关于算法与程序的关系，正确的是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'算法是思路，程序是代码实现——不一样。')">算法就是程序</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">算法是解决问题的思路，程序是算法的代码实现</button>
+      <button class="opt" onclick="checkQuiz(this,false,'算法可以用文字、流程图、伪代码表示——不一定要写代码。')">算法必须用计算机语言写出来</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s14 总结+作业 -->
+<section class="slide-page" id="slide-14" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🌟 总结与分层作业</h2>
+    <div class="def-box" style="margin-bottom:18px;">
+      今天学会了：<br>
+      ✔ 算法 = 有限的、明确的、一步步可执行的解决方法<br>
+      ✔ 五大特征：有穷、确定、可行、有输入、有输出<br>
+      ✔ 流程图：圆角矩形起止 / 矩形处理 / 菱形判断 / 箭头方向<br>
+      ✔ 算法效率：同一个问题，好算法能省成千上万步
+    </div>
+    <div class="hw-grid">
+      <div class="hw-card hw-a"><h4>🌱 基础</h4>用流程图画出"判断一个数是奇数还是偶数"的算法。</div>
+      <div class="hw-card hw-b"><h4>🌿 提高</h4>设计一个算法：从 10 个同学的身高里找出最高的，写出步骤或画出流程图。</div>
+      <div class="hw-card hw-c"><h4>🌳 拓展</h4>查阅资料：什么是"二分查找"？为什么它比"一个一个找"快得多？写一段 100 字解释。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s15 知识图谱 -->
+<section class="slide-page" id="slide-15" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🗺️ 本课知识图谱（点击节点复习）</h2>
+    <canvas id="kg-canvas" width="680" height="300" style="display:block;margin:0 auto;background:#fff;border-radius:14px;border:2px solid #ecd9b8;"></canvas>
+  </div>
+</section>
+
+<div data-teachany-tutor-card data-course="info-m-algorithm-design" data-node="it-m-algorithm-design"></div>
+
+<script src="/assets/scripts/teachany-paged-patch.js"></script>
+<script src="/assets/scripts/ai-tutor.js" defer></script>
+<script src="/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="/assets/scripts/teachany-section-hints.js"></script>
+<script>
+/* 互动1：泡茶算法排序 */
+(function(){
+  let clicked=[];
+  const cards=document.querySelectorAll('#tea-steps .step-card');
+  cards.forEach(c=>{
+    c.addEventListener('click',()=>{
+      if(c.classList.contains('selected')) return;
+      c.classList.add('selected');
+      clicked.push(parseInt(c.dataset.order));
+      document.getElementById('tea-seq').textContent=clicked.join(' → ');
+      if(clicked.length===5){
+        const fb=document.getElementById('fb6');
+        const correct=[1,2,3,4,5];
+        const ok=clicked.every((v,i)=>v===correct[i]);
+        if(ok){
+          fb.className='fb good';
+          fb.textContent='🎉 正确！烧水→洗具→放茶→注水→出汤，这就是一个完整算法：5 步、有穷、明确、可执行。';
+        }else{
+          fb.className='fb bad';
+          fb.textContent='💡 顺序不对——算法的"确定性"要求每一步都在正确的位置。点击"重来"再试。';
+        }
+      }
+    });
+  });
+  window.resetTea=function(){
+    clicked=[];
+    cards.forEach(c=>c.classList.remove('selected'));
+    document.getElementById('tea-seq').textContent='—';
+    document.getElementById('fb6').textContent='';
+  };
+})();
+
+/* 互动2：流程图排序 */
+(function(){
+  let clicked=[];
+  const cards=document.querySelectorAll('#flow-sort .step-card');
+  cards.forEach(c=>{
+    c.addEventListener('click',()=>{
+      if(c.classList.contains('selected')) return;
+      c.classList.add('selected');
+      clicked.push(parseInt(c.dataset.order));
+      document.getElementById('flow-seq').textContent=clicked.join(' → ');
+      if(clicked.length===5){
+        const fb=document.getElementById('fb8');
+        const correct=[1,2,3,4,5];
+        const ok=clicked.every((v,i)=>v===correct[i]);
+        if(ok){
+          fb.className='fb good';
+          fb.textContent='🎉 正确！开始→输入→判断→输出→结束，这是任何"判断类算法"的标准结构。';
+        }else{
+          fb.className='fb bad';
+          fb.textContent='💡 顺序不对——想想：先有什么（输入），再做什么（判断），最后得到什么（输出）。';
+        }
+      }
+    });
+  });
+  window.resetFlow=function(){
+    clicked=[];
+    cards.forEach(c=>c.classList.remove('selected'));
+    document.getElementById('flow-seq').textContent='—';
+    document.getElementById('fb8').textContent='';
+  };
+})();
+
+/* 互动3：找最大值 */
+(function(){
+  const arr=[12,45,7,89,23,61,38,54];
+  let idx=-1, curMax=-Infinity, cmpCnt=0;
+  const cells=document.querySelectorAll('#arr .sort-cell');
+  window.scanNext=function(){
+    const fb=document.getElementById('fb10');
+    if(idx>=arr.length-1){
+      fb.className='fb good';
+      fb.textContent='✅ 扫描完成！最大值是 '+curMax+'，共比较 '+cmpCnt+' 次——这就是"找最大值算法"。';
+      return;
+    }
+    idx++;
+    cells.forEach(c=>c.classList.remove('scan','max'));
+    cells[idx].classList.add('scan');
+    cmpCnt++;
+    if(arr[idx]>curMax){
+      curMax=arr[idx];
+      cells[idx].classList.add('max');
+      fb.className='fb bad';
+      fb.textContent='📍 扫到 '+arr[idx]+' > 当前最大，更新最大值！';
+    }else{
+      fb.className='fb bad';
+      fb.textContent='📍 扫到 '+arr[idx]+' ≤ 当前最大 '+curMax+'，跳过。';
+    }
+    document.getElementById('cur-idx').textContent=(idx+1)+' / '+arr.length;
+    document.getElementById('cur-max').textContent=curMax;
+    document.getElementById('cmp-cnt').textContent=cmpCnt;
+    if(idx===arr.length-1){
+      cells.forEach(c=>c.classList.remove('scan'));
+      fb.className='fb good';
+      fb.textContent='🎉 扫描完毕！最大值 '+curMax+' 被找出，比较了 '+cmpCnt+' 次。8 个数要 8 次，8 亿个数就要 8 亿次——这就是算法效率问题！';
+    }
+  };
+  window.resetScan=function(){
+    idx=-1; curMax=-Infinity; cmpCnt=0;
+    cells.forEach(c=>c.classList.remove('scan','max'));
+    document.getElementById('cur-idx').textContent='—';
+    document.getElementById('cur-max').textContent='—';
+    document.getElementById('cmp-cnt').textContent='0';
+    document.getElementById('fb10').textContent='';
+  };
+})();
+
+/* 测验 */
+function checkQuiz(el,ok,diag){
+  const box=el.closest('.quiz-box');
+  box.querySelectorAll('.opt').forEach(o=>o.classList.remove('right','wrong'));
+  el.classList.add(ok?'right':'wrong');
+  box.querySelector('.quiz-diagnosis').textContent = ok ? '✅ 回答正确！' : '💡 '+diag;
+}
+
+/* 知识图谱 */
+(function(){
+  const c=document.getElementById('kg-canvas'), ctx=c.getContext('2d');
+  const nodes=[
+    {x:340,y:150,r:46,t:'算法',tip:'有限的、明确的、一步步可执行的解决方法'},
+    {x:110,y:60,r:36,t:'有穷性',tip:'有限步内必须结束'},
+    {x:110,y:240,r:36,t:'确定性',tip:'每一步含义明确无歧义'},
+    {x:570,y:60,r:36,t:'流程图',tip:'圆角起止 / 矩形处理 / 菱形判断 / 箭头方向'},
+    {x:570,y:240,r:36,t:'效率',tip:'好算法要快、省资源'},
+    {x:340,y:282,r:30,t:'程序',tip:'算法的代码实现'}
+  ];
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.strokeStyle='#d9c49a';ctx.lineWidth=2;ctx.setLineDash([6,5]);
+    nodes.slice(1).forEach(n=>{ctx.beginPath();ctx.moveTo(nodes[0].x,nodes[0].y);ctx.lineTo(n.x,n.y);ctx.stroke();});
+    ctx.setLineDash([]);
+    nodes.forEach((n,i)=>{
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,7);ctx.fillStyle=i===0?'#e07b39':'#4a90d9';ctx.fill();
+      ctx.fillStyle='#fff';ctx.font='bold 15px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(n.t,n.x,n.y);
+    });
+  }
+  draw();
+  c.addEventListener('click',e=>{
+    const r=c.getBoundingClientRect(),mx=(e.clientX-r.left)*(c.width/r.width),my=(e.clientY-r.top)*(c.height/r.height);
+    const hit=nodes.find(n=>(mx-n.x)**2+(my-n.y)**2<=n.r**2);
+    if(hit) alert('💡 '+hit.t+'：'+hit.tip);
+  });
+})();
+</script>
+</body>
+</html>

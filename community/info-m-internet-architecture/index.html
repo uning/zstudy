@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script id="spa-path-recovery">(function(){var p=location.pathname,pre='/community/info-m-internet-architecture/';if(p.slice(-10)!=="index.html"&&p.indexOf(pre)===0){location.replace(pre+"index.html"+location.search+location.hash);}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>互联网结构与协议初识 · 初中信息科技</title>
+<meta name="teachany-course" content="info-m-internet-architecture">
+<meta name="teachany-node" content="it-m-internet-architecture">
+<meta name="teachany-subject" content="info-tech">
+<meta name="teachany-stage" content="middle">
+<meta name="teachany-grade" content="7">
+<meta name="teachany-domain" content="internet-innovation">
+<meta name="teachany-lesson-type" content="新授课">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-prerequisites" content="it-e-online-basics,it-e-internet-services">
+<link rel="stylesheet" href="/assets/scripts/teachany-paged-patch.css">
+<link rel="stylesheet" href="/assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="/assets/scripts/teachany-tutor-card.css">
+<style>
+body{background:#fffbf0;}
+:root{--ink:#3d3225;--mu:#8a7a60;--acc:#e07b39;--acc2:#4a90d9;--soft:#fdf3e3;--soft2:#e8f1fb;--ok:#3d9a5f;--bad:#d9544d;--violet:#8a5fd6;}
+.hero{border-radius:18px;width:100%;max-width:760px;display:block;margin:0 auto 18px;}
+.big-q{font-size:1.5rem;font-weight:800;color:var(--ink);text-align:center;line-height:1.7;}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto;}
+.obj-card{background:var(--soft);border-radius:14px;padding:16px 18px;font-size:1.05rem;color:var(--ink);border:2px solid #f0dfc2;}
+.obj-card b{color:var(--acc);}
+.def-box{background:var(--soft2);border-left:8px solid var(--acc2);border-radius:12px;padding:20px 24px;max-width:760px;margin:0 auto;font-size:1.12rem;line-height:1.9;color:var(--ink);}
+.arch-wrap{max-width:820px;margin:14px auto;text-align:center;}
+.arch-row{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0;}
+.arch-node{background:#fff;border:3px solid #ecd9b8;border-radius:14px;padding:14px 22px;font-weight:800;color:var(--ink);font-size:1.02rem;}
+.arch-node.client{background:#e6f6ec;border-color:var(--ok);}
+.arch-node.server{background:#fdeceb;border-color:var(--bad);}
+.arch-node.dns{background:#f3ebfc;border-color:var(--violet);}
+.arch-arrow{font-size:1.5rem;color:var(--mu);}
+.layer-stack{max-width:640px;margin:14px auto;}
+.layer-item{background:#fff;border:3px solid #ecd9b8;border-radius:12px;padding:12px 18px;margin:8px 0;display:flex;align-items:center;gap:14px;}
+.layer-item .ln{display:inline-block;background:var(--acc);color:#fff;border-radius:50%;width:36px;height:36px;line-height:36px;font-weight:800;text-align:center;flex-shrink:0;}
+.layer-item .lt{font-weight:800;color:var(--ink);font-size:1.02rem;}
+.layer-item .ld{font-size:.88rem;color:var(--mu);margin-left:auto;text-align:right;}
+.pick-btn{background:#fff;border:3px solid #ecd9b8;border-radius:16px;padding:14px 22px;font-size:1.05rem;font-weight:800;cursor:pointer;margin:6px;color:var(--ink);transition:.15s;}
+.pick-btn:hover{border-color:var(--acc);transform:scale(1.03);}
+.pick-btn.primary{background:var(--acc);color:#fff;border-color:#b35c24;}
+.fb{text-align:center;font-weight:800;font-size:1.05rem;min-height:1.6em;margin-top:10px;}
+.fb.good{color:var(--ok);}.fb.bad{color:var(--bad);}
+.interact-note{text-align:center;color:var(--mu);font-size:.95rem;margin-top:6px;}
+.dns-demo{max-width:680px;margin:14px auto;background:#fff;border:2px solid #ecd9b8;border-radius:14px;padding:18px;}
+.dns-step{display:none;background:var(--soft);border-radius:10px;padding:12px 18px;margin:8px 0;font-size:1rem;color:var(--ink);}
+.dns-step.active{display:block;animation:slideIn .4s ease;}
+@keyframes slideIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+.dns-step b{color:var(--acc2);}
+.packet-journey{max-width:820px;margin:14px auto;}
+.journey-track{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:nowrap;overflow-x:auto;padding:18px 6px;}
+.journey-node{flex-shrink:0;background:#fff;border:3px solid #ecd9b8;border-radius:12px;padding:10px 14px;text-align:center;font-size:.9rem;width:130px;}
+.journey-node .jn-icon{font-size:1.5rem;display:block;margin-bottom:4px;}
+.journey-node .jn-name{font-weight:800;color:var(--ink);}
+.journey-node .jn-role{font-size:.78rem;color:var(--mu);margin-top:2px;}
+.journey-node.active{border-color:var(--acc);background:var(--soft);transform:scale(1.08);}
+.mis-list{max-width:760px;margin:0 auto;}
+.mis-item{background:#fff;border-left:8px solid var(--bad);border-radius:12px;padding:14px 18px;margin:12px 0;font-size:1.02rem;color:var(--ink);}
+.mis-item b{color:var(--bad);}
+.quiz-box{max-width:720px;margin:0 auto 22px;background:#fff;border:2px solid #ecd9b8;border-radius:16px;padding:18px 22px;}
+.quiz-box h4{margin:0 0 12px;color:var(--ink);font-size:1.02rem;}
+.opt{display:block;background:var(--soft);border:2px solid #f0dfc2;border-radius:12px;padding:11px 16px;margin:9px 0;cursor:pointer;font-size:1rem;color:var(--ink);transition:.15s;width:100%;text-align:left;}
+.opt:hover{border-color:var(--acc);}
+.opt.right{background:#e6f6ec;border-color:var(--ok);}
+.opt.wrong{background:#fdeceb;border-color:var(--bad);}
+.quiz-diagnosis{font-size:.92rem;color:var(--mu);margin-top:8px;min-height:1.4em;}
+.hw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto;}
+.hw-card{border-radius:14px;padding:16px;color:#fff;font-size:.98rem;line-height:1.7;}
+.hw-card h4{margin:0 0 8px;font-size:1.08rem;}
+.hw-a{background:#4a90d9;}.hw-b{background:#e07b39;}.hw-c{background:#8a5fd6;}
+.abt-tag{display:inline-block;background:var(--acc);color:#fff;border-radius:8px;padding:2px 10px;font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.insight{background:#fff8e6;border:2px dashed var(--acc);border-radius:14px;padding:16px 20px;max-width:760px;margin:18px auto;font-size:1rem;line-height:1.8;color:var(--ink);}
+.insight b{color:var(--acc);}
+</style>
+</head>
+<body class="teachany-elementary">
+
+<!-- s01 封面 -->
+<section class="slide-page" id="slide-1" data-bloom="understand">
+  <div class="slide-inner" style="text-align:center;">
+    <img class="hero" src="assets/info-m-internet-architecture-hero.webp" alt="互联网结构与协议初识 封面图">
+    <span class="abt-tag">为什么学 · ABT</span>
+    <h1 style="color:var(--ink);margin:8px 0 10px;">互联网结构与协议初识</h1>
+    <p style="color:var(--mu);font-size:1.15rem;max-width:680px;margin:0 auto;line-height:1.9;">
+      你输入网址按回车，网页瞬间出现<b style="color:var(--ink);">——中间发生了什么？</b><br>
+      数据怎么从你的手机"飞"到千里之外的服务器，再"飞"回来？<br>
+      这节课，拆开互联网的"黑盒子"，看看里面的结构与规则。
+    </p>
+    <p style="margin-top:20px;color:var(--mu);">初中信息科技 · 七年级 · 互联网应用与创新</p>
+  </div>
+</section>
+
+<!-- s02 问题锚点 -->
+<section class="slide-page" id="slide-2" data-bloom="understand">
+  <div class="slide-inner">
+    <p class="big-q">🌐 你在北京输入 www.baidu.com，<br>百度的服务器可能在上海、深圳、甚至美国——<br>数据怎么知道该往哪走？<br>又怎么保证不会"迷路"？</p>
+    <p style="text-align:center;color:var(--mu);font-size:1.1rem;margin-top:26px;line-height:2;">
+      靠的是两样东西：<b style="color:var(--acc);">结构</b>（互联网怎么组织）和<b style="color:var(--acc);">协议</b>（通信的规则）。<br>
+      结构回答"往哪走"，协议回答"怎么走"。
+    </p>
+    <p style="text-align:center;margin-top:22px;color:var(--mu);font-size:1.05rem;">带着这个问题，拆开互联网的"黑盒子"。</p>
+  </div>
+</section>
+
+<!-- s03 学习目标 -->
+<section class="slide-page" id="slide-3" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎯 今天的学习目标</h2>
+    <div class="obj-grid">
+      <div class="obj-card"><b>目标 1</b>：说出互联网的客户端-服务器架构</div>
+      <div class="obj-card"><b>目标 2</b>：理解 IP 地址与域名的关系</div>
+      <div class="obj-card"><b>目标 3</b>：说出 TCP/IP 四层模型的名称与作用</div>
+      <div class="obj-card"><b>目标 4</b>：理解"协议"是通信双方约定的规则</div>
+    </div>
+  </div>
+</section>
+
+<!-- s04 互联网是什么 -->
+<section class="slide-page" id="slide-4" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🌍 互联网是什么？</h2>
+    <div class="def-box">
+      <b>互联网（Internet）</b> = 全球数十亿台设备通过<b>统一的规则</b>连接起来的巨型网络。<br><br>
+      它不是"一个"网络，而是"无数个"网络互相连接——<br>
+      家里的 Wi-Fi、学校的校园网、公司的内网、运营商的骨干网……<br>
+      它们通过<b>路由器</b>互相连接，组成"网络的网络"。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 比较它</b>：互联网像"全球公路网"——村村通公路，镇镇有高速，县县连国道，最后汇入全国主干道。数据就像汽车，沿着公路网从 A 地开到 B 地。</div>
+  </div>
+</section>
+
+<!-- s05 客户端-服务器架构 -->
+<section class="slide-page" id="slide-5" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🖥️ 客户端-服务器架构</h2>
+    <div class="arch-wrap">
+      <div class="arch-row">
+        <div class="arch-node client">📱 你的手机/电脑<br><span style="font-size:.85rem;font-weight:400;color:var(--mu);">客户端 Client</span></div>
+        <span class="arch-arrow">⇄</span>
+        <div class="arch-node server">🖥️ 百度/腾讯的服务器<br><span style="font-size:.85rem;font-weight:400;color:var(--mu);">服务器 Server</span></div>
+      </div>
+    </div>
+    <div class="def-box">
+      <b>客户端</b>：发起请求的一方（你的浏览器、微信、抖音 App）<br>
+      <b>服务器</b>：响应请求的一方（存着网页、视频、数据的强大计算机）<br><br>
+      你刷网页 = 客户端发请求 → 服务器找数据 → 服务器发回数据 → 客户端显示
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 迁移它</b>：客户端像"顾客"，服务器像"餐厅后厨"。顾客点菜（发请求），后厨做菜（处理请求），服务员上菜（返回响应）。互联网绝大多数服务都是这个模式。</div>
+  </div>
+</section>
+
+<!-- s06 互动1：请求-响应角色扮演 -->
+<section class="slide-page" id="slide-6" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：请求-响应角色扮演</h2>
+    <p class="interact-note">点击按钮，模拟一次"刷网页"的完整过程。</p>
+    <div style="max-width:680px;margin:14px auto;">
+      <div class="dns-step active" style="display:block;">
+        <b>第 1 步</b>：你在浏览器输入 www.example.com，点击"发送请求"
+      </div>
+      <div class="dns-step" id="step2">
+        <b>第 2 步</b>：浏览器（客户端）把请求打包，发给服务器
+      </div>
+      <div class="dns-step" id="step3">
+        <b>第 3 步</b>：服务器收到请求，找到对应的网页数据
+      </div>
+      <div class="dns-step" id="step4">
+        <b>第 4 步</b>：服务器把网页数据发回给你的浏览器
+      </div>
+      <div class="dns-step" id="step5">
+        <b>第 5 步</b>：浏览器解析数据，显示出网页——你看到了内容！
+      </div>
+    </div>
+    <p style="text-align:center;">
+      <button class="pick-btn primary" onclick="nextStep()">▶ 下一步</button>
+      <button class="pick-btn" onclick="resetSteps()">🔄 重置</button>
+    </p>
+    <div class="fb" id="fb6"></div>
+  </div>
+</section>
+
+<!-- s07 IP地址与域名 -->
+<section class="slide-page" id="slide-7" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🔢 IP 地址与域名</h2>
+    <div class="def-box">
+      <b>IP 地址</b>：每台联网设备的"门牌号"，如 <code style="background:#fff;padding:2px 8px;border-radius:6px;">14.215.177.38</code><br>
+      <b>域名</b>：IP 地址的"好记的名字"，如 <code style="background:#fff;padding:2px 8px;border-radius:6px;">www.baidu.com</code><br><br>
+      域名 → IP 地址的转换，由 <b>DNS（域名系统）</b>完成——就像查电话簿："张三" → 138xxxx1234。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 看见它</b>：你不需要记 14.215.177.38，只需要记 www.baidu.com——DNS 服务器帮你"翻译"。没有 DNS，上网就像要背下全世界的电话号码。</div>
+  </div>
+</section>
+
+<!-- s08 互动2：DNS解析 -->
+<section class="slide-page" id="slide-8" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：DNS 域名解析</h2>
+    <p class="interact-note">点击域名，让 DNS 服务器帮你"翻译"成 IP 地址。</p>
+    <div style="max-width:640px;margin:14px auto;background:#fff;border:2px solid #ecd9b8;border-radius:14px;padding:18px;">
+      <p style="text-align:center;font-weight:800;color:var(--ink);font-size:1.05rem;margin-bottom:14px;">
+        输入域名：<span id="dns-input" style="color:var(--acc2);">www.example.com</span>
+      </p>
+      <div style="text-align:center;margin:14px 0;">
+        <button class="pick-btn primary" onclick="resolveDNS()">🔍 开始解析</button>
+      </div>
+      <div id="dns-result" style="display:none;text-align:center;">
+        <div style="background:var(--soft2);border-radius:10px;padding:14px;margin:10px 0;">
+          <span style="font-size:.9rem;color:var(--mu);">DNS 服务器查询结果</span><br>
+          <span style="font-size:1.2rem;font-weight:800;color:var(--ok);">93.184.216.34</span>
+        </div>
+        <p style="color:var(--ink);font-size:.98rem;">✅ 浏览器现在知道该连接哪台服务器了！</p>
+      </div>
+      <div class="fb" id="fb8"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s09 协议是什么 -->
+<section class="slide-page" id="slide-9" data-bloom="understand">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">📜 协议是什么？</h2>
+    <div class="def-box">
+      <b>协议（Protocol）</b> = 通信双方<b>事先约定好的规则</b>。<br><br>
+      就像两个人打电话：<br>
+      ① 先拨号（建立连接）→ ② 说"喂，你好"（打招呼）→ ③ 说正事（传输数据）→ ④ 说"再见"（结束连接）<br><br>
+      如果一方说中文、一方说英文——无法沟通。<br>
+      协议就是确保"双方说同一种语言"的规则。
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 迁移它</b>：HTTP 是"网页传输协议"，SMTP 是"邮件传输协议"，FTP 是"文件传输协议"——不同的"事"，用不同的"话"说。</div>
+  </div>
+</section>
+
+<!-- s10 TCP/IP 四层模型 -->
+<section class="slide-page" id="slide-10" data-bloom="remember">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🏗️ TCP/IP 四层模型</h2>
+    <div class="layer-stack">
+      <div class="layer-item"><span class="ln">4</span><span class="lt">应用层</span><span class="ld">HTTP、DNS、SMTP——你直接用的协议</span></div>
+      <div class="layer-item"><span class="ln">3</span><span class="lt">传输层</span><span class="ld">TCP、UDP——确保数据完整到达</span></div>
+      <div class="layer-item"><span class="ln">2</span><span class="lt">网络层</span><span class="ld">IP——负责"找路"，把数据送到对方</span></div>
+      <div class="layer-item"><span class="ln">1</span><span class="lt">链路层</span><span class="ld">Wi-Fi、网线——真正"跑路"的物理通道</span></div>
+    </div>
+    <div class="insight">🔍 <b>深层理解 · 看见它</b>：寄快递也是"分层"的——你写地址（应用层）→ 快递公司分拣（传输层）→ 货车走高速（网络层）→ 快递员送货上门（链路层）。每一层只关心自己的事，合起来完成大任务。</div>
+  </div>
+</section>
+
+<!-- s11 互动3：数据包旅行记 -->
+<section class="slide-page" id="slide-11" data-bloom="apply">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🎮 互动：数据包旅行记</h2>
+    <p class="interact-note">点击"出发"，看一个数据包从你的手机到服务器的完整旅程。</p>
+    <div class="packet-journey">
+      <div class="journey-track" id="journey">
+        <div class="journey-node active" data-step="0"><span class="jn-icon">📱</span><span class="jn-name">你的手机</span><span class="jn-role">应用层</span></div>
+        <span class="arch-arrow">→</span>
+        <div class="journey-node" data-step="1"><span class="jn-icon">📦</span><span class="jn-name">TCP 打包</span><span class="jn-role">传输层</span></div>
+        <span class="arch-arrow">→</span>
+        <div class="journey-node" data-step="2"><span class="jn-icon">🗺️</span><span class="jn-name">IP 寻址</span><span class="jn-role">网络层</span></div>
+        <span class="arch-arrow">→</span>
+        <div class="journey-node" data-step="3"><span class="jn-icon">📡</span><span class="jn-name">Wi-Fi 发送</span><span class="jn-role">链路层</span></div>
+        <span class="arch-arrow">→</span>
+        <div class="journey-node" data-step="4"><span class="jn-icon">🌐</span><span class="jn-name">路由器</span><span class="jn-role">网络层</span></div>
+        <span class="arch-arrow">→</span>
+        <div class="journey-node" data-step="5"><span class="jn-icon">🖥️</span><span class="jn-name">服务器</span><span class="jn-role">终点</span></div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--ink);font-size:1.02rem;margin-top:10px;">
+      当前位置：<b id="journey-pos" style="color:var(--acc);">你的手机（应用层）</b>
+    </p>
+    <p style="text-align:center;">
+      <button class="pick-btn primary" onclick="travelNext()">▶ 出发</button>
+      <button class="pick-btn" onclick="travelReset()">🔄 重置</button>
+    </p>
+    <div class="fb" id="fb11"></div>
+  </div>
+</section>
+
+<!-- s12 易错点 -->
+<section class="slide-page" id="slide-12" data-bloom="analyze">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">⚠️ 三大易错点</h2>
+    <div class="mis-list">
+      <div class="mis-item"><b>易错点 1</b>：以为"互联网=万维网"——互联网是"基础设施"（硬件+协议），万维网（WWW）只是互联网上的一个应用（网页浏览）。微信、游戏、视频通话都跑在互联网上，但不是万维网。</div>
+      <div class="mis-item"><b>易错点 2</b>：以为"域名就是IP"——域名是给人看的名字，IP 是给机器看的地址。DNS 负责翻译，但一个域名可能对应多个 IP（负载均衡），一个 IP 也可能对应多个域名。</div>
+      <div class="mis-item"><b>易错点 3</b>：以为"协议是某一层的事"——TCP/IP 四层模型中，每一层都有自己的协议。HTTP 在应用层，TCP 在传输层，IP 在网络层——它们分工合作，缺一不可。</div>
+    </div>
+  </div>
+</section>
+
+<!-- s13 前测 -->
+<section class="slide-page" id="slide-13" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">✏️ 小测验 · 基础关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：客户端-服务器架构中，"客户端"是指？</h4>
+      <button class="opt" onclick="checkQuiz(this,true,'')">发起请求的一方（如你的浏览器）</button>
+      <button class="opt" onclick="checkQuiz(this,false,'服务器是响应请求的一方。')">响应请求的一方</button>
+      <button class="opt" onclick="checkQuiz(this,false,'路由器是网络层设备，不是客户端。')">连接网络的路由器</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：DNS 的作用是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'传输数据是 TCP/UDP 的事。')">传输数据</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">把域名翻译成 IP 地址</button>
+      <button class="opt" onclick="checkQuiz(this,false,'建立连接是 TCP 的事。')">建立网络连接</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s14 后测 -->
+<section class="slide-page" id="slide-14" data-bloom="evaluate">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🚀 小测验 · 提高关</h2>
+    <div class="quiz-box">
+      <h4>第 1 题：TCP/IP 四层模型从上到下依次是？</h4>
+      <button class="opt" onclick="checkQuiz(this,true,'')">应用层 → 传输层 → 网络层 → 链路层</button>
+      <button class="opt" onclick="checkQuiz(this,false,'顺序反了——应用层在最上，链路层在最下。')">链路层 → 网络层 → 传输层 → 应用层</button>
+      <button class="opt" onclick="checkQuiz(this,false,'传输层在网络层之上——TCP 依赖 IP 来寻址。')">应用层 → 网络层 → 传输层 → 链路层</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+    <div class="quiz-box">
+      <h4>第 2 题：关于"协议"，正确的说法是？</h4>
+      <button class="opt" onclick="checkQuiz(this,false,'协议是通信规则——没有协议，双方无法"对话"。')">协议是可选的，可有可无</button>
+      <button class="opt" onclick="checkQuiz(this,true,'')">协议是通信双方事先约定好的规则</button>
+      <button class="opt" onclick="checkQuiz(this,false,'协议不只一种——HTTP、SMTP、FTP 都是协议。')">互联网只有一种协议</button>
+      <div class="quiz-diagnosis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- s15 总结+作业 -->
+<section class="slide-page" id="slide-15" data-bloom="create">
+  <div class="slide-inner">
+    <h2 style="text-align:center;color:var(--ink);">🌟 总结与分层作业</h2>
+    <div class="def-box" style="margin-bottom:18px;">
+      今天学会了：<br>
+      ✔ 互联网 = 无数网络通过统一规则连接起来的"网络的网络"<br>
+      ✔ 客户端-服务器架构：客户端发请求，服务器响应请求<br>
+      ✔ IP 地址是门牌号，域名是好记的名字，DNS 负责翻译<br>
+      ✔ 协议 = 通信双方约定的规则；TCP/IP 四层模型：应用层→传输层→网络层→链路层
+    </div>
+    <div class="hw-grid">
+      <div class="hw-card hw-a"><h4>🌱 基础</h4>在电脑上打开命令行，输入 ping www.baidu.com，观察返回的 IP 地址。</div>
+      <div class="hw-card hw-b"><h4>🌿 提高</h4>画出"你刷网页"的完整流程图，标出客户端、服务器、DNS、TCP/IP 各层的作用。</div>
+      <div class="hw-card hw-c"><h4>🌳 拓展</h4>查阅资料：IPv4 和 IPv6 有什么区别？为什么需要 IPv6？写一段 100 字解释。</div>
+    </div>
+  </div>
+</section>
+
+<div data-teachany-tutor-card data-course="info-m-internet-architecture" data-node="it-m-internet-architecture"></div>
+
+<script src="/assets/scripts/teachany-paged-patch.js"></script>
+<script src="/assets/scripts/ai-tutor.js" defer></script>
+<script src="/assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="/assets/scripts/teachany-tts-narrator.js" data-teachany-audio-playlist='[{"section":"s01","src":"tts/s01.mp3"},{"section":"s02","src":"tts/s02.mp3"},{"section":"s03","src":"tts/s03.mp3"},{"section":"s04","src":"tts/s04.mp3"},{"section":"s05","src":"tts/s05.mp3"},{"section":"s06","src":"tts/s06.mp3"},{"section":"s07","src":"tts/s07.mp3"},{"section":"s08","src":"tts/s08.mp3"},{"section":"s09","src":"tts/s09.mp3"},{"section":"s10","src":"tts/s10.mp3"},{"section":"s11","src":"tts/s11.mp3"},{"section":"s12","src":"tts/s12.mp3"},{"section":"s13","src":"tts/s13.mp3"},{"section":"s14","src":"tts/s14.mp3"},{"section":"s15","src":"tts/s15.mp3"}]'></script>
+<script src="/assets/scripts/teachany-section-hints.js"></script>
+<script>
+/* 互动1：请求-响应步骤 */
+(function(){
+  let cur=1;
+  const steps=[null,document.getElementById('step2'),document.getElementById('step3'),document.getElementById('step4'),document.getElementById('step5')];
+  window.nextStep=function(){
+    if(cur>4){
+      document.getElementById('fb6').className='fb good';
+      document.getElementById('fb6').textContent='🎉 完成！一次"刷网页"共 5 步：输入→请求→处理→响应→显示。';
+      return;
+    }
+    steps[cur].classList.add('active');
+    cur++;
+    if(cur>4){
+      document.getElementById('fb6').className='fb good';
+      document.getElementById('fb6').textContent='🎉 完成！客户端发请求 → 服务器处理 → 客户端显示——这就是请求-响应模式。';
+    }
+  };
+  window.resetSteps=function(){
+    cur=1;
+    steps.forEach(s=>{if(s)s.classList.remove('active');});
+    document.getElementById('fb6').textContent='';
+  };
+})();
+
+/* 互动2：DNS解析 */
+(function(){
+  window.resolveDNS=function(){
+    document.getElementById('dns-result').style.display='block';
+    document.getElementById('fb8').className='fb good';
+    document.getElementById('fb8').textContent='✅ DNS 解析成功！浏览器现在知道该连接 93.184.216.34 了。';
+  };
+})();
+
+/* 互动3：数据包旅行 */
+(function(){
+  let cur=0;
+  const names=['你的手机（应用层）','TCP 打包（传输层）','IP 寻址（网络层）','Wi-Fi 发送（链路层）','路由器转发（网络层）','服务器（终点）'];
+  const nodes=document.querySelectorAll('#journey .journey-node');
+  window.travelNext=function(){
+    if(cur>=5){
+      document.getElementById('fb11').className='fb good';
+      document.getElementById('fb11').textContent='🎉 数据包到达服务器！服务器会按相反路径把响应发回——旅行完成。';
+      return;
+    }
+    nodes[cur].classList.remove('active');
+    cur++;
+    nodes[cur].classList.add('active');
+    document.getElementById('journey-pos').textContent=names[cur];
+    if(cur===5){
+      document.getElementById('fb11').className='fb good';
+      document.getElementById('fb11').textContent='🎉 到达服务器！数据包经过了应用层→传输层→网络层→链路层→网络层→服务器。';
+    }
+  };
+  window.travelReset=function(){
+    cur=0;
+    nodes.forEach(n=>n.classList.remove('active'));
+    nodes[0].classList.add('active');
+    document.getElementById('journey-pos').textContent=names[0];
+    document.getElementById('fb11').textContent='';
+  };
+})();
+
+/* 测验 */
+function checkQuiz(el,ok,diag){
+  const box=el.closest('.quiz-box');
+  box.querySelectorAll('.opt').forEach(o=>o.classList.remove('right','wrong'));
+  el.classList.add(ok?'right':'wrong');
+  box.querySelector('.quiz-diagnosis').textContent = ok ? '✅ 回答正确！' : '💡 '+diag;
+}
+</script>
+</body>
+</html>

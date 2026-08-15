@@ -1,0 +1,28 @@
+{
+  "course_id": "info-m-internet-architecture",
+  "title": "互联网结构与协议初识",
+  "subject": "info-tech",
+  "stage": "middle",
+  "grade": 7,
+  "node_id": "it-m-internet-architecture",
+  "domain": "internet-innovation",
+  "lesson_type": "新授课",
+  "version": "1.0.0",
+  "teachany_version": "7.21.0",
+  "prerequisites": [
+    "it-e-online-basics",
+    "it-e-internet-services"
+  ],
+  "feedback_password": null,
+  "feedback_password_declined": true,
+  "created": "2026-08-15",
+  "assets": {
+    "hero": "assets/info-m-internet-architecture-hero.webp"
+  },
+  "tts": {
+    "engine": "edge-neural",
+    "voice": "zh-CN-XiaoyiNeural",
+    "rate": "-8%",
+    "segments": 15
+  }
+}
