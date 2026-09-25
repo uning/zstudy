@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>英语高考总复习 · 语法基础知识与常考点</title>
+<meta name="description" content="高考英语语法总复习互动课件：16 时态矩阵、被动语态、代词格、介词四大基础，时态语态、非谓语动词、三大从句、虚拟语气与特殊句式四大常考点，配 8 道真题风格练习。">
+
+<!-- TeachAny routing meta -->
+<meta name="course-id" content="english-gaokao-grammar">
+<meta name="course-title" content="英语高考总复习 · 语法基础知识与常考点">
+<meta name="course-subject" content="english">
+<meta name="course-grade" content="高中·高三总复习">
+<meta name="course-version" content="1.0.0">
+<meta name="teachany-version" content="7.21.0">
+<meta name="teachany-node" content="eng-h-advanced-grammar">
+<meta name="teachany-subject" content="english">
+<meta name="teachany-grade" content="12">
+<meta name="teachany-stage" content="high">
+<meta name="teachany-domain" content="grammar-h">
+<meta name="teachany-lesson-type" content="review">
+<meta name="teachany-template-version" content="2.0-zstudy">
+
+<style>
+/* ======================================================
+   TeachAny v2 Design System — 高中学段深色模式（自包含版）
+   ====================================================== */
+:root {
+  --bg: #07111f;
+  --bg-subtle: #0b1628;
+  --panel: #101d32;
+  --card: #14233a;
+  --line: #25415f;
+  --line-subtle: rgba(148, 163, 184, 0.12);
+  --text: #eef6ff;
+  --text-secondary: #c8d8ea;
+  --muted: #9fb4cc;
+  --brand: #38bdf8;
+  --brand-soft: rgba(56, 189, 248, 0.12);
+  --brand-2: #a78bfa;
+  --brand-2-soft: rgba(167, 139, 250, 0.12);
+  --accent: #34d399;
+  --accent-soft: rgba(52, 211, 153, 0.1);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --safe-bottom: env(safe-area-inset-bottom);
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+  --toolbar-height: 56px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+button, a, input { min-height: 44px; }
+img { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+code, kbd { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.slide-container {
+  scroll-snap-type: y proximity;
+  overflow-y: auto;
+  height: 100dvh;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.slide-page {
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height) + 24px);
+  position: relative;
+}
+.slide-page .slide-inner { max-width: 880px; width: 100%; position: relative; z-index: 2; margin: 0 auto; }
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+
+.slide-page[data-page-type="cover"] {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.15), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(167, 139, 250, 0.12), transparent 50%);
+  text-align: center;
+}
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(30px, 6.5vw, 52px);
+  line-height: 1.15;
+  background: linear-gradient(135deg, var(--text) 0%, var(--brand) 50%, var(--brand-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.slide-page[data-page-type="cover"] .subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(16px, 3vw, 21px);
+  max-width: 680px;
+  margin: 0 auto;
+}
+.slide-page[data-page-type="objectives"] {
+  background: radial-gradient(circle at 0% 100%, rgba(52, 211, 153, 0.1), transparent 40%);
+}
+.slide-page[data-page-type="concept"] {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.08), transparent 35%),
+    radial-gradient(circle at 70% 80%, rgba(167, 139, 250, 0.06), transparent 35%);
+}
+.slide-page[data-page-type="interactive"] {
+  background: radial-gradient(circle at 50% 0%, rgba(52, 211, 153, 0.1), transparent 40%);
+}
+.slide-page[data-page-type="quiz"] {
+  background: radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.08), transparent 35%);
+}
+.slide-page[data-page-type="summary"] {
+  background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.1), transparent 45%);
+}
+
+.teachany-brand-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 20px;
+  background: rgba(7, 17, 31, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle);
+}
+.brand-logo { display: flex; align-items: center; gap: 8px; color: #f8fafc; text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #07111f; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-version { color: #cbd5e1; font-family: ui-monospace, Menlo, monospace; background: rgba(255,255,255,.06); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+.card {
+  background: linear-gradient(160deg, rgba(20, 35, 58, 0.95), rgba(11, 22, 40, 0.98));
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+.card-accent { border-top: 3px solid; border-image: linear-gradient(90deg, var(--brand), var(--brand-2)) 1; }
+
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; line-height: 1.3; }
+
+.phase-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand); background: var(--brand-soft);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 999px; padding: 5px 12px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.phase-tag[data-variant="success"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(52, 211, 153, 0.2); }
+.phase-tag[data-variant="purple"] { color: var(--brand-2); background: var(--brand-2-soft); border-color: rgba(167, 139, 250, 0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.2); }
+
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid > * { min-width: 0; }
+
+.objectives { display: grid; gap: 10px; list-style: none; padding: 0; margin: 0; }
+.objectives li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 16px; border-radius: var(--card-radius-sm);
+  background: rgba(56, 189, 248, 0.04); border: 1px solid var(--line-subtle);
+}
+.objectives li::before { content: "✦"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+.choice {
+  width: 100%; text-align: left;
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: var(--card-radius-sm);
+  background: rgba(56, 189, 248, 0.04);
+  color: var(--text); padding: 16px 20px; cursor: pointer;
+  font-size: 15px; line-height: 1.5; transition: all 0.2s ease;
+}
+.choice:hover { background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.35); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(56, 189, 248, 0.15); }
+
+input {
+  width: 100%; border-radius: 12px; border: 1px solid var(--line);
+  background: var(--bg-subtle); color: var(--text);
+  padding: 14px 16px; font-size: 15px;
+}
+input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12); }
+
+.result { padding: 14px 18px; border-radius: var(--card-radius-sm); background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.2); font-size: 15px; line-height: 1.6; }
+.result.warn { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); }
+.result.error { background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.2); }
+
+/* ─── 数据表格 ─── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.data-table th, .data-table td { padding: 10px 12px; border: 1px solid var(--line-subtle); text-align: center; }
+.data-table thead th { background: rgba(56, 189, 248, 0.1); color: var(--brand); font-weight: 700; }
+.data-table tbody th { background: rgba(167, 139, 250, 0.08); color: var(--brand-2); font-weight: 600; white-space: nowrap; }
+.table-scroll { overflow-x: auto; border-radius: var(--card-radius-sm); border: 1px solid var(--line-subtle); }
+
+/* 时态矩阵可点击单元格 */
+.tense-cell { cursor: pointer; transition: background 0.2s; min-width: 110px; }
+.tense-cell:hover { background: rgba(56, 189, 248, 0.12); }
+.tense-cell.active { background: rgba(56, 189, 248, 0.2); outline: 2px solid var(--brand); }
+.tense-cell .form { display: block; font-family: ui-monospace, Menlo, monospace; color: var(--accent); font-size: 13px; margin-top: 4px; }
+.tense-cell .hot { color: var(--warn); font-size: 12px; }
+.tense-cell.no-passive { opacity: 0.55; }
+.tense-cell.no-passive .form { color: var(--muted); text-decoration: line-through; }
+
+.detail-panel {
+  margin-top: 14px; padding: 16px 18px;
+  border-radius: var(--card-radius-sm);
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  min-height: 88px; font-size: 15px;
+}
+.detail-panel .dp-title { font-weight: 700; color: var(--brand); margin-bottom: 6px; }
+.detail-panel .dp-example { color: var(--text-secondary); }
+.detail-panel .dp-example em { color: var(--accent); font-style: normal; font-weight: 600; }
+.detail-panel .dp-tip { color: var(--warn); font-size: 13.5px; margin-top: 6px; }
+
+.switch-row { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+.toggle-btn {
+  border: 1px solid var(--line); background: var(--bg-subtle); color: var(--text);
+  border-radius: 999px; padding: 8px 18px; cursor: pointer; font-size: 14px; transition: all 0.2s;
+}
+.toggle-btn.active { background: var(--brand-soft); border-color: var(--brand); color: var(--brand); font-weight: 700; }
+
+/* 练习页 */
+.quiz-item { padding: 16px; border: 1px solid var(--line-subtle); border-radius: var(--card-radius-sm); margin-bottom: 14px; background: rgba(255,255,255,0.02); }
+.quiz-item .q-text { font-size: 15.5px; margin-bottom: 10px; }
+.quiz-item .q-text .blank { color: var(--warn); font-weight: 700; }
+.quiz-item .q-row { display: flex; gap: 10px; }
+.quiz-item input { flex: 1; min-height: 44px; }
+.quiz-item .check-btn {
+  border: none; border-radius: 12px; padding: 0 20px; cursor: pointer;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #07111f; font-weight: 700; font-size: 14px;
+}
+.quiz-item .q-feedback { margin-top: 10px; font-size: 14px; display: none; }
+.quiz-item.correct .q-feedback, .quiz-item.wrong .q-feedback { display: block; }
+.quiz-item.correct { border-color: rgba(34, 197, 94, 0.5); }
+.quiz-item.wrong { border-color: rgba(239, 68, 68, 0.5); }
+.quiz-item .q-answer { color: var(--accent); font-weight: 700; }
+.quiz-item .q-analysis { color: var(--muted); margin-top: 4px; }
+
+.score-bar { position: sticky; top: 56px; z-index: 5; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag-list .tag {
+  padding: 6px 14px; border-radius: 999px; font-size: 13px;
+  background: rgba(56, 189, 248, 0.08); border: 1px solid var(--line-subtle); color: var(--text-secondary);
+}
+.tag-list .tag.hot { background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.3); color: var(--warn); }
+
+.formula {
+  font-family: ui-monospace, Menlo, monospace;
+  background: var(--bg-subtle); border: 1px solid var(--line);
+  border-radius: 10px; padding: 10px 14px; display: inline-block;
+  color: var(--accent); font-size: 15px; margin: 4px 0;
+}
+
+.step-flow { display: grid; gap: 10px; counter-reset: step; }
+.step-flow .step {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 16px; border-radius: var(--card-radius-sm);
+  background: rgba(167, 139, 250, 0.06); border: 1px solid var(--line-subtle);
+}
+.step-flow .step::before {
+  counter-increment: step; content: counter(step);
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #07111f; font-weight: 800; font-size: 14px;
+}
+
+/* 底部工具栏 + 侧导航 */
+.slide-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--brand-2)); z-index: 200; transition: width 0.3s ease; }
+.slide-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 20px; padding-bottom: calc(10px + var(--safe-bottom));
+  background: rgba(7, 17, 31, 0.92); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+}
+.toolbar-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: none; border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06); color: var(--text); cursor: pointer; font-size: 16px; transition: all 0.2s;
+}
+.toolbar-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.toolbar-btn.speaking { background: var(--accent-soft); color: var(--accent); }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, Menlo, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); transition: width 0.3s ease; }
+
+.slide-sidenav {
+  position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 90;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 3px;
+  max-height: 70vh; overflow-y: auto; scrollbar-width: none;
+  padding: 8px 4px; border-radius: 12px;
+  background: rgba(7, 17, 31, 0.4); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.slide-sidenav::-webkit-scrollbar { display: none; }
+.sidenav-dot { width: 28px; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.12); border: none; cursor: pointer; transition: all 0.3s; position: relative; padding: 0; min-height: 4px; flex-shrink: 0; }
+.sidenav-dot.active { background: var(--brand); width: 36px; height: 5px; }
+.sidenav-dot[data-tooltip]::before {
+  content: attr(data-tooltip); position: absolute; right: calc(100% + 10px); top: 50%; transform: translateY(-50%);
+  padding: 5px 10px; background: rgba(7, 17, 31, 0.95); border: 1px solid var(--line); border-radius: 6px;
+  color: var(--text); font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.sidenav-dot:hover[data-tooltip]::before { opacity: 1; }
+.sidenav-counter { font-size: 10px; color: rgba(255, 255, 255, 0.5); text-align: center; padding: 4px 0 2px; width: 100%; }
+
+.ta-standard-figure { margin: 20px auto; max-width: 880px; }
+.ta-standard-figure img { display: block; width: 100%; border-radius: 16px; border: 1px solid var(--line-subtle); }
+.ta-standard-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; text-align: center; }
+
+.text-gradient { background: linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.muted { color: var(--muted); }
+.mt { margin-top: 14px; }
+.video-link { display: inline-block; }
+
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; }
+  .grid.grid-2, .grid.grid-3 { grid-template-columns: 1fr; }
+  .card { padding: 18px; }
+  .slide-sidenav { right: 6px; }
+  .brand-name { display: none; }
+  .quiz-item .q-row { flex-direction: column; }
+  .quiz-item .check-btn { min-height: 44px; }
+}
+</style>
+</head>
+<body>
+
+<div class="slide-progress-bar" id="slide-progress-bar" style="width: 0%"></div>
+
+<div class="teachany-brand-bar">
+  <span class="brand-logo"><span class="brand-mark">G</span><span class="brand-name">高考英语语法</span></span>
+  <div class="brand-right">
+    <span class="brand-version">v1.0 · TeachAny skill v7.21</span>
+  </div>
+</div>
+
+<div class="slide-container" id="slide-container">
+
+  <!-- Page 1: 封面 -->
+  <section class="slide-page" data-page-type="cover" data-page-index="0" data-tts="s01" data-tsh="开场">
+    <div class="slide-inner">
+      <h1>英语高考总复习<br>语法基础知识 × 常考点</h1>
+      <p class="subtitle">语法填空和短文改错，为什么"语感"总靠不住？<br>因为命题人考的是<strong style="color:var(--warn)">规则</strong>，不是感觉。</p>
+      <figure class="ta-standard-figure" id="hero-figure" style="display:none">
+        <img id="hero-img" src="./assets/english-gaokao-grammar-hero.png" alt="高考英语语法知识结构图：时态矩阵、被动语态、非谓语动词、三大从句、虚拟语气" onerror="document.getElementById('hero-figure').style.display='none'">
+        <figcaption>高考语法知识主线图：四大基础 + 四大常考点</figcaption>
+      </figure>
+      <p class="muted mt" style="font-size:14px">素材依据：语法概念汇总页（16 时态矩阵 · 被动语态矩阵 · 代词格 · 介词表）</p>
+    </div>
+  </section>
+
+  <!-- Page 2: 问题锚点 -->
+  <section class="slide-page" data-page-type="interactive" data-page-index="1" data-tts="s02" data-tsh="问题锚点">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag">Problem Anchor</span>
+          <h2>你最容易在哪里丢分？</h2>
+        </div>
+        <p class="muted" style="margin:0 0 16px">选一个最扎心的问题，后面的复习就围绕它展开。</p>
+        <div class="grid" id="problem-anchor-choices">
+          <button class="choice" data-anchor-choice="语法填空没提示词时不知道填什么">语法填空没有提示词的空，完全不知道填什么</button>
+          <button class="choice" data-anchor-choice="时态语态总是混淆，完成时和过去时分不清">时态语态混淆：现在完成时和一般过去时总选错</button>
+          <button class="choice" data-anchor-choice="非谓语动词 to do / doing / done 不会判断">非谓语动词 to do / doing / done 不会判断</button>
+          <button class="choice" data-anchor-choice="定语从句和名词性从句的连接词不会选">从句连接词不会选：that / which / what 分不清</button>
+        </div>
+        <label style="display:block;margin-top:20px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+          <input id="learner-question-input" placeholder="把你卡住的语法问题写在这里" style="margin-top:8px">
+        </label>
+        <p id="anchor-feedback" class="result warn" style="margin-top:16px">选择或输入后，本课会围绕你的问题展开。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 3: 学习目标 -->
+  <section class="slide-page" data-page-type="objectives" data-page-index="2" data-tts="s03" data-tsh="学习目标">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">Objectives</span>
+          <h2>学习目标</h2>
+        </div>
+        <ul class="objectives">
+          <li>掌握 <strong>16 种时态</strong>的"时间 × 状态"矩阵结构，能默写任意一格的构成形式</li>
+          <li>掌握 <strong>被动语态</strong>的构成规律：be + done，知道 16 个时态中哪 6 个没有被动</li>
+          <li>熟记<strong>人称代词四格</strong>与<strong>高频介词</strong>的核心用法，能辨析 in / on / at</li>
+          <li>掌握四大常考点的解题规则：时态语态标志词、非谓语三步法、从句连接词决策、虚拟语气与特殊句式</li>
+          <li>完成 8 道高考风格语法填空，正确率达到 6/8 以上</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 4: 语法体系全景 -->
+  <section class="slide-page" data-page-type="concept" data-page-index="3" data-tts="s04" data-tsh="语法体系全景">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="purple">Overview</span>
+          <h2>语法体系全景：词法 × 句法</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3 style="color:var(--brand);font-size:17px;margin-bottom:10px">词法（词的规则）</h3>
+            <div class="tag-list">
+              <span class="tag">构词法</span><span class="tag hot">名词</span><span class="tag hot">冠词</span>
+              <span class="tag">代词</span><span class="tag hot">介词</span><span class="tag hot">时态</span>
+              <span class="tag hot">被动语态</span><span class="tag hot">非谓语动词</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="color:var(--brand-2);font-size:17px;margin-bottom:10px">句法（句的规则）</h3>
+            <div class="tag-list">
+              <span class="tag hot">三大从句</span><span class="tag hot">虚拟语气</span><span class="tag">主谓一致</span>
+              <span class="tag">倒装句</span><span class="tag">强调句</span><span class="tag">省略</span>
+              <span class="tag">独立主格</span>
+            </div>
+          </div>
+        </div>
+        <p class="muted mt" style="font-size:14px;margin-bottom:0">🔥 标记为高考高频考点。本课路线：先打牢 4 张基础表（时态 / 被动 / 代词 / 介词），再攻克 4 组常考法。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 5: 基础① 16 时态矩阵 -->
+  <section class="slide-page" data-page-type="interactive" data-page-index="4" data-tts="s05" data-tsh="基础一 · 时态矩阵">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">基础 ①</span>
+          <h2>16 时态矩阵：时间 × 状态</h2>
+        </div>
+        <p class="muted" style="margin:0 0 12px;font-size:14px">4 种时间 × 4 种状态 = 16 个时态。<strong style="color:var(--warn)">★ 为高考高频</strong>。点击任意格子查看构成与例句。</p>
+        <div class="table-scroll">
+          <table class="data-table" id="tense-table">
+            <thead>
+              <tr><th>时间 \ 状态</th><th>一般</th><th>完成</th><th>进行</th><th>完成进行</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>现在</th>
+                <td class="tense-cell" data-tense="0">现在一般时 <span class="hot">★</span><span class="form">do / does</span></td>
+                <td class="tense-cell" data-tense="1">现在完成时 <span class="hot">★</span><span class="form">have / has done</span></td>
+                <td class="tense-cell" data-tense="2">现在进行时 <span class="hot">★</span><span class="form">am / is / are doing</span></td>
+                <td class="tense-cell" data-tense="3">现在完成进行时<span class="form">have been doing</span></td>
+              </tr>
+              <tr><th>过去</th>
+                <td class="tense-cell" data-tense="4">过去一般时 <span class="hot">★</span><span class="form">did</span></td>
+                <td class="tense-cell" data-tense="5">过去完成时 <span class="hot">★</span><span class="form">had done</span></td>
+                <td class="tense-cell" data-tense="6">过去进行时 <span class="hot">★</span><span class="form">was / were doing</span></td>
+                <td class="tense-cell" data-tense="7">过去完成进行时<span class="form">had been doing</span></td>
+              </tr>
+              <tr><th>将来</th>
+                <td class="tense-cell" data-tense="8">将来一般时 <span class="hot">★</span><span class="form">will do</span></td>
+                <td class="tense-cell" data-tense="9">将来完成时<span class="form">will have done</span></td>
+                <td class="tense-cell" data-tense="10">将来进行时<span class="form">will be doing</span></td>
+                <td class="tense-cell" data-tense="11">将来完成进行时<span class="form">will have been doing</span></td>
+              </tr>
+              <tr><th>过去将来</th>
+                <td class="tense-cell" data-tense="12">过去将来一般时<span class="form">would do</span></td>
+                <td class="tense-cell" data-tense="13">过去将来完成时<span class="form">would have done</span></td>
+                <td class="tense-cell" data-tense="14">过去将来进行时<span class="form">would be doing</span></td>
+                <td class="tense-cell" data-tense="15">过去将来完成进行时<span class="form">would have been doing</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="detail-panel" id="tense-detail">
+          <div class="dp-title">👆 点击矩阵中的任意时态</div>
+          <div class="dp-example">这里会显示它的构成公式、真题例句和高考提示。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 6: 基础② 被动语态 -->
+  <section class="slide-page" data-page-type="interactive" data-page-index="5" data-tts="s06" data-tsh="基础二 · 被动语态">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">基础 ②</span>
+          <h2>被动语态矩阵：be + done</h2>
+        </div>
+        <div class="switch-row">
+          <span class="muted" style="font-size:14px">视图：</span>
+          <button class="toggle-btn active" id="view-active">主动形式</button>
+          <button class="toggle-btn" id="view-passive">被动形式</button>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table" id="passive-table">
+            <thead>
+              <tr><th>时间 \ 状态</th><th>一般</th><th>完成</th><th>进行</th><th>完成进行</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>现在</th><td data-p="0">do</td><td data-p="1">have done</td><td data-p="2">is doing</td><td data-p="3" class="np">have been doing</td></tr>
+              <tr><th>过去</th><td data-p="4">did</td><td data-p="5">had done</td><td data-p="6">was doing</td><td data-p="7" class="np">had been doing</td></tr>
+              <tr><th>将来</th><td data-p="8">will do</td><td data-p="9">will have done</td><td data-p="10" class="np">will be doing</td><td data-p="11" class="np">will have been doing</td></tr>
+              <tr><th>过去将来</th><td data-p="12">would do</td><td data-p="13">would have done</td><td data-p="14" class="np">would be doing</td><td data-p="15" class="np">would have been doing</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="result warn mt" style="font-size:14px">
+          <strong>核心规律：</strong>16 个时态中只有 <strong>10 个有被动语态</strong>。4 个完成进行时 + 将来进行时 + 过去将来进行时 <strong>没有被动</strong>——因为句中两个 be 会连在一起（*been being*），无法自然发音，英语中会用其他方式替代。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 7: 基础③ 人称代词格 -->
+  <section class="slide-page" data-page-type="concept" data-page-index="6" data-tts="s07" data-tsh="基础三 · 代词格">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">基础 ③</span>
+          <h2>人称代词四格速记表</h2>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr><th>人称</th><th>主格</th><th>宾格</th><th>形容词性物主</th><th>名词性物主</th><th>反身</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>我</th><td>I</td><td>me</td><td>my</td><td>mine</td><td>myself</td></tr>
+              <tr><th>我们</th><td>we</td><td>us</td><td>our</td><td>ours</td><td>ourselves</td></tr>
+              <tr><th>你 / 你们</th><td>you</td><td>you</td><td>your</td><td>yours</td><td>yourself / yourselves</td></tr>
+              <tr><th>他</th><td>he</td><td>him</td><td>his</td><td>his</td><td>himself</td></tr>
+              <tr><th>她</th><td>she</td><td>her</td><td>her</td><td>hers</td><td>herself</td></tr>
+              <tr><th>它</th><td>it</td><td>it</td><td>its</td><td>its（罕用）</td><td>itself</td></tr>
+              <tr><th>他们</th><td>they</td><td>them</td><td>their</td><td>theirs</td><td>themselves</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid grid-2 mt">
+          <div class="result" style="font-size:14px"><strong>高考考法 ①：</strong>空格后有名词 → 用形容词性物主代词（<em>my</em> book）；空格后无名词 → 用名词性物主代词（The book is <em>mine</em>）。</div>
+          <div class="result" style="font-size:14px"><strong>高考考法 ②：</strong>动词 / 介词后用宾格（between you and <em>me</em>）；注意 <em>its</em>（它的）与 <em>it's</em>（it is）的辨析是经典陷阱。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 8: 基础④ 介词 -->
+  <section class="slide-page" data-page-type="concept" data-page-index="7" data-tts="s08" data-tsh="基础四 · 介词">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">基础 ④</span>
+          <h2>介词：小词大坑</h2>
+        </div>
+        <p class="muted" style="margin:0 0 12px;font-size:14px">介词不能单独作句子成分，后面必须接名词、代词或相当于名词的成分作宾语。</p>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3 style="color:var(--brand);font-size:16px;margin-bottom:8px">表时间</h3>
+            <div class="tag-list">
+              <span class="tag hot">in 年/月/季</span><span class="tag hot">on 具体某天</span><span class="tag hot">at 时刻点</span>
+              <span class="tag">by 截止</span><span class="tag">until 直到</span><span class="tag">within 之内</span><span class="tag">after about 大约之后</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="color:var(--accent);font-size:16px;margin-bottom:8px">表地点方位</h3>
+            <div class="tag-list">
+              <span class="tag hot">in 在…内</span><span class="tag hot">on 在…上</span><span class="tag hot">at 在某点</span>
+              <span class="tag">under 在…下</span><span class="tag">into 到…里</span><span class="tag">inside / outside</span><span class="tag">from behind 从后面</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="color:var(--brand-2);font-size:16px;margin-bottom:8px">表方式关系</h3>
+            <div class="tag-list">
+              <span class="tag hot">with 和…一起</span><span class="tag hot">by 通过</span><span class="tag hot">for 为了</span>
+              <span class="tag">of 属于</span><span class="tag">to 朝向</span><span class="tag">about 大约/关于</span><span class="tag">without 没有</span><span class="tag">throughout 遍及</span>
+            </div>
+          </div>
+        </div>
+        <div class="result warn mt" style="font-size:14px">
+          <strong>高考常考：</strong>① in / on / at 时间辨析（<em>in</em> 2025, <em>on</em> Monday, <em>at</em> 7:00）；② 固定搭配（depend <em>on</em>, succeed <em>in</em>, be interested <em>in</em>）；③ "介词 + which / whom" 引导定语从句（the way <em>in which</em>…）。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 9: 常考① 时态语态考法 -->
+  <section class="slide-page" data-page-type="concept" data-page-index="8" data-tts="s09" data-tsh="常考一 · 时态语态">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">常考 ①</span>
+          <h2>时态语态：标志词速查</h2>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>标志词 / 语境</th><th>答案方向</th><th>例句</th></tr></thead>
+            <tbody>
+              <tr><td>since, so far, up to now, in recent years</td><td class="form" style="color:var(--accent)">现在完成时 have done</td><td style="text-align:left">So far we <em>have planted</em> 300 trees.</td></tr>
+              <tr><td>by + 过去时间, by the time + 过去句</td><td style="color:var(--accent)">过去完成时 had done</td><td style="text-align:left">By the time he arrived, the meeting <em>had begun</em>.</td></tr>
+              <tr><td>yesterday, last week, ago, in 2019</td><td style="color:var(--accent)">一般过去时 did</td><td style="text-align:left">She <em>left</em> an hour ago.</td></tr>
+              <tr><td>now, at this moment, Look! Listen!</td><td style="color:var(--accent)">现在进行时 is doing</td><td style="text-align:left">Look! They <em>are playing</em> football.</td></tr>
+              <tr><td>when / while 表"正在那时"</td><td style="color:var(--accent)">过去进行时 was doing</td><td style="text-align:left">I <em>was reading</em> when he came in.</td></tr>
+              <tr><td>主语承受动作（by 短语 / 无主语动作执行者）</td><td style="color:var(--accent)">被动 be + done</td><td style="text-align:left">The bridge <em>was built</em> in 1990.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="result mt" style="font-size:14px"><strong>语法填空策略：</strong>动词有提示词 → 先判语态（主语发出还是承受动作），再按时态标志词定时态，最后检查主谓一致（三单）。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 10: 常考② 非谓语动词 -->
+  <section class="slide-page" data-page-type="concept" data-page-index="9" data-tts="s10" data-tsh="常考二 · 非谓语动词">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">常考 ②</span>
+          <h2>非谓语动词：三步判断法</h2>
+        </div>
+        <div class="step-flow">
+          <div class="step"><div><strong>找逻辑主语</strong>：非谓语动词的动作是谁发出的？通常是句子的主语或被修饰的名词。</div></div>
+          <div class="step"><div><strong>判主被动</strong>：逻辑主语<strong>发出</strong>动作 → 主动（doing / to do）；<strong>承受</strong>动作 → 被动（done）。</div></div>
+          <div class="step"><div><strong>判时间</strong>：表目的 / 将来 → <span class="formula">to do</span>；表主动 / 进行 → <span class="formula">doing</span>；表被动 / 完成 → <span class="formula">done</span>。</div></div>
+        </div>
+        <div class="grid grid-3 mt">
+          <div class="card" style="padding:16px"><span class="formula">to do</span><p class="muted" style="font-size:13.5px;margin:6px 0 0">目的、将来、未发生<br><em>To pass the exam</em>, he studies hard.<br>固定：want / decide / hope + to do</p></div>
+          <div class="card" style="padding:16px"><span class="formula">doing</span><p class="muted" style="font-size:13.5px;margin:6px 0 0">主动、进行<br>The girl <em>singing</em> on stage is my sister.<br>固定：avoid / enjoy / finish + doing</p></div>
+          <div class="card" style="padding:16px"><span class="formula">done</span><p class="muted" style="font-size:13.5px;margin:6px 0 0">被动、完成<br>The book <em>written</em> by Lu Xun is famous.<br>固定：have / get sth done</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 11: 常考③ 三大从句 -->
+  <section class="slide-page" data-page-type="concept" data-page-index="10" data-tts="s11" data-tsh="常考三 · 三大从句">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">常考 ③</span>
+          <h2>三大从句：连接词决策表</h2>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>从句类型</th><th>识别方法</th><th>高频连接词</th></tr></thead>
+            <tbody>
+              <tr><th>名词性从句</th><td style="text-align:left">从句作主语 / 宾语 / 表语</td><td style="text-align:left">不缺成分用 <strong>that</strong>；缺"什么"用 <strong>what</strong>；表"是否"用 <strong>whether / if</strong></td></tr>
+              <tr><th>定语从句</th><td style="text-align:left">从句修饰前面的名词（先行词）</td><td style="text-align:left">指人 <strong>who / whom / that</strong>；指物 <strong>which / that</strong>；表时间地点原因 <strong>when / where / why</strong></td></tr>
+              <tr><th>状语从句</th><td style="text-align:left">从句表时间、条件、让步等逻辑</td><td style="text-align:left">时间 <strong>when / while / until</strong>；条件 <strong>if / unless</strong>；让步 <strong>although / even if</strong>；结果 <strong>so…that</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="result warn mt" style="font-size:14px">
+          <strong>只用 that 不用 which 的经典场景：</strong>先行词被最高级 / 序数词 / the only / the very 修饰，或先行词是不定代词（all, everything, nothing）。<br>
+          例：This is the best film <em>that</em> I have ever seen.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 12: 常考④ 虚拟语气 + 特殊句式 -->
+  <section class="slide-page" data-page-type="concept" data-page-index="11" data-tts="s12" data-tsh="常考四 · 虚拟与特殊句式">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">常考 ④</span>
+          <h2>虚拟语气 × 特殊句式速记</h2>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>虚拟时间</th><th>if 从句</th><th>主句</th></tr></thead>
+            <tbody>
+              <tr><th>与现在相反</th><td>did / were</td><td>would do</td></tr>
+              <tr><th>与过去相反</th><td>had done</td><td>would have done</td></tr>
+              <tr><th>与将来相反</th><td>did / were to do / should do</td><td>would do</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid grid-2 mt">
+          <div class="card" style="padding:16px">
+            <h3 style="color:var(--brand);font-size:15px;margin-bottom:8px">特殊句式</h3>
+            <p class="muted" style="font-size:13.5px;margin:0"><strong>倒装</strong>：Not until / Only + 状语 / Never 开头 → 助动词提前（Not until midnight <em>did</em> he come back.）<br><strong>强调</strong>：It is / was + 被强调部分 + <em>that</em>…<br><strong>省略</strong>：状语从句主语与主句一致且含 be → 可省（When <em>(he was) asked</em>, he smiled.）</p>
+          </div>
+          <div class="card" style="padding:16px">
+            <h3 style="color:var(--brand-2);font-size:15px;margin-bottom:8px">主谓一致 & 独立主格</h3>
+            <p class="muted" style="font-size:13.5px;margin:0"><strong>就远原则</strong>：with / together with / as well as 连接时，谓语看前面主语。<br><strong>就近原则</strong>：there be / either…or / not only…but also 看最近主语。<br><strong>独立主格</strong>：名词 / 代词 + 分词，自带逻辑主语（<em>Weather permitting</em>, we will go.）</p>
+          </div>
+        </div>
+        <div class="result mt" style="font-size:14px"><strong>虚拟信号词</strong>：suggest / demand / insist / require 后的宾语从句用 (should) do；wish / if only / would rather 后按上表退一步时态。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 13: 互动练习 -->
+  <section class="slide-page" data-page-type="quiz" data-page-index="12" data-tts="s13" data-tsh="实战练习 · 8题">
+    <div class="slide-inner">
+      <div class="card" style="max-height:calc(100dvh - 140px);overflow-y:auto">
+        <div class="section-header score-bar" style="background:inherit">
+          <span class="phase-tag" data-variant="warn">Practice</span>
+          <h2>高考风格实战：8 题语法填空</h2>
+          <span class="phase-tag" data-variant="success" id="quiz-score">得分 0 / 8</span>
+        </div>
+        <p class="muted" style="margin:0 0 14px;font-size:14px">在空格处填入正确的词（形式），点击"判定"获得即时反馈与解析。</p>
+        <div id="quiz-list"></div>
+        <div class="result" id="quiz-final" style="display:none;margin-top:6px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 14: 总结迁移 -->
+  <section class="slide-page" data-page-type="summary" data-page-index="13" data-tts="s14" data-tsh="总结与迁移">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">Summary</span>
+          <h2>总结：你的语法复习清单</h2>
+        </div>
+        <div class="grid grid-2">
+          <div class="card" style="padding:16px">
+            <h3 style="color:var(--brand);font-size:16px;margin-bottom:8px">基础知识（4 张表）</h3>
+            <p class="muted" style="font-size:14px;margin:0">✅ 16 时态矩阵：时间 × 状态<br>✅ 被动语态：be + done，6 格无被动<br>✅ 代词四格：主格 / 宾格 / 两型物主<br>✅ 介词：时间、地点、方式三分法</p>
+          </div>
+          <div class="card" style="padding:16px">
+            <h3 style="color:var(--warn);font-size:16px;margin-bottom:8px">常考点（4 组法）</h3>
+            <p class="muted" style="font-size:14px;margin:0">🔥 时态语态：标志词 → 时态，主被动 → 语态<br>🔥 非谓语：找主语 → 判主被动 → 判时间<br>🔥 三大从句：先定从句类型，再选连接词<br>🔥 虚拟 & 特殊句式：背三行表 + 信号词</p>
+          </div>
+        </div>
+        <div class="result mt" style="font-size:14px">
+          <strong>复习路径建议：</strong>第一轮把本课 4 张基础表默写到全对；第二轮用"常考点"页的规则逐条刷语法填空真题；第三轮重做错题并口述解析。配套专题视频（英语语法体系 / 时态 / 被动语态 / 非谓语动词 / 从句 / 虚拟语气 / 倒装 / 强调 / 省略 / 独立主格 / 主谓一致 / 介词 / 冠词 / 名词等 18 个专题）可在素材源站观看巩固。
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- .slide-container -->
+
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页" title="上一页">‹</button>
+  <div class="toolbar-progress" id="tb-progress" title="进度"><div class="toolbar-progress-fill" id="tb-progress-fill"></div></div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 14</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页" title="下一页">›</button>
+  <button class="toolbar-btn" id="tb-tts" aria-label="朗读本页" title="朗读本页">🔊</button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏" title="全屏">⛶</button>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ══════════ 数据：16 时态详情 ══════════ */
+  const TENSE_DATA = [
+    { name: '现在一般时', form: 'do / does', ex: 'He <em>plays</em> basketball every day.', tip: '★ 高频：表习惯、客观真理。注意第三人称单数。' },
+    { name: '现在完成时', form: 'have / has done', ex: 'I <em>have finished</em> my homework.', tip: '★ 高频：标志词 since / so far / already / yet。' },
+    { name: '现在进行时', form: 'am / is / are doing', ex: 'She <em>is reading</em> now.', tip: '★ 高频：标志词 now / Look! / Listen!。' },
+    { name: '现在完成进行时', form: 'have / has been doing', ex: 'They <em>have been waiting</em> for two hours.', tip: '表从过去持续到现在且仍在继续的动作。' },
+    { name: '过去一般时', form: 'did', ex: 'He <em>visited</em> Beijing last year.', tip: '★ 高频：有明确过去时间状语就用它，与现在完成时辨析是必考点。' },
+    { name: '过去完成时', form: 'had done', ex: 'The train <em>had left</em> when I arrived.', tip: '★ 高频："过去的过去"，标志 by the time / by + 过去时间。' },
+    { name: '过去进行时', form: 'was / were doing', ex: 'I <em>was sleeping</em> at 10 last night.', tip: '★ 高频：常与 when / while 引导的从句搭配。' },
+    { name: '过去完成进行时', form: 'had been doing', ex: 'She <em>had been working</em> there for years before she moved.', tip: '表持续到过去某时为止的动作。' },
+    { name: '将来一般时', form: 'will do', ex: 'I <em>will call</em> you tomorrow.', tip: '★ 高频：will / be going to / be doing 表将来的辨析常考。' },
+    { name: '将来完成时', form: 'will have done', ex: 'By next year, we <em>will have completed</em> the project.', tip: '标志：by + 将来时间。' },
+    { name: '将来进行时', form: 'will be doing', ex: 'This time tomorrow, I <em>will be flying</em> to Shanghai.', tip: '表将来某时正在进行的动作。' },
+    { name: '将来完成进行时', form: 'will have been doing', ex: 'By June, he <em>will have been teaching</em> for 20 years.', tip: '极罕见，认得形式即可。' },
+    { name: '过去将来一般时', form: 'would do', ex: 'He said he <em>would come</em>.', tip: '常用于宾语从句，主句是过去时。' },
+    { name: '过去将来完成时', form: 'would have done', ex: 'She said she <em>would have finished</em> by Friday.', tip: '也是虚拟语气主句形式，注意区分语境。' },
+    { name: '过去将来进行时', form: 'would be doing', ex: 'He said he <em>would be waiting</em> at the gate.', tip: '认得形式即可。' },
+    { name: '过去将来完成进行时', form: 'would have been doing', ex: 'He said he <em>would have been working</em> there for a decade by then.', tip: '16 格中最罕见，认得形式即可。' }
+  ];
+
+  /* 被动语态矩阵：null = 无被动 */
+  const PASSIVE = [
+    'is done', 'have been done', 'is being done', null,
+    'was done', 'had been done', 'was being done', null,
+    'will be done', 'will have been done', null, null,
+    'would be done', 'would have been done', null, null
+  ];
+  const ACTIVE = [
+    'do', 'have done', 'is doing', 'have been doing',
+    'did', 'had done', 'was doing', 'had been doing',
+    'will do', 'will have done', 'will be doing', 'will have been doing',
+    'would do', 'would have done', 'would be doing', 'would have been doing'
+  ];
+
+  /* ══════════ 数据：8 道练习题 ══════════ */
+  const QUIZ = [
+    { q: 'By the time he arrived at the hall, the meeting ______ (begin).', answers: ['had begun'], answer: 'had begun', analysis: 'by the time + 过去动作 → 过去的过去，用过去完成时 had done。' },
+    { q: 'The bridge ______ (build) in 1990 and is still in use.', answers: ['was built'], answer: 'was built', analysis: '桥承受"建"的动作 → 被动；in 1990 是明确过去时间 → was built。' },
+    { q: '______ (finish) his homework, Tom went out to play.', answers: ['having finished'], answer: 'Having finished', analysis: '非谓语三步法：Tom 发出动作（主动）且先于主句完成 → Having done。' },
+    { q: 'This is the best film ______ I have ever seen.', answers: ['that'], answer: 'that', analysis: '先行词被最高级 best 修饰，定语从句只用 that 不用 which。' },
+    { q: 'I don\'t know ______ he will come to the party or not.', answers: ['whether'], answer: 'whether', analysis: '宾语从句表"是否"，句末有 or not 时只能用 whether。' },
+    { q: 'If I ______ (be) you, I would accept the offer.', answers: ['were'], answer: 'were', analysis: '与现在事实相反的虚拟：if 从句用 did/were，be 动词一律用 were。' },
+    { q: 'Not until midnight ______ he come back home.', answers: ['did'], answer: 'did', analysis: 'Not until 置于句首 → 部分倒装，助动词 did 提前。' },
+    { q: 'He suggested that we ______ (start) the project as soon as possible.', answers: ['start', 'should start'], answer: '(should) start', analysis: 'suggest 表"建议"后接宾语从句，用虚拟语气 (should) do。' }
+  ];
+
+  /* ══════════ 分页控制器 ══════════ */
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0;
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const counter = document.createElement('div');
+    counter.className = 'sidenav-counter';
+    counter.id = 'sidenav-counter';
+    counter.textContent = '1/' + totalPages;
+    sidenav.appendChild(counter);
+    pages.forEach(function (page, i) {
+      const dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-tooltip', (page.dataset.tsh || ('第' + (i + 1) + '页')));
+      dot.setAttribute('aria-label', '跳转到第' + (i + 1) + '页');
+      dot.addEventListener('click', function () { goToPage(i); });
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    const progress = totalPages > 1 ? (currentPage / (totalPages - 1)) * 100 : 100;
+    progressBar.style.width = progress + '%';
+    tbProgressFill.style.width = progress + '%';
+    tbPageInfo.textContent = (currentPage + 1) + ' / ' + totalPages;
+    sidenav.querySelectorAll('.sidenav-dot').forEach(function (dot, i) {
+      dot.classList.toggle('active', i === currentPage);
+    });
+    const c = document.getElementById('sidenav-counter');
+    if (c) c.textContent = (currentPage + 1) + '/' + totalPages;
+    document.getElementById('tb-prev').style.opacity = currentPage === 0 ? '0.3' : '1';
+    document.getElementById('tb-next').style.opacity = currentPage === totalPages - 1 ? '0.3' : '1';
+  }
+
+  function goToPage(index) {
+    if (index < 0 || index >= totalPages) return;
+    currentPage = index;
+    container.scrollTo({ top: pages[currentPage].offsetTop, behavior: 'smooth' });
+    updateUI();
+  }
+
+  document.getElementById('tb-prev').addEventListener('click', function () { goToPage(currentPage - 1); });
+  document.getElementById('tb-next').addEventListener('click', function () { goToPage(currentPage + 1); });
+  document.getElementById('tb-progress').addEventListener('click', function (e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    goToPage(Math.round(((e.clientX - rect.left) / rect.width) * (totalPages - 1)));
+  });
+  document.getElementById('tb-fullscreen').addEventListener('click', function () {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  });
+
+  let scrollTimer;
+  container.addEventListener('scroll', function () {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function () {
+      const st = container.scrollTop;
+      let closest = 0, minDist = Infinity;
+      pages.forEach(function (page, i) {
+        const d = Math.abs(page.offsetTop - st);
+        if (d < minDist) { minDist = d; closest = i; }
+      });
+      if (closest !== currentPage) { currentPage = closest; updateUI(); }
+    }, 100);
+  }, { passive: true });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'INPUT') return;
+    if (['ArrowRight', 'ArrowDown', ' '].includes(e.key)) { e.preventDefault(); goToPage(currentPage + 1); }
+    if (['ArrowLeft', 'ArrowUp'].includes(e.key)) { e.preventDefault(); goToPage(currentPage - 1); }
+  });
+
+  /* ══════════ TTS 朗读（预录 mp3） ══════════ */
+  let audioEl = null;
+  const ttsBtn = document.getElementById('tb-tts');
+  ttsBtn.addEventListener('click', function () {
+    const ttsId = pages[currentPage].dataset.tts;
+    if (!ttsId) return;
+    if (audioEl && !audioEl.paused && audioEl.dataset.ttsId === ttsId) {
+      audioEl.pause();
+      ttsBtn.classList.remove('speaking');
+      return;
+    }
+    if (audioEl) { audioEl.pause(); }
+    audioEl = new Audio('./tts/' + ttsId + '.mp3');
+    audioEl.dataset.ttsId = ttsId;
+    ttsBtn.classList.add('speaking');
+    audioEl.addEventListener('ended', function () { ttsBtn.classList.remove('speaking'); });
+    audioEl.addEventListener('error', function () { ttsBtn.classList.remove('speaking'); });
+    audioEl.play().catch(function () { ttsBtn.classList.remove('speaking'); });
+  });
+
+  /* ══════════ 问题锚点 ══════════ */
+  window.__TEACHANY_LEARNER_QUESTION__ = '';
+  function setLearnerQuestion(q) {
+    window.__TEACHANY_LEARNER_QUESTION__ = q || '';
+    document.getElementById('anchor-feedback').textContent = q ? ('你的问题：' + q + ' —— 带着它往下看。') : '选择或输入后，本课会围绕你的问题展开。';
+  }
+  document.querySelectorAll('[data-anchor-choice]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('[data-anchor-choice]').forEach(function (b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      setLearnerQuestion(btn.getAttribute('data-anchor-choice'));
+    });
+  });
+  document.getElementById('learner-question-input').addEventListener('input', function (e) {
+    setLearnerQuestion(e.target.value.trim());
+  });
+
+  /* ══════════ 时态矩阵互动 ══════════ */
+  const tenseDetail = document.getElementById('tense-detail');
+  document.querySelectorAll('#tense-table .tense-cell').forEach(function (cell) {
+    cell.addEventListener('click', function () {
+      document.querySelectorAll('#tense-table .tense-cell').forEach(function (c) { c.classList.remove('active'); });
+      cell.classList.add('active');
+      const d = TENSE_DATA[Number(cell.dataset.tense)];
+      tenseDetail.innerHTML =
+        '<div class="dp-title">' + d.name + ' · <span style="font-family:ui-monospace,Menlo,monospace">' + d.form + '</span></div>' +
+        '<div class="dp-example">例句：' + d.ex + '</div>' +
+        '<div class="dp-tip">高考提示：' + d.tip + '</div>';
+    });
+  });
+
+  /* ══════════ 被动语态切换 ══════════ */
+  const pCells = document.querySelectorAll('#passive-table td[data-p]');
+  function renderPassive(showPassive) {
+    pCells.forEach(function (td) {
+      const i = Number(td.dataset.p);
+      if (showPassive) {
+        if (PASSIVE[i]) {
+          td.textContent = PASSIVE[i];
+          td.classList.remove('no-passive');
+          td.style.color = 'var(--accent)';
+        } else {
+          td.textContent = ACTIVE[i] + '（无被动）';
+          td.classList.add('no-passive');
+          td.style.color = 'var(--muted)';
+        }
+      } else {
+        td.textContent = ACTIVE[i];
+        td.classList.remove('no-passive');
+        td.style.color = '';
+      }
+    });
+    document.getElementById('view-active').classList.toggle('active', !showPassive);
+    document.getElementById('view-passive').classList.toggle('active', showPassive);
+  }
+  document.getElementById('view-active').addEventListener('click', function () { renderPassive(false); });
+  document.getElementById('view-passive').addEventListener('click', function () { renderPassive(true); });
+
+  /* ══════════ 练习引擎 ══════════ */
+  const quizList = document.getElementById('quiz-list');
+  let answered = 0, score = 0;
+  QUIZ.forEach(function (item, idx) {
+    const div = document.createElement('div');
+    div.className = 'quiz-item';
+    div.innerHTML =
+      '<div class="q-text">' + (idx + 1) + '. ' + item.q.replace('______', '<span class="blank">______</span>') + '</div>' +
+      '<div class="q-row"><input type="text" placeholder="填入正确的词或形式" aria-label="第' + (idx + 1) + '题答案"><button class="check-btn">判定</button></div>' +
+      '<div class="q-feedback"><span class="q-verdict"></span> 正确答案：<span class="q-answer">' + item.answer + '</span><div class="q-analysis">' + item.analysis + '</div></div>';
+    quizList.appendChild(div);
+
+    const input = div.querySelector('input');
+    const btn = div.querySelector('.check-btn');
+    const verdict = div.querySelector('.q-verdict');
+    function check() {
+      if (div.classList.contains('correct') || div.classList.contains('wrong')) return;
+      const val = input.value.trim().toLowerCase().replace(/\s+/g, ' ');
+      const ok = item.answers.includes(val);
+      div.classList.add(ok ? 'correct' : 'wrong');
+      verdict.textContent = ok ? '✅ 回答正确！' : '❌ 再想想。';
+      verdict.style.color = ok ? 'var(--ok)' : 'var(--danger)';
+      answered++;
+      if (ok) score++;
+      document.getElementById('quiz-score').textContent = '得分 ' + score + ' / 8';
+      if (answered === QUIZ.length) {
+        const finalEl = document.getElementById('quiz-final');
+        finalEl.style.display = 'block';
+        finalEl.innerHTML = score >= 6
+          ? '<strong>🎉 ' + score + '/8 —— 达标！</strong>基础规则已经掌握，下一步按"总结"页的复习路径刷真题巩固。'
+          : '<strong>' + score + '/8 —— 还差一点。</strong>建议回到"常考点"四页重读规则，重点看错题对应的考点，再重新挑战。';
+      }
+    }
+    btn.addEventListener('click', check);
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') check(); });
+  });
+
+  /* ══════════ 初始化 ══════════ */
+  buildSidenav();
+  updateUI();
+  // Hero 图存在时才显示
+  const heroImg = document.getElementById('hero-img');
+  if (heroImg) {
+    heroImg.addEventListener('load', function () {
+      document.getElementById('hero-figure').style.display = 'block';
+    });
+  }
+})();
+</script>
+</body>
+</html>
