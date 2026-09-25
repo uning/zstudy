@@ -1,0 +1,153 @@
+{
+  "tts_files": [
+    {
+      "id": "s01-hero",
+      "file": "s01-hero.mp3",
+      "section": "hero",
+      "label": "开场",
+      "bytes": 128304
+    },
+    {
+      "id": "s02-problem-anchor",
+      "file": "s02-problem-anchor.mp3",
+      "section": "problem-anchor",
+      "label": "问题锚点",
+      "bytes": 110016
+    },
+    {
+      "id": "s03-objectives",
+      "file": "s03-objectives.mp3",
+      "section": "objectives",
+      "label": "学习目标",
+      "bytes": 137664
+    },
+    {
+      "id": "s04-sec-prep",
+      "file": "s04-sec-prep.mp3",
+      "section": "sec-prep",
+      "label": "预备知识",
+      "bytes": 167616
+    },
+    {
+      "id": "s05-sec-function",
+      "file": "s05-sec-function.mp3",
+      "section": "sec-function",
+      "label": "主线二上",
+      "bytes": 193248
+    },
+    {
+      "id": "s06-sec-derivative",
+      "file": "s06-sec-derivative.mp3",
+      "section": "sec-derivative",
+      "label": "主线二下",
+      "bytes": 185616
+    },
+    {
+      "id": "s07-sec-trig",
+      "file": "s07-sec-trig.mp3",
+      "section": "sec-trig",
+      "label": "主线三",
+      "bytes": 214128
+    },
+    {
+      "id": "s08-sec-sequence",
+      "file": "s08-sec-sequence.mp3",
+      "section": "sec-sequence",
+      "label": "主线四",
+      "bytes": 186624
+    },
+    {
+      "id": "s09-sec-vector",
+      "file": "s09-sec-vector.mp3",
+      "section": "sec-vector",
+      "label": "主线五",
+      "bytes": 197280
+    },
+    {
+      "id": "s10-sec-solid",
+      "file": "s10-sec-solid.mp3",
+      "section": "sec-solid",
+      "label": "主线六",
+      "bytes": 200304
+    },
+    {
+      "id": "s11-sec-analytic",
+      "file": "s11-sec-analytic.mp3",
+      "section": "sec-analytic",
+      "label": "主线七",
+      "bytes": 211536
+    },
+    {
+      "id": "s12-sec-prob",
+      "file": "s12-sec-prob.mp3",
+      "section": "sec-prob",
+      "label": "主线八",
+      "bytes": 252864
+    },
+    {
+      "id": "s13-quiz-sort",
+      "file": "s13-quiz-sort.mp3",
+      "section": "quiz-sort",
+      "label": "互动挑战",
+      "bytes": 129312
+    },
+    {
+      "id": "s14-derivation-lab",
+      "file": "s14-derivation-lab.mp3",
+      "section": "derivation-lab",
+      "label": "推导训练",
+      "bytes": 143712
+    },
+    {
+      "id": "s15-knowledge-graph",
+      "file": "s15-knowledge-graph.mp3",
+      "section": "knowledge-graph",
+      "label": "知识图谱",
+      "bytes": 112752
+    },
+    {
+      "id": "s16-ai-tutor",
+      "file": "s16-ai-tutor.mp3",
+      "section": "ai-tutor",
+      "label": "AI 学伴",
+      "bytes": 91152
+    },
+    {
+      "id": "s17-sec-why",
+      "file": "s17-sec-why.mp3",
+      "section": "sec-why",
+      "label": "为什么",
+      "bytes": 233424
+    },
+    {
+      "id": "s18-pretest",
+      "file": "s18-pretest.mp3",
+      "section": "pretest",
+      "label": "前测",
+      "bytes": 109584
+    },
+    {
+      "id": "s19-lab-amgm",
+      "file": "s19-lab-amgm.mp3",
+      "section": "lab-amgm",
+      "label": "互动实验",
+      "bytes": 165888
+    },
+    {
+      "id": "s20-homework",
+      "file": "s20-homework.mp3",
+      "section": "homework",
+      "label": "分层作业",
+      "bytes": 176832
+    },
+    {
+      "id": "s21-posttest",
+      "file": "s21-posttest.mp3",
+      "section": "posttest",
+      "label": "后测",
+      "bytes": 103680
+    }
+  ],
+  "engine": "tts-engine (multi)",
+  "voice": "zh-CN-XiaoxiaoNeural"
+}

@@ -1,0 +1,65 @@
+{
+  "node_id": "ext-bb246b6d",
+  "topic": "高考数学总复习",
+  "name_zh": "高考数学总复习（七大主线）",
+  "subject": "math",
+  "stage": "high",
+  "curriculum": "普通高中数学课程标准（2017年版2020年修订）",
+  "lookup_at": "2026-09-24T14:11:50Z",
+  "sources": ["manual-curation"],
+  "curriculum_excerpts": [
+    "课标学业质量要求：学生能够在关联的情境中发现和提出问题，运用函数、几何与代数、概率与统计等知识建立模型、推理论证并解决问题（学业质量水平二，高考要求）。",
+    "课标教学提示：高三复习应注重知识的整体性与关联性，引导学生构建知识网络，理解公式定理的来龙去脉，而非孤立记忆结论。",
+    "课标学业要求：掌握基本初等函数的图象与性质，理解导数概念及其几何意义，能运用导数研究函数的单调性、极值与最值。",
+    "课标学业要求：掌握正弦定理、余弦定理并能解决三角形问题；掌握等差、等比数列的通项公式与前 n 项和公式，体会推导过程中蕴含的思想方法。"
+  ],
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "等比数列求和公式 Sₙ=a₁(1−qⁿ)/(1−q) 的推导方法是？",
+      "options": ["A. 倒序相加法", "B. 错位相减法", "C. 裂项相消法"],
+      "answer": "B",
+      "diagnosis": "倒序相加是等差求和方法；裂项用于分式型求和；等比用错位相减，且必须讨论 q=1。"
+    },
+    {
+      "type": "choice",
+      "question": "已知 f(x+a)=−f(x)（a>0），则 f(x) 的周期为？",
+      "options": ["A. a", "B. 2a", "C. 4a"],
+      "answer": "B",
+      "diagnosis": "迭代两次 f(x+2a)=−f(x+a)=f(x)，「反/倒为半周期」，a 是半周期。"
+    },
+    {
+      "type": "choice",
+      "question": "圆锥曲线大题给出弦的中点，首选方法是？",
+      "options": ["A. 设线联立+韦达定理", "B. 点差法"],
+      "answer": "B",
+      "diagnosis": "「代点作差出斜率」，中点条件用点差法一步出斜率关系，计算量远小于联立。"
+    }
+  ],
+  "common_errors": [
+    "等比数列求和忘记讨论 q=1 的情形（高频扣分点）",
+    "由 Sₙ 求 aₙ 时忘记单独验证 n=1 是否满足通项",
+    "复合函数求导中 (cos x)′=−sin x 漏掉负号",
+    "余弦和角公式符号记反：cos(α+β)=cosαcosβ−sinαsinβ（号相反），与正弦（号相同）混淆",
+    "周期结论混淆：f(x+a)=−f(x) 得 T=2a，与「一轴一心 T=4|a−b|」情形混淆",
+    "用点斜式设直线时忘记讨论斜率不存在的情形",
+    "基本不等式求最值不验证取等条件（一正二定三相等）"
+  ],
+  "prerequisites": [
+    "math-h-sets",
+    "math-h-functions-concept",
+    "math-h-exponential-function",
+    "math-h-logarithmic-function",
+    "math-h-trig-ratios",
+    "math-h-basic-inequality"
+  ],
+  "extends": [
+    "math-h-conic-comprehensive",
+    "math-h-trigonometric-functions"
+  ],
+  "textbook_refs": [],
+  "md_path": null,
+  "kp_json_path": null,
+  "fallback_used": false,
+  "gaps": []
+}

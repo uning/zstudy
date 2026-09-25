@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《高考数学总复习》 · 数学 高中 G12 · TeachAny v7.9</title>
+<meta name="description" content="按知识相关性组织的高考数学总复习提纲：七大主线由易到难，记忆/推导双轨标注，附速记口诀与推导训练。">
+
+<!-- TeachAny routing meta -->
+<meta name="course-id" content="gaokao-math-review-2027">
+<meta name="course-title" content="高考数学总复习 · 七大主线（贵州 2027）">
+<meta name="course-subject" content="math">
+<meta name="course-grade" content="高中三年级（总复习）">
+<meta name="course-prereqs" content="">
+<meta name="course-next" content="">
+<meta name="course-version" content="1.0.0">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- 标准五件套 + 音频播放器 -->
+<link rel="stylesheet" href="./assets/scripts/ai-tutor.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-tutor-card.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-tts-narrator.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-section-hints.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-knowledge-graph.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-audio-player.css">
+<link rel="stylesheet" href="./assets/scripts/teachany-floating-dock.css">
+
+<style>
+/* ======================================================
+   TeachAny v2 Design System — Paged + Rich Visual (high stage)
+   ====================================================== */
+
+:root {
+  /* Core palette — 高中学段：深蓝底 + 淡蓝/淡紫 */
+  --bg: #07111f;
+  --bg-subtle: #0b1628;
+  --panel: #101d32;
+  --card: #14233a;
+  --card-elevated: #1a2d4a;
+  --line: #25415f;
+  --line-subtle: rgba(148, 163, 184, 0.12);
+  --text: #eef6ff;
+  --text-secondary: #c8d8ea;
+  --muted: #9fb4cc;
+  --brand: #60a5fa;
+  --brand-soft: rgba(96, 165, 250, 0.12);
+  --brand-2: #a78bfa;
+  --brand-2-soft: rgba(167, 139, 250, 0.12);
+  --accent: #34d399;
+  --accent-soft: rgba(52, 211, 153, 0.1);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+
+  /* Spacing */
+  --page-padding: 24px;
+  --card-radius: 20px;
+  --card-radius-sm: 14px;
+
+  /* Slide system */
+  --slide-height: 100vh;
+  --slide-height-fallback: 100dvh;
+  --toolbar-height: 56px;
+  --sidenav-width: 48px;
+}
+
+/* ─── Reset & Base ─── */
+* { box-sizing: border-box; }
+html, body { margin: 0; max-width: 100%; overflow-x: hidden; }
+body {
+  padding-top: var(--safe-top);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Source Han Sans SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, a, input, select, textarea { min-height: 44px; }
+img, video, canvas, svg { max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; }
+
+/* ─── Scroll Container ─── */
+.slide-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: var(--slide-height-fallback, var(--slide-height));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body:not(.play-mode) .slide-container {
+  scroll-snap-type: y proximity;
+}
+
+body.play-mode .slide-container {
+  scroll-snap-type: y mandatory;
+  overflow: hidden;
+}
+
+/* ─── Slide Page ─── */
+.slide-page {
+  min-height: var(--slide-height-fallback, var(--slide-height));
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding);
+  padding-bottom: calc(var(--page-padding) + var(--toolbar-height));
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-page .slide-inner {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+.slide-page .slide-inner > * { width: 100%; box-sizing: border-box; }
+.card .card { padding: 18px; box-shadow: none; border: 1px solid var(--line-subtle); }
+
+/* ─── Page Type Decorations ─── */
+.slide-page[data-page-type="cover"] {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(96, 165, 250, 0.15), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(167, 139, 250, 0.12), transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(52, 211, 153, 0.06), transparent 60%);
+  text-align: center;
+}
+
+.slide-page[data-page-type="cover"] h1 {
+  font-size: clamp(30px, 6vw, 50px);
+  line-height: 1.15;
+  background: linear-gradient(135deg, var(--text) 0%, var(--brand) 50%, var(--brand-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+
+.slide-page[data-page-type="cover"] .subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(16px, 3vw, 21px);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.slide-page[data-page-type="objectives"] {
+  background:
+    radial-gradient(circle at 0% 100%, rgba(52, 211, 153, 0.1), transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(96, 165, 250, 0.08), transparent 40%);
+}
+
+.slide-page[data-page-type="concept"] {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(96, 165, 250, 0.08), transparent 35%),
+    radial-gradient(circle at 70% 80%, rgba(167, 139, 250, 0.06), transparent 35%);
+}
+
+.slide-page[data-page-type="interactive"] {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(52, 211, 153, 0.1), transparent 40%),
+    radial-gradient(circle at 80% 100%, rgba(96, 165, 250, 0.06), transparent 35%);
+}
+
+.slide-page[data-page-type="quiz"] {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.08), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(167, 139, 250, 0.06), transparent 35%);
+}
+
+.slide-page[data-page-type="summary"] {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(96, 165, 250, 0.1), transparent 45%),
+    radial-gradient(circle at 20% 20%, rgba(52, 211, 153, 0.06), transparent 30%);
+}
+
+/* ─── Brand Bar ─── */
+.teachany-brand-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 20px;
+  background: rgba(7, 17, 31, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line-subtle);
+  transition: transform 0.3s ease;
+}
+
+body.play-mode .teachany-brand-bar { transform: translateY(-100%); }
+
+.brand-logo { display: flex; align-items: center; gap: 8px; color: #f8fafc; text-decoration: none; font-weight: 800; }
+.brand-mark { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #07111f; font-weight: 900; font-size: 14px; }
+.brand-right { display: flex; align-items: center; gap: 12px; font-size: 13px; }
+.brand-link { color: var(--muted); transition: color 0.2s; }
+.brand-link:hover { color: var(--text); text-decoration: none; }
+.brand-version { color: #cbd5e1; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(255,255,255,.06); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+
+/* ─── Cards ─── */
+.card {
+  background: linear-gradient(160deg, rgba(20, 35, 58, 0.95), rgba(11, 22, 40, 0.98));
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--card-radius);
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+}
+
+.card-accent {
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, var(--brand), var(--brand-2)) 1;
+}
+
+.card-glow {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), 0 0 40px rgba(96, 165, 250, 0.05);
+}
+
+/* ─── Section Header ─── */
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.section-header h2 { font-size: clamp(20px, 4vw, 26px); font-weight: 700; line-height: 1.3; }
+
+/* ─── Phase Tag ─── */
+.phase-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--brand); background: var(--brand-soft);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 999px; padding: 5px 12px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.phase-tag[data-variant="success"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(52, 211, 153, 0.2); }
+.phase-tag[data-variant="purple"] { color: var(--brand-2); background: var(--brand-2-soft); border-color: rgba(167, 139, 250, 0.2); }
+.phase-tag[data-variant="warn"] { color: var(--warn); background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.2); }
+
+/* ─── Grid ─── */
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+.grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid > * { min-width: 0; }
+.flex-row { display: flex; gap: 12px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
+.flex-row .choice { flex: 1; min-width: 120px; text-align: center; }
+
+.objectives { display: grid; grid-template-columns: 1fr; gap: 10px; list-style: none; padding: 0; margin: 0; }
+.objectives li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 16px; border-radius: var(--card-radius-sm);
+  background: rgba(96, 165, 250, 0.04); border: 1px solid var(--line-subtle);
+}
+.objectives li::before { content: "✦"; color: var(--brand); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+/* ─── Choice Buttons ─── */
+.choice {
+  width: 100%; text-align: left;
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: var(--card-radius-sm);
+  background: rgba(96, 165, 250, 0.04);
+  color: var(--text); padding: 16px 20px; cursor: pointer;
+  font-size: 15px; line-height: 1.5; transition: all 0.2s ease;
+}
+.choice:hover { background: rgba(96, 165, 250, 0.1); border-color: rgba(96, 165, 250, 0.35); transform: translateX(4px); }
+.choice.selected { border-color: var(--brand); background: rgba(96, 165, 250, 0.15); box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.12); }
+
+input, textarea {
+  width: 100%; border-radius: 12px; border: 1px solid var(--line);
+  background: var(--bg-subtle); color: var(--text);
+  padding: 14px 16px; font-size: 15px;
+}
+input:focus, textarea:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.12); }
+
+.result { padding: 16px 20px; border-radius: var(--card-radius-sm); background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.2); font-size: 15px; line-height: 1.6; }
+.result.warn { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); }
+.result.error { background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.2); }
+
+/* ─── Hero Figure ─── */
+.ta-standard-figure { margin: 20px auto; max-width: 980px; }
+.ta-standard-figure img { display: block; width: 100%; border-radius: 16px; border: 1px solid var(--line-subtle); }
+.ta-standard-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; text-align: center; }
+
+/* ─── Slide Progress / Toolbar / Sidenav / FAB ─── */
+.slide-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--brand-2)); z-index: 200; transition: width 0.3s ease; border-radius: 0 2px 2px 0; }
+
+.slide-toolbar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 20px; padding-bottom: calc(10px + var(--safe-bottom));
+  background: rgba(7, 17, 31, 0.92); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line-subtle);
+  transform: translateY(100%); transition: transform 0.3s ease;
+}
+body.play-mode .slide-toolbar, body.toolbar-visible .slide-toolbar { transform: translateY(0); }
+
+.toolbar-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: none; border-radius: 10px; background: rgba(255,255,255,0.06); color: var(--text); cursor: pointer; transition: all 0.2s; font-size: 18px; }
+.toolbar-btn:hover { background: rgba(255,255,255,0.12); }
+.toolbar-btn.active { background: var(--brand-soft); color: var(--brand); }
+.toolbar-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar-page-info { color: var(--muted); font-size: 13px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; min-width: 60px; text-align: center; }
+.toolbar-progress { flex: 1; max-width: 200px; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; cursor: pointer; }
+.toolbar-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-radius: 2px; transition: width 0.3s ease; }
+
+.slide-sidenav {
+  position: fixed; right: 12px; top: 50%; transform: translateY(-50%); z-index: 90;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 3px;
+  opacity: 0; transition: opacity 0.3s ease; max-height: 70vh; overflow-y: auto;
+  scrollbar-width: none; padding: 8px 4px; border-radius: 12px;
+  background: rgba(7, 17, 31, 0.4); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.slide-sidenav::-webkit-scrollbar { display: none; }
+body.play-mode .slide-sidenav, body.toolbar-visible .slide-sidenav { opacity: 1; }
+
+.sidenav-dot { width: 28px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.12); border: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); position: relative; padding: 0; flex-shrink: 0; }
+.sidenav-dot:hover { background: rgba(96, 165, 250, 0.4); width: 36px; }
+.sidenav-dot.active { background: var(--brand); width: 36px; height: 5px; box-shadow: 0 0 10px rgba(96, 165, 250, 0.5); }
+.sidenav-dot[data-tooltip]::before {
+  content: attr(data-tooltip); position: absolute; right: calc(100% + 10px); top: 50%;
+  transform: translateY(-50%); padding: 5px 10px; background: rgba(7,17,31,0.95);
+  border: 1px solid var(--line); border-radius: 6px; color: var(--text);
+  font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.sidenav-dot:hover[data-tooltip]::before { opacity: 1; }
+.sidenav-counter { font-size: 10px; color: rgba(255,255,255,0.5); text-align: center; padding: 4px 0 2px; font-variant-numeric: tabular-nums; letter-spacing: 0.5px; width: 100%; }
+
+.play-mode-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%; border: none;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(96, 165, 250, 0.3); transition: all 0.3s ease;
+}
+.play-mode-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(96, 165, 250, 0.4); }
+body.play-mode .play-mode-fab { bottom: calc(var(--toolbar-height) + 16px + var(--safe-bottom)); }
+.play-mode-fab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+body.play-mode .slide-page { animation: slideIn 0.4s ease-out; }
+@keyframes slideIn { from { opacity: 0.6; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─── 本课件专用：记忆/推导标注体系 ─── */
+.tag { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 6px; padding: 1px 8px; margin-right: 4px; white-space: nowrap; vertical-align: middle; }
+.tag-mem { color: #ff8a80; background: rgba(239, 68, 68, 0.14); border: 1px solid rgba(239,68,68,0.3); }
+.tag-der { color: #ffd166; background: rgba(245, 158, 11, 0.14); border: 1px solid rgba(245,158,11,0.3); }
+.tag-und { color: #6ee7b7; background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52,211,153,0.3); }
+
+.f { font-family: "Cambria Math", "STIX Two Math", Georgia, serif; background: rgba(255,255,255,0.07); border-radius: 6px; padding: 0 5px; white-space: nowrap; color: #ffe9a8; font-size: 0.96em; }
+
+table.kv { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 8px 0 4px; }
+table.kv th { background: rgba(96,165,250,0.08); text-align: left; padding: 7px 9px; border: 1px solid var(--line-subtle); white-space: nowrap; color: var(--text-secondary); }
+table.kv td { padding: 7px 9px; border: 1px solid var(--line-subtle); vertical-align: top; color: var(--text-secondary); }
+table.kv td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+
+.tip-box { background: rgba(52, 211, 153, 0.08); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; padding: 10px 14px; margin: 12px 0 0; font-size: 13.5px; color: var(--text-secondary); }
+.tip-box b { color: var(--accent); }
+.deriv-box { background: rgba(245, 158, 11, 0.07); border: 1px dashed rgba(245, 158, 11, 0.4); border-radius: 10px; padding: 10px 14px; margin: 12px 0 0; font-size: 13.5px; color: var(--text-secondary); }
+.deriv-box b { color: #ffd166; }
+.koujue { display: block; margin-top: 8px; padding: 8px 12px; border-radius: 10px; background: rgba(167, 139, 250, 0.1); border: 1px solid rgba(167,139,250,0.25); color: #d6c8ff; font-size: 13.5px; }
+.koujue b { color: var(--brand-2); }
+
+.sub-note { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; }
+
+/* ABT 叙事 */
+.abt-row { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line-subtle); margin-bottom: 8px; font-size: 14px; color: var(--text-secondary); }
+.abt-row .abt-tag { font-weight: 800; font-size: 13px; border-radius: 6px; padding: 2px 9px; white-space: nowrap; }
+.abt-and .abt-tag { color: var(--brand); background: var(--brand-soft); }
+.abt-but .abt-tag { color: var(--danger); background: rgba(239,68,68,0.12); }
+.abt-therefore .abt-tag { color: var(--accent); background: var(--accent-soft); }
+
+/* 深层理解 insight-box */
+.insight-box { margin-top: 12px; padding: 12px 16px; border-radius: 12px; background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.3); font-size: 13.5px; color: var(--text-secondary); }
+.insight-box .ib-title { color: var(--brand-2); font-weight: 700; margin-bottom: 6px; }
+.insight-box .lens { display: inline-block; font-size: 12px; font-weight: 700; color: var(--brand); background: var(--brand-soft); border-radius: 6px; padding: 0 7px; margin-right: 4px; }
+
+/* 前后测 MCQ */
+.mcq { border: 1px solid var(--line-subtle); border-radius: var(--card-radius-sm); padding: 12px 14px; margin-bottom: 10px; background: rgba(255,255,255,0.02); }
+.mcq .mcq-q { font-size: 14.5px; font-weight: 600; margin-bottom: 8px; }
+.mcq-opt { display: block; width: 100%; text-align: left; border: 1px solid rgba(96,165,250,0.18); border-radius: 10px; background: rgba(96,165,250,0.04); color: var(--text); padding: 10px 14px; margin-bottom: 6px; cursor: pointer; font-size: 14px; line-height: 1.5; transition: all 0.15s; min-height: 44px; }
+.mcq-opt:hover { border-color: rgba(96,165,250,0.4); }
+.mcq-opt.opt-correct { border-color: var(--ok); background: rgba(34,197,94,0.12); }
+.mcq-opt.opt-wrong { border-color: var(--danger); background: rgba(239,68,68,0.08); }
+.mcq.done .mcq-opt { pointer-events: none; opacity: 0.85; }
+.mcq .mcq-diag { display: none; margin-top: 6px; font-size: 13px; color: var(--muted); border-top: 1px dashed var(--line-subtle); padding-top: 8px; }
+.mcq.done .mcq-diag { display: block; }
+.mcq .mcq-diag b { color: #ffd166; }
+.err-tag { display: inline-block; font-size: 11px; font-weight: 700; color: #ff8a80; background: rgba(239,68,68,0.12); border-radius: 5px; padding: 0 6px; margin-right: 4px; }
+
+/* 分层作业 */
+.level-card { border: 1px solid var(--line-subtle); border-radius: var(--card-radius-sm); padding: 12px 16px; margin-bottom: 10px; background: rgba(255,255,255,0.02); font-size: 14px; color: var(--text-secondary); }
+.level-card .lv { font-weight: 800; font-size: 13px; border-radius: 6px; padding: 2px 9px; margin-right: 6px; white-space: nowrap; }
+.lv1 .lv { color: var(--accent); background: var(--accent-soft); }
+.lv2 .lv { color: var(--brand); background: var(--brand-soft); }
+.lv3 .lv { color: var(--brand-2); background: var(--brand-2-soft); }
+.level-card ul { margin: 8px 0 0; padding-left: 20px; }
+.level-card li { margin-bottom: 4px; }
+
+/* Canvas 实验室 */
+.lab-controls { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 10px 0; font-size: 14px; color: var(--text-secondary); }
+.lab-controls input[type="range"] { flex: 1; min-width: 160px; accent-color: var(--brand); min-height: 32px; }
+.lab-readout { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #ffe9a8; }
+.video-wrap { margin: 12px 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line-subtle); }
+.video-wrap video { display: block; width: 100%; }
+
+/* quiz */
+.quiz-item { border: 1px solid var(--line-subtle); border-radius: var(--card-radius-sm); padding: 12px 14px; margin-bottom: 10px; background: rgba(255,255,255,0.02); }
+.quiz-item .q-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.quiz-item .q-name { font-size: 14.5px; font-weight: 600; }
+.quiz-item .q-btns { display: flex; gap: 8px; }
+.q-btn { border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,0.04); color: var(--text); padding: 6px 14px; font-size: 13px; cursor: pointer; min-height: 36px; transition: all 0.15s; }
+.q-btn:hover { border-color: var(--brand); }
+.q-btn.hit-mem { border-color: var(--danger); background: rgba(239,68,68,0.15); color: #ff8a80; }
+.q-btn.hit-der { border-color: var(--warn); background: rgba(245,158,11,0.15); color: #ffd166; }
+.q-btn.dim { opacity: 0.35; }
+.quiz-item .q-explain { display: none; margin-top: 8px; font-size: 13px; color: var(--muted); border-top: 1px dashed var(--line-subtle); padding-top: 8px; }
+.quiz-item.done .q-explain { display: block; }
+.quiz-score { font-size: 15px; font-weight: 700; color: var(--brand); margin-top: 6px; }
+
+/* derivation checklist */
+.dl-progress { height: 10px; border-radius: 6px; background: rgba(255,255,255,0.08); overflow: hidden; margin: 10px 0 4px; }
+.dl-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--brand)); transition: width 0.3s ease; }
+.dl-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line-subtle); margin-bottom: 6px; cursor: pointer; font-size: 13.5px; color: var(--text-secondary); transition: background 0.15s; }
+.dl-item:hover { background: rgba(96,165,250,0.05); }
+.dl-item.checked { border-color: rgba(52,211,153,0.4); background: rgba(52,211,153,0.06); }
+.dl-item.checked .dl-text { color: var(--accent); text-decoration: line-through; text-decoration-color: rgba(52,211,153,0.5); }
+.dl-item .dl-box { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; border-radius: 5px; border: 2px solid var(--line); display: grid; place-items: center; font-size: 12px; color: transparent; }
+.dl-item.checked .dl-box { border-color: var(--accent); background: var(--accent); color: #07111f; }
+.dl-meta { color: var(--muted); font-size: 12px; margin-left: auto; flex-shrink: 0; padding-left: 8px; }
+.reset-btn { border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 8px; padding: 6px 14px; font-size: 13px; cursor: pointer; min-height: 36px; }
+.reset-btn:hover { color: var(--text); border-color: var(--brand); }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  :root { --page-padding: 16px; --card-radius: 16px; }
+  .slide-page { padding: 16px 14px; padding-bottom: calc(16px + var(--toolbar-height)); }
+  .grid, .grid-2, .grid-3, .objectives { grid-template-columns: 1fr !important; }
+  .flex-row { flex-direction: column; }
+  .flex-row .choice { min-width: 100%; }
+  .card { padding: 18px; }
+  .slide-sidenav { right: 6px; gap: 2px; padding: 6px 3px; }
+  .sidenav-dot { width: 22px; height: 3px; }
+  .sidenav-dot.active { width: 28px; }
+  .sidenav-counter { font-size: 9px; }
+  .teachany-brand-bar { padding: 8px 12px; }
+  .brand-name { display: none; }
+  .brand-right { gap: 8px; font-size: 12px; }
+  table.kv { font-size: 12.5px; }
+}
+@media (max-width: 480px) {
+  .slide-page[data-page-type="cover"] h1 { font-size: 26px; }
+  .toolbar-progress { max-width: 120px; }
+}
+
+/* ─── Utility ─── */
+.text-gradient { background: linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.animate-in { animation: fadeUp 0.5s ease-out both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+</style>
+
+  <meta name="teachany-id" content="gaokao-math-review-2027">
+  <meta name="teachany-name" content="高考数学总复习">
+  <meta name="teachany-node" content="ext-bb246b6d">
+  <meta name="teachany-subject" content="math">
+  <meta name="teachany-prerequisites" content="函数与导数、三角函数、数列、平面向量、立体几何、解析几何、概率与统计（高中数学各专题基础）">
+  <meta name="teachany-leads-to" content="高考数学真题演练、强基计划校考数学">
+  <meta name="teachany-grade" content="12">
+  <meta name="teachany-version" content="v6">
+  <meta name="teachany-author" content="TeachAny 用户">
+  <meta name="teachany-curriculum" content="cn-national">
+</head>
+<body class="teachany-high">
+
+<!-- Progress Bar -->
+<div class="slide-progress-bar" id="slide-progress-bar" style="width: 0%"></div>
+
+<!-- Brand Bar -->
+<div class="teachany-brand-bar">
+  <a class="brand-logo" href="https://www.teachany.cn/" aria-label="TeachAny Gallery">
+    <span class="brand-mark">T</span><span class="brand-name">TeachAny</span>
+  </a>
+  <div class="brand-right">
+    <a class="brand-link" href="https://www.teachany.cn/">Gallery</a>
+    <span class="brand-version">v<span id="course-version-display">1.0.0</span> · skill v<span id="skill-version-display">7.21.0</span></span>
+  </div>
+</div>
+
+<!-- Slide Container -->
+<div class="slide-container" id="slide-container">
+
+  <!-- Page 1: Cover -->
+  <section class="slide-page" id="module-hero" data-bloom-level="remember" data-scaffold="full" data-page-type="cover" data-page-index="0" data-tts="hero" data-tsh="开场 - 用七条主线串起三年数学" data-tts-script="高中三年的数学知识，其实可以串成七条主线。这节课我们不按教材章节复习，而是按知识之间的相关性，把公式、定理分成两类：一类必须背熟，一类必须会推导。先记住一个原则：会推导的知识，才是真正忘不掉的知识。">
+    <div class="slide-inner">
+      <h1>高考数学总复习 · 七大主线</h1>
+      <p class="subtitle">贵州 2027 · 新课标卷 ｜ 按知识相关性组织，由易到难，<span class="tag tag-mem">记</span>记忆清单与<span class="tag tag-der">推</span>推导链双轨并行</p>
+      <figure class="ta-standard-figure" style="margin-top:32px">
+        <img class="hero-cover-img" src="./assets/gaokao-math-review-2027-hero.webp" alt="高考数学七大主线知识结构图：预备知识、函数与导数、三角、数列、向量与复数、立体几何、解析几何、概率统计" onerror="this.closest('figure').style.display='none'">
+        <figcaption>七大主线知识结构图：每条主线标注「必背」与「必推」</figcaption>
+      </figure>
+      <nav class="toc-nav" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:16px">
+        <a href="#module-prep" style="color:var(--brand);font-size:13px">① 预备知识</a>
+        <a href="#module-function" style="color:var(--brand);font-size:13px">② 函数与导数</a>
+        <a href="#module-derivation" style="color:var(--brand);font-size:13px">③ 推导训练</a>
+        <a href="#module-kg" style="color:var(--brand);font-size:13px">④ 知识图谱</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Page 2: Problem Anchor -->
+  <section class="slide-page" id="module-anchor" data-bloom-level="understand" data-scaffold="full" data-page-type="interactive" data-page-index="1" data-tts="problem-anchor" data-tsh="问题锚点 - 先确定你想解决的复习痛点" data-tts-script="复习之前，先想清楚你最想解决什么问题。是公式背了就忘？还是分不清哪些该背、哪些该会推导？或者是想知道压轴题到底在考哪条知识链？选一个，后面的内容会围绕它展开。">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag">Problem Anchor</span>
+          <h2>复习前，先选你的痛点</h2>
+        </div>
+        <p style="color:var(--muted);margin:0 0 16px">选一个你最关心的问题，本课会围绕它展开。</p>
+        <div class="grid" id="problem-anchor-choices">
+          <button class="choice" data-anchor-choice="公式背了就忘，怎么办？">公式背了就忘，怎么办？</button>
+          <button class="choice" data-anchor-choice="分不清哪些公式该背、哪些该会推导">分不清哪些公式该背、哪些该会推导</button>
+          <button class="choice" data-anchor-choice="压轴题到底在考哪条知识链？">压轴题到底在考哪条知识链？</button>
+        </div>
+        <label style="display:block;margin-top:20px;color:var(--muted);font-size:14px">或者，写下你自己的问题
+          <input id="learner-question-input" placeholder="把你卡住的问题写在这里" style="margin-top:8px">
+        </label>
+        <p id="anchor-feedback" class="result warn" style="margin-top:16px">选择或输入后，本课会围绕你的问题展开。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 3: Learning Objectives -->
+  <section class="slide-page" id="module-objectives" data-bloom-level="understand" data-scaffold="full" data-page-type="objectives" data-page-index="2" data-tts="objectives" data-tsh="学习目标 - 明确本课结束时的三个收获" data-tts-script="这节课结束时，你要做到三件事：第一，能把高中数学全部知识归入七大主线，并说出每条主线的知识链顺序；第二，对任意一个公式，能判断它属于必须背熟的，还是必须会推导的；第三，掌握十六条核心推导链，并能说出每周默推的训练方法。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">Objectives</span>
+          <h2>学习目标</h2>
+        </div>
+        <ul class="objectives">
+          <li>能把高中数学知识归入 <b>7 条主线</b>，说出每条主线「由易到难」的知识链顺序</li>
+          <li>对任意公式/定理，能判定它是<span class="tag tag-mem">记</span>必背、<span class="tag tag-der">推</span>必推还是<span class="tag tag-und">解</span>理解即可，并说明理由</li>
+          <li>掌握每条主线的<b>速记口诀</b>与<b>推导技巧</b>，能独立推导 16 条核心推导链</li>
+          <li>能用「记忆卡片 + 每周默推」双轨法制定自己的三轮复习计划</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 4: 为什么这样复习（ABT + 真实场景） -->
+  <section class="slide-page" id="module-why" data-bloom-level="understand" data-scaffold="partial" data-page-type="concept" data-page-index="3" data-tts="sec-why" data-tsh="为什么 - 同样的公式量，分数差在哪" data-tts-script="为什么要换一种方式复习？高中数学有上百个公式定理，每一个都重要。但同样背一百个公式，有人考一百三，有人考九十，差别不在努力，在于存储方式：死记硬背的知识在考场上会提取失败。所以我们的策略是：母公式背熟，衍生公式会推，用七条主线把书读薄。这些知识也不是纸上谈兵：复利计算靠指数函数，易拉罐用料最省靠导数，质检抽样靠超几何分布。">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">Why</span>
+          <h2>为什么要「记 + 推」双轨复习？</h2>
+        </div>
+        <div class="abt-row abt-and"><span class="abt-tag">And 已知</span><span>高中数学有上百个公式、定理、结论，每一个老师都说重要，你也确实都背过。</span></div>
+        <div class="abt-row abt-but"><span class="abt-tag">But 问题</span><span>同样背 100 个公式，有人 130+，有人 90。差别不在努力，在于<b>存储方式</b>——死记硬背的知识在考场上会「提取失败」，题目一变式就认不出来。</span></div>
+        <div class="abt-row abt-therefore"><span class="abt-tag">Therefore 策略</span><span>把知识分两类：<b>母公式背熟</b>（考场上直接调用），<b>衍生公式会推</b>（30 秒由母公式推出）。用 7 条主线把三年课本「读薄」。</span></div>
+        <div class="video-wrap">
+          <video controls preload="metadata" playsinline poster="./assets/gaokao-math-review-2027-hero.webp">
+            <source src="./assets/gaokao-math-review-2027-intro.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="tip-box"><b>真实场景中的本课知识：</b>银行复利与还贷 → 指数函数与对数；易拉罐用料最省、利润最大 → 导数求最值；产品质量抽检 → 超几何分布；导航定位与受力分析 → 平面向量； lottery 与游戏抽卡期望 → 离散型随机变量。复习时每条主线都可以问自己：它在生活里解决什么问题？</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 5: 前测 -->
+  <section class="slide-page" id="module-pretest" data-bloom-level="remember" data-scaffold="full" data-page-type="quiz" data-page-index="4" data-tts="pretest" data-tsh="前测 - 你已经知道什么" data-tts-script="正式开始前，先做三道前测题，检验你现有的基础。不用怕做错，每道题的每个错误选项都附有错因诊断，帮你定位自己的薄弱环节。这些易错点都是历届考生最高频的失分点。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">Pre-test</span>
+          <h2>前测：你已经知道什么？</h2>
+        </div>
+        <p class="sub-note">3 道题定位起点。错因诊断比对错更重要——它们全是高频易错点。</p>
+        <div class="mcq" data-mcq>
+          <p class="mcq-q">1. 等比数列求和公式 <span class="f">Sₙ=a₁(1−qⁿ)/(1−q)</span> 的推导方法是？</p>
+          <button class="mcq-opt" data-correct="0" data-diag="<span class='err-tag'>易错</span>你把两大模型的推导方法记混了：倒序相加是<b>等差</b>求和的方法（首尾配对），等比要用错位相减。">A. 倒序相加法</button>
+          <button class="mcq-opt" data-correct="1" data-diag="正确。Sₙ 与 qSₙ 错位相减，中间全部抵消只剩首尾。同时别忘讨论 q=1 的情形——这是最高频的扣分点。">B. 错位相减法</button>
+          <button class="mcq-opt" data-correct="0" data-diag="<span class='err-tag'>易错</span>裂项相消用于分式型求和（如 <span class='f'>1/(n(n+1))</span>），不是等比求和的推导方法。">C. 裂项相消法</button>
+          <div class="mcq-diag"></div>
+        </div>
+        <div class="mcq" data-mcq>
+          <p class="mcq-q">2. <span class="f">cos(α+β)</span> 展开后正确的是？</p>
+          <button class="mcq-opt" data-correct="1" data-diag="正确。口诀「余余正正号相反」：余弦和角 = 余余 − 正正。">A. cosαcosβ − sinαsinβ</button>
+          <button class="mcq-opt" data-correct="0" data-diag="<span class='err-tag'>易错</span>符号记反了。余弦和角公式「号相反」：括号内是加，展开后是减。与正弦（号相同）对照记忆。">B. cosαcosβ + sinαsinβ</button>
+          <button class="mcq-opt" data-correct="0" data-diag="<span class='err-tag'>易错</span>你把余弦和角与正弦和角搞混了：sin(α+β) 才是「正余余正」交叉结构。">C. sinαcosβ + cosαsinβ</button>
+          <div class="mcq-diag"></div>
+        </div>
+        <div class="mcq" data-mcq>
+          <p class="mcq-q">3. 已知 <span class="f">f(x+a)=−f(x)</span>（a&gt;0），则 f(x) 的周期为？</p>
+          <button class="mcq-opt" data-correct="0" data-diag="<span class='err-tag'>易错</span>忘记迭代两次：f(x+2a)=−f(x+a)=f(x)。口诀「反/倒为半周期」——a 是半周期，周期是 2a。">A. a</button>
+          <button class="mcq-opt" data-correct="1" data-diag="正确。把 x 换成 x+a 迭代一次即回到原函数，T=2a。">B. 2a</button>
+          <button class="mcq-opt" data-correct="0" data-diag="<span class='err-tag'>易错</span>4a 是「一条对称轴+一个对称中心」情形的周期，与本题条件不符，两类周期结论别混淆。">C. 4a</button>
+          <div class="mcq-diag"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 6: 主线〇 预备知识 -->
+  <section class="slide-page" id="module-prep" data-bloom-level="apply" data-scaffold="partial" data-page-type="concept" data-page-index="3" data-tts="sec-prep" data-tsh="主线一 - 预备知识：集合、逻辑、不等式" data-tts-script="主线一，预备知识。要背的有三个：德摩根律，口诀是补一进、交并互换；量词否定，任意存在互换、结论取反；基本不等式的使用条件，一正二定三相等。要会推导的有两个：子集个数二的n次方，用每个元素选与不选来推；基本不等式本身，由根号a减根号b的平方大于等于零展开即得。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">主线〇 · 地基</span>
+          <h2>预备知识：集合 · 逻辑 · 不等式</h2>
+        </div>
+        <p class="sub-note">全卷底层语言，送分题必拿；不等式是函数与导数主线的工具库。</p>
+        <table class="kv">
+          <tr><th>知识点</th><th>类型</th><th>内容与技巧</th></tr>
+          <tr><td>子集个数</td><td><span class="tag tag-der">推</span></td><td><span class="f">2ⁿ</span>：每个元素「选/不选」两种状态，乘法原理即得；真子集 −1，非空真子集 −2</td></tr>
+          <tr><td>德摩根律</td><td><span class="tag tag-mem">记</span></td><td><span class="f">∁(A∪B)=∁A∩∁B</span>，口诀「补一进，交并互换」</td></tr>
+          <tr><td>量词否定</td><td><span class="tag tag-mem">记</span></td><td><span class="f">¬∀=∃¬，¬∃=∀¬</span>：「∀∃ 互换，结论取反，条件不动」</td></tr>
+          <tr><td>一元二次不等式</td><td><span class="tag tag-mem">记</span></td><td>开口向上时「大于取两边，小于取中间」</td></tr>
+          <tr><td>基本不等式</td><td><span class="tag tag-der">推</span></td><td><span class="f">a+b≥2√(ab)</span> 由 <span class="f">(√a−√b)²≥0</span> 展开；使用条件「一正、二定、三相等」</td></tr>
+          <tr><td>不等式链</td><td><span class="tag tag-der">推</span></td><td>「调和 ≤ 几何 ≤ 算术 ≤ 平方平均」，记「几算平」递增</td></tr>
+        </table>
+        <div class="deriv-box"><b>推导技巧：</b>求最值先三问——变量是正的吗？和或积能凑定值吗？等号取得到吗？三问全过才用基本不等式，否则换单调性或判别式法。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 7: Canvas 实验室 · 基本不等式几何证明 -->
+  <section class="slide-page" id="module-lab" data-bloom-level="apply" data-scaffold="partial" data-page-type="interactive" data-page-index="6" data-tts="lab-amgm" data-tsh="互动实验 - 拖动滑块看见基本不等式" data-tts-script="拖动滑块，改变 a 与 b 的分配。半圆的半径是二分之 a 加 b，也就是算术平均；从分割点竖直向上的弦高是根号 ab，也就是几何平均。你会看到：弦高永远不超过半径，只有当分割点正好在中点，也就是 a 等于 b 时，两者相等。这就是基本不等式的几何证明，看一眼就再也忘不掉。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">Lab</span>
+          <h2>互动实验：基本不等式的几何证明</h2>
+        </div>
+        <p class="sub-note">拖动滑块改变 a 与 b 的分配，观察「弦高 ≤ 半径」：几何平均 ≤ 算术平均，当且仅当 a=b 取等。</p>
+        <div class="lab-controls">
+          <span>a = <b id="lab-a-val">3.0</b></span>
+          <input type="range" id="lab-slider" min="5" max="95" value="30" step="1" aria-label="调节 a 与 b 的比例">
+          <span>b = <b id="lab-b-val">7.0</b></span>
+        </div>
+        <canvas id="amgm-canvas" width="640" height="360" style="display:block;width:100%;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid var(--line-subtle)"></canvas>
+        <p class="lab-readout" id="lab-readout" style="margin-top:10px">算术平均 (a+b)/2 = 5.00 ｜ 几何平均 √(ab) = 4.58 ｜ 差值 0.42</p>
+        <div class="insight-box">
+          <div class="ib-title">🔍 深层理解：弦高为什么永远够不着半径？</div>
+          <img src="./assets/lab-amgm-diagram.webp" alt="基本不等式几何证明示意图：半圆中弦高 √(ab) 不超过半径 (a+b)/2" style="display:block;width:100%;max-width:420px;margin:0 auto 10px;border-radius:10px">
+          <p style="margin:0 0 6px"><span class="lens">看见它</span>半径 = <span class="f">(a+b)/2</span>（算术平均），半弦 = <span class="f">√(ab)</span>（几何平均）。弦永远够不着半径——除非分割点在中点。代数证明 <span class="f">(√a−√b)²≥0</span> 与这张几何图是同一个事实的两张面孔。</p>
+          <p style="margin:0"><span class="lens">考试用法</span>遇到 <span class="f">a+b</span> 定值求 <span class="f">ab</span> 最值、或链长/截距问题，先想这张图：均值不等式「一正二定三相等」，取等条件就是分割点到中点。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 8: 主线一 函数 -->
+  <section class="slide-page" id="module-function" data-bloom-level="apply" data-scaffold="partial" data-page-type="concept" data-page-index="4" data-tts="sec-function" data-tsh="主线二上 - 函数性质与指对幂" data-tts-script="主线二的上半段，函数性质与指对幂。要背的：奇偶性的运算规律，同正弦变余弦那样的口诀是同号相乘看正负；指数运算律乘加幂乘，对数运算律乘变加、除变减、幂提前。要会推的：对称轴和对称中心的结论，记住括号内相加除以二；周期结论，差为周期，反或倒为半周期；换底公式，设出来化回指数两边取对数。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">主线二（上）· 中档</span>
+          <h2>函数性质与指对幂</h2>
+        </div>
+        <table class="kv">
+          <tr><th>知识点</th><th>类型</th><th>内容与技巧</th></tr>
+          <tr><td>定义域三类限制</td><td><span class="tag tag-mem">记</span></td><td>「分母不为零，根下非负，真数为正」；抽象函数用「括号范围不变」传递</td></tr>
+          <tr><td>奇偶性</td><td><span class="tag tag-mem">记</span></td><td>奇函数过原点；奇×奇=偶、奇×偶=奇、偶×偶=偶（同正负号法则）</td></tr>
+          <tr><td>对称性结论</td><td><span class="tag tag-der">推</span></td><td><span class="f">f(a+x)=f(b−x)</span> ⇒ 轴 <span class="f">x=(a+b)/2</span>；函数值之和为定值 ⇒ 中心对称。核心：「括号内相加除以 2」</td></tr>
+          <tr><td>周期性结论</td><td><span class="tag tag-der">推</span></td><td>「差为周期，反/倒为半周期」：<span class="f">f(x+a)=−f(x)</span> ⇒ <span class="f">T=2a</span>；两轴 ⇒ <span class="f">T=2|a−b|</span>，一轴一心 ⇒ <span class="f">T=4|a−b|</span></td></tr>
+          <tr><td>指数运算律</td><td><span class="tag tag-mem">记</span></td><td>「乘加幂乘，负倒分根」</td></tr>
+          <tr><td>对数运算律</td><td><span class="tag tag-der">推</span></td><td>由指数律翻译：「乘变加，除变减，幂提前」；不会算就「设出来化回指数」</td></tr>
+          <tr><td>换底公式</td><td><span class="tag tag-der">推</span></td><td><span class="f">log_a b = ln b / ln a</span>：设 <span class="f">x=log_a b</span>，则 <span class="f">aˣ=b</span>，两边取 ln。推论：同真两对数互为倒数</td></tr>
+          <tr><td>图像定点</td><td><span class="tag tag-mem">记</span></td><td>「指过 (0,1)，对过 (1,0)，底大上坡底小下坡」</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 6: 主线二 导数 -->
+  <section class="slide-page" id="module-derivative" data-bloom-level="analyze" data-scaffold="partial" data-page-type="concept" data-page-index="5" data-tts="sec-derivative" data-tsh="主线二下 - 导数：全卷难度之巅" data-tts-script="主线二的下半段，导数，全卷难度之巅。导数表必须背熟：幂降次，e不变，正弦变余弦，余弦添负号。两条切线放缩不等式必须会推：e的x次方大于等于x加1，ln x小于等于x减1，都是作差构造、求导证最小值为零。恒成立问题两条路线：参变分离或直接讨论最值，先用端点效应缩小范围。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">主线二（下）· 压轴</span>
+          <h2>导数及其应用</h2>
+        </div>
+        <table class="kv">
+          <tr><th>知识点</th><th>类型</th><th>内容与技巧</th></tr>
+          <tr><td>基本导数表</td><td><span class="tag tag-mem">记</span></td><td>「幂降次，e 不变，正弦变余弦，余弦添负号」</td></tr>
+          <tr><td>四则与链式法则</td><td><span class="tag tag-der">推</span></td><td>除法：「上导下不导减下导上不导，除以下平方」；复合：「由外到内，逐层剥皮」</td></tr>
+          <tr><td>切线问题</td><td><span class="tag tag-der">推</span></td><td>区分「在点处」与「过某点」：过点问题切点未知，先设切点 <span class="f">(t, f(t))</span> 列方程组</td></tr>
+          <tr><td>单调性与极值</td><td><span class="tag tag-mem">记</span></td><td>「导数正负定增减，变号零点定极值」；含参流程：求导→通分→因式分解→按根分类</td></tr>
+          <tr><td>切线放缩不等式</td><td><span class="tag tag-der">推</span></td><td><span class="f">eˣ≥x+1</span>、<span class="f">ln x≤x−1</span>：作差构造求导证最小值 0。「指数切线在上方，对数切线在下方」</td></tr>
+          <tr><td>恒成立求参数</td><td><span class="tag tag-der">推</span></td><td>转化为 <span class="f">f(x)ₘᵢₙ≥0</span>；两条路线：参变分离（除负变号）或直接讨论最值；先试端点效应</td></tr>
+          <tr><td>同构式</td><td><span class="tag tag-und">解</span></td><td>见 <span class="f">xeˣ</span>、<span class="f">x ln x</span> 凑成同一结构，用单调性「脱壳」</td></tr>
+        </table>
+        <div class="deriv-box"><b>每周默推链：</b>导数定义 → 幂/指对求导 → 乘除法则 → eˣ≥x+1 → ln x≤x−1 → 恒成立的最值转化。打通这条链，导数大题前两问是稳定得分点。</div>
+        <div class="insight-box">
+          <div class="ib-title">🔍 深层理解：eˣ≥x+1 的几何本源</div>
+          <img src="./assets/derivative-tangent-bound.webp" alt="y=e^x 恒在切线 y=x+1 上方，x=0 处取等" style="display:block;width:100%;max-width:420px;margin:0 auto 10px;border-radius:10px">
+          <p style="margin:0"><span class="lens">看见它</span>y=eˣ 是下凸曲线，永远趴在自己在 x=0 处的切线 y=x+1 上方——切线只在切点碰到曲线一次。对数相反：<span class="f">ln x≤x−1</span>，曲线在切线<b>下方</b>。记口诀「指数切线在下方托，对数切线在上方压」，恒成立放缩题直接调用这张图。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 7: 主线三 三角 -->
+  <section class="slide-page" id="module-trig" data-bloom-level="apply" data-scaffold="partial" data-page-type="concept" data-page-index="6" data-tts="sec-trig" data-tsh="主线三 - 三角：只背母公式，其余现场推" data-tts-script="主线三，三角。公式最多，但正确姿势是只背母公式，其余现场推导。必须背的：同角两式、和差六个母公式、正弦定理和余弦定理。口诀：余余正正号相反，正余余正号相同；诱导公式，奇变偶不变，符号看象限。倍角、降幂、辅助角全部从和角公式三十秒内推出。解三角形口诀：边对角用正弦，三边一角用余弦，面积是两边夹一半正弦。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">主线三 · 中档</span>
+          <h2>三角：只背母公式，其余现场推</h2>
+        </div>
+        <table class="kv">
+          <tr><th>知识点</th><th>类型</th><th>内容与技巧</th></tr>
+          <tr><td>诱导公式</td><td><span class="tag tag-mem">记</span></td><td>总口诀「奇变偶不变，符号看象限」；象限符号「一全正，二正弦，三正切，四余弦」</td></tr>
+          <tr><td>同角关系</td><td><span class="tag tag-mem">记</span></td><td><span class="f">sin²+cos²=1</span>、<span class="f">tan=sin/cos</span>；齐次式同除 cos² 化 tan</td></tr>
+          <tr><td>和差 6 母公式</td><td><span class="tag tag-mem">记</span></td><td>「余余正正号相反，正余余正号相同」；tan「上同下异」</td></tr>
+          <tr><td>二倍角/降幂</td><td><span class="tag tag-der">推</span></td><td>令 β=α 代入和角公式即得；<b>不许单独背，必须会推</b></td></tr>
+          <tr><td>辅助角公式</td><td><span class="tag tag-der">推</span></td><td><span class="f">a sin x+b cos x=√(a²+b²)sin(x+φ)</span>：提出模长，括号内凑成 cos φ 与 sin φ</td></tr>
+          <tr><td>图像变换</td><td><span class="tag tag-der">推</span></td><td>「平移只对 x 操作，系数必须先提出」；求 φ 用五点法代点</td></tr>
+          <tr><td>正弦定理</td><td><span class="tag tag-der">推</span></td><td><span class="f">a/sinA=2R</span>：外接圆 + 圆周角定理。「边对角用正弦」</td></tr>
+          <tr><td>余弦定理</td><td><span class="tag tag-der">推</span></td><td><span class="f">a²=b²+c²−2bc cosA</span>：向量 <span class="f">a⃗=b⃗−c⃗</span> 两边平方。「三边一角用余弦」</td></tr>
+          <tr><td>面积公式</td><td><span class="tag tag-der">推</span></td><td><span class="f">S=½ab sinC</span>：「两边夹一半正弦」</td></tr>
+        </table>
+        <span class="koujue"><b>速记总策略：</b>全模块只硬背「同角 2 式 + 和差 6 式 + 正余弦定理」，其余 30 秒内由母公式推出，每周限时默推一次。</span>
+        <div class="insight-box">
+          <div class="ib-title">🔍 深层理解：为什么 cos 和角「号相反」而 sin「号相同」？</div>
+          <p style="margin:0 0 6px"><span class="lens">比较它</span>cos(α+β) 中两项「余余、正正」是<b>同名相乘</b>，展开收缩所以取减号；sin(α+β) 是<b>交叉相乘</b>，展开扩张所以取加号。</p>
+          <p style="margin:0"><span class="lens">迁移它</span>令 β=−β 立刻得到差角公式；令 β=α 得到二倍角。记住一个「号相反/号相同」的结构理由，比背 6 个公式更省力。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 8: 主线四 数列 -->
+  <section class="slide-page" id="module-sequence" data-bloom-level="analyze" data-scaffold="partial" data-page-type="concept" data-page-index="7" data-tts="sec-sequence" data-tsh="主线四 - 数列：两大模型加两类方法" data-tts-script="主线四，数列。两大基本模型：等差用倒序相加推求和，口诀首加尾乘项数除以二；等比用错位相减推求和，高频扣分点是忘记讨论q等于1。求通项的方法库：累加、累乘、构造法配出等比、由S n求a n必须单独验证n等于1。求和的方法库：错位相减对付等差乘等比，裂项相消记住母积差、子化差。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">主线四 · 中档偏难</span>
+          <h2>数列：两大模型 + 两类方法</h2>
+        </div>
+        <table class="kv">
+          <tr><th>知识点</th><th>类型</th><th>内容与技巧</th></tr>
+          <tr><td>等差通项与求和</td><td><span class="tag tag-der">推</span></td><td><span class="f">Sₙ=n(a₁+aₙ)/2</span> 用<b>倒序相加</b>：「首加尾乘项数除以二」；性质「下标和等，项之和等」</td></tr>
+          <tr><td>等比通项与求和</td><td><span class="tag tag-der">推</span></td><td><span class="f">Sₙ=a₁(1−qⁿ)/(1−q)</span> 用<b>错位相减</b>；<span style="color:#ff8a80">必讨论 q=1</span>；性质「下标和等，项之积等」</td></tr>
+          <tr><td>累加/累乘</td><td><span class="tag tag-der">推</span></td><td>信号：<span class="f">aₙ₊₁−aₙ=f(n)</span> 累加；<span class="f">aₙ₊₁/aₙ=f(n)</span> 累乘</td></tr>
+          <tr><td>构造法</td><td><span class="tag tag-der">推</span></td><td><span class="f">aₙ₊₁=paₙ+q</span>：设 <span class="f">aₙ₊₁+x=p(aₙ+x)</span> 配出等比；取倒数法处理分式递推</td></tr>
+          <tr><td>由 Sₙ 求 aₙ</td><td><span class="tag tag-mem">记</span></td><td><span class="f">aₙ=Sₙ−Sₙ₋₁ (n≥2)</span>，<span style="color:#ff8a80">必须单独验证 n=1</span></td></tr>
+          <tr><td>裂项相消</td><td><span class="tag tag-der">推</span></td><td><span class="f">1/(n(n+1))=1/n−1/(n+1)</span>：「母积差，子化差」；根式分母有理化</td></tr>
+          <tr><td>错位相减求和</td><td><span class="tag tag-der">推</span></td><td>信号：等差×等比；书写四步：写 Sₙ、写 qSₙ、相减、整理</td></tr>
+        </table>
+        <div class="tip-box"><b>数列不等式放缩：</b>「证小于往大放，证大于往小缩」，把通项放成可裂项或等比；从第二项起放缩可保留精度。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 9: 主线五 向量与复数 -->
+  <section class="slide-page" id="module-vector" data-bloom-level="apply" data-scaffold="partial" data-page-type="concept" data-page-index="8" data-tts="sec-vector" data-tsh="主线五 - 向量与复数：小题稳拿分" data-tts-script="主线五，向量与复数。数量积口诀：模模余弦，坐标相乘再相加；三点共线系数和为一。极化恒等式必须会推：a加b的平方减a减b的平方等于4倍a点乘b，几何意义是中线方减半边方，求数量积最值的利器。复数部分：i的幂模四看余数；除法分母实数化，乘以共轭；z乘z共轭等于模方，求模不必算出结果，先拆模。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">主线五 · 基础到中档</span>
+          <h2>平面向量与复数</h2>
+        </div>
+        <table class="kv">
+          <tr><th>知识点</th><th>类型</th><th>内容与技巧</th></tr>
+          <tr><td>数量积</td><td><span class="tag tag-mem">记</span></td><td>「模模余弦，坐标相乘再相加」；垂直 ⟺ 点积为 0</td></tr>
+          <tr><td>三点共线</td><td><span class="tag tag-mem">记</span></td><td><span class="f">OC⃗=λOA⃗+μOB⃗</span> 且 <span class="f">λ+μ=1</span>：「共线系数和为 1」</td></tr>
+          <tr><td>极化恒等式</td><td><span class="tag tag-der">推</span></td><td><span class="f">a·b=¼(|a+b|²−|a−b|²)</span>：展开平方差即得；几何意义「中线方减半边方」</td></tr>
+          <tr><td>建系法</td><td><span class="tag tag-und">解</span></td><td>几何条件复杂就建系变代数；选对称轴/垂直边为轴，让点落在轴上</td></tr>
+          <tr><td>i 的周期</td><td><span class="tag tag-mem">记</span></td><td>「i 的幂，模 4 看余数」：<span class="f">i²⁰²⁷=i³=−i</span></td></tr>
+          <tr><td>复数除法</td><td><span class="tag tag-mem">记</span></td><td>「分母实数化，乘以共轭」</td></tr>
+          <tr><td>模的性质</td><td><span class="tag tag-der">推</span></td><td><span class="f">z·z̄=|z|²</span>；「模的乘除=乘除的模」——求模先拆，不必算结果</td></tr>
+          <tr><td>几何意义</td><td><span class="tag tag-und">解</span></td><td><span class="f">|z−z₀|=r</span> 是圆，<span class="f">|z−z₁|=|z−z₂|</span> 是中垂线；不会就画复平面</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 10: 主线六 立体几何 -->
+  <section class="slide-page" id="module-solid" data-bloom-level="apply" data-scaffold="partial" data-page-type="concept" data-page-index="9" data-tts="sec-solid" data-tsh="主线六 - 立体几何：定理必背，向量兜底" data-tts-script="主线六，立体几何。体积公式：柱一锥三台过渡，球体积对表面积求导就是表面积。平行垂直的判定性质定理必须背，两个采分关键词：垂直于两条相交线；面面垂直找交线、面内作垂。向量法求角是兜底武器：线面角用正弦，二面角看法向量，余弦定值图定号。外接球的核心技巧是补形：两两垂直找墙角，对棱相等也补墙。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">主线六 · 中档偏难</span>
+          <h2>立体几何：定理必背，向量兜底</h2>
+        </div>
+        <table class="kv">
+          <tr><th>知识点</th><th>类型</th><th>内容与技巧</th></tr>
+          <tr><td>体积公式</td><td><span class="tag tag-mem">记</span></td><td>「柱一锥三台过渡」；台体记「上+中（几何平均）+下」；球 <span class="f">V=⁴⁄₃πR³</span> 求导得 <span class="f">S=4πR²</span></td></tr>
+          <tr><td>外接球</td><td><span class="tag tag-der">推</span></td><td>核心技巧<b>补形</b>：「两两垂直找墙角，对棱相等也补墙」→ 长方体 <span class="f">2R=√(a²+b²+c²)</span></td></tr>
+          <tr><td>平行判定性质</td><td><span class="tag tag-mem">记</span></td><td>「线线平行推线面，线面平行交线平」；辅助线首选中位线、平行四边形</td></tr>
+          <tr><td>垂直判定性质</td><td><span class="tag tag-mem">记</span></td><td>「垂直两条<b>相交</b>线」（相交是采分词）；「面面垂直，找交线，面内作垂」</td></tr>
+          <tr><td>线面角</td><td><span class="tag tag-der">推</span></td><td><span class="f">sinθ=|a·n|/(|a||n|)</span>：线面角与法向量夹角互余，cos 变 sin——「线面用正弦」</td></tr>
+          <tr><td>二面角</td><td><span class="tag tag-der">推</span></td><td><span class="f">cosθ=±n₁·n₂/(|n₁||n₂|)</span>：「二面角看法向量，余弦定值图定号」</td></tr>
+          <tr><td>点面距离</td><td><span class="tag tag-der">推</span></td><td><span class="f">d=|AP⃗·n|/|n|</span>（投影）；几何替代方案：等体积法</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 11: 主线七 解析几何 -->
+  <section class="slide-page" id="module-conic" data-bloom-level="analyze" data-scaffold="partial" data-page-type="concept" data-page-index="10" data-tts="sec-analytic" data-tsh="主线七 - 解析几何：定义秒杀小题，韦达流水线大题" data-tts-script="主线七，解析几何，计算量最大的模块。定义对照记忆：椭圆a最大，a方等于b方加c方；双曲线c最大，c方等于a方加b方，正好相反；抛物线的核心是到焦点等于到准线。大题流水线：设线、联立、韦达、翻译目标式。弦中点必用点差法，代点作差出斜率。计算纪律：能约分先约分，见到x一加x二、x一乘x二立即整体替换。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">主线七 · 压轴</span>
+          <h2>解析几何：定义秒杀小题，韦达流水线大题</h2>
+        </div>
+        <table class="kv">
+          <tr><th>知识点</th><th>类型</th><th>内容与技巧</th></tr>
+          <tr><td>椭圆</td><td><span class="tag tag-mem">记</span></td><td>「椭圆 a 最大」<span class="f">a²=b²+c²</span>，<span class="f">e∈(0,1)</span>；遇焦半径先想和为 2a</td></tr>
+          <tr><td>双曲线</td><td><span class="tag tag-mem">记</span></td><td>「双曲 c 最大」<span class="f">c²=a²+b²</span>，<span class="f">e&gt;1</span>；渐近线：标准方程右边 1 换 0</td></tr>
+          <tr><td>抛物线</td><td><span class="tag tag-mem">记</span></td><td>核心「到焦点=到准线」，焦半径立即坐标化；开口看一次项</td></tr>
+          <tr><td>焦点三角形面积</td><td><span class="tag tag-der">推</span></td><td>椭圆 <span class="f">S=b²tan(θ/2)</span>：定义+余弦定理+面积公式三件套联立</td></tr>
+          <tr><td>点差法</td><td><span class="tag tag-der">推</span></td><td>「代点作差出斜率」：两点代入曲线方程相减；<b>凡给弦中点必用</b></td></tr>
+          <tr><td>弦长公式</td><td><span class="tag tag-der">推</span></td><td><span class="f">|AB|=√(1+k²)·√((x₁+x₂)²−4x₁x₂)</span>；<span class="f">|x₁−x₂|=√Δ/|A|</span> 少算一步</td></tr>
+          <tr><td>设线技巧</td><td><span class="tag tag-und">解</span></td><td>「过横轴点倒设斜率」<span class="f">x=ty+n</span>，把竖直线纳入 t=0，少一类讨论</td></tr>
+          <tr><td>定点定值</td><td><span class="tag tag-und">解</span></td><td>「特殊探路，一般证明」；齐次化联立降算量</td></tr>
+        </table>
+        <div class="deriv-box"><b>计算纪律：</b>① 能约分先约分再展开；② 见 <span class="f">x₁+x₂, x₁x₂</span> 立即整体替换；③ 中间结果保留因式分解形态；④ 每步用特殊值（k=0）快速验算。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 12: 主线八 概率统计 -->
+  <section class="slide-page" id="module-prob" data-bloom-level="apply" data-scaffold="partial" data-page-type="concept" data-page-index="11" data-tts="sec-prob" data-tsh="主线八 - 概率统计：定义型公式，树状图一条龙" data-tts-script="主线七，概率统计。计数口诀：分类相加，分步相乘；相邻捆绑插空离，定序问题除以序，相同元素隔板分。排列组合的关系是先选后排。条件概率、全概率、贝叶斯不要孤立背，画树状图：沿分支相乘，汇结果相加，全概率顺推，贝叶斯逆推。三大分布的识别信号：有放回独立重复是二项，不放回抽样是超几何，大量随机误差是正态。独立性检验公式记：主对角乘积减副对角乘积，平方乘总数，除以四个边际和。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag">主线八 · 中档</span>
+          <h2>概率与统计：定义型公式，树状图一条龙</h2>
+        </div>
+        <table class="kv">
+          <tr><th>知识点</th><th>类型</th><th>内容与技巧</th></tr>
+          <tr><td>计数原理</td><td><span class="tag tag-und">解</span></td><td>「分类相加，分步相乘」；判据：一类方法能否独立完成整件事</td></tr>
+          <tr><td>排列与组合</td><td><span class="tag tag-der">推</span></td><td><span class="f">A(n,m)=C(n,m)·m!</span>：「先选后排」；<span class="f">C(n,m)=C(n,n−m)</span></td></tr>
+          <tr><td>计数模型</td><td><span class="tag tag-der">推</span></td><td>「相邻捆绑插空离，定序问题除以序，相同元素隔板分」</td></tr>
+          <tr><td>二项式定理</td><td><span class="tag tag-mem">记</span></td><td>通项 <span class="f">Tₖ₊₁=C(n,k)aⁿ⁻ᵏbᵏ</span> 列指数方程解 k；系数和用赋值法令 x=±1</td></tr>
+          <tr><td>条件概率→全概率→贝叶斯</td><td><span class="tag tag-der">推</span></td><td>树状图：沿分支相乘，汇结果相加；「全概率顺推，贝叶斯逆推」——图画对则公式不用背</td></tr>
+          <tr><td>期望方差性质</td><td><span class="tag tag-der">推</span></td><td>「期望线性，方差平方」；<span class="f">D(X)=E(X²)−(EX)²</span> 展开即得，算方差优先用</td></tr>
+          <tr><td>三大分布识别</td><td><span class="tag tag-mem">记</span></td><td>有放回/独立重复→二项；不放回→超几何；大量随机误差→正态（68-95-99.7）</td></tr>
+          <tr><td>回归与独立性检验</td><td><span class="tag tag-mem">记</span></td><td>回归直线必过 <span class="f">(x̄,ȳ)</span>；χ²：「主减副，平方乘总数，除以四个边际和」</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 13: 互动 quiz 记 or 推 -->
+  <section class="slide-page" id="module-quiz-sort" data-bloom-level="analyze" data-scaffold="none" data-conceptest="true" data-page-type="quiz" data-page-index="12" data-tts="quiz-sort" data-tsh="互动挑战 - 判断每个公式该记还是该推" data-tts-script="现在检验一下你的判断标准。屏幕上会出现八个公式或定理，请判断每一个属于必须背熟，还是必须会推导。答错没关系，每条解释都会告诉你判断的依据。记住一个原则：母公式要背，由母公式能三十秒推出的，一律按推导处理。">
+    <div class="slide-inner">
+      <div class="card card-accent">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="warn">Challenge</span>
+          <h2>「记 or 推」分类挑战</h2>
+        </div>
+        <p class="sub-note">判断每个公式属于「必须背熟」还是「必须会推导」。原则：母公式要背；能由母公式 30 秒推出的，一律按「推」处理。</p>
+        <div id="quiz-list"></div>
+        <div class="quiz-score" id="quiz-score">已完成 0 / 8</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 17: 分层作业 -->
+  <section class="slide-page" id="module-homework" data-bloom-level="apply" data-scaffold="none" data-page-type="quiz" data-page-index="16" data-tts="homework" data-tsh="分层作业 - 基础巩固、能力应用、迁移挑战" data-tts-script="课后作业分三层。第一层基础巩固：默写和角六式与导数表，默推换底公式。第二层能力应用：由和角公式推导正切差角公式和辅助角公式，用错位相减求前n项和。第三层迁移挑战：用切线放缩证明e的x次方大于等于e乘以x，并为一条主线设计你自己的速记口诀。按自己的节奏选择起点，第三层做不出来就回到对应的推导链重推一遍。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">Homework</span>
+          <h2>三段式分层作业</h2>
+        </div>
+        <div class="level-card lv1">
+          <span class="lv">Level 1 ⭐ 基础巩固</span>
+          <ul>
+            <li>默写：和差 6 母公式、基本导数表、正弦/余弦定理（对照课本自批）</li>
+            <li>默推：换底公式、子集个数 2ⁿ、基本不等式</li>
+            <li>口头说出七大主线的名称与顺序</li>
+          </ul>
+        </div>
+        <div class="level-card lv2">
+          <span class="lv">Level 2 ⭐⭐ 能力应用</span>
+          <ul>
+            <li>由和角公式推导 <span class="f">tan(α−β)</span> 与辅助角公式（限时 5 分钟）</li>
+            <li>用错位相减求 <span class="f">Sₙ=1·2+2·2²+…+n·2ⁿ</span>，写出完整四步</li>
+            <li>用向量法推导线面角公式中 sin 的来源（画夹角关系图）</li>
+          </ul>
+        </div>
+        <div class="level-card lv3">
+          <span class="lv">Level 3 ⭐⭐⭐ 迁移挑战</span>
+          <ul>
+            <li>用切线放缩证明 <span class="f">eˣ ≥ ex</span>（提示：把 x 换成 x−1 再平移）</li>
+            <li>任选一个高频易错点，编一道带「错因干扰项」的选择题并写出诊断语</li>
+            <li>为一条主线设计你自己的速记口诀，并在小组内讲清楚它为什么有效</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 18: 后测 -->
+  <section class="slide-page" id="module-posttest" data-bloom-level="evaluate" data-scaffold="none" data-conceptest="true" data-page-type="quiz" data-page-index="17" data-tts="posttest" data-tsh="后测 - 学会了吗" data-tts-script="最后做三道后测题，与前测对照，检验这节课的收获。全对说明双轨分类的标准已经内化；有错就回到对应主线页再读一遍，并把对应的推导链加入下周默推清单。">
+    <div class="slide-inner">
+      <div class="card">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">Post-test</span>
+          <h2>后测：学会了吗？</h2>
+        </div>
+        <p class="sub-note">与前测对照。全对 = 双轨标准已内化；有错 → 回对应主线页重读 + 把该推导链加入下周清单。</p>
+        <div class="mcq" data-mcq>
+          <p class="mcq-q">1. 「半角公式（万能公式）」应该归为哪一类？</p>
+          <button class="mcq-opt" data-correct="0" data-diag="<span class='err-tag'>易错</span>半角公式使用频率低、结构规整，由二倍角+同角关系 30 秒可推。把低频衍生公式也硬背，正是「背了就忘」的根源。">A. 必须背熟</button>
+          <button class="mcq-opt" data-correct="1" data-diag="正确。令 t=tan(α/2)，由二倍角与同除 sin²+cos² 即推得。判断原则：母公式才背，可速推的一律按推处理。">B. 必须会推导</button>
+          <div class="mcq-diag"></div>
+        </div>
+        <div class="mcq" data-mcq>
+          <p class="mcq-q">2. 圆锥曲线大题中给出「弦的中点」，首选方法是？</p>
+          <button class="mcq-opt" data-correct="0" data-diag="<span class='err-tag'>易错</span>联立韦达当然能算，但中点条件用点差法可一步出斜率关系，计算量差一个量级。方法选择要看题目给出的信号。">A. 设线联立 + 韦达定理</button>
+          <button class="mcq-opt" data-correct="1" data-diag="正确。「代点作差出斜率」：两点代入曲线方程相减，中点坐标与斜率关系一步到位。">B. 点差法</button>
+          <div class="mcq-diag"></div>
+        </div>
+        <div class="mcq" data-mcq>
+          <p class="mcq-q">3. 16 条核心推导链的正确训练节奏是？</p>
+          <button class="mcq-opt" data-correct="0" data-diag="<span class='err-tag'>易错</span>考前突击是死记硬背的老路——推导能力靠间隔重复固化，不靠瞬时记忆。">A. 考前一周集中突击</button>
+          <button class="mcq-opt" data-correct="1" data-diag="正确。三轮法：看推→默推→讲推，每周一次，卡壳点回炉。能讲清楚才算真会。">B. 每周默推，看推→默推→讲推</button>
+          <div class="mcq-diag"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 19: 推导训练清单 -->
+  <section class="slide-page" id="module-derivation" data-bloom-level="analyze" data-scaffold="partial" data-page-type="interactive" data-page-index="13" data-tts="derivation-lab" data-tsh="推导训练 - 十六条核心推导链每周默推" data-tts-script="这是十六条核心推导链，覆盖全卷百分之七十以上的活知识。使用方法分三轮：第一轮看着提纲推导，标注卡壳点；第二轮合上书默推，卡壳点回炉；第三轮随机抽题，能口头讲清楚才算真会。每完成一条，就在清单上打勾，进度会自动保存。">
+    <div class="slide-inner">
+      <div class="card card-glow">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="success">Derivation Lab</span>
+          <h2>16 条核心推导链 · 每周默推清单</h2>
+        </div>
+        <p class="sub-note">点击打勾，进度自动保存。三轮法：看推 → 默推 → 讲推。</p>
+        <div class="dl-progress"><div class="dl-progress-fill" id="dl-progress-fill"></div></div>
+        <p class="sub-note" id="dl-progress-text" style="margin-bottom:10px">已完成 0 / 16</p>
+        <div id="dl-list"></div>
+        <div class="flex-row" style="margin-top:10px">
+          <button class="reset-btn" id="dl-reset">清空进度</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 15: Knowledge Graph -->
+  <section class="slide-page" id="module-kg" data-bloom-level="understand" data-scaffold="partial" data-page-type="summary" data-page-index="14" data-tts="knowledge-graph" data-tsh="知识图谱 - 查看本课与其他知识的关联" data-tts-script="知识图谱展示了本课与其他课件的关联。这节总复习课覆盖的集合、函数、三角、数列、向量、立体几何、解析几何、概率统计，在知识树上各有对应的专题课件，可以按图索骥逐块深入。">
+    <div class="slide-inner">
+      <div class="card card-glow">
+        <div class="section-header">
+          <span class="phase-tag" data-variant="purple">Knowledge Graph</span>
+          <h2>知识图谱</h2>
+        </div>
+        <p style="color:var(--muted);margin:0 0 16px">本课为跨节点综合复习，覆盖的各专题在知识树上均有对应节点课件。</p>
+        <div class="grid grid-2" style="margin-bottom:14px">
+          <div class="inner-card" style="margin:0">
+            <p style="color:var(--brand);font-weight:700;margin-bottom:6px">前置节点（先修）</p>
+            <p style="font-size:13px;color:var(--text-secondary);margin:0">集合 math-h-sets ｜ 函数概念 math-h-functions-concept ｜ 指数/对数函数 ｜ 三角函数定义 ｜ 基本不等式</p>
+          </div>
+          <div class="inner-card" style="margin:0">
+            <p style="color:var(--brand-2);font-weight:700;margin-bottom:6px">后续节点（深入）</p>
+            <p style="font-size:13px;color:var(--text-secondary);margin:0">圆锥曲线综合 math-h-conic-comprehensive ｜ 三角函数综合应用 math-h-trigonometric-functions</p>
+          </div>
+        </div>
+        <p style="font-size:13px;margin:0 0 12px"><a href="https://www.teachany.cn/knowledge-graph.html?node=ext-bb246b6d" target="_blank" rel="noopener">在主站知识图谱中查看本节点 →</a></p>
+        <div data-teachany-kg="ext-bb246b6d">
+          <canvas class="tkg-fallback-canvas" width="720" height="120" aria-label="知识图谱互动画布" style="display:block;width:100%;max-height:140px;border-radius:12px;"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page 16: AI Tutor -->
+  <section class="slide-page" id="module-tutor" data-bloom-level="understand" data-scaffold="partial" data-page-type="interactive" data-page-index="15" data-tts="ai-tutor" data-tsh="AI 学伴 - 先诊断卡点，再给最小提示" data-tts-script="还有不明白的地方，可以问 AI 学伴。它会先诊断你的卡点，再给最小提示，而不是直接给答案。你可以问它：某条推导链怎么推，或者某类题该用哪条口诀。">
+    <div class="slide-inner">
+      <div data-teachany-tutor-card></div>
+    </div>
+  </section>
+
+</div><!-- .slide-container -->
+
+<!-- Side Navigation Dots -->
+<nav class="slide-sidenav" id="slide-sidenav" aria-label="页面导航"></nav>
+
+<!-- Play Mode FAB -->
+<button class="play-mode-fab" id="play-mode-fab" aria-label="切换播放模式" title="切换播放模式">
+  <svg id="fab-icon-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+  <svg id="fab-icon-browse" viewBox="0 0 24 24" style="display:none"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+
+<!-- Bottom Toolbar -->
+<div class="slide-toolbar" id="slide-toolbar">
+  <button class="toolbar-btn" id="tb-prev" aria-label="上一页" title="上一页">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <div class="toolbar-progress" id="tb-progress" title="进度">
+    <div class="toolbar-progress-fill" id="tb-progress-fill"></div>
+  </div>
+  <span class="toolbar-page-info" id="tb-page-info">1 / 16</span>
+  <button class="toolbar-btn" id="tb-next" aria-label="下一页" title="下一页">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-autoplay" aria-label="自动播放" title="自动播放">
+    <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+  </button>
+  <button class="toolbar-btn" id="tb-fullscreen" aria-label="全屏" title="全屏">
+    <svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+  </button>
+</div>
+
+<script>
+/* ============================================================
+   TeachAny v2 — Slide Controller
+   ============================================================ */
+(function() {
+  'use strict';
+
+  const container = document.getElementById('slide-container');
+  const pages = Array.from(document.querySelectorAll('.slide-page'));
+  const totalPages = pages.length;
+  let currentPage = 0;
+  let isPlayMode = false;
+  let isAutoPlay = false;
+  let autoPlayTimer = null;
+
+  const progressBar = document.getElementById('slide-progress-bar');
+  const sidenav = document.getElementById('slide-sidenav');
+  const fab = document.getElementById('play-mode-fab');
+  const fabIconPlay = document.getElementById('fab-icon-play');
+  const fabIconBrowse = document.getElementById('fab-icon-browse');
+  const tbPrev = document.getElementById('tb-prev');
+  const tbNext = document.getElementById('tb-next');
+  const tbPageInfo = document.getElementById('tb-page-info');
+  const tbProgressFill = document.getElementById('tb-progress-fill');
+  const tbProgress = document.getElementById('tb-progress');
+  const tbAutoplay = document.getElementById('tb-autoplay');
+  const tbFullscreen = document.getElementById('tb-fullscreen');
+
+  function buildSidenav() {
+    sidenav.innerHTML = '';
+    const counter = document.createElement('div');
+    counter.className = 'sidenav-counter';
+    counter.id = 'sidenav-counter';
+    counter.textContent = `1/${totalPages}`;
+    sidenav.appendChild(counter);
+    pages.forEach((page, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'sidenav-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-tooltip', page.dataset.tsh?.split(' - ')[0] || `第${i + 1}页`);
+      dot.setAttribute('aria-label', `跳转到第${i + 1}页`);
+      dot.addEventListener('click', () => goToPage(i));
+      sidenav.appendChild(dot);
+    });
+  }
+
+  function updateUI() {
+    const progress = totalPages > 1 ? ((currentPage) / (totalPages - 1)) * 100 : 100;
+    progressBar.style.width = progress + '%';
+    tbProgressFill.style.width = progress + '%';
+    tbPageInfo.textContent = `${currentPage + 1} / ${totalPages}`;
+    sidenav.querySelectorAll('.sidenav-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentPage);
+    });
+    const counterEl = document.getElementById('sidenav-counter');
+    if (counterEl) counterEl.textContent = `${currentPage + 1}/${totalPages}`;
+    tbPrev.style.opacity = currentPage === 0 ? '0.3' : '1';
+    tbNext.style.opacity = currentPage === totalPages - 1 ? '0.3' : '1';
+  }
+
+  function goToPage(index) {
+    if (index < 0 || index >= totalPages) return;
+    currentPage = index;
+    if (isPlayMode) {
+      pages[currentPage].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      container.scrollTo({ top: pages[currentPage].offsetTop, behavior: 'smooth' });
+    }
+    updateUI();
+    dispatchPageAudio();
+  }
+
+  function nextPage() { if (currentPage < totalPages - 1) goToPage(currentPage + 1); }
+  function prevPage() { if (currentPage > 0) goToPage(currentPage - 1); }
+
+  let scrollTimeout;
+  function onScroll() {
+    if (isPlayMode) return;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const scrollTop = container.scrollTop;
+      let closest = 0;
+      let minDist = Infinity;
+      pages.forEach((page, i) => {
+        const dist = Math.abs(page.offsetTop - scrollTop);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      if (closest !== currentPage) {
+        currentPage = closest;
+        updateUI();
+      }
+    }, 100);
+  }
+
+  container.addEventListener('scroll', onScroll, { passive: true });
+
+  function togglePlayMode() {
+    isPlayMode = !isPlayMode;
+    document.body.classList.toggle('play-mode', isPlayMode);
+    document.body.classList.toggle('toolbar-visible', isPlayMode);
+    fabIconPlay.style.display = isPlayMode ? 'none' : 'block';
+    fabIconBrowse.style.display = isPlayMode ? 'block' : 'none';
+    if (isPlayMode) goToPage(currentPage);
+  }
+
+  fab.addEventListener('click', togglePlayMode);
+  tbPrev.addEventListener('click', prevPage);
+  tbNext.addEventListener('click', nextPage);
+
+  tbProgress.addEventListener('click', (e) => {
+    const rect = tbProgress.getBoundingClientRect();
+    const ratio = (e.clientX - rect.left) / rect.width;
+    goToPage(Math.round(ratio * (totalPages - 1)));
+  });
+
+  tbAutoplay.addEventListener('click', () => {
+    isAutoPlay = !isAutoPlay;
+    tbAutoplay.classList.toggle('active', isAutoPlay);
+    if (isAutoPlay) startAutoPlay(); else stopAutoPlay();
+  });
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayTimer = setInterval(() => {
+      if (currentPage < totalPages - 1) nextPage();
+      else { stopAutoPlay(); isAutoPlay = false; tbAutoplay.classList.remove('active'); }
+    }, 8000);
+  }
+
+  function stopAutoPlay() {
+    if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; }
+  }
+
+  tbFullscreen.addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch(e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ':
+        e.preventDefault(); nextPage(); break;
+      case 'ArrowLeft': case 'ArrowUp':
+        e.preventDefault(); prevPage(); break;
+      case 'f': case 'F':
+        if (!e.ctrlKey && !e.metaKey) togglePlayMode(); break;
+      case 'Escape':
+        if (isPlayMode) togglePlayMode(); break;
+    }
+  });
+
+  function dispatchPageAudio() {
+    const page = pages[currentPage];
+    const ttsId = page.dataset.tts;
+    if (ttsId && window.__TEACHANY_AUDIO_PLAYER__) {
+      window.__TEACHANY_AUDIO_PLAYER__.playSection(ttsId);
+    }
+  }
+
+  document.addEventListener('teachany-audio-ended', () => {
+    if (isAutoPlay && currentPage < totalPages - 1) setTimeout(nextPage, 1000);
+  });
+
+  // ─── Problem Anchor Logic ───
+  window.__TEACHANY_LEARNER_QUESTION__ = '';
+  window.__TEACHANY_TUTOR_CONFIG__ = {
+    courseId: 'gaokao-math-review-2027',
+    courseTitle: '高考数学总复习 · 七大主线（贵州 2027）',
+    subject: 'math',
+    grade: '12',
+    nodeId: 'ext-bb246b6d',
+    lessonType: '复习课',
+    getLearnerQuestion: () => window.__TEACHANY_LEARNER_QUESTION__ || '',
+    getContext: () => {
+      const current = pages[currentPage];
+      return (current || document.body).innerText.slice(0, 3000);
+    }
+  };
+
+  function setLearnerQuestion(q) {
+    window.__TEACHANY_LEARNER_QUESTION__ = q || '';
+    const fb = document.getElementById('anchor-feedback');
+    if (fb) fb.textContent = q ? `你的问题：${q}` : '选择或输入后，本课会围绕你的问题展开。';
+  }
+
+  document.querySelectorAll('[data-anchor-choice]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-anchor-choice]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      setLearnerQuestion(btn.getAttribute('data-anchor-choice') || btn.textContent.trim());
+    });
+  });
+
+  document.getElementById('learner-question-input')?.addEventListener('input', (e) => {
+    setLearnerQuestion(e.target.value.trim());
+  });
+
+  buildSidenav();
+  updateUI();
+
+  document.body.classList.add('toolbar-visible');
+  setTimeout(() => { if (!isPlayMode) document.body.classList.remove('toolbar-visible'); }, 3000);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const cv = document.querySelector('meta[name="course-version"]')?.content;
+    const sv = document.querySelector('meta[name="teachany-version"]')?.content;
+    if (cv) document.getElementById('course-version-display').textContent = cv;
+    if (sv) document.getElementById('skill-version-display').textContent = sv.replace(/^v/, '');
+  });
+})();
+</script>
+
+<script>
+/* ============================================================
+   本课件互动：「记 or 推」分类挑战 + 推导链清单
+   ============================================================ */
+(function() {
+  'use strict';
+
+  /* ─── Quiz ─── */
+  const QUIZ = [
+    { name: '两角和差公式（sin/cos/tan 6 式）', answer: 'mem', explain: '这是「母公式」，无法更快推出，必须背熟：「余余正正号相反，正余余正号相同」。' },
+    { name: '二倍角公式', answer: 'der', explain: '令 β=α 代入和角公式 30 秒可推，按「推」处理，不许单独背。' },
+    { name: '等比数列求和公式', answer: 'der', explain: '错位相减法必须会推：Sₙ−qSₙ 中间全消。注意讨论 q=1。' },
+    { name: '基本初等函数导数表', answer: 'mem', explain: '考场上没有推导时间，直接背：「幂降次，e 不变，正弦变余弦，余弦添负号」。' },
+    { name: '换底公式 log_a b = ln b / ln a', answer: 'der', explain: '设 x=log_a b 化回指数 aˣ=b，两边取 ln 即得。会推就永不忘。' },
+    { name: '正弦定理 a/sinA = 2R', answer: 'der', explain: '外接圆+圆周角定理可推；但「等于 2R」这个结论本身要记牢，边角互化全靠它。' },
+    { name: '独立性检验 χ² 公式', answer: 'mem', explain: '考纲给公式但要求会用；建议背：「主减副，平方乘总数，除以四个边际和」。' },
+    { name: '弦长公式 |AB|=√(1+k²)|x₁−x₂|', answer: 'der', explain: '由两点距离公式分解即得；会推之后「√Δ/|A|」的简化也顺理成章。' }
+  ];
+
+  const quizList = document.getElementById('quiz-list');
+  const quizScore = document.getElementById('quiz-score');
+  let answered = 0, correct = 0;
+
+  QUIZ.forEach((q, idx) => {
+    const item = document.createElement('div');
+    item.className = 'quiz-item';
+    item.innerHTML = `
+      <div class="q-line">
+        <span class="q-name">${idx + 1}. ${q.name}</span>
+        <span class="q-btns">
+          <button class="q-btn" data-pick="mem">必须背</button>
+          <button class="q-btn" data-pick="der">必须会推</button>
+        </span>
+      </div>
+      <div class="q-explain"></div>`;
+    const explain = item.querySelector('.q-explain');
+    item.querySelectorAll('.q-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (item.classList.contains('done')) return;
+        item.classList.add('done');
+        const pick = btn.dataset.pick;
+        const ok = pick === q.answer;
+        if (ok) correct++;
+        answered++;
+        item.querySelectorAll('.q-btn').forEach(b => {
+          b.classList.add('dim');
+          if (b.dataset.pick === q.answer) b.classList.add(q.answer === 'mem' ? 'hit-mem' : 'hit-der');
+        });
+        btn.classList.remove('dim');
+        explain.textContent = (ok ? '✓ 判断正确。' : '✗ 应为「' + (q.answer === 'mem' ? '必须背' : '必须会推') + '」。') + q.explain;
+        quizScore.textContent = `已完成 ${answered} / 8 ｜ 答对 ${correct}`;
+      });
+    });
+    quizList.appendChild(item);
+  });
+
+  /* ─── Derivation Checklist ─── */
+  const DL_KEY = 'gaokao-math-review-2027-derivations';
+  const DL = [
+    ['子集个数 2ⁿ、容斥原理', '集合 · 2 分钟'],
+    ['基本不等式及其取等条件', '不等式 · 1 分钟'],
+    ['对称轴/对称中心/周期三组结论', '函数性质 · 5 分钟'],
+    ['对数运算律、换底公式', '指对函数 · 3 分钟'],
+    ['eˣ≥x+1、ln x≤x−1 及变形', '导数 · 4 分钟'],
+    ['乘除法求导法则', '导数 · 4 分钟'],
+    ['由和角公式推倍角、降幂、半角', '三角 · 6 分钟'],
+    ['辅助角公式', '三角 · 2 分钟'],
+    ['正弦定理（外接圆）、余弦定理（向量）', '解三角形 · 4 分钟'],
+    ['等差求和（倒序相加）、等比求和（错位相减）', '数列 · 4 分钟'],
+    ['aₙ₊₁=paₙ+q 构造等比', '数列 · 3 分钟'],
+    ['裂项与错位相减的标准书写流程', '数列 · 6 分钟'],
+    ['极化恒等式、z·z̄=|z|²', '向量复数 · 2 分钟'],
+    ['线面角/二面角公式中 sin/cos 的来源', '立体几何 · 3 分钟'],
+    ['点差法、弦长公式、焦点三角形面积', '解析几何 · 8 分钟'],
+    ['条件概率→全概率→贝叶斯（树状图）', '概率 · 4 分钟']
+  ];
+
+  const dlList = document.getElementById('dl-list');
+  const dlFill = document.getElementById('dl-progress-fill');
+  const dlText = document.getElementById('dl-progress-text');
+  let state = [];
+  try { state = JSON.parse(localStorage.getItem(DL_KEY) || '[]'); } catch(e) { state = []; }
+
+  function saveDl() { try { localStorage.setItem(DL_KEY, JSON.stringify(state)); } catch(e) {} }
+  function refreshDl() {
+    const done = state.filter(Boolean).length;
+    dlFill.style.width = (done / DL.length * 100) + '%';
+    dlText.textContent = `已完成 ${done} / ${DL.length}`;
+    dlList.querySelectorAll('.dl-item').forEach((el, i) => {
+      el.classList.toggle('checked', !!state[i]);
+    });
+  }
+
+  DL.forEach(([text, meta], i) => {
+    const el = document.createElement('div');
+    el.className = 'dl-item';
+    el.innerHTML = `<span class="dl-box">✓</span><span class="dl-text">${i + 1}. ${text}</span><span class="dl-meta">${meta}</span>`;
+    el.addEventListener('click', () => {
+      state[i] = !state[i];
+      saveDl(); refreshDl();
+    });
+    dlList.appendChild(el);
+  });
+
+  document.getElementById('dl-reset').addEventListener('click', () => {
+    state = [];
+    saveDl(); refreshDl();
+  });
+
+  refreshDl();
+
+  /* ─── MCQ（前测/后测，带错因诊断） ─── */
+  document.querySelectorAll('[data-mcq]').forEach(mcq => {
+    const diag = mcq.querySelector('.mcq-diag');
+    mcq.querySelectorAll('.mcq-opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        if (mcq.classList.contains('done')) return;
+        mcq.classList.add('done');
+        const correct = opt.dataset.correct === '1';
+        opt.classList.add(correct ? 'opt-correct' : 'opt-wrong');
+        if (!correct) {
+          const right = mcq.querySelector('.mcq-opt[data-correct="1"]');
+          if (right) right.classList.add('opt-correct');
+        }
+        if (diag) diag.innerHTML = opt.dataset.diag || '';
+      });
+    });
+  });
+
+  /* ─── Canvas 实验室：基本不等式几何证明 ─── */
+  (function amgmLab() {
+    const canvas = document.getElementById('amgm-canvas');
+    const slider = document.getElementById('lab-slider');
+    if (!canvas || !slider) return;
+    const ctx = canvas.getContext('2d');
+    const aVal = document.getElementById('lab-a-val');
+    const bVal = document.getElementById('lab-b-val');
+    const readout = document.getElementById('lab-readout');
+
+    function draw() {
+      const t = Number(slider.value) / 100;      // a 的占比
+      const total = 10;
+      const a = +(t * total).toFixed(1);
+      const b = +(total - a).toFixed(1);
+      aVal.textContent = a.toFixed(1);
+      bVal.textContent = b.toFixed(1);
+
+      const W = canvas.width, H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      const cx = W / 2, baseY = H - 70;
+      const R = Math.min(W / 2 - 40, H - 120);   // 半圆半径（像素）
+      const unit = (2 * R) / total;              // 每单位长度的像素
+
+      // 直径 AB
+      const Ax = cx - R, Bx = cx + R;
+      const Px = Ax + a * unit;                  // 分割点 P
+
+      // 半圆
+      ctx.strokeStyle = 'rgba(96,165,250,0.9)';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.arc(cx, baseY, R, Math.PI, 0);
+      ctx.stroke();
+      // 直径
+      ctx.strokeStyle = 'rgba(148,163,184,0.5)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(Ax, baseY); ctx.lineTo(Bx, baseY); ctx.stroke();
+
+      // 半径（算术平均）
+      ctx.strokeStyle = '#60a5fa';
+      ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(cx, baseY); ctx.lineTo(cx, baseY - R); ctx.stroke();
+
+      // 半弦（几何平均）：从 P 向上交半圆于 Q
+      const dx = Px - cx;
+      const h = Math.sqrt(Math.max(0, R * R - dx * dx));
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(Px, baseY); ctx.lineTo(Px, baseY - h); ctx.stroke();
+
+      // Q 点与辅助线
+      ctx.fillStyle = '#f59e0b';
+      ctx.beginPath(); ctx.arc(Px, baseY - h, 5, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(245,158,11,0.35)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(cx, baseY); ctx.lineTo(Px, baseY - h); ctx.stroke();
+      ctx.setLineDash([]);
+
+      // 标注
+      ctx.fillStyle = '#eef6ff';
+      ctx.font = '15px -apple-system, "PingFang SC", sans-serif';
+      ctx.fillText('A', Ax - 18, baseY + 6);
+      ctx.fillText('B', Bx + 8, baseY + 6);
+      ctx.fillText('O', cx - 5, baseY + 22);
+      ctx.fillText('P', Px - 4, baseY + 22);
+      ctx.fillText('Q', Px + 8, baseY - h - 4);
+      ctx.fillStyle = '#60a5fa';
+      ctx.fillText('半径 = (a+b)/2（算术平均）', cx + 12, baseY - R + 4);
+      ctx.fillStyle = '#f59e0b';
+      ctx.fillText('PQ = √(ab)（几何平均）', Px + 12, baseY - h / 2);
+      ctx.fillStyle = '#9fb4cc';
+      ctx.fillText('a', (Ax + Px) / 2 - 4, baseY + 22);
+      ctx.fillText('b', (Px + Bx) / 2 - 4, baseY + 22);
+
+      const am = (a + b) / 2, gm = Math.sqrt(a * b);
+      readout.textContent = `算术平均 (a+b)/2 = ${am.toFixed(2)} ｜ 几何平均 √(ab) = ${gm.toFixed(2)} ｜ 差值 ${(am - gm).toFixed(2)}${Math.abs(am - gm) < 0.01 ? '（a=b，取等！）' : ''}`;
+    }
+
+    slider.addEventListener('input', draw);
+    canvas.addEventListener('pointerdown', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      slider.value = Math.round(5 + x * 90);
+      draw();
+    });
+    draw();
+  })();
+})();
+</script>
+
+<!-- 标准模块脚本 -->
+<script src="./assets/scripts/ai-tutor.js"></script>
+<script src="./assets/scripts/teachany-tutor-card.js" defer></script>
+<script src="./assets/scripts/teachany-tts-narrator.js" defer></script>
+<script src="./assets/scripts/teachany-section-hints.js" defer></script>
+<script src="./assets/scripts/teachany-knowledge-graph.js" defer></script>
+<script src="./assets/scripts/teachany-audio-player.js?v=paged-20260521" defer></script>
+
+<!-- v7.20 标准连续音频配置（apply-standard-modules 自动补齐） -->
+<div id="audio-config" data-teachany-audio hidden>
+  <script type="application/json" data-teachany-audio-playlist>
+[
+  {
+    "id": "s01-hero",
+    "section": "hero",
+    "src": "./tts/s01-hero.mp3",
+    "label": "开场"
+  },
+  {
+    "id": "s02-problem-anchor",
+    "section": "problem-anchor",
+    "src": "./tts/s02-problem-anchor.mp3",
+    "label": "问题锚点"
+  },
+  {
+    "id": "s03-objectives",
+    "section": "objectives",
+    "src": "./tts/s03-objectives.mp3",
+    "label": "学习目标"
+  },
+  {
+    "id": "s04-sec-prep",
+    "section": "sec-prep",
+    "src": "./tts/s04-sec-prep.mp3",
+    "label": "预备知识"
+  },
+  {
+    "id": "s19-lab-amgm",
+    "section": "lab-amgm",
+    "src": "./tts/s19-lab-amgm.mp3",
+    "label": "互动实验"
+  },
+  {
+    "id": "s05-sec-function",
+    "section": "sec-function",
+    "src": "./tts/s05-sec-function.mp3",
+    "label": "函数性质"
+  },
+  {
+    "id": "s06-sec-derivative",
+    "section": "sec-derivative",
+    "src": "./tts/s06-sec-derivative.mp3",
+    "label": "主线二下"
+  },
+  {
+    "id": "s07-sec-trig",
+    "section": "sec-trig",
+    "src": "./tts/s07-sec-trig.mp3",
+    "label": "主线三"
+  },
+  {
+    "id": "s08-sec-sequence",
+    "section": "sec-sequence",
+    "src": "./tts/s08-sec-sequence.mp3",
+    "label": "主线四"
+  },
+  {
+    "id": "s09-sec-vector",
+    "section": "sec-vector",
+    "src": "./tts/s09-sec-vector.mp3",
+    "label": "主线五"
+  },
+  {
+    "id": "s10-sec-solid",
+    "section": "sec-solid",
+    "src": "./tts/s10-sec-solid.mp3",
+    "label": "主线六"
+  },
+  {
+    "id": "s11-sec-analytic",
+    "section": "sec-analytic",
+    "src": "./tts/s11-sec-analytic.mp3",
+    "label": "主线七"
+  },
+  {
+    "id": "s12-sec-prob",
+    "section": "sec-prob",
+    "src": "./tts/s12-sec-prob.mp3",
+    "label": "主线八"
+  },
+  {
+    "id": "s13-quiz-sort",
+    "section": "quiz-sort",
+    "src": "./tts/s13-quiz-sort.mp3",
+    "label": "互动挑战"
+  },
+  {
+    "id": "s20-homework",
+    "section": "homework",
+    "src": "./tts/s20-homework.mp3",
+    "label": "分层作业"
+  },
+  {
+    "id": "s21-posttest",
+    "section": "posttest",
+    "src": "./tts/s21-posttest.mp3",
+    "label": "后测"
+  },
+  {
+    "id": "s14-derivation-lab",
+    "section": "derivation-lab",
+    "src": "./tts/s14-derivation-lab.mp3",
+    "label": "推导训练"
+  },
+  {
+    "id": "s15-knowledge-graph",
+    "section": "knowledge-graph",
+    "src": "./tts/s15-knowledge-graph.mp3",
+    "label": "知识图谱"
+  },
+  {
+    "id": "s16-ai-tutor",
+    "section": "ai-tutor",
+    "src": "./tts/s16-ai-tutor.mp3",
+    "label": "AI 学伴"
+  }
+]
+  </script>
+</div>
+</body>
+</html>

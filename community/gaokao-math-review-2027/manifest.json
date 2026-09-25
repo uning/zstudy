@@ -1,0 +1,70 @@
+{
+  "id": "gaokao-math-review-2027",
+  "name": "高考数学总复习",
+  "node_id": "ext-bb246b6d",
+  "subject": "math",
+  "grade": 12,
+  "author": "TeachAny 用户",
+  "description": "按知识相关性组织的高考数学总复习提纲：七大主线由易到难，记忆/推导双轨标注，附速记口诀与推导训练。",
+  "version": "1.0.0",
+  "teachany_version": "v7.9",
+  "curriculum": "cn-national",
+  "free_mode": false,
+  "course_id": "gaokao-math-review-2027",
+  "name_en": "Gaokao Math Comprehensive Review: Seven Main Lines",
+  "stage": "high",
+  "domain": "高考总复习",
+  "lesson_type": "pbl-supplement",
+  "pbl_context": {
+    "project_goal": "以贵州 2027 年高考为真实驱动情境，将高中数学百余条公式定理重组为七条知识主线，建立「【记】硬背 / 【推】会推 / 【解】理解」三级分类体系，通过 16 条推导链限时默推训练，实现从「记不住」到「考场可提取」的复习范式迁移。",
+    "role": "高三考生备战 2027 新课标卷",
+    "audience": "context"
+  },
+  "status": "community",
+  "template_version": "2.0",
+  "tags": [
+    "高考复习",
+    "记忆与推导",
+    "知识图谱"
+  ],
+  "prerequisites": [
+    "math-h-sets",
+    "math-h-functions-concept",
+    "math-h-exponential-function",
+    "math-h-logarithmic-function",
+    "math-h-trig-ratios",
+    "math-h-basic-inequality"
+  ],
+  "leads_to": [
+    "math-h-conic-comprehensive",
+    "math-h-trigonometric-functions"
+  ],
+  "learning_objectives": [
+    "能把高中数学知识归入 7 条主线，说出每条主线由易到难的知识链顺序",
+    "对任意公式/定理，能判定它是必背、必推还是理解即可，并说明理由",
+    "掌握每条主线的速记口诀与推导技巧，能独立推导 16 条核心推导链"
+  ],
+  "assets": {
+    "hero": "assets/gaokao-math-review-2027-hero.webp",
+    "tts_manifest": "tts/manifest.json",
+    "videos": [
+      "assets/gaokao-math-review-2027-intro.mp4"
+    ],
+    "images": [
+      "assets/gaokao-math-review-2027-hero.webp"
+    ]
+  },
+  "has_tts": true,
+  "has_video": true,
+  "has_images": true,
+  "has_hero": true,
+  "has_canvas": true,
+  "has_knowledge_graph": true,
+  "feedback": {
+    "require_password": false,
+    "teacher_declined": true,
+    "note": "授课教师选择不启用反馈密码"
+  },
+  "created_at": "2026-09-24",
+  "updated_at": "2026-09-24"
+}
