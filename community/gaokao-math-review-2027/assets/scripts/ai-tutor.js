@@ -63,15 +63,15 @@
   const HISTORY_KEY = 'teachany_tutor_history';
   const LANG_KEY = 'teachany_tutor_lang';
 
-  // 默认：TeachAny 服务端中转（Key 仅存 Cloudflare，浏览器不接触）
+  // 默认：教师预置 DeepSeek 直连（V4 Pro）
   const DEFAULTS = {
-    baseUrl: SERVER_PROXY_BASE,
-    apiKey: '',
-    model: PRIMARY_FREE_MODEL,
-    noAuth: true,
-    serverProxy: true,
-    backendId: 'openrouter',
-    providerId: 'teachany-server',
+    baseUrl: 'https://api.deepseek.com/v1',
+    apiKey: 'sk-a276267cef5c4e92a61cd9f376d3240e',
+    model: 'deepseek-v4-pro',
+    noAuth: false,
+    serverProxy: false,
+    backendId: '',
+    providerId: 'deepseek',
   };
 
   // TeachAny 服务端默认仅使用千问免费模型（不自动切换 Llama/DeepSeek 等）
@@ -102,10 +102,10 @@
     },
     {
       id: 'deepseek',
-      name: '🇨🇳 DeepSeek（最便宜 · 中文好）',
+      name: '🇨🇳 DeepSeek（本课预置 · V4 Pro）',
       baseUrl: 'https://api.deepseek.com/v1',
-      model: 'deepseek-chat',
-      models: ['deepseek-chat', 'deepseek-reasoner'],
+      model: 'deepseek-v4-pro',
+      models: ['deepseek-v4-pro', 'deepseek-flash', 'deepseek-chat', 'deepseek-reasoner'],
       keyHint: 'DeepSeek Key 申请：https://platform.deepseek.com/api_keys'
     },
     {
