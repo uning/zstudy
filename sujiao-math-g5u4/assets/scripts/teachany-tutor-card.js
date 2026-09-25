@@ -1,11 +1,35 @@
-/* TeachAny AI Tutor Card - Self-contained for zstudy */
+/* TeachAny AI Tutor Card - DeepSeek V4-Pro powered (self-contained) */
 (function() {
   'use strict';
 
   const container = document.querySelector('[data-teachany-tutor-card]');
   if (!container) return;
 
-  // ─── Knowledge base ───
+  // ═══════════════════════════════════════════════════════════════
+  //  DeepSeek API 配置
+  //  ⚠️ 安全提示：此 Key 会随前端源码公开，切勿用于生产环境。
+  //  生产环境应通过后端（如 CloudBase 云函数）中转，Key 只存服务端。
+  // ═══════════════════════════════════════════════════════════════
+  const CONFIG = {
+    endpoint: 'https://api.deepseek.com/chat/completions',
+    apiKey: 'sk-a276267cef5c4e92a61cd9f376d3240e',
+    model: 'deepseek-v4-pro',
+    maxTokens: 600,
+    temperature: 0.7
+  };
+
+  // 系统提示词：把学伴约束为「小数加减法」专属数学老师
+  const SYSTEM_PROMPT = [
+    '你是一位耐心的小学五年级数学学伴，正在辅导学生《小数加法和减法》（苏教版五年级上册第4单元）。',
+    '教学原则：',
+    '1. 先引导学生思考，不要直接给答案；先给一个提示或反问他"第一步该做什么"。',
+    '2. 学生明显卡住或反复求助时，再分步骤讲解。',
+    '3. 核心知识点：小数点对齐＝相同数位对齐（不是末位对齐）；位数不同时末尾补0；整数减小数要补小数点和0（如5＝5.0）；满十进一、不够借一当十；混合运算从左到右、有括号先算括号。',
+    '4. 常见易错点：末位对齐误区、整数减小数忘记补0、退位忘记借1。',
+    '5. 语气活泼亲切，适合小学生，适当用emoji，回答简洁，一次不要超过120字。'
+  ].join('\n');
+
+  // ─── 本地知识库（离线兜底 + 高频问题秒回）───
   const KB = {
     topics: {
       '小数点对齐': {
@@ -33,8 +57,7 @@
       '3.5 + 2': '3.5 + 2 = 5.5。把2看成2.0，对齐小数点：3.5 + 2.0 = 5.5。不是3.7！因为不能末位对齐。',
       '1.35和1.4': '1.4 > 1.35，因为1.4 = 1.40（补0），1.40 > 1.35，高0.05米。',
       '超市': '2.5 + 3.08 + 0.9 → 2.50 + 3.08 + 0.90 = 6.48 元。'
-    },
-    general: '我是你的数学学伴！有小数加减法的问题都可以问我。我会先给你一个提示，不会直接给答案哦～'
+    }
   };
 
   const greetings = [
@@ -102,6 +125,8 @@
         border-radius: 12px;
         max-width: 90%;
         animation: taFadeIn 0.3s ease;
+        white-space: pre-wrap;
+        word-break: break-word;
       }
       @keyframes taFadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
       .ta-tutor-msg.bot {
@@ -114,6 +139,19 @@
         align-self: flex-end;
         margin-left: auto;
         text-align: right;
+      }
+      .ta-tutor-msg.thinking {
+        background: #f5f5f5;
+        color: #999;
+        font-style: italic;
+        align-self: flex-start;
+        margin-right: auto;
+      }
+      .ta-tutor-msg.error {
+        background: #fff0f0;
+        color: #c0392b;
+        align-self: flex-start;
+        margin-right: auto;
       }
       .ta-tutor-input-row {
         display: flex;
@@ -146,6 +184,7 @@
       }
       .ta-tutor-btn:hover { opacity: 0.88; }
       .ta-tutor-btn:active { transform: scale(0.97); }
+      .ta-tutor-btn:disabled { opacity: 0.5; cursor: not-allowed; }
       .ta-tutor-quick-qs {
         display: flex;
         flex-wrap: wrap;
@@ -169,7 +208,7 @@
         <div class="ta-tutor-avatar">🧑‍🏫</div>
         <div>
           <div class="ta-tutor-title">AI 数学学伴</div>
-          <div class="ta-tutor-subtitle">小数加减法专属 · 先给提示不打答案</div>
+          <div class="ta-tutor-subtitle">DeepSeek V4-Pro · 小数加减法专属 · 先给提示不打答案</div>
         </div>
       </div>
       <div class="ta-tutor-chat" id="ta-tutor-chat"></div>
@@ -206,35 +245,91 @@
     div.textContent = text;
     chat.appendChild(div);
     chat.scrollTop = chat.scrollHeight;
+    return div;
   }
 
-  function botReply(input) {
+  // 本地知识库匹配，命中返回内容，未命中返回 null
+  function matchLocal(input) {
     const s = input.replace(/\s+/g, '').toLowerCase();
-    let found = null;
-
-    // Keyword matching
     for (const [kw, info] of Object.entries(KB.topics)) {
-      if (s.includes(kw) || kw.includes(s) || s.includes(kw.replace(/[等怎]/g,''))) {
-        found = info;
-        break;
+      if (s.includes(kw) || kw.includes(s)) {
+        return info.short + (info.tip ? '\n\n💡 ' + info.tip : '');
       }
     }
-    // Problem matching
-    if (!found) {
-      for (const [p, ans] of Object.entries(KB.problems)) {
-        if (s.includes(p.replace(/\s+/g,'')) || p.replace(/\s+/g,'').includes(s)) {
-          found = { short: ans, tip: '' };
-          break;
-        }
+    for (const [p, ans] of Object.entries(KB.problems)) {
+      const pp = p.replace(/\s+/g, '');
+      if (s.includes(pp) || pp.includes(s)) {
+        return ans;
       }
+    }
+    return null;
+  }
+
+  // 调用 DeepSeek API
+  async function callDeepSeek(input) {
+    const resp = await fetch(CONFIG.endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + CONFIG.apiKey
+      },
+      body: JSON.stringify({
+        model: CONFIG.model,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'user', content: input }
+        ],
+        stream: false,
+        max_tokens: CONFIG.maxTokens,
+        temperature: CONFIG.temperature,
+        thinking: { type: 'disabled' }
+      })
+    });
+
+    if (!resp.ok) {
+      const code = resp.status;
+      if (code === 401) throw new Error('auth');
+      if (code === 402) throw new Error('balance');
+      if (code === 429) throw new Error('rate');
+      throw new Error('http_' + code);
     }
 
-    if (found) {
-      addMsg(found.short + (found.tip ? '\n\n💡 ' + found.tip : ''), 'bot');
-    } else if (s.length < 3) {
-      addMsg('可以把问题再说详细一点吗？比如「小数点怎么对齐」「3.5+2.7等于多少」～', 'bot');
-    } else {
-      addMsg('这个问题很棒！试试这样想：\n1️⃣ 先对齐小数点（个位对个位、十分位对十分位）\n2️⃣ 从最低位开始加减\n3️⃣ 满十进一、不够借一\n\n你再试试看？卡在哪一步告诉我～', 'bot');
+    const data = await resp.json();
+    const content = data.choices && data.choices[0] && data.choices[0].message
+      ? data.choices[0].message.content
+      : '';
+    return (content || '').trim();
+  }
+
+  async function botReply(input) {
+    // 1) 本地知识库秒回（高频问题）
+    const local = matchLocal(input);
+    if (local) {
+      addMsg(local, 'bot');
+      return;
+    }
+
+    // 2) 调用 DeepSeek API
+    const thinkingEl = addMsg('🤔 思考中…', 'thinking');
+    sendBtn.disabled = true;
+    try {
+      const answer = await callDeepSeek(input);
+      thinkingEl.remove();
+      if (answer) {
+        addMsg(answer, 'bot');
+      } else {
+        addMsg('我一时没想好，换个问法再试试？或者点下面的快捷问题～', 'bot');
+      }
+    } catch (err) {
+      thinkingEl.remove();
+      const map = {
+        auth: '⚠️ 学伴的钥匙失效了，请联系老师更新。',
+        balance: '⚠️ 学伴的余额用完了，请联系老师充值。',
+        rate: '⚠️ 学伴太忙了，稍等一下再问我～',
+      };
+      addMsg(map[err.message] || '⚠️ 网络开小差了，先点下面的快捷问题试试，或稍后重试～', 'error');
+    } finally {
+      sendBtn.disabled = false;
     }
   }
 
@@ -243,7 +338,7 @@
     if (!txt) return;
     addMsg(txt, 'user');
     inputEl.value = '';
-    setTimeout(() => botReply(txt), 400);
+    setTimeout(() => botReply(txt), 300);
   }
 
   sendBtn.addEventListener('click', handleSend);
@@ -254,7 +349,7 @@
     if (!el) return;
     const q = el.dataset.q;
     addMsg(q, 'user');
-    setTimeout(() => botReply(q), 400);
+    setTimeout(() => botReply(q), 300);
   });
 
   // ─── Init ───
